@@ -16,43 +16,91 @@ const { title } = Astro.props as Props;
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <Navbar />
     <slot />
-    <style>
+    <style is:global>
       :root {
         --font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
-        --font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 1.5rem);
+        --font-size-lg: clamp(1.8rem, 0.7vw + 1.3rem, 1.5rem);
         --font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
 
-        --color-text: hsl(12, 5%, 4%);
-        --color-bg: hsl(10, 21%, 95%);
-        --color-border: hsl(17, 24%, 90%);
+        --font-family-base: system-ui, sans-serif;
+        --font-family-display: "Ubuntu", sans-serif;
+
+        --color-accent: #030d65;
+        --color-accent-contrast: #ff6078;
+        --color-accent-contrast2: #ffcc67;
+        --color-neutral-dark: #202022;
+        --color-neutral-light: #ffffff;
+
+        --speed-move: 0.15s;
+      }
+
+      *,
+      *:after,
+      *:before {
+        box-sizing: border-box;
       }
 
       html {
-        font-family: system-ui, sans-serif;
+        font-family: var(--font-family-base);
         font-size: var(--font-size-base);
-        color: var(--color-text);
-        background-color: var(--color-bg);
+        color: var(--color-neutral-dark);
+        background-color: var(--color-neutral-light);
+        line-height: 1.6;
       }
 
       body {
         margin: 0;
       }
 
-      :global(h1) {
+      h1 {
         font-size: var(--font-size-xl);
+        font-family: var(--font-family-display);
       }
 
-      :global(h2) {
+      h2 {
         font-size: var(--font-size-lg);
+        font-family: var(--font-family-display);
       }
 
-      :global(code) {
-        font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+      a {
+        color: inherit;
+        text-decoration: none;
+        position: relative;
+        transition: outline-offset var(--speed-move) ease-out;
+      }
+
+      a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 0.1em;
+        background-color: var(--color-accent-contrast);
+        transition: opacity var(--speed-move), transform var(--speed-move);
+        opacity: 1;
+        transform: scale(0);
+        transform-origin: center;
+      }
+
+      a:hover::after {
+        transform: scale(1);
+      }
+
+      a:focus-visible {
+        outline: dashed var(--color-accent-contrast) 2px;
+        outline-offset: 4px;
       }
     </style>
   </body>

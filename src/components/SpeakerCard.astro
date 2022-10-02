@@ -3,26 +3,57 @@ export interface Props {
   name: string;
   title: string;
   company: string;
-  slug?: string;
+  imgName: string;
 }
 
-const { name, title, company, slug } = Astro.props as Props;
+const { name, title, company, imgName } = Astro.props as Props;
 ---
 
-<article class="link-card">
-  <img src=`https://picsum.photos/200/200?grayscale&${name}` class="photo" />
-  <p>
-    {name}
-  </p>
-  <p>
-    {title}@{company}
-  </p>
+<article class="card">
+  <div class="frame">
+    <img tabindex="0" class="photo" src={`/img/speakers/${imgName}`} />
+  </div>
+  <div class="details">
+    <strong>
+      {name}
+    </strong>
+    <span>
+      {company ? `${title} @ ${company}` : title}
+    </span>
+  </div>
 </article>
 <style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--font-family-display);
+  }
 
-.photo {
-    width: 150px;
+  .details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .photo {
+    width: 15rem;
     border-radius: 999px;
-}
+    border: 0rem solid var(--color-accent-contrast);
+    transition: outline-offset var(--speed-move) ease-out,
+      filter var(--speed-move), border-width var(--speed-move);
+    filter: grayscale(1);
+  }
 
+  .photo:hover {
+    border-width: 1rem;
+    filter: grayscale(0);
+  }
+
+  .photo:focus-visible {
+    outline: dashed var(--color-accent-contrast) 5px;
+    outline-offset: 8px;
+    filter: grayscale(0);
+  }
 </style>

@@ -1,0 +1,56 @@
+---
+export interface Props {
+  variant: "light" | "dark" | "accent";
+  content: "text" | "list" | "full";
+  id?: string;
+}
+
+const { id, variant, content } = Astro.props as Props;
+---
+
+<section id={id} class={`section ${variant}`}>
+  <div class={`content ${content}`}>
+    <slot />
+  </div>
+</section>
+<style is:global>
+  .section {
+    padding: 4rem 0;
+    width: 100%;
+  }
+
+  .section.light {
+    background: var(--color-neutral-light);
+    color: var(--color-neutral-dark);
+  }
+
+  .section.dark {
+    background: var(--color-neutral-dark);
+    color: var(--color-neutral-light);
+  }
+
+  .section.accent {
+    background: var(--color-accent);
+    color: var(--color-neutral-light);
+  }
+
+  .content {
+    margin: auto;
+  }
+
+  .content.text {
+    max-width: 60ch;
+  }
+
+  .content.list {
+    max-width: 1280px;
+  }
+
+  .content.full {
+    width: 100%;
+  }
+
+  .content.center {
+    text-align: center;
+  }
+</style>

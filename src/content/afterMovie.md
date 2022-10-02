@@ -5,9 +5,9 @@ If you've never been to one of our events before, or you're just nostalgic think
 <iframe
     aria-label="JSHeroes After Movie"
     title="JSHeroes After Movie"
-    width="560"
-    height="315"
-    src="https://www.youtube.com/embed/jdr9eQGq97g"
+    width="100%"
+    height="478px"
+    src="https://www.youtube.com/embed/munltx48_xI"
     frameBorder="0"
     allow="autoplay; encrypted-media"
     allowFullScreen
