@@ -1,0 +1,39 @@
+---
+import SpeakerCard from "../components/SpeakerCard.astro";
+
+const speakers = [
+  { name: "John", title: "Frontend Developer", company: "Acme" },
+  { name: "Mary", title: "Software Engineer", company: "Acme" },
+  { name: "David", title: "Developer", company: "Acme" },
+];
+---
+
+<ul role="list" class="speaker-list">
+  {
+    speakers.map((speaker) => (
+      <li class="speaker-list-item">
+        <SpeakerCard {...speaker} />
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .speaker-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    gap: 1rem;
+    padding: 0;
+  }
+
+  .speaker-list-item {
+    list-style: none;
+    display: flex;
+    padding: 0.15rem;
+    background-image: var(--link-gradient);
+    background-size: 400%;
+    border-radius: 0.5rem;
+    background-position: 100%;
+    transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+</style>

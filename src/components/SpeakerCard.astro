@@ -1,0 +1,28 @@
+---
+export interface Props {
+  name: string;
+  title: string;
+  company: string;
+  slug?: string;
+}
+
+const { name, title, company, slug } = Astro.props as Props;
+---
+
+<article class="link-card">
+  <img src=`https://picsum.photos/200/200?grayscale&${name}` class="photo" />
+  <p>
+    {name}
+  </p>
+  <p>
+    {title}@{company}
+  </p>
+</article>
+<style>
+
+.photo {
+    width: 150px;
+    border-radius: 999px;
+}
+
+</style>
