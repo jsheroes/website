@@ -1,5 +1,21 @@
+---
+import BearLink from "../components/BearLink.astro";
+---
+
 <div class="content text">
   <h2>Agenda</h2>
 
   <p>Coming soon</p>
+  <span class="bear-anchor">
+    <BearLink animation="scale" />
+  </span>
 </div>
+
+<style>
+  .bear-anchor {
+    position: absolute;
+    z-index: 1;
+    top: 150px;
+    right: 250px;
+  }
+</style>

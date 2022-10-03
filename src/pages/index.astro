@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Section from "../components/Section.astro";
+import BearLink from "../components/BearLink.astro";
 
 import Hero from "../content/hero.astro";
 import { Content as News } from "../content/news.md";
@@ -19,19 +20,22 @@ import Footer from "../content/footer.astro";
     <Section variant="light" content="text">
       <News />
     </Section>
-    <Section variant="accent" content="text">
+    <Section variant="dark" content="text">
+      <span class="bear-anchor">
+        <BearLink rotate={90} animation="scaleAndSlide" />
+      </span>
       <AfterMovie />
     </Section>
     <Section id="speakers" variant="light" content="list">
       <Speakers />
     </Section>
-    <Section variant="accent" content="text">
+    <Section variant="dark" content="text">
       <Description />
     </Section>
     <Section id="agenda" variant="light" content="list">
       <Agenda />
     </Section>
-    <Section variant="accent" content="text">
+    <Section variant="dark" content="text">
       <Theme />
     </Section>
     <Section variant="light" content="text">
@@ -41,4 +45,11 @@ import Footer from "../content/footer.astro";
   <Footer />
 </Layout>
 
-<style></style>
+<style>
+  .bear-anchor {
+    position: absolute;
+    z-index: 1;
+    top: 100px;
+    left: -150px;
+  }
+</style>

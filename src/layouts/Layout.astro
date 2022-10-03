@@ -36,11 +36,12 @@ const { title } = Astro.props as Props;
         --font-family-base: system-ui, sans-serif;
         --font-family-display: "Ubuntu", sans-serif;
 
-        --color-accent: #030d65;
-        --color-accent-contrast: #ff6078;
-        --color-accent-contrast2: #ffcc67;
         --color-neutral-dark: #202022;
         --color-neutral-light: #ffffff;
+        --color-primary: #121c5e;
+        --color-accent-pink: #ff6078;
+        --color-accent-orange: #ffcc67;
+        --color-accent-green: #65b37b;
 
         --speed-move: 0.15s;
       }
@@ -87,7 +88,7 @@ const { title } = Astro.props as Props;
         left: 0;
         width: 100%;
         height: 0.1em;
-        background-color: var(--color-accent-contrast);
+        background-color: var(--color-accent-pink);
         transition: opacity var(--speed-move), transform var(--speed-move);
         opacity: 1;
         transform: scale(0);
@@ -99,7 +100,7 @@ const { title } = Astro.props as Props;
       }
 
       a:focus-visible {
-        outline: dashed var(--color-accent-contrast) 2px;
+        outline: dashed var(--color-accent-pink) 2px;
         outline-offset: 4px;
       }
     </style>

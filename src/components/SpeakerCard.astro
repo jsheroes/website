@@ -40,7 +40,7 @@ const { name, title, company, imgName } = Astro.props as Props;
   .photo {
     width: 15rem;
     border-radius: 999px;
-    border: 0rem solid var(--color-accent-contrast);
+    border: 0rem solid var(--color-accent-pink);
     transition: outline-offset var(--speed-move) ease-out,
       filter var(--speed-move), border-width var(--speed-move);
     filter: grayscale(1);
@@ -52,7 +52,7 @@ const { name, title, company, imgName } = Astro.props as Props;
   }
 
   .photo:focus-visible {
-    outline: dashed var(--color-accent-contrast) 5px;
+    outline: dashed var(--color-accent-pink) 5px;
     outline-offset: 8px;
     filter: grayscale(0);
   }

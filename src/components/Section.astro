@@ -1,6 +1,6 @@
 ---
 export interface Props {
-  variant: "light" | "dark" | "accent";
+  variant: "light" | "dark";
   content: "text" | "list" | "full";
   id?: string;
 }
@@ -17,6 +17,7 @@ const { id, variant, content } = Astro.props as Props;
   .section {
     padding: 4rem 0;
     width: 100%;
+    position: relative;
   }
 
   .section.light {
@@ -25,12 +26,7 @@ const { id, variant, content } = Astro.props as Props;
   }
 
   .section.dark {
-    background: var(--color-neutral-dark);
-    color: var(--color-neutral-light);
-  }
-
-  .section.accent {
-    background: var(--color-accent);
+    background: var(--color-primary);
     color: var(--color-neutral-light);
   }
 

@@ -55,7 +55,11 @@ const speakers = [
     list-style: none;
   }
 
-  .speaker-list-item:nth-child(even) :global(.photo) {
-    border-color: var(--color-accent-contrast2);
+  .speaker-list-item:nth-child(3n + 1) :global(.photo) {
+    border-color: var(--color-accent-orange);
+  }
+
+  .speaker-list-item:nth-child(3n + 2) :global(.photo) {
+    border-color: var(--color-accent-green);
   }
 </style>
