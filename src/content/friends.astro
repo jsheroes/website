@@ -1,19 +1,79 @@
-<div class="hero">
-  <div class="hero-content">
-    <span>Open-Source Community Event</span>
-  </div>
+---
+import SpeakerCard from "../components/SpeakerCard.astro";
+
+const sponsors = [
+  {
+    name: "Fortech",
+    url: "https://fortech.ro",
+    logo: "logo_fortech.png",
+  },
+  {
+    name: "Evozon",
+    url: "https://evozon.com",
+    logo: "logo_evozon.png",
+  },
+  {
+    name: "Cloudflight",
+    url: "https://evozon.com",
+    logo: "logo_cloudflight.png",
+  },
+  {
+    name: "Mcro",
+    url: "https://evozon.com",
+    logo: "logo_mcro.png",
+  },
+];
+---
+
+<div class="content center">
+  <h2>Event Sponsors</h2>
+  
+  <p>These are the companies that support our event financially through the <strong>€2,000</strong> standard package:</p>
 </div>
+
+<ul role="list" class="sponsors-list">
+  {
+    sponsors.map((sponsor) => (
+      <li class="sponsors-list-item">
+        <a class="friend-link" href={sponsor.url}>
+            <img src={`/img/friends/${sponsor.logo}`} />
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
 <style>
-  .hero {
-    height: 700px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: url("/img/hero.jpg") center center no-repeat;
-    background-size: 100%;
+  .sponsors-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20ch, 1fr));
+    gap: 1rem;
+    padding: 2rem 0;
   }
 
-  .hero-content {
-    color: white;
+  .sponsors-list-item {
+    list-style: none;
+    width: 200px;
+    display: flex;
+  }
+  
+  .friend-link {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    transition: outline-offset var(--speed-fade) ease-out;
+  }
+  
+  .friend-link:hover {
+    outline: solid var(--color-accent-pink);
+    outline-offset: -10px;
+  }
+  
+  .friend-link img {
+    width: 100%;
+  }
+  
+  .friend-link::after {
+    display: none;
   }
 </style>

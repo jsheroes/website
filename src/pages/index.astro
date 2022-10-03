@@ -8,6 +8,7 @@ import { Content as News } from "../content/news.md";
 import { Content as AfterMovie } from "../content/afterMovie.md";
 import Speakers from "../content/speakers.astro";
 import Agenda from "../content/agenda.astro";
+import Friends from "../content/friends.astro";
 import { Content as Description } from "../content/description.md";
 import { Content as Theme } from "../content/theme.md";
 import { Content as Event } from "../content/event.md";
@@ -21,15 +22,16 @@ import Footer from "../content/footer.astro";
       <News />
     </Section>
     <Section variant="dark" content="text">
-      <span class="bear-anchor">
-        <BearLink rotate={90} animation="scaleAndSlide" />
-      </span>
+      
       <AfterMovie />
     </Section>
     <Section id="speakers" variant="light" content="list">
       <Speakers />
     </Section>
     <Section variant="dark" content="text">
+     <span class="bear-anchor">
+        <BearLink rotate={90} animation="scaleAndSlide" />
+      </span>
       <Description />
     </Section>
     <Section id="agenda" variant="light" content="list">
@@ -38,7 +40,10 @@ import Footer from "../content/footer.astro";
     <Section variant="dark" content="text">
       <Theme />
     </Section>
-    <Section variant="light" content="text">
+    <Section id="sponsors" variant="light" content="list">
+      <Friends />
+    </Section>
+    <Section variant="dark" content="text">
       <Event />
     </Section>
   </main>

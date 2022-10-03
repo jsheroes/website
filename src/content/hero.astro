@@ -1,3 +1,7 @@
+---
+import BearLink from "../components/BearLink.astro";
+---
+
 <div class="hero">
   <div class="hero-content">
     <img class="logo" src="/img/logo.svg" />
@@ -8,6 +12,9 @@
     <p>in Cluj-Napoca, Romania</p>
     <p>#ReturnOfTheHeroes</p>
   </div>
+  <span class="bear-anchor">
+    <BearLink animation="scale" />
+  </span>
 </div>
 <style>
   .hero {
@@ -17,6 +24,7 @@
     justify-content: center;
     background: url("/img/banner.svg") center center no-repeat;
     background-size: 100%;
+    position: relative;
   }
 
   .hero-content {
@@ -46,5 +54,12 @@
 
   .highlight {
     font-size: 1.2em;
+  }
+  
+  .bear-anchor {
+    position: absolute;
+    z-index: 1;
+    bottom: -150px;
+    right: 250px;
   }
 </style>
