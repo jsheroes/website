@@ -1,32 +1,7 @@
 ---
 import SpeakerCard from "../components/SpeakerCard.astro";
-
-const speakers = [
-  {
-    name: "Carolyn Stransky",
-    title: "Software Developer",
-    company: "BRYTER",
-    imgName: "carolyn-stransky.jpeg",
-  },
-  {
-    name: "Anjana Vakil",
-    title: "Software Engineer & Educator",
-    company: "",
-    imgName: "anjana-vakil.jpg",
-  },
-  {
-    name: "Stefan Judis",
-    title: "Devrel",
-    company: "Checkly",
-    imgName: "stefan-judis.jpg",
-  },
-  {
-    name: "Sara Vieira",
-    title: "Developer",
-    company: "Remote",
-    imgName: "sara-vieira.png",
-  },
-];
+import { speakers } from "../data/speakers";
+import { ambassadors } from "../data/ambassadors";
 ---
 
 <div class="content center">
@@ -43,16 +18,36 @@ const speakers = [
   }
 </ul>
 
+<div class="content center">
+  <h2>And our awesome ambassadors</h2>
+  
+  <p>An amazing group of people who said yes to the challenge of working with us at making JSHeroes awesome!</p>
+</div>
+
+
+<ul role="list" class="speaker-list">
+  {
+    ambassadors.map((ambassador) => (
+      <li class="speaker-list-item">
+        <SpeakerCard {...ambassador} />
+      </li>
+    ))
+  }
+</ul>
+
 <style>
   .speaker-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-    gap: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-item: center;
+    justify-content: center;
+    gap: 2rem;
     padding: 2rem 0;
   }
 
   .speaker-list-item {
     list-style: none;
+    padding-bottom: 1rem;
   }
 
   .speaker-list-item:nth-child(3n + 1) :global(.photo) {
