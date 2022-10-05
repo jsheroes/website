@@ -44,7 +44,7 @@ const { title } = Astro.props as Props;
         --color-accent-green: #65d3bb;
 
         --speed-move: 0.1s;
-        --speed-fade: 0.15s;
+        --speed-fade: 0.125s;
       }
 
       *,
@@ -91,8 +91,7 @@ const { title } = Astro.props as Props;
         width: 100%;
         height: 0.1em;
         background-color: var(--color-accent-pink);
-        transition: opacity var(--speed-fade) ease-out,
-          outline-offset var(--speed-fade) ease-out;
+        transition: transform var(--speed-fade) ease-out;
         opacity: 1;
         transform: scale(0);
         transform-origin: center;

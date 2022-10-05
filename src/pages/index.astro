@@ -12,6 +12,7 @@ import Friends from "../content/friends.astro";
 import { Content as Description } from "../content/description.md";
 import { Content as Theme } from "../content/theme.md";
 import { Content as Event } from "../content/event.md";
+import Organizers from "../content/organizers.astro";
 import Footer from "../content/footer.astro";
 ---
 
@@ -49,6 +50,9 @@ import Footer from "../content/footer.astro";
         </a>
       </span>
       <Event />
+    </Section>
+    <Section variant="light" content="list">
+        <Organizers />
     </Section>
   </main>
   <Footer />
