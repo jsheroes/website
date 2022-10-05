@@ -92,7 +92,7 @@ const { title } = Astro.props as Props;
         height: 0.1em;
         background-color: var(--color-accent-pink);
         transition: opacity var(--speed-fade) ease-out,
-          var(--speed-fade) ease-out;
+          outline-offset var(--speed-fade) ease-out;
         opacity: 1;
         transform: scale(0);
         transform-origin: center;
@@ -103,6 +103,15 @@ const { title } = Astro.props as Props;
       }
 
       a:focus-visible {
+        outline: dashed var(--color-accent-pink) 2px;
+        outline-offset: 5px;
+      }
+      
+      *[tabindex='0'] {
+        transition: outline-offset var(--speed-fade) ease-out;
+      }
+      
+      *[tabindex='0']:focus-visible {
         outline: dashed var(--color-accent-pink) 2px;
         outline-offset: 5px;
       }
