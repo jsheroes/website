@@ -43,6 +43,11 @@ import Footer from "../content/footer.astro";
       <Friends />
     </Section>
     <Section variant="dark" content="text">
+      <span class="earth-anchor">
+        <a class="earth-link" href="/directions">
+          <img class="earth" src="/img/props/earth.svg" />
+        </a>
+      </span>
       <Event />
     </Section>
   </main>
@@ -55,5 +60,29 @@ import Footer from "../content/footer.astro";
     z-index: 1;
     top: 100px;
     left: -150px;
+  }
+
+  .earth-anchor {
+    position: absolute;
+    z-index: 1;
+    top: -50px;
+    right: 150px;
+  }
+
+  .earth-link {
+    display: block;
+    transition: transform var(--speed-move) ease-out;
+  }
+
+  .earth-link:hover {
+    transform: scale(1.1);
+  }
+
+  .earth-link::after {
+    display: none;
+  }
+
+  .earth {
+    width: 200px;
   }
 </style>

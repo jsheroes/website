@@ -51,8 +51,6 @@ import { speakers } from "../data/speakers";
     display: flex;
     align-items: center;
     gap: 4rem;
-    transition: all var(--speed-move) ease-out,
-      padding var(--speed-move) ease-out;
   }
 
   .agenda-item:not(:last-child) {
@@ -64,19 +62,19 @@ import { speakers } from "../data/speakers";
     border-radius: 999px;
     transition: outline-width var(--speed-move) ease-out;
   }
-  
+
   .agenda-item:nth-child(3n) img {
     outline: solid var(--color-accent-pink) 0;
   }
-  
-  .agenda-item:nth-child(3n+1) img {
+
+  .agenda-item:nth-child(3n + 1) img {
     outline: solid var(--color-accent-orange) 0;
   }
-  
-  .agenda-item:nth-child(3n+2) img {
+
+  .agenda-item:nth-child(3n + 2) img {
     outline: solid var(--color-accent-green) 0;
   }
-  
+
   .agenda-item:hover .speaker-slot {
     gap: 1.5rem;
   }
