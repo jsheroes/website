@@ -37,6 +37,10 @@ const { name, title, company, imgName, variant = 'large' } = Astro.props as Prop
   .card[data-size='small'] .photo {
     width: 11rem;
   }
+  
+  .card[data-size='small'] .photo:hover {
+    border-width: 0.7rem;
+  }
 
   .details {
     display: flex;
