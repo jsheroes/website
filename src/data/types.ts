@@ -5,6 +5,15 @@ export type Person = {
   imgName: string;
 };
 
+export type Talk = {
+  title: string;
+  description?: string;
+};
+
+export type Speaker = Person & {
+  talk: Talk | null;
+};
+
 export type Organization = {
   name: string;
   url: string;
