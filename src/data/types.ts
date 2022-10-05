@@ -10,3 +10,15 @@ export type Organization = {
   url: string;
   imgName: string;
 };
+
+export type AgendaItem =
+  | {
+      type: "placeholder";
+      timeSlot: string;
+      content: string;
+    }
+  | {
+      type: "talk";
+      timeSlot: string;
+      speakers: string[];
+    };

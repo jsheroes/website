@@ -1,5 +1,70 @@
+---
+import { agenda } from "../data/agenda";
+import { speakers } from "../data/speakers";
+---
+
 <div class="content text">
   <h2>Agenda</h2>
 
-  <p>Coming soon</p>
+  <ul class="agenda-items">
+    {
+      agenda.map((agendaItem) => {
+        if (agendaItem.type === "placeholder") {
+          return (
+            <li class="agenda-item">
+              <span class="time-slot">{agendaItem.timeSlot}</span>
+              <span>{agendaItem.content}</span>
+            </li>
+          );
+        } else {
+          const speaker = speakers[agendaItem.speakers[0]];
+
+          return (
+            <li class="agenda-item">
+              <span class="time-slot">{agendaItem.timeSlot}</span>
+              <div class="speaker-slot"><img src={`/img/speakers/${speaker.imgName}`} /><span>{speaker.name}</span></div>
+            </li>
+          );
+        }
+      })
+    }
+  </ul>
 </div>
+
+<style>
+  .agenda-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-family-display);
+  }
+
+  .agenda-item {
+    padding: 1rem;
+    height: 4rem;
+    border-bottom: 1px solid var(--color-primary);
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .agenda-item:hover {
+    background: var(--color-primary);
+  }
+
+  .time-slot {
+    width: 125px;
+  }
+  
+  .speaker-slot {
+    display: flex;
+    height: 100%;
+  }
+  
+  .speaker-slot img {
+    height: 100%;
+    border-radius: 999px;
+  }
+</style>
