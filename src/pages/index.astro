@@ -13,7 +13,6 @@ import { Content as Description } from "../content/description.md";
 import { Content as Theme } from "../content/theme.md";
 import { Content as Event } from "../content/event.md";
 import Organizers from "../content/organizers.astro";
-import Footer from "../content/footer.astro";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -38,6 +37,9 @@ import Footer from "../content/footer.astro";
       <Agenda />
     </Section>
     <Section variant="dark" content="text">
+      <span class="rocket-anchor">
+        <img class="rocket" src="/img/props/rocket.svg" />
+      </span>
       <Theme />
     </Section>
     <Section id="sponsors" variant="light" content="list">
@@ -45,7 +47,12 @@ import Footer from "../content/footer.astro";
     </Section>
     <Section variant="dark" content="text">
       <span class="earth-anchor">
-        <a class="earth-link" href="/directions">
+        <a
+          class="earth-link"
+          target="_blank"
+          rel="noreferrer noopener"
+          href="https://www.google.com/maps?saddr&daddr=Grand%20Hotel%20Italia,%20Strada%20Trifoiului%202,%20Cluj-Napoca%20400478,%20Romania"
+        >
           <img class="earth" src="/img/props/earth.svg" />
         </a>
       </span>
@@ -55,7 +62,6 @@ import Footer from "../content/footer.astro";
       <Organizers />
     </Section>
   </main>
-  <Footer />
 </Layout>
 
 <style>
@@ -70,7 +76,14 @@ import Footer from "../content/footer.astro";
     position: absolute;
     z-index: 1;
     top: -50px;
-    right: 150px;
+    right: 25%;
+  }
+
+  .rocket-anchor {
+    position: absolute;
+    z-index: 1;
+    top: -50px;
+    right: 33%;
   }
 
   .earth-link {
@@ -87,6 +100,10 @@ import Footer from "../content/footer.astro";
   }
 
   .earth {
+    width: 200px;
+  }
+
+  .rocket {
     width: 200px;
   }
 </style>

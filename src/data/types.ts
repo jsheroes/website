@@ -27,6 +27,7 @@ export type Organization = {
 export type AgendaItem =
   | {
       type: "placeholder";
+      imgName: string;
       timeSlot: string;
       content: string;
     }

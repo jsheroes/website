@@ -13,7 +13,11 @@ import { speakers } from "../data/speakers";
           return (
             <li class="agenda-item">
               <span class="time-slot">{agendaItem.timeSlot}</span>
-              <span>{agendaItem.content}</span>
+
+              <div class="speaker-slot">
+                <img src={`/img/${agendaItem.imgName}`} />
+                <span>{agendaItem.content}</span>
+              </div>
             </li>
           );
         } else {
