@@ -17,7 +17,13 @@ import { communities } from "../data/communities";
   {
     sponsors.map((sponsor) => (
       <li class="list-item sponsor">
-        <a class="friend-link" href={sponsor.url} title={sponsor.name}>
+        <a
+          class="friend-link"
+          href={sponsor.url}
+          target="_blank"
+          rel="noreferrer noopener"
+          title={sponsor.name}
+        >
           <img src={`/img/${sponsor.imgName}`} />
         </a>
       </li>
@@ -35,7 +41,13 @@ import { communities } from "../data/communities";
   {
     communities.map((com) => (
       <li class="list-item community">
-        <a class="friend-link" href={com.url} title={com.name}>
+        <a
+          class="friend-link"
+          href={com.url}
+          target="_blank"
+          rel="noreferrer noopener"
+          title={com.name}
+        >
           <img src={`/img/${com.imgName}`} />
         </a>
       </li>
@@ -45,7 +57,10 @@ import { communities } from "../data/communities";
 
 <style>
   .list {
+    padding: 0;
+    margin: 0;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 1rem;

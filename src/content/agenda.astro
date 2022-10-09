@@ -53,11 +53,18 @@ import { speakers } from "../data/speakers";
 
   .agenda-item {
     padding: 1rem;
-    height: 6rem;
-
     display: flex;
     align-items: center;
     gap: 4rem;
+  }
+
+  @media screen and (max-width: 756px) {
+    .agenda-item {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1rem 0;
+    }
   }
 
   .agenda-item:not(:last-child) {
@@ -65,7 +72,7 @@ import { speakers } from "../data/speakers";
   }
 
   .agenda-item img {
-    height: 100%;
+    height: clamp(4rem, 6vw, 5rem);
     border-radius: 999px;
     transition: outline-width var(--speed-move) ease-out;
   }
