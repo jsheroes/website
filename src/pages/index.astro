@@ -1,96 +1,115 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
+import BearLink from "../components/BearLink.astro";
+
+import Hero from "../content/hero.astro";
+import { Content as News } from "../content/news.md";
+import { Content as AfterMovie } from "../content/afterMovie.md";
+import Speakers from "../content/speakers.astro";
+import Agenda from "../content/agenda.astro";
+import Friends from "../content/friends.astro";
+import { Content as Description } from "../content/description.md";
+import { Content as Theme } from "../content/theme.md";
+import { Content as Event } from "../content/event.md";
+import Organizers from "../content/organizers.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			Check out the <code>src/pages</code> directory to get started.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Chat"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
+  <Hero />
+  <main>
+    <Section variant="light" content="text">
+      <News />
+    </Section>
+    <Section variant="dark" content="text">
+      <AfterMovie />
+    </Section>
+    <Section id="speakers" variant="light" content="list">
+      <Speakers />
+    </Section>
+    <Section variant="dark" content="text">
+      <span class="bear-anchor">
+        <BearLink rotate={90} animation="scaleAndSlide" />
+      </span>
+      <Description />
+    </Section>
+    <Section id="agenda" variant="light" content="list">
+      <Agenda />
+    </Section>
+    <Section variant="dark" content="text">
+      <span class="rocket-anchor">
+        <img class="rocket" src="/img/props/rocket.svg" />
+      </span>
+      <Theme />
+    </Section>
+    <Section id="sponsors" variant="light" content="list">
+      <Friends />
+    </Section>
+    <Section variant="dark" content="text">
+      <span class="earth-anchor">
+        <a
+          class="earth-link"
+          target="_blank"
+          rel="noreferrer noopener"
+          href="https://www.google.com/maps?saddr&daddr=Grand%20Hotel%20Italia,%20Strada%20Trifoiului%202,%20Cluj-Napoca%20400478,%20Romania"
+        >
+          <img class="earth" src="/img/props/earth.svg" />
+        </a>
+      </span>
+      <Event />
+    </Section>
+    <Section variant="light" content="list">
+      <Organizers />
+    </Section>
+  </main>
 </Layout>
 
 <style>
-	:root {
-		--astro-gradient: linear-gradient(0deg, #4f39fa, #da62c4);
-	}
+  .bear-anchor {
+    position: absolute;
+    z-index: 1;
+    top: 100px;
+    left: -150px;
+  }
 
-	h1 {
-		margin: 2rem 0;
-	}
+  @media screen and (max-width: 1000px) {
+    .bear-anchor {
+      display: none;
+    }
+  }
 
-	main {
-		margin: auto;
-		padding: 1em;
-		max-width: 60ch;
-	}
+  .earth-anchor {
+    position: absolute;
+    z-index: 1;
+    top: -50px;
+    right: 25%;
+  }
 
-	.text-gradient {
-		font-weight: 900;
-		background-image: var(--astro-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 100% 200%;
-		background-position-y: 100%;
-		border-radius: 0.4rem;
-		animation: pulse 4s ease-in-out infinite;
-	}
+  .rocket-anchor {
+    position: absolute;
+    z-index: 1;
+    top: -50px;
+    right: 33%;
+  }
 
-	@keyframes pulse {
-		0%,
-		100% {
-			background-position-y: 0%;
-		}
-		50% {
-			background-position-y: 80%;
-		}
-	}
+  .earth-link {
+    display: block;
+    transition: transform var(--speed-move) ease-out;
+  }
 
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		background: #4f39fa;
-		padding: 1rem;
-		border-radius: 0.4rem;
-		color: var(--color-bg);
-	}
+  .earth-link:hover {
+    transform: scale(1.1);
+  }
 
-	.instructions code {
-		font-size: 0.875em;
-		border: 0.1em solid var(--color-border);
-		border-radius: 4px;
-		padding: 0.15em 0.25em;
-	}
+  .earth-link::after {
+    display: none;
+  }
 
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
+  .earth {
+    width: 200px;
+  }
+
+  .rocket {
+    width: 200px;
+  }
 </style>

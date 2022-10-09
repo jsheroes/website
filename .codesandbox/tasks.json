@@ -21,8 +21,11 @@
     },
     "install": {
       "name": "Install Dependencies",
-      "command": "npm install",
-      "restartOn": { "files": ["package-lock.json"] }
+      "command": "npm install"
+    },
+    "prettier": {
+      "name": "Format",
+      "command": "npm run prettier"
     }
   }
 }

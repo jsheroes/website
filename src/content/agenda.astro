@@ -1,0 +1,112 @@
+---
+import { agenda } from "../data/agenda";
+import { speakers } from "../data/speakers";
+---
+
+<div class="content text">
+  <h2>Agenda</h2>
+
+  <ul class="agenda-items">
+    {
+      agenda.map((agendaItem) => {
+        if (agendaItem.type === "placeholder") {
+          return (
+            <li class="agenda-item">
+              <span class="time-slot">{agendaItem.timeSlot}</span>
+
+              <div class="speaker-slot">
+                <img src={`/img/${agendaItem.imgName}`} />
+                <span>{agendaItem.content}</span>
+              </div>
+            </li>
+          );
+        } else {
+          const speaker = speakers[agendaItem.speakers[0]];
+
+          return (
+            <li class="agenda-item" tabindex="0">
+              <span class="time-slot">{agendaItem.timeSlot}</span>
+              <div class="speaker-slot">
+                <img src={`/img/${speaker.imgName}`} />
+                <div class="talk">
+                  <strong>{speaker.name}</strong>
+                  <span>{speaker.talk.title}</span>
+                </div>
+              </div>
+            </li>
+          );
+        }
+      })
+    }
+  </ul>
+</div>
+
+<style>
+  .agenda-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-family-display);
+  }
+
+  .agenda-item {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  @media screen and (max-width: 756px) {
+    .agenda-item {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1rem 0;
+    }
+  }
+
+  .agenda-item:not(:last-child) {
+    border-bottom: 1px solid var(--color-accent-pink);
+  }
+
+  .agenda-item img {
+    height: clamp(4rem, 6vw, 5rem);
+    border-radius: 999px;
+    transition: outline-width var(--speed-move) ease-out;
+  }
+
+  .agenda-item:nth-child(3n) img {
+    outline: solid var(--color-accent-pink) 0;
+  }
+
+  .agenda-item:nth-child(3n + 1) img {
+    outline: solid var(--color-accent-orange) 0;
+  }
+
+  .agenda-item:nth-child(3n + 2) img {
+    outline: solid var(--color-accent-green) 0;
+  }
+
+  .agenda-item:hover .speaker-slot {
+    gap: 1.5rem;
+  }
+
+  .agenda-item:hover img {
+    outline-width: 0.5rem;
+  }
+
+  .speaker-slot {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 100%;
+    transition: gap var(--speed-move) ease-out;
+  }
+
+  .talk {
+    display: flex;
+    flex-direction: column;
+  }
+</style>

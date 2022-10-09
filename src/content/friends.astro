@@ -1,0 +1,99 @@
+---
+import { sponsors } from "../data/sponsors";
+import { communities } from "../data/communities";
+---
+
+<div class="content center">
+  <h2>Event Sponsors</h2>
+
+  <p>
+    These are the companies that support our event financially through the <strong
+      >€2,000</strong
+    > standard package:
+  </p>
+</div>
+
+<ul role="list" class="list">
+  {
+    sponsors.map((sponsor) => (
+      <li class="list-item sponsor">
+        <a
+          class="friend-link"
+          href={sponsor.url}
+          target="_blank"
+          rel="noreferrer noopener"
+          title={sponsor.name}
+        >
+          <img src={`/img/${sponsor.imgName}`} />
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<div class="content center">
+  <h2>Our Friends</h2>
+
+  <p>The communities that support our event</p>
+</div>
+
+<ul role="list" class="list">
+  {
+    communities.map((com) => (
+      <li class="list-item community">
+        <a
+          class="friend-link"
+          href={com.url}
+          target="_blank"
+          rel="noreferrer noopener"
+          title={com.name}
+        >
+          <img src={`/img/${com.imgName}`} />
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .list {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding-bottom: 3rem;
+  }
+
+  .list-item {
+    list-style: none;
+    width: 200px;
+    display: flex;
+  }
+
+  .list-item.community {
+    width: 150px;
+  }
+
+  .friend-link {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    transition: outline-offset var(--speed-fade) ease-out;
+  }
+
+  .friend-link:hover {
+    outline: solid var(--color-accent-pink);
+    outline-offset: -10px;
+  }
+
+  .friend-link img {
+    width: 100%;
+  }
+
+  .friend-link::after {
+    display: none;
+  }
+</style>

@@ -1,0 +1,44 @@
+---
+import SpeakerCard from "../components/SpeakerCard.astro";
+import { organizers } from "../data/organizers";
+---
+
+<div class="content center">
+  <h2>Meet the team</h2>
+</div>
+
+<ul role="list" class="organizers-list">
+  {
+    organizers.map((organizer) => (
+      <>
+        <li class="organizers-list-item">
+          <SpeakerCard variant="small" {...organizer} />
+        </li>
+      </>
+    ))
+  }
+</ul>
+
+<style>
+  .organizers-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-item: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem 0;
+  }
+
+  .organizers-list-item {
+    list-style: none;
+    padding-bottom: 1rem;
+  }
+
+  .organizers-list-item:nth-child(3n + 1) :global(.photo) {
+    border-color: var(--color-accent-orange);
+  }
+
+  .organizers-list-item:nth-child(3n + 2) :global(.photo) {
+    border-color: var(--color-accent-green);
+  }
+</style>

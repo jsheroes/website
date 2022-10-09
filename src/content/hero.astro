@@ -1,0 +1,79 @@
+---
+import BearLink from "../components/BearLink.astro";
+---
+
+<div class="hero">
+  <div class="hero-content">
+    <img class="logo" src="/img/logo.svg" />
+    <div><strong>Open-Source</strong> Community Event</div>
+
+    <div class="date">May <span class="highlight">18-19th</span> 2023</div>
+
+    <p>in Cluj-Napoca, Romania</p>
+    <p>#ReturnOfTheHeroes</p>
+  </div>
+  <span class="bear-anchor">
+    <BearLink animation="scale" />
+  </span>
+</div>
+<style>
+  .hero {
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url("/img/banner.svg") center center no-repeat;
+    background-size: 100%;
+    position: relative;
+  }
+
+  @media screen and (max-width: 1340px) {
+    .hero {
+      background-size: 130%;
+      height: 500px;
+    }
+  }
+
+  @media screen and (max-width: 756px) {
+    .hero {
+      background-size: 200%;
+      height: 400px;
+    }
+  }
+
+  .hero-content {
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    font-family: var(--font-family-display);
+  }
+
+  .hero-content p {
+    margin: 0;
+  }
+
+  .logo {
+    width: 30vw;
+  }
+
+  .date {
+    border: 2px solid white;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+  }
+
+  .highlight {
+    font-size: 1.2em;
+  }
+
+  .bear-anchor {
+    position: absolute;
+    z-index: 1;
+    bottom: -150px;
+    right: 15%;
+  }
+</style>
