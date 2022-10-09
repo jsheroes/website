@@ -1,5 +1,6 @@
 ---
 import { sponsors } from "../data/sponsors";
+import { communities } from "../data/communities";
 ---
 
 <div class="content center">
@@ -12,12 +13,12 @@ import { sponsors } from "../data/sponsors";
   </p>
 </div>
 
-<ul role="list" class="sponsors-list">
+<ul role="list" class="list">
   {
     sponsors.map((sponsor) => (
-      <li class="sponsors-list-item">
-        <a class="friend-link" href={sponsor.url}>
-          <img src={`/img/friends/${sponsor.imgName}`} />
+      <li class="list-item sponsor">
+        <a class="friend-link" href={sponsor.url} title={sponsor.name}>
+          <img src={`/img/${sponsor.imgName}`} />
         </a>
       </li>
     ))
@@ -27,17 +28,15 @@ import { sponsors } from "../data/sponsors";
 <div class="content center">
   <h2>Our Friends</h2>
 
-  <p>
-    The communities that support our event
-  </p>
+  <p>The communities that support our event</p>
 </div>
 
-<ul role="list" class="sponsors-list">
+<ul role="list" class="list">
   {
-    sponsors.map((sponsor) => (
-      <li class="sponsors-list-item">
-        <a class="friend-link" href={sponsor.url}>
-          <img src={`/img/friends/${sponsor.imgName}`} />
+    communities.map((com) => (
+      <li class="list-item community">
+        <a class="friend-link" href={com.url} title={com.name}>
+          <img src={`/img/${com.imgName}`} />
         </a>
       </li>
     ))
@@ -45,18 +44,22 @@ import { sponsors } from "../data/sponsors";
 </ul>
 
 <style>
-  .sponsors-list {
+  .list {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    padding: 2rem 0;
+    padding-bottom: 3rem;
   }
 
-  .sponsors-list-item {
+  .list-item {
     list-style: none;
     width: 200px;
     display: flex;
+  }
+
+  .list-item.community {
+    width: 150px;
   }
 
   .friend-link {

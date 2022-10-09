@@ -2,27 +2,45 @@ import type { Person } from "./types";
 
 export const ambassadors: Person[] = [
   {
-    name: "Carolyn Stransky",
-    title: "Software Developer",
-    company: "BRYTER",
-    imgName: "carolyn-stransky.jpeg",
-  },
-  {
-    name: "Anjana Vakil",
-    title: "Software Engineer & Educator",
+    name: "Andrei Antal",
+    title: "Ambassador",
     company: "",
-    imgName: "anjana-vakil.jpg",
+    imgName: "ambassadors/andrei-antal.jpeg",
   },
   {
-    name: "Stefan Judis",
-    title: "Devrel",
-    company: "Checkly",
-    imgName: "stefan-judis.jpg",
+    name: "Benedek Gagyi",
+    title: "Ambassador",
+    company: "",
+    imgName: "ambassadors/ben.jpg",
+  },
+  {
+    name: "Carmen Popoviciu",
+    title: "Ambassador",
+    company: "",
+    imgName: "ambassadors/carmen.jpg",
+  },
+  {
+    name: "Ioana Chiorean",
+    title: "Ambassador",
+    company: "",
+    imgName: "ambassadors/ioana-chiorean.jpg",
+  },
+  {
+    name: "Jeremias Menichelli",
+    title: "Ambassador",
+    company: "",
+    imgName: "ambassadors/jeremias.jpg",
+  },
+  {
+    name: "Liran Tal",
+    title: "Ambassador",
+    company: "",
+    imgName: "ambassadors/liran.png",
   },
   {
     name: "Sara Vieira",
-    title: "Developer",
-    company: "Remote",
-    imgName: "sara-vieira.png",
+    title: "Ambassador",
+    company: "",
+    imgName: "ambassadors/sara-vieira.png",
   },
 ];

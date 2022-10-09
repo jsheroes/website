@@ -4,25 +4,31 @@ export interface Props {
   title: string;
   company: string;
   imgName: string;
-  variant?: 'large'|'small';
+  variant?: "large" | "small";
 }
 
-const { name, title, company, imgName, variant = 'large' } = Astro.props as Props;
+const {
+  name,
+  title,
+  company,
+  imgName,
+  variant = "large",
+} = Astro.props as Props;
 ---
 
 <article class="card" data-size={variant}>
   <div class="frame">
-    <img tabindex="0" class="photo" src={`/img/speakers/${imgName}`} />
+    <img tabindex="0" class="photo" src={`/img/${imgName}`} />
   </div>
   <div class="details">
     <strong>
       {name}
     </strong>
-    {variant === 'large' && (
-        <span>
-      {company ? `${title} @ ${company}` : title}
-    </span>
-    )}
+    {
+      variant === "large" && (
+        <span>{company ? `${title} @ ${company}` : title}</span>
+      )
+    }
   </div>
 </article>
 <style>
@@ -33,12 +39,12 @@ const { name, title, company, imgName, variant = 'large' } = Astro.props as Prop
     gap: 1rem;
     font-family: var(--font-family-display);
   }
-  
-  .card[data-size='small'] .photo {
+
+  .card[data-size="small"] .photo {
     width: 11rem;
   }
-  
-  .card[data-size='small'] .photo:hover {
+
+  .card[data-size="small"] .photo:hover {
     border-width: 0.7rem;
   }
 

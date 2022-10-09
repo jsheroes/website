@@ -1,6 +1,6 @@
 ---
 import SpeakerCard from "../components/SpeakerCard.astro";
-import { speakers } from "../data/speakers";
+import { organizers } from "../data/organizers";
 ---
 
 <div class="content center">
@@ -9,14 +9,11 @@ import { speakers } from "../data/speakers";
 
 <ul role="list" class="organizers-list">
   {
-    Object.values(speakers).map((speaker) => (
-    <>
-      <li class="organizers-list-item">
-        <SpeakerCard variant="small" {...speaker} />
-      </li>
-      <li class="organizers-list-item">
-        <SpeakerCard variant="small" {...speaker} />
-      </li>
+    organizers.map((organizer) => (
+      <>
+        <li class="organizers-list-item">
+          <SpeakerCard variant="small" {...organizer} />
+        </li>
       </>
     ))
   }

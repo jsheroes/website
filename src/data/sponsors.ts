@@ -4,21 +4,21 @@ export const sponsors: Organization[] = [
   {
     name: "Fortech",
     url: "https://fortech.ro",
-    imgName: "logo_fortech.png",
+    imgName: "sponsors/logo_fortech.png",
   },
   {
     name: "Evozon",
     url: "https://evozon.com",
-    imgName: "logo_evozon.png",
+    imgName: "sponsors/logo_evozon.png",
   },
   {
     name: "Cloudflight",
     url: "https://evozon.com",
-    imgName: "logo_cloudflight.png",
+    imgName: "sponsors/logo_cloudflight.png",
   },
   {
     name: "Mcro",
     url: "https://evozon.com",
-    imgName: "logo_mcro.png",
+    imgName: "sponsors/logo_mcro.png",
   },
 ];

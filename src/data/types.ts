@@ -14,6 +14,10 @@ export type Speaker = Person & {
   talk: Talk | null;
 };
 
+export type Ambassador = Person;
+
+export type Organizer = Person;
+
 export type Organization = {
   name: string;
   url: string;
