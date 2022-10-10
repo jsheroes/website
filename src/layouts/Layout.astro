@@ -15,7 +15,6 @@ const { title } = Astro.props as Props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -70,11 +69,13 @@ const { title } = Astro.props as Props;
       h1 {
         font-size: var(--font-size-xl);
         font-family: var(--font-family-display);
+        margin-top: 0;
       }
 
       h2 {
         font-size: var(--font-size-lg);
         font-family: var(--font-family-display);
+        margin-top: 0;
       }
 
       a {

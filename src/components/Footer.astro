@@ -1,44 +1,63 @@
 <footer>
   <div class="content list">
     <div class="column">
-      <strong>JSHeroes 2023</strong>
-      <a href="#">Speak at JSHeroes</a>
-      <a href="#">Schedule</a>
-      <a href="#">Contact</a>
+      <strong>Useful links</strong>
+      <a href="mailto:welcome@jsheroes.io">Contact Us</a>
+      <a href="/call-for-papers">Speak at JSHeroes</a>
+      <a href="/meet-ecma">Meet Ecma</a>
+      <a href="/code-of-conduct">Code of Conduct</a>
     </div>
     <div class="column">
-      <strong>More info</strong>
-      <a href="#">Meet Ecma</a>
-      <a href="#">Code of Conduct</a>
-      <a href="#">Alumni Speakers</a>
-    </div>
-
-    <div class="column">
-      <strong>Past editions</strong>
-      <a href="#">JSHeroes 2022</a>
-      <a href="#">JSHeroes 2019</a>
-      <a href="#">JSHeroes 2018</a>
+      <strong>Follow Us</strong>
+      <a
+        href="https://twitter.com/jsheroes"
+        target="_blank"
+        rel="noreferrer noopener">Twitter</a
+      >
+      <a
+        href="https://facebook.com/jsheroes"
+        target="_blank"
+        rel="noreferrer noopener">Facebook</a
+      >
+      <a
+        href="https://www.youtube.com/jsheroes"
+        target="_blank"
+        rel="noreferrer noopener">Youtube</a
+      >
+      <a
+        href="https://www.meetup.com/jsheroes/"
+        target="_blank"
+        rel="noreferrer noopener">Meetup</a
+      >
     </div>
   </div>
+  <p class="copywrite">
+    © {new Date().getFullYear()} · JSHeroes. All rights reserved.
+  </p>
+
+  <style>
+    footer {
+      padding: 4rem 1rem 1rem 1rem;
+      color: var(--color-neutral-light);
+      background-color: var(--color-neutral-dark);
+      font-family: var(--font-family-display);
+    }
+
+    .content {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .copywrite {
+      margin-top: 2rem;
+      text-align: center;
+    }
+  </style>
 </footer>
-
-<style>
-  footer {
-    padding: 3rem 0;
-    color: var(--color-neutral-light);
-    background-color: var(--color-neutral-dark);
-    font-family: var(--font-family-display);
-  }
-
-  .content {
-    display: flex;
-    justify-content: space-around;
-  }
-
-  .column {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-</style>
