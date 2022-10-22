@@ -3,33 +3,36 @@ import { sponsors } from "../data/sponsors";
 import { communities } from "../data/communities";
 ---
 
-<div class="content center">
-  <h2>Event Sponsors</h2>
+{
+  sponsors.length > 0 && (
+    <>
+      <div class="content center">
+        <h2>Event Sponsors</h2>
 
-  <p>
-    These are the companies that support our event financially through the <strong
-      >€2,000</strong
-    > standard package:
-  </p>
-</div>
+        <p>
+          These are the companies that support our event financially through the{" "}
+          <strong>€3,000</strong> standard package:
+        </p>
+      </div>
 
-<ul role="list" class="list">
-  {
-    sponsors.map((sponsor) => (
-      <li class="list-item sponsor">
-        <a
-          class="friend-link"
-          href={sponsor.url}
-          target="_blank"
-          rel="noreferrer noopener"
-          title={sponsor.name}
-        >
-          <img src={`/img/${sponsor.imgName}`} />
-        </a>
-      </li>
-    ))
-  }
-</ul>
+      <ul role="list" class="list">
+        {sponsors.map((sponsor) => (
+          <li class="list-item sponsor">
+            <a
+              class="friend-link"
+              href={sponsor.url}
+              target="_blank"
+              rel="noreferrer noopener"
+              title={sponsor.name}
+            >
+              <img src={`/img/${sponsor.imgName}`} />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </>
+  )
+}
 
 <div class="content center">
   <h2>Our Friends</h2>
