@@ -20,6 +20,12 @@ const { id, variant, content } = Astro.props as Props;
     position: relative;
   }
 
+  @media screen and (max-width: 756px) {
+    .section {
+      padding: 3rem 1rem;
+    }
+  }
+
   .section.light {
     background: var(--color-neutral-light);
     color: var(--color-neutral-dark);

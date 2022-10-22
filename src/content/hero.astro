@@ -41,6 +41,13 @@ import BearLink from "../components/BearLink.astro";
     }
   }
 
+  @media screen and (max-width: 432px) {
+    .hero {
+      background-size: 300%;
+      height: 400px;
+    }
+  }
+
   .hero-content {
     color: white;
     display: flex;
@@ -74,6 +81,13 @@ import BearLink from "../components/BearLink.astro";
     position: absolute;
     z-index: 1;
     bottom: -150px;
-    right: 15%;
+    right: 10%;
+  }
+
+  @media screen and (max-width: 756px) {
+    .bear-anchor {
+      bottom: -80px;
+      right: 0;
+    }
   }
 </style>
