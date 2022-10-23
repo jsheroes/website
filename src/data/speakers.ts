@@ -14,7 +14,7 @@ export const speakers: Record<string, Speaker> = {
     name: "Anjana Vakil",
     title: "Software Engineer & Educator",
     company: "",
-    imgName: "speakers/anjana-vakil.jpg",
+    imgName: "support/anjana-vakil.jpg",
     talk: {
       title: "The Art of Functional Programming",
     },

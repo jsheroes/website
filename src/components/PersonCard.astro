@@ -1,32 +1,28 @@
 ---
+import type{ Person } from '../data/types';
+
 export interface Props {
-  name: string;
-  title: string;
-  company: string;
-  imgName: string;
+  person: Person
   variant?: "large" | "small";
 }
 
 const {
-  name,
-  title,
-  company,
-  imgName,
+  person,
   variant = "large",
 } = Astro.props as Props;
 ---
 
 <article class="card" data-size={variant}>
   <div class="frame">
-    <img tabindex="0" class="photo" src={`/img/${imgName}`} />
+    <img tabindex="0" class="photo" src={`/img/${person.imgName}`} />
   </div>
   <div class="details">
     <strong>
-      {name}
+      {person.name}
     </strong>
     {
       variant === "large" && (
-        <span>{company ? `${title} @ ${company}` : title}</span>
+        <span>{person.company ? `${person.title} @ ${person.company}` : person.title}</span>
       )
     }
   </div>

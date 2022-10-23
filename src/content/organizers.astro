@@ -1,5 +1,5 @@
 ---
-import SpeakerCard from "../components/SpeakerCard.astro";
+import PersonCard from "../components/PersonCard.astro";
 import { organizers } from "../data/organizers";
 ---
 
@@ -12,7 +12,7 @@ import { organizers } from "../data/organizers";
     organizers.map((organizer) => (
       <>
         <li class="organizers-list-item">
-          <SpeakerCard variant="small" {...organizer} />
+          <PersonCard variant="small" person={organizer} />
         </li>
       </>
     ))
