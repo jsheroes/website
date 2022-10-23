@@ -1,14 +1,14 @@
 export type Person = {
   name: string;
   title: string;
-  bio?: string;
+  bio?: string[];
   company?: string;
   imgName: string;
 };
 
 export type Talk = {
   title: string;
-  description?: string;
+  description?: string[];
 };
 
 export type Speaker = Person & {

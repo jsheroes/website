@@ -9,7 +9,7 @@ export interface Props {
 
 const { person, variant = "large" } = Astro.props as Props;
 
-const id = person.name.replaceAll(' ', '')
+const id = person.name.replaceAll(" ", "");
 ---
 
 <div class="card" data-size={variant}>
@@ -30,7 +30,7 @@ const id = person.name.replaceAll(' ', '')
       )
     }
   </div>
-  
+
   <Modal id={id} person={person} />
 </div>
 <style>
@@ -42,11 +42,11 @@ const id = person.name.replaceAll(' ', '')
     font-family: var(--font-family-display);
   }
 
-  .card[data-size="small"] .photo {
+  .card[data-size="small"] .clickable-photo {
     width: 11rem;
   }
 
-  .card[data-size="small"] .photo:hover {
+  .card[data-size="small"] .clickable-photo:hover {
     border-width: 0.7rem;
   }
 
@@ -67,7 +67,7 @@ const id = person.name.replaceAll(' ', '')
       filter var(--speed-fade) ease-out, border-width var(--speed-fade) ease-out;
     filter: grayscale(1);
   }
-  
+
   .clickable-photo img {
     display: block;
     width: 100%;
