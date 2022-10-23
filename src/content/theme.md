@@ -1,6 +1,10 @@
-## Let's Reconnect in 2022
+## Celebrating 10 years of pushing the boundaries
 
-We usually pick a few topics we want to spotlight and a general theme for each JSHeroes event. But after two hard years of limited community interaction and in-person events, we feel the best thing to do is to <strong>bring the community back together</strong>.
+This year we want to shift our attention to the decade of progress in the world of frontend development. Back in 2013, we went through a period of thinking and rethinking best practices and frontend development took off as one of the most common disciplines in tech. Frameworks like React and Vue now enter into their second decade of existence.
+
+But it's not
+
+So in 2023, let's celebrate the past 10 years, reflecting on the evolution of our tools and patterns, with the good and the bad that comes with this rapid evolution. Also,
 
 So let's focus on <strong>rebuilding</strong> the amazing community we had before. We are starting small, but with a clear objective of bringing <strong>the same warm and engaging vibes</strong> that JSHeroes events always had.
 

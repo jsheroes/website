@@ -41,19 +41,25 @@ export const organizers: Organizer[] = [
     name: "Claudia Țicle",
     title: "Organizer",
     company: "",
-    imgName: "organizers/claudia-ticle.jpg",
+    imgName: "organizers/claudia-ticle.png",
   },
   {
     name: "Daniel Mocan",
     title: "Organizer",
     company: "",
-    imgName: "organizers/daniel-mocan.jpg",
+    imgName: "organizers/daniel-mocan.png",
   },
   {
     name: "Eliza Nițoi",
     title: "Organizer",
     company: "",
     imgName: "organizers/eliza-nitoi.jpg",
+  },
+  {
+    name: "Melania Moldovan",
+    title: "Organizer",
+    company: "",
+    imgName: "organizers/melania-moldovan.png",
   },
   {
     name: "Oana Muntean",

@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+import { CURRENT_YEAR } from "../data/constants";
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout
+  title={`JSHeroes ${CURRENT_YEAR} | ${
+    frontmatter.title || "Open-Source Community Event"
+  }`}
+>
+  <img
+    class="header-image"
+    src={frontmatter.banner || "/img/banners/meet-ecma.png"}
+  />
+  <main>
+    <Section variant="light" content="text">
+      <slot />
+    </Section>
+  </main>
+</BaseLayout>
+
+<style>
+  .header-image {
+    display: block;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+  }
+
+  :global(h1) {
+    font-size: 2rem !important;
+  }
+</style>

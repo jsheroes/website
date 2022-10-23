@@ -1,46 +1,39 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../components/Section.astro";
 import BearLink from "../components/BearLink.astro";
 
 import Hero from "../content/hero.astro";
 import { Content as News } from "../content/news.md";
-import { Content as AfterMovie } from "../content/afterMovie.md";
 import Speakers from "../content/speakers.astro";
-import Agenda from "../content/agenda.astro";
 import Friends from "../content/friends.astro";
 import { Content as Description } from "../content/description.md";
 import { Content as Theme } from "../content/theme.md";
 import { Content as Event } from "../content/event.md";
 import Organizers from "../content/organizers.astro";
+import { CURRENT_YEAR } from "../data/constants";
 ---
 
-<Layout title="JSHeroes 2023 | Open-Source Community Event">
+<BaseLayout title={`JSHeroes ${CURRENT_YEAR} | Open-Source Community Event`}>
   <Hero />
   <main>
     <Section variant="light" content="text">
       <News />
     </Section>
-    <Section variant="dark" content="text">
-      <AfterMovie />
-    </Section>
-    <Section id="speakers" variant="light" content="list">
+    <Section id="speakers" variant="dark" content="list">
       <Speakers />
+    </Section>
+    <Section variant="light" content="text">
+      <span class="rocket-anchor">
+        <img class="rocket" src="/img/props/rocket.svg" />
+      </span>
+      <Theme />
     </Section>
     <Section variant="dark" content="text">
       <span class="bear-anchor">
         <BearLink rotate={90} animation="scaleAndSlide" />
       </span>
       <Description />
-    </Section>
-    <Section id="agenda" variant="light" content="list">
-      <Agenda />
-    </Section>
-    <Section variant="dark" content="text">
-      <span class="rocket-anchor">
-        <img class="rocket" src="/img/props/rocket.svg" />
-      </span>
-      <Theme />
     </Section>
     <Section id="sponsors" variant="light" content="list">
       <Friends />
@@ -62,7 +55,7 @@ import Organizers from "../content/organizers.astro";
       <Organizers />
     </Section>
   </main>
-</Layout>
+</BaseLayout>
 
 <style>
   .bear-anchor {
