@@ -1,6 +1,6 @@
 ---
-layout: '../layouts/MarkdownLayout.astro'
-title: 'Code of Conduct'
+layout: "../layouts/MarkdownLayout.astro"
+title: "Code of Conduct"
 ---
 
 # JSHeroes Code of Conduct

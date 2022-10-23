@@ -1,6 +1,6 @@
 ---
-layout: '../layouts/MarkdownLayout.astro'
-title: 'Meet Ecma'
+layout: "../layouts/MarkdownLayout.astro"
+title: "Meet Ecma"
 ---
 
 # Meet Ecma, the JSHeroes bear mascot

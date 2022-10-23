@@ -1,0 +1,92 @@
+---
+import type {Person} from '../data/types'
+
+interface Props {
+  person: Person;
+  id: string;
+}
+
+const { person, id } = Astro.props as Props;
+---
+
+<dialog id={id}>
+  <main>
+    <img src={`/img/${person.imgName}`} alt={person.name} />
+    <div class="details">
+      <strong class="name">{person.name}</strong>
+      <span>{person.company
+            ? `${person.title} @ ${person.company}`
+            : person.title}</span>
+      <p>{person.bio}</p>
+    </div>
+  </main>
+  <form method="dialog">
+    <button>X</button>
+  </form>
+</dialog>
+
+<style>
+  dialog {
+    position: fixed;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 1rem;
+    overflow: visible;
+    border: 1rem solid var(--person-accent-color);
+  }
+
+  dialog::backdrop {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: rgba(0, 0, 0, 0.6);
+  }
+  
+  button {
+    position: absolute;
+    z-index: 3;
+    appearance: none;
+    border: 0px solid var(--color-neutral-light);
+    border-radius: 999px;
+    top: -2rem;
+    right: -2rem;
+    width: 3rem;
+    height: 3rem;
+    background: var(--person-accent-color);
+    transition: border-width var(--speed-move) ease-out, outline-offset var(--speed-move) ease-out;
+  }
+  
+  button:hover {
+    border-width: 4px;
+  }
+  
+  main {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  @media screen and (max-width: 756px) {
+    main {
+      flex-direction: column;
+    }
+  }
+  
+  img {  
+    width: 300px;
+  }
+  
+  .details {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .name {
+    font-size: var(--font-size-lg);
+  }
+</style>
