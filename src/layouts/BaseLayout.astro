@@ -91,10 +91,17 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
         color: var(--color-neutral-dark);
         background-color: var(--color-neutral-light);
         line-height: 1.6;
+        overscroll-behavior-y: none;
       }
 
       body {
         margin: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      :global(main) {
+        flex-grow: 1;
       }
 
       h1 {
