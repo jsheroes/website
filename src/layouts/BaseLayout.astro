@@ -2,11 +2,17 @@
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 
+import { EVENT_DATES, CURRENT_YEAR } from "../data/constants";
+
 export interface Props {
   title: string;
 }
 
-const { title } = Astro.props as Props;
+const { title: propsTitle } = Astro.props as Props;
+
+const title =
+  propsTitle || `JSHeroes ${CURRENT_YEAR} | Open-Source Community Event`;
+const description = `JSHeroes is an yearly event organized by the local JS community in Cluj, Romania. Check the latest updates and join us on the ${EVENT_DATES} ${CURRENT_YEAR}`;
 ---
 
 <!DOCTYPE html>
@@ -23,6 +29,31 @@ const { title } = Astro.props as Props;
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap"
       rel="stylesheet"
     />
+
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#121c5e" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jsheroes.io/" />
+    <meta
+      property="og:image"
+      content="https://jsheroes.io/static/img/meta-2022.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content={title} />
+    <meta name="twitter:site" content="@jsheroes" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta
+      name="twitter:image"
+      content="https://jsheroes.io/static/img/meta-2022.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@jsheroes" />
   </head>
   <body>
     <Navbar />

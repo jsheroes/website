@@ -1,12 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../components/Section.astro";
+import { CURRENT_YEAR } from "../data/constants";
 
 const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout
-  title={`JSHeroes 2023 | ${
+  title={`JSHeroes ${CURRENT_YEAR} | ${
     frontmatter.title || "Open-Source Community Event"
   }`}
 >

@@ -1,6 +1,6 @@
 ---
 layout: '../layouts/MarkdownLayout.astro'
-title: 'Meet Ecma'
+title: 'Code of Conduct'
 ---
 
 # JSHeroes Code of Conduct
