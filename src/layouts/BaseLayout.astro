@@ -70,7 +70,7 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
 
         --color-neutral-dark: #202022;
         --color-neutral-light: #ffffff;
-        --color-primary: #121c5e;
+        --color-primary: #121c5e; /* #0b1b44 */
         --color-accent-pink: #ff6078;
         --color-accent-orange: #ffcc67;
         --color-accent-green: #65d3bb;
@@ -118,13 +118,41 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
 
       a {
         color: inherit;
-        text-decoration: none;
+        text-decoration-thickness: 3px;
+        text-decoration-skip-ink: none;
+        text-decoration-color: var(--color-accent-pink);
+        text-decoration-style: dotted;
         position: relative;
-        transition: outline-offset var(--speed-fade) ease-out;
+        transition: outline-offset var(--speed-fade) ease-out,
+          text-decoration-style var(--speed-fade) ease-out;
         outline-offset: -5px;
       }
 
-      a::after {
+      a:hover {
+        text-decoration-style: solid;
+      }
+
+      a:focus-visible {
+        outline: dashed var(--color-accent-pink) 2px;
+        outline-offset: 5px;
+        text-decoration: none;
+      }
+
+      *[tabindex="0"] {
+        transition: outline-offset var(--speed-fade) ease-out;
+      }
+
+      *[tabindex="0"]:focus-visible {
+        outline: dashed var(--color-accent-pink) 2px;
+        outline-offset: 5px;
+      }
+
+      .navlink {
+        color: var(--color-neutral-light);
+        text-decoration: none;
+      }
+
+      .navlink::after {
         content: "";
         position: absolute;
         bottom: 0;
@@ -138,22 +166,8 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
         transform-origin: center;
       }
 
-      a:hover::after {
+      .navlink:hover::after {
         transform: scale(1);
-      }
-
-      a:focus-visible {
-        outline: dashed var(--color-accent-pink) 2px;
-        outline-offset: 5px;
-      }
-
-      *[tabindex="0"] {
-        transition: outline-offset var(--speed-fade) ease-out;
-      }
-
-      *[tabindex="0"]:focus-visible {
-        outline: dashed var(--color-accent-pink) 2px;
-        outline-offset: 5px;
       }
     </style>
   </body>

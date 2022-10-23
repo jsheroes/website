@@ -17,7 +17,7 @@ import { CURRENT_YEAR } from "../data/constants";
 <BaseLayout title={`JSHeroes ${CURRENT_YEAR} | Open-Source Community Event`}>
   <Hero />
   <main>
-    <Section variant="light" content="text">
+    <Section variant="dark" content="text">
       <News />
     </Section>
     <Section id="speakers" variant="dark" content="list">
@@ -30,10 +30,10 @@ import { CURRENT_YEAR } from "../data/constants";
       <Theme />
     </Section>
     <Section variant="dark" content="text">
+      <Description />
       <span class="bear-anchor">
         <BearLink rotate={90} animation="scaleAndSlide" />
       </span>
-      <Description />
     </Section>
     <Section id="sponsors" variant="light" content="list">
       <Friends />
