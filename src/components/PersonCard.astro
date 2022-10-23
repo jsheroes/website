@@ -12,7 +12,7 @@ const {
 } = Astro.props as Props;
 ---
 
-<article class="card" data-size={variant}>
+<div class="card" data-size={variant}>
   <div class="frame">
     <img tabindex="0" class="photo" src={`/img/${person.imgName}`} />
   </div>
@@ -26,7 +26,7 @@ const {
       )
     }
   </div>
-</article>
+</div>
 <style>
   .card {
     display: flex;
@@ -53,7 +53,7 @@ const {
   .photo {
     width: 15rem;
     border-radius: 999px;
-    border: 0rem solid var(--color-accent-pink);
+    border: 0rem solid var(--person-accent-color);
     transition: outline-offset var(--speed-fade) ease-out,
       filter var(--speed-fade) ease-out, border-width var(--speed-fade) ease-out;
     filter: grayscale(1);
