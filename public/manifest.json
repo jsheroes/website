@@ -7,12 +7,12 @@
   "display": "standalone",
   "icons": [
     {
-      "src": "/static/img/manifest-image-192.png",
+      "src": "/img/social/bear-192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/static/img/manifest-image-512.png",
+      "src": "/img/manifest-image-512.png",
       "type": "image/png",
       "sizes": "512x512"
     }

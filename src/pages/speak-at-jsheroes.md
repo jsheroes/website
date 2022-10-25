@@ -5,11 +5,14 @@ title: "Speak at JSHeroes"
 
 # Call for Papers is ON!
 
-The <strong>Call for Papers</strong> process is open until <strong>December 20th!</strong> We encourage people of all ages, races, genders and religions, to submit proposals and we would like to ensure everyone that our process of selecting the talks will be <strong>fair</strong> and <strong>transparent</strong>, as the entire concept behind JSHeroes.
+The <strong>Call for Papers</strong> process is open until <strong>December 31st!</strong> We encourage people of all ages, races, genders and religions, to submit proposals and we would like to ensure everyone that our process of selecting the talks will be <strong>fair</strong> and <strong>transparent</strong>, as the entire concept behind JSHeroes.
+
+<br/>
+<a href="https://sessionize.com/jsheroes-2023" target="_blank" rel="noreferrer noopener" class="cta-link">Submit Proposal</a>
 
 ## ✍ What we are looking for
 
-JSHeroes is a **single track** 2-day conference dedicated to the JS and Web ecosystems. We are looking for a multitude of topics and perspectives, but most of all we value:
+JSHeroes is a **single track** 2-day conference dedicated to the JS and Web ecosystems. We expect that each talk fits into a **25 minutes** slot. If you require more time, please mention this in the application. We are looking for a multitude of topics and perspectives, but most of all we value:
 
 - Original topics, presented for the first time.
 - Practical ideas that attendees can apply at work the next day.
@@ -46,3 +49,6 @@ If your proposal gets selected, we will make sure you have the best possible exp
 We are committed to fulfilling our mission as an open source event. We are all community people and we want to be as close to you as possible. We will try to be supportive and helpful and we will do our best to get back to you with valuable feedback from the CFP process. In case you wish to talk with someone from the team, do not hesitate to [get in touch over email](mailto:welcome@jsheroes.io).
 
 Good luck!
+
+<br/>
+<a href="https://sessionize.com/jsheroes-2023" target="_blank" rel="noreferrer noopener" class="cta-link">Submit Proposal</a>

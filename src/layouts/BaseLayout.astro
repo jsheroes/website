@@ -20,7 +20,7 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/img/social/bear-192.png" />
     <title>{title}</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -39,7 +39,7 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
     <meta property="og:url" content="https://jsheroes.io/" />
     <meta
       property="og:image"
-      content="https://jsheroes.io/static/img/meta-2022.png"
+      content="https://jsheroes.io/img/social/2023.png"
     />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:description" content={description} />
@@ -50,7 +50,7 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
     <meta name="twitter:description" content={description} />
     <meta
       name="twitter:image"
-      content="https://jsheroes.io/static/img/meta-2022.png"
+      content="https://jsheroes.io/img/social/2023.png"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@jsheroes" />
@@ -70,7 +70,8 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
 
         --color-neutral-dark: #202022;
         --color-neutral-light: #ffffff;
-        --color-primary: #121c5e; /* #0b1b44 */
+        --color-primary: #0b1b44; /* #121c5e */
+        --color-logo: #0098ff;
         --color-accent-pink: #ff6078;
         --color-accent-orange: #ffcc67;
         --color-accent-green: #65d3bb;
@@ -150,6 +151,23 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
       .navlink {
         color: var(--color-neutral-light);
         text-decoration: none;
+      }
+
+      .cta-link {
+        text-decoration: none;
+        font-family: var(--font-family-display);
+        background: var(--color-primary);
+        color: var(--color-neutral-light);
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 1rem;
+        outline-offset: -4px;
+        transition: all var(--speed-fade) ease-out;
+      }
+
+      .cta-link:hover {
+        color: var(--color-neutral-dark);
+        background: var(--color-accent-green);
       }
 
       .navlink::after {

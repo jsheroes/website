@@ -39,12 +39,18 @@ const { animation, rotate } = Astro.props as Props;
   }
 
   .bear {
-    width: 15rem;
+    width: 11rem;
   }
 
   @media screen and (max-width: 756px) {
     .bear {
-      width: 10rem;
+      width: 7rem;
+    }
+  }
+
+  @media screen and (max-width: 432px) {
+    .bear {
+      display: none;
     }
   }
 </style>

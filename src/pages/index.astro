@@ -2,7 +2,6 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../components/Section.astro";
 import BearLink from "../components/BearLink.astro";
-import Modal from "../components/Modal.astro";
 
 import Hero from "../content/hero.astro";
 import { Content as News } from "../content/news.md";
@@ -40,6 +39,7 @@ import { CURRENT_YEAR } from "../data/constants";
       <Friends />
     </Section>
     <Section variant="dark" content="text">
+      <Event />
       <span class="earth-anchor">
         <a
           class="earth-link"
@@ -51,7 +51,6 @@ import { CURRENT_YEAR } from "../data/constants";
           <img class="earth" src="/img/props/earth.svg" alt="" />
         </a>
       </span>
-      <Event />
     </Section>
     <Section variant="light" content="list">
       <Organizers />
@@ -64,7 +63,7 @@ import { CURRENT_YEAR } from "../data/constants";
     position: absolute;
     z-index: 1;
     top: 100px;
-    left: -150px;
+    left: -120px;
   }
 
   @media screen and (max-width: 1000px) {
