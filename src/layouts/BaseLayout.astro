@@ -113,14 +113,21 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
 
       a {
         color: inherit;
-        text-decoration: none;
-        transition: outline-offset var(--speed-fade) ease-out;
+        text-decoration-thickness: 2px;
+        text-decoration-color: var(--color-accent-pink);
+        transition: outline-offset var(--speed-fade) ease-out,
+          text-decoration-color var(--speed-fade) ease-out;
         outline-offset: -5px;
+      }
+
+      a:hover {
+        text-decoration-color: var(--color-accent-green);
       }
 
       a:focus-visible {
         outline: dashed var(--color-accent-pink) 2px;
         outline-offset: 5px;
+        text-decoration: none;
       }
 
       button {
@@ -135,6 +142,7 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
       .navlink {
         color: var(--color-neutral-light);
         text-decoration: none;
+        position: relative;
       }
 
       .cta-link {
