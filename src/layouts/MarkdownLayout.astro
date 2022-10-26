@@ -31,6 +31,11 @@ const { frontmatter } = Astro.props;
     object-fit: cover;
   }
 
+  main {
+    /* header + footer */
+    min-height: calc(100vh - 500px - 375px);
+  }
+
   :global(h1) {
     font-size: 2rem !important;
   }

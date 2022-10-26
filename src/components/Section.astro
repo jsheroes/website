@@ -48,6 +48,19 @@ const { id, variant, content } = Astro.props as Props;
     margin-top: 3rem;
   }
 
+  .content.text a {
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--color-accent-pink);
+    transition: outline-offset var(--speed-fade) ease-out,
+      padding-bottom var(--speed-fade) ease-out,
+      border-width var(--speed-fade) ease-out;
+  }
+
+  .content.text a:hover {
+    padding-bottom: 0;
+    border-width: 3px;
+  }
+
   .content.list {
     max-width: 1280px;
   }

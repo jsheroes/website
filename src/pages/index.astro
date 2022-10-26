@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../components/Section.astro";
 import BearLink from "../components/BearLink.astro";
 
-import Hero from "../content/hero.astro";
+import Banner from "../content/banner.astro";
 import { Content as News } from "../content/news.md";
 import Speakers from "../content/speakers.astro";
 import Friends from "../content/friends.astro";
@@ -15,7 +15,7 @@ import { CURRENT_YEAR } from "../data/constants";
 ---
 
 <BaseLayout title={`JSHeroes ${CURRENT_YEAR} | Open-Source Community Event`}>
-  <Hero />
+  <Banner />
   <main>
     <Section variant="light" content="text">
       <News />
@@ -24,10 +24,10 @@ import { CURRENT_YEAR } from "../data/constants";
       <Speakers />
     </Section>
     <Section variant="light" content="text">
+      <Theme />
       <span class="rocket-anchor">
         <img class="rocket" src="/img/props/rocket.svg" alt="" aria-hidden />
       </span>
-      <Theme />
     </Section>
     <Section variant="dark" content="text">
       <Description />
@@ -77,15 +77,15 @@ import { CURRENT_YEAR } from "../data/constants";
   .earth-anchor {
     position: absolute;
     z-index: 1;
-    top: -50px;
+    top: -100px;
     right: 25%;
   }
 
   .rocket-anchor {
     position: absolute;
     z-index: 1;
-    top: -50px;
-    right: 33%;
+    top: -110px;
+    right: 16%;
   }
 
   .earth-link {
