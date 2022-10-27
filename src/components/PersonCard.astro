@@ -1,0 +1,86 @@
+---
+import type { Person } from "../data/types";
+import Modal from "../components/Modal.astro";
+
+export interface Props {
+  person: Person;
+  variant?: "large" | "small";
+}
+
+const { person, variant = "large" } = Astro.props as Props;
+
+const id = person.name.replaceAll(" ", "");
+---
+
+<div class="card" data-size={variant}>
+  <button class="clickable-photo" onclick={`window['${id}'].showModal()`}>
+    <img src={`/img/${person.imgName}`} alt={person.name} />
+  </button>
+  <div class="details">
+    <strong>
+      {person.name}
+    </strong>
+    {
+      variant === "large" && (
+        <span>
+          {person.company
+            ? `${person.title} @ ${person.company}`
+            : person.title}
+        </span>
+      )
+    }
+  </div>
+
+  <Modal id={id} person={person} />
+</div>
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--font-family-display);
+  }
+
+  .card[data-size="small"] .clickable-photo {
+    width: 11rem;
+  }
+
+  .card[data-size="small"] .clickable-photo:hover {
+    border-width: 0.7rem;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .clickable-photo {
+    padding: 0;
+    display: block;
+    width: 15rem;
+    overflow: hidden;
+    border-radius: 999px;
+    border: 0rem solid var(--person-accent-color);
+    transition: outline-offset var(--speed-fade) ease-out,
+      filter var(--speed-fade) ease-out, border-width var(--speed-fade) ease-out;
+    filter: grayscale(1);
+  }
+
+  .clickable-photo img {
+    display: block;
+    width: 100%;
+  }
+
+  .clickable-photo:hover {
+    border-width: 1rem;
+    filter: grayscale(0);
+  }
+
+  .clickable-photo:focus-visible {
+    outline: dashed var(--color-accent-pink) 5px;
+    outline-offset: 8px;
+    filter: grayscale(0);
+  }
+</style>

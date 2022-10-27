@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../components/Section.astro";
 import BearLink from "../components/BearLink.astro";
 
-import Hero from "../content/hero.astro";
+import Banner from "../content/banner.astro";
 import { Content as News } from "../content/news.md";
 import Speakers from "../content/speakers.astro";
 import Friends from "../content/friends.astro";
@@ -15,7 +15,7 @@ import { CURRENT_YEAR } from "../data/constants";
 ---
 
 <BaseLayout title={`JSHeroes ${CURRENT_YEAR} | Open-Source Community Event`}>
-  <Hero />
+  <Banner />
   <main>
     <Section variant="light" content="text">
       <News />
@@ -24,32 +24,33 @@ import { CURRENT_YEAR } from "../data/constants";
       <Speakers />
     </Section>
     <Section variant="light" content="text">
-      <span class="rocket-anchor">
-        <img class="rocket" src="/img/props/rocket.svg" />
-      </span>
       <Theme />
+      <span class="rocket-anchor">
+        <img class="rocket" src="/img/props/rocket.svg" alt="" aria-hidden />
+      </span>
     </Section>
     <Section variant="dark" content="text">
+      <Description />
       <span class="bear-anchor">
         <BearLink rotate={90} animation="scaleAndSlide" />
       </span>
-      <Description />
     </Section>
     <Section id="sponsors" variant="light" content="list">
       <Friends />
     </Section>
     <Section variant="dark" content="text">
+      <Event />
       <span class="earth-anchor">
         <a
           class="earth-link"
           target="_blank"
           rel="noreferrer noopener"
           href="https://www.google.com/maps?saddr&daddr=Grand%20Hotel%20Italia,%20Strada%20Trifoiului%202,%20Cluj-Napoca%20400478,%20Romania"
+          title="Get event location on Google Maps"
         >
-          <img class="earth" src="/img/props/earth.svg" />
+          <img class="earth" src="/img/props/earth.svg" alt="" />
         </a>
       </span>
-      <Event />
     </Section>
     <Section variant="light" content="list">
       <Organizers />
@@ -62,7 +63,7 @@ import { CURRENT_YEAR } from "../data/constants";
     position: absolute;
     z-index: 1;
     top: 100px;
-    left: -150px;
+    left: -120px;
   }
 
   @media screen and (max-width: 1000px) {
@@ -76,15 +77,15 @@ import { CURRENT_YEAR } from "../data/constants";
   .earth-anchor {
     position: absolute;
     z-index: 1;
-    top: -50px;
+    top: -100px;
     right: 25%;
   }
 
   .rocket-anchor {
     position: absolute;
     z-index: 1;
-    top: -50px;
-    right: 33%;
+    top: -110px;
+    right: 16%;
   }
 
   .earth-link {

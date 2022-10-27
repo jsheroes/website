@@ -7,11 +7,16 @@ export interface Props {
 const { animation, rotate } = Astro.props as Props;
 ---
 
-<a class="bear-link" data-animation={animation} href="/meet-ecma"
+<a
+  class="bear-link"
+  data-animation={animation}
+  href="/meet-ecma"
+  title="Read more about Ecma, the JSHeroes bear mascot"
   ><img
     class="bear"
     style={rotate ? { transform: `rotate(${rotate}deg` } : {}}
     src="/img/props/bear.svg"
+    alt=""
   />
 </a>
 
@@ -34,12 +39,12 @@ const { animation, rotate } = Astro.props as Props;
   }
 
   .bear {
-    width: 15rem;
+    width: 11rem;
   }
 
   @media screen and (max-width: 756px) {
     .bear {
-      width: 10rem;
+      width: 6rem;
     }
   }
 </style>

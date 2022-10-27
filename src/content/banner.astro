@@ -2,67 +2,58 @@
 import BearLink from "../components/BearLink.astro";
 ---
 
-<div class="hero">
-  <div class="hero-content">
-    <img class="logo" src="/img/logo.svg" />
+<div class="banner">
+  <img class="cover" src="/img/banners/default.svg" />
+  <div class="banner-content">
+    <img class="logo" src="/img/logo-dark.svg" alt="JSHeroes" />
     <div><strong>Open-Source</strong> Community Event</div>
 
     <div class="date">May <span class="highlight">18-19th</span> 2023</div>
 
     <p>in Cluj-Napoca, Romania</p>
     <p>#ReturnOfTheHeroes</p>
+    <span class="bear-anchor">
+      <BearLink animation="scale" />
+    </span>
   </div>
-  <span class="bear-anchor">
-    <BearLink animation="scale" />
-  </span>
 </div>
 <style>
-  .hero {
-    height: 700px;
+  .banner {
+    height: 550px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url("/img/banner.svg") center center no-repeat;
-    background-size: 100%;
     position: relative;
   }
 
-  @media screen and (max-width: 1340px) {
-    .hero {
-      background-size: 130%;
-      height: 500px;
-    }
+  .cover {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 
   @media screen and (max-width: 756px) {
-    .hero {
-      background-size: 200%;
+    .banner {
       height: 400px;
     }
   }
 
-  @media screen and (max-width: 432px) {
-    .hero {
-      background-size: 300%;
-      height: 400px;
-    }
-  }
-
-  .hero-content {
+  .banner-content {
     color: white;
     display: flex;
     align-items: center;
     flex-direction: column;
     gap: 1rem;
     font-family: var(--font-family-display);
+    position: absolute;
   }
 
-  .hero-content p {
+  .banner-content p {
     margin: 0;
   }
 
   .logo {
-    width: 30vw;
+    width: clamp(10rem, 30vw, 18rem);
   }
 
   .date {
@@ -80,13 +71,20 @@ import BearLink from "../components/BearLink.astro";
   .bear-anchor {
     position: absolute;
     z-index: 1;
-    bottom: -150px;
-    right: 10%;
+    bottom: -240px;
+    right: -200px;
   }
 
   @media screen and (max-width: 756px) {
     .bear-anchor {
-      bottom: -80px;
+      bottom: -140px;
+      right: -100px;
+    }
+  }
+  
+  @media screen and (max-width: 432px) {
+    .bear-anchor {
+      bottom: -140px;
       right: 0;
     }
   }

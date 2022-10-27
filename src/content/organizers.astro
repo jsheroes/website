@@ -1,5 +1,5 @@
 ---
-import SpeakerCard from "../components/SpeakerCard.astro";
+import PersonCard from "../components/PersonCard.astro";
 import { organizers } from "../data/organizers";
 ---
 
@@ -12,7 +12,7 @@ import { organizers } from "../data/organizers";
     organizers.map((organizer) => (
       <>
         <li class="organizers-list-item">
-          <SpeakerCard variant="small" {...organizer} />
+          <PersonCard variant="small" person={organizer} />
         </li>
       </>
     ))
@@ -34,11 +34,15 @@ import { organizers } from "../data/organizers";
     padding-bottom: 1rem;
   }
 
-  .organizers-list-item:nth-child(3n + 1) :global(.photo) {
-    border-color: var(--color-accent-orange);
+  .organizers-list-item:nth-child(3n) {
+    --person-accent-color: var(--color-accent-pink);
   }
 
-  .organizers-list-item:nth-child(3n + 2) :global(.photo) {
-    border-color: var(--color-accent-green);
+  .organizers-list-item:nth-child(3n + 1) {
+    --person-accent-color: var(--color-accent-orange);
+  }
+
+  .organizers-list-item:nth-child(3n + 2) {
+    --person-accent-color: var(--color-accent-green);
   }
 </style>
