@@ -14,15 +14,6 @@ export const speakers: Record<string, Speaker> = {
       title: "Humanizing Your Documentation",
     },
   },
-  anjana: {
-    name: "Anjana Vakil",
-    title: "Software Engineer & Educator",
-    company: "",
-    imgName: "support/anjana-vakil.jpg",
-    talk: {
-      title: "The Art of Functional Programming",
-    },
-  },
   stefan: {
     name: "Stefan Judis",
     title: "Devrel",
@@ -30,15 +21,6 @@ export const speakers: Record<string, Speaker> = {
     imgName: "speakers/stefan-judis.jpg",
     talk: {
       title: "Back to boring",
-    },
-  },
-  sara: {
-    name: "Sara Vieira",
-    title: "Developer",
-    company: "Remote",
-    imgName: "speakers/sara-vieira.png",
-    talk: {
-      title: "Opening your appetite for 3D in the web",
     },
   },
 };
