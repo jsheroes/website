@@ -16,7 +16,7 @@ const { frontmatter } = Astro.props;
     src={frontmatter.banner || "/img/banners/meet-ecma.png"}
     aria-hidden
   />
-  <main>
+  <main id="main">
     <Section variant="light" content="text">
       <slot />
     </Section>

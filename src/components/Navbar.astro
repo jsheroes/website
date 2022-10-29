@@ -1,5 +1,6 @@
 <header>
   <nav>
+    <a class="navlink skip-navlink" href="#main">Skip navigation</a>
     <a class="navlink" href="/">Home</a>
     <a class="navlink" href="/#speakers">Speakers</a>
     <a class="navlink" href="/code-of-conduct">Code of Conduct</a>
@@ -20,5 +21,18 @@
     gap: 1rem;
     font-family: var(--font-family-display);
     z-index: 1;
+  }
+
+  .skip-navlink {
+    clip: rect(1px, 1px, 1px, 1px);
+    overflow: hidden;
+    height: 1px;
+    width: 1px;
+  }
+
+  .skip-navlink:focus {
+    clip: auto;
+    height: auto;
+    width: auto;
   }
 </style>
