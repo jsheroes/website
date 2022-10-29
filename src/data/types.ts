@@ -1,8 +1,6 @@
 export type Person = {
   name: string;
   title: string;
-  bio?: string[];
-  company?: string;
   imgName: string;
 };
 
@@ -11,9 +9,7 @@ export type Talk = {
   description?: string[];
 };
 
-export type Speaker = Person & {
-  talk: Talk | null;
-};
+export type Speaker = Person;
 
 export type Ambassador = Person;
 

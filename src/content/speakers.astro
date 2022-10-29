@@ -1,8 +1,11 @@
 ---
+import type { Person } from "../data/types";
+
 import PersonCard from "../components/PersonCard.astro";
-import { speakers } from "../data/speakers";
-import { ambassadors } from "../data/ambassadors";
-import { support } from "../data/support";
+
+const speakers = await Astro.glob<Person>("../data/speakers/*.md");
+const ambassadors = await Astro.glob<Person>("../data/ambassadors/*.md");
+const support = await Astro.glob<Person>("../data/support/*.md");
 ---
 
 <div class="content center">
@@ -13,7 +16,7 @@ import { support } from "../data/support";
   {
     Object.values(speakers).map((speaker) => (
       <li class="person-list-item">
-        <PersonCard person={speaker} />
+        <PersonCard personMarkdown={speaker} />
       </li>
     ))
   }
@@ -27,7 +30,7 @@ import { support } from "../data/support";
   {
     support.map((person) => (
       <li class="person-list-item">
-        <PersonCard person={person} />
+        <PersonCard personMarkdown={person} />
       </li>
     ))
   }
@@ -46,7 +49,7 @@ import { support } from "../data/support";
   {
     ambassadors.map((ambassador) => (
       <li class="person-list-item">
-        <PersonCard person={ambassador} />
+        <PersonCard personMarkdown={ambassador} />
       </li>
     ))
   }

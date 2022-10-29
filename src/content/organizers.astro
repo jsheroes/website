@@ -1,6 +1,8 @@
 ---
 import PersonCard from "../components/PersonCard.astro";
-import { organizers } from "../data/organizers";
+import type { Person } from "../data/types";
+
+const organizers = await Astro.glob<Person>("../data/organizers/*.md");
 ---
 
 <div class="content center">
@@ -12,7 +14,7 @@ import { organizers } from "../data/organizers";
     organizers.map((organizer) => (
       <>
         <li class="organizers-list-item">
-          <PersonCard variant="small" person={organizer} />
+          <PersonCard variant="small" personMarkdown={organizer} />
         </li>
       </>
     ))
