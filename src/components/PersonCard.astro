@@ -1,15 +1,16 @@
 ---
 import type { Person } from "../data/types";
 import Modal from "../components/Modal.astro";
+import type { MarkdownInstance } from "astro";
 
 export interface Props {
-  person: Person;
+  personMarkdown: MarkdownInstance<Person>;
   variant?: "large" | "small";
 }
 
-const { person, variant = "large" } = Astro.props as Props;
+const { personMarkdown, variant = "large" } = Astro.props as Props;
 
-const id = person.name.replaceAll(" ", "");
+const { frontmatter: person, file: id } = personMarkdown;
 ---
 
 <div class="card" data-size={variant}>
@@ -31,7 +32,7 @@ const id = person.name.replaceAll(" ", "");
     }
   </div>
 
-  <Modal id={id} person={person} />
+  <Modal id={id} personMarkdown={personMarkdown} />
 </div>
 <style>
   .card {

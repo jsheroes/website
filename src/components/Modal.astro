@@ -1,12 +1,14 @@
 ---
+import type { MarkdownInstance } from "astro";
 import type { Person } from "../data/types";
 
 interface Props {
-  person: Person;
+  personMarkdown: MarkdownInstance<Person>;
   id: string;
 }
 
-const { person, id } = Astro.props as Props;
+const { personMarkdown, id } = Astro.props as Props;
+const { frontmatter: person, Content } = personMarkdown;
 ---
 
 <dialog id={id}>
@@ -17,11 +19,13 @@ const { person, id } = Astro.props as Props;
         <strong class="name">{person.name}</strong>
         <span
           >{
-            person.company ? `${person.title} @ ${person.company}` : person.title
+            person.company
+              ? `${person.title} @ ${person.company}`
+              : person.title
           }</span
         >
       </div>
-      {person.bio && person.bio.map((bioLine) => <p>{bioLine}</p>)}
+      <Content />
     </div>
   </main>
   <form method="dialog">
@@ -92,7 +96,7 @@ const { person, id } = Astro.props as Props;
     max-height: 90vh;
     overflow: scroll;
   }
-  
+
   p {
     margin: 0;
   }
@@ -104,11 +108,8 @@ const { person, id } = Astro.props as Props;
 
   .details {
     width: 500px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
   }
-  
+
   .title {
     display: flex;
     flex-direction: column;
@@ -140,7 +141,7 @@ const { person, id } = Astro.props as Props;
       flex-direction: column;
       align-items: center;
     }
-    
+
     .title {
       text-align: center;
     }
