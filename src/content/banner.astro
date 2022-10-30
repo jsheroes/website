@@ -74,11 +74,23 @@ import BearLink from "../components/BearLink.astro";
     font-size: 1.2em;
   }
 
+  @keyframes float {
+    from {
+      transform: translateX(0, 0) scale(1) rotate(0);
+    }
+
+    to {
+      transform: translate(120px, -30px) scale(0.8) rotate(45deg);
+    }
+  }
+
   .bear-anchor {
     position: absolute;
     z-index: 1;
     bottom: -240px;
     right: -200px;
+    animation: 30s infinite alternate float;
+    animation-timing-function: linear;
   }
 
   @media screen and (max-width: 756px) {
