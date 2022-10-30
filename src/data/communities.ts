@@ -26,4 +26,9 @@ export const communities: Organization[] = [
     url: "https://romania.voxxeddays.com/cluj-napoca/",
     imgName: "communities/logo_voxxedday.png",
   },
+  {
+    name: "dotnetdays",
+    url: "https://dotnetdays.ro/",
+    imgName: "communities/logo_dotnetdays.png",
+  },
 ];
