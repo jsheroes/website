@@ -127,6 +127,10 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
         margin: 0;
       }
 
+      body:has(dialog[open]) {
+        overflow: hidden;
+      }
+
       h1 {
         font-size: var(--font-size-xl);
         font-family: var(--font-family-display);
@@ -167,8 +171,6 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
         outline-offset: 5px;
       }
 
-      
-
       .cta-link {
         text-decoration: none;
         font-family: var(--font-family-display);
@@ -185,7 +187,7 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
         color: var(--color-neutral-dark);
         background: var(--color-accent-green);
       }
-      
+
       .navlink {
         color: var(--color-neutral-light);
         text-decoration: none;
