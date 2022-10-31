@@ -1,6 +1,6 @@
 ## 10 years of pushing the boundaries
 
-This year we want to shift our attention to the decade of progress in the world of JavaScript. Back in 2013, we went through a period of rethinking practices as frontend development took off and became one of the most common disciplines in tech. Framework ecosystems like React, Angular or Vue now enter into their second decade of existence, while web capabilities and standards are increasingly more potent and versatile.
+This year we want to shift our attention to the decade of progress in the world of web development. Back in 2013, we went through a period of rethinking practices as frontend development took off and became one of the most crucial disciplines in tech. Framework like React, Angular or Vue and their ecosystems now enter into their second decade of existence, while web capabilities and standards are increasingly more potent and versatile.
 
 So in 2023, let's celebrate the past 10 years, reflecting on the evolution of our tools and patterns, with the good and the bad that comes with this rapid evolution.
 
