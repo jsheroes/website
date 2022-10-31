@@ -20,7 +20,7 @@ JSHeroes is a **single track** 2-day conference dedicated to the JS and Web ecos
 - Fresh perspectives on the development ecosystem.
 - The human side of software engineering.
 
-We will do our best to build an agenda that covers diverse topics which can be of interest for the majority of attendees interested in the current landscape of the JavaScript world. We do not wish to limit your perspectives, but we did propose a couple of broad topics in the CFP form, in which your proposal may fall. However, do not consider them restrictive, but rather see them as a guideline to classify and structure all the proposals we receive.
+Our theme for 2023 is "10 years of pushing the boundaries". We want to bring the focus on the evolution of our tools and practices, a decade since frontend development took of back in 2013. The theme is broad and not all talk will be connected with it, so consider it more like a line connecting different ideas and topics, rather then a restriction.
 
 ## 📈 How the selection will happen
 

@@ -23,11 +23,10 @@ const { frontmatter: person, file: id } = personMarkdown;
     </strong>
     {
       variant === "large" && (
-        <span>
-          {person.company
-            ? `${person.title} @ ${person.company}`
-            : person.title}
-        </span>
+        <>
+          <span>{person.title}</span>
+          {person.company && <span>{person.company}</span>}
+        </>
       )
     }
   </div>
