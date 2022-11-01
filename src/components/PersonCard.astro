@@ -14,7 +14,12 @@ const { frontmatter: person, file: id } = personMarkdown;
 ---
 
 <div class="card" data-size={variant}>
-  <button class="clickable-photo" onclick={`window['${id}'].showModal()`}>
+  <button
+    aria-haspopup="dialog"
+    aria-controls={id}
+    class="clickable-photo"
+    onclick={`window['${id}'].showModal()`}
+  >
     <img src={`/img/${person.imgName}`} alt={person.name} />
   </button>
   <div class="details">
