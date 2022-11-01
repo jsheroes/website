@@ -13,7 +13,7 @@ const { frontmatter: person, Content } = personMarkdown;
 
 <dialog id={id}>
   <main>
-    <img class="photo" src={`/img/${person.imgName}`} alt={person.name} />
+    <img class="photo" src={`/img/${person.imgName}`} alt={person.name} loading="lazy">
     <div class="details">
       <div class="title">
         <strong class="name">{person.name}</strong>
