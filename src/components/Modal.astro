@@ -11,11 +11,11 @@ const { personMarkdown, id } = Astro.props as Props;
 const { frontmatter: person, Content } = personMarkdown;
 ---
 
-<dialog id={id}>
+<dialog id={id} aria-labelledby={`${id}-title`}>
   <main>
     <img class="photo" src={`/img/${person.imgName}`} alt={person.name} />
     <div class="details">
-      <div class="title">
+      <div id={`${id}-title`} class="title" role="heading">
         <strong class="name">{person.name}</strong>
         <span
           >{
@@ -29,8 +29,8 @@ const { frontmatter: person, Content } = personMarkdown;
     </div>
   </main>
   <form method="dialog">
-    <button>
-      <img class="close" src="/img/icons/close.svg" />
+    <button aria-label="Close modal">
+      <img alt="Close modal" class="close" src="/img/icons/close.svg" />
     </button>
   </form>
 </dialog>
