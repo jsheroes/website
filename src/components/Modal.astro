@@ -48,6 +48,17 @@ const { frontmatter: person, Content } = personMarkdown;
     border: 1rem solid var(--person-accent-color);
   }
 
+  dialog[open] {
+    display: flex;
+  }
+
+  @media screen and (max-width: 550px) {
+    dialog {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
   dialog::backdrop {
     position: fixed;
     top: 0px;
@@ -93,7 +104,6 @@ const { frontmatter: person, Content } = personMarkdown;
   main {
     display: flex;
     gap: 1rem;
-    max-height: 76vh;
     overflow: scroll;
   }
 
@@ -140,6 +150,7 @@ const { frontmatter: person, Content } = personMarkdown;
     main {
       flex-direction: column;
       align-items: center;
+      width: 100%;
     }
 
     .title {
