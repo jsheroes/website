@@ -10,7 +10,8 @@ export interface Props {
 
 const { personMarkdown, variant = "large" } = Astro.props as Props;
 
-const { frontmatter: person, file: id } = personMarkdown;
+const { frontmatter: person, file } = personMarkdown;
+const id = file.split("/").pop() || "";
 ---
 
 <div class="card" data-size={variant}>
