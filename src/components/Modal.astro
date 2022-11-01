@@ -13,7 +13,7 @@ const { frontmatter: person, Content } = personMarkdown;
 
 <dialog id={id} aria-labelledby={`${id}-title`}>
   <main>
-    <img class="photo" src={`/img/${person.imgName}`} alt={person.name} />
+    <img class="photo" src={`/img/${person.imgName}`} alt={person.name} loading="lazy">
     <div class="details">
       <div id={`${id}-title`} class="title" role="heading">
         <strong class="name">{person.name}</strong>
