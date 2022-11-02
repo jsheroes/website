@@ -1,0 +1,28 @@
+---
+const path = Astro.url.pathname;
+---
+
+{
+  path === "/" && (
+    <>
+      <link
+        rel="preload"
+        href="/img/logo-dark.svg"
+        as="image"
+        fetchPriority="high"
+      />
+      <link
+        rel="preload"
+        href="/img/banners/default.svg"
+        as="image"
+        fetchPriority="high"
+      />
+      <link
+        rel="preload"
+        href="/img/props/bear.svg"
+        as="image"
+        fetchPriority="high"
+      />
+    </>
+  )
+}
