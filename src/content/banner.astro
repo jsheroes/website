@@ -93,6 +93,12 @@ import BearLink from "../components/BearLink.astro";
     animation-timing-function: linear;
   }
 
+  @media screen and (max-width: 1000px) {
+    .bear-anchor {
+      animation: none;
+    }
+  }
+
   @media screen and (max-width: 756px) {
     .bear-anchor {
       bottom: -140px;
