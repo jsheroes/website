@@ -1,7 +1,7 @@
 ---
 name: Alena Nikolaeva
-title: Frontend Engineer
-company: Xata
+title: Product Designer
+company: GitHub
 imgName: speakers/alena-nikolaeva.jpg
 ---
 
