@@ -22,7 +22,6 @@ Summary:
 
 Expenses:
 
-
 - Staff - 2.3K EUR (the cost is so low because most of the work is done by volunteers and we need extra help for accounting services and operations)
 - Speakers (flight tickets, accommodation, trip, gift bags) - 8.2K EUR
 - Venue + food & drinks (3 coffee breaks/day + 1 lunch/day for every attendee) - 9.4K EUR
@@ -35,12 +34,11 @@ Expenses:
 - Fees (Ti.to, PayPal, Bank) - 1K EUR
 - Costs that couldn’t be covered through partnerships (eg. ice-cream, water, gas) - 750 EUR
 
-
 How did we plan to pay for all these things?
 
-- Tickets - after estimating the costs, we’ve calculated the tickets price so as to cover the conference price but to keep our non-profit scope. We planned to have 240 tickets sold: 100 Early bird tickets * 90 EUR+VAT, 140 Regular tickets * 125 EUR + VAT — Total: 26.5K EUR
+- Tickets - after estimating the costs, we’ve calculated the tickets price so as to cover the conference price but to keep our non-profit scope. We planned to have 240 tickets sold: 100 Early bird tickets _ 90 EUR+VAT, 140 Regular tickets _ 125 EUR + VAT — Total: 26.5K EUR
 
-- Sponsors - whose only interest is to help the community grow by paying a fee for a special sponsorship package, recruitment-free, with only a few benefits as our purpose is not to get any kind of profit out of this but to get some help to organize a great event) * 2.000 EUR/sponsorship package
+- Sponsors - whose only interest is to help the community grow by paying a fee for a special sponsorship package, recruitment-free, with only a few benefits as our purpose is not to get any kind of profit out of this but to get some help to organize a great event) \* 2.000 EUR/sponsorship package
 
 We kept the same sponsorship package as the year before and hoped companies will join us. And they did, even much more than we’ve expected. There were 12 companies sponsoring us, both from Romania and from abroad, so we are very thankful to: Evozon, Fortech, Cloudflight, Moqups, MCRO, CodeSandbox, DevNest, Victory Square Partners, Yonder, Accesa, Frequentis, tec:agency, Flowx.AI, Teleport. With their help we managed to raise 25.500 EUR.
 

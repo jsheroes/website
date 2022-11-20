@@ -1,0 +1,74 @@
+---
+import type { Person } from "../data/types";
+import Modal from "../components/Modal.astro";
+import type { MarkdownInstance } from "astro";
+
+export interface Props {
+  imgName: string;
+  link: string;
+  title: string;
+  subtitle: string;
+}
+
+const { imgName, link, title, subtitle } = Astro.props as Props;
+---
+
+<div class="card">
+  <a class="clickable-photo" href={link}>
+    <img src={`/img/${imgName}`} alt="Ecma the bear mascot" />
+  </a>
+  <div class="details">
+    <strong>
+      {title}
+    </strong>
+
+    <span>{subtitle}</span>
+  </div>
+</div>
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--font-family-display);
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .clickable-photo {
+    padding: 0;
+    display: block;
+    width: 15rem;
+    height: 15rem;
+    overflow: hidden;
+    border-radius: 999px;
+    border: 0rem solid var(--person-accent-color);
+    transition: outline-offset var(--speed-fade) ease-out,
+      filter var(--speed-fade) ease-out, border-width var(--speed-fade) ease-out;
+    filter: grayscale(1);
+    background: var(--color-neutral-light);
+    padding: 1rem;
+  }
+
+  .clickable-photo img {
+    display: block;
+    width: 100%;
+    transform: rotate(20deg); /* Quick workaround for the bear, should be abstracted */
+  }
+
+  .clickable-photo:hover {
+    border-width: 1rem;
+    filter: grayscale(0);
+  }
+
+  .clickable-photo:focus-visible {
+    outline: dashed var(--color-accent-pink) 5px;
+    outline-offset: 8px;
+    filter: grayscale(0);
+  }
+</style>
