@@ -31,4 +31,9 @@ export const communities: Organization[] = [
     url: "https://dotnetdays.ro/",
     imgName: "communities/logo_dotnetdays.png",
   },
+  {
+    name: "GoConf",
+    url: "https://goconf.io/",
+    imgName: "communities/logo_goconf.png",
+  },
 ];
