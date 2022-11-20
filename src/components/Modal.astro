@@ -16,157 +16,155 @@ const { frontmatter: person, Content } = personMarkdown;
   id={id}
   onclick="if (event.currentTarget === event.target) event.currentTarget.close()"
 >
-  <dialog id={id}>
-    <main>
-      <img
-        class="photo"
-        src={`/img/${person.imgName}`}
-        alt={person.name}
-        loading="lazy"
-      />
-      <div class="details">
-        <div id={`${id}-title`} class="title" role="heading">
-          <strong class="name">{person.name}</strong>
-          <span
-            >{
-              person.company
-                ? `${person.title} @ ${person.company}`
-                : person.title
-            }</span
-          >
-        </div>
-        <Content />
+  <main>
+    <img
+      class="photo"
+      src={`/img/${person.imgName}`}
+      alt={person.name}
+      loading="lazy"
+    />
+    <div class="details">
+      <div id={`${id}-title`} class="title" role="heading">
+        <strong class="name">{person.name}</strong>
+        <span
+          >{
+            person.company
+              ? `${person.title} @ ${person.company}`
+              : person.title
+          }</span
+        >
       </div>
-    </main>
-    <form method="dialog">
-      <button aria-label="Close modal">
-        <img alt="Close modal" class="close" src="/img/icons/close.svg" />
-      </button>
-    </form>
-  </dialog>
+      <Content />
+    </div>
+  </main>
+  <form method="dialog">
+    <button aria-label="Close modal">
+      <img alt="Close modal" class="close" src="/img/icons/close.svg" />
+    </button>
+  </form>
+</dialog>
 
-  <style>
+<style>
+  dialog {
+    position: fixed;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 1rem;
+    overflow: visible;
+    border: 1rem solid var(--person-accent-color);
+  }
+
+  dialog[open] {
+    display: flex;
+  }
+
+  @media screen and (max-width: 550px) {
     dialog {
-      position: fixed;
-      margin: auto;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      padding: 1rem;
-      overflow: visible;
-      border: 1rem solid var(--person-accent-color);
+      height: 100%;
+      width: 100%;
     }
+  }
 
-    dialog[open] {
-      display: flex;
+  dialog::backdrop {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  button {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    padding: 0;
+    appearance: none;
+    border: 0px solid var(--color-neutral-light);
+    border-radius: 50%;
+    top: -2rem;
+    right: -2rem;
+    width: 3rem;
+    height: 3rem;
+    background: var(--person-accent-color);
+    transition: border-width var(--speed-move) ease-out,
+      outline-offset var(--speed-move) ease-out;
+  }
+
+  button:hover {
+    border-width: 4px;
+  }
+
+  button:hover .close {
+    transform: scale(1.2);
+  }
+
+  .close {
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: transform var(--speed-move) ease-out;
+  }
+
+  main {
+    display: flex;
+    gap: 1rem;
+    overflow: auto;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .photo {
+    width: 300px;
+    height: 300px;
+  }
+
+  .details {
+    width: 500px;
+    overflow: auto;
+  }
+
+  .title {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .name {
+    font-size: var(--font-size-lg);
+  }
+
+  @media screen and (max-width: 1200px) {
+    .details {
+      width: 350px;
     }
+  }
 
-    @media screen and (max-width: 550px) {
-      dialog {
-        height: 100%;
-        width: 100%;
-      }
-    }
-
-    dialog::backdrop {
-      position: fixed;
-      top: 0px;
-      right: 0px;
-      bottom: 0px;
-      left: 0px;
-      background: rgba(0, 0, 0, 0.6);
-    }
-
-    button {
-      position: absolute;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 3;
-      padding: 0;
-      appearance: none;
-      border: 0px solid var(--color-neutral-light);
-      border-radius: 50%;
-      top: -2rem;
-      right: -2rem;
-      width: 3rem;
-      height: 3rem;
-      background: var(--person-accent-color);
-      transition: border-width var(--speed-move) ease-out,
-        outline-offset var(--speed-move) ease-out;
-    }
-
-    button:hover {
-      border-width: 4px;
-    }
-
-    button:hover .close {
-      transform: scale(1.2);
-    }
-
-    .close {
-      width: 1.5rem;
-      height: 1.5rem;
-      transition: transform var(--speed-move) ease-out;
-    }
-
-    main {
-      display: flex;
-      gap: 1rem;
-      overflow: auto;
-    }
-
-    p {
-      margin: 0;
-    }
-
+  @media screen and (max-width: 756px) {
     .photo {
-      width: 300px;
-      height: 300px;
+      width: 200px;
+      height: 200px;
     }
 
     .details {
-      width: 500px;
-      overflow: auto;
+      width: auto;
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    main {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
     }
 
     .title {
-      display: flex;
-      flex-direction: column;
+      text-align: center;
     }
-
-    .name {
-      font-size: var(--font-size-lg);
-    }
-
-    @media screen and (max-width: 1200px) {
-      .details {
-        width: 350px;
-      }
-    }
-
-    @media screen and (max-width: 756px) {
-      .photo {
-        width: 200px;
-        height: 200px;
-      }
-
-      .details {
-        width: auto;
-      }
-    }
-
-    @media screen and (max-width: 550px) {
-      main {
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-      }
-
-      .title {
-        text-align: center;
-      }
-    }
-  </style>
-</dialog>
+  }
+</style>
