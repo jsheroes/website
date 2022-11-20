@@ -4,40 +4,26 @@ import Modal from "../components/Modal.astro";
 import type { MarkdownInstance } from "astro";
 
 export interface Props {
-  personMarkdown: MarkdownInstance<Person>;
-  variant?: "large" | "small";
+  imgName: string;
+  link: string;
+  title: string;
+  subtitle: string;
 }
 
-const { personMarkdown, variant = "large" } = Astro.props as Props;
-
-const { frontmatter: person, file } = personMarkdown;
-const id = file.split("/").pop() || "";
+const { imgName, link, title, subtitle } = Astro.props as Props;
 ---
 
-<div class="card" data-size={variant}>
-  <button
-    aria-haspopup="dialog"
-    aria-controls={id}
-    class="clickable-photo"
-    onclick={`window['${id}'].showModal()`}
-  >
-    <img src={`/img/${person.imgName}`} alt={person.name} />
-  </button>
+<div class="card">
+  <a class="clickable-photo" href={link}>
+    <img src={`/img/${imgName}`} alt="Ecma the bear mascot" />
+  </a>
   <div class="details">
     <strong>
-      {person.name}
+      {title}
     </strong>
-    {
-      variant === "large" && (
-        <>
-          <span>{person.title}</span>
-          {person.company && <span>{person.company}</span>}
-        </>
-      )
-    }
-  </div>
 
-  <Modal id={id} personMarkdown={personMarkdown} />
+    <span>{subtitle}</span>
+  </div>
 </div>
 <style>
   .card {
@@ -46,14 +32,6 @@ const id = file.split("/").pop() || "";
     align-items: center;
     gap: 1rem;
     font-family: var(--font-family-display);
-  }
-
-  .card[data-size="small"] .clickable-photo {
-    width: 11rem;
-  }
-
-  .card[data-size="small"] .clickable-photo:hover {
-    border-width: 0.7rem;
   }
 
   .details {
@@ -66,17 +44,21 @@ const id = file.split("/").pop() || "";
     padding: 0;
     display: block;
     width: 15rem;
+    height: 15rem;
     overflow: hidden;
     border-radius: 999px;
     border: 0rem solid var(--person-accent-color);
     transition: outline-offset var(--speed-fade) ease-out,
       filter var(--speed-fade) ease-out, border-width var(--speed-fade) ease-out;
     filter: grayscale(1);
+    background: var(--color-neutral-light);
+    padding: 1rem;
   }
 
   .clickable-photo img {
     display: block;
     width: 100%;
+    transform: rotate(20deg); /* Quick workaround for the bear, should be abstracted */
   }
 
   .clickable-photo:hover {
