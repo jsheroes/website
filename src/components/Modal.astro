@@ -11,7 +11,10 @@ const { personMarkdown, id } = Astro.props as Props;
 const { frontmatter: person, Content } = personMarkdown;
 ---
 
-<dialog id={id}>
+<dialog
+  id={id}
+  onclick="if (event.currentTarget === event.target) event.currentTarget.close()"
+>
   <main>
     <img class="photo" src={`/img/${person.imgName}`} alt={person.name} />
     <div class="details">
@@ -104,7 +107,7 @@ const { frontmatter: person, Content } = personMarkdown;
   main {
     display: flex;
     gap: 1rem;
-    height: 300px;
+    overflow: auto;
   }
 
   p {
@@ -112,6 +115,7 @@ const { frontmatter: person, Content } = personMarkdown;
   }
 
   .photo {
+    width: 300px;
     height: 300px;
   }
 
