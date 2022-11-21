@@ -1,9 +1,17 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../components/Section.astro";
+import Modal from "../components/Modal.astro";
 import { CURRENT_YEAR } from "../data/constants";
+import type { Person } from "../data/types";
 
 const { frontmatter } = Astro.props;
+
+const organizers = await Astro.glob<Person>("../data/organizers/*.md");
+const author = organizers.find(
+  (org) => org.frontmatter.name === frontmatter.author
+);
+const id = author ? author.file.split("/").pop() : null;
 ---
 
 <BaseLayout
@@ -18,6 +26,26 @@ const { frontmatter } = Astro.props;
   />
   <main id="main">
     <Section variant="light" content="text">
+      {
+        author && id && (
+          <div class="author-anchor">
+            <button
+              class="author"
+              aria-haspopup="dialog"
+              aria-controls={id}
+              onclick={`window['${id}'].showModal()`}
+            >
+              <img src={`/img/${author.frontmatter.imgName}`} />
+              <div class="author-details">
+                <strong class="author-name">{author.frontmatter.name}</strong>
+                <span>{frontmatter.published}</span>
+              </div>
+            </button>
+            <Modal id={id} personMarkdown={author} />
+          </div>
+        )
+      }
+      <h1>{frontmatter.title}</h1>
       <slot />
     </Section>
   </main>
@@ -34,9 +62,52 @@ const { frontmatter } = Astro.props;
   main {
     /* header + footer */
     min-height: calc(100vh - 500px - 400px);
+    position: relative;
   }
 
   :global(h1) {
     font-size: 2rem !important;
+  }
+
+  .author-anchor {
+    position: relative;
+    --person-accent-color: var(--color-accent-pink);
+  }
+
+  .author {
+    border: none;
+    font-size: inherit;
+    background: var(--color-neutral-light);
+    display: flex;
+    position: absolute;
+    top: -6rem;
+    right: 0;
+    z-index: 1;
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+    border-radius: 2rem;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-family-display);
+    transition: background var(--speed-fade) ease-out;
+  }
+
+  .author:hover {
+    background: var(--color-accent-pink);
+  }
+
+  .author img {
+    width: 3rem;
+    border-radius: 50%;
+    transition: scale var(--speed-move) ease-out;
+  }
+
+  .author:hover img {
+    scale: 1.1;
+  }
+
+  .author-details {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3rem;
   }
 </style>

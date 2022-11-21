@@ -1,8 +1,9 @@
 ---
-layout: "../../layouts/MarkdownLayout.astro"
+layout: ../../layouts/MarkdownLayout.astro
+author: Ale Retegan
+title: 2022 Transparency Report
+published: Oct 20, 2022
 ---
-
-# 2022 Transparency Report
 
 This year in June we had our first in-person event after the pandemics. For the 4th edition of JSHeroes we decided to go for a 1-day event, with only 300 participants, so that everyone feels safe to participate.
 
@@ -10,7 +11,7 @@ We strongly believe that the community model is the best environment for learnin
 
 As promised, we came back with some updates regarding the **conference’s budget**. It was calculated as to cover all the costs for the participants and the profit will be redirected to educational initiatives & next year's edition (according to the detailed plan at the end of the article).
 
-In [our previous article](https://website-jsheroes.vercel.app/posts/2022-transparency-plan) we presented the estimates so we can all make an idea of what organizing a conference means in terms of costs (but not only) and now we’ve updated them and we got to some **conclusions** that we hope to be useful for other communities organizing a conference:
+In [our previous article](/posts/2022-transparency-plan) we presented the estimates so we can all make an idea of what organizing a conference means in terms of costs (but not only) and now we’ve updated them and we got to some **conclusions** that we hope to be useful for other communities organizing a conference:
 
 Summary:
 
