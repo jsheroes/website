@@ -1,8 +1,4 @@
 ---
-import type { Person } from "../data/types";
-import Modal from "../components/Modal.astro";
-import type { MarkdownInstance } from "astro";
-
 export interface Props {
   imgName: string;
   link: string;
@@ -58,7 +54,9 @@ const { imgName, link, title, subtitle } = Astro.props as Props;
   .clickable-photo img {
     display: block;
     width: 100%;
-    transform: rotate(20deg); /* Quick workaround for the bear, should be abstracted */
+    transform: rotate(
+      20deg
+    ); /* Quick workaround for the bear, should be abstracted */
   }
 
   .clickable-photo:hover {
