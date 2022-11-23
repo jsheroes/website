@@ -1,0 +1,71 @@
+---
+import Modal from "../components/Modal.astro";
+
+const { author, id, publishDate } = Astro.props;
+---
+
+<div class="author-anchor">
+  <button
+    class="author"
+    aria-haspopup="dialog"
+    aria-controls={id}
+    onclick={`window['${id}'].showModal()`}
+  >
+    <img src={`/img/${author.frontmatter.imgName}`} />
+    <div class="author-details">
+      <strong class="author-name">{author.frontmatter.name}</strong>
+      <span>{publishDate}</span>
+    </div>
+  </button>
+  <Modal id={id} personMarkdown={author} />
+</div>
+
+<style>
+  .author-anchor {
+    position: relative;
+    --person-accent-color: var(--color-accent-pink);
+  }
+
+  .author {
+    border: none;
+    font-size: inherit;
+    background: var(--color-neutral-light);
+    display: flex;
+    position: absolute;
+    top: -6rem;
+    right: 0;
+    z-index: 1;
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+    border-radius: 2rem;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-family-display);
+    transition: background-color var(--speed-fade) ease-out;
+  }
+
+  @media screen and (max-width: 756px) {
+    .author {
+      top: -5rem;
+    }
+  }
+
+  .author:hover {
+    background: var(--color-accent-pink);
+  }
+
+  .author img {
+    width: 3rem;
+    border-radius: 50%;
+    transition: scale var(--speed-move) ease-out;
+  }
+
+  .author:hover img {
+    scale: 1.1;
+  }
+
+  .author-details {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3rem;
+  }
+</style>
