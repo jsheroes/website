@@ -15,7 +15,12 @@ import BearLink from "../components/BearLink.astro";
     <div class="date">May <span class="highlight">18-19th</span> 2023</div>
 
     <p>in Cluj-Napoca, Romania</p>
-    <p>#ReturnOfTheHeroes</p>
+    <a
+      href="https://ti.to/jsheroes/2023"
+      target="_blank"
+      rel="noreferrer noopener"
+      class="cta-link">Buy tickets</a
+    >
     <span class="bear-anchor">
       <BearLink animation="scale" />
     </span>
@@ -63,15 +68,18 @@ import BearLink from "../components/BearLink.astro";
   }
 
   .date {
-    border: 2px solid white;
-    border-radius: 1rem;
-    padding: 0.5rem;
     font-size: var(--font-size-lg);
     font-weight: 500;
   }
 
   .highlight {
     font-size: 1.2em;
+  }
+
+  .cta-link {
+    background: var(--color-accent-orange);
+    color: var(--color-neutral-dark);
+    padding: 0.5rem 2rem;
   }
 
   @keyframes float {
