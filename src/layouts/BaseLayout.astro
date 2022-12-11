@@ -131,24 +131,21 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
 
       a {
         color: inherit;
-        text-decoration-thickness: 2px;
-        text-decoration-color: var(--color-accent-pink);
-        transition: outline-offset var(--speed-fade) ease-out,
-          text-decoration-color var(--speed-fade) ease-out;
+        text-decoration-thickness: 4px;
+        text-decoration-color: var(--color-accent-orange);
+        text-decoration-skip-ink: none;
+        transition: text-decoration-color var(--speed-fade) ease-out;
         outline-offset: -5px;
       }
-
+      
       a:hover {
-        text-decoration-color: var(--color-accent-green);
+        text-decoration-color: var(--color-accent-pink);
       }
 
       a:focus-visible {
         outline: dashed var(--color-accent-pink) 2px;
         outline-offset: 5px;
         text-decoration: none;
-      }
-
-      a:focus {
       }
 
       button {
@@ -189,7 +186,7 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 0.1em;
+        height: 0.15rem;
         background-color: var(--color-accent-pink);
         transition: transform var(--speed-fade) ease-out;
         opacity: 1;
