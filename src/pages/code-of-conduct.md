@@ -3,8 +3,6 @@ layout: "../layouts/MarkdownLayout.astro"
 title: "Code of Conduct"
 ---
 
-# JSHeroes Code of Conduct
-
 All attendees, speakers, sponsors and volunteers at our conference are required to agree with the following **Code of Conduct**. As organisers of JSHeroes, the JSHeroes community will enforce this code throughout the event. We expect cooperation from all participants to help ensure a safe environment for everybody.
 
 We commit to providing a **safe** and **friendly** facility for all JSHeroes events, respecting each and every individual in the community and responding promptly to all reports of misconduct with our full attention.

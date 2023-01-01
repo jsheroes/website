@@ -1,5 +1,6 @@
 ---
 import type { Person } from "../data/types";
+import { CFP_OPEN } from "../data/constants";
 
 import PersonCard from "../components/PersonCard.astro";
 import PlaceholderCard from "../components/PlaceholderCard.astro";
@@ -21,14 +22,18 @@ const support = await Astro.glob<Person>("../data/support/*.md");
       </li>
     ))
   }
-  <li class="person-list-item">
-    <PlaceholderCard
-      imgName="/props/bear.svg"
-      title="You?"
-      subtitle="Submit your proposal"
-      link="/speak-at-jsheroes"
-    />
-  </li>
+  {
+    CFP_OPEN && (
+      <li class="person-list-item">
+        <PlaceholderCard
+          imgName="/props/bear.svg"
+          title="You?"
+          subtitle="Submit your proposal"
+          link="/speak-at-jsheroes"
+        />
+      </li>
+    )
+  }
 </ul>
 
 <div class="content center">

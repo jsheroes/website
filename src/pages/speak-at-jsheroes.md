@@ -3,12 +3,12 @@ layout: "../layouts/MarkdownLayout.astro"
 title: "Speak at JSHeroes"
 ---
 
-# Call for Papers is ON!
+The <strong>Call for Papers</strong> for the 2023 event is <strong>closed</strong>. We usually open the process around 6 months before the event, so keep that in mind if you are interested in submitting a proposal for one of our future events.
 
-The <strong>Call for Papers</strong> process is open until <strong>December 31st!</strong> We encourage people of all ages, races, genders and religions, to submit proposals and we would like to ensure everyone that our process of selecting the talks will be <strong>fair</strong> and <strong>transparent</strong>, as the entire concept behind JSHeroes.
+We encourage people of all ages, races, genders and religions, to submit proposals and we would like to ensure everyone that our process of selecting the talks will be <strong>fair</strong> and <strong>transparent</strong>, as the entire concept behind JSHeroes.
 
-<br/>
-<a href="https://sessionize.com/jsheroes-2023" target="_blank" rel="noreferrer noopener" class="cta-link">Submit Proposal</a>
+<!-- <br/>
+<a href="https://sessionize.com/jsheroes-2023" target="_blank" rel="noreferrer noopener" class="cta-link">Submit Proposal</a> -->
 
 ## ✍ What we are looking for
 
@@ -50,5 +50,5 @@ We are committed to fulfilling our mission as an open source event. We are all c
 
 Good luck!
 
-<br/>
-<a href="https://sessionize.com/jsheroes-2023" target="_blank" rel="noreferrer noopener" class="cta-link">Submit Proposal</a>
+<!-- <br/>
+<a href="https://sessionize.com/jsheroes-2023" target="_blank" rel="noreferrer noopener" class="cta-link">Submit Proposal</a> -->
