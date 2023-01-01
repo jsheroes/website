@@ -4,6 +4,4 @@ We had a blast <a href="https://2022.jsheroes.io/" target="_blank" rel="noreferr
 
 **Tickets** are available on [our ti.to page](https://ti.to/jsheroes/2023). If PayPal is not your preferred payment method, you can also pay by invoice. For more information drop us a line at <a href="mailto:welcome@jsheroes.io">welcome@jsheroes.io</a>.
 
-Want to **speak** at JSHeroes? Read more about [the call for papers process](/speak-at-jsheroes) and **submit** your proposal.
-
 Looking forward to seeing you all back in Cluj, on the **18th** and **19th** of **May 2023**!

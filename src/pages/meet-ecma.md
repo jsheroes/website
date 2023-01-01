@@ -3,9 +3,7 @@ layout: "../layouts/MarkdownLayout.astro"
 title: "Meet Ecma"
 ---
 
-# Meet Ecma, the JSHeroes bear mascot
-
-We just needed a mascot to show the world how cute and fuzzy we are. Just kidding, we are serious professional people, working hard to organise an awesome JavaScript conference each year. Ecma the bear is our way to offer a bit of help to “The Millions of Friends” Association and their [LiBearty project](https://millionsoffriends.org/en/libearty/).
+We needed a mascot to show the world how cute and fuzzy we are. Just kidding, we are serious professional people, working hard to organise an awesome JavaScript conference each year. Ecma the bear is our way to offer a bit of help to “The Millions of Friends” Association and their [LiBearty project](https://millionsoffriends.org/en/libearty/).
 
 **AMP LiBearty** is the largest brown bear sanctuary in the world, located near the town of Zărnești in the Carpathian Mountains. On 69 hectars of oak forest, with trees where the bears can climb, swimming pools where they can splash, food according to their diets studied by the veterinarians and the necessary medical care. It’s currently hosting over **100 bears** that were saved from awful captivity in cages, zoos, circuses.
 
