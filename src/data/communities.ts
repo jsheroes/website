@@ -36,4 +36,9 @@ export const communities: Organization[] = [
     url: "https://goconf.io/",
     imgName: "communities/logo_goconf.png",
   },
+  {
+    name: "AgentConf",
+    url: "https://www.alpine-conferences.com/agent-conf-2023/",
+    imgName: "communities/logo_agentconf.png",
+  },
 ];
