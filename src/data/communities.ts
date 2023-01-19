@@ -41,4 +41,9 @@ export const communities: Organization[] = [
     url: "https://www.alpine-conferences.com/agent-conf-2023/",
     imgName: "communities/logo_agentconf.png",
   },
+  {
+    name: "JSNation",
+    url: "https://jsnation.com/",
+    imgName: "communities/logo_jsnation.png",
+  },
 ];
