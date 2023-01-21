@@ -6,6 +6,7 @@ import BearLink from "../components/BearLink.astro";
 import Banner from "../content/banner.astro";
 import { Content as News } from "../content/news.md";
 import Speakers from "../content/speakers.astro";
+import Agenda from "../content/agenda.astro";
 import Friends from "../content/friends.astro";
 import { Content as Description } from "../content/description.md";
 import { Content as Theme } from "../content/theme.md";
@@ -23,7 +24,7 @@ import { CURRENT_YEAR } from "../data/constants";
     <Section id="speakers" variant="dark" content="list">
       <Speakers />
     </Section>
-    <Section variant="light" content="text">
+    <Section variant="dark" content="text">
       <Theme />
       <span class="rocket-anchor">
         <img
@@ -33,6 +34,9 @@ import { CURRENT_YEAR } from "../data/constants";
           aria-hidden="true"
         />
       </span>
+    </Section>
+    <Section variant="light" content="text">
+      <Agenda />
     </Section>
     <Section variant="dark" content="text">
       <Description />

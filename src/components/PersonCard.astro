@@ -1,5 +1,6 @@
 ---
 import type { Person } from "../data/types";
+import { getPersonIdFromFilePath } from "../utils";
 import Modal from "../components/Modal.astro";
 import type { MarkdownInstance } from "astro";
 
@@ -11,7 +12,7 @@ export interface Props {
 const { personMarkdown, variant = "large" } = Astro.props as Props;
 
 const { frontmatter: person, file } = personMarkdown;
-const id = file.split("/").pop() || "";
+const id = getPersonIdFromFilePath(file);
 ---
 
 <div class="card" data-size={variant}>

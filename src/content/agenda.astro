@@ -1,45 +1,92 @@
 ---
-import { agenda } from "../data/agenda";
-import { speakers } from "../data/speakers";
+import { day1, day2 } from "../data/agenda";
+import type { Person } from "../data/types";
+import { getPersonIdFromFilePath } from "../utils";
+
+const speakers = await Astro.glob<Person>("../data/speakers/*.md");
+const speakerTalks = await Astro.glob<Person>("../data/speaker-talks/*.md");
+
+const getSpeakerInfo = (speakerId: string) => {
+  const speakerDetails = speakers.find(
+    (s) => speakerId === getPersonIdFromFilePath(s.file)
+  );
+
+  const speakerTalk = speakerTalks.find(
+    (s) => speakerId === getPersonIdFromFilePath(s.file)
+  );
+
+  if (!speakerDetails || !speakerTalk) {
+    return null;
+  }
+
+  return {
+    id: speakerId,
+    name: speakerDetails.frontmatter.name,
+    imgName: speakerDetails.frontmatter.imgName,
+    talkTitle: speakerTalk.frontmatter.title || "TBA",
+  };
+};
 ---
 
-<div class="content text">
-  <h2>Agenda</h2>
+<h2>Agenda</h2>
 
-  <ul class="agenda-items">
-    {
-      agenda.map((agendaItem) => {
-        if (agendaItem.type === "placeholder") {
-          return (
-            <li class="agenda-item">
+<ul class="agenda-items">
+  {
+    day1.map((agendaItem) => {
+      if (agendaItem.type === "placeholder") {
+        return (
+          <li class="agenda-item">
+            <div class="agenda-row">
               <span class="time-slot">{agendaItem.timeSlot}</span>
 
               <div class="speaker-slot">
                 <img src={`/img/${agendaItem.imgName}`} />
                 <span>{agendaItem.content}</span>
               </div>
-            </li>
-          );
-        } else {
-          const speaker = speakers[agendaItem.speakers[0]];
+            </div>
+          </li>
+        );
+      } else {
+        const speaker = getSpeakerInfo(agendaItem.speakers[0]);
 
+        if (!speaker) {
           return (
-            <li class="agenda-item" tabindex="0">
-              <span class="time-slot">{agendaItem.timeSlot}</span>
-              <div class="speaker-slot">
-                <img src={`/img/${speaker.imgName}`} />
-                <div class="talk">
-                  <strong>{speaker.name}</strong>
-                  <span>{speaker.talk.title}</span>
+            <li class="agenda-item">
+              <div class="agenda-row">
+                <span class="time-slot">{agendaItem.timeSlot}</span>
+
+                <div class="speaker-slot">
+                  <img src={`/img/props/bear.svg`} />
+                  <span>TBA</span>
                 </div>
               </div>
             </li>
           );
         }
-      })
-    }
-  </ul>
-</div>
+
+        return (
+          <li class="agenda-item">
+            <button
+              aria-haspopup="dialog"
+              aria-controls={speaker.id}
+              class="agenda-row clickable"
+              onclick={`window['${speaker.id}'].showModal()`}
+            >
+              <span class="time-slot">{agendaItem.timeSlot}</span>
+              <div class="speaker-slot">
+                <img src={`/img/${speaker.imgName}`} />
+                <div class="talk">
+                  <strong>{speaker.name}</strong>
+                  <span>{speaker.talkTitle}</span>
+                </div>
+              </div>
+            </button>
+          </li>
+        );
+      }
+    })
+  }
+</ul>
 
 <style>
   .agenda-items {
@@ -52,14 +99,44 @@ import { speakers } from "../data/speakers";
   }
 
   .agenda-item {
-    padding: 1rem;
+    display: flex;
+  }
+
+  .agenda-item:not(:last-child) {
+    border-bottom: 1px solid var(--color-accent-pink);
+  }
+
+  .agenda-item:nth-child(3n) img {
+    border: 0 solid var(--color-accent-pink);
+  }
+
+  .agenda-item:nth-child(3n + 1) img {
+    border: 0 solid var(--color-accent-orange);
+  }
+
+  .agenda-item:nth-child(3n + 2) img {
+    border: 0 solid var(--color-accent-green);
+  }
+
+  .agenda-row {
+    padding: 1rem 0;
     display: flex;
     align-items: center;
     gap: 4rem;
+    transition: outline-offset var(--speed-fade) ease-out;
+  }
+
+  .agenda-row.clickable {
+    border: 0;
+    background: none;
+    font-family: inherit;
+    font-size: inherit;
+    text-align: inherit;
+    width: 100%;
   }
 
   @media screen and (max-width: 756px) {
-    .agenda-item {
+    .agenda-row {
       flex-direction: column;
       gap: 1rem;
       align-items: flex-start;
@@ -67,34 +144,32 @@ import { speakers } from "../data/speakers";
     }
   }
 
-  .agenda-item:not(:last-child) {
-    border-bottom: 1px solid var(--color-accent-pink);
+  .agenda-row img {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    filter: grayscale(1);
+    transition: border-width var(--speed-fade) ease-out,
+      filter var(--speed-fade) ease-out;
   }
 
-  .agenda-item img {
-    height: clamp(4rem, 6vw, 4.5rem);
-    border-radius: 999px;
-    transition: outline-width var(--speed-move) ease-out;
+  .agenda-row:hover img {
+    border-width: 0.45rem;
+    filter: none;
   }
 
-  .agenda-item:nth-child(3n) img {
-    outline: solid var(--color-accent-pink) 0;
+  .agenda-row:focus-visible {
+    outline: dashed var(--color-accent-pink) 5px;
+    outline-offset: 8px;
+    filter: grayscale(0);
   }
 
-  .agenda-item:nth-child(3n + 1) img {
-    outline: solid var(--color-accent-orange) 0;
+  .agenda-row:focus-visible img {
+    filter: none;
   }
 
-  .agenda-item:nth-child(3n + 2) img {
-    outline: solid var(--color-accent-green) 0;
-  }
-
-  .agenda-item:hover .speaker-slot {
-    gap: 1.5rem;
-  }
-
-  .agenda-item:hover img {
-    outline-width: 0.5rem;
+  .time-slot {
+    white-space: nowrap;
   }
 
   .speaker-slot {
