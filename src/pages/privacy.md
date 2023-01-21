@@ -1,9 +1,9 @@
 ---
 layout: "../layouts/MarkdownLayout.astro"
-title: "Privacy Statement"
+title: "Privacy statement"
 ---
 
-When you are using the JSHeroes website you entrust us with your data. The purpose of this **Privacy Statement** is to explain what data we collect, why we collect it, how we use it, and also to allow you to decide to what extent you disclose your data.
+When you are using the JSHeroes website you entrust us with your data. The purpose of this **Privacy statement** is to explain what data we collect, why we collect it, how we use it, and also to allow you to decide to what extent you disclose your data.
 
 ## Types of data we collect
 

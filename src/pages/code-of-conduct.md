@@ -1,9 +1,9 @@
 ---
 layout: "../layouts/MarkdownLayout.astro"
-title: "Code of Conduct"
+title: "Code of conduct"
 ---
 
-All attendees, speakers, sponsors and volunteers at our conference are required to agree with the following **Code of Conduct**. As organisers of JSHeroes, the JSHeroes community will enforce this code throughout the event. We expect cooperation from all participants to help ensure a safe environment for everybody.
+All attendees, speakers, sponsors and volunteers at our conference are required to agree with the following **code of conduct**. As organisers of JSHeroes, the JSHeroes community will enforce this code throughout the event. We expect cooperation from all participants to help ensure a safe environment for everybody.
 
 We commit to providing a **safe** and **friendly** facility for all JSHeroes events, respecting each and every individual in the community and responding promptly to all reports of misconduct with our full attention.
 
@@ -13,4 +13,4 @@ JSHeroes understands the importance of **community** and wants to ensure that we
 
 We do not tolerate **harassment** of conference participants in any form. Sexual language and imagery is not appropriate for any conference venue, including talks, meetups, parties, Twitter and other online media. Conference participants violating these rules may be **sanctioned** or **expelled** from the conference without a refund at the discretion of the conference organisers.
 
-We value your attendance and your participation in the JSHeroes community and expect everyone to accord to the community **Code of Conduct** at all JSHeroes venues and events.
+We value your attendance and your participation in the JSHeroes community and expect everyone to accord to the community **code of conduct** at all JSHeroes venues and events.
