@@ -1,3 +1,3 @@
 ---
-name: Tierney Cyren
+title: 
 ---

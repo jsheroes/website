@@ -1,10 +1,16 @@
 ---
-import { day1, day2 } from "../data/agenda";
-import type { Person } from "../data/types";
+import type { AgendaItem, Person } from "../data/types";
 import { getPersonIdFromFilePath } from "../utils";
+
+export interface Props {
+  agendaItems: AgendaItem[];
+  title: string;
+}
 
 const speakers = await Astro.glob<Person>("../data/speakers/*.md");
 const speakerTalks = await Astro.glob<Person>("../data/speaker-talks/*.md");
+
+const { agendaItems, title } = Astro.props as Props;
 
 const getSpeakerInfo = (speakerId: string) => {
   const speakerDetails = speakers.find(
@@ -28,11 +34,11 @@ const getSpeakerInfo = (speakerId: string) => {
 };
 ---
 
-<h2>Agenda</h2>
+<h2>{title}</h2>
 
 <ul class="agenda-items">
   {
-    day1.map((agendaItem) => {
+    agendaItems.map((agendaItem) => {
       if (agendaItem.type === "placeholder") {
         return (
           <li class="agenda-item">
@@ -47,6 +53,7 @@ const getSpeakerInfo = (speakerId: string) => {
           </li>
         );
       } else {
+        // TODO: Handle multiple speakers, currently assume speakers[0]
         const speaker = getSpeakerInfo(agendaItem.speakers[0]);
 
         if (!speaker) {

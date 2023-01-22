@@ -1,5 +1,4 @@
 ---
-name: Trine Falbe
 title: Ethical Design for Developers
 ---
 

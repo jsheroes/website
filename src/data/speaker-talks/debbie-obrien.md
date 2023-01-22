@@ -1,5 +1,4 @@
 ---
-name: Debbie O'Brien
 title: Playing your tests wright
 ---
 

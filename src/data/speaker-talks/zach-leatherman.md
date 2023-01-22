@@ -1,3 +1,3 @@
 ---
-name: Zach Leatherman
+title: 
 ---

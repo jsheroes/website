@@ -1,5 +1,4 @@
 ---
-name: Gil Tayar
 title: Towards a simpler JavaScript ecosystem
 ---
 

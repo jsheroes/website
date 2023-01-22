@@ -1,5 +1,4 @@
 ---
-name: Alena Nikolaeva
 title: Proven ways to make your website accessible in 2023
 ---
 
