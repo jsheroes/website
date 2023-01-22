@@ -1,5 +1,10 @@
 ---
-import type { AgendaItem, Person } from "../data/types";
+import type {
+  AgendaItem,
+  PersonalDetails,
+  Speaker,
+  TalkDetails,
+} from "../data/types";
 import { getPersonIdFromFilePath } from "../utils";
 
 export interface Props {
@@ -7,12 +12,14 @@ export interface Props {
   title: string;
 }
 
-const speakers = await Astro.glob<Person>("../data/speakers/*.md");
-const speakerTalks = await Astro.glob<Person>("../data/speaker-talks/*.md");
+const speakers = await Astro.glob<PersonalDetails>("../data/speakers/*.md");
+const speakerTalks = await Astro.glob<TalkDetails>(
+  "../data/speaker-talks/*.md"
+);
 
 const { agendaItems, title } = Astro.props as Props;
 
-const getSpeakerInfo = (speakerId: string) => {
+const getSpeakerInfo = (speakerId: string): Speaker | null => {
   const speakerDetails = speakers.find(
     (s) => speakerId === getPersonIdFromFilePath(s.file)
   );
@@ -27,9 +34,11 @@ const getSpeakerInfo = (speakerId: string) => {
 
   return {
     id: speakerId,
-    name: speakerDetails.frontmatter.name,
-    imgName: speakerDetails.frontmatter.imgName,
-    talkTitle: speakerTalk.frontmatter.title || "TBA",
+    bio: speakerDetails.frontmatter,
+    BioMdContent: speakerDetails.Content,
+    talk: speakerTalk.frontmatter,
+    TalkMdContent: speakerTalk.Content,
+    type: "speaker",
   };
 };
 ---
@@ -81,10 +90,10 @@ const getSpeakerInfo = (speakerId: string) => {
             >
               <span class="time-slot">{agendaItem.timeSlot}</span>
               <div class="speaker-slot">
-                <img src={`/img/${speaker.imgName}`} />
+                <img src={`/img/${speaker.bio.imgName}`} />
                 <div class="talk">
-                  <strong>{speaker.name}</strong>
-                  <span>{speaker.talkTitle}</span>
+                  <strong>{speaker.bio.name}</strong>
+                  <span>{speaker.talk.title || "TBA"}</span>
                 </div>
               </div>
             </button>

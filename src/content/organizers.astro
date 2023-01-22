@@ -1,8 +1,23 @@
 ---
+import type { MarkdownInstance } from "astro";
 import PersonCard from "../components/PersonCard.astro";
-import type { Person } from "../data/types";
+import type { Organizer, Person, PersonalDetails } from "../data/types";
+import { getPersonIdFromFilePath } from "../utils";
 
 const organizers = await Astro.glob<Person>("../data/organizers/*.md");
+
+const getOrganizerInfo = (
+  organizerMd: MarkdownInstance<PersonalDetails>
+): Organizer => {
+  const orgId = getPersonIdFromFilePath(organizerMd.file);
+
+  return {
+    type: "organizer",
+    id: orgId,
+    bio: organizerMd.frontmatter,
+    BioMdContent: organizerMd.Content,
+  };
+};
 ---
 
 <div class="content center">
@@ -11,10 +26,10 @@ const organizers = await Astro.glob<Person>("../data/organizers/*.md");
 
 <ul role="list" class="organizers-list">
   {
-    organizers.map((organizer) => (
+    organizers.map((o) => (
       <>
         <li class="organizers-list-item">
-          <PersonCard variant="small" personMarkdown={organizer} />
+          <PersonCard variant="small" person={getOrganizerInfo(o)} />
         </li>
       </>
     ))

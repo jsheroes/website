@@ -1,40 +1,37 @@
 ---
-import type { MarkdownInstance } from "astro";
 import type { Person } from "../data/types";
 
 interface Props {
-  personMarkdown: MarkdownInstance<Person>;
-  id: string;
+  person: Person;
 }
 
-const { personMarkdown, id } = Astro.props as Props;
-const { frontmatter: person, Content } = personMarkdown;
+const { person } = Astro.props as Props;
 ---
 
 <dialog
-  aria-labelledby={`${id}-title`}
-  id={id}
+  aria-labelledby={`${person.id}-title`}
+  id={person.id}
   onclick="if (event.currentTarget === event.target) event.currentTarget.close()"
 >
   <main>
     <img
       class="photo"
-      src={`/img/${person.imgName}`}
-      alt={person.name}
+      src={`/img/${person.bio.imgName}`}
+      alt={person.bio.name}
       loading="lazy"
     />
     <div class="details">
-      <div id={`${id}-title`} class="title" role="heading">
-        <strong class="name">{person.name}</strong>
+      <div id={`${person.id}-title`} class="title" role="heading">
+        <strong class="name">{person.bio.name}</strong>
         <span
           >{
-            person.company
-              ? `${person.title} @ ${person.company}`
-              : person.title
+            person.bio.company
+              ? `${person.bio.title} @ ${person.bio.company}`
+              : person.bio.title
           }</span
         >
       </div>
-      <Content />
+      <person.BioMdContent />
     </div>
   </main>
   <form method="dialog">

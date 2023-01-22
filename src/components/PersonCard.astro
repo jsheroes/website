@@ -1,44 +1,39 @@
 ---
 import type { Person } from "../data/types";
-import { getPersonIdFromFilePath } from "../utils";
 import Modal from "../components/Modal.astro";
-import type { MarkdownInstance } from "astro";
 
 export interface Props {
-  personMarkdown: MarkdownInstance<Person>;
+  person: Person;
   variant?: "large" | "small";
 }
 
-const { personMarkdown, variant = "large" } = Astro.props as Props;
-
-const { frontmatter: person, file } = personMarkdown;
-const id = getPersonIdFromFilePath(file);
+const { person, variant = "large" } = Astro.props as Props;
 ---
 
 <div class="card" data-size={variant}>
   <button
     aria-haspopup="dialog"
-    aria-controls={id}
+    aria-controls={person.id}
     class="clickable-photo"
-    onclick={`window['${id}'].showModal()`}
+    onclick={`window['${person.id}'].showModal()`}
   >
-    <img src={`/img/${person.imgName}`} alt={person.name} />
+    <img src={`/img/${person.bio.imgName}`} alt={person.bio.name} />
   </button>
   <div class="details">
     <strong>
-      {person.name}
+      {person.bio.name}
     </strong>
     {
       variant === "large" && (
         <>
-          <span>{person.title}</span>
-          {person.company && <span>{person.company}</span>}
+          <span>{person.bio.title}</span>
+          {person.bio.company && <span>{person.bio.company}</span>}
         </>
       )
     }
   </div>
 
-  <Modal id={id} personMarkdown={personMarkdown} />
+  <Modal person={person} />
 </div>
 <style>
   .card {
