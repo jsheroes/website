@@ -1,4 +1,4 @@
-## Venue and Covid-19 Plan
+## Venue and health safety
 
 We are hosting the JSHeroes 2023 conference at the **Grand Hotel Italia**, Vasile Conta Street number 2, Cluj-Napoca, Romania.
 
