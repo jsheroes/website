@@ -1,6 +1,4 @@
 ---
-import Modal from "../components/Modal.astro";
-
 const { author, id, publishDate } = Astro.props;
 ---
 
@@ -17,7 +15,6 @@ const { author, id, publishDate } = Astro.props;
       <span>{publishDate}</span>
     </div>
   </button>
-  <Modal id={id} personMarkdown={author} />
 </div>
 
 <style>

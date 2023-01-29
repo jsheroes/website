@@ -1,42 +1,51 @@
 ---
-import type { MarkdownInstance } from "astro";
 import type { Person } from "../data/types";
 
 interface Props {
-  personMarkdown: MarkdownInstance<Person>;
-  id: string;
+  person: Person;
 }
 
-const { personMarkdown, id } = Astro.props as Props;
-const { frontmatter: person, Content } = personMarkdown;
+const { person } = Astro.props as Props;
 ---
 
 <dialog
-  aria-labelledby={`${id}-title`}
-  id={id}
+  aria-labelledby={`${person.id}-title`}
+  id={person.id}
   onclick="if (event.currentTarget === event.target) event.currentTarget.close()"
 >
   <main>
-    <img
-      class="photo"
-      src={`/img/${person.imgName}`}
-      alt={person.name}
-      loading="lazy"
-    />
-    <div class="details">
-      <div id={`${id}-title`} class="title" role="heading">
-        <strong class="name">{person.name}</strong>
-        <span
-          >{
-            person.company
-              ? `${person.title} @ ${person.company}`
-              : person.title
-          }</span
-        >
+    <div class="bio">
+      <img
+        class="photo"
+        src={`/img/${person.bio.imgName}`}
+        alt={person.bio.name}
+        loading="lazy"
+      />
+      <div class="bio-details">
+        <div id={`${person.id}-title`} class="bio-title" role="heading">
+          <strong class="bio-name">{person.bio.name}</strong>
+          <span
+            >{
+              person.bio.company
+                ? `${person.bio.title} @ ${person.bio.company}`
+                : person.bio.title
+            }</span
+          >
+        </div>
+        <person.BioMdContent />
       </div>
-      <Content />
     </div>
+
+    {
+      person.type === "speaker" && person.talk?.title ? (
+        <div class="talk">
+          <strong>Talk: {person.talk.title}</strong>
+          {person.TalkMdContent && <person.TalkMdContent />}
+        </div>
+      ) : null
+    }
   </main>
+
   <form method="dialog">
     <button aria-label="Close modal">
       <img alt="Close modal" class="close" src="/img/icons/close.svg" />
@@ -111,9 +120,21 @@ const { frontmatter: person, Content } = personMarkdown;
   }
 
   main {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+    width: 100%;
+  }
+
+  .bio {
     display: flex;
     gap: 1rem;
-    overflow: auto;
+  }
+
+  .bio-details {
+    min-width: 250px;
   }
 
   p {
@@ -121,49 +142,37 @@ const { frontmatter: person, Content } = personMarkdown;
   }
 
   .photo {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
   }
 
-  .details {
-    width: 500px;
-  }
-
-  .title {
+  .bio-title {
     display: flex;
     flex-direction: column;
   }
 
-  .name {
+  .bio-name {
     font-size: var(--font-size-lg);
   }
 
-  @media screen and (max-width: 1200px) {
-    .details {
-      width: 350px;
-    }
-  }
-
   @media screen and (max-width: 756px) {
-    .photo {
-      width: 200px;
-      height: 200px;
-    }
-
-    .details {
-      width: auto;
-    }
-  }
-
-  @media screen and (max-width: 550px) {
-    main {
+    .bio {
       flex-direction: column;
       align-items: center;
       width: 100%;
     }
 
-    .title {
+    .bio-details {
+      min-width: auto;
+    }
+
+    .bio-title {
       text-align: center;
+    }
+
+    .photo {
+      width: 200px;
+      height: 200px;
     }
   }
 </style>

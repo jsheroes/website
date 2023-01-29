@@ -1,13 +1,71 @@
 ---
-import type { Person } from "../data/types";
+import type {
+  PersonalDetails,
+  Speaker,
+  Support,
+  Ambassador,
+  TalkDetails,
+} from "../data/types";
 import { CFP_OPEN } from "../data/constants";
 
 import PersonCard from "../components/PersonCard.astro";
 import PlaceholderCard from "../components/PlaceholderCard.astro";
+import { getPersonIdFromFilePath } from "../utils";
+import type { MarkdownInstance } from "astro";
 
-const speakers = await Astro.glob<Person>("../data/speakers/*.md");
-const ambassadors = await Astro.glob<Person>("../data/ambassadors/*.md");
-const support = await Astro.glob<Person>("../data/support/*.md");
+const speakers = await Astro.glob<PersonalDetails>("../data/speakers/*.md");
+const speakerTalks = await Astro.glob<TalkDetails>(
+  "../data/speaker-talks/*.md"
+);
+const ambassadors = await Astro.glob<PersonalDetails>(
+  "../data/ambassadors/*.md"
+);
+const support = await Astro.glob<PersonalDetails>("../data/support/*.md");
+
+const getSpeakerInfo = (
+  speakerMd: MarkdownInstance<PersonalDetails>
+): Speaker => {
+  const speakerId = getPersonIdFromFilePath(speakerMd.file);
+
+  const speakerTalk = speakerTalks.find(
+    (s) => speakerId === getPersonIdFromFilePath(s.file)
+  );
+
+  return {
+    type: "speaker",
+    id: speakerId,
+    bio: speakerMd.frontmatter,
+    BioMdContent: speakerMd.Content,
+    talk: speakerTalk ? speakerTalk.frontmatter : null,
+    TalkMdContent: speakerTalk ? speakerTalk.Content : null,
+  };
+};
+
+const getSupportInfo = (
+  supportMd: MarkdownInstance<PersonalDetails>
+): Support => {
+  const supportId = getPersonIdFromFilePath(supportMd.file);
+
+  return {
+    type: "support",
+    id: supportId,
+    bio: supportMd.frontmatter,
+    BioMdContent: supportMd.Content,
+  };
+};
+
+const getAmbassadorInfo = (
+  ambassadorMd: MarkdownInstance<PersonalDetails>
+): Ambassador => {
+  const ambassadorId = getPersonIdFromFilePath(ambassadorMd.file);
+
+  return {
+    type: "ambassador",
+    id: ambassadorId,
+    bio: ambassadorMd.frontmatter,
+    BioMdContent: ambassadorMd.Content,
+  };
+};
 ---
 
 <div class="content center">
@@ -16,9 +74,9 @@ const support = await Astro.glob<Person>("../data/support/*.md");
 
 <ul role="list" class="person-list">
   {
-    Object.values(speakers).map((speaker) => (
+    Object.values(speakers).map((s) => (
       <li class="person-list-item">
-        <PersonCard personMarkdown={speaker} />
+        <PersonCard person={getSpeakerInfo(s)} />
       </li>
     ))
   }
@@ -42,9 +100,9 @@ const support = await Astro.glob<Person>("../data/support/*.md");
 
 <ul role="list" class="person-list">
   {
-    support.map((person) => (
+    support.map((s) => (
       <li class="person-list-item">
-        <PersonCard personMarkdown={person} />
+        <PersonCard person={getSupportInfo(s)} />
       </li>
     ))
   }
@@ -61,9 +119,9 @@ const support = await Astro.glob<Person>("../data/support/*.md");
 
 <ul role="list" class="person-list">
   {
-    ambassadors.map((ambassador) => (
+    ambassadors.map((a) => (
       <li class="person-list-item">
-        <PersonCard personMarkdown={ambassador} />
+        <PersonCard person={getAmbassadorInfo(a)} />
       </li>
     ))
   }

@@ -2,12 +2,12 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../components/Section.astro";
 import { CURRENT_YEAR } from "../data/constants";
-import type { Person } from "../data/types";
+import type { PersonalDetails } from "../data/types";
 import AuthorCard from "../components/AuthorCard.astro";
 
 const { frontmatter } = Astro.props;
 
-const organizers = await Astro.glob<Person>("../data/organizers/*.md");
+const organizers = await Astro.glob<PersonalDetails>("../data/organizers/*.md");
 const author = organizers.find(
   (org) => org.frontmatter.name === frontmatter.author
 );
