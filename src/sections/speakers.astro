@@ -1,0 +1,98 @@
+---
+import { CFP_OPEN } from "../data/constants";
+
+import PersonCard from "../components/PersonCard.astro";
+import PlaceholderCard from "../components/PlaceholderCard.astro";
+import { getCollection } from "astro:content";
+
+const speakers = await getCollection("speakers");
+const ambassadors = await getCollection("ambassadors");
+const support = await getCollection("support");
+---
+
+<div class="content center">
+  <h2>First speakers announced</h2>
+</div>
+
+<ul role="list" class="person-list">
+  {
+    Object.values(speakers).map((s) => (
+      <li class="person-list-item">
+        <PersonCard person={s} />
+      </li>
+    ))
+  }
+  {
+    CFP_OPEN && (
+      <li class="person-list-item">
+        <PlaceholderCard
+          imgName="/props/bear.svg"
+          title="You?"
+          subtitle="Submit your proposal"
+          link="/speak-at-jsheroes"
+        />
+      </li>
+    )
+  }
+</ul>
+
+<div class="content center">
+  <h2>Our support crew for 2023</h2>
+</div>
+
+<ul role="list" class="person-list">
+  {
+    support.map((s) => (
+      <li class="person-list-item">
+        <PersonCard person={s} />
+      </li>
+    ))
+  }
+</ul>
+
+<div class="content center">
+  <h2>And our awesome ambassadors</h2>
+
+  <p>
+    An amazing group of people who said yes to the challenge of working with us
+    at making JSHeroes awesome!
+  </p>
+</div>
+
+<ul role="list" class="person-list">
+  {
+    ambassadors.map((a) => (
+      <li class="person-list-item">
+        <PersonCard person={a} />
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .person-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-item: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem 0;
+  }
+
+  .person-list-item {
+    list-style: none;
+    padding-bottom: 1rem;
+  }
+
+  .person-list-item:nth-child(3n) {
+    --person-accent-color: var(--color-accent-pink);
+  }
+
+  .person-list-item:nth-child(3n + 1) {
+    --person-accent-color: var(--color-accent-orange);
+  }
+
+  .person-list-item:nth-child(3n + 2) {
+    --person-accent-color: var(--color-accent-green);
+  }
+</style>

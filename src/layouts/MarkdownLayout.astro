@@ -2,16 +2,12 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../components/Section.astro";
 import { CURRENT_YEAR } from "../data/constants";
-import type { PersonalDetails } from "../data/types";
 import AuthorCard from "../components/AuthorCard.astro";
+import { getEntryBySlug } from "astro:content";
 
 const { frontmatter } = Astro.props;
 
-const organizers = await Astro.glob<PersonalDetails>("../data/organizers/*.md");
-const author = organizers.find(
-  (org) => org.frontmatter.name === frontmatter.author
-);
-const id = author ? author.file.split("/").pop() : null;
+const author = await getEntryBySlug("organizers", frontmatter.author);
 ---
 
 <BaseLayout
@@ -27,9 +23,9 @@ const id = author ? author.file.split("/").pop() : null;
   <main id="main">
     <Section variant="light" content="text">
       {
-        author && id && (
+        author && (
           <AuthorCard
-            id={id}
+            id={author.id}
             author={author}
             publishDate={frontmatter.published}
           />
