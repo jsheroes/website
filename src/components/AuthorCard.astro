@@ -1,20 +1,30 @@
 ---
-const { author, id, publishDate } = Astro.props;
+import type { CollectionEntry } from "astro:content";
+import Modal from "./Modal.astro";
+
+export interface Props {
+  author: CollectionEntry<"organizers">;
+  publishDate: string;
+}
+
+const { author, publishDate } = Astro.props;
 ---
 
 <div class="author-anchor">
   <button
     class="author"
     aria-haspopup="dialog"
-    aria-controls={id}
-    onclick={`window['${id}'].showModal()`}
+    aria-controls={author.id}
+    onclick={`window['${author.id}'].showModal()`}
   >
-    <img src={`/img/${author.frontmatter.imgName}`} />
+    <img src={`/img/${author.data.imgName}`} />
     <div class="author-details">
-      <strong class="author-name">{author.frontmatter.name}</strong>
+      <strong class="author-name">{author.data.name}</strong>
       <span>{publishDate}</span>
     </div>
   </button>
+
+  <Modal person={author} />
 </div>
 
 <style>

@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/MarkdownLayout.astro
-author: Ale Retegan
+author: ale-retegan
 title: 2022 transparency report
 published: Oct 20, 2022
 ---

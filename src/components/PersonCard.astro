@@ -1,9 +1,13 @@
 ---
-import type { Person } from "../data/types";
 import Modal from "../components/Modal.astro";
+import type { CollectionEntry } from "astro:content";
 
 export interface Props {
-  person: Person;
+  person:
+    | CollectionEntry<"organizers">
+    | CollectionEntry<"ambassadors">
+    | CollectionEntry<"speakers">
+    | CollectionEntry<"support">;
   variant?: "large" | "small";
 }
 
@@ -17,17 +21,17 @@ const { person, variant = "large" } = Astro.props as Props;
     class="clickable-photo"
     onclick={`window['${person.id}'].showModal()`}
   >
-    <img src={`/img/${person.bio.imgName}`} alt={person.bio.name} />
+    <img src={`/img/${person.data.imgName}`} alt={person.data.name} />
   </button>
   <div class="details">
     <strong>
-      {person.bio.name}
+      {person.data.name}
     </strong>
     {
       variant === "large" && (
         <>
-          <span>{person.bio.title}</span>
-          {person.bio.company && <span>{person.bio.company}</span>}
+          <span>{person.data.title}</span>
+          {person.data.company && <span>{person.data.company}</span>}
         </>
       )
     }

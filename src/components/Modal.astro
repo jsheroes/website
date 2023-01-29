@@ -1,11 +1,26 @@
 ---
-import type { Person } from "../data/types";
+import type { AstroComponentFactory } from "astro/dist/runtime/server";
+import { CollectionEntry, getEntryBySlug } from "astro:content";
 
 interface Props {
-  person: Person;
+  person:
+    | CollectionEntry<"organizers">
+    | CollectionEntry<"ambassadors">
+    | CollectionEntry<"speakers">
+    | CollectionEntry<"support">;
 }
 
 const { person } = Astro.props as Props;
+
+const speakerTalk = await getEntryBySlug("speaker-talks", person.slug);
+
+const { Content: BioContent } = await person.render();
+
+let TalkContent: AstroComponentFactory | null = null;
+if (speakerTalk) {
+  const { Content } = await speakerTalk.render();
+  TalkContent = Content;
+}
 ---
 
 <dialog
@@ -17,30 +32,30 @@ const { person } = Astro.props as Props;
     <div class="bio">
       <img
         class="photo"
-        src={`/img/${person.bio.imgName}`}
-        alt={person.bio.name}
+        src={`/img/${person.data.imgName}`}
+        alt={person.data.name}
         loading="lazy"
       />
       <div class="bio-details">
         <div id={`${person.id}-title`} class="bio-title" role="heading">
-          <strong class="bio-name">{person.bio.name}</strong>
+          <strong class="bio-name">{person.data.name}</strong>
           <span
             >{
-              person.bio.company
-                ? `${person.bio.title} @ ${person.bio.company}`
-                : person.bio.title
+              person.data.company
+                ? `${person.data.title} @ ${person.data.company}`
+                : person.data.title
             }</span
           >
         </div>
-        <person.BioMdContent />
+        <BioContent />
       </div>
     </div>
 
     {
-      person.type === "speaker" && person.talk?.title ? (
+      speakerTalk && TalkContent ? (
         <div class="talk">
-          <strong>Talk: {person.talk.title}</strong>
-          {person.TalkMdContent && <person.TalkMdContent />}
+          <strong>Talk: {speakerTalk.data.title}</strong>
+          <TalkContent />
         </div>
       ) : null
     }

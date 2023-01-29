@@ -1,46 +1,16 @@
 ---
-import type {
-  AgendaItem,
-  PersonalDetails,
-  Speaker,
-  TalkDetails,
-} from "../data/types";
-import { getPersonIdFromFilePath } from "../utils";
+import { getCollection } from "astro:content";
+import type { AgendaItem } from "../data/types";
 
 export interface Props {
   agendaItems: AgendaItem[];
   title: string;
 }
 
-const speakers = await Astro.glob<PersonalDetails>("../data/speakers/*.md");
-const speakerTalks = await Astro.glob<TalkDetails>(
-  "../data/speaker-talks/*.md"
-);
+const speakers = await getCollection("speakers");
+const speakerTalks = await getCollection("speaker-talks");
 
 const { agendaItems, title } = Astro.props as Props;
-
-const getSpeakerInfo = (speakerId: string): Speaker | null => {
-  const speakerDetails = speakers.find(
-    (s) => speakerId === getPersonIdFromFilePath(s.file)
-  );
-
-  const speakerTalk = speakerTalks.find(
-    (s) => speakerId === getPersonIdFromFilePath(s.file)
-  );
-
-  if (!speakerDetails || !speakerTalk) {
-    return null;
-  }
-
-  return {
-    id: speakerId,
-    bio: speakerDetails.frontmatter,
-    BioMdContent: speakerDetails.Content,
-    talk: speakerTalk.frontmatter,
-    TalkMdContent: speakerTalk.Content,
-    type: "speaker",
-  };
-};
 ---
 
 <h2>{title}</h2>
@@ -63,9 +33,10 @@ const getSpeakerInfo = (speakerId: string): Speaker | null => {
         );
       } else {
         // TODO: Handle multiple speakers, currently assume speakers[0]
-        const speaker = getSpeakerInfo(agendaItem.speakers[0]);
+        const speakerSlug = agendaItem.speakers[0];
+        const speaker = speakers.find((s) => s.slug === speakerSlug);
 
-        if (!speaker) {
+        if (!speakerSlug || !speaker) {
           return (
             <li class="agenda-item">
               <div class="agenda-row">
@@ -80,6 +51,8 @@ const getSpeakerInfo = (speakerId: string): Speaker | null => {
           );
         }
 
+        const speakerTalk = speakerTalks.find((s) => s.slug === speakerSlug);
+
         return (
           <li class="agenda-item">
             <button
@@ -90,10 +63,10 @@ const getSpeakerInfo = (speakerId: string): Speaker | null => {
             >
               <span class="time-slot">{agendaItem.timeSlot}</span>
               <div class="speaker-slot">
-                <img src={`/img/${speaker.bio.imgName}`} />
+                <img src={`/img/${speaker.data.imgName}`} />
                 <div class="talk">
-                  <strong>{speaker.bio.name}</strong>
-                  <span>{speaker.talk.title || "TBA"}</span>
+                  <strong>{speaker.data.name}</strong>
+                  <span>{speakerTalk ? speakerTalk.data.title : "TBA"}</span>
                 </div>
               </div>
             </button>

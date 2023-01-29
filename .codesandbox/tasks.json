@@ -26,6 +26,10 @@
     "prettier": {
       "name": "Format",
       "command": "npm run prettier"
+    },
+    "content-sync": {
+      "name": "Content Sync",
+      "command": "npm run sync"
     }
   }
 }
