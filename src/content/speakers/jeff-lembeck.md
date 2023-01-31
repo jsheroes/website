@@ -1,5 +1,5 @@
 ---
-name: Jeffery Lembeck
+name: Jeffrey Lembeck
 title: Senior Engineer
 company: Catchpoint
 imgName: speakers/jeff-lembeck.jpg
