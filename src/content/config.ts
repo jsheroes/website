@@ -6,6 +6,14 @@ const personSchema = {
     company: z.string().optional(),
     title: z.string(),
     imgName: z.string(),
+    links: z
+      .object({
+        twitter: z.string().optional(),
+        github: z.string().optional(),
+        website: z.string().optional(),
+        linkedin: z.string().optional(),
+      })
+      .optional(),
   }),
 };
 

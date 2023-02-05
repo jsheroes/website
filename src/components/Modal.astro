@@ -21,6 +21,33 @@ if (speakerTalk) {
   const { Content } = await speakerTalk.render();
   TalkContent = Content;
 }
+
+let links = [];
+const linkMap: Record<string, string> = {
+  twitter: "Twitter",
+  github: "GitHub",
+  link: "Website",
+  linkedin: "LinkedIn",
+};
+
+const sortOrder = [
+  linkMap.twitter,
+  linkMap.github,
+  linkMap.linkedin,
+  linkMap.website,
+];
+
+if (person.data.links) {
+  for (const [key, value] of Object.entries(person.data.links)) {
+    links.push({
+      name: linkMap[key],
+      url: value,
+      icon: `/img/icons/${key === "website" ? "link" : key}.svg`,
+    });
+  }
+}
+
+links.sort((a, b) => sortOrder.indexOf(a.name) - sortOrder.indexOf(b.name));
 ---
 
 <dialog
@@ -30,12 +57,30 @@ if (speakerTalk) {
 >
   <main>
     <div class="bio">
-      <img
-        class="photo"
-        src={`/img/${person.data.imgName}`}
-        alt={person.data.name}
-        loading="lazy"
-      />
+      <div class="bio-info">
+        <img
+          class="photo"
+          src={`/img/${person.data.imgName}`}
+          alt={person.data.name}
+          loading="lazy"
+        />
+        <div class="bio-links">
+          {
+            links.length > 0 &&
+              links.map((link) => (
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener"
+                  title={link.name}
+                >
+                  <img src={link.icon} alt={link.name} loading="lazy" />
+                </a>
+              ))
+          }
+        </div>
+      </div>
+
       <div class="bio-details">
         <div id={`${person.id}-title`} class="bio-title" role="heading">
           <strong class="bio-name">{person.data.name}</strong>
@@ -47,6 +92,7 @@ if (speakerTalk) {
             }</span
           >
         </div>
+
         <BioContent />
       </div>
     </div>
@@ -148,6 +194,32 @@ if (speakerTalk) {
     gap: 1rem;
   }
 
+  .bio-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .bio-links {
+    display: flex;
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .bio-links > a {
+    display: flex;
+    width: 1.2rem;
+    height: 1.2rem;
+    transition: all var(--speed-move) ease-out;
+  }
+
+  .bio-links > a:hover {
+    transform: scale(1.2);
+    filter: contrast(200);
+  }
+
   .bio-details {
     min-width: 250px;
   }
@@ -183,6 +255,10 @@ if (speakerTalk) {
 
     .bio-title {
       text-align: center;
+    }
+
+    .bio-info {
+      align-items: center;
     }
 
     .photo {
