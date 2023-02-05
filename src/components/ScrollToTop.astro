@@ -1,0 +1,83 @@
+---
+const { default: arrowUp } = await import(
+  "../../public/img/icons/arrow-up.svg?raw"
+);
+---
+
+<button class="scroll-top" aria-label="Scroll to top">
+  <Fragment set:html={arrowUp} />
+</button>
+
+<script>
+  const scrollToTopButton = document.querySelector(
+    ".scroll-top"
+  ) as HTMLButtonElement;
+
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+
+  function renderScrollButton() {
+    const shouldRender =
+      window.scrollY > 900 && window.matchMedia("(min-width: 768px)").matches;
+
+    if (shouldRender) {
+      scrollToTopButton.style.cssText = "visibility: visible; opacity: 1";
+
+      (scrollToTopButton.firstElementChild as SVGElement).style.cssText =
+        "height: 2rem; width: 2rem;";
+
+      const elementsFromPoint = document.elementsFromPoint(
+        scrollToTopButton.offsetLeft,
+        scrollToTopButton.offsetTop
+      );
+      elementsFromPoint.forEach((element) => {
+        if (element.tagName !== "SECTION" && element.tagName !== "FOOTER") {
+          return;
+        }
+
+        if (element.className === "section light") {
+          scrollToTopButton.style.fill = `var(--color-primary)`;
+        }
+
+        if (
+          element.tagName === "FOOTER" ||
+          element.className === "section dark"
+        ) {
+          scrollToTopButton.style.fill = `var(--color-neutral-light)`;
+        }
+      });
+    } else {
+      scrollToTopButton.style.cssText = "visibility: hidden; opacity: 0";
+    }
+  }
+
+  scrollToTopButton.addEventListener("click", scrollToTop);
+  window.addEventListener("scroll", renderScrollButton);
+</script>
+
+<style>
+  .scroll-top {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    right: 25px;
+    bottom: 25px;
+    z-index: 3;
+    visibility: hidden;
+    opacity: 0;
+    transition: all var(--speed-fade) ease-out;
+  }
+
+  .scroll-top:hover {
+    transform: scale(1.2);
+  }
+</style>
