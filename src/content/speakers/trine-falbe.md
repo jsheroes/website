@@ -2,6 +2,11 @@
 name: Trine Falbe
 title: Ethical Innovation & Design consultant
 imgName: speakers/trine-falbe.jpg
+links:
+  {
+    twitter: "https://twitter.com/trinefalbe",
+    linkedin: "https://www.linkedin.com/in/trinefalbe",
+  }
 ---
 
 Trine has pioneered the UX world with her thoughts on responsible design and ethical UX. She is an entrepreneur and independent consultant, and her clients come to her for her expertise in responsible innovation, ethical design and UX.
