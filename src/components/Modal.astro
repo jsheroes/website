@@ -26,7 +26,7 @@ let links = [];
 const linkMap: Record<string, string> = {
   twitter: "Twitter",
   github: "GitHub",
-  link: "Website",
+  website: "Website",
   linkedin: "LinkedIn",
 };
 
@@ -192,6 +192,7 @@ links.sort((a, b) => sortOrder.indexOf(a.name) - sortOrder.indexOf(b.name));
   .bio {
     display: flex;
     gap: 1rem;
+    padding-bottom: 10px;
   }
 
   .bio-info {
