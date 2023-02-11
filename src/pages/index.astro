@@ -13,6 +13,7 @@ import { Content as Theme } from "../sections/theme.md";
 import { Content as Event } from "../sections/event.md";
 import Organizers from "../sections/organizers.astro";
 import { CURRENT_YEAR } from "../data/constants";
+import ContactForm from "../components/ContactForm.astro";
 // import { day1, day2 } from "../data/agenda";
 ---
 
@@ -67,6 +68,7 @@ import { CURRENT_YEAR } from "../data/constants";
       <Organizers />
     </Section>
   </main>
+  <ContactForm />
 </BaseLayout>
 
 <style>

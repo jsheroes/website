@@ -2,7 +2,9 @@
   <div class="content list">
     <div class="column">
       <strong>Useful links</strong>
-      <a class="navlink" href="mailto:welcome@jsheroes.io">Contact us</a>
+      <button class="contact-form" onclick="window['contact-form'].showModal()"
+        >Contact us</button
+      >
       <a class="navlink" href="/speak-at-jsheroes">Speak at JSHeroes</a>
       <a class="navlink" href="/meet-ecma">Meet Ecma</a>
       <a class="navlink" href="/code-of-conduct">Code of conduct</a>
@@ -70,6 +72,15 @@
     .copywrite {
       margin-top: 2rem;
       text-align: center;
+    }
+
+    .contact-form {
+      background-color: var(--color-primary);
+      border: none;
+      color: var(--color-neutral-light);
+      font-family: var(--font-family-display);
+      font-size: 1rem;
+      padding: 0;
     }
   </style>
 </footer>
