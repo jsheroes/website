@@ -17,12 +17,12 @@ export const sponsors: Organization[] = [
     imgName: "sponsors/logo_cloudflight.jfif",
   },
   {
-    name: "Accessa",
+    name: "Accesa",
     url: "https://www.accesa.eu/",
     imgName: "sponsors/logo_accesa.png",
   },
   {
-    name: "Metro Digital",
+    name: "METRO.digital",
     url: "https://metro.digital/",
     imgName: "sponsors/logo_metro-digital.png",
   },
