@@ -46,4 +46,9 @@ export const communities: Organization[] = [
     url: "https://jsnation.com/",
     imgName: "communities/logo_jsnation.png",
   },
+  {
+    name: "CityJS",
+    url: "https://cityjsconf.org/",
+    imgName: "communities/logo_cityjs.png",
+  },
 ];
