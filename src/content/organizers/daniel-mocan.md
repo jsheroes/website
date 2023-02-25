@@ -2,6 +2,7 @@
 name: "Daniel Mocan"
 title: "Organizer"
 imgName: "organizers/daniel-mocan.png"
+links: { linkedin: "https://www.linkedin.com/in/daniel-mocan/" }
 ---
 
 Daniel mostly focuses on the JSHeroes local meetups, but during the conference gives a helping hand where it is needed. He is usually in charge of the JSHeroes Blood Donation campaign.
