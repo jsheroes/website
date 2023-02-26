@@ -1,0 +1,343 @@
+---
+const MESSAGE = {
+  title: "Contact us",
+  subtitle: "We'll get back to you within 2 business days.",
+};
+---
+
+<dialog id="contact-form" aria-labelledby="contactForm">
+  <main>
+    <form class="form">
+      <h2>{MESSAGE.title}</h2>
+      <p>{MESSAGE.subtitle}</p>
+      <div class="input-group">
+        <label for="message">Message</label>
+        <textarea
+          aria-label="Your message"
+          class="input"
+          rows="5"
+          name="message"
+          id="message"
+          required></textarea>
+        <span class="error-message"></span>
+      </div>
+      <div class="input-group">
+        <label for="email">E-mail</label>
+        <input
+          aria-label="Your e-mail"
+          class="input"
+          name="email"
+          type="email"
+          id="email"
+          required
+        />
+        <span class="error-message"></span>
+      </div>
+      <div>
+        <button aria-label="Send your message" class="send-btn" type="submit"
+          >Send</button
+        >
+      </div>
+      <div class="response"></div>
+    </form>
+  </main>
+
+  <button aria-label="Close modal" class="close-btn">
+    <img alt="Close modal" class="close" src="/img/icons/close.svg" />
+  </button>
+</dialog>
+
+<script>
+  import { z } from "astro:content";
+
+  const formSchema = z.object({
+    message: z
+      .string()
+      .min(1, { message: "Please enter a message." })
+      .max(2000, { message: "Message exceeds the 2000 character limit." }),
+    email: z.string().email({ message: "Please enter a valid email address." }),
+  });
+
+  type Form = z.infer<typeof formSchema>;
+
+  let formValues: Form = {
+    message: "",
+    email: "",
+  };
+
+  const form = document.querySelector(".form") as HTMLFormElement;
+  const sendButton = document.querySelector(".send-btn") as HTMLButtonElement;
+  const closeButton = document.querySelector(".close-btn") as HTMLButtonElement;
+  const message = document.querySelector("textarea") as HTMLTextAreaElement;
+  const email = document.querySelector("input") as HTMLInputElement;
+
+  const onCloseModal = () => {
+    form.reset();
+
+    document.querySelectorAll(".error-message").forEach((error) => {
+      error.textContent = "";
+    });
+
+    document.querySelectorAll(".input").forEach((input) => {
+      input.classList.remove("input-error");
+    });
+
+    document.querySelector(".response")!.textContent = "";
+
+    formValues = {
+      message: "",
+      email: "",
+    };
+
+    (window as any)["contact-form"].close();
+  };
+
+  const onSetErrors = (field: keyof Form) => {
+    const formErrors = formSchema.safeParse(formValues);
+
+    if (formErrors.success) {
+      const errors = document.querySelectorAll(
+        ".error-message"
+      ) as NodeListOf<HTMLSpanElement>;
+
+      const inputs = document.querySelectorAll(
+        ".input"
+      ) as NodeListOf<HTMLInputElement>;
+
+      errors.forEach((error) => (error.textContent = ""));
+      inputs.forEach((input) => input.classList.remove("input-error"));
+    }
+
+    if (!formErrors.success) {
+      const fieldError = formErrors.error.formErrors.fieldErrors[field];
+      const input = document.querySelector(`#${field}`) as HTMLInputElement;
+
+      if (fieldError) {
+        input.parentElement!.querySelector(".error-message")!.textContent =
+          fieldError[0];
+        input.classList.add("input-error");
+      } else {
+        input.parentElement!.querySelector(".error-message")!.textContent = "";
+        input.classList.remove("input-error");
+      }
+    }
+  };
+
+  const onChange = (event: Event) => {
+    const target = event.target as HTMLInputElement;
+    formValues = { ...formValues, [target.name]: target.value };
+    onSetErrors(target.name as keyof Form);
+  };
+
+  const onSetResponse = (response: string, status: "error" | "success") => {
+    const responseElement = document.querySelector(
+      ".response"
+    ) as HTMLDivElement;
+    responseElement.textContent = response;
+
+    if (status === "error") {
+      responseElement.classList.add("response-error");
+    } else {
+      responseElement.classList.add("response-success");
+    }
+  };
+
+  const onSubmit = async (event: Event) => {
+    event.preventDefault();
+
+    let formErrors = formSchema.safeParse(formValues);
+
+    if (!formErrors.success) {
+      Object.keys(formErrors.error.formErrors.fieldErrors).forEach((field) => {
+        onSetErrors(field as keyof Form);
+      });
+    } else {
+      document.querySelectorAll(".error-message").forEach((error) => {
+        error.classList.remove("error-message");
+      });
+
+      sendButton.disabled = true;
+
+      fetch("/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formValues),
+      })
+        .then(async (res) => {
+          const data = await res.json();
+
+          if (!res.ok) {
+            return Promise.reject();
+          }
+
+          return data;
+        })
+        .then((data) => {
+          onSetResponse(data.message, "success");
+          sendButton.disabled = false;
+          form.reset();
+        })
+        .catch((error) => {
+          onSetResponse(error.message, "error");
+          sendButton.disabled = false;
+        });
+    }
+  };
+
+  message.addEventListener("input", onChange);
+  email.addEventListener("input", onChange);
+  sendButton.addEventListener("click", onSubmit);
+  closeButton.addEventListener("click", onCloseModal);
+</script>
+
+<style>
+  dialog {
+    position: fixed;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 1rem;
+    overflow: visible;
+    border: 1rem solid var(--color-accent-green);
+  }
+
+  dialog[open] {
+    display: flex;
+  }
+
+  dialog::backdrop {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  .close-btn {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    padding: 0;
+    appearance: none;
+    border: 0px solid var(--color-neutral-light);
+    border-radius: 50%;
+    top: -2rem;
+    right: -2rem;
+    width: 3rem;
+    height: 3rem;
+    background: var(--color-accent-green);
+    transition: border-width var(--speed-move) ease-out,
+      outline-offset var(--speed-move) ease-out;
+  }
+
+  .close-btn:hover {
+    border-width: 4px;
+  }
+
+  .close-btn:hover .close {
+    transform: scale(1.2);
+  }
+
+  .close {
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: transform var(--speed-move) ease-out;
+  }
+
+  main {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    padding: 0.5rem;
+    font-family: var(--font-family-display);
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  h2,
+  p {
+    margin: 0;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .input {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid var(--color-primary);
+    border-radius: 5px;
+    font-family: var(--font-family-display);
+    outline-color: inherit;
+  }
+
+  .input-error {
+    border-color: var(--color-accent-pink);
+  }
+  .input-error:focus {
+    outline: 1.5px solid var(--color-accent-pink);
+  }
+
+  textarea {
+    resize: vertical;
+    max-height: 300px;
+    min-height: 100px;
+  }
+
+  label {
+    font-size: 0.8rem;
+  }
+
+  label:after {
+    content: "*";
+    color: var(--color-accent-pink);
+  }
+
+  .error-message {
+    font-size: 0.75rem;
+    margin: 3px 14px 0px;
+    color: var(--color-accent-pink);
+  }
+
+  .send-btn {
+    padding: 0.5rem 1rem;
+    background: var(--color-accent-orange);
+    color: var(--color-neutral-dark);
+    border: none;
+    border-radius: 0.75rem;
+    outline-offset: -4px;
+    transition: all var(--speed-fade) ease-out;
+  }
+
+  .send-btn:disabled {
+    color: rgba(0, 0, 0, 0.26);
+    background: rgba(0, 0, 0, 0.12);
+  }
+
+  .send-btn:not(:disabled):hover {
+    color: var(--color-neutral-dark);
+    background: var(--color-accent-pink);
+    /* filter: drop-shadow(0px 0px 3px var(--color-neutral-light)); */
+    /* filter: drop-shadow(0px 0px 3px #bbbbbb); */
+  }
+
+  .response-success {
+    color: var(--color-accent-green);
+  }
+
+  .response-error {
+    color: var(--color-accent-pink);
+  }
+</style>
