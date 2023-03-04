@@ -8,7 +8,7 @@ The <strong>call for papers</strong> for the 2023 event is <strong>closed</stron
 We encourage people of all ages, races, genders and religions, to submit proposals and we would like to ensure everyone that our process of selecting the talks will be <strong>fair</strong> and <strong>transparent</strong>, as the entire concept behind JSHeroes.
 
 <!-- <br/>
-<a href="https://sessionize.com/jsheroes-2023" target="_blank" rel="noreferrer noopener" class="cta-link">Submit Proposal</a> -->
+<a href="https://sessionize.com/jsheroes-2023" target="_blank" rel="noreferrer noopener" class="cta-button">Submit Proposal</a> -->
 
 ## ✍ What we are looking for
 
@@ -51,4 +51,4 @@ We are committed to fulfilling our mission as an open source event. We are all c
 Good luck!
 
 <!-- <br/>
-<a href="https://sessionize.com/jsheroes-2023" target="_blank" rel="noreferrer noopener" class="cta-link">Submit Proposal</a> -->
+<a href="https://sessionize.com/jsheroes-2023" target="_blank" rel="noreferrer noopener" class="cta-button">Submit Proposal</a> -->

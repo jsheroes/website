@@ -1,0 +1,140 @@
+<div class="consent-banner">
+  <div class="consent-info">
+    <p>Can we store cookies?</p>
+    <p>
+      By clicking “Accept”, you agree to the storing of cookies on your device
+      to analyse site usage. Please consult our <a href="/privacy"
+        >privacy policy</a
+      > to learn more about this.
+    </p>
+  </div>
+  <div class="consent-controls">
+    <button class="cta-button">Reject</button>
+    <button class="cta-button">Accept</button>
+  </div>
+</div>
+
+<script>
+  const consent = window.localStorage.getItem("cookieConsent");
+  const consentBanner = document.querySelector(
+    ".consent-banner"
+  ) as HTMLDivElement;
+  const acceptButton = document.querySelector(
+    ".consent-banner button:nth-of-type(2)"
+  ) as HTMLButtonElement;
+  const rejectButton = document.querySelector(
+    ".consent-banner button:nth-of-type(1)"
+  ) as HTMLButtonElement;
+
+  const createAdsScript = () => {
+    const googleTag = document.createElement("script");
+    const dataLayer = document.createElement("script");
+    const partyTownScript = document.createElement("script");
+
+    googleTag.src = "https://www.googletagmanager.com/gtag/js?id=G-ES429Z5W7T";
+    googleTag.async = true;
+    googleTag.type = "text/partytown";
+
+    dataLayer.type = "text/partytown";
+    dataLayer.innerHTML = `
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-ES429Z5W7T");
+    `;
+
+    partyTownScript.type = "text/partytown";
+
+    document.head.insertBefore(partyTownScript, document.head.firstChild);
+    document.head.insertBefore(googleTag, document.head.firstChild);
+    document.head.insertBefore(dataLayer, document.head.firstChild);
+
+    window.dispatchEvent(new CustomEvent("ptupdate"));
+  };
+
+  if (consent === "true") {
+    consentBanner.remove();
+    createAdsScript();
+  }
+
+  if (consent === "false") {
+    consentBanner.remove();
+  }
+
+  acceptButton.addEventListener("click", () => {
+    window.localStorage.setItem("cookieConsent", "true");
+    consentBanner.remove();
+    createAdsScript();
+  });
+
+  rejectButton.addEventListener("click", () => {
+    window.localStorage.setItem("cookieConsent", "false");
+    consentBanner.remove();
+  });
+</script>
+
+<style>
+  .consent-banner {
+    position: fixed;
+    max-width: 60%;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+    border-radius: 5px;
+    border: 0.5px solid var(--color-primary);
+    filter: drop-shadow(1px 2px 4px var(--color-primary));
+  }
+
+  .consent-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .consent-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 0.95;
+  }
+
+  .consent-info :first-child {
+    font-weight: bold;
+  }
+
+  .consent-banner p {
+    margin: 0;
+  }
+
+  @media screen and (max-width: 756px) {
+    .consent-banner {
+      flex-direction: column;
+      padding: 1rem;
+      max-width: 90%;
+      gap: 1rem;
+    }
+
+    .consent-info {
+      max-width: 100%;
+    }
+
+    .consent-controls {
+      gap: 0.5rem;
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    .consent-banner {
+      max-width: 90%;
+    }
+  }
+</style>
