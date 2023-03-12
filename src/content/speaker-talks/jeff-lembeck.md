@@ -1,3 +1,3 @@
 ---
-title: Reaching for the sky with JavaScript
+title: We're All Doing the Best We Can
 ---

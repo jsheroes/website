@@ -1,4 +1,6 @@
-## 10 years of pushing the boundaries
+## Agenda
+
+### 10 years of pushing the boundaries
 
 This year we want to shift our attention to the decade of progress in the world of web development. Back in 2013, we went through a period of rethinking practices as frontend development took off and became one of the most crucial disciplines in tech. Frameworks like: React, Angular or Vue, and their ecosystems now enter into their second decade of existence, while web capabilities and standards are increasingly more potent and versatile.
 
