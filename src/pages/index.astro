@@ -6,14 +6,14 @@ import BearLink from "../components/BearLink.astro";
 import Banner from "../sections/banner.astro";
 import { Content as News } from "../sections/news.md";
 import Speakers from "../sections/speakers.astro";
-// import Agenda from "../sections/agenda.astro";
+import Agenda from "../sections/agenda.astro";
 import Friends from "../sections/friends.astro";
 import { Content as Description } from "../sections/description.md";
 import { Content as Theme } from "../sections/theme.md";
 import { Content as Event } from "../sections/event.md";
 import Organizers from "../sections/organizers.astro";
 import { CURRENT_YEAR } from "../data/constants";
-// import { day1, day2 } from "../data/agenda";
+import { day1, day2 } from "../data/agenda";
 ---
 
 <BaseLayout title={`JSHeroes ${CURRENT_YEAR} | Open-Source Community Event`}>
@@ -35,11 +35,9 @@ import { CURRENT_YEAR } from "../data/constants";
           aria-hidden="true"
         />
       </span>
-    </Section>
-    <!-- <Section variant="light" content="text">
       <Agenda title="Day 1: Thursday May 18" agendaItems={day1} />
       <Agenda title="Day 2: Friday May 19" agendaItems={day2} />
-    </Section> -->
+    </Section>
     <Section variant="dark" content="text">
       <Description />
       <span class="bear-anchor">
