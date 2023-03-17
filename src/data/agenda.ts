@@ -25,8 +25,8 @@ export const day1: AgendaItem[] = [
     imgName: "event/coffee.jpg",
   },
   { type: "talk", speakers: ["jeff-lembeck"], timeSlot: "14:00 - 14:30" },
-  { type: "talk", speakers: [], timeSlot: "14:30 - 15:00" },
-  { type: "talk", speakers: ["debbie-obrien"], timeSlot: "15:00 - 15:30" },
+  { type: "talk", speakers: ["jatin-ramanathan"], timeSlot: "14:30 - 15:00" },
+  { type: "talk", speakers: ["alena-nikolaeva"], timeSlot: "15:00 - 15:30" },
   {
     type: "placeholder",
     content: "Coffee Break",
@@ -78,6 +78,6 @@ export const day2: AgendaItem[] = [
     timeSlot: "15:30 - 16:00",
     imgName: "event/coffee.jpg",
   },
-  { type: "talk", timeSlot: "16:00 - 16:30", speakers: ["alena-nikolaeva"] },
+  { type: "talk", timeSlot: "16:00 - 16:30", speakers: ["debbie-obrien"] },
   { type: "talk", timeSlot: "16:30 - 17:00", speakers: ["gil-tayar"] },
 ];
