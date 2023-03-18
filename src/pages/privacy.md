@@ -16,7 +16,7 @@ Personal information may be collected from you in various ways, for example:
 
 Anonymous data may be collected from you in various ways, for example:
 
-- Information on how you were referred to our site via another website, and the links you follow when leaving our site (through [Splitbee](https://splitbee.io/) and [Google Analytics](https://marketingplatform.google.com/about/analytics/))
+- Information on how you were referred to our site via another website, and the links you follow when leaving our site (through [Splitbee](https://splitbee.io/)
 - Information about your general location (country) and browser you used to access our website
 
 ## How we use your data
@@ -30,7 +30,7 @@ We use the data we collect for a number of purposes:
 
 ## Cookies
 
-Cookies are pieces of information that a website places on your device when you visit a website. We do not use any advertising cookies and the only tracking systems we use makes use of a single cookie to track recurring visits on our website.
+Cookies are pieces of information that a website places on your device when you visit a website. We do not use any advertising cookies and the only tracking system we use (Splitbee) makes use of a single cookie to track recurring visits on our website.
 
 ## Campaign tracking
 
@@ -49,7 +49,6 @@ We have checked that our 3rd party solution providers adhere to GDPR guidelines 
 - [Ti.to Privacy Policy](https://ti.to/privacy)
 - [PayPal Privacy Policy](https://www.paypal.com/en/webapps/mpp/ua/privacy-full)
 - [Splitbee Privacy Policy](https://splitbee.io/privacy)
-- [Google Privacy Policy](https://policies.google.com/privacy?hl=en-US)
 
 We will not share or sell your personal data to any other 3rd party for their own marketing purposes unless we have your permission to do so.
 
