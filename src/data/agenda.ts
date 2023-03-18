@@ -44,7 +44,7 @@ export const day2: AgendaItem[] = [
     timeSlot: "09:00 - 09:30",
     imgName: "event/registration.jpg",
   },
-  { type: "talk", timeSlot: "09:30 - 10:00", speakers: [] },
+  { type: "talk", timeSlot: "09:30 - 10:00", speakers: ["liran-tal"] },
   {
     type: "talk",
     timeSlot: "10:00 - 10:30",
@@ -70,14 +70,13 @@ export const day2: AgendaItem[] = [
     imgName: "event/coffee.jpg",
   },
   { type: "talk", timeSlot: "14:00 - 14:30", speakers: ["charlie-gerard"] },
-  { type: "talk", timeSlot: "14:30 - 15:00", speakers: ["liran-tal"] },
-  { type: "talk", timeSlot: "15:00 - 15:30", speakers: ["tierney-cyren"] },
+  { type: "talk", timeSlot: "14:30 - 15:00", speakers: ["tierney-cyren"] },
   {
     type: "placeholder",
     content: "Coffee Break",
-    timeSlot: "15:30 - 16:00",
+    timeSlot: "15:00 - 15:30",
     imgName: "event/coffee.jpg",
   },
-  { type: "talk", timeSlot: "16:00 - 16:30", speakers: ["debbie-obrien"] },
-  { type: "talk", timeSlot: "16:30 - 17:00", speakers: ["gil-tayar"] },
+  { type: "talk", timeSlot: "15:30 - 16:00", speakers: ["debbie-obrien"] },
+  { type: "talk", timeSlot: "16:00 - 16:30", speakers: ["gil-tayar"] },
 ];
