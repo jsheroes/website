@@ -1,5 +1,6 @@
 ---
 import { sponsors } from "../data/sponsors";
+import { partners } from "../data/partners";
 import { communities } from "../data/communities";
 ---
 
@@ -40,6 +41,32 @@ import { communities } from "../data/communities";
     </>
   )
 }
+
+<div class="content center">
+  <h2>Event partners</h2>
+
+  <p>
+    Companies that support our speakers or offer their services for the event
+  </p>
+</div>
+
+<ul role="list" class="list">
+  {
+    partners.map((com) => (
+      <li class="list-item">
+        <a
+          class="friend-link"
+          href={com.url}
+          target="_blank"
+          rel="noreferrer noopener"
+          title={com.name}
+        >
+          <img src={`/img/${com.imgName}`} alt="" />
+        </a>
+      </li>
+    ))
+  }
+</ul>
 
 <div class="content center">
   <h2>Media partners</h2>
