@@ -5,7 +5,7 @@ title: Call for papers 2023 insights
 published: Mar 13, 2023
 ---
 
-2023 is a big year for us, as are planning our first **two day event** since the pandemic started. While last year was great, it was a single day conference, with most of the speakers re-invited after the cancellation of the 2020 event. But for 2023, to fill in the 20 slots, all we brought back the call for papers.
+2023 is a big year for us, as we are planning our first **two day event** since the pandemic started. While last year was great, it was a single day conference, with most of the speakers re-invited after the cancellation of the 2020 event. But for 2023, to fill in the 20 slots, we brought back the call for papers.
 
 In this article, I want to share some insights and learnings from our cfp selection process.
 
@@ -35,7 +35,7 @@ We started collecting data at the beginning of November in 2022 and we closed th
 
 Then the hard part started.
 
-## The evalution
+## The evaluation
 
 One cool feature sessionize has is to turn on **anonymous** mode for all the proposals. You see all the talk details, but you don't see any details about the speaker. 
 
@@ -55,7 +55,7 @@ Another nice feature in sessionize is that you can write a short message when yo
 
 The **second phase** started by eliminating all talks under a certain threshold. So everything rated below 3.0 was rejected. This left us with **62 shortlisted talks**.
 
-At this point, we de-anonymized the results and started comparing speakers and proposals head to head. The earlier mentioned categories helped us here as we were able to compare 3-4 proposals on a similar topic. 
+At this point, we de-anonymized the results and started comparing speakers and proposals head to head. The earlier mentioned categories helped us here, as we were able to compare 3-4 proposals on a similar topic. 
 
 Even so, this is the most complicated part, because there's no recipe for doing it right. You have to consider many things:
  - the quality of the proposals
@@ -69,7 +69,7 @@ Even so, this is the most complicated part, because there's no recipe for doing 
 ## The learnings
 
 These are some of our learnings from this year and from previous editions. We hope these learnings are useful for other event organizers:
- - If you expect more then 100 proposals, use a tool to manage everything, it is worth every penny.
+ - If you expect more than 100 proposals, use a tool to manage everything, it is worth every penny.
  - Keep the form as short as possible, but make sure you have a non-public field where the speaker can explain what makes the proposal stand out
  - Limit the number of proposals per speaker. Almost all the speakers that were selected had a single proposal.
  - Ask speakers to select a category when submitting, but don't limit them to your predefined categories
