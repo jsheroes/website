@@ -26,4 +26,9 @@ export const sponsors: Organization[] = [
     url: "https://metro.digital/",
     imgName: "sponsors/logo_metro-digital.png",
   },
+  {
+    name: "Evozon",
+    url: "https://www.evozon.com/en/",
+    imgName: "sponsors/logo_evozon.png",
+  },
 ];
