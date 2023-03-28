@@ -51,4 +51,9 @@ export const communities: Organization[] = [
     url: "https://cityjsconf.org/",
     imgName: "communities/logo_cityjs.png",
   },
+  {
+    name: "Code for Romania",
+    url: "https://code4.ro/",
+    imgName: "communities/logo_code4ro.png",
+  },
 ];
