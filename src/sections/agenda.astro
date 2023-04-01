@@ -60,6 +60,7 @@ const { agendaItems, title } = Astro.props as Props;
               aria-controls={speaker.id}
               class="agenda-row clickable"
               onclick={`window['${speaker.id}'].showModal()`}
+              title={`See the profile of ${speaker.data.name}`}
             >
               <span class="time-slot">{agendaItem.timeSlot}</span>
               <div class="speaker-slot">

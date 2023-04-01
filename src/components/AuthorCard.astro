@@ -16,6 +16,7 @@ const { author, publishDate } = Astro.props;
     aria-haspopup="dialog"
     aria-controls={author.id}
     onclick={`window['${author.id}'].showModal()`}
+    title={`See the profile of ${author.data.name}`}
   >
     <img src={`/img/${author.data.imgName}`} />
     <div class="author-details">
