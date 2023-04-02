@@ -20,6 +20,7 @@ const { person, variant = "large" } = Astro.props as Props;
     aria-controls={person.id}
     class="clickable-photo"
     onclick={`window['${person.id}'].showModal()`}
+    title={`See the profile of ${person.data.name}`}
   >
     <img src={`/img/${person.data.imgName}`} alt={person.data.name} />
   </button>
