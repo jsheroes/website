@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownLayout.astro
 author: ale-retegan
-title: 2022 transparency plan
+title: 2022 Transparency Plan
 published: May 16, 2022
 ---
 
