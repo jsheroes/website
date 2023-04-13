@@ -31,4 +31,14 @@ export const sponsors: Organization[] = [
     url: "https://www.evozon.com/en/",
     imgName: "sponsors/logo_evozon.png",
   },
+  {
+    name: "Darwin",
+    url: "https://www.linkedin.com/company/darwinromania/",
+    imgName: "sponsors/logo_darwin.jpeg",
+  },
+  {
+    name: "Yonder",
+    url: "https://tss-yonder.com/",
+    imgName: "sponsors/logo_yonder.jpg",
+  },
 ];
