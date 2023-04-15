@@ -56,4 +56,9 @@ export const communities: Organization[] = [
     url: "https://code4.ro/",
     imgName: "communities/logo_code4ro.png",
   },
+  {
+    name: "FrontEnd.ro",
+    url: "https://frontend.ro/",
+    imgName: "communities/logo_frontendro.png",
+  },
 ];
