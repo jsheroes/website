@@ -25,7 +25,7 @@ export const day1: AgendaItem[] = [
     imgName: "event/coffee.jpg",
   },
   { type: "talk", speakers: ["jeff-lembeck"], timeSlot: "14:00 - 14:30" },
-  { type: "talk", speakers: ["jatin-ramanathan"], timeSlot: "14:30 - 15:00" },
+  { type: "talk", speakers: ["andrei-pfeiffer"], timeSlot: "14:30 - 15:00" },
   { type: "talk", speakers: ["alena-nikolaeva"], timeSlot: "15:00 - 15:30" },
   {
     type: "placeholder",
