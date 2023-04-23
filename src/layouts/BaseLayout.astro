@@ -8,9 +8,10 @@ import { EVENT_DATES, CURRENT_YEAR } from "../data/constants";
 
 export interface Props {
   title: string;
+  theme?: "dark";
 }
 
-const { title: propsTitle } = Astro.props as Props;
+const { title: propsTitle, theme } = Astro.props as Props;
 
 const title =
   propsTitle || `JSHeroes ${CURRENT_YEAR} | Open-Source Community Event`;
@@ -67,7 +68,7 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
   </head>
 
   <body>
-    <Navbar />
+    <Navbar theme={theme} />
     <slot />
     <ScrollToTop />
     <Footer />
@@ -185,6 +186,10 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
         color: var(--color-neutral-light);
         text-decoration: none;
         position: relative;
+
+        &.dark {
+          color: var(--color-neutral-dark);
+        }
       }
 
       .navlink::after {
