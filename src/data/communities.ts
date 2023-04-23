@@ -61,4 +61,9 @@ export const communities: Organization[] = [
     url: "https://frontend.ro/",
     imgName: "communities/logo_frontendro.png",
   },
+  {
+    name: "ReactNative EU",
+    url: "https://www.react-native.eu/?utm_campaign=React_Native_EU&utm_source=website&utm_content=jsheroes_io",
+    imgName: "communities/logo_reactnativeeu.png",
+  },
 ];
