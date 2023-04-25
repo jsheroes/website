@@ -1,9 +1,18 @@
+---
+export interface Props {
+  theme?: "dark";
+}
+
+const { theme = '' } = Astro.props as Props;
+const navlinkClass = `navlink ${theme}`;
+---
+
 <header>
   <nav>
-    <a class="navlink skip-navlink" href="#main">Skip navigation</a>
-    <a class="navlink" href="/">Home</a>
-    <a class="navlink" href="/#speakers">Speakers</a>
-    <a class="navlink" href="/#agenda">Agenda</a>
+    <a class={`${navlinkClass} skip-navlink`} href="#main">Skip navigation</a>
+    <a class={navlinkClass} href="/">Home</a>
+    <a class={navlinkClass} href="/#speakers">Speakers</a>
+    <a class={navlinkClass} href="/#agenda">Agenda</a>
   </nav>
 </header>
 <style>
