@@ -11,6 +11,16 @@ Our event is held at the ground floor of the Grand Hotel Italia, a 5-star hotel.
 
 A variety of food and drink options are offered during the lunch break, as well as during the coffee breaks. The lunch area will have clearly marked dairy and gluten free options. Additionally, the coffee stand from the main lobby will offer dairy free milk as well as regular one.
 
+## Kids room
+
+We know how important it is to support parents to, well ¯⁠\⁠_⁠(⁠ツ⁠)⁠_⁠/⁠¯, be parents, but also keep up with their work and passions. Therefore, we are preparing a kids room at the venue. This is meant in case you need to be close to them and your partner can join together with your baby/kid(s).
+
+Mothers who are still breastfeeding, but want to join the talks, can count on having their partner or nanny very close by. Needless to say, the hotel's toilets are equipped for babies who cannot wait to be better humans after nappy changes :)
+
+To give you an idea about the facilities we are preparing, kids will be able to play with Lego Duplo, Magna Tiles sets, and coloring books.
+
+So count on us for the infrastructure and openness, all you need is to convince your support system to join you.
+
 ## During the event
 
 Our collaborators are filming and taking photos throughout the event, both during the talks and during the breaks. If you do not wish to appear in any of the post-event footage, you will have the option to wear a lanyard of a different color. Please ask at the registration desk about this.
