@@ -31,7 +31,7 @@ This year we want to shift our attention to the decade of progress in the world 
 
 <b>So in 2023, let’s celebrate the past 10 years, reflecting on the evolution of our tools and patterns, with the good and the bad that comes with this rapid evolution.</b>
 
-Check out the agenda [here](https://jsheroes.io/#agenda). We’ll post all the talks, soon after the conference, on our [Youtube](https://www.youtube.com/channel/UCeJEpnvZhG-VwGpzrzYLidQ) channel. During the conference, we’re not going to live stream though.
+Check out the agenda [here](https://jsheroes.io/#agenda). We’ll post all the talks, soon after the conference, on our [YouTube](https://www.youtube.com/channel/UCeJEpnvZhG-VwGpzrzYLidQ) channel. During the conference, we’re not going to live stream though.
 
 
 ## 🎤 Pre-event meetup
