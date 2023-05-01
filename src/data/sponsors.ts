@@ -41,4 +41,9 @@ export const sponsors: Organization[] = [
     url: "https://tss-yonder.com/",
     imgName: "sponsors/logo_yonder.jpg",
   },
+  {
+    name: "Betfair",
+    url: "https://www.betfairromania.ro/",
+    imgName: "sponsors/logo_betfair.svg",
+  },
 ];
