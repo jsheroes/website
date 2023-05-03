@@ -46,4 +46,9 @@ export const sponsors: Organization[] = [
     url: "https://www.betfairromania.ro/",
     imgName: "sponsors/logo_betfair.svg",
   },
+  {
+    name: "AboutYou",
+    url: "https://corporate.aboutyou.de/en/tech-hub-cluj-napoca",
+    imgName: "sponsors/logo_aboutyou.jpg",
+  },
 ];
