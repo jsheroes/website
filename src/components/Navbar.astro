@@ -1,20 +1,104 @@
 ---
+import { Icon } from "astro-icon";
 export interface Props {
   theme?: "dark";
 }
 
-const { theme = '' } = Astro.props as Props;
+const { theme = "" } = Astro.props as Props;
 const navlinkClass = `navlink ${theme}`;
 ---
 
 <header>
-  <nav>
-    <a class={`${navlinkClass} skip-navlink`} href="#main">Skip navigation</a>
-    <a class={navlinkClass} href="/">Home</a>
-    <a class={navlinkClass} href="/#speakers">Speakers</a>
-    <a class={navlinkClass} href="/#agenda">Agenda</a>
+  <nav class="main-nav">
+    <div class="primary-links">
+      <a class={`${navlinkClass} skip-navlink`} href="#main">Skip navigation</a>
+      <a class={navlinkClass} href="/">Home</a>
+      <a class={navlinkClass} href="/#speakers">Speakers</a>
+      <a class={navlinkClass} href="/#agenda">Agenda</a>
+    </div>
+
+    <button class="hamburger" aria-label="Toggle menu">
+      <Icon name="mdi:menu" class={navlinkClass} />
+    </button>
   </nav>
 </header>
+
+<nav class="side-drawer" tabindex="-1">
+  <button class="close" aria-label="Close menu">
+    <Icon name="mdi:close" class="navlink" />
+  </button>
+  <section>
+    <div class="primary">
+      <a class="navlink" href="/">Home</a>
+      <a class="navlink" href="/#speakers">Speakers</a>
+      <a class="navlink" href="/#agenda">Agenda</a>
+    </div>
+
+    <div class="secondary">
+      <a class="navlink" href="/handbook">Handbook</a>
+      <a class="navlink" href="/eco-friendly">Eco Friendly</a>
+      <a class="navlink" href="/code-of-conduct">Code of Conduct</a>
+      <a class="navlink" href="/privacy">Privacy Statement</a>
+      <a class="navlink" href="/terms-and-conditions">Terms and Conditions</a>
+      <a class="navlink" href="/accessibility ">Accessibility</a>
+      <a class="navlink" href="/media">Media Kit</a>
+      <a class="navlink" href="/meet-ecma ">Meet Ecma</a>
+    </div>
+  </section>
+</nav>
+<div id="backdrop"></div>
+
+<script>
+  const hamburgerBtn = document.querySelector(
+    ".hamburger"
+  ) as HTMLButtonElement;
+  const closeBtn = document.querySelector(".close") as HTMLButtonElement;
+  const backdrop = document.querySelector("#backdrop") as HTMLDivElement;
+  const sideDrawer = document.querySelector(".side-drawer") as HTMLElement;
+  const mainNav = document.querySelector(".main-nav") as HTMLElement;
+
+  const sideDrawerPrimaryLinks = document.querySelectorAll(
+    ".side-drawer .primary a"
+  ) as NodeListOf<HTMLAnchorElement>;
+
+  function onOpen() {
+    backdrop.classList.add("backdrop");
+    sideDrawer.classList.add("open");
+    sideDrawer.tabIndex = 0;
+    mainNav.classList.add("hide");
+    closeBtn.focus();
+
+    const sideDrawerLinks = document.querySelectorAll(
+      ".side-drawer a"
+    ) as NodeListOf<HTMLAnchorElement>;
+
+    sideDrawerLinks[sideDrawerLinks.length - 1].addEventListener(
+      "keydown",
+      (e) => {
+        if (e.key === "Tab" && !e.shiftKey) {
+          e.preventDefault();
+          closeBtn.focus();
+        }
+      }
+    );
+  }
+
+  function onClose() {
+    backdrop.classList.remove("backdrop");
+    sideDrawer.classList.remove("open");
+    sideDrawer.tabIndex = -1;
+    mainNav.classList.remove("hide");
+  }
+
+  hamburgerBtn.addEventListener("click", onOpen);
+  backdrop.addEventListener("click", onClose);
+  closeBtn.addEventListener("click", onClose);
+
+  sideDrawerPrimaryLinks.forEach((link) => {
+    link.addEventListener("click", onClose);
+  });
+</script>
+
 <style>
   header {
     max-width: 1280px;
@@ -32,10 +116,96 @@ const navlinkClass = `navlink ${theme}`;
     z-index: 1;
   }
 
+  .primary-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .hide {
+    display: none;
+    opacity: 0;
+  }
+
+  .backdrop {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 100;
+  }
+
+  .side-drawer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: var(--color-primary);
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 50%;
+    max-width: 400px;
+    z-index: 200;
+    transform: translateX(100%);
+    transition: all var(--speed-transition) ease-out;
+  }
+
+  .side-drawer section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 3rem;
+  }
+
+  .side-drawer section div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  .side-drawer.open {
+    transform: translateX(0);
+  }
+
+  .hamburger,
+  .close {
+    cursor: pointer;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    transition: all var(--speed-fade) ease-out;
+  }
+
+  .close {
+    align-self: flex-end;
+  }
+
+  .hamburger:hover {
+    transform: scale(1.2);
+  }
+
+  .close:hover {
+    transform: scale(1.2);
+  }
+
+  .hamburger,
+  .close svg {
+    width: 1.2rem;
+  }
+
   @media screen and (max-width: 756px) {
-    nav {
-      left: 0;
-      justify-content: center;
+    .primary-links {
+      display: none;
+    }
+    .side-drawer {
+      width: 100%;
     }
   }
 
