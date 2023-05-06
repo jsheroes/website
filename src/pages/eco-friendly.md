@@ -20,7 +20,7 @@ This year, we are committed to effective waste management throughout the confere
 
 This will be the first year when we will prepare a special bin for **recycling plastic caps**. The money collected from the cups will be donated to charity through *[Capace pentru suflete](https://www.capacecusuflet.ro/)*, a local organisation.
 
-We are also very excited about initiative that encourages participants to return their **badges and lanyard**s in separate bins at the end of the event. As an added incentive, we will be holding a random raffle to select one winner for a ticket to next year's conference.
+We are also very excited about initiative that encourages participants to return their **badges and lanyards** in separate bins at the end of the event. As an added incentive, we will be holding a random raffle to select one winner for a ticket to next year's conference.
 
 ### Coffee and water
 
