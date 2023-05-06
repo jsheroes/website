@@ -18,6 +18,8 @@ Whether you're attending JSHeroes for the first time or you're a returning atten
 - [Tickets](#-tickets)
 - [Photos](#-photos)
 - [Code of conduct](#--code-of-conduct)
+- [Transportation](#-transportation)
+- [Explore the City](#-explore-the-city)
 
 
 ## 📆 🌎 Date and Venue 
@@ -64,3 +66,16 @@ Throughout the conference, we'll take photos and video shots. Your participation
 ## 🤝  Code of Conduct  
 All attendees, speakers, sponsors, and volunteers at the JSHeroes event are required to agree with our [Code of Conduct](https://jsheroes.io/code-of-conduct). As organizers, JSHeroes will enforce this code throughout the event. We expect cooperation from all of you to help ensure a safe environment for everybody.
  
+
+## 🚌 Transportation
+Transportation is an important aspect to consider when heading to the JSHeroes conference located at Grand Hotel Italia in Cluj-Napoca. You can conveniently reach the hotel by bus, as line 21 stops directly at the venue.
+
+Please keep in mind that parking at the hotel is paid. Additionally, <b>heavy traffic</b> is to be expected in the area during morning rush hour, so plan accordingly and allow extra time for travel. We hope you have a safe and smooth journey to the conference.
+
+
+## 🧭 Explore the City
+ Cluj-Napoca has a lot of interesting places to see and explore. If you're looking for things to do during your free time while attending JSHeroes conference, be sure to check out the [map](https://www.google.com/maps/d/u/0/edit?mid=1dXVR24gWN2ioa3OVlJzw6nWpiwDE6uM&ll=46.764992355941025%2C23.583294000000006&z=15) of the city's top attractions.
+
+Some must-see places include the Alexandru Borza Botanical Garden, St. Michael's Church and the National Museum of Art. There are also plenty of cafes, restaurants, and bars where you can relax and soak up the local atmosphere.
+
+Whether you're a first-time visitor or a seasoned traveler, Cluj-Napoca has something for everyone. We hope you enjoy exploring the city and all it has to offer!
