@@ -38,6 +38,6 @@ In-person events have traditionally relied on paper and disposable forms of comm
 
 ### Supporting Zarnesti Bear Sanctuary
 
-In addition to these initiatives, and because our mascot, Ecma, is a bear, we will once again encourage our participants to make a donation to the Zarnesti Bear Sanctuary. This sanctuary, one of the largest in Eastern Europe, is dedicated to the welfare of bears. For more information on Ecma and the Zarnesti Bear Sanctuary, please visit our website.(add link to mascot page)
+In addition to these initiatives, and because our mascot, [Ecma](https://website-git-eco-friendly-page-jsheroes.vercel.app/meet-ecma), is a bear, we will once again encourage our participants to make a donation to the Zarnesti Bear Sanctuary. This sanctuary, one of the largest in Eastern Europe, is dedicated to the welfare of bears. 
 
 We believe that it is important to come together as a community to address the pressing issues facing our environment. By taking action and implementing sustainable practices, we can create a positive impact. We hope to inspire and motivate individuals and organizations to join us in this effort, as we work towards a better and more sustainable future for all. We look forward to seeing you at the conference where we can collaborate and share more ideas on how we can improve.
