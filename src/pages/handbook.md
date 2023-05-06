@@ -71,8 +71,11 @@ There is a premium catering lunch and coffee breaks. We don't want you to run ar
 
 ## 📸 Photos
 Throughout the conference, we'll take photos and video shots. Your participation at the event represents your consent to share the materials on social media. If you don't want to appear in photos, you can choose a **white lanyard** at the registration and we'll take care to filter the materials that will be shared online.
+
+## 🎉 After party
+TBA
  
-## 🤝  Code of Conduct  
+## 🤝 Code of Conduct  
 All attendees, speakers, sponsors, and volunteers at the JSHeroes event are required to agree with our [Code of Conduct](https://jsheroes.io/code-of-conduct). As organizers, JSHeroes will enforce this code throughout the event. We expect cooperation from all of you to help ensure a safe environment for everybody.
 
 ## 🧭 Explore the City
