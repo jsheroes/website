@@ -1,6 +1,6 @@
 ---
 layout: "../layouts/MarkdownLayout.astro"
-title: "An Environmentally Friendly Conference"
+title: "An environmentally sustainable event"
 ---
 
 
