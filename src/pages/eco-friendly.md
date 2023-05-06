@@ -18,7 +18,7 @@ When it comes to **catering**, we wanted to offer a variety of options that go w
 
 This year, we are committed to effective waste management throughout the conference. You will find **labeled bins** for recycling available throughout the venue, along with clear and easily understandable signage to help you properly dispose your waste.
 
-This will be the first year when we will prepare a special bin for **recycling plastic caps**. The money collected from the cups will be donated to charity through *“Capace pentru suflete”,* a local organisation.
+This will be the first year when we will prepare a special bin for **recycling plastic caps**. The money collected from the cups will be donated to charity through *[Capace pentru suflete](https://www.capacecusuflet.ro/)*, a local organisation.
 
 We are also very excited about initiative that encourages participants to return their **badges and lanyard**s in separate bins at the end of the event. As an added incentive, we will be holding a random raffle to select one winner for a ticket to next year's conference.
 
