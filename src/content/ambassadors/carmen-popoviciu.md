@@ -1,8 +1,7 @@
 ---
 name: Carmen Popoviciu
-title: Systems Engineer
-company: Cloudflare
-imgName: speakers/carmen-popoviciu.jpg
+title: Ambassador
+imgName: ambassadors/carmen-popoviciu.jpg
 links: { twitter: "https://twitter.com/CarmenPopoviciu" }
 ---
 

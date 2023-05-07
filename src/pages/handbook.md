@@ -14,6 +14,7 @@ Whether you're attending JSHeroes for the first time or you're a returning atten
 - [Communication](#-communication)
 - [Accessibility](#-accessibility)
 - [Eco-friendly](#-eco-friendly)
+- [Alternative stage](#-alternative-stage)
 - [Catering](#-catering)
 - [Photos](#-photos)
 - [Code of conduct](#--code-of-conduct)
@@ -35,7 +36,12 @@ This year we want to shift our attention to the decade of progress in the world 
 Check out the agenda [here](https://jsheroes.io/#agenda). We’ll post all the talks, soon after the conference, on our [YouTube](https://www.youtube.com/channel/UCeJEpnvZhG-VwGpzrzYLidQ) channel. During the conference, we’re not going to live stream though.
 
 ## 🎤 Pre-event meetup
-The evening before the event, on the 17th of May, we organize the traditional pre-event meetup]. This year, we're partnering up with Women in Tech Cluj and we're going to have a panel discussion with three of our conference guests from 2023. Registration is available via [meetup.com](https://www.meetup.com/jsheroes/events/293342798/).
+The evening before the event, on the 17th of May, we organize the traditional pre-event meetup. This year, we're partnering up with Women in Tech Cluj and we're going to have a panel discussion with three of our conference guests from 2023. Registration is available via [meetup.com](https://www.meetup.com/jsheroes/events/293342798/).
+
+## 📍 City tour
+Are you coming to Cluj for the first time? Or maybe you've been here before (or you even live here) but you don't know much about its history? We're organizing a two-hour free walking tour with a professional local guide. 
+
+If you are interested, please register via [this quick form](https://forms.gle/3N8sZTBcrkiBv2CB7) so we are better prepared for the size of the group.
 
 ## 🎫 Tickets
 Please make sure you have your name registered and that your ticket info is correct. You can also easily change your ticket details by accessing them directly from your email. **No need to print anything**, we'll have your badge ready at the registration desk.
@@ -55,16 +61,24 @@ You can conveniently reach the event location by bus, as **line 21** stops a few
 Please keep in mind that the dedicated parking area at the hotel is not free anymore. Additionally, *heavy traffic* is to be expected in the area during morning rush hour, so plan accordingly and allow extra time for travel. We hope you have a safe and smooth journey to the conference.
 
 ## ♿ Accessibility  
-We are trying our best to make JSHeroes hassle-free for everyone. The venue is a 5-star hotel that is fully wheelchair accessible and all the activities are held on the ground floor. 
+We are trying our best to make JSHeroes hassle-free for everyone. The venue is a 5-star hotel that is fully wheelchair accessible and all the activities are held on the ground floor.
 
 Additionally, we will hand a set of accessibility guidelines to all our speakers to ensure that their talks and slide decks are inclusive in language and content.
 
-There's a [dedicated space for accessibility](/accessibility) at JSHeroes we invite you to read.
+We have two dedicated rooms at the first floor of the hotel: a kids room and a focus room. There's a [dedicated page for accessibility and inclusion](/accessibility) at JSHeroes we invite you to read to find out more about.
 
 ## 🌱 Eco-friendly  
 We are thrilled to announce that this year's event has been organized with sustainability in mind and with the desire to limit its environment impact. 
 
 We understand the importance of reducing our carbon footprint and promoting [eco-friendly initiatives](/eco-friendly) in the industry, which is why we have started to implement a few green initiatives to make this conference as sustainable as possible.
+
+## 🎤 Alternative stage 
+We’re bringing back the concept of the alternative stage, a laid-back area in a corner of the event hall where speakers and attendees gather in the coffee breaks and during the lunch break for informal discussions or on the spot presentations. The stage is hosted by Andrei Antal and the details about the discussions will be announced before the breaks by our MC.
+
+## 🧘 Pilates session
+As a novelty for 2023, we're introducing a pilates session in the morning of the second day of the event. The session will be held in a separate room and will be driven by one of our close friends, Carmen Popoviciu, who is also a certified pilates trainer. She will showcase different types of exercises for improving our posture or dealing with pains specific to intense office work.
+
+If you wish to attend, please [register via this form](https://forms.gle/5Cm7HZhLVAyyxRzm7) so we know how to better prepare for the session.
 
 ## 🍎 Catering
 There is a premium catering lunch and coffee breaks. We don't want you to run around all hungry and decaffeinated throughout the day, so the lunch and coffee breaks are included in the ticket price. For lunch, you can expect a healthy meal with various options. It includes **vegetarian, vegan, and gluten-free options**. 

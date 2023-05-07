@@ -8,7 +8,11 @@ export const day1: AgendaItem[] = [
     imgName: "event/registration.jpg",
   },
   { type: "talk", speakers: ["simona-cotin"], timeSlot: "09:30 - 10:00" },
-  { type: "talk", speakers: ["carmen-popoviciu"], timeSlot: "10:00 - 10:30" },
+  {
+    type: "talk",
+    speakers: ["siddharth-kshetrapal"],
+    timeSlot: "10:00 - 10:30",
+  },
   {
     type: "placeholder",
     content: "Coffee Break",
