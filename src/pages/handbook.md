@@ -79,7 +79,7 @@ TBA
 All attendees, speakers, sponsors, and volunteers at the JSHeroes event are required to agree with our [Code of Conduct](https://jsheroes.io/code-of-conduct). As organizers, JSHeroes will enforce this code throughout the event. We expect cooperation from all of you to help ensure a safe environment for everybody.
 
 ## 🧭 Explore the City
-Cluj-Napoca has a lot of interesting places to see and explore. If you're looking for things to do during your free time while attending JSHeroes conference, be sure to check out the [map](https://www.google.com/maps/d/u/0/edit?mid=1dXVR24gWN2ioa3OVlJzw6nWpiwDE6uM&ll=46.764992355941025%2C23.583294000000006&z=15) of the city's top attractions.
+Cluj-Napoca has a lot of interesting places to see and explore. If you're looking for things to do during your free time while attending JSHeroes conference, be sure to [check out the map](https://www.google.com/maps/d/u/0/edit?mid=1dXVR24gWN2ioa3OVlJzw6nWpiwDE6uM&ll=46.764992355941025%2C23.583294000000006&z=15) we've built of the city's top attractions we recommend.
 
 Some must-see places include the Alexandru Borza Botanical Garden, St. Michael's Church and the National Museum of Art. There are also plenty of cafes, restaurants, and bars where you can relax and soak up the local atmosphere.
 
