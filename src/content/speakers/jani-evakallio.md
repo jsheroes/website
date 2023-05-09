@@ -1,7 +1,6 @@
 ---
 name: Jani Eväkallio
-title: Founding Engineer
-company: verb.ai
+title: Frontend Engineer
 imgName: speakers/jani-evakallio.jpeg
 links:
   {
