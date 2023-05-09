@@ -66,4 +66,9 @@ export const communities: Organization[] = [
     url: "https://www.react-native.eu/?utm_campaign=React_Native_EU&utm_source=website&utm_content=jsheroes_io",
     imgName: "communities/logo_reactnativeeu.png",
   },
+  {
+    name: "QueerJS",
+    url: "https://queerjs.com/",
+    imgName: "communities/logo_queerjs.svg",
+  },
 ];

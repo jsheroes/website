@@ -1,8 +1,8 @@
 ---
 name: Siddharth Kshetrapal
-title: Design Systems Engineer
+title: Design Engineer
 company: GitHub
-imgName: speakers/siddharth-kshetrapal.jpg
+imgName: speakers/siddharth-kshetrapal.png
 links:
   {
     twitter: "https://twitter.com/siddharthkp",
@@ -10,4 +10,4 @@ links:
   }
 ---
 
-Siddharth loves thinking about components, he works on the design infrastructure team at GitHub and works on @uidevtools on the side
+Siddharth loves thinking about components, he works on the design engineering team at GitHub
