@@ -3,9 +3,15 @@ import type { AgendaItem } from "./types";
 export const day1: AgendaItem[] = [
   {
     type: "placeholder",
+    content: "Registration",
+    timeSlot: "08:00 - 09:00",
+    imgName: "event/registration.jpg",
+  },
+  {
+    type: "placeholder",
     content: "Welcome to JSHeroes!",
     timeSlot: "09:00 - 09:30",
-    imgName: "event/registration.jpg",
+    imgName: "event/intro.jpg",
   },
   { type: "talk", speakers: ["simona-cotin"], timeSlot: "09:30 - 10:00" },
   {
