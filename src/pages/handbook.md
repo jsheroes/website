@@ -17,7 +17,7 @@ Whether you're attending JSHeroes for the first time or you're a returning atten
 - [Alternative stage](#-alternative-stage)
 - [Catering](#-catering)
 - [Photos](#-photos)
-- [Code of conduct](#--code-of-conduct)
+- [Code of conduct](#-code-of-conduct)
 - [Transportation](#-transportation)
 - [Explore the City](#-explore-the-city)
 
@@ -90,7 +90,7 @@ Throughout the conference, we'll take photos and video shots. Your participation
 TBA
  
 ## 🤝 Code of Conduct  
-All attendees, speakers, sponsors, and volunteers at the JSHeroes event are required to agree with our [Code of Conduct](https://jsheroes.io/code-of-conduct). As organizers, JSHeroes will enforce this code throughout the event. We expect cooperation from all of you to help ensure a safe environment for everybody.
+All attendees, speakers, sponsors, and volunteers at the JSHeroes event are required to agree with our [Code of Conduct](/coc). As organizers, JSHeroes will enforce this code throughout the event. We expect cooperation from all of you to help ensure a safe environment for everybody.
 
 ## 🧭 Explore the City
 Cluj-Napoca has a lot of interesting places to see and explore. If you're looking for things to do during your free time while attending JSHeroes conference, be sure to [check out the map](https://www.google.com/maps/d/u/0/edit?mid=1dXVR24gWN2ioa3OVlJzw6nWpiwDE6uM&ll=46.764992355941025%2C23.583294000000006&z=15) we've built of the city's top attractions we recommend.

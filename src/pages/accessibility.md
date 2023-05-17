@@ -35,7 +35,7 @@ If you have trouble seeing or hearing from the back of the room, we can reserve 
 
 In case you don't make it to one of the front rows, there will be two extra screens in the middle of the seating area.
 
-All attendees are required to respect our [code of conduct](https://jsheroes.io/code-of-conduct). There will be a dedicated space during the entire event where you can report any abuse or violation of the CoC.
+All attendees are required to respect our [code of conduct](https://jsheroes.io/coc). There will be a dedicated space during the entire event where you can report any abuse or violation of the CoC.
 
 ## For speakers
 
