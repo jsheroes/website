@@ -39,7 +39,7 @@ All attendees are required to respect our [code of conduct](https://jsheroes.io/
 
 ## For speakers
 
-Your slide decks will shown up on two large LED displays on each side of the main stage.
+Your slide decks will shown up on two large LED displays on each side of the main stage. You will also have a screen in front of you with your slides/notes and another screen with the timer.
 
 Please test the visibility of your slides from the back of the room before you go up on stage. If your deck contains strong animations, loud sounds or flashing effects, please announce this to the audience at the beginning of the talk.
 
