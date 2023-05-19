@@ -1,5 +1,5 @@
-# We are SOLD OUT!
+# See you in 2024!
 
-JSHeroes 2023 is right around the corner! 600 people are joining us on the **18th** and **19th** of **May 2023** and the event is sold out!
+JSHeroes 2024 will take place on the **23th** and **24th** of **May 2024**! First batch of tickets is [available on our ti.to](https://ti.to/jsheroes/2024) page. 
 
 Looking forward to seeing you all in Cluj, for two memorable days of quality content, good vibes and amazing interactions!
