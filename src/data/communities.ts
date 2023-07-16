@@ -71,4 +71,9 @@ export const communities: Organization[] = [
     url: "https://queerjs.com/",
     imgName: "communities/logo_queerjs.svg",
   },
+  {
+    name: "GrUSP",
+    url: "https://www.grusp.org/en/",
+    imgName: "communities/logo_grusp.png",
+  },
 ];
