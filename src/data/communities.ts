@@ -76,4 +76,9 @@ export const communities: Organization[] = [
     url: "https://www.grusp.org/en/",
     imgName: "communities/logo_grusp.png",
   },
+  {
+    name: "Codemotion",
+    url: "https://www.codemotion.com/",
+    imgName: "communities/logo_codemotion.png",
+  },
 ];
