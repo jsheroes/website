@@ -1,5 +1,5 @@
 ---
-import { CFP_OPEN } from "../data/constants";
+import { CFP_OPEN, CURRENT_YEAR } from "../data/constants";
 
 import PersonCard from "../components/PersonCard.astro";
 import PlaceholderCard from "../components/PlaceholderCard.astro";
@@ -11,7 +11,7 @@ const support = await getCollection("support");
 ---
 
 <div class="content center">
-  <h2>Our 2023 speakers</h2>
+  <h2>{CURRENT_YEAR} speakers to be announced</h2>
 </div>
 
 <ul role="list" class="person-list">
@@ -37,7 +37,7 @@ const support = await getCollection("support");
 </ul>
 
 <div class="content center">
-  <h2>Our support crew for 2023</h2>
+  <h2>Our support crew for {CURRENT_YEAR}</h2>
 </div>
 
 <ul role="list" class="person-list">
@@ -54,8 +54,8 @@ const support = await getCollection("support");
   <h2>And our awesome ambassadors</h2>
 
   <p>
-    An amazing group of people who said yes to the challenge of working with us
-    at making JSHeroes awesome!
+    An amazing group of people that ensure top knotch content at the event every
+    year
   </p>
 </div>
 
