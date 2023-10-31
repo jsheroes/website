@@ -3,16 +3,16 @@ layout: "../layouts/MarkdownLayout.astro"
 title: "Speak at JSHeroes"
 ---
 
-The <strong>call for papers</strong> for the 2023 event is <strong>closed</strong>. We usually open the process around 6 months before the event, so keep that in mind if you are interested in submitting a proposal for one of our future events. You can read more about [our 2023 CFP process](/blog/call-for-papers-2023-insights) for future references.
+The <strong>call for papers</strong> for the 2024 event is <strong>open</strong>. 
 
-We encourage people of all ages, races, genders and religions, to submit proposals and we would like to ensure everyone that our process of selecting the talks will be <strong>fair</strong> and <strong>transparent</strong>, as the entire concept behind JSHeroes.
+We encourage people of all ages, races, genders and religions, to submit proposals until the end of December. We would like to ensure everyone that our process of selecting the talks will be <strong>fair</strong> and <strong>transparent</strong>, as the entire concept behind JSHeroes. You can read more about [our 2023 CFP process](/blog/call-for-papers-2023-insights) to have a better idea about how we select our speakers.
 
-<!-- <br/>
-<a href="https://sessionize.com/jsheroes-2023" target="_blank" rel="noreferrer noopener" class="cta-button">Submit Proposal</a> -->
+<br/>
+<a href="https://sessionize.com/jsheroes-2024" target="_blank" rel="noreferrer noopener" class="cta-button">Submit Proposal</a>
 
 ## ✍ What we are looking for
 
-JSHeroes is a **single track** 2-day conference dedicated to the JS and Web ecosystems. We expect that each talk fits into a **25 minutes** slot. If you require more time, please mention this in the application. We are looking for a multitude of topics and perspectives, but most of all we value:
+JSHeroes is a **single track** 2-day conference dedicated to the JS and Web ecosystems. We expect that each talk fits between **25 and 30 minutes**. If you require more time, please mention this in the application. We are looking for a multitude of topics and perspectives, but most of all we value:
 
 - Original topics, presented for the first time.
 - Practical ideas that attendees can apply at work the next day.
@@ -20,7 +20,7 @@ JSHeroes is a **single track** 2-day conference dedicated to the JS and Web ecos
 - Fresh perspectives on the development ecosystem.
 - The human side of software engineering.
 
-Our theme for 2023 is "10 years of pushing the boundaries". We want to bring the focus on the evolution of our tools and practices, a decade since frontend development took of back in 2013. The theme is broad and not all talk will be connected with it, so consider it more like a line connecting different ideas and topics, rather then a restriction.
+Our theme for 2024 is "The journey to a mature ecosystem". We want to spotlight some of the established patterns and architectures that reached maturity and are becoming industry standards. Along with these, we want to tackle software complexity and dealing with legacy code and legacy systems. Each year our theme is broad and not all talk will be connected with it, so consider it more like a line connecting different ideas and topics, rather then a restriction.
 
 ## 📈 How the selection will happen
 
@@ -50,5 +50,5 @@ We are committed to fulfilling our mission as an open source event. We are all c
 
 Good luck!
 
-<!-- <br/>
-<a href="https://sessionize.com/jsheroes-2023" target="_blank" rel="noreferrer noopener" class="cta-button">Submit Proposal</a> -->
+<br/>
+<a href="https://sessionize.com/jsheroes-2024" target="_blank" rel="noreferrer noopener" class="cta-button">Submit Proposal</a>

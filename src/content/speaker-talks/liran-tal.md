@@ -1,5 +1,0 @@
----
-title: "Char Wars: The Path Traversal Strikes Back"
----
-
-These days of cyber warfare and targeted supply chain attacks on open source packages we developers are more attentive to security vulnerabilities. Yet writing secure code to avoid security vulnerabilities is an entirely different paradigm that needs to be mastered. One such vulnerability is Path Traversal, and while it may sound harmless, it is in fact ubiquitous and presents a significant risk. My session will teach you how path traversal vulnerabilities manifest in everything from code in your own applications to code in dependencies to core modules in the Node.js runtime. Additionally, path traversal vulnerabilities may endanger your local development setup and lead to insecure Node.js applications risking your production environment. Join me to gain a new secure coding skill and learn how to mitigate this set of security vulnerabilities.

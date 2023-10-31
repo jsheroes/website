@@ -12,12 +12,14 @@
     "dev": {
       "name": "Start Dev Server",
       "command": "yarn dev",
-      "runAtStart": true
+      "runAtStart": true,
+      "preview": {
+        "port": 3000
+      }
     },
     "build": {
       "name": "Build",
-      "command": "yarn build",
-      "runAtStart": false
+      "command": "yarn build"
     },
     "install": {
       "name": "Install Dependencies",
