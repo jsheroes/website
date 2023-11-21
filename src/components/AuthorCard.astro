@@ -4,7 +4,7 @@ import Modal from "./Modal.astro";
 
 export interface Props {
   author: CollectionEntry<"organizers">;
-  publishDate: string;
+  publishDate?: string;
 }
 
 const { author, publishDate } = Astro.props;
@@ -30,7 +30,6 @@ const { author, publishDate } = Astro.props;
 
 <style>
   .author-anchor {
-    position: relative;
     --person-accent-color: var(--color-accent-pink);
   }
 
@@ -39,10 +38,6 @@ const { author, publishDate } = Astro.props;
     font-size: inherit;
     background: var(--color-neutral-light);
     display: flex;
-    position: absolute;
-    top: -6rem;
-    right: 0;
-    z-index: 1;
     padding: 0.5rem 1rem 0.5rem 0.5rem;
     border-radius: 2rem;
     align-items: center;

@@ -1,0 +1,38 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import BlogListLayout from "../../../layouts/BlogListLayout.astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const tags = (await getCollection("tags")) as CollectionEntry<"tags">[];
+  const posts = await getCollection("blog").then(
+    (posts: CollectionEntry<"blog">[]) => {
+      return posts.sort((a, b) => {
+        return (
+          new Date(b.data.published).getTime() -
+          new Date(a.data.published).getTime()
+        );
+      });
+    }
+  );
+
+  return tags.flatMap((entry) => {
+    const tagPosts = posts.filter((post) =>
+      post.data.tags.some(({ slug }) => slug === entry.slug)
+    );
+
+    return paginate(tagPosts, {
+      pageSize: 5,
+      params: { slug: entry.slug },
+      props: { entry },
+    });
+  });
+}) satisfies GetStaticPaths;
+
+const { page, entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<BlogListLayout title={entry.data.name} page={page}>
+  <Content />
+</BlogListLayout>

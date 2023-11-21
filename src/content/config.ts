@@ -1,4 +1,4 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection, reference, z } from "astro:content";
 
 const personSchema = {
   schema: z.object({
@@ -17,6 +17,25 @@ const personSchema = {
   }),
 };
 
+const blog = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    published: z.coerce.date(),
+    summary: z.string().optional(),
+    author: z.string(),
+    tags: z.array(reference("tags")).default(["general"]),
+  }),
+});
+
+const tags = defineCollection({
+  type: "content",
+  schema: z.object({
+    name: z.string(),
+    description: z.string().optional(),
+  }),
+});
+
 export const collections = {
   organizers: defineCollection(personSchema),
   support: defineCollection(personSchema),
@@ -27,4 +46,5 @@ export const collections = {
       title: z.string(),
     }),
   }),
+  blog,
 };
