@@ -11,7 +11,7 @@ const support = await getCollection("support");
 ---
 
 <div class="content center">
-  <h2>{CURRENT_YEAR} speakers to be announced</h2>
+  <h2>Our {CURRENT_YEAR} speakers</h2>
 </div>
 
 <ul role="list" class="person-list">
@@ -22,6 +22,9 @@ const support = await getCollection("support");
       </li>
     ))
   }
+</ul>
+
+<ul role="list" class="person-list">
   {
     CFP_OPEN && (
       <li class="person-list-item">
