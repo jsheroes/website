@@ -5,6 +5,7 @@ import BlogListLayout from "../../../layouts/BlogListLayout.astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
   const tags = (await getCollection("tags")) as CollectionEntry<"tags">[];
+
   const posts = await getCollection("blog").then(
     (posts: CollectionEntry<"blog">[]) => {
       return posts.sort((a, b) => {
@@ -14,13 +15,14 @@ export const getStaticPaths = (async ({ paginate }) => {
         );
       });
     }
-  );
+  ) as CollectionEntry<"blog">[];
 
   return tags.flatMap((entry) => {
     const tagPosts = posts.filter((post) =>
       post.data.tags.some(({ slug }) => slug === entry.slug)
     );
 
+     // Should we add pagination?
     return paginate(tagPosts, {
       pageSize: 5,
       params: { slug: entry.slug },
@@ -31,8 +33,9 @@ export const getStaticPaths = (async ({ paginate }) => {
 
 const { page, entry } = Astro.props;
 const { Content } = await entry.render();
+
 ---
 
-<BlogListLayout title={entry.data.name} page={page}>
+<BlogListLayout title={ entry.data.name} page={page}>
   <Content />
 </BlogListLayout>

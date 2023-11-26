@@ -1,6 +1,6 @@
 ---
 name: General
-description: This is a default tag for the site
+description: General
 ---
 
 All posts

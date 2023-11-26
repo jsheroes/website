@@ -3,7 +3,6 @@ import { type Page, type CollectionEntry, getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../components/Section.astro";
 import FormattedDate from "../components/FormattedDate.astro";
-import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -21,7 +20,7 @@ const tags = await getCollection("tags").then((tags) => {
   return tagsWithBlogs;
 });
 
-function tagCount(slug: (typeof CollectionEntry<"tags">)["slug"]) {
+function tagCount(slug: string) {
   return posts.filter((post) => post.data.tags.some((tag) => tag.slug === slug))
     .length;
 }
@@ -31,7 +30,7 @@ const isBlogPage = Astro.url.pathname === "/blog";
 const hasDefaultSlot = Astro.slots.has("default");
 ---
 
-<BaseLayout title="`JSHeroes | Blogs">
+<BaseLayout title={`JSHeroes |  ${title}`}>
   <img
     class="header-image"
     src={"/img/banners/default-with-bear.svg"}
@@ -51,33 +50,41 @@ const hasDefaultSlot = Astro.slots.has("default");
         }
       </div>
 
-      <div class="blog-content">
-        <div class="tags-navigation">
-          <div>
-            {isBlogPage ? <h3>All Posts</h3> : <a href="/blog">All Posts</a>}
-          </div>
-
-          <ul>
+      <div class="content">
+        <div class="tags">
+          <div class="wrapper">
             {
-              tags.map(({ slug, data: { name } }) => (
-                <li>
-                  <a href={`/tags/${slug}`}>
-                    {name} ({tagCount(slug)})
-                  </a>
-                </li>
-              ))
+              isBlogPage ? (
+                <div class="all-posts">All Posts</div>
+              ) : (
+                <a class="all-posts" href="/blog">
+                  All Posts
+                </a>
+              )
             }
-          </ul>
+
+            <ul>
+              {
+                tags.map(({ slug, data: { name } }) => (
+                  <li>
+                    <a href={`/tags/${slug}`}>
+                      {name} ({tagCount(slug)})
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
         </div>
-        <div class="blog-list">
+        <div class="list">
           <ul>
             {
               page.data.map(
                 ({
                   slug,
-                  data: { published, title, summary, tags },
+                  data: { published, title, summary },
                 }: CollectionEntry<"blog">) => (
-                  <li class="blog">
+                  <li class="preview">
                     <article>
                       <dl>
                         <dt class="sr-only">Published on</dt>
@@ -86,11 +93,10 @@ const hasDefaultSlot = Astro.slots.has("default");
                         </dd>
                       </dl>
                       <div>
-                        <div>
-                          <h3>
-                            <a href={`/blog/${slug}`}>{title}</a>
-                          </h3>
-                        </div>
+                        <h3>
+                          <a href={`/blog/${slug}`}>{title}</a>
+                        </h3>
+
                         <div class="summary">{summary}</div>
                       </div>
                     </article>
@@ -102,34 +108,85 @@ const hasDefaultSlot = Astro.slots.has("default");
         </div>
       </div>
     </Section>
-    <ViewTransitions />
   </main>
 </BaseLayout>
 
 <style>
-  ul {
-    list-style: none;
-  }
-  .blog-content {
+  .content {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
-  .blog-list {
+  .list {
+    flex: 1;
+    margin-left: 2rem;
+
     & ul {
       padding: 0;
       margin: 0;
       list-style: none;
+
+      & li {
+        border-bottom: 1px solid rgb(229 231 235 / 50%);
+      }
     }
   }
 
-  .tags-navigation {
-    min-width: 280px;
+  li:first-child {
+    padding-top: 0;
   }
 
-  .blog {
+  li:last-child {
+    border-bottom: none !important;
+  }
+
+  .tags {
+    --shadow-color: 0deg 0% 75%;
+    min-width: 280px;
+    height: 100%;
+    max-height: 100vh;
+
+    border-radius: 0.25rem;
+    background-color: hsl(204deg 100% 50% / 5%);
+    box-shadow: -1px 1px 1.3px hsl(var(--shadow-color) / 0.29),
+      -1.7px 1.7px 2.2px -1px hsl(var(--shadow-color) / 0.25),
+      -3.6px 3.6px 4.7px -1.9px hsl(var(--shadow-color) / 0.21),
+      -8px 8px 10.4px -2.9px hsl(var(--shadow-color) / 0.16),
+      -16.5px 16.5px 21.4px -3.9px hsl(var(--shadow-color) / 0.12);
+
+    .wrapper {
+      padding: 1rem 1.5rem;
+
+      .all-posts {
+        display: block;
+        padding-top: 1rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        text-decoration-thickness: 3px;
+      }
+
+      & ul {
+        list-style-type: none;
+        padding: 0;
+
+        & li {
+          margin: 0.75rem 0;
+
+          & a {
+            padding: 0.5rem 0.75rem;
+            text-decoration-thickness: 3px;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .preview {
     padding: 1.25rem 0;
-    list-style: none;
 
     .summary {
       margin-top: 0.5rem;
@@ -147,20 +204,16 @@ const hasDefaultSlot = Astro.slots.has("default");
     }
   }
 
-  .header-image {
-    display: block;
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
+  .divider {
+    border: 1px solid rgb(229 231 235 / 50%);
+    width: 60%;
   }
 
-  main {
-    /* header + footer */
-    min-height: calc(100vh - 500px - 400px);
-    position: relative;
-  }
-
-  :global(h1) {
+  h1 {
     font-size: 2rem !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
   }
 </style>

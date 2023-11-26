@@ -2,7 +2,7 @@
 author: ale-retegan
 title: 2023 Transparency Plan
 published: Apr 9, 2023
-tags: ["plan"]
+tags: ["plans"]
 summary: Estimated expenses for the 5th edition of JSHeroes
 ---
 

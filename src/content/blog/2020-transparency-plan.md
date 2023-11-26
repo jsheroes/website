@@ -3,7 +3,7 @@ author: ale-retegan
 title: 2022 Transparency Plan
 published: May 16, 2022
 summary: Estimated expenses for the 4th Edition of JSHeroes
-tags: ["plan"]
+tags: ["plans"]
 ---
 
 During the last 6 years, JSHeroes became one of the biggest software development conferences in South-East Europe, and is one of the most popular tech events in Romania. For this year, although the pandemics are not long gone, we decided to pluck up our hearts and organize an offline event, even if it needs to be on a smaller scale.

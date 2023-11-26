@@ -2,7 +2,7 @@
 author: ale-retegan
 title: 2022 Transparency Report
 published: Oct 20, 2022
-tags: ["report"]
+tags: ["reports"]
 summary: Expenses for the 4th edition of JSHeroes
 ---
 
