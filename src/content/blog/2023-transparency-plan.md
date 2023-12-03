@@ -1,8 +1,9 @@
 ---
-layout: ../../layouts/MarkdownLayout.astro
 author: ale-retegan
 title: 2023 Transparency Plan
 published: Apr 9, 2023
+tags: ["plans"]
+summary: Estimated expenses for the 5th edition of JSHeroes
 ---
 
 During the last 7 years, JSHeroes became one of the biggest software development conferences in South-East Europe, and is one of the most popular tech events in Romania. For the 5th edition, we decided to come back to a two-day event, a format that used to be our way to go in a pre-pandemic world. The event will take place on May 18th and 19th, in Cluj-Napoca (18 & 19 May, 2023), and it is organized by JSHeroes, one of the most active JavaScript communities in Europe.

@@ -1,0 +1,26 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import BlogListLayout from "../../layouts/BlogListLayout.astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = await getCollection("blog").then(
+    (posts: CollectionEntry<"blog">[]) => {
+      return posts.sort((a, b) => {
+        return (
+          new Date(b.data.published).getTime() -
+          new Date(a.data.published).getTime()
+        );
+      });
+    }
+  );
+  // @TODO: if we have more than 100 posts, we need to paginate
+  return paginate(posts, {
+    pageSize: 100,
+  });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<BlogListLayout page={page} title="JSHeroes Blog" />

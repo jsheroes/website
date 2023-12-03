@@ -1,8 +1,9 @@
 ---
-layout: ../../layouts/MarkdownLayout.astro
 author: ale-retegan
 title: 2022 Transparency Report
 published: Oct 20, 2022
+tags: ["reports"]
+summary: Expenses for the 4th edition of JSHeroes
 ---
 
 This year in June we had our first in-person event after the pandemics. For the 4th edition of JSHeroes we decided to go for a 1-day event, with only 300 participants, so that everyone feels safe to participate.

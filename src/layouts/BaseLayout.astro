@@ -70,10 +70,11 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
   <body>
     <Navbar theme={theme} />
     <slot />
-    <ScrollToTop />
+    <ScrollToTop transition:persist />
     <Footer />
     <style is:global>
       :root {
+        --font-size-sm: clamp(0.8rem, 0.2vw + 0.8rem, 0.9rem);
         --font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
         --font-size-lg: clamp(1.2rem, 0.7vw + 1.3rem, 1.8rem);
         --font-size-xl: clamp(2.4rem, 2.38vw + 1.85rem, 3.6rem);
@@ -83,6 +84,7 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
 
         --color-neutral-dark: #202022;
         --color-neutral-light: #ffffff;
+        --color-neutral-separator: #ebe7e7;
         --color-primary: #0b1b44;
         --color-logo: #0098ff;
         --color-accent-pink: #ff6078;
@@ -124,6 +126,12 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
 
       body:has(dialog[open]) {
         overflow: hidden;
+      }
+
+      main {
+        /* header + footer */
+        min-height: calc(100vh - 500px - 400px);
+        position: relative;
       }
 
       h1 {
@@ -209,6 +217,25 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
 
       .navlink:hover::after {
         transform: scale(1);
+      }
+
+      .header-image {
+        display: block;
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
       }
 
       .responsive-image {

@@ -24,11 +24,7 @@ const author = await getEntryBySlug("organizers", frontmatter.author);
     <Section variant="light" content="text">
       {
         author && (
-          <AuthorCard
-            id={author.id}
-            author={author}
-            publishDate={frontmatter.published}
-          />
+          <AuthorCard author={author} publishDate={frontmatter.published} />
         )
       }
       <h1>{frontmatter.title}</h1>

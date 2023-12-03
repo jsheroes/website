@@ -1,0 +1,153 @@
+---
+import { type Page, type CollectionEntry, getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  page: Page<CollectionEntry<"blog">[]>;
+}
+
+const posts = await getCollection("blog");
+const tags = await getCollection("tags").then((tags) => {
+  const tagsWithBlogs = tags.filter((tag) =>
+    posts.some((post) =>
+      post.data.tags.some((postTag) => postTag.slug === tag.slug)
+    )
+  );
+  return tagsWithBlogs;
+});
+
+function tagCount(slug: string) {
+  return posts.filter((post) => post.data.tags.some((tag) => tag.slug === slug))
+    .length;
+}
+
+const { page, title } = Astro.props;
+const isBlogPage = Astro.url.pathname === "/blog";
+const hasDefaultSlot = Astro.slots.has("default");
+---
+
+<BaseLayout title={`JSHeroes |  ${title}`}>
+  <img
+    class="header-image"
+    src={"/img/banners/default-with-bear.svg"}
+    aria-hidden
+  />
+
+  <main id="main">
+    <Section variant="light" content="text">
+      <div>
+        <h1>{title}</h1>
+      </div>
+
+      <ul class="tags">
+        <li>
+          <a class="tag" href={`/blog`}>
+            All posts ({posts.length})
+          </a>
+        </li>
+        {
+          tags.map(({ slug, data: { name } }) => (
+            <li>
+              <a class="tag" href={`/tags/${slug}`}>
+                {name} ({tagCount(slug)})
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <ul class="posts">
+        {
+          page.data.map(
+            ({
+              slug,
+              data: { published, title, summary },
+            }: CollectionEntry<"blog">) => (
+              <li class="preview">
+                <article>
+                  <dl>
+                    <dt class="sr-only">Published on</dt>
+                    <dd>
+                      <FormattedDate date={published} />
+                    </dd>
+                  </dl>
+                  <div>
+                    <h3>
+                      <a href={`/blog/${slug}`}>{title}</a>
+                    </h3>
+
+                    <div class="summary">{summary}</div>
+                  </div>
+                </article>
+              </li>
+            )
+          )
+        }
+      </ul>
+    </Section>
+  </main>
+</BaseLayout>
+
+<style>
+  .posts {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    & li {
+      border-top: 1px solid var(--color-neutral-separator);
+    }
+  }
+
+  .tags {
+    list-style-type: none;
+    padding: 0;
+    padding-bottom: 1rem;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    background-color: var(--color-accent-orange);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    transition: background var(--speed-fade) ease-out;
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--color-accent-pink);
+    }
+  }
+
+  .preview {
+    padding: 1.25rem 0;
+
+    .summary {
+      margin-top: 0.5rem;
+    }
+
+    & article {
+      display: flex;
+      flex-direction: column;
+    }
+
+    & h3,
+    dl,
+    dd {
+      margin: 0;
+    }
+  }
+
+  h1 {
+    font-size: 2rem !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+  }
+</style>
