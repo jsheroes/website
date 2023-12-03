@@ -5,7 +5,7 @@ import PersonCard from "../components/PersonCard.astro";
 import PlaceholderCard from "../components/PlaceholderCard.astro";
 import { getCollection } from "astro:content";
 
-// const speakers = await getCollection("speakers");
+const speakers = await getCollection("speakers");
 const ambassadors = await getCollection("ambassadors");
 const support = await getCollection("support");
 ---
@@ -15,13 +15,13 @@ const support = await getCollection("support");
 </div>
 
 <ul role="list" class="person-list">
-  <!-- {
+  {
     Object.values(speakers).map((s) => (
       <li class="person-list-item">
         <PersonCard person={s} />
       </li>
     ))
-  } -->
+  }
   {
     CFP_OPEN && (
       <li class="person-list-item">
