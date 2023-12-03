@@ -1,6 +1,4 @@
 ---
 name: Plans
-description: Transparency Plans
+description: All transparency plans
 ---
-
-All posts related to Transparency Plan

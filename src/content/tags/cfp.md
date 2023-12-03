@@ -1,6 +1,6 @@
 ---
 name: CFP
-description: Call for Papers
+description: Articles about our call for papers
 ---
 
-All posts related to Call For Papers
+

@@ -28,18 +28,21 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
   <main id="main">
     <Section variant="light" content="list">
       <article>
-        <header>
-          <dl>
-            <dt class="sr-only">Published on</dt>
-            <dd>
-              <FormattedDate date={blog.data.published} />
-            </dd>
-          </dl>
-          <h1>{blog.data.title}</h1>
-        </header>
         <div class="content">
-          <footer class="details">
+          <div class="blog-content">
+            <h1>{blog.data.title}</h1>
+            <slot />
+          </div>
+
+          <aside class="details">
             {author && <AuthorCard author={author} />}
+
+            <div class="divider"></div>
+
+            <div>
+              <div class="font-sm">Published</div>
+              <FormattedDate date={blog.data.published} />
+            </div>
 
             <div class="divider"></div>
 
@@ -78,10 +81,7 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
             <div class="back">
               <a href="/blog"> &larr; Back to the blog</a>
             </div>
-          </footer>
-          <div>
-            <slot />
-          </div>
+          </aside>
         </div>
       </article>
     </Section>
@@ -90,7 +90,6 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
 
 <style>
   header {
-    text-align: center;
     padding-bottom: 1.5rem;
 
     & dd {
@@ -100,24 +99,23 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
 
   .content {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
+    justify-content: center;
 
-    @media screen and (max-width: 1024px) {
-      flex-direction: column-reverse;
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
     }
+  }
+
+  .blog-content {
+    max-width: 60ch;
   }
 
   .details {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    min-width: 250px;
-    max-width: 350px;
-
-    @media screen and (max-width: 1024px) {
-      min-width: 0;
-      max-width: 100%;
-    }
+    flex-shrink: 0;
   }
 
   .tags {
@@ -133,15 +131,14 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
   .articles {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
 
     > div {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
     }
 
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: 768px) {
       flex-direction: row;
       gap: 0.5rem;
       justify-content: space-between;
@@ -154,7 +151,7 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
   }
 
   .back {
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 
   .divider {
@@ -169,5 +166,15 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
 
   h1 {
     font-size: 2rem !important;
+  }
+
+  :global(h2) {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  :global(h3) {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
   }
 </style>

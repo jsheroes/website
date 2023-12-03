@@ -1,6 +1,6 @@
 ---
 name: Reports
-description: Transparency Reports
+description: All transparency reports
 ---
 
-All posts related to Transparency Reports
+

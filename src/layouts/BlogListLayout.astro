@@ -38,150 +38,89 @@ const hasDefaultSlot = Astro.slots.has("default");
   />
 
   <main id="main">
-    <Section variant="light" content="list">
+    <Section variant="light" content="text">
       <div>
         <h1>{title}</h1>
+      </div>
+
+      <ul class="tags">
+        <li>
+          <a class="tag" href={`/blog`}>
+            All posts ({posts.length})
+          </a>
+        </li>
         {
-          hasDefaultSlot && (
-            <div>
-              <slot />
-            </div>
+          tags.map(({ slug, data: { name } }) => (
+            <li>
+              <a class="tag" href={`/tags/${slug}`}>
+                {name} ({tagCount(slug)})
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <ul class="posts">
+        {
+          page.data.map(
+            ({
+              slug,
+              data: { published, title, summary },
+            }: CollectionEntry<"blog">) => (
+              <li class="preview">
+                <article>
+                  <dl>
+                    <dt class="sr-only">Published on</dt>
+                    <dd>
+                      <FormattedDate date={published} />
+                    </dd>
+                  </dl>
+                  <div>
+                    <h3>
+                      <a href={`/blog/${slug}`}>{title}</a>
+                    </h3>
+
+                    <div class="summary">{summary}</div>
+                  </div>
+                </article>
+              </li>
+            )
           )
         }
-      </div>
-
-      <div class="content">
-        <div class="tags">
-          <div class="wrapper">
-            {
-              isBlogPage ? (
-                <div class="all-posts">All Posts</div>
-              ) : (
-                <a class="all-posts" href="/blog">
-                  All Posts
-                </a>
-              )
-            }
-
-            <ul>
-              {
-                tags.map(({ slug, data: { name } }) => (
-                  <li>
-                    <a href={`/tags/${slug}`}>
-                      {name} ({tagCount(slug)})
-                    </a>
-                  </li>
-                ))
-              }
-            </ul>
-          </div>
-        </div>
-        <div class="list">
-          <ul>
-            {
-              page.data.map(
-                ({
-                  slug,
-                  data: { published, title, summary },
-                }: CollectionEntry<"blog">) => (
-                  <li class="preview">
-                    <article>
-                      <dl>
-                        <dt class="sr-only">Published on</dt>
-                        <dd>
-                          <FormattedDate date={published} />
-                        </dd>
-                      </dl>
-                      <div>
-                        <h3>
-                          <a href={`/blog/${slug}`}>{title}</a>
-                        </h3>
-
-                        <div class="summary">{summary}</div>
-                      </div>
-                    </article>
-                  </li>
-                )
-              )
-            }
-          </ul>
-        </div>
-      </div>
+      </ul>
     </Section>
   </main>
 </BaseLayout>
 
 <style>
-  .content {
-    display: flex;
-    gap: 1.5rem;
-  }
+  .posts {
+    padding: 0;
+    margin: 0;
+    list-style: none;
 
-  .list {
-    flex: 1;
-    margin-left: 2rem;
-
-    & ul {
-      padding: 0;
-      margin: 0;
-      list-style: none;
-
-      & li {
-        border-bottom: 1px solid rgb(229 231 235 / 50%);
-      }
+    & li {
+      border-top: 1px solid var(--color-neutral-separator);
     }
-  }
-
-  li:first-child {
-    padding-top: 0;
-  }
-
-  li:last-child {
-    border-bottom: none !important;
   }
 
   .tags {
-    --shadow-color: 0deg 0% 75%;
-    min-width: 280px;
-    height: 100%;
-    max-height: 100vh;
+    list-style-type: none;
+    padding: 0;
+    padding-bottom: 1rem;
+    display: flex;
+    gap: 0.5rem;
+  }
 
-    border-radius: 0.25rem;
-    background-color: hsl(204deg 100% 50% / 5%);
-    box-shadow: -1px 1px 1.3px hsl(var(--shadow-color) / 0.29),
-      -1.7px 1.7px 2.2px -1px hsl(var(--shadow-color) / 0.25),
-      -3.6px 3.6px 4.7px -1.9px hsl(var(--shadow-color) / 0.21),
-      -8px 8px 10.4px -2.9px hsl(var(--shadow-color) / 0.16),
-      -16.5px 16.5px 21.4px -3.9px hsl(var(--shadow-color) / 0.12);
+  .tag {
+    background-color: var(--color-accent-orange);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    transition: background var(--speed-fade) ease-out;
 
-    .wrapper {
-      padding: 1rem 1.5rem;
-
-      .all-posts {
-        display: block;
-        padding-top: 1rem;
-        font-weight: 500;
-        text-transform: uppercase;
-        text-decoration-thickness: 3px;
-      }
-
-      & ul {
-        list-style-type: none;
-        padding: 0;
-
-        & li {
-          margin: 0.75rem 0;
-
-          & a {
-            padding: 0.5rem 0.75rem;
-            text-decoration-thickness: 3px;
-          }
-        }
-      }
-    }
-
-    @media screen and (max-width: 768px) {
-      display: none;
+    &:hover,
+    &:focus-visible {
+      background-color: var(--color-accent-pink);
     }
   }
 
@@ -202,11 +141,6 @@ const hasDefaultSlot = Astro.slots.has("default");
     dd {
       margin: 0;
     }
-  }
-
-  .divider {
-    border: 1px solid rgb(229 231 235 / 50%);
-    width: 60%;
   }
 
   h1 {
