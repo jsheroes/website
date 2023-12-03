@@ -14,9 +14,9 @@ export const getStaticPaths = (async ({ paginate }) => {
       });
     }
   );
-  // Should we add pagination?
+  // @TODO: if we have more than 100 posts, we need to paginate
   return paginate(posts, {
-    pageSize: 5,
+    pageSize: 100,
   });
 }) satisfies GetStaticPaths;
 

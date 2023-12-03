@@ -22,9 +22,9 @@ export const getStaticPaths = (async ({ paginate }) => {
       post.data.tags.some(({ slug }) => slug === entry.slug)
     );
 
-    // Should we add pagination?
+  // @TODO: if we have more than 100 posts, we need to paginate
     return paginate(tagPosts, {
-      pageSize: 5,
+      pageSize: 100,
       params: { slug: entry.slug },
       props: { entry },
     });
@@ -32,7 +32,6 @@ export const getStaticPaths = (async ({ paginate }) => {
 }) satisfies GetStaticPaths;
 
 const { page, entry } = Astro.props;
-const { Content } = await entry.render();
 ---
 
 <BlogListLayout title={entry.data.description} page={page} />
