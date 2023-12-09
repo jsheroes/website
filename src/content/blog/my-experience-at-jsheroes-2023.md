@@ -9,7 +9,9 @@ summary: Hi! I'm Alex and this blog post is about my experience at JS Heroes 202
 
 After a couple of years without in-person conferences, I was really glad to return to JSHeroes for a 2-day event. So I'm gonna use this blog post to share my experience with you.
 
-I have to start with the MC - Anjana Vakil - which I think was a perfect fit for the role. She was so full of energy and enthusiasm that she really got us pumped for the conference. I wish I could embed some video snippets here so you could see her contagious energy for yourself.
+I have to start with the MC - Anjana Vakil - which I think was a perfect fit for the role. She was so full of energy and enthusiasm that she really got us pumped for the conference. I'm embedding the after movie - starting at second 22 - so you can see her contagious energy for yourself!
+
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/N6qr6L37sl8?si=gIFxMM8gzzqXNNnU&amp;start=22" title="Aftermovie JSHeroes 2023" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 Moving on to the technical side, the conference had a big diversity in the topics covered. Things like CSS, performance, accessibility, realtime apps, state management and AI-powered experiences were just a few of the subjects talked about.
 
@@ -23,9 +25,10 @@ My favorite 3 talks were:
 
 3. [We're All Doing the Best We Can](https://www.youtube.com/watch?v=MtgrsmaKzDg&list=PLB9NqTp0uKrR8g9ImDK2HPcpuC7oW8wYe&index=7) by Jeffrey Lembeck
 
-I'm not gonna get into each specific once, but I encourage you to check them out on [YouTube](https://www.youtube.com/watch?v=N6qr6L37sl8&list=PLB9NqTp0uKrR8g9ImDK2HPcpuC7oW8wYe).
+I'm not gonna get into each specific one, but I encourage you to check them out on [YouTube](https://www.youtube.com/watch?v=N6qr6L37sl8&list=PLB9NqTp0uKrR8g9ImDK2HPcpuC7oW8wYe).
 
-There was also a secondary stage where together with the speakers we would have some casual discussions on the topics. There was a really nice debate about AI and the future of programming now that we have tools like Copilot and ChatGPT. I wish that was recorded...
+
+During the breaks, there was an alternative stage where together with the speakers we would have some casual discussions on the topics. There was a really nice debate about AI and the future of programming now that we have tools like Copilot and ChatGPT. I wish that was recorded...
 
 Oh, and did I mention the conference is non-profit and open-source? They had a "souvenir booth" where all the proceeds went to a local bears sanctuary. And they do publish they expenses report each year. That's pretty nice!
 
