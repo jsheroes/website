@@ -109,6 +109,11 @@ const hasDefaultSlot = Astro.slots.has("default");
     padding-bottom: 1rem;
     display: flex;
     gap: 0.5rem;
+    flex-wrap: wrap;
+
+    & li {
+      margin-bottom: 0.5rem;
+    }
   }
 
   .tag {
