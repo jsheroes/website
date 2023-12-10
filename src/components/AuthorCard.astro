@@ -3,7 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import Modal from "./Modal.astro";
 
 export interface Props {
-  author: CollectionEntry<"organizers">;
+  author: CollectionEntry<"organizers" | "guest-writers">;
   publishDate?: string;
 }
 

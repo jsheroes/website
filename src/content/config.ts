@@ -24,6 +24,7 @@ const blog = defineCollection({
     published: z.coerce.date(),
     summary: z.string().optional(),
     author: z.string(),
+    author_category: z.enum(["organizers", "guest-writers"]).optional().default("organizers"),
     tags: z.array(reference("tags")).default(["general"]),
   }),
 });
@@ -41,6 +42,7 @@ export const collections = {
   support: defineCollection(personSchema),
   ambassadors: defineCollection(personSchema),
   speakers: defineCollection(personSchema),
+  "guest-writers": defineCollection(personSchema),
   "speaker-talks": defineCollection({
     schema: z.object({
       title: z.string(),

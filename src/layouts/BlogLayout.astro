@@ -13,7 +13,7 @@ interface Props {
 
 const { blog, next, prev } = Astro.props as Props;
 
-const author = await getEntry("organizers", blog.data.author);
+const author = await getEntry(blog.data.author_category, blog.data.author);
 
 const blogTitle = `JSHeroes | ${blog.data.title}`;
 ---
