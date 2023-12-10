@@ -46,53 +46,55 @@ const navlinkClass = `navlink ${theme}`;
 <div id="backdrop"></div>
 
 <script>
-  const hamburgerBtn = document.querySelector(
-    ".hamburger"
-  ) as HTMLButtonElement;
-  const closeBtn = document.querySelector(".close") as HTMLButtonElement;
-  const backdrop = document.querySelector("#backdrop") as HTMLDivElement;
-  const sideDrawer = document.querySelector(".side-drawer") as HTMLElement;
-  const mainNav = document.querySelector(".main-nav") as HTMLElement;
+  document.addEventListener("astro:page-load", () => {
+    const hamburgerBtn = document.querySelector(
+      ".hamburger"
+    ) as HTMLButtonElement;
+    const closeBtn = document.querySelector(".close") as HTMLButtonElement;
+    const backdrop = document.querySelector("#backdrop") as HTMLDivElement;
+    const sideDrawer = document.querySelector(".side-drawer") as HTMLElement;
+    const mainNav = document.querySelector(".main-nav") as HTMLElement;
 
-  const sideDrawerPrimaryLinks = document.querySelectorAll(
-    ".side-drawer .primary a"
-  ) as NodeListOf<HTMLAnchorElement>;
-
-  function onOpen() {
-    backdrop.classList.add("backdrop");
-    sideDrawer.classList.add("open");
-    sideDrawer.tabIndex = 0;
-    mainNav.classList.add("hide");
-    closeBtn.focus();
-
-    const sideDrawerLinks = document.querySelectorAll(
-      ".side-drawer a"
+    const sideDrawerPrimaryLinks = document.querySelectorAll(
+      ".side-drawer .primary a"
     ) as NodeListOf<HTMLAnchorElement>;
 
-    sideDrawerLinks[sideDrawerLinks.length - 1].addEventListener(
-      "keydown",
-      (e) => {
-        if (e.key === "Tab" && !e.shiftKey) {
-          e.preventDefault();
-          closeBtn.focus();
+    function onOpen() {
+      backdrop.classList.add("backdrop");
+      sideDrawer.classList.add("open");
+      sideDrawer.tabIndex = 0;
+      mainNav.classList.add("hide");
+      closeBtn.focus();
+
+      const sideDrawerLinks = document.querySelectorAll(
+        ".side-drawer a"
+      ) as NodeListOf<HTMLAnchorElement>;
+
+      sideDrawerLinks[sideDrawerLinks.length - 1].addEventListener(
+        "keydown",
+        (e) => {
+          if (e.key === "Tab" && !e.shiftKey) {
+            e.preventDefault();
+            closeBtn.focus();
+          }
         }
-      }
-    );
-  }
+      );
+    }
 
-  function onClose() {
-    backdrop.classList.remove("backdrop");
-    sideDrawer.classList.remove("open");
-    sideDrawer.tabIndex = -1;
-    mainNav.classList.remove("hide");
-  }
+    function onClose() {
+      backdrop.classList.remove("backdrop");
+      sideDrawer.classList.remove("open");
+      sideDrawer.tabIndex = -1;
+      mainNav.classList.remove("hide");
+    }
 
-  hamburgerBtn.addEventListener("click", onOpen);
-  backdrop.addEventListener("click", onClose);
-  closeBtn.addEventListener("click", onClose);
+    hamburgerBtn.addEventListener("click", onOpen);
+    backdrop.addEventListener("click", onClose);
+    closeBtn.addEventListener("click", onClose);
 
-  sideDrawerPrimaryLinks.forEach((link) => {
-    link.addEventListener("click", onClose);
+    sideDrawerPrimaryLinks.forEach((link) => {
+      link.addEventListener("click", onClose);
+    });
   });
 </script>
 

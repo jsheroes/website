@@ -9,54 +9,56 @@ const { default: arrowUp } = await import(
 </button>
 
 <script>
-  const scrollToTopButton = document.querySelector(
-    ".scroll-top"
-  ) as HTMLButtonElement;
+  document.addEventListener("astro:page-load", () => {
+    const scrollToTopButton = document.querySelector(
+      ".scroll-top"
+    ) as HTMLButtonElement;
 
-  function scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }
-
-  function renderScrollButton() {
-    const shouldRender =
-      window.scrollY > 900 && window.matchMedia("(min-width: 768px)").matches;
-
-    if (shouldRender) {
-      scrollToTopButton.style.cssText = "visibility: visible; opacity: 1";
-
-      (scrollToTopButton.firstElementChild as SVGElement).style.cssText =
-        "height: 2rem; width: 2rem;";
-
-      const elementsFromPoint = document.elementsFromPoint(
-        scrollToTopButton.offsetLeft,
-        scrollToTopButton.offsetTop
-      );
-      elementsFromPoint.forEach((element) => {
-        if (element.tagName !== "SECTION" && element.tagName !== "FOOTER") {
-          return;
-        }
-
-        if (element.className === "section light") {
-          scrollToTopButton.style.fill = `var(--color-primary)`;
-        }
-
-        if (
-          element.tagName === "FOOTER" ||
-          element.className === "section dark"
-        ) {
-          scrollToTopButton.style.fill = `var(--color-neutral-light)`;
-        }
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
       });
-    } else {
-      scrollToTopButton.style.cssText = "visibility: hidden; opacity: 0";
     }
-  }
 
-  scrollToTopButton.addEventListener("click", scrollToTop);
-  window.addEventListener("scroll", renderScrollButton);
+    function renderScrollButton() {
+      const shouldRender =
+        window.scrollY > 900 && window.matchMedia("(min-width: 768px)").matches;
+
+      if (shouldRender) {
+        scrollToTopButton.style.cssText = "visibility: visible; opacity: 1";
+
+        (scrollToTopButton.firstElementChild as SVGElement).style.cssText =
+          "height: 2rem; width: 2rem;";
+
+        const elementsFromPoint = document.elementsFromPoint(
+          scrollToTopButton.offsetLeft,
+          scrollToTopButton.offsetTop
+        );
+        elementsFromPoint.forEach((element) => {
+          if (element.tagName !== "SECTION" && element.tagName !== "FOOTER") {
+            return;
+          }
+
+          if (element.className === "section light") {
+            scrollToTopButton.style.fill = `var(--color-primary)`;
+          }
+
+          if (
+            element.tagName === "FOOTER" ||
+            element.className === "section dark"
+          ) {
+            scrollToTopButton.style.fill = `var(--color-neutral-light)`;
+          }
+        });
+      } else {
+        scrollToTopButton.style.cssText = "visibility: hidden; opacity: 0";
+      }
+    }
+
+    scrollToTopButton.addEventListener("click", scrollToTop);
+    window.addEventListener("scroll", renderScrollButton);
+  });
 </script>
 
 <style>

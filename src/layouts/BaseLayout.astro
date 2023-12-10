@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import Preload from "../components/Preload.astro";
 import ScrollToTop from "../components/ScrollToTop.astro";
+import { ViewTransitions } from "astro:transitions";
 
 import { EVENT_DATES, CURRENT_YEAR } from "../data/constants";
 
@@ -65,12 +66,13 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
     <meta name="twitter:creator" content="@jsheroes" />
 
     <script async src="https://cdn.splitbee.io/sb.js"></script>
+    <ViewTransitions />
   </head>
 
   <body>
     <Navbar theme={theme} />
     <slot />
-    <ScrollToTop transition:persist />
+    <ScrollToTop />
     <Footer />
     <style is:global>
       :root {
