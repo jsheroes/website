@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../components/Section.astro";
-import { CURRENT_YEAR } from "../data/constants";
+import { CURRENT_YEAR, SEO_TAGLINE } from "../data/constants";
 import AuthorCard from "../components/AuthorCard.astro";
 import { getEntryBySlug } from "astro:content";
 
@@ -11,9 +11,7 @@ const author = await getEntryBySlug("organizers", frontmatter.author);
 ---
 
 <BaseLayout
-  title={`JSHeroes ${CURRENT_YEAR} | ${
-    frontmatter.title || "Open-Source Community Event"
-  }`}
+  title={`JSHeroes ${CURRENT_YEAR} | ${frontmatter.title || SEO_TAGLINE}`}
 >
   <img
     class="header-image"

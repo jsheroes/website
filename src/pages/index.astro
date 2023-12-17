@@ -12,11 +12,10 @@ import { Content as Description } from "../sections/description.md";
 import { Content as Theme } from "../sections/theme.md";
 import { Content as Event } from "../sections/event.md";
 import Organizers from "../sections/organizers.astro";
-import { CURRENT_YEAR } from "../data/constants";
 import { day1, day2 } from "../data/agenda";
 ---
 
-<BaseLayout title={`JSHeroes ${CURRENT_YEAR} | Open-Source Community Event`}>
+<BaseLayout>
   <Banner />
   <main id="main">
     <Section variant="light" content="text">
