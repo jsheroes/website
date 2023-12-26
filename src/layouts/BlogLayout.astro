@@ -101,10 +101,6 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
     display: flex;
     gap: 2rem;
     justify-content: center;
-
-    @media screen and (max-width: 768px) {
-      flex-direction: column;
-    }
   }
 
   .blog-content {
@@ -122,32 +118,38 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+  }
 
-    > a {
-      text-transform: capitalize;
-    }
+  .tags a {
+    text-transform: capitalize;
   }
 
   .articles {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1rem; 
+  }
 
-    > div {
-      display: flex;
+  @media screen and (max-width: 768px) {
+    .content {
       flex-direction: column;
     }
 
-    @media screen and (max-width: 768px) {
+    .articles {
       flex-direction: row;
       gap: 0.5rem;
       justify-content: space-between;
-
-      .next {
-        align-items: end;
-        text-align: end;
-      }
     }
+
+    .next {
+      align-items: end;
+      text-align: end;
+    }
+  }
+
+  .articles div {
+    display: flex;
+    flex-direction: column;
   }
 
   .back {
