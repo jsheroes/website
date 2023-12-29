@@ -1,0 +1,198 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+import { yearsForBreakdownSelect } from "../data/transparency";
+---
+
+<BaseLayout title="Media Kit" theme="dark">
+  <img class="header-image" src={"/img/banners/bears-hills.svg"} aria-hidden />
+  <main id="main">
+    <Section variant="light" content="text">
+      <h1>Transparency Report</h1>
+      <p>
+        Since we started doing JSHeroes in 2017, our goal was to open source our
+        way of doing events, from the processes behind speaker selection, to the
+        budges and costs associated with each event.
+      </p>
+      <p>
+        We strongly believe that open model is the best environment for
+        learning, so we’re publishing all the data about this conference, in
+        full transparency, to make it easier for other communities to build on
+        our knowledge and organize even better events.
+      </p>
+      <p>
+        Until 2024, we published blog posts before and after each event, with <a
+          href="/tags/plans">the budget planning</a
+        > and <a href="/tags/reports">the expenses report</a>. But we decided to
+        build this page to make it easier to visualize things over the years.
+      </p>
+    </Section>
+    <Section variant="dark" content="text">
+      <div class="chart-column">
+        <h2>Budget & Expenses over time</h2>
+        <p>
+          First, let's take a look at how our budget and expenses evolved over
+          the years
+        </p>
+        <canvas id="yoy"></canvas>
+        <p>The 2022 event was a single day event.</p>
+      </div>
+    </Section>
+    <Section variant="light" content="list">
+      <div class="chart-column">
+        <h2>Income & Expenses Breakdown</h2>
+        <p>
+          In this section you can see a breakdown of our income and expenses for
+          each event. <br /> Use the selector below to navigate between our previous
+          events.
+        </p>
+        <div class="styled-select">
+          <select id="current-year">
+            {
+              yearsForBreakdownSelect.map((year, index) => (
+                <option value={year} selected={index === 0}>
+                  {year}
+                </option>
+              ))
+            }
+          </select>
+        </div>
+        <div class="chart-row">
+          <div class="chart-column">
+            <h3>Income</h3>
+            <canvas id="income-breakdown"></canvas>
+          </div>
+          <div class="chart-column">
+            <h3>Expenses</h3>
+            <canvas id="expenses-breakdown"></canvas>
+          </div>
+        </div>
+      </div>
+    </Section>
+    <Section variant="light" content="text">
+      <h2>Giving back</h2>
+      <p>
+        After each even we have a certain amount of money that is left in our
+        bank account. We use this money as a reserve for next editions. We were
+        fortunate to have this reserve in 2020 when that year's edition was
+        cancelled due to the outbreak of COVID-19.
+      </p>
+      <p>
+        Starting from 2022, we pay each speaker a 500 EUR fee. This does not
+        appear in our budget as it is paid from this reserve at the end of each
+        edition. Some of the speakers do not accept a fee, so we donate the
+        money to different initiatives
+      </p>
+      <ul>
+        <li>Women in Tech Cluj</li>
+        <li>JSHeroes Bootcamp</li>
+        <li>Robotics Club</li>
+        <li>Open source repositories through open-collective</li>
+        <li>Libearty Bear Sanctuary Zarnesti</li>
+      </ul>
+      <p>
+        Let us know if you think something is missing from this report. We're
+        happy to share all the financial details behind the event. If you have
+        other questions related to our budget planning or expenses, please reach
+        out <a href="mailto:welcome@jsheroes.io">over email</a>.
+      </p>
+    </Section>
+
+    <script>
+      import { Chart } from "chart.js/auto";
+      import {
+        getExpensesChartData,
+        getIncomeChartData,
+        updateExpenses,
+        updateIncome,
+        yearlyGrowth,
+        yearsForBreakdownSelect,
+        createDoughnutChart,
+        createBarChart,
+      } from "../data/transparency";
+
+      const currentYearSelector = document.getElementById("current-year");
+      const expensesNode = document.getElementById("expenses-breakdown");
+      const incomeNode = document.getElementById("income-breakdown");
+      const yearlyNode = document.getElementById("yoy");
+
+      let expensesChart, incomeChart;
+
+      currentYearSelector.addEventListener("change", (ev) => {
+        updateExpenses(expensesChart, ev.target.value);
+        updateIncome(incomeChart, ev.target.value);
+      });
+
+      document.addEventListener("astro:page-load", () => {
+        createBarChart(yearlyNode);
+
+        expensesChart = createDoughnutChart(
+          expensesNode,
+          getExpensesChartData()
+        );
+
+        incomeChart = createDoughnutChart(incomeNode, getIncomeChartData());
+      });
+    </script>
+
+    <style>
+      .chart-row {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+
+        @media (width < 1330px) {
+          flex-direction: column;
+        }
+      }
+
+      .chart-column {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        flex: 1;
+        align-items: center;
+      }
+
+      .chart-column p {
+        text-align: center;
+      }
+
+      select {
+        appearance: none;
+        -webkit-appearance: none;
+        padding: 0.5rem 2rem 0.5rem 1rem;
+        border: none;
+        border-radius: 1rem;
+        font-size: inherit;
+        font-family: inherit;
+        background: var(--color-accent-orange);
+        transition: all var(--speed-fade) ease-out;
+      }
+
+      select:hover {
+        background: var(--color-accent-pink);
+      }
+
+      select:focus-visible {
+        outline: dashed var(--color-accent-pink) 2px;
+        outline-offset: 5px;
+      }
+
+      .styled-select {
+        position: relative;
+      }
+
+      .styled-select::after {
+        position: absolute;
+        content: " ";
+        right: 0.75rem;
+        pointer-events: none;
+        border-left: 0.3rem solid transparent;
+        border-right: 0.3rem solid transparent;
+        border-top: 0.3rem solid black;
+        top: 45%;
+      }
+    </style>
+  </main>
+</BaseLayout>
