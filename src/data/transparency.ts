@@ -17,19 +17,27 @@ const colorPalette = [
 ];
 
 const yearlyBudget: Record<Year, number> = {
-  2017: 30000,
-  2018: 40000,
-  2019: 50000,
-  2022: 70000,
-  2023: 105000,
+  2017: 52030,
+  2018: 87200,
+  2019: 92600,
+  2022: 35500,
+  2023: 106300,
+};
+
+const yearlyIncome: Record<Year, number> = {
+  2017: 54621,
+  2018: 79400,
+  2019: 98000,
+  2022: 52000,
+  2023: 115200,
 };
 
 const yearlyExpenses: Record<Year, number> = {
-  2017: 30000,
-  2018: 40000,
-  2019: 50000,
-  2022: 80000,
-  2023: 106300,
+  2017: 43355,
+  2018: 64800,
+  2019: 92650,
+  2022: 32853,
+  2023: 97400,
 };
 
 export const yearlyGrowth: ChartData = {
@@ -41,9 +49,14 @@ export const yearlyGrowth: ChartData = {
       backgroundColor: "#ffcc67",
     },
     {
+      label: "Income",
+      data: Object.values(yearlyIncome),
+      backgroundColor: "#65d3bb",
+    },
+    {
       label: "Expenses",
       data: Object.values(yearlyExpenses),
-      backgroundColor: "#65d3bb",
+      backgroundColor: "#ff6078",
     },
   ],
 };
@@ -130,7 +143,13 @@ export const createBarChart = (node: HTMLCanvasElement) => {
     data: yearlyGrowth,
     options: {
       color: "#fff",
-
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: (context) => `€${context.parsed.y / 1000}k`,
+          },
+        },
+      },
       scales: {
         x: {
           grid: {
@@ -146,6 +165,7 @@ export const createBarChart = (node: HTMLCanvasElement) => {
           },
           ticks: {
             color: "#fff",
+            callback: (val) => `€${Number(val) / 1000}k`,
           },
         },
       },
@@ -163,6 +183,15 @@ export const createDoughnutChart = (
     options: {
       color: "#202022",
       plugins: {
+        tooltip: {
+          callbacks: {
+            label: (context) =>
+              context.parsed.toLocaleString("ro-RO", {
+                style: "currency",
+                currency: "EUR",
+              }),
+          },
+        },
         legend: {
           position: "bottom",
           labels: {

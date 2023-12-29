@@ -26,16 +26,26 @@ import { yearsForBreakdownSelect } from "../data/transparency";
         > and <a href="/tags/reports">the expenses report</a>. But we decided to
         build this page to make it easier to visualize things over the years.
       </p>
+      <p>
+        All figures below are in euros(€). Different contexts over the years
+        mean the amounts can differ significantly. For example, the first
+        edition in 2017 had around 350 attendees, while the 2019 one had close
+        to 700. Also as an anomaly, the 2022 edition was a single day event, so
+        costs are roughly half of what they should have been.
+      </p>
     </Section>
     <Section variant="dark" content="text">
       <div class="chart-column">
         <h2>Budget & Expenses over time</h2>
         <p>
-          First, let's take a look at how our budget and expenses evolved over
-          the years
+          First, have a look at how our budget and expenses evolved over the
+          years.
         </p>
         <canvas id="yoy"></canvas>
-        <p>The 2022 event was a single day event.</p>
+        <p>
+          We are not counting the cancelled 2020 edition.<br />
+          The 2022 edition was a single day event, hence the smaller budget and costs.
+        </p>
       </div>
     </Section>
     <Section variant="light" content="list">
@@ -69,6 +79,7 @@ import { yearsForBreakdownSelect } from "../data/transparency";
         </div>
       </div>
     </Section>
+
     <Section variant="light" content="text">
       <h2>Giving back</h2>
       <p>
