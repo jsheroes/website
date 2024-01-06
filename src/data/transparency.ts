@@ -1,5 +1,5 @@
 import type { ChartData, Chart as ChartObject } from "chart.js";
-import { Chart } from "chart.js/auto";
+import { Chart } from "chart.js";
 
 Chart.defaults.font.size = 16;
 
@@ -185,11 +185,7 @@ export const createDoughnutChart = (
       plugins: {
         tooltip: {
           callbacks: {
-            label: (context) =>
-              context.parsed.toLocaleString("ro-RO", {
-                style: "currency",
-                currency: "EUR",
-              }),
+            label: (context) => `€${Number(context.parsed) / 1000}k`,
           },
         },
         legend: {

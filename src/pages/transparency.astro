@@ -89,7 +89,7 @@ import { yearsForBreakdownSelect } from "../data/transparency";
         cancelled due to the outbreak of COVID-19.
       </p>
       <p>
-        Starting from 2022, we pay each speaker a 500 EUR fee. This does not
+        Starting from 2022, we pay each speaker a €500 fee. This does not
         appear in our budget as it is paid from this reserve at the end of each
         edition. Some of the speakers do not accept a fee, so we donate the
         money to different initiatives
@@ -122,27 +122,31 @@ import { yearsForBreakdownSelect } from "../data/transparency";
         createBarChart,
       } from "../data/transparency";
 
-      const currentYearSelector = document.getElementById("current-year");
-      const expensesNode = document.getElementById("expenses-breakdown");
-      const incomeNode = document.getElementById("income-breakdown");
-      const yearlyNode = document.getElementById("yoy");
-
-      let expensesChart, incomeChart;
-
-      currentYearSelector.addEventListener("change", (ev) => {
-        updateExpenses(expensesChart, ev.target.value);
-        updateIncome(incomeChart, ev.target.value);
-      });
+      let expensesChart, incomeChart, barChart;
 
       document.addEventListener("astro:page-load", () => {
-        createBarChart(yearlyNode);
+        const currentYearSelector = document.getElementById("current-year");
+        const expensesNode = document.getElementById("expenses-breakdown");
+        const incomeNode = document.getElementById("income-breakdown");
+        const yearlyNode = document.getElementById("yoy");
 
-        expensesChart = createDoughnutChart(
-          expensesNode,
-          getExpensesChartData()
-        );
+        if (yearlyNode) {
+          barChart = createBarChart(yearlyNode);
 
-        incomeChart = createDoughnutChart(incomeNode, getIncomeChartData());
+          expensesChart = createDoughnutChart(
+            expensesNode,
+            getExpensesChartData()
+          );
+
+          incomeChart = createDoughnutChart(incomeNode, getIncomeChartData());
+        }
+        
+        if (currentYearSelector) {
+          currentYearSelector.addEventListener("change", (ev) => {
+            updateExpenses(expensesChart, ev.target.value);
+            updateIncome(incomeChart, ev.target.value);
+          });
+        }
       });
     </script>
 
