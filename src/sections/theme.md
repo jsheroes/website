@@ -8,8 +8,5 @@ At JSHeroes, we always ventured outside the pure language ecosystem, so expect t
 
 But of course, we will not neglect the human side of things, in our effort to paint a full picture for the development community in 2024.
 
-<br/>
-<div style="text-align: center">
-    <a href="/speak" class="cta-button">Speak at JSHeroes</a>
-</div>
+
 
