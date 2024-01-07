@@ -61,50 +61,104 @@ export const yearlyGrowth: ChartData = {
   ],
 };
 
-type MoneyBreakdown = Record<string, number>;
-
-const expenses: Record<Year, MoneyBreakdown> = {
-  2023: {
-    "Food & drinks": 41500,
-    "Travel & Accommodation": 21800,
-    Merchendise: 5000,
-    "Photo & Video": 4900,
-    "Design & Sketch Artist": 3500,
-    Operational: 3000,
-    Fees: 2500,
-    MC: 2000,
-  },
-  2022: {
-    "Food & drinks": 35500,
-    "Travel & Accommodation": 10800,
-    Merchendise: 5000,
-    "Photo & Video": 4900,
-    "Design & Sketch Artist": 3500,
-    Operational: 3000,
-    Fees: 2500,
-    MC: 2000,
-  },
-  2019: {},
-  2018: {},
-  2017: {},
+type ExpensesBreakdown = {
+  venue: number;
+  speakers: number;
+  merchandise: number;
+  photoVideo: number;
+  collaborators: number;
+  tools: number;
 };
 
-const income: Record<Year, MoneyBreakdown> = {
+type IncomeBreakdown = {
+  tickets: number;
+  sponsors: number;
+};
+
+const expenses: Record<Year, ExpensesBreakdown> = {
   2023: {
-    Tickets: 84000,
-    Sponsors: 30000,
+    venue: 53700,
+    speakers: 21800,
+    merchandise: 5000,
+    photoVideo: 4900,
+    collaborators: 8500,
+    tools: 3500,
   },
   2022: {
-    Tickets: 70000,
-    Sponsors: 20000,
+    venue: 12650,
+    speakers: 8200,
+    merchandise: 4600,
+    photoVideo: 2600,
+    collaborators: 3400,
+    tools: 1350,
   },
-  2019: {},
-  2018: {},
-  2017: {},
+  2019: {
+    venue: 42200,
+    speakers: 33300,
+    merchandise: 4000,
+    photoVideo: 2800,
+    collaborators: 6200,
+    tools: 4150,
+  },
+  2018: {
+    venue: 35000,
+    speakers: 17800,
+    merchandise: 5500,
+    photoVideo: 2100,
+    collaborators: 2300,
+    tools: 2100,
+  },
+  2017: {
+    venue: 24100,
+    speakers: 14500,
+    merchandise: 1000,
+    photoVideo: 1800,
+    collaborators: 500,
+    tools: 1250,
+  },
+};
+
+const income: Record<Year, IncomeBreakdown> = {
+  2023: {
+    tickets: 85200,
+    sponsors: 30000,
+  },
+  2022: {
+    tickets: 26500,
+    sponsors: 25500,
+  },
+  2019: {
+    tickets: 74000,
+    sponsors: 24000,
+  },
+  2018: {
+    tickets: 70000,
+    sponsors: 19700,
+  },
+  2017: {
+    tickets: 38000,
+    sponsors: 16700,
+  },
+};
+
+const EXPENSES_LABELS: Record<keyof ExpensesBreakdown, string> = {
+  venue: "Venue",
+  speakers: "Speakers' experience",
+  merchandise: "Merchandise",
+  photoVideo: "Photo & Video",
+  collaborators: "External collaborators",
+  tools: "Tools and digital services",
+};
+
+const INCOME_LABELS: Record<keyof IncomeBreakdown, string> = {
+  tickets: "Tickets",
+  sponsors: "Sponsors",
 };
 
 export const getExpensesChartData = (year: Year = "2023"): ChartData => ({
-  labels: Object.keys(expenses[year]),
+  labels: Object.keys(expenses[year]).map(
+    (k) => EXPENSES_LABELS[k as keyof ExpensesBreakdown]
+  ),
   datasets: [
     {
       data: Object.values(expenses[year]),
@@ -114,7 +168,9 @@ export const getExpensesChartData = (year: Year = "2023"): ChartData => ({
 });
 
 export const getIncomeChartData = (year: Year = "2023"): ChartData => ({
-  labels: Object.keys(income[year]),
+  labels: Object.keys(income[year]).map(
+    (k) => INCOME_LABELS[k as keyof IncomeBreakdown]
+  ),
   datasets: [
     {
       data: Object.values(income[year]),
