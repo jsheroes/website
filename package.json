@@ -17,6 +17,7 @@
     "prettier-plugin-astro": "^0.5.5"
   },
   "dependencies": {
+    "@astro-community/astro-embed-youtube": "^0.4.3",
     "@astrojs/mdx": "^2.0.3",
     "@fontsource/ubuntu": "^5.0.8",
     "astro-compress": "^2.2.7",
