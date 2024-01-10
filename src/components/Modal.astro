@@ -1,6 +1,8 @@
 ---
 import type { AstroComponentFactory } from "astro/dist/runtime/server";
-import { CollectionEntry, getEntryBySlug } from "astro:content";
+import { type CollectionEntry, getEntryBySlug } from "astro:content";
+import { Image } from "astro:assets";
+import { getImage } from "../utils/getImage";
 
 interface Props {
   person:
@@ -59,11 +61,11 @@ links.sort((a, b) => sortOrder.indexOf(a.name) - sortOrder.indexOf(b.name));
   <main>
     <div class="bio">
       <div class="bio-info">
-        <img
-          class="photo"
-          src={`/img/${person.data.imgName}`}
+        <Image
+          src={getImage(person.data.imgName)}
           alt={person.data.name}
-          loading="lazy"
+          width="286"
+          height="286"
         />
         <div class="bio-links">
           {
