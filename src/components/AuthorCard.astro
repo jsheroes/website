@@ -1,6 +1,8 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
 import Modal from "./Modal.astro";
+import { getImage } from "../utils/getImage";
 
 export interface Props {
   author: CollectionEntry<"organizers" | "guest-writers">;
@@ -18,7 +20,12 @@ const { author, publishDate } = Astro.props;
     onclick={`window['${author.id}'].showModal()`}
     title={`See the profile of ${author.data.name}`}
   >
-    <img src={`/img/${author.data.imgName}`} />
+    <Image
+      src={getImage(author.data.imgName)}
+      alt={author.data.name}
+      width="57"
+      height="57"
+    />
     <div class="author-details">
       <strong class="author-name">{author.data.name}</strong>
       <span>{publishDate}</span>
