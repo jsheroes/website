@@ -12,12 +12,15 @@
     "prettier": "prettier --write ."
   },
   "devDependencies": {
-    "astro": "^4.0.3",
+    "astro": "^4.1.1",
     "prettier": "^2.8.8",
     "prettier-plugin-astro": "^0.5.5"
   },
   "dependencies": {
-    "@astrojs/mdx": "^2.0.0",
+    "@astro-community/astro-embed-youtube": "^0.4.3",
+    "@astrojs/mdx": "^2.0.3",
+    "@fontsource/ubuntu": "^5.0.8",
+    "astro-compress": "^2.2.7",
     "astro-icon": "^0.8.1"
   }
 }

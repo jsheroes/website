@@ -7,6 +7,9 @@ import { ViewTransitions } from "astro:transitions";
 
 import { EVENT_DATES, CURRENT_YEAR, SEO_TAGLINE } from "../data/constants";
 
+import "@fontsource/ubuntu/400.css";
+import "@fontsource/ubuntu/500.css";
+
 export interface Props {
   title?: string;
   theme?: "dark";
@@ -31,13 +34,6 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
     <title>{title}</title>
 
     <Preload />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
 
     <link rel="manifest" href="/manifest.json" />
     <meta name="description" content={description} />
