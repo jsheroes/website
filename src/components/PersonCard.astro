@@ -1,6 +1,9 @@
 ---
-import Modal from "../components/Modal.astro";
+import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
+
+import Modal from "../components/Modal.astro";
+import { getImage } from "../utils/getImage";
 
 export interface Props {
   person:
@@ -23,7 +26,13 @@ const { person, variant = "large" } = Astro.props as Props;
     onclick={`window['${person.id}'].showModal()`}
     title={`See the profile of ${person.data.name}`}
   >
-    <img src={`/img/${person.data.imgName}`} alt={person.data.name} />
+    <Image
+      src={getImage(person.data.imgName)}
+      alt={person.data.name}
+      width="286"
+      height="286"
+      loading="eager"
+    />
   </button>
   <div class="details">
     <strong>
@@ -69,7 +78,6 @@ const { person, variant = "large" } = Astro.props as Props;
   .clickable-photo {
     padding: 0;
     display: block;
-    width: 100%;
     overflow: hidden;
     border-radius: 999px;
     border: 0rem solid var(--person-accent-color);
@@ -80,7 +88,8 @@ const { person, variant = "large" } = Astro.props as Props;
 
   .clickable-photo img {
     display: block;
-    width: 100%;
+    max-width: 100%;
+    height: auto;
   }
 
   .clickable-photo:hover {

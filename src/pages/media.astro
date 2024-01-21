@@ -1,4 +1,6 @@
 ---
+import { YouTube } from "@astro-community/astro-embed-youtube";
+
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../components/Section.astro";
 ---
@@ -328,37 +330,13 @@ import Section from "../components/Section.astro";
       </p>
 
       <div class="gallery">
-        <iframe
-          width="384"
-          height="246"
-          src="https://www.youtube.com/embed/N6qr6L37sl8"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>
+        <YouTube id="N6qr6L37sl8" class="youtube-player" />
 
-        <iframe
-          width="384"
-          height="246"
-          src="https://www.youtube.com/embed/munltx48_xI"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>
+        <YouTube id="munltx48_xI" class="youtube-player" />
 
-        <iframe
-          width="384"
-          height="246"
-          src="https://www.youtube.com/embed/jdr9eQGq97g"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>
+        <YouTube id="jdr9eQGq97g" class="youtube-player" />
 
-        <iframe
-          width="384"
-          height="246"
-          src="https://www.youtube.com/embed/Zx2moTy-yAg"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>
+        <YouTube id="Zx2moTy-yAg" class="youtube-player" />
       </div>
     </Section>
   </main>
@@ -381,6 +359,11 @@ import Section from "../components/Section.astro";
     justify-content: center;
     flex-wrap: wrap;
     gap: 1.5rem;
+  }
+
+  .youtube-player {
+    width: 384px;
+    height: 246px;
   }
 
   .colors {

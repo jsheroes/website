@@ -22,7 +22,7 @@ export const getStaticPaths = (async ({ paginate }) => {
       post.data.tags.some(({ slug }) => slug === entry.slug)
     );
 
-  // @TODO: if we have more than 100 posts, we need to paginate
+    // @TODO: if we have more than 100 posts, we need to paginate
     return paginate(tagPosts, {
       pageSize: 100,
       params: { slug: entry.slug },

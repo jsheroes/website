@@ -1,6 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import { communities } from "../data/communities";
 import { sponsors } from "../data/sponsors";
+import { getImage } from "../utils/getImage";
 ---
 
 {
@@ -30,7 +32,17 @@ import { sponsors } from "../data/sponsors";
               rel="noreferrer noopener"
               title={sponsor.name}
             >
-              <img src={`/img/${sponsor.imgName}`} alt="" loading="lazy" />
+              <Image
+                src={getImage(sponsor.imgName)}
+                alt=""
+                loading="lazy"
+                width="200"
+                height="100"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                }}
+              />
             </a>
           </li>
         ))}
@@ -62,7 +74,16 @@ import { sponsors } from "../data/sponsors";
           rel="noreferrer noopener"
           title={com.name}
         >
-          <img src={`/img/${com.imgName}`} alt="" />
+          <Image
+            src={getImage(com.imgName)}
+            alt=""
+            width="200"
+            height="100"
+            style={{
+              width: "100%",
+              height: "auto",
+            }}
+          />
         </a>
       </li>
     ))

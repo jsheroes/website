@@ -27,7 +27,7 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
 
   <main id="main">
     <Section variant="light" content="list">
-      <article>
+      <article class="article">
         <div class="content">
           <div class="blog-content">
             <h1>{blog.data.title}</h1>
@@ -96,6 +96,9 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
       margin: 0;
     }
   }
+  .article {
+    display: block;
+  }
 
   .content {
     display: flex;
@@ -127,7 +130,7 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
   .articles {
     display: flex;
     flex-direction: column;
-    gap: 1rem; 
+    gap: 1rem;
   }
 
   @media screen and (max-width: 768px) {

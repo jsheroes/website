@@ -27,7 +27,6 @@ My favorite 3 talks were:
 
 I'm not gonna get into each specific one, but I encourage you to check them out on [YouTube](https://www.youtube.com/watch?v=N6qr6L37sl8&list=PLB9NqTp0uKrR8g9ImDK2HPcpuC7oW8wYe).
 
-
 During the breaks, there was an alternative stage where together with the speakers we would have some casual discussions on the topics. There was a really nice debate about AI and the future of programming now that we have tools like Copilot and ChatGPT. I wish that was recorded...
 
 Oh, and did I mention the conference is non-profit and open-source? They had a "souvenir booth" where all the proceeds went to a local bears sanctuary. And they do publish they expenses report each year. That's pretty nice!
