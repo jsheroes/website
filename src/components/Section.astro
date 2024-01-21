@@ -44,8 +44,10 @@ const { id, variant, content } = Astro.props as Props;
     max-width: 60ch;
   }
 
-  .content.text h2:not(:first-child) {
-    margin-top: 3rem;
+  .content.text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   .content.list {

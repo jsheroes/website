@@ -19,8 +19,10 @@
   "dependencies": {
     "@astro-community/astro-embed-youtube": "^0.4.4",
     "@astrojs/mdx": "^2.0.5",
+    "@astrojs/tailwind": "^5.1.0",
     "@fontsource/ubuntu": "^5.0.8",
     "astro-icon": "^0.8.1",
-    "chart.js": "^4.4.1"
+    "chart.js": "^4.4.1",
+    "tailwindcss": "^3.4.1"
   }
 }
