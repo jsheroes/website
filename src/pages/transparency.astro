@@ -31,7 +31,7 @@ import { yearsForBreakdownSelect } from "../data/transparency";
         mean the amounts can differ significantly. For example, the first
         edition in 2017 had around 350 attendees, while the 2019 one had close
         to 700. Also as an anomaly, the 2022 edition was a single day event, so
-        costs are roughly half of what they should have been.
+        costs are roughly half of what they'd normally been for a 2 days event.
       </p>
     </Section>
     <Section variant="dark" content="text">
@@ -42,9 +42,10 @@ import { yearsForBreakdownSelect } from "../data/transparency";
           years.
         </p>
         <canvas id="yoy"></canvas>
-        <p>
-          We are not counting the cancelled 2020 edition.<br />
-          The 2022 edition was a single day event, hence the smaller budget and costs.
+        <p class="footnote">
+          * We are not counting the cancelled 2020 edition.<br />
+          ** The 2022 edition was a single day event, hence the smaller budget and
+          costs.
         </p>
       </div>
     </Section>
@@ -83,29 +84,45 @@ import { yearsForBreakdownSelect } from "../data/transparency";
     <Section variant="light" content="text">
       <h2>Giving back</h2>
       <p>
-        After each even we have a certain amount of money that is left in our
-        bank account. We use this money as a reserve for next editions. We were
-        fortunate to have this reserve in 2020 when that year's edition was
-        cancelled due to the outbreak of COVID-19.
+        Each event so far had good budget planning, and we managed our expenses
+        so that we are left with a money supply that helps us kick-start the
+        next edition. We were fortunate to have this reserve in 2020 when that
+        year's edition was cancelled due to the outbreak of COVID-19.
       </p>
       <p>
-        Starting from 2022, we pay each speaker a €500 fee. This does not
-        appear in our budget as it is paid from this reserve at the end of each
+        Starting from 2022, we pay each speaker a €500 fee. This does not appear
+        in our budget as it is paid from this reserve at the end of each
         edition. Some of the speakers do not accept a fee, so we donate the
-        money to different initiatives
+        money to different initiatives:
       </p>
       <ul>
-        <li>Women in Tech Cluj</li>
-        <li>JSHeroes Bootcamp</li>
-        <li>Robotics Club</li>
-        <li>Open source repositories through open-collective</li>
-        <li>Libearty Bear Sanctuary Zarnesti</li>
+        <li>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.womenintechcluj.com/">Women in Tech Cluj</a
+          >
+        </li>
+        <li>JSHeroes Bootcamp / NodeSchool</li>
+        <li>
+          <a
+            target="_blank"
+            href="http://absotech.eu/"
+            rel="noopener noreferrer">ABSO-Tech Gherla Robotics Club</a
+          >
+        </li>
+        <li>
+          Open source repositories through <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://opencollective.com/jsheroes1">open-collective</a
+          >
+        </li>
       </ul>
       <p>
-        Let us know if you think something is missing from this report. We're
-        happy to share all the financial details behind the event. If you have
-        other questions related to our budget planning or expenses, please reach
-        out <a href="mailto:welcome@jsheroes.io">over email</a>.
+        If you have other questions related to our budget planning or expenses,
+        please reach out <a href="mailto:welcome@jsheroes.io">over email</a>,
+        we'd be happy to help.
       </p>
     </Section>
 
@@ -140,7 +157,7 @@ import { yearsForBreakdownSelect } from "../data/transparency";
 
           incomeChart = createDoughnutChart(incomeNode, getIncomeChartData());
         }
-        
+
         if (currentYearSelector) {
           currentYearSelector.addEventListener("change", (ev) => {
             updateExpenses(expensesChart, ev.target.value);
@@ -207,6 +224,11 @@ import { yearsForBreakdownSelect } from "../data/transparency";
         border-right: 0.3rem solid transparent;
         border-top: 0.3rem solid black;
         top: 45%;
+      }
+
+      .chart-column p.footnote {
+        font-size: var(--font-size-sm);
+        text-align: left;
       }
     </style>
   </main>
