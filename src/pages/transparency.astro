@@ -166,70 +166,70 @@ import { yearsForBreakdownSelect } from "../data/transparency";
         }
       });
     </script>
-
-    <style>
-      .chart-row {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-
-        @media (width < 1330px) {
-          flex-direction: column;
-        }
-      }
-
-      .chart-column {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        flex: 1;
-        align-items: center;
-      }
-
-      .chart-column p {
-        text-align: center;
-      }
-
-      select {
-        appearance: none;
-        -webkit-appearance: none;
-        padding: 0.5rem 2rem 0.5rem 1rem;
-        border: none;
-        border-radius: 1rem;
-        font-size: inherit;
-        font-family: inherit;
-        background: var(--color-accent-orange);
-        transition: all var(--speed-fade) ease-out;
-      }
-
-      select:hover {
-        background: var(--color-accent-pink);
-      }
-
-      select:focus-visible {
-        outline: dashed var(--color-accent-pink) 2px;
-        outline-offset: 5px;
-      }
-
-      .styled-select {
-        position: relative;
-      }
-
-      .styled-select::after {
-        position: absolute;
-        content: " ";
-        right: 0.75rem;
-        pointer-events: none;
-        border-left: 0.3rem solid transparent;
-        border-right: 0.3rem solid transparent;
-        border-top: 0.3rem solid black;
-        top: 45%;
-      }
-
-      .chart-column p.footnote {
-        font-size: var(--font-size-sm);
-        text-align: left;
-      }
-    </style>
   </main>
 </BaseLayout>
+
+<style>
+  .chart-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+    @media (width < 1330px) {
+      flex-direction: column;
+    }
+  }
+
+  .chart-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+    align-items: center;
+  }
+
+  .chart-column p {
+    text-align: center;
+  }
+
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 0.5rem 2rem 0.5rem 1rem;
+    border: none;
+    border-radius: 1rem;
+    font-size: inherit;
+    font-family: inherit;
+    background: var(--color-accent-orange);
+    transition: all var(--speed-fade) ease-out;
+  }
+
+  select:hover {
+    background: var(--color-accent-pink);
+  }
+
+  select:focus-visible {
+    outline: dashed var(--color-accent-pink) 2px;
+    outline-offset: 5px;
+  }
+
+  .styled-select {
+    position: relative;
+  }
+
+  .styled-select::after {
+    position: absolute;
+    content: " ";
+    right: 0.75rem;
+    pointer-events: none;
+    border-left: 0.3rem solid transparent;
+    border-right: 0.3rem solid transparent;
+    border-top: 0.3rem solid black;
+    top: 45%;
+  }
+
+  .chart-column p.footnote {
+    font-size: var(--font-size-sm);
+    text-align: left;
+  }
+</style>
