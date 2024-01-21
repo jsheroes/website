@@ -13,7 +13,7 @@ A variety of food and drink options are offered during the lunch break, as well 
 
 ### Kids room
 
-We know how important it is to support parents to, well ¯⁠\⁠_⁠(⁠ツ⁠)⁠_⁠/⁠¯, be parents, but also keep up with their work and passions. Therefore, we are preparing a kids room at the venue. This is meant in case you need to be close to them and your partner can join together with your baby/kid(s).
+We know how important it is to support parents to, well ¯⁠\⁠*⁠(⁠ ツ ⁠)⁠*⁠/⁠¯, be parents, but also keep up with their work and passions. Therefore, we are preparing a kids room at the venue. This is meant in case you need to be close to them and your partner can join together with your baby/kid(s).
 
 Mothers who are still breastfeeding, but want to join the talks, can count on having their partner or nanny very close by. Needless to say, the hotel's toilets are equipped for babies who cannot wait to be better humans after nappy changes :)
 
@@ -45,6 +45,6 @@ Please test the visibility of your slides from the back of the room before you g
 
 Additionally, since the lights in the room are dimmed during your talk, we recommend a darker background for the slides. Keep, in mind that the displays will amplify powerful colors, so avoid using them as background colors.
 
-We kindly ask you to verbalize all the content from the slides to  help visually-impaired or dyslexic people understand better.
+We kindly ask you to verbalize all the content from the slides to help visually-impaired or dyslexic people understand better.
 
 Finally, we encourage the use of [inclusive language](https://www.apa.org/about/apa/equity-diversity-inclusion/language-guidelines) throughout the talk. Please refrain from making inappropriate jokes. We also have strict policy against gender, racial, ethnic, sexual or religious discrimination.

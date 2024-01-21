@@ -24,7 +24,10 @@ const blog = defineCollection({
     published: z.coerce.date(),
     summary: z.string().optional(),
     author: z.string(),
-    author_category: z.enum(["organizers", "guest-writers"]).optional().default("organizers"),
+    author_category: z
+      .enum(["organizers", "guest-writers"])
+      .optional()
+      .default("organizers"),
     tags: z.array(reference("tags")).default(["general"]),
   }),
 });

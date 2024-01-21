@@ -3,11 +3,11 @@ layout: "../layouts/MarkdownLayout.astro"
 title: "Speak at JSHeroes"
 ---
 
-The <strong>call for papers</strong> for the 2024 event is <strong>closed</strong>. 
+The <strong>call for papers</strong> for the 2024 event is <strong>closed</strong>.
 
 We have received <strong>340 proposals</strong> until the end of December 2023. Speakers will be announced sometime in early February.
 
-<!-- We encourage people of all ages, races, genders and religions, to submit proposals until the end of December 2023. We would like to ensure everyone that our process of selecting the talks will be <strong>fair</strong> and <strong>transparent</strong>, as the entire concept behind JSHeroes. You can read more about [our 2023 CFP process](/blog/call-for-papers-2023-insights) to have a better idea about how we select our speakers. 
+<!-- We encourage people of all ages, races, genders and religions, to submit proposals until the end of December 2023. We would like to ensure everyone that our process of selecting the talks will be <strong>fair</strong> and <strong>transparent</strong>, as the entire concept behind JSHeroes. You can read more about [our 2023 CFP process](/blog/call-for-papers-2023-insights) to have a better idea about how we select our speakers.
 
 <br/>
 <a href="https://sessionize.com/jsheroes-2024" target="_blank" rel="noreferrer noopener" class="cta-button">Submit Proposal</a> -->
