@@ -8,8 +8,8 @@ export default defineConfig({
   integrations: [
     mdx(),
     compress({
-      CSS: true,
-      HTML: true,
+      CSS: false,
+      HTML: false,
       JavaScript: true,
       SVG: true,
       Image: false,
