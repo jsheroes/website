@@ -40,14 +40,14 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
             <div class="divider"></div>
 
             <div>
-              <div class="font-sm">Published</div>
+              <div class="text-sm">Published</div>
               <FormattedDate date={blog.data.published} />
             </div>
 
             <div class="divider"></div>
 
             <div>
-              <div class="font-sm">Tags</div>
+              <div class="text-sm">Tags</div>
               <div class="flex flex-wrap gap-2">
                 {
                   blog.data.tags.map((tag) => (
@@ -66,13 +66,13 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
                 <div class="flex flex-row justify-between gap-2 md:flex-col md:gap-4 md:justify-center">
                   {prev && (
                     <div>
-                      <div class="font-sm">Previous</div>
+                      <div class="text-sm">Previous</div>
                       <a href={`/blog/${prev.slug}`}>{prev.data.title}</a>
                     </div>
                   )}
                   {next && (
                     <div class="self-end text-right md:text-left md:self-start">
-                      <div class="font-sm">Next</div>
+                      <div class="text-sm">Next</div>
                       <a href={`/blog/${next.slug}`}>{next.data.title}</a>
                     </div>
                   )}
