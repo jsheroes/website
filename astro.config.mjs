@@ -5,8 +5,13 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [mdx(), tailwind()],
+  integrations: [
+    mdx(),
+    tailwind({
+      nesting: true,
+    }),
+  ],
   redirects: {
-    "/tags": "/blog"
-  }
+    "/tags": "/blog",
+  },
 });

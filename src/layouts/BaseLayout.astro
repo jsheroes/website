@@ -99,10 +99,10 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
       }
 
       html {
-        font-family: var(--font-family-base);
-        font-size: var(--font-size-base);
-        color: var(--color-neutral-dark);
-        background-color: var(--color-neutral-light);
+        font-family: theme("fontFamily.sans");
+        font-size: theme("fontSize.base");
+        color: theme("colors.neutral-dark");
+        background-color: theme("colors.neutral-light");
         line-height: 1.6;
         overscroll-behavior-y: none;
       }
@@ -131,21 +131,22 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
       }
 
       h1 {
-        font-size: var(--font-size-xl);
-        font-family: var(--font-family-display);
-        font-weight: 600;
+        font-size: theme("fontSize.xl");
+        font-weight: theme("fontWeight.semibold");
       }
 
       h2 {
-        font-size: var(--font-size-lg);
-        font-family: var(--font-family-display);
-        font-weight: 600;
+        font-size: theme("fontSize.lg");
+        font-weight: theme("fontWeight.semibold");
       }
 
       h3 {
-        font-size: var(--font-size-base);
-        font-family: var(--font-family-display);
-        font-weight: 600;
+        font-size: theme("fontSize.base");
+        font-weight: theme("fontWeight.semibold");
+      }
+
+      p {
+        margin: theme("spacing.4") 0;
       }
 
       ol,
@@ -158,56 +159,57 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
         color: inherit;
         text-decoration: underline;
         text-decoration-thickness: 4px;
-        text-decoration-color: var(--color-accent-orange);
+        text-decoration-color: theme("colors.accent-orange");
         text-decoration-skip-ink: none;
-        transition: text-decoration-color var(--speed-fade) ease-out;
+        transition: text-decoration-color theme("transitionDuration.fade")
+          ease-out;
+
         outline-offset: -5px;
       }
 
       a:hover {
-        text-decoration-color: var(--color-accent-pink);
+        text-decoration-color: theme("colors.accent-pink");
       }
 
       a:focus-visible {
-        outline: dashed var(--color-accent-pink) 2px;
+        outline: dashed theme("colors.accent-pink") 2px;
         outline-offset: 5px;
         text-decoration: none;
       }
 
       button {
-        transition: outline-offset var(--speed-fade) ease-out;
+        transition: outline-offset theme("transitionDuration.fade") ease-out;
       }
 
       button:focus-visible {
-        outline: dashed var(--color-accent-pink) 2px;
+        outline: dashed 2px;
         outline-offset: 5px;
       }
 
       .cta-button {
         text-decoration: none;
-        font-family: var(--font-family-display);
-        background: var(--color-accent-orange);
-        color: var(--color-neutral-dark);
+        background: theme("colors.accent-orange");
+        color: theme("colors.neutral-dark");
         padding: 0.5rem 2rem;
         border: none;
         border-radius: 1rem;
         outline-offset: -4px;
-        transition: all var(--speed-fade) ease-out;
+        transition: all theme("transitionDuration.fade") ease-out;
       }
 
       .cta-button:hover {
-        color: var(--color-neutral-dark);
-        background: var(--color-accent-pink);
+        color: theme("colors.neutral-dark");
+        background: theme("colors.accent-pink");
       }
 
       .navlink {
-        color: var(--color-neutral-light);
+        color: theme("colors.neutral-light");
         text-decoration: none;
         position: relative;
       }
 
       .navlink.dark {
-        color: var(--color-neutral-dark);
+        color: theme("colors.neutral-dark");
       }
 
       .navlink::after {
@@ -217,8 +219,8 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
         left: 0;
         width: 100%;
         height: 0.15rem;
-        background-color: var(--color-accent-pink);
-        transition: transform var(--speed-fade) ease-out;
+        background-color: theme("colors.accent-pink");
+        transition: transform theme("transitionDuration.fade") ease-out;
         opacity: 1;
         transform: scale(0);
         transform-origin: center;
@@ -233,18 +235,6 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
         width: 100%;
         height: 500px;
         object-fit: cover;
-      }
-
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border-width: 0;
       }
 
       .responsive-image {

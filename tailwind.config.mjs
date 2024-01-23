@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import defaultTheme from "tailwindcss/defaultTheme";
+
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
@@ -26,6 +28,9 @@ export default {
         fade: "125ms",
       },
     },
+    fontFamily: {
+      sans: ["Ubuntu", ...defaultTheme.fontFamily.sans],
+    },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };
