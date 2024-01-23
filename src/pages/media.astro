@@ -12,7 +12,7 @@ import Section from "../components/Section.astro";
       <h1>JSHeroes Media Kit</h1>
 
       <div class="container column base-padding-bottom">
-        <strong>On this page you will find:</strong>
+        <p class="font-bold">On this page you will find:</p>
         <ul>
           <li>
             <a href="#about">About JSHeroes</a>
@@ -284,8 +284,8 @@ import Section from "../components/Section.astro";
           includes. Download is not allowed for commercial use.
         </p>
 
-        <div class="gallery">
-          <div class="container column">
+        <div class="flex flex-wrap justify-center gap-6">
+          <div class="max-w-[384px]">
             <a
               target="_blank"
               href="https://drive.google.com/drive/folders/1TxUO0ArQMC65mBfWPFrklNsren1I8nHl"
@@ -295,7 +295,7 @@ import Section from "../components/Section.astro";
             <strong>JSHeroes 2022</strong>
           </div>
 
-          <div class="container column">
+          <div class="max-w-[384px]">
             <a
               target="_blank"
               href="https://drive.google.com/drive/folders/1dA_XDg9kUhyjIlV3HuekPEE4NG2M7tju"
@@ -305,7 +305,7 @@ import Section from "../components/Section.astro";
             <strong>JSHeroes 2019</strong>
           </div>
 
-          <div class="container column">
+          <div class="max-w-[384px]">
             <a
               target="_blank"
               href="https://drive.google.com/drive/folders/1Bhl8xiXQkvh2SZyREfC0SeGsUUYgk7qf"
@@ -329,7 +329,7 @@ import Section from "../components/Section.astro";
         not allowed for commercial use.
       </p>
 
-      <div class="gallery">
+      <div class="flex flex-wrap justify-center gap-6">
         <YouTube id="N6qr6L37sl8" class="youtube-player" />
 
         <YouTube id="munltx48_xI" class="youtube-player" />
@@ -357,6 +357,7 @@ import Section from "../components/Section.astro";
   .gallery {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     gap: 1.5rem;
   }

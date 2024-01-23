@@ -7,6 +7,7 @@ export default {
     colors: {
       "neutral-dark": "#202022",
       "neutral-light": "#ffffff",
+      "neutral-separator": "#ebe7e7",
       primary: "#0b1b44",
       "accent-pink": "#ff6078",
       "accent-orange": "#ffcc67",
@@ -37,7 +38,7 @@ export default {
     function ({ addComponents, theme }) {
       addComponents({
         ".divider": {
-          "border-color": theme("colors.neutral-dark"),
+          "border-color": theme("colors.neutral-separator"),
           "border-top-width": "1px",
           width: "100%",
           margin: "0 auto",
