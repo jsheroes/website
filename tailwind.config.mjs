@@ -32,5 +32,17 @@ export default {
       sans: ["Ubuntu", ...defaultTheme.fontFamily.sans],
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [
+    require("@tailwindcss/typography"),
+    function ({ addComponents, theme }) {
+      addComponents({
+        ".divider": {
+          "border-color": theme("colors.neutral-dark"),
+          "border-top-width": "1px",
+          width: "100%",
+          margin: "0 auto",
+        },
+      });
+    },
+  ],
 };

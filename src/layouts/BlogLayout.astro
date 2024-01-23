@@ -20,21 +20,21 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
 
 <BaseLayout title={blogTitle}>
   <img
-    class="header-image"
+    class="block w-full h-[500px] object-cover"
     src={"/img/banners/default-with-bear.svg"}
     aria-hidden
   />
 
   <main id="main">
     <Section variant="light" content="list">
-      <article class="article">
-        <div class="content">
-          <div class="blog-content prose">
+      <article>
+        <div class="flex flex-col md:flex-row gap-8 justify-center">
+          <div class="prose">
             <h1>{blog.data.title}</h1>
             <slot />
           </div>
 
-          <aside class="details">
+          <aside class="flex flex-col gap-4 shrink-0">
             {author && <AuthorCard author={author} />}
 
             <div class="divider"></div>
@@ -48,10 +48,12 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
 
             <div>
               <div class="font-sm">Tags</div>
-              <div class="tags">
+              <div class="flex flex-wrap gap-2">
                 {
                   blog.data.tags.map((tag) => (
-                    <a href={`/tags/${tag.slug}`}>{tag.slug}</a>
+                    <a class="capitalize" href={`/tags/${tag.slug}`}>
+                      {tag.slug}
+                    </a>
                   ))
                 }
               </div>
@@ -61,15 +63,15 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
 
             {
               (next || prev) && (
-                <div class="articles">
+                <div class="flex flex-row justify-between gap-2 md:flex-col md:gap-4 md:justify-center">
                   {prev && (
-                    <div class="prev">
+                    <div>
                       <div class="font-sm">Previous</div>
                       <a href={`/blog/${prev.slug}`}>{prev.data.title}</a>
                     </div>
                   )}
                   {next && (
-                    <div class="next">
+                    <div class="self-end text-right md:text-left md:self-start">
                       <div class="font-sm">Next</div>
                       <a href={`/blog/${next.slug}`}>{next.data.title}</a>
                     </div>
@@ -78,7 +80,7 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
               )
             }
 
-            <div class="back">
+            <div class="mt-4">
               <a href="/blog"> &larr; Back to the blog</a>
             </div>
           </aside>
@@ -87,100 +89,3 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
     </Section>
   </main>
 </BaseLayout>
-
-<style>
-  header {
-    padding-bottom: 1.5rem;
-
-    & dd {
-      margin: 0;
-    }
-  }
-  .article {
-    display: block;
-  }
-
-  .content {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-  }
-
-  .blog-content {
-    max-width: 60ch;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .blog-content .details {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    flex-shrink: 0;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .tags a {
-    text-transform: capitalize;
-  }
-
-  .articles {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  @media screen and (max-width: 768px) {
-    .content {
-      flex-direction: column;
-    }
-
-    .articles {
-      flex-direction: row;
-      gap: 0.5rem;
-      justify-content: space-between;
-    }
-
-    .next {
-      align-items: end;
-      text-align: end;
-    }
-  }
-
-  .articles div {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .back {
-    margin-top: 1rem;
-  }
-
-  .divider {
-    border: 1px solid rgb(229 231 235 / 50%);
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  .font-sm {
-    font-size: var(--font-size-sm);
-  }
-
-  h1 {
-    font-size: 2rem !important;
-  }
-
-  :global(.blog-content h2) {
-    margin-block-start: 1rem;
-  }
-
-  :global(.blog-content h3) {
-    margin-block-start: 1rem;
-  }
-</style>
