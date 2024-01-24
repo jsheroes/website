@@ -1,9 +1,18 @@
 ---
-import { getCollection } from "astro:content";
-import BlogLayout from "../../layouts/BlogLayout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import BlogLayout from "@/layouts/BlogLayout.astro";
 
 export async function getStaticPaths() {
-  const blogs = await getCollection("blog");
+  const blogs = await getCollection("blog").then(
+    (posts: CollectionEntry<"blog">[]) => {
+      return posts.sort((a, b) => {
+        return (
+          new Date(b.data.published).getTime() -
+          new Date(a.data.published).getTime()
+        );
+      });
+    }
+  );
 
   return blogs.map((blog, index) => ({
     params: {

@@ -56,22 +56,28 @@ links.sort((a, b) => sortOrder.indexOf(a.name) - sortOrder.indexOf(b.name));
 <dialog
   aria-labelledby={`${person.id}-title`}
   id={person.id}
-  onclick="if (event.currentTarget === event.target) event.currentTarget.close()"
+  onclick="
+  if (event.currentTarget === event.target) event.currentTarget.close()
+  "
 >
-  <main>
-    <div class="bio">
-      <div class="bio-info">
+  <main class="w-100% max-w-[800px] flex flex-col gap-6 overflow-auto">
+    <div
+      class="flex flex-col items-center md:flex-row md:items-start w-100% gap-4 pb-2"
+    >
+      <div class="flex items-center flex-col md:items-start gap-4">
         <Image
           src={getImage(person.data.imgName)}
           alt={person.data.name}
-          width="286"
-          height="286"
+          width="250"
+          height="250"
+          class="max-w-[inherit]"
         />
-        <div class="bio-links">
+        <div class="flex gap-4 px-2">
           {
             links.length > 0 &&
               links.map((link) => (
                 <a
+                  class="flex w-5 h-5 transition-all ease-out duration-move hover:scale-125 hover:contrast-200"
                   href={link.url}
                   target="_blank"
                   rel="noopener"
@@ -84,9 +90,9 @@ links.sort((a, b) => sortOrder.indexOf(a.name) - sortOrder.indexOf(b.name));
         </div>
       </div>
 
-      <div class="bio-details">
-        <div id={`${person.id}-title`} class="bio-title" role="heading">
-          <strong class="bio-name">{person.data.name}</strong>
+      <div class="min-w-auto md:min-w-[250px] flex flex-col gap-2">
+        <div id={`${person.id}-title`} class="flex flex-col" role="heading">
+          <strong class="text-lg">{person.data.name}</strong>
           <span
             >{
               person.data.company
@@ -102,7 +108,7 @@ links.sort((a, b) => sortOrder.indexOf(a.name) - sortOrder.indexOf(b.name));
 
     {
       speakerTalk && TalkContent ? (
-        <div class="talk">
+        <div class="flex flex-col gap-2">
           <strong>Talk: {speakerTalk.data.title}</strong>
           <TalkContent />
         </div>
@@ -111,8 +117,12 @@ links.sort((a, b) => sortOrder.indexOf(a.name) - sortOrder.indexOf(b.name));
   </main>
 
   <form method="dialog">
-    <button aria-label="Close modal">
-      <img alt="Close modal" class="close" src="/img/icons/close.svg" />
+    <button class="group" aria-label="Close modal">
+      <img
+        alt="Close modal"
+        class="w-6 h-6 transition-transform ease-out duration-move group-hover:scale-125"
+        src="/img/icons/close.svg"
+      />
     </button>
   </form>
 </dialog>
@@ -171,102 +181,5 @@ links.sort((a, b) => sortOrder.indexOf(a.name) - sortOrder.indexOf(b.name));
 
   button:hover {
     border-width: 4px;
-  }
-
-  button:hover .close {
-    transform: scale(1.2);
-  }
-
-  .close {
-    width: 1.5rem;
-    height: 1.5rem;
-    transition: transform var(--speed-move) ease-out;
-  }
-
-  main {
-    overflow: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    max-width: 800px;
-    width: 100%;
-  }
-
-  .bio {
-    display: flex;
-    gap: 1rem;
-    padding-bottom: 10px;
-  }
-
-  .bio-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .bio-links {
-    display: flex;
-    gap: 1rem;
-    padding: 0 0.5rem;
-  }
-
-  .bio-links > a {
-    display: flex;
-    width: 1.2rem;
-    height: 1.2rem;
-    transition: all var(--speed-move) ease-out;
-  }
-
-  .bio-links > a:hover {
-    transform: scale(1.2);
-    filter: contrast(200);
-  }
-
-  .bio-details {
-    min-width: 250px;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  .photo {
-    width: 250px;
-    height: 250px;
-  }
-
-  .bio-title {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .bio-name {
-    font-size: var(--font-size-lg);
-  }
-
-  @media screen and (max-width: 756px) {
-    .bio {
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-    }
-
-    .bio-details {
-      min-width: auto;
-    }
-
-    .bio-title {
-      text-align: center;
-    }
-
-    .bio-info {
-      align-items: center;
-    }
-
-    .photo {
-      width: 200px;
-      height: 200px;
-    }
   }
 </style>

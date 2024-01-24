@@ -14,6 +14,11 @@
     "noEmit": true,
     // Enable strict type checking.
     "strict": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "baseUrl": "./",
+    "paths": {
+      // Enable absolute imports from the root of your project.
+      "@/*": ["./src/*"]
+    }
   }
 }
