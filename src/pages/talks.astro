@@ -1,0 +1,56 @@
+---
+import { YouTube } from "@astro-community/astro-embed-youtube";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Section from "@/components/Section.astro";
+
+import { talks } from "@/data/talks";
+---
+
+<BaseLayout title="JSHeroes - Talks" theme="dark">
+  <img
+    class="block w-full h-[500px] object-cover"
+    src={"/img/banners/bears-hills.svg"}
+    aria-hidden
+  />
+
+  <main id="main">
+    <Section variant="light" content="list">
+      <h1>Talks Archive</h1>
+
+      <p>
+        On this page you can find all the talks from the previous editions of
+        JSHeroes. You can learn from the amazing speakers who shared their
+        knowledge and stories with the JavaScript community. This page is a
+        treasure trove of useful and inspiring content. Enjoy!
+      </p>
+
+      <div>
+        {
+          Object.keys(talks)
+            .sort((a, b) => b.localeCompare(a, undefined, { numeric: true }))
+            .map((year) => (
+              <div class="py-4">
+                <h2 class="mb-4">JSHeroes {year}</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-8 xl:gap-10 place-content-center place-items-center">
+                  {talks[year]
+                    .sort((a, b) =>
+                      a.title
+                        .toLocaleLowerCase()
+                        .localeCompare(b.title.toLocaleLowerCase())
+                    )
+                    .map((talk) => (
+                      <div class="w-full ">
+                        <YouTube id={talk.link} />
+                        <h3 class="font-semibold truncate">{talk.speaker}</h3>
+                        <p class="my-1 truncate">{talk.title}</p>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            ))
+        }
+      </div>
+    </Section>
+  </main>
+</BaseLayout>
