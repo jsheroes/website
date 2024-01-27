@@ -9,64 +9,22 @@ export interface Props {
 const { imgName, link, title, subtitle } = Astro.props as Props;
 ---
 
-<div class="card">
-  <a class="clickable-photo" href={link}>
-    <img src={`/img/${imgName}`} alt="Ecma the bear mascot" />
+<div class="flex flex-col item-center gap-4 font-display">
+  <a
+    class="block p-4 bg-neutral-light w-60 h-60 overflow-hidden rounded-full border-0 border-solid border-[var(--person-accent-color)] grayscale transition-all ease-out duration-fade hover:border-[1rem] hover:grayscale-0 focus-visible:grayscale-0 focus-visible:outline-offset-8 focus-visible:outline-dashed focus-visible:outline-[5px] focus-visible:outline-[var(--person-accent-color)]"
+    href={link}
+  >
+    <img
+      class="block w-full rotate-[20deg]"
+      src={`/img/${imgName}`}
+      alt="Ecma the bear mascot"
+    />
   </a>
-  <div class="details">
-    <strong>
+  <div class="flex flex-col items-center text-center">
+    <span class="font-semibold">
       {title}
-    </strong>
+    </span>
 
     <span>{subtitle}</span>
   </div>
 </div>
-<style>
-  .card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    font-family: var(--font-family-display);
-  }
-
-  .details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .clickable-photo {
-    padding: 0;
-    display: block;
-    width: 15rem;
-    height: 15rem;
-    overflow: hidden;
-    border-radius: 999px;
-    border: 0rem solid var(--person-accent-color);
-    transition: outline-offset var(--speed-fade) ease-out,
-      filter var(--speed-fade) ease-out, border-width var(--speed-fade) ease-out;
-    filter: grayscale(1);
-    background: var(--color-neutral-light);
-    padding: 1rem;
-  }
-
-  .clickable-photo img {
-    display: block;
-    width: 100%;
-    transform: rotate(
-      20deg
-    ); /* Quick workaround for the bear, should be abstracted */
-  }
-
-  .clickable-photo:hover {
-    border-width: 1rem;
-    filter: grayscale(0);
-  }
-
-  .clickable-photo:focus-visible {
-    outline: dashed var(--color-accent-pink) 5px;
-    outline-offset: 8px;
-    filter: grayscale(0);
-  }
-</style>

@@ -16,13 +16,18 @@ export interface Props {
 }
 
 const { person, variant = "large" } = Astro.props as Props;
+
+const sizeClasses = variant === "small" ? "w-44" : "w-60";
 ---
 
-<div class="card" data-size={variant}>
+<div
+  class={`flex flex-col item-center gap-4 font-display ${sizeClasses}`}
+  data-size={variant}
+>
   <button
     aria-haspopup="dialog"
     aria-controls={person.id}
-    class="clickable-photo"
+    class="block p-0 overflow-hidden rounded-full border-0 border-solid border-[var(--person-accent-color)] grayscale transition-all ease-out duration-fade hover:border-[1rem] hover:grayscale-0 focus-visible:grayscale-0 focus-visible:outline-offset-8 focus-visible:outline-dashed focus-visible:outline-[5px] focus-visible:outline-[var(--person-accent-color)]"
     onclick={`window['${person.id}'].showModal()`}
     title={`See the profile of ${person.data.name}`}
   >
@@ -34,10 +39,11 @@ const { person, variant = "large" } = Astro.props as Props;
       loading="eager"
     />
   </button>
-  <div class="details">
-    <strong>
+
+  <div class="flex flex-col items-center text-center">
+    <span class="font-semibold">
       {person.data.name}
-    </strong>
+    </span>
     {
       variant === "large" && (
         <>
@@ -50,56 +56,3 @@ const { person, variant = "large" } = Astro.props as Props;
 
   <Modal person={person} />
 </div>
-<style>
-  .card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    width: 15rem;
-    font-family: var(--font-family-display);
-  }
-
-  .card[data-size="small"] {
-    width: 11rem;
-  }
-
-  .card[data-size="small"] .clickable-photo:hover {
-    border-width: 0.7rem;
-  }
-
-  .details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .clickable-photo {
-    padding: 0;
-    display: block;
-    overflow: hidden;
-    border-radius: 999px;
-    border: 0rem solid var(--person-accent-color);
-    transition: outline-offset var(--speed-fade) ease-out,
-      filter var(--speed-fade) ease-out, border-width var(--speed-fade) ease-out;
-    filter: grayscale(1);
-  }
-
-  .clickable-photo img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-  }
-
-  .clickable-photo:hover {
-    border-width: 1rem;
-    filter: grayscale(0);
-  }
-
-  .clickable-photo:focus-visible {
-    outline: dashed var(--color-accent-pink) 5px;
-    outline-offset: 8px;
-    filter: grayscale(0);
-  }
-</style>

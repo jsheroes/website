@@ -30,7 +30,8 @@ export default {
       },
     },
     fontFamily: {
-      sans: ["Ubuntu", ...defaultTheme.fontFamily.sans],
+      base: ["system-ui", ...defaultTheme.fontFamily.sans],
+      display: ["Ubuntu", ...defaultTheme.fontFamily.sans],
     },
   },
   plugins: [
