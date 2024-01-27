@@ -12,21 +12,36 @@ export default {
       "accent-pink": "#ff6078",
       "accent-orange": "#ffcc67",
       "accent-green": "#65d3bb",
-    },
-    fontSize: {
-      sm: "clamp(0.8rem, 0.2vw + 0.8rem, 0.9rem)",
-      base: "clamp(1rem, 0.34vw + 0.91rem, 1.19rem)",
-      lg: "clamp(1.2rem, 0.7vw + 1.3rem, 1.8rem)",
-      xl: "clamp(2.4rem, 2.38vw + 1.85rem, 3.6rem)",
-      "2xl": "1.563rem",
-      "3xl": "1.953rem",
-      "4xl": "2.441rem",
-      "5xl": "3.052rem",
+      "black-pearl": "#001c2b",
+      "dodger-blue": "#0098ff",
+      grandis: "#ffcc67",
+      downy: "#65d3bb",
+      "wild-watermelon": "#ff6078",
     },
     extend: {
       transitionDuration: {
         move: "100ms",
         fade: "125ms",
+      },
+      fontSize: {
+        sm: "clamp(0.8rem, 0.2vw + 0.8rem, 0.9rem)",
+        base: "clamp(1rem, 0.34vw + 0.91rem, 1.19rem)",
+        lg: "clamp(1.2rem, 0.7vw + 1.3rem, 1.8rem)",
+        xl: "clamp(2.4rem, 2.38vw + 1.85rem, 3.6rem)",
+        "2xl": "1.563rem",
+        "3xl": "1.953rem",
+        "4xl": "2.441rem",
+        "5xl": "3.052rem",
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            img: {
+              "margin-top": 0,
+              "margin-bottom": 0,
+            },
+          },
+        },
       },
     },
     fontFamily: {

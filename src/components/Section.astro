@@ -3,12 +3,13 @@ export interface Props {
   variant: "light" | "dark";
   content: "text" | "list" | "full";
   id?: string;
+  class?: string;
 }
 
-const { id, variant, content } = Astro.props as Props;
+const { id, variant, content, class: className } = Astro.props as Props;
 ---
 
-<section id={id} class={`section ${variant}`}>
+<section id={id} class={`section ${variant} ${className}`}>
   <div class={`content ${content}`}>
     <slot />
   </div>
