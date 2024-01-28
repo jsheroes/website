@@ -3,6 +3,12 @@ import { Image } from "astro:assets";
 import { communities } from "../data/communities";
 import { sponsors } from "../data/sponsors";
 import { getImage } from "../utils/getImage";
+
+const listStyles =
+  "flex flex-wrap items-center justify-center gap-4 p-0 m-0 pb-12";
+
+const linkStyles =
+  "flex item-center p-4 transition-[outline-offset] duration-fade ease-out hover:outline-offset-[-10px] hover:outline hover:outline-accent-pink";
 ---
 
 {
@@ -22,11 +28,11 @@ import { getImage } from "../utils/getImage";
           for more information.
         </p>
       </div>
-      <ul role="list" class="list">
+      <ul role="list" class={listStyles}>
         {sponsors.map((sponsor) => (
-          <li class="list-item sponsor">
+          <li class="list-none flex w-[200px]">
             <a
-              class="friend-link"
+              class={linkStyles}
               href={sponsor.url}
               target="_blank"
               rel="noreferrer noopener"
@@ -63,12 +69,12 @@ import { getImage } from "../utils/getImage";
   <p>The communities that support our event</p>
 </div>
 
-<ul role="list" class="list">
+<ul role="list" class={listStyles}>
   {
     communities.map((com) => (
-      <li class="list-item community">
+      <li class="list-none flex w-[150px]">
         <a
-          class="friend-link"
+          class={linkStyles}
           href={com.url}
           target="_blank"
           rel="noreferrer noopener"
@@ -89,46 +95,3 @@ import { getImage } from "../utils/getImage";
     ))
   }
 </ul>
-
-<style>
-  .list {
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    padding-bottom: 3rem;
-  }
-
-  .list-item {
-    list-style: none;
-    width: 200px;
-    display: flex;
-  }
-
-  .list-item.community {
-    width: 150px;
-  }
-
-  .friend-link {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    transition: outline-offset var(--speed-fade) ease-out;
-  }
-
-  .friend-link:hover {
-    outline: solid var(--color-accent-pink);
-    outline-offset: -10px;
-  }
-
-  .friend-link img {
-    width: 100%;
-  }
-
-  .friend-link::after {
-    display: none;
-  }
-</style>

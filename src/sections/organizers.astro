@@ -3,17 +3,20 @@ import { getCollection } from "astro:content";
 import PersonCard from "../components/PersonCard.astro";
 
 const organizers = await getCollection("organizers");
+
+const listStyles = "flex flex-wrap justify-center gap-8 py-8 px-0";
+const listItemStyles = "list-item list-none pb-2";
 ---
 
 <div class="content center">
   <h2>Meet the team</h2>
 </div>
 
-<ul role="list" class="organizers-list">
+<ul role="list" class={listStyles}>
   {
     organizers.map((o) => (
       <>
-        <li class="organizers-list-item">
+        <li class={listItemStyles}>
           <PersonCard variant="small" person={o} />
         </li>
       </>
@@ -22,28 +25,15 @@ const organizers = await getCollection("organizers");
 </ul>
 
 <style>
-  .organizers-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    padding: 2rem 0;
-  }
-
-  .organizers-list-item {
-    list-style: none;
-    padding-bottom: 1rem;
-  }
-
-  .organizers-list-item:nth-child(3n) {
+  .list-item:nth-child(3n) {
     --person-accent-color: var(--color-accent-pink);
   }
 
-  .organizers-list-item:nth-child(3n + 1) {
+  .list-item:nth-child(3n + 1) {
     --person-accent-color: var(--color-accent-orange);
   }
 
-  .organizers-list-item:nth-child(3n + 2) {
+  .list-item:nth-child(3n + 2) {
     --person-accent-color: var(--color-accent-green);
   }
 </style>
