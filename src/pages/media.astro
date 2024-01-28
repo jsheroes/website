@@ -11,13 +11,13 @@ import Section from "../components/Section.astro";
     src={"/img/banners/bears-hills.svg"}
     aria-hidden
   />
-  <main id="main" class="prose max-w-none">
-    <Section variant="light" content="list" class="!pb-8">
+  <main id="main" class="prose prose-h2:mt-0 max-w-none">
+    <Section variant="light" content="list">
       <h1>JSHeroes Media Kit</h1>
 
-      <div>
+      <div class="mb-8">
         <p class="font-bold">On this page you will find:</p>
-        <ul>
+        <ul class="not-prose">
           <li>
             <a href="#about" class="not-prose">About JSHeroes</a>
           </li>
@@ -78,7 +78,7 @@ import Section from "../components/Section.astro";
       </div>
     </Section>
     <div class="divider w-11/12"></div>
-    <Section variant="light" content="list" id="brand" class="!py-8">
+    <Section variant="light" content="list" id="brand">
       <div>
         <h2>Logos & Brand</h2>
 
@@ -260,7 +260,9 @@ import Section from "../components/Section.astro";
             class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-0"
           >
             <div>
-              <div class="w-36 h-36 md:w-40 md:h-40 rounded-full bg-grandis">
+              <div
+                class="w-36 h-36 md:w-40 md:h-40 rounded-full bg-accent-orange"
+              >
               </div>
               <div class="flex flex-col justify-center items-center text-xs">
                 <span><strong>Grandis</strong></span>
@@ -271,7 +273,9 @@ import Section from "../components/Section.astro";
             </div>
 
             <div class="relative left-0 md:left-[-1rem]">
-              <div class="w-36 h-36 md:w-40 md:h-40 rounded-full bg-downy">
+              <div
+                class="w-36 h-36 md:w-40 md:h-40 rounded-full bg-accent-green"
+              >
               </div>
               <div class="flex flex-col justify-center items-center text-xs">
                 <span><strong>Downy</strong></span>
@@ -283,7 +287,7 @@ import Section from "../components/Section.astro";
 
             <div class="relative left-0 md:left-[-2rem]">
               <div
-                class="w-36 h-36 md:w-40 md:h-40 rounded-full bg-wild-watermelon"
+                class="w-36 h-36 md:w-40 md:h-40 rounded-full bg-accent-pink"
               >
               </div>
               <div class="flex flex-col justify-center items-center text-xs">
@@ -301,7 +305,7 @@ import Section from "../components/Section.astro";
     </Section>
     <div class="divider w-11/12"></div>
 
-    <Section id="typeface" variant="light" content="list" class="!py-8">
+    <Section id="typeface" variant="light" content="list">
       <h2>Typeface</h2>
       <p>
         The font we use on the website and print materials is called <strong
@@ -311,7 +315,7 @@ import Section from "../components/Section.astro";
     </Section>
     <div class="divider w-11/12"></div>
 
-    <Section id="image-gallery" variant="light" content="list" class="!py-8">
+    <Section id="image-gallery" variant="light" content="list">
       <div>
         <h2>Image Gallery</h2>
 
@@ -383,7 +387,7 @@ import Section from "../components/Section.astro";
 
     <div class="divider w-11/12"></div>
 
-    <Section id="video-gallery" variant="light" content="list" class="!pt-8">
+    <Section id="video-gallery" variant="light" content="list">
       <h2>Video Gallery</h2>
 
       <p>Videos are from our latest 3 editions.</p>

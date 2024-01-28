@@ -14,9 +14,6 @@ export default {
       "accent-green": "#65d3bb",
       "black-pearl": "#001c2b",
       "dodger-blue": "#0098ff",
-      grandis: "#ffcc67",
-      downy: "#65d3bb",
-      "wild-watermelon": "#ff6078",
     },
     extend: {
       transitionDuration: {
