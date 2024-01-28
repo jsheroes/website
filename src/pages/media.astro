@@ -6,28 +6,32 @@ import Section from "../components/Section.astro";
 ---
 
 <BaseLayout title="Media Kit" theme="dark">
-  <img class="header-image" src={"/img/banners/bears-hills.svg"} aria-hidden />
-  <main id="main">
+  <img
+    class="block w-full h-[500px] object-cover"
+    src={"/img/banners/bears-hills.svg"}
+    aria-hidden
+  />
+  <main id="main" class="prose prose-h2:mt-0 max-w-none">
     <Section variant="light" content="list">
       <h1>JSHeroes Media Kit</h1>
 
-      <div class="container column base-padding-bottom">
+      <div class="mb-8">
         <p class="font-bold">On this page you will find:</p>
-        <ul>
+        <ul class="not-prose">
           <li>
-            <a href="#about">About JSHeroes</a>
+            <a href="#about" class="not-prose">About JSHeroes</a>
           </li>
           <li>
-            <a href="#brand">Logos & Brand</a>
+            <a href="#brand" class="not-prose">Logos & Brand</a>
           </li>
           <li>
-            <a href="#typeface">Typeface</a>
+            <a href="#typeface" class="not-prose">Typeface</a>
           </li>
           <li>
-            <a href="#image-gallery">Image Gallery</a>
+            <a href="#image-gallery" class="not-prose">Image Gallery</a>
           </li>
           <li>
-            <a href="#video-gallery">Video Gallery</a>
+            <a href="#video-gallery" class="not-prose">Video Gallery</a>
           </li>
         </ul>
       </div>
@@ -64,6 +68,7 @@ import Section from "../components/Section.astro";
         </p>
         <p>
           We are publishing all data about this conference, in <a
+            class="not-prose"
             href="/transparency">full transparency</a
           >. We are also available at any time for inquires and we are really
           looking forward to sharing our knowledge about organising
@@ -72,9 +77,9 @@ import Section from "../components/Section.astro";
         </p>
       </div>
     </Section>
-    <div class="divider"></div>
+    <div class="divider w-11/12"></div>
     <Section variant="light" content="list" id="brand">
-      <div class="base-padding-bottom">
+      <div>
         <h2>Logos & Brand</h2>
 
         <div>
@@ -96,36 +101,48 @@ import Section from "../components/Section.astro";
           </ul>
         </div>
 
-        <div class="logos">
-          <div>
-            <img class="logo-white" alt="JSHeroes" src="img/logo-light.svg" />
-            <p>
+        <div
+          class="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12 pb-8"
+        >
+          <div class="max-w-40">
+            <img
+              class="bg-neutral-light p-4 border bottom-1 drop-shadow"
+              alt="JSHeroes"
+              src="img/logo-light.svg"
+            />
+            <p class="text-sm">
               On white backgrounds, use the blue-black JSHeroes logo which is
               our primary brand mark.
             </p>
           </div>
-          <div>
-            <img class="logo-black" alt="JSHeroes" src="img/logo-dark.svg" />
-            <p>
+          <div class="max-w-40">
+            <img
+              class="bg-neutral-dark p-4"
+              alt="JSHeroes"
+              src="img/logo-dark.svg"
+            />
+            <p class="text-sm">
               On coloured or photo backgrounds, use the blue-white JSHeroes
               logo.
             </p>
           </div>
         </div>
 
-        <div class="container">
-          <div class="dodger-blue">
-            <div class="circle"></div>
-            <div class="color-description">
+        <div class="flex justify-center md:justify-normal">
+          <div>
+            <div class="w-28 h-28 md:w-40 md:h-40 rounded-full bg-dodger-blue">
+            </div>
+            <div class="flex flex-col justify-center items-center text-xs">
               <span><strong>Dodger Blue</strong></span>
               <span>#0098FF</span>
               <span>R0 G152 B255</span>
               <span>C1 M0.40 Y0 K0</span>
             </div>
           </div>
-          <div class="black-pearl">
-            <div class="circle"></div>
-            <div class="color-description">
+          <div class="relative left-[-1rem]">
+            <div class="w-28 h-28 md:w-40 md:h-40 rounded-full bg-black-pearl">
+            </div>
+            <div class="flex flex-col justify-center items-center text-xs">
               <span><strong>Black Pearl</strong></span>
               <span>#001C2B</span>
               <span>R0 G28 B43</span>
@@ -138,7 +155,7 @@ import Section from "../components/Section.astro";
           <strong>Colors:</strong> RGB for web, CMYK for print
         </p>
 
-        <div class="container">
+        <div class="flex py-4">
           <a
             class="cta-button"
             target="_blank"
@@ -148,11 +165,13 @@ import Section from "../components/Section.astro";
         </div>
       </div>
 
-      <div class="base-padding-bottom">
+      <div>
         <h3>Ecma</h3>
         <p>Mr. and Ms. Ecma the bears are the brand mascots of JSHeroes.</p>
 
-        <div class="mascots">
+        <div
+          class="flex flex-col gap-4 pb-4 md:flex-row items-center md:gap-12"
+        >
           <img
             alt="Ecma, JSHeroes mascot wearing a space suit and waving"
             src="img/props/hello-bear.svg"
@@ -167,7 +186,7 @@ import Section from "../components/Section.astro";
           />
         </div>
 
-        <div class="container">
+        <div class="flex py-4">
           <a
             class="cta-button"
             target="_blank"
@@ -189,11 +208,16 @@ import Section from "../components/Section.astro";
           in brand representation.
         </p>
 
-        <div class="colors">
-          <div>
-            <div class="dodger-blue">
-              <div class="circle"></div>
-              <div class="color-description">
+        <div class="flex flex-col-reverse md:flex-row items-center py-4">
+          <div
+            class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-0"
+          >
+            <div>
+              <div
+                class="w-36 h-36 md:w-40 md:h-40 rounded-full bg-dodger-blue"
+              >
+              </div>
+              <div class="flex flex-col justify-center items-center text-xs">
                 <span><strong>Dodger Blue</strong></span>
                 <span>#0098FF</span>
                 <span>R0 G152 B255</span>
@@ -201,9 +225,12 @@ import Section from "../components/Section.astro";
               </div>
             </div>
 
-            <div class="black-pearl">
-              <div class="circle"></div>
-              <div class="color-description">
+            <div class="relative left-0 md:left-[-1rem]">
+              <div
+                class="w-36 h-36 md:w-40 md:h-40 rounded-full bg-black-pearl"
+              >
+              </div>
+              <div class="flex flex-col justify-center items-center text-xs">
                 <span><strong>Black Pearl</strong></span>
                 <span>#001C2B</span>
                 <span>R0 G28 B43</span>
@@ -211,9 +238,12 @@ import Section from "../components/Section.astro";
               </div>
             </div>
 
-            <div class="pure-white">
-              <div class="circle"></div>
-              <div class="color-description">
+            <div class="relative left-0 md:left-[-2rem]">
+              <div
+                class="w-36 h-36 md:w-40 md:h-40 rounded-full bg-neutral-light border border-1"
+              >
+              </div>
+              <div class="flex flex-col justify-center items-center text-xs">
                 <span><strong>Pure White</strong></span>
                 <span>#FFFFFF</span>
                 <span>R255 G255 B255</span>
@@ -225,11 +255,16 @@ import Section from "../components/Section.astro";
           <h3>Primary Colors</h3>
         </div>
 
-        <div class="colors">
-          <div>
-            <div class="grandis">
-              <div class="circle"></div>
-              <div class="color-description">
+        <div class="flex flex-col-reverse md:flex-row items-center py-4">
+          <div
+            class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-0"
+          >
+            <div>
+              <div
+                class="w-36 h-36 md:w-40 md:h-40 rounded-full bg-accent-orange"
+              >
+              </div>
+              <div class="flex flex-col justify-center items-center text-xs">
                 <span><strong>Grandis</strong></span>
                 <span>#FFCC67</span>
                 <span>R255 G204 B103</span>
@@ -237,9 +272,12 @@ import Section from "../components/Section.astro";
               </div>
             </div>
 
-            <div class="downy">
-              <div class="circle"></div>
-              <div class="color-description">
+            <div class="relative left-0 md:left-[-1rem]">
+              <div
+                class="w-36 h-36 md:w-40 md:h-40 rounded-full bg-accent-green"
+              >
+              </div>
+              <div class="flex flex-col justify-center items-center text-xs">
                 <span><strong>Downy</strong></span>
                 <span>#65D3BB</span>
                 <span>R101 G211 B187</span>
@@ -247,9 +285,12 @@ import Section from "../components/Section.astro";
               </div>
             </div>
 
-            <div class="wild-watermelon">
-              <div class="circle"></div>
-              <div class="color-description">
+            <div class="relative left-0 md:left-[-2rem]">
+              <div
+                class="w-36 h-36 md:w-40 md:h-40 rounded-full bg-accent-pink"
+              >
+              </div>
+              <div class="flex flex-col justify-center items-center text-xs">
                 <span><strong>Wild Watermelon</strong></span>
                 <span>#FF6078</span>
                 <span>R255 G96 B120</span>
@@ -262,7 +303,7 @@ import Section from "../components/Section.astro";
         </div>
       </div>
     </Section>
-    <div class="divider"></div>
+    <div class="divider w-11/12"></div>
 
     <Section id="typeface" variant="light" content="list">
       <h2>Typeface</h2>
@@ -272,7 +313,7 @@ import Section from "../components/Section.astro";
         >. Black, Bold, Medium and Regular are used.
       </p>
     </Section>
-    <div class="divider"></div>
+    <div class="divider w-11/12"></div>
 
     <Section id="image-gallery" variant="light" content="list">
       <div>
@@ -285,42 +326,58 @@ import Section from "../components/Section.astro";
         </p>
 
         <div class="flex flex-wrap justify-center gap-6">
-          <div class="max-w-[384px]">
+          <div>
             <a
               target="_blank"
               href="https://drive.google.com/drive/u/0/folders/1FyZhZreQWiCossqJOCOx1w0LJ2SZmWL-"
             >
-              <img src="img/gallery/jsh-2023.jpg" alt="JSHeroes 2023" />
+              <img
+                src="img/gallery/jsh-2023.jpg"
+                alt="JSHeroes 2023"
+                class="w-[384px] h-[246px]"
+              />
             </a>
             <strong>JSHeroes 2023</strong>
           </div>
 
-          <div class="container column">
+          <div>
             <a
               target="_blank"
               href="https://drive.google.com/drive/folders/1TxUO0ArQMC65mBfWPFrklNsren1I8nHl"
             >
-              <img src="img/gallery/jsh-2022.png" alt="JSHeroes 2022" />
+              <img
+                src="img/gallery/jsh-2022.png"
+                alt="JSHeroes 2022"
+                class="w-[384px] h-[246px]"
+              />
             </a>
             <strong>JSHeroes 2022</strong>
           </div>
 
-          <div class="max-w-[384px]">
+          <div>
             <a
               target="_blank"
               href="https://drive.google.com/drive/folders/1dA_XDg9kUhyjIlV3HuekPEE4NG2M7tju"
             >
-              <img src="img/gallery/jsh-2019.png" alt="JSHeroes 2019" />
+              <img
+                src="img/gallery/jsh-2019.png"
+                alt="JSHeroes 2019"
+                class="w-[384px] h-[246px]"
+              />
             </a>
             <strong>JSHeroes 2019</strong>
           </div>
 
-          <div class="max-w-[384px]">
+          <div>
             <a
               target="_blank"
               href="https://drive.google.com/drive/folders/1Bhl8xiXQkvh2SZyREfC0SeGsUUYgk7qf"
             >
-              <img src="img/gallery/jsh-2018.png" alt="JSHeroes 2018" />
+              <img
+                src="img/gallery/jsh-2018.png"
+                alt="JSHeroes 2018"
+                class="w-[384px] h-[246px]"
+              />
             </a>
             <strong>JSHeroes 2018</strong>
           </div>
@@ -328,7 +385,7 @@ import Section from "../components/Section.astro";
       </div>
     </Section>
 
-    <div class="divider"></div>
+    <div class="divider w-11/12"></div>
 
     <Section id="video-gallery" variant="light" content="list">
       <h2>Video Gallery</h2>
@@ -340,187 +397,14 @@ import Section from "../components/Section.astro";
       </p>
 
       <div class="flex flex-wrap justify-center gap-6">
-        <YouTube id="N6qr6L37sl8" class="youtube-player" />
+        <YouTube id="N6qr6L37sl8" class="w-96" />
 
-        <YouTube id="munltx48_xI" class="youtube-player" />
+        <YouTube id="munltx48_xI" class="w-96" />
 
-        <YouTube id="jdr9eQGq97g" class="youtube-player" />
+        <YouTube id="jdr9eQGq97g" class="w-96" />
 
-        <YouTube id="Zx2moTy-yAg" class="youtube-player" />
+        <YouTube id="Zx2moTy-yAg" class="w-96" />
       </div>
     </Section>
   </main>
 </BaseLayout>
-
-<style>
-  html {
-    scroll-behavior: smooth;
-  }
-
-  .header-image {
-    display: block;
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-  }
-
-  .youtube-player {
-    width: 384px;
-    height: 246px;
-  }
-
-  .colors {
-    display: flex;
-    align-items: center;
-    padding: 1rem 0;
-  }
-
-  .colors > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .pure-white {
-    position: relative;
-    left: -30px;
-  }
-
-  .pure-white .circle {
-    background: #ffffff;
-    border: 1px solid #000000;
-  }
-
-  .black-pearl {
-    position: relative;
-    left: -15px;
-  }
-
-  .black-pearl .circle {
-    background: #001c2b;
-  }
-
-  .dodger-blue .circle {
-    background: #0098ff;
-  }
-
-  .grandis .circle {
-    background: #ffcc67;
-  }
-
-  .downy {
-    position: relative;
-    left: -15px;
-  }
-
-  .downy .circle {
-    background: #65d3bb;
-  }
-
-  .wild-watermelon {
-    position: relative;
-    left: -30px;
-  }
-
-  .wild-watermelon .circle {
-    background: #ff6078;
-  }
-
-  .mascots {
-    display: flex;
-    align-items: center;
-    gap: 3rem;
-  }
-
-  .color-description {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-  }
-
-  .circle {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-  }
-
-  .container {
-    display: flex;
-  }
-
-  .column {
-    flex-direction: column;
-  }
-
-  .base-padding-bottom {
-    padding-bottom: 2rem;
-  }
-
-  .divider {
-    border: 1px solid var(--color-neutral-separator);
-    width: 90%;
-    margin: 0 auto;
-  }
-
-  .logos {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 5rem;
-    padding: 30px 0;
-  }
-
-  .logos div {
-    max-width: min-content;
-  }
-
-  .logo-white {
-    background: white;
-    padding: 20px;
-    border: 1px solid #000000;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  }
-
-  .logo-black {
-    background: black;
-    padding: 20px;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-  }
-
-  @media screen and (max-width: 756px) {
-    .header-image {
-      object-position: 66.3% 50%;
-    }
-    .logos {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .mascots {
-      flex-direction: column;
-      gap: 1rem;
-      padding-bottom: 1rem;
-    }
-
-    .colors {
-      flex-direction: column;
-    }
-
-    .colors > div {
-      order: 1;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .colors > div * {
-      left: 0;
-    }
-  }
-</style>
