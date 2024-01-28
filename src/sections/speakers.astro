@@ -8,16 +8,19 @@ import { getCollection } from "astro:content";
 const speakers = await getCollection("speakers");
 const ambassadors = await getCollection("ambassadors");
 const support = await getCollection("support");
+
+const listStyles = "flex flex-wrap justify-center gap-8 py-8 px-0";
+const listItemStyles = "list-item list-none pb-4";
 ---
 
 <div class="content center">
   <h2>Our {CURRENT_YEAR} speakers</h2>
 </div>
 
-<ul role="list" class="person-list">
+<ul role="list" class={listStyles}>
   {
     Object.values(speakers).map((s) => (
-      <li class="person-list-item">
+      <li class={listItemStyles}>
         <PersonCard person={s} />
       </li>
     ))
@@ -25,7 +28,7 @@ const support = await getCollection("support");
 
   {
     CFP_OPEN && (
-      <li class="person-list-item">
+      <li class={listItemStyles}>
         <PlaceholderCard
           imgName="/props/bear.svg"
           title="You?"
@@ -41,10 +44,10 @@ const support = await getCollection("support");
   <h2>Our support crew for {CURRENT_YEAR}</h2>
 </div>
 
-<ul role="list" class="person-list">
+<ul role="list" class={listStyles}>
   {
     support.map((s) => (
-      <li class="person-list-item">
+      <li class={listItemStyles}>
         <PersonCard person={s} />
       </li>
     ))
@@ -60,10 +63,10 @@ const support = await getCollection("support");
   </p>
 </div>
 
-<ul role="list" class="person-list">
+<ul role="list" class={listStyles}>
   {
     ambassadors.map((a) => (
-      <li class="person-list-item">
+      <li class={listItemStyles}>
         <PersonCard person={a} />
       </li>
     ))
@@ -71,28 +74,15 @@ const support = await getCollection("support");
 </ul>
 
 <style>
-  .person-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    padding: 2rem 0;
-  }
-
-  .person-list-item {
-    list-style: none;
-    padding-bottom: 1rem;
-  }
-
-  .person-list-item:nth-child(3n) {
+  .list-item:nth-child(3n) {
     --person-accent-color: var(--color-accent-pink);
   }
 
-  .person-list-item:nth-child(3n + 1) {
+  .list-item:nth-child(3n + 1) {
     --person-accent-color: var(--color-accent-orange);
   }
 
-  .person-list-item:nth-child(3n + 2) {
+  .list-item:nth-child(3n + 2) {
     --person-accent-color: var(--color-accent-green);
   }
 </style>

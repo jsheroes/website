@@ -1,6 +1,8 @@
-<footer>
-  <div class="content list">
-    <div class="column">
+<footer
+  class="flex flex-col gap-2 p-4 pt-16 text-neutral-light bg-primary font-display"
+>
+  <div class="w-full m-auto max-w-[1280px] flex justify-around">
+    <div class="flex flex-col gap-2 items-start">
       <strong>Useful links</strong>
       <a class="navlink" href="mailto:welcome@jsheroes.io">Contact us</a>
       <a class="navlink" href="/coc">Code of conduct</a>
@@ -8,7 +10,7 @@
       <a class="navlink" href="/terms-and-conditions">Terms and Conditions</a>
       <a class="navlink" href="/media">Media Kit</a>
     </div>
-    <div class="column">
+    <div class="flex flex-col gap-2 items-start">
       <strong>Follow us</strong>
       <a
         class="navlink"
@@ -42,33 +44,7 @@
       >
     </div>
   </div>
-  <p class="copywrite">
+  <p class="text-center">
     © {new Date().getFullYear()} · JSHeroes. All rights reserved.
   </p>
-
-  <style>
-    footer {
-      padding: 4rem 1rem 1rem 1rem;
-      color: var(--color-neutral-light);
-      background-color: var(--color-primary);
-      font-family: var(--font-family-display);
-    }
-
-    .content {
-      display: flex;
-      justify-content: space-around;
-    }
-
-    .column {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.5rem;
-    }
-
-    .copywrite {
-      margin-top: 2rem;
-      text-align: center;
-    }
-  </style>
 </footer>
