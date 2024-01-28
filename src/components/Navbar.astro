@@ -8,33 +8,33 @@ const { theme = "" } = Astro.props as Props;
 const navlinkClass = `navlink ${theme}`;
 ---
 
-<header>
-  <nav class="main-nav">
-    <div class="primary-links">
-      <a class={`${navlinkClass} skip-navlink`} href="#main">Skip navigation</a>
+<header class="m-auto relative max-w-[1280px]">
+  <nav class="main-nav absolute right-0 p-4 flex gap-4 font-display z-10">
+    <div class="hidden sm:flex gap-4">
+      <a class={`${navlinkClass} h-0 w-0 overflow-hidden focus:h-auto focus:w-auto`} href="#main">Skip navigation</a>
       <a class={navlinkClass} href="/">Home</a>
       <a class={navlinkClass} href="/#speakers">Speakers</a>
       <a class={navlinkClass} href="/blog">Blog</a>
     </div>
 
-    <button class="hamburger" aria-label="Toggle menu">
+    <button class="hamburger w-[1.2rem] transition-transform duration-move ease-out hover:scale-[1.3] focus-visible:outline-accent-pink" aria-label="Toggle menu">
       <Icon name="mdi:menu" class={navlinkClass} />
     </button>
   </nav>
 </header>
 
-<nav class="side-drawer" tabindex="-1">
-  <button class="close" aria-label="Close menu">
-    <Icon name="mdi:close" class="navlink" />
+<nav class="side-drawer flex flex-col h-full bg-primary fixed top-0 right-0 w-full max-w-[400px] z-30 translate-x-full transition-all duration-slide ease-out font-display" tabindex="-1">
+  <button class="close group self-end p-2 focus-visible:outline-accent-pink" aria-label="Close menu">
+    <Icon name="mdi:close" class="navlink w-[1.2rem] transition-transform duration-fade ease-out group-hover:scale-[1.3]" />
   </button>
-  <section>
-    <div class="primary">
+  <div class="flex flex-col gap-8 w-full mt-12">
+    <div class="flex flex-col items-start gap-2 px-16">
       <a class="navlink" href="/">Home</a>
       <a class="navlink" href="/#speakers">Speakers</a>
       <a class="navlink" href="/blog">Blog</a>
     </div>
 
-    <div class="secondary">
+    <div class="flex flex-col items-start gap-2 px-16">
       <a class="navlink" href="/transparency">Transparency</a>
       <a class="navlink" href="/coc">Code of Conduct</a>
       <a class="navlink" href="/privacy">Privacy Statement</a>
@@ -42,9 +42,15 @@ const navlinkClass = `navlink ${theme}`;
       <a class="navlink" href="/media">Media Kit</a>
       <a class="navlink" href="/meet-ecma">Meet Ecma</a>
     </div>
-  </section>
+
+    <div class="flex flex-col items-start gap-2 px-16">
+      <a class="navlink" target="_blank" rel="noreferrer noopener" href="https://2023.jsheroes.io">2023</a>
+      <a class="navlink" target="_blank" rel="noreferrer noopener" href="https://2022.jsheroes.io">2022</a>
+    </div>
+  </div>
 </nav>
-<div id="backdrop"></div>
+
+<div class="backdrop fixed w-full h-full top-0 right-0 bg-[rgba(0,0,0,0.6)] z-20 hidden"></div>
 
 <script>
   document.addEventListener("astro:page-load", () => {
@@ -52,24 +58,21 @@ const navlinkClass = `navlink ${theme}`;
       ".hamburger"
     ) as HTMLButtonElement;
     const closeBtn = document.querySelector(".close") as HTMLButtonElement;
-    const backdrop = document.querySelector("#backdrop") as HTMLDivElement;
+    const backdrop = document.querySelector(".backdrop") as HTMLDivElement;
     const sideDrawer = document.querySelector(".side-drawer") as HTMLElement;
     const mainNav = document.querySelector(".main-nav") as HTMLElement;
 
-    const sideDrawerPrimaryLinks = document.querySelectorAll(
-      ".side-drawer .primary a"
+    const sideDrawerLinks = document.querySelectorAll(
+      ".side-drawer a"
     ) as NodeListOf<HTMLAnchorElement>;
 
     function onOpen() {
-      backdrop.classList.add("backdrop");
-      sideDrawer.classList.add("open");
-      sideDrawer.tabIndex = 0;
-      mainNav.classList.add("hide");
+      backdrop.classList.add("!block");
+      sideDrawer.classList.add("!translate-x-0");
+      closeBtn.setAttribute("tabIndex", "0");
+      sideDrawerLinks.forEach(link => link.setAttribute('tabIndex', "0"))
+      mainNav.classList.add("hidden");
       closeBtn.focus();
-
-      const sideDrawerLinks = document.querySelectorAll(
-        ".side-drawer a"
-      ) as NodeListOf<HTMLAnchorElement>;
 
       sideDrawerLinks[sideDrawerLinks.length - 1].addEventListener(
         "keydown",
@@ -83,146 +86,24 @@ const navlinkClass = `navlink ${theme}`;
     }
 
     function onClose() {
-      backdrop.classList.remove("backdrop");
-      sideDrawer.classList.remove("open");
-      sideDrawer.tabIndex = -1;
-      mainNav.classList.remove("hide");
+      backdrop.classList.remove("!block");
+      sideDrawer.classList.remove("!translate-x-0");
+      mainNav.classList.remove("hidden");
+
+      closeBtn.setAttribute("tabIndex", "-1");
+      sideDrawerLinks.forEach((link) => {
+        link.setAttribute('tabIndex', "-1");
+      });
     }
 
     hamburgerBtn.addEventListener("click", onOpen);
     backdrop.addEventListener("click", onClose);
     closeBtn.addEventListener("click", onClose);
 
-    sideDrawerPrimaryLinks.forEach((link) => {
+    sideDrawerLinks.forEach((link) => {
       link.addEventListener("click", onClose);
     });
+
+    onClose();
   });
 </script>
-
-<style>
-  header {
-    max-width: 1280px;
-    position: relative;
-    margin: auto;
-  }
-
-  nav {
-    position: absolute;
-    right: 0;
-    padding: 1rem;
-    display: flex;
-    gap: 1rem;
-    font-family: var(--font-family-display);
-    z-index: 1;
-  }
-
-  .primary-links {
-    display: flex;
-    gap: 1rem;
-  }
-
-  .hide {
-    display: none;
-    opacity: 0;
-  }
-
-  .backdrop {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 100;
-  }
-
-  .side-drawer {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    background-color: var(--color-primary);
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 50%;
-    max-width: 400px;
-    z-index: 200;
-    transform: translateX(100%);
-    transition: all var(--speed-transition) ease-out;
-  }
-
-  .side-drawer section {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 3rem;
-  }
-
-  .side-drawer section div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    margin: 1rem 0;
-  }
-
-  .side-drawer.open {
-    transform: translateX(0);
-  }
-
-  .hamburger,
-  .close {
-    cursor: pointer;
-    background: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 0;
-    margin: 0;
-    padding: 0;
-    transition: all var(--speed-fade) ease-out;
-  }
-
-  .close {
-    align-self: flex-end;
-  }
-
-  .hamburger:hover {
-    transform: scale(1.2);
-  }
-
-  .close:hover {
-    transform: scale(1.2);
-  }
-
-  .hamburger,
-  .close svg {
-    width: 1.2rem;
-  }
-
-  @media screen and (max-width: 756px) {
-    .primary-links {
-      display: none;
-    }
-    .side-drawer {
-      width: 100%;
-    }
-    .hamburger,
-    .close {
-      display: inline-block;
-    }
-  }
-
-  .skip-navlink {
-    clip: rect(1px, 1px, 1px, 1px);
-    overflow: hidden;
-    height: 1px;
-    width: 1px;
-  }
-
-  .skip-navlink:focus {
-    clip: auto;
-    height: auto;
-    width: auto;
-  }
-</style>
