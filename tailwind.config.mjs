@@ -19,6 +19,7 @@ export default {
       transitionDuration: {
         move: "100ms",
         fade: "125ms",
+        slide: "200ms",
       },
       fontSize: {
         sm: "clamp(0.8rem, 0.2vw + 0.8rem, 0.9rem)",
