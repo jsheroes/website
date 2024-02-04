@@ -14,12 +14,12 @@ const author = await getEntryBySlug("organizers", frontmatter.author);
   title={`JSHeroes ${CURRENT_YEAR} | ${frontmatter.title || SEO_TAGLINE}`}
 >
   <img
-    class="header-image"
+    class="block h-[500px] w-full object-cover"
     src={frontmatter.banner || "/img/banners/default-with-bear.svg"}
     aria-hidden
   />
   <main id="main">
-    <Section variant="light" content="text">
+    <Section variant="light" content="text" class="prose max-w-none">
       {
         author && (
           <AuthorCard author={author} publishDate={frontmatter.published} />
@@ -30,22 +30,3 @@ const author = await getEntryBySlug("organizers", frontmatter.author);
     </Section>
   </main>
 </BaseLayout>
-
-<style>
-  .header-image {
-    display: block;
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-  }
-
-  main {
-    /* header + footer */
-    min-height: calc(100vh - 500px - 400px);
-    position: relative;
-  }
-
-  :global(h1) {
-    font-size: 2rem !important;
-  }
-</style>

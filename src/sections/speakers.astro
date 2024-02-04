@@ -13,7 +13,7 @@ const listStyles = "flex flex-wrap justify-center gap-8 py-8 px-0";
 const listItemStyles = "list-item list-none pb-4";
 ---
 
-<div class="content center">
+<div class="text-center">
   <h2>Meet our {CURRENT_YEAR} speakers</h2>
 </div>
 
@@ -40,7 +40,7 @@ const listItemStyles = "list-item list-none pb-4";
   }
 </ul>
 
-<div class="content center">
+<div class="text-center">
   <h2>Our support crew</h2>
 </div>
 
@@ -54,7 +54,7 @@ const listItemStyles = "list-item list-none pb-4";
   }
 </ul>
 
-<div class="content center">
+<div class="text-center">
   <h2>And our awesome ambassadors</h2>
 
   <p>
@@ -75,14 +75,14 @@ const listItemStyles = "list-item list-none pb-4";
 
 <style>
   .list-item:nth-child(3n) {
-    --person-accent-color: var(--color-accent-pink);
+    --person-accent-color: theme("colors.accent-pink");
   }
 
   .list-item:nth-child(3n + 1) {
-    --person-accent-color: var(--color-accent-orange);
+    --person-accent-color: theme("colors.accent-orange");
   }
 
   .list-item:nth-child(3n + 2) {
-    --person-accent-color: var(--color-accent-green);
+    --person-accent-color: theme("colors.accent-green");
   }
 </style>

@@ -1,65 +1,36 @@
 ---
 export interface Props {
   variant: "light" | "dark";
-  content: "text" | "list" | "full";
+  content: "text" | "list" | "full" | "center";
   id?: string;
   class?: string;
 }
 
-const { id, variant, content, class: className } = Astro.props as Props;
+const { id, variant, content, class: className = "" } = Astro.props as Props;
 ---
 
-<section id={id} class={`section ${variant} ${className}`}>
-  <div class={`content ${content}`}>
+<section
+  id={id}
+  data-variant={variant}
+  class:list={[
+    className,
+    "group relative w-full px-4 pb-16 pt-12 md:pb-20 md:pt-16",
+    { "bg-neutral-light text-neutral-dark": variant === "light" },
+    { "bg-primary text-neutral-light": variant === "dark" },
+  ]}
+>
+  <div
+    class:list={[
+      "mx-auto",
+      {
+        "flex max-w-[60ch] flex-col gap-4 group-[.prose]:gap-0":
+          content === "text",
+      },
+      { "flex max-w-[1280px] flex-col gap-4": content === "list" },
+      { "w-full": content === "full" },
+      { "text-center": content === "center" },
+    ]}
+  >
     <slot />
   </div>
 </section>
-<style is:global>
-  .section {
-    padding: 4rem 1rem 5rem;
-    width: 100%;
-    position: relative;
-  }
-
-  @media screen and (max-width: 756px) {
-    .section {
-      padding: 3rem 1rem 4rem;
-    }
-  }
-
-  .section.light {
-    background: var(--color-neutral-light);
-    color: var(--color-neutral-dark);
-  }
-
-  .section.dark {
-    background: var(--color-primary);
-    color: var(--color-neutral-light);
-  }
-
-  .content {
-    margin: auto;
-  }
-
-  .content.text {
-    max-width: 60ch;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .content.list {
-    max-width: 1280px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .content.full {
-    width: 100%;
-  }
-
-  .content.center {
-    text-align: center;
-  }
-</style>

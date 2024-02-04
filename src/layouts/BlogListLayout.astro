@@ -14,8 +14,8 @@ const posts = await getCollection("blog");
 const tags = await getCollection("tags").then((tags) => {
   const tagsWithBlogs = tags.filter((tag) =>
     posts.some((post) =>
-      post.data.tags.some((postTag) => postTag.slug === tag.slug)
-    )
+      post.data.tags.some((postTag) => postTag.slug === tag.slug),
+    ),
   );
   return tagsWithBlogs;
 });
@@ -32,7 +32,7 @@ const hasDefaultSlot = Astro.slots.has("default");
 
 <BaseLayout title={`JSHeroes |  ${title}`}>
   <img
-    class="header-image"
+    class="block h-[500px] w-full object-cover"
     src={"/img/banners/default-with-bear.svg"}
     aria-hidden
   />
@@ -40,19 +40,25 @@ const hasDefaultSlot = Astro.slots.has("default");
   <main id="main">
     <Section variant="light" content="text">
       <div>
-        <h1>{title}</h1>
+        <h1 class="text-lg">{title}</h1>
       </div>
 
-      <ul class="tags">
+      <ul class="flex list-none flex-wrap gap-2 p-0 pb-4 *:mb-2">
         <li>
-          <a class="tag" href={`/blog`}>
+          <a
+            class="rounded-2xl bg-accent-orange px-4 py-2 no-underline transition-all duration-fade ease-out hover:bg-accent-pink focus-visible:bg-accent-pink"
+            href={`/blog`}
+          >
             All posts ({posts.length})
           </a>
         </li>
         {
           tags.map(({ slug, data: { name } }) => (
             <li>
-              <a class="tag" href={`/tags/${slug}`}>
+              <a
+                class="rounded-2xl bg-accent-orange px-4 py-2 no-underline transition-all duration-fade ease-out hover:bg-accent-pink focus-visible:bg-accent-pink"
+                href={`/tags/${slug}`}
+              >
                 {name} ({tagCount(slug)})
               </a>
             </li>
@@ -60,15 +66,15 @@ const hasDefaultSlot = Astro.slots.has("default");
         }
       </ul>
 
-      <ul class="posts">
+      <ul class="m-0 list-none p-0">
         {
           page.data.map(
             ({
               slug,
               data: { published, title, summary },
             }: CollectionEntry<"blog">) => (
-              <li class="preview">
-                <article>
+              <li class="border-t-[1px] border-neutral-separator py-5">
+                <article class="flex flex-col">
                   <dl>
                     <dt class="sr-only">Published on</dt>
                     <dd>
@@ -80,80 +86,14 @@ const hasDefaultSlot = Astro.slots.has("default");
                       <a href={`/blog/${slug}`}>{title}</a>
                     </h3>
 
-                    <div class="summary">{summary}</div>
+                    <div class="mt-2">{summary}</div>
                   </div>
                 </article>
               </li>
-            )
+            ),
           )
         }
       </ul>
     </Section>
   </main>
 </BaseLayout>
-
-<style>
-  .posts {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-
-  .posts li {
-    border-top: 1px solid var(--color-neutral-separator);
-  }
-
-  .tags {
-    list-style-type: none;
-    padding: 0;
-    padding-bottom: 1rem;
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-
-  .tags li {
-    margin-bottom: 0.5rem;
-  }
-
-  .tag {
-    background-color: var(--color-accent-orange);
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 1rem;
-    transition: background var(--speed-fade) ease-out;
-
-    &:hover,
-    &:focus-visible {
-      background-color: var(--color-accent-pink);
-    }
-  }
-
-  .preview {
-    padding: 1.25rem 0;
-
-    .summary {
-      margin-top: 0.5rem;
-    }
-
-    & article {
-      display: flex;
-      flex-direction: column;
-    }
-  }
-
-  h1 {
-    font-size: 2rem !important;
-  }
-
-  h2 {
-    font-size: 1.5rem !important;
-  }
-
-  h3,
-  dl,
-  dd {
-    margin: 0;
-    padding: 0;
-  }
-</style>

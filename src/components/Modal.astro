@@ -60,11 +60,11 @@ links.sort((a, b) => sortOrder.indexOf(a.name) - sortOrder.indexOf(b.name));
   if (event.currentTarget === event.target) event.currentTarget.close()
   "
 >
-  <main class="w-100% max-w-[800px] flex flex-col gap-6 overflow-auto">
+  <main class="w-100% flex max-w-[800px] flex-col gap-6 overflow-auto">
     <div
-      class="flex flex-col items-center md:flex-row md:items-start w-100% gap-4 pb-2"
+      class="w-100% flex flex-col items-center gap-4 pb-2 md:flex-row md:items-start"
     >
-      <div class="flex items-center flex-col md:items-start gap-4">
+      <div class="flex flex-col items-center gap-4 md:items-start">
         <Image
           src={getImage(person.data.imgName)}
           alt={person.data.name}
@@ -77,8 +77,8 @@ links.sort((a, b) => sortOrder.indexOf(a.name) - sortOrder.indexOf(b.name));
             links.length > 0 &&
               links.map((link) => (
                 <a
-                  class="flex w-5 h-5 transition-all ease-out duration-move hover:scale-125 hover:contrast-200"
-                  href={link.url}
+                  class="flex h-5 w-5 transition-all duration-move ease-out hover:scale-125 hover:contrast-200"
+                  href={link.url as string}
                   target="_blank"
                   rel="noopener"
                   title={link.name}
@@ -90,7 +90,7 @@ links.sort((a, b) => sortOrder.indexOf(a.name) - sortOrder.indexOf(b.name));
         </div>
       </div>
 
-      <div class="min-w-auto md:min-w-[250px] flex flex-col gap-2">
+      <div class="min-w-auto flex flex-col gap-2 md:min-w-[250px]">
         <div id={`${person.id}-title`} class="flex flex-col" role="heading">
           <strong class="text-lg">{person.data.name}</strong>
           <span
@@ -117,69 +117,15 @@ links.sort((a, b) => sortOrder.indexOf(a.name) - sortOrder.indexOf(b.name));
   </main>
 
   <form method="dialog">
-    <button class="group" aria-label="Close modal">
+    <button
+      class="group absolute right-[-2rem] top-[-2rem] z-10 flex h-12 w-12 appearance-none items-center justify-center rounded-full border-solid border-neutral-light bg-[var(--person-accent-color)] p-0 transition-all duration-move ease-out hover:border-4"
+      aria-label="Close modal"
+    >
       <img
         alt="Close modal"
-        class="w-6 h-6 transition-transform ease-out duration-move group-hover:scale-125"
+        class="h-6 w-6 transition-transform duration-move ease-out group-hover:scale-125"
         src="/img/icons/close.svg"
       />
     </button>
   </form>
 </dialog>
-
-<style>
-  dialog {
-    position: fixed;
-    margin: auto;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    padding: 1rem;
-    overflow: visible;
-    border: 1rem solid var(--person-accent-color);
-  }
-
-  dialog[open] {
-    display: flex;
-  }
-
-  @media screen and (max-width: 550px) {
-    dialog {
-      height: 100%;
-      width: 100%;
-    }
-  }
-
-  dialog::backdrop {
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    background: rgba(0, 0, 0, 0.6);
-  }
-
-  button {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 3;
-    padding: 0;
-    appearance: none;
-    border: 0px solid var(--color-neutral-light);
-    border-radius: 50%;
-    top: -2rem;
-    right: -2rem;
-    width: 3rem;
-    height: 3rem;
-    background: var(--person-accent-color);
-    transition: border-width var(--speed-move) ease-out,
-      outline-offset var(--speed-move) ease-out;
-  }
-
-  button:hover {
-    border-width: 4px;
-  }
-</style>
