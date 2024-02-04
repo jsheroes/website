@@ -118,12 +118,12 @@ links.sort((a, b) => sortOrder.indexOf(a.name) - sortOrder.indexOf(b.name));
 
   <form method="dialog">
     <button
-      class="group absolute right-[-2rem] top-[-2rem] z-10 flex h-12 w-12 appearance-none items-center justify-center rounded-full border-solid border-neutral-light bg-[var(--person-accent-color)] p-0 transition-all duration-move ease-out hover:border-4"
+      class="group/close-btn absolute right-[-2rem] top-[-2rem] z-10 flex h-12 w-12 appearance-none items-center justify-center rounded-full border-solid border-neutral-light bg-[var(--person-accent-color)] p-0 transition-all duration-move ease-out hover:border-4"
       aria-label="Close modal"
     >
       <img
         alt="Close modal"
-        class="h-6 w-6 transition-transform duration-move ease-out group-hover:scale-125"
+        class="h-6 w-6 transition-all duration-move ease-out group-hover/close-btn:scale-125"
         src="/img/icons/close.svg"
       />
     </button>
