@@ -2,16 +2,26 @@
 import BearLink from "../components/BearLink.astro";
 ---
 
-<div class="bg-primary h-[400px] md:h-[550px] flex items-center justify-center relative">
+<div
+  class="relative flex h-[400px] items-center justify-center bg-primary md:h-[550px]"
+>
   <img
     class="h-full w-full object-cover"
     src="/img/banners/default.svg"
     alt="Space with stars and rockets"
   />
-  <div class="text-neutral-light flex flex-col items-center gap-4 font-display absolute">
-    <img class="aspect-[300/53] width-[clamp(10rem, 30vw, 18rem)]" src="/img/logo-dark.svg" alt="JSHeroes" />
+  <div
+    class="absolute flex flex-col items-center gap-4 font-display text-neutral-light"
+  >
+    <img
+      class="width-[clamp(10rem, 30vw, 18rem)] aspect-[300/53]"
+      src="/img/logo-dark.svg"
+      alt="JSHeroes"
+    />
     <p>An all things JavaScript conference</p>
-    <p class="text-lg font-medium">May <span class="text-[1.2em]">23-24th</span> 2024</p>
+    <p class="text-lg font-medium">
+      May <span class="text-[1.2em]">23-24th</span> 2024
+    </p>
     <p>in Cluj-Napoca, Romania</p>
     <a
       href="https://ti.to/jsheroes/2024"
@@ -20,48 +30,11 @@ import BearLink from "../components/BearLink.astro";
       class="cta-button">Buy tickets</a
     >
 
-    <span class="bear-anchor">
+    <span
+      class="bear-anchor lg:animate-bear-float absolute bottom-[-140px] right-0
+    z-10 animate-none md:bottom-[-180px] md:right-[-120px] lg:bottom-[-240px] lg:right-[-200px]"
+    >
       <BearLink animation="scale" />
     </span>
   </div>
 </div>
-<style>
-  @keyframes float {
-    from {
-      transform: translateX(0, 0) scale(1) rotate(0);
-    }
-
-    to {
-      transform: translate(120px, -30px) scale(0.8) rotate(45deg);
-    }
-  }
-
-  .bear-anchor {
-    position: absolute;
-    z-index: 1;
-    bottom: -240px;
-    right: -200px;
-    animation: 30s infinite alternate float;
-    animation-timing-function: linear;
-  }
-
-  @media screen and (max-width: 1000px) {
-    .bear-anchor {
-      animation: none;
-    }
-  }
-
-  @media screen and (max-width: 756px) {
-    .bear-anchor {
-      bottom: -140px;
-      right: -100px;
-    }
-  }
-
-  @media screen and (max-width: 432px) {
-    .bear-anchor {
-      bottom: -140px;
-      right: 0;
-    }
-  }
-</style>

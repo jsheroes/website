@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .cta-button {
+    text-decoration: none;
+    background: theme("colors.accent-orange");
+    color: theme("colors.neutral-dark");
+    padding: 0.5rem 2rem;
+    border: none;
+    border-radius: 1rem;
+    outline-offset: -4px;
+    transition: all theme("transitionDuration.fade") ease-out;
+  }
+
+  .cta-button:hover {
+    color: theme("colors.neutral-dark");
+    background: theme("colors.accent-pink");
+  }
+
+  .navlink {
+    color: theme("colors.neutral-light");
+    text-decoration: none;
+    position: relative;
+  }
+
+  .navlink.dark {
+    color: theme("colors.neutral-dark");
+  }
+
+  .navlink::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.15rem;
+    background-color: theme("colors.accent-pink");
+    transition: transform theme("transitionDuration.fade") ease-out;
+    opacity: 1;
+    transform: scale(0);
+    transform-origin: center;
+  }
+
+  .navlink:hover::after {
+    transform: scale(1);
+  }
+
+  .divider {
+    border-color: theme("colors.neutral-separator");
+    border-top-width: 1px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@layer base {
+  html {
+    font-family: theme("fontFamily.base");
+    font-size: theme("fontSize.base");
+    color: theme("colors.neutral-dark");
+    background-color: theme("colors.neutral-light");
+    line-height: 1.6;
+    overscroll-behavior-y: none;
+  }
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.3),
+    only screen and (-o-min-device-pixel-ratio: 13/10),
+    only screen and (min-resolution: 120dpi) {
+    html {
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+    }
+  }
+
+  body {
+    margin: 0;
+  }
+
+  body:has(dialog[open]) {
+    overflow: hidden;
+  }
+
+  main {
+    /* header + footer */
+    min-height: calc(100vh - 500px - 400px);
+    position: relative;
+  }
+
+  h1 {
+    font-family: theme("fontFamily.display");
+    font-size: theme("fontSize.xl");
+    font-weight: theme("fontWeight.semibold");
+  }
+
+  h2 {
+    font-family: theme("fontFamily.display");
+    font-size: theme("fontSize.lg");
+    font-weight: theme("fontWeight.semibold");
+  }
+
+  h3 {
+    font-family: theme("fontFamily.display");
+    font-size: theme("fontSize.base");
+    font-weight: theme("fontWeight.semibold");
+  }
+
+  ol,
+  ul {
+    list-style: initial;
+    padding-inline-start: 2rem;
+  }
+
+  dialog {
+    position: fixed;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 1rem;
+    overflow: visible;
+    border: 1rem solid var(--person-accent-color);
+  }
+
+  dialog[open] {
+    display: flex;
+  }
+
+  @media screen and (max-width: 550px) {
+    dialog {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  dialog::backdrop {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 4px;
+    text-decoration-color: theme("colors.accent-orange");
+    text-decoration-skip-ink: none;
+    transition: text-decoration-color theme("transitionDuration.fade") ease-out;
+
+    outline-offset: -5px;
+  }
+
+  a:hover {
+    text-decoration-color: theme("colors.accent-pink");
+  }
+
+  a:focus-visible {
+    outline: dashed theme("colors.accent-pink") 2px;
+    outline-offset: 5px;
+    text-decoration: none;
+  }
+
+  button {
+    transition: outline-offset theme("transitionDuration.fade") ease-out;
+  }
+
+  button:focus-visible {
+    outline: dashed 2px;
+    outline-offset: 5px;
+  }
+}

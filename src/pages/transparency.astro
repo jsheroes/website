@@ -5,7 +5,11 @@ import { yearsForBreakdownSelect } from "../data/transparency";
 ---
 
 <BaseLayout title="JSHeroes Transparency Report" theme="dark">
-  <img class="header-image" src={"/img/banners/bears-hills.svg"} aria-hidden />
+  <img
+    class="block h-[500px] w-full object-cover"
+    src={"/img/banners/bears-hills.svg"}
+    aria-hidden
+  />
   <main id="main">
     <Section variant="light" content="text">
       <h1>Transparency Report</h1>
@@ -152,7 +156,7 @@ import { yearsForBreakdownSelect } from "../data/transparency";
 
           expensesChart = createDoughnutChart(
             expensesNode,
-            getExpensesChartData()
+            getExpensesChartData(),
           );
 
           incomeChart = createDoughnutChart(incomeNode, getIncomeChartData());
@@ -200,16 +204,16 @@ import { yearsForBreakdownSelect } from "../data/transparency";
     border-radius: 1rem;
     font-size: inherit;
     font-family: inherit;
-    background: var(--color-accent-orange);
-    transition: all var(--speed-fade) ease-out;
+    background: theme("colors.accent-orange");
+    transition: all theme("transitionDuration.fade") ease-out;
   }
 
   select:hover {
-    background: var(--color-accent-pink);
+    background: theme("colors.accent-pink");
   }
 
   select:focus-visible {
-    outline: dashed var(--color-accent-pink) 2px;
+    outline: dashed theme("colors.accent-pink") 2px;
     outline-offset: 5px;
   }
 
@@ -229,7 +233,7 @@ import { yearsForBreakdownSelect } from "../data/transparency";
   }
 
   .chart-column p.footnote {
-    font-size: var(--font-size-sm);
+    font-size: theme("fontSize.sm");
     text-align: left;
   }
 </style>

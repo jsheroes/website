@@ -1,11 +1,14 @@
 ---
 import Section from "../../components/Section.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Banner from "../../sections/banner.astro";
 ---
 
 <BaseLayout title="Community Helper" theme="dark">
-  <img class="header-image" src={"/img/banners/bears-hills.svg"} aria-hidden />
+  <img
+    class="block h-[500px] w-full object-cover"
+    src={"/img/banners/bears-hills.svg"}
+    aria-hidden
+  />
   <main id="main">
     <Section variant="light" content="list">
       <div>
@@ -14,7 +17,7 @@ import Banner from "../../sections/banner.astro";
           >Open the banner</a
         >
       </div>
-      <hr />
+      <div class="divider my-8"></div>
       <div>
         <h3>The Slack Code</h3>
         <a href={"/img/slack/qr.png"} target="_blank">Open the Slack QR</a>
@@ -22,15 +25,3 @@ import Banner from "../../sections/banner.astro";
     </Section>
   </main>
 </BaseLayout>
-
-<style>
-  hr {
-    margin: 3rem 0;
-  }
-  .header-image {
-    display: block;
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-  }
-</style>

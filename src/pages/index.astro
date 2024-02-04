@@ -26,9 +26,9 @@ import { day1, day2 } from "../data/agenda";
     </Section>
     <Section variant="light" content="text">
       <Theme />
-      <span class="rocket-anchor">
+      <span class="absolute right-[16%] top-[-110px] z-10 hidden lg:block">
         <img
-          class="rocket"
+          class="w-[200px]"
           src="/img/props/rocket.svg"
           alt=""
           aria-hidden="true"
@@ -39,7 +39,7 @@ import { day1, day2 } from "../data/agenda";
     </Section>
     <Section variant="dark" content="text">
       <Description />
-      <span class="bear-anchor">
+      <span class="absolute left-[-120px] top-[100px] z-10 hidden lg:block">
         <BearLink rotate={90} animation="scaleAndSlide" />
       </span>
     </Section>
@@ -48,15 +48,15 @@ import { day1, day2 } from "../data/agenda";
     </Section>
     <Section variant="dark" content="text">
       <Event />
-      <span class="earth-anchor">
+      <span class="absolute right-1/4 top-[-100px] z-10 hidden lg:block">
         <a
-          class="earth-link"
+          class="duration-speed-move block transition-transform ease-out after:hidden hover:scale-110"
           target="_blank"
           rel="noreferrer noopener"
           href="https://www.google.com/maps?saddr&daddr=Grand%20Hotel%20Italia,%20Strada%20Trifoiului%202,%20Cluj-Napoca%20400478,%20Romania"
           title="Get event location on Google Maps"
         >
-          <img class="earth" src="/img/props/earth.svg" alt="" />
+          <img class="w-[200px]" src="/img/props/earth.svg" alt="" />
         </a>
       </span>
     </Section>
@@ -65,55 +65,3 @@ import { day1, day2 } from "../data/agenda";
     </Section>
   </main>
 </BaseLayout>
-
-<style>
-  .bear-anchor {
-    position: absolute;
-    z-index: 1;
-    top: 100px;
-    left: -120px;
-  }
-
-  @media screen and (max-width: 1000px) {
-    .bear-anchor,
-    .earth-anchor,
-    .rocket-anchor {
-      display: none;
-    }
-  }
-
-  .earth-anchor {
-    position: absolute;
-    z-index: 1;
-    top: -100px;
-    right: 25%;
-  }
-
-  .rocket-anchor {
-    position: absolute;
-    z-index: 1;
-    top: -110px;
-    right: 16%;
-  }
-
-  .earth-link {
-    display: block;
-    transition: transform var(--speed-move) ease-out;
-  }
-
-  .earth-link:hover {
-    transform: scale(1.1);
-  }
-
-  .earth-link::after {
-    display: none;
-  }
-
-  .earth {
-    width: 200px;
-  }
-
-  .rocket {
-    width: 200px;
-  }
-</style>

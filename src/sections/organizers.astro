@@ -8,7 +8,7 @@ const listStyles = "flex flex-wrap justify-center gap-8 py-8 px-0";
 const listItemStyles = "list-item list-none pb-2";
 ---
 
-<div class="content center">
+<div class="text-center">
   <h2>Meet the team</h2>
 </div>
 
@@ -26,14 +26,14 @@ const listItemStyles = "list-item list-none pb-2";
 
 <style>
   .list-item:nth-child(3n) {
-    --person-accent-color: var(--color-accent-pink);
+    --person-accent-color: theme("colors.accent-pink");
   }
 
   .list-item:nth-child(3n + 1) {
-    --person-accent-color: var(--color-accent-orange);
+    --person-accent-color: theme("colors.accent-orange");
   }
 
   .list-item:nth-child(3n + 2) {
-    --person-accent-color: var(--color-accent-green);
+    --person-accent-color: theme("colors.accent-green");
   }
 </style>

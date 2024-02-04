@@ -14,7 +14,7 @@ const linkStyles =
 {
   sponsors.length > 0 && (
     <>
-      <div class="content center">
+      <div class="text-center">
         <h2>Event sponsors</h2>
         <p>
           These are the companies that support our event financially through the{" "}
@@ -30,7 +30,7 @@ const linkStyles =
       </div>
       <ul role="list" class={listStyles}>
         {sponsors.map((sponsor) => (
-          <li class="list-none flex w-[200px]">
+          <li class="flex w-[200px] list-none">
             <a
               class={linkStyles}
               href={sponsor.url}
@@ -57,13 +57,13 @@ const linkStyles =
   )
 }
 
-<div class="content center">
+<div class="text-center">
   <h2>Event partners</h2>
 
   <p>To be announced</p>
 </div>
 
-<div class="content center">
+<div class="text-center">
   <h2>Media partners</h2>
 
   <p>The communities that support our event</p>
@@ -72,7 +72,7 @@ const linkStyles =
 <ul role="list" class={listStyles}>
   {
     communities.map((com) => (
-      <li class="list-none flex w-[150px]">
+      <li class="flex w-[150px] list-none">
         <a
           class={linkStyles}
           href={com.url}

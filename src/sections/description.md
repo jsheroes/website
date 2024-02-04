@@ -1,4 +1,4 @@
-## A tranparency-first community event
+## A transparency-first community event
 
 We believe that the **community** and the **open-source** models are well suited for our core values: learning, teaching and knowledge sharing. Our mission is to inspire other communities with the concept of open-source events.
 

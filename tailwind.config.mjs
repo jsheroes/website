@@ -38,6 +38,18 @@ export default {
               "margin-top": 0,
               "margin-bottom": 0,
             },
+            a: false,
+          },
+        },
+      },
+      animation: {
+        "bear-float": "float 30s infinite alternate linear",
+      },
+      keyframes: {
+        float: {
+          "0%": { transform: "translateX(0, 0) scale(1) rotate(0)" },
+          "100%": {
+            transform: "translate(120px, -30px) scale(0.8) rotate(45deg)",
           },
         },
       },
@@ -47,17 +59,5 @@ export default {
       display: ["Ubuntu", ...defaultTheme.fontFamily.sans],
     },
   },
-  plugins: [
-    require("@tailwindcss/typography"),
-    function ({ addComponents, theme }) {
-      addComponents({
-        ".divider": {
-          "border-color": theme("colors.neutral-separator"),
-          "border-top-width": "1px",
-          width: "100%",
-          margin: "0 auto",
-        },
-      });
-    },
-  ],
+  plugins: [require("@tailwindcss/typography")],
 };
