@@ -23,7 +23,7 @@ const { agendaItems, title } = Astro.props as Props;
     agendaItems.map((agendaItem) => {
       if (agendaItem.type === "placeholder") {
         return (
-          <li class="flex flex-col md:flex-row gap-4 py-4 items-start md:items-center agenda-item">
+          <li class="color-item flex flex-col md:flex-row gap-6 py-4 items-start md:items-center">
             <span class="whitespace-nowrap">{agendaItem.timeSlot}</span>
             <div class="flex gap-4 items-center">
               <img class="grayscale h-20 w-20 rounded-full" src={`/img/${agendaItem.imgName}`} />
@@ -32,13 +32,12 @@ const { agendaItems, title } = Astro.props as Props;
           </li>
         );
       } else {
-        // TODO: Handle multiple speakers, currently assume speakers[0]
         const speakerSlugs = agendaItem.speakers;
         const matchingSpeakers = speakers.filter((s) => speakerSlugs.includes(s.slug));
 
         if (matchingSpeakers.length === 0) {
           return (
-            <li class="flex flex-col md:flex-row gap-4 py-4 items-start md:items-center agenda-item">
+            <li class="color-item flex flex-col md:flex-row gap-6 py-4 items-start md:items-center">
               <span class="whitespace-nowrap">{agendaItem.timeSlot}</span>
               <div class="flex gap-4 items-center">
                 <img class="grayscale h-20 w-20 rounded-full" src={`/img/props/bear.svg`} />
@@ -51,7 +50,7 @@ const { agendaItems, title } = Astro.props as Props;
         const speakerTalk = speakerTalks.find((s) => s.slug === matchingSpeakers[0].slug);
 
         return (
-          <li class="flex flex-col md:flex-row gap-4 py-4 items-start md:items-center agenda-item">
+          <li class="color-item flex flex-col md:flex-row gap-6 py-4 items-start md:items-center">
             <span class="whitespace-nowrap">{agendaItem.timeSlot}</span>
             <div class="flex gap-4 items-center">
               <div class="flex shrink-0">
@@ -87,19 +86,19 @@ const { agendaItems, title } = Astro.props as Props;
 </ul>
 
 <style>
-  .agenda-item:nth-child(3n) {
+  .color-item:nth-child(3n) {
     --person-accent-color: theme("colors.accent-pink");
   }
 
-  .agenda-item:nth-child(3n + 1) {
+  .color-item:nth-child(3n + 1) {
     --person-accent-color: theme("colors.accent-orange");
   }
 
-  .agenda-item:nth-child(3n + 2) {
+  .color-item:nth-child(3n + 2) {
     --person-accent-color: theme("colors.accent-green");
   }
 
-  .agenda-item:not(:last-child) {
+  .color-item:not(:last-child) {
     border-bottom: 1px solid theme("colors.accent-pink");
   }
 </style>

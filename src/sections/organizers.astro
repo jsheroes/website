@@ -5,7 +5,7 @@ import PersonCard from "../components/PersonCard.astro";
 const organizers = await getCollection("organizers");
 
 const listStyles = "flex flex-wrap justify-center gap-8 py-8 px-0";
-const listItemStyles = "list-item list-none pb-2";
+const listItemStyles = "color-item list-none pb-2";
 ---
 
 <div class="text-center">
@@ -25,15 +25,15 @@ const listItemStyles = "list-item list-none pb-2";
 </ul>
 
 <style>
-  .list-item:nth-child(3n) {
+  .color-item:nth-child(3n) {
     --person-accent-color: theme("colors.accent-pink");
   }
 
-  .list-item:nth-child(3n + 1) {
+  .color-item:nth-child(3n + 1) {
     --person-accent-color: theme("colors.accent-orange");
   }
 
-  .list-item:nth-child(3n + 2) {
+  .color-item:nth-child(3n + 2) {
     --person-accent-color: theme("colors.accent-green");
   }
 </style>
