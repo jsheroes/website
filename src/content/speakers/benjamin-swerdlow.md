@@ -5,7 +5,7 @@ company: Apple
 imgName: speakers/benjamin-swerdlow.jpeg
 links:
   {
-    website: "swerdlow.dev"
+    website: "https://swerdlow.dev"
   }
 ---
 
