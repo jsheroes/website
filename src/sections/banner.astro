@@ -2,10 +2,13 @@
 import BearLink from "../components/BearLink.astro";
 
 export interface Props {
-  sponsorsOnly?: string;
+  variant?: 'sponsor' | 'default';
 }
 
-const { sponsorsOnly } = Astro.props as Props;
+const { variant = 'default' } = Astro.props as Props;
+
+const subTitle = variant === 'default' ? "An all things JavaScript conference" : "The biggest dev community event in Romania"
+
 ---
 
 <div
@@ -24,30 +27,25 @@ const { sponsorsOnly } = Astro.props as Props;
       src="/img/logo-dark.svg"
       alt="JSHeroes"
     />
-    <p>An all things JavaScript conference</p>
+    <h1 class="text-base">{subTitle}</h1>
     <p class="text-lg font-medium">
       May <span class="text-[1.2em]">23-24th</span> 2024
     </p>
     <p>in Cluj-Napoca, Romania</p>
     {
-      !sponsorsOnly && (
-        <>
-          <a
-            href="https://ti.to/jsheroes/2024"
-            target="_blank"
-            rel="noreferrer noopener"
-            class="cta-button"
-          >
-            Buy tickets
-          </a>
-          <span
-            class="bear-anchor absolute bottom-[-140px] right-0 z-10
-    animate-none md:bottom-[-180px] md:right-[-120px] lg:bottom-[-240px] lg:right-[-200px] lg:animate-bear-float"
-          >
-            <BearLink animation="scale" />
-          </span>
-        </>
+      variant === 'default' && (
+        <a
+          href="https://ti.to/jsheroes/2024"
+          target="_blank"
+          rel="noreferrer noopener"
+          class="cta-button"
+        >
+          Buy tickets
+        </a>
       )
     }
+    <span class="bear-anchor absolute bottom-[-140px] right-0 z-10 animate-none md:bottom-[-180px] md:right-[-120px] lg:bottom-[-240px] lg:right-[-200px] lg:animate-bear-float">
+      <BearLink animation="scale" />
+    </span>
   </div>
 </div>

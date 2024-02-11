@@ -1,0 +1,227 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Section from "@/components/Section.astro";
+import Banner from "@/sections/banner.astro";
+---
+
+<BaseLayout>
+  <Banner variant="sponsor" />
+
+  <main id="main">
+    <Section variant="light" content="list">
+      <h2 class="text-xl text-center">Sponsors welcome!</h2>
+      <p class="text-center text-balance">What started as a small idea from the local JavaScript community, evolved into one of the biggest community-organized events in Europe.</p>
+      <div class="grid grid-cols-1 gap-16 md:grid-cols-3 font-display items-center">
+        <div class="flex flex-col items-center">
+          <span class="text-[10rem] font-[500] text-accent-pink">600</span>
+          <span class="text-lg font-[500] mt-[-3rem]">attendees</span>
+          <span>25% international audience</span>
+        </div>
+
+        <div class="flex flex-col  items-center">
+          <span class="text-[10rem] font-[500] text-dodger-blue">19</span>
+          <span class="text-lg font-[500] mt-[-3rem]">speakers</span>
+          <span>16 countries / 5 continents</span>
+        </div>
+
+        <div class="flex flex-col  items-center">
+          <span class="text-[10rem] font-[500] text-accent-green">2</span>
+          <span class="text-lg font-[500] mt-[-3rem]">days</span>
+          <span>16 hours of quality content</span>
+        </div>  
+
+        <div class="flex flex-col items-center">
+          <span class="text-[10rem] font-[500] text-accent-orange">2K</span>
+          <span class="text-lg font-[500] mt-[-3rem]">community members</span>
+          <span>on our meetup.com group</span>
+        </div>
+
+        <div class="flex flex-col items-center">
+          <span class="text-[10rem] font-[500] text-accent-green">6K</span>
+          <span class="text-lg font-[500] mt-[-3rem]">followers</span>
+          <span>across LinkedIn, Facebook and Twitter</span>
+        </div>
+
+        <div class="flex flex-col items-center">
+          <span class="text-[10rem] font-[500] text-accent-pink">3.2K</span>
+          <span class="text-lg font-[500] mt-[-3rem]">subscribers</span>
+          <span>on our YouTube channel</span>
+        </div>
+      </div>
+    </Section>
+
+    <Section variant="dark" content="list">
+      <h2>Our audience</h2>
+      <p>Work in progress</p>
+      <p>Chart with attendees percentage</p>
+    </Section>
+
+    <Section variant="light" content="list">
+      <h2>Why should you sponsor us?</h2>
+
+      <div class="mt-8 grid grid-cols-1 gap-16 md:grid-cols-2">
+        <div>
+          <h3>Exposure to a dedicated community</h3>
+          <p class="mt-4">
+            Community events get the best out of people that want to share ideas, network or find new opportunities. You can expect a balanced mix of seasoned professionals and fast growing beginners to come in contact with your company.
+          </p>
+        </div>
+
+        <div>
+          <h3>Brand association</h3>
+          <p class="mt-4">
+            Over the past 7 years, JSHeroes has grown into one of the most <strong>recognizable</strong> brands in the JavaScript community in Romania and beyond. Your company will benefit from being showcased on our visuals and video recordigs.
+          </p>
+        </div>
+      </div>
+
+
+      <div class="mt-8 grid grid-cols-1 gap-16 md:grid-cols-2">
+        <div>
+          <h3>Join our mission</h3>
+          <p class="mt-4">
+            We strongly believe that JavaScript is the future. Therefore, our
+            mission is to <strong>grow</strong> together with the local community. 
+            Through JSHeroes, we aim to keep everyone in sync with the latest
+            advancements and trends in the world of JavaScript and web development.
+          </p>
+        </div>
+
+        <div>
+          <h3>Non-profit and transparent</h3>
+          <p class="mt-4">
+            We embraced the <strong>open source</strong> model from the beginning. All the details about the event are public and our budget and expenses are published after each event on <a href="/transparency">our transparency page</a>.
+          </p>
+        </div>
+      </div>
+    </Section>
+
+    <Section variant="dark" content="list">
+      <h2>What you get</h2>
+
+      <p>
+        We have created a single sponsoring package of <strong>3000€</strong> that gives you the following benefits.
+      </p>
+
+      <div class="mt-2">
+        <div class="flex items-center gap-2">
+          <span class="hidden md:inline-flex">
+            <img src="/img/props/rocket.svg" alt="" class="h-4 w-4" />
+          </span>
+          <p><strong>Two mentions</strong> on each of our social media pages:</p>
+        </div>
+
+        <ul>
+          <li>one individual spotlight with a customized message announcing the partnership</li>
+          <li>one post with all sponsors, right before the event</li>
+        </ul>
+      </div>
+
+      <div class="mt-2">
+        <div class="flex items-center gap-2">
+          <span class="hidden md:inline-flex">
+            <img src="/img/props/rocket.svg" alt="" class="h-4 w-4" />
+          </span>
+          <p><strong>Your logo</strong> will be added:</p>
+        </div>
+
+        <ul>
+          <li>on the website</li>
+          <li>on each conference badge</li>
+          <li>
+            on the main event room screen, during all coffee and lunch breaks
+          </li>
+          <li>on all video recordings published after the event</li>
+        </ul>
+      </div>
+
+      <div class="mt-2 flex items-center gap-2">
+        <span class="hidden md:inline-flex">
+          <img src="/img/props/rocket.svg" alt="" class="h-4 w-4" />
+        </span>
+        <p>You get a <strong>10% discount</strong> on all ticket types for the event.</p>
+      </div>
+
+      <div class="mt-1 flex items-center gap-2">
+        <span class="hidden md:inline-flex">
+          <img src="/img/props/rocket.svg" alt="" class="h-4 w-4" />
+        </span>
+        <p>
+          Your company roll-up will be in the main room during the event.
+        </p>
+      </div>
+
+      <div class="mt-1 flex items-center gap-2">
+        <span class="hidden md:inline-flex">
+          <img src="/img/props/rocket.svg" alt="" class="h-4 w-4" />
+        </span>
+        <p>
+          You can send us branded giveaways that will be placed in the sponsors area.
+        </p>
+      </div>
+
+      <div class="mt-8">
+        <h3 class="font-bold">Contact</h3>
+        <p>Alexandra Minzat</p>
+        <a href="mailto:welcome@jsheroes.io" class="block"
+          >welcome@jsheroes.io</a
+        >
+        <a href="tel:0040743941422" class="block">+4 0743 941 442</a>
+      </div>
+    </Section>
+    <Section variant="light" content="list">
+      <div class="flex flex-col gap-8">
+        <h2 class="text-center">Let's write the next chapter together!</h2>
+        <div>
+          <img src="/img/sponsors-page/jsheroes-2023.jpg" alt="JSHeroes 2023" />
+        </div>
+        <div class="flex items-center gap-4 mt-8">
+          <div class="w-[286px] hidden md:block mr-4">
+            <img class="rounded-full" src="/img/sponsors-page/liran.png" />
+          </div>
+          <blockquote class="max-w-[50ch]">
+            <cite>
+              To me, JSHeroes is a lot about JavaScript, but even more about the
+              actual heroes which make this great community - the attendees with
+              their appetite for knowledge, and the organizers who thought of
+              every little detail to make this conference a great party of
+              knowledge sharing playground.
+            </cite>
+
+            <footer class="mt-8 flex flex-col">
+              <strong>Liran Tal</strong>
+              <span>Director of Developer Advocacy @ Snyk</span>
+            </footer>
+          </blockquote>
+        </div>
+        <div class="flex items-center gap-4 ml-0 md:ml-auto">
+          <blockquote class="max-w-[50ch] text-left md:text-right mr-4">
+            <cite>
+              People just start talking about their pains in the code business.
+              It's amazing! It feels like a group therapy, in a way. And this is
+              something you cannot replace when doing online events.
+            </cite>
+            <footer class="flex flex-col">
+              <strong>Natalia Tepluhina</strong>
+              <span>Principal Engineer @ Gitlab</span>
+            </footer>
+          </blockquote>
+          <div class="w-[286px] hidden md:block">
+            <img class="rounded-full" src="/img/sponsors-page/natalia-tepluhina.jpg" />
+          </div>
+        </div>
+
+        <div
+          class="flex flex-row flex-wrap items-center justify-center gap-2"
+        >
+          <img src="/img/sponsors-page/jsheroes-1.jpg" alt="JSHeroes 2023" />
+          <img src="/img/sponsors-page/jsheroes-2.jpg" alt="JSHeroes 2023" />
+          <img src="/img/sponsors-page/jsheroes-3.jpg" alt="JSHeroes 2023" />
+          <img src="/img/sponsors-page/jsheroes-4.jpg" alt="JSHeroes 2023" />
+          <img src="/img/sponsors-page/jsheroes-5.jpg" alt="JSHeroes 2023" />
+          <img src="/img/sponsors-page/jsheroes-6.jpg" alt="JSHeroes 2023" />
+        </div>
+      </div>
+    </Section>
+  </main>
+</BaseLayout>
