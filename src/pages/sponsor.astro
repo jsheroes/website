@@ -11,39 +11,39 @@ import Banner from "@/sections/banner.astro";
     <Section variant="light" content="list">
       <h2 class="text-xl text-center">Sponsors welcome!</h2>
       <p class="text-center text-balance">What started as a small idea from the local JavaScript community, evolved into one of the biggest community-organized events in Europe.</p>
-      <div class="grid grid-cols-1 gap-16 md:grid-cols-3 font-display items-center">
+      <div class="grid grid-cols-1 gap-0 sm:gap-4 xl:gap-8 md:grid-cols-2 lg:grid-cols-3 font-display items-center">
         <div class="flex flex-col items-center">
-          <span class="text-[10rem] font-[500] text-accent-pink">600</span>
+          <span class="text-huge font-[500] text-accent-pink">600</span>
           <span class="text-lg font-[500] mt-[-3rem]">attendees</span>
           <span>25% international audience</span>
         </div>
 
         <div class="flex flex-col  items-center">
-          <span class="text-[10rem] font-[500] text-dodger-blue">19</span>
+          <span class="text-huge font-[500] text-dodger-blue">19</span>
           <span class="text-lg font-[500] mt-[-3rem]">speakers</span>
           <span>16 countries / 5 continents</span>
         </div>
 
         <div class="flex flex-col  items-center">
-          <span class="text-[10rem] font-[500] text-accent-green">2</span>
+          <span class="text-huge font-[500] text-accent-green">2</span>
           <span class="text-lg font-[500] mt-[-3rem]">days</span>
           <span>16 hours of quality content</span>
         </div>  
 
         <div class="flex flex-col items-center">
-          <span class="text-[10rem] font-[500] text-accent-orange">2K</span>
+          <span class="text-huge font-[500] text-accent-orange">2.8K</span>
           <span class="text-lg font-[500] mt-[-3rem]">community members</span>
           <span>on our meetup.com group</span>
         </div>
 
         <div class="flex flex-col items-center">
-          <span class="text-[10rem] font-[500] text-accent-green">6K</span>
+          <span class="text-huge font-[500] text-accent-green">6K</span>
           <span class="text-lg font-[500] mt-[-3rem]">followers</span>
           <span>across LinkedIn, Facebook and Twitter</span>
         </div>
 
         <div class="flex flex-col items-center">
-          <span class="text-[10rem] font-[500] text-accent-pink">3.2K</span>
+          <span class="text-huge font-[500] text-accent-pink">3.2K</span>
           <span class="text-lg font-[500] mt-[-3rem]">subscribers</span>
           <span>on our YouTube channel</span>
         </div>
@@ -51,15 +51,9 @@ import Banner from "@/sections/banner.astro";
     </Section>
 
     <Section variant="dark" content="list">
-      <h2>Our audience</h2>
-      <p>Work in progress</p>
-      <p>Chart with attendees percentage</p>
-    </Section>
-
-    <Section variant="light" content="list">
       <h2>Why should you sponsor us?</h2>
 
-      <div class="mt-8 grid grid-cols-1 gap-16 md:grid-cols-2">
+      <div class="mt-8 grid grid-cols-1 gap-8 md:gap-16 md:grid-cols-2">
         <div>
           <h3>Exposure to a dedicated community</h3>
           <p class="mt-4">
@@ -76,7 +70,7 @@ import Banner from "@/sections/banner.astro";
       </div>
 
 
-      <div class="mt-8 grid grid-cols-1 gap-16 md:grid-cols-2">
+      <div class="mt-0 md:mt-8 grid grid-cols-1 gap-8 md:gap-16 md:grid-cols-2">
         <div>
           <h3>Join our mission</h3>
           <p class="mt-4">
@@ -96,7 +90,7 @@ import Banner from "@/sections/banner.astro";
       </div>
     </Section>
 
-    <Section variant="dark" content="list">
+    <Section variant="light" content="list">
       <h2>What you get</h2>
 
       <p>
@@ -169,58 +163,61 @@ import Banner from "@/sections/banner.astro";
         <a href="tel:0040743941422" class="block">+4 0743 941 442</a>
       </div>
     </Section>
-    <Section variant="light" content="list">
+    <Section variant="dark" content="list">
       <div class="flex flex-col gap-8">
         <h2 class="text-center">Let's write the next chapter together!</h2>
         <div>
           <img src="/img/sponsors-page/jsheroes-2023.jpg" alt="JSHeroes 2023" />
         </div>
-        <div class="flex items-center gap-4 mt-8">
-          <div class="w-[286px] hidden md:block mr-4">
-            <img class="rounded-full" src="/img/sponsors-page/liran.png" />
-          </div>
-          <blockquote class="max-w-[50ch]">
-            <cite>
-              To me, JSHeroes is a lot about JavaScript, but even more about the
-              actual heroes which make this great community - the attendees with
-              their appetite for knowledge, and the organizers who thought of
-              every little detail to make this conference a great party of
-              knowledge sharing playground.
-            </cite>
 
-            <footer class="mt-8 flex flex-col">
-              <strong>Liran Tal</strong>
-              <span>Director of Developer Advocacy @ Snyk</span>
-            </footer>
-          </blockquote>
+      </div>
+    </Section>
+    <Section variant="light" content="list">
+      <div class="flex items-center gap-4 mt-8">
+        <div class="w-[286px] hidden md:block mr-4">
+          <img class="rounded-full" src="/img/sponsors-page/liran.png" />
         </div>
-        <div class="flex items-center gap-4 ml-0 md:ml-auto">
-          <blockquote class="max-w-[50ch] text-left md:text-right mr-4">
-            <cite>
-              People just start talking about their pains in the code business.
-              It's amazing! It feels like a group therapy, in a way. And this is
-              something you cannot replace when doing online events.
-            </cite>
-            <footer class="flex flex-col">
-              <strong>Natalia Tepluhina</strong>
-              <span>Principal Engineer @ Gitlab</span>
-            </footer>
-          </blockquote>
-          <div class="w-[286px] hidden md:block">
-            <img class="rounded-full" src="/img/sponsors-page/natalia-tepluhina.jpg" />
-          </div>
-        </div>
+        <blockquote class="flex flex-col gap-2 max-w-[50ch]">
+          <cite>
+            To me, JSHeroes is a lot about JavaScript, but even more about the
+            actual heroes which make this great community - the attendees with
+            their appetite for knowledge, and the organizers who thought of
+            every little detail to make this conference a great party of
+            knowledge sharing playground.
+          </cite>
 
-        <div
-          class="flex flex-row flex-wrap items-center justify-center gap-2"
-        >
-          <img src="/img/sponsors-page/jsheroes-1.jpg" alt="JSHeroes 2023" />
-          <img src="/img/sponsors-page/jsheroes-2.jpg" alt="JSHeroes 2023" />
-          <img src="/img/sponsors-page/jsheroes-3.jpg" alt="JSHeroes 2023" />
-          <img src="/img/sponsors-page/jsheroes-4.jpg" alt="JSHeroes 2023" />
-          <img src="/img/sponsors-page/jsheroes-5.jpg" alt="JSHeroes 2023" />
-          <img src="/img/sponsors-page/jsheroes-6.jpg" alt="JSHeroes 2023" />
+          <footer class="flex flex-col">
+            <strong>Liran Tal</strong>
+            <span>Director of Developer Advocacy @ Snyk</span>
+          </footer>
+        </blockquote>
+      </div>
+      <div class="flex items-center gap-4 ml-0 md:ml-auto">
+        <blockquote class="flex flex-col gap-2 max-w-[50ch] text-left md:text-right mr-4">
+          <cite>
+            People just start talking about their pains in the code business.
+            It's amazing! It feels like a group therapy, in a way. And this is
+            something you cannot replace when doing online events.
+          </cite>
+          <footer class="flex flex-col">
+            <strong>Natalia Tepluhina</strong>
+            <span>Principal Engineer @ Gitlab</span>
+          </footer>
+        </blockquote>
+        <div class="w-[286px] hidden md:block">
+          <img class="rounded-full" src="/img/sponsors-page/natalia-tepluhina.jpg" />
         </div>
+      </div>
+
+      <div
+        class="flex flex-row flex-wrap items-center justify-center gap-2 mt-8"
+      >
+        <img src="/img/sponsors-page/jsheroes-1.jpg" alt="JSHeroes 2023" />
+        <img src="/img/sponsors-page/jsheroes-2.jpg" alt="JSHeroes 2023" />
+        <img src="/img/sponsors-page/jsheroes-3.jpg" alt="JSHeroes 2023" />
+        <img src="/img/sponsors-page/jsheroes-4.jpg" alt="JSHeroes 2023" />
+        <img src="/img/sponsors-page/jsheroes-5.jpg" alt="JSHeroes 2023" />
+        <img src="/img/sponsors-page/jsheroes-6.jpg" alt="JSHeroes 2023" />
       </div>
     </Section>
   </main>

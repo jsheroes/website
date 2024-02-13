@@ -14,7 +14,7 @@ const { id, variant, content, class: className = "" } = Astro.props as Props;
   data-variant={variant}
   class:list={[
     className,
-    "group relative w-full px-4 pb-16 pt-12 md:pb-20 md:pt-16",
+    "group relative w-full px-4 md:px-8 pb-16 pt-12 md:pb-20 md:pt-16",
     { "bg-neutral-light text-neutral-dark": variant === "light" },
     { "bg-primary text-neutral-light": variant === "dark" },
   ]}

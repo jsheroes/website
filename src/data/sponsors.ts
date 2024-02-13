@@ -11,4 +11,9 @@ export const sponsors: Organization[] = [
     url: "http://www.cloudflight.io/",
     imgName: "sponsors/logo_cloudflight.jpg",
   },
+  {
+    name: "flowx.ai",
+    url: "https://www.flowx.ai/",
+    imgName: "sponsors/logo_flowx.ai.jfif",
+  }
 ];
