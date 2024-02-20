@@ -1,4 +1,4 @@
-## The journey to a mature ecosystem
+<h2 id="agenda">The journey to a mature ecosystem</h2>
 
 After we reflected in 2023 on the past 10 years of frontend developement, in 2024 we want to spotlight some of the established patterns and architectures that reached maturity and are becoming industry standards.
 
