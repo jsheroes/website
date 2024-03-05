@@ -51,4 +51,9 @@ export const communities: Organization[] = [
     url: "https://www.codemotion.com/",
     imgName: "communities/logo_codemotion.png",
   },
+  {
+    name: "React Vienna",
+    url: "https://www.meetup.com/reactvienna/",
+    imgName: "communities/logo_reactvienna.png",
+  }
 ];
