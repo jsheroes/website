@@ -1,13 +1,12 @@
 ---
 name: Rachel Nabors
-title: Director of Developer Education
-company: Clerk
+title: Dev Ex Expert
 imgName: speakers/rachel-nabors.jpeg
 links:
   {
     twitter: "https://twitter.com/rachelnabors",
-    linkedin: "https://t.co/DF1afC8uiR",
+    linkedin: "https://www.linkedin.com/in/rachelnabors/",
   }
 ---
 
-Rachel Nabors has worked web standards and opensource with Mozilla, the W3C, Microsoft, and lead the new React and React Native docs at react.dev and reactnative.dev with the core teams at Meta. Their dream is to teach the world to code so others may create a future we can all believe in. Currently they lead Developer Education at Clerk.
+Rachel Nabors has spearheaded developer education at FAANG companies like Amazon and startups like Clerk and participated in web standards and open source with Mozilla, the W3C, and Microsoft. They have built award-winning dev portals for React and React Native with the core teams at Meta. They are currently roaming the world, working on opensource projects that teach the world to code from their home base in London.
