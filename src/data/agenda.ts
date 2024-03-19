@@ -38,7 +38,7 @@ export const day1: AgendaItem[] = [
     imgName: "event/coffee.jpg",
   },
   { type: "talk", speakers: ["josh-goldberg"], timeSlot: "14:00 - 14:30" },
-  { type: "talk", speakers: ["artem-zakharchenko"], timeSlot: "14:30 - 15:00" },
+  { type: "talk", speakers: ["filip-hric"], timeSlot: "14:30 - 15:00" },
   {
     type: "placeholder",
     content: "Coffee Break",
@@ -82,7 +82,7 @@ export const day2: AgendaItem[] = [
     imgName: "event/coffee.jpg",
   },
   { type: "talk", timeSlot: "14:00 - 14:30", speakers: ["matan-kushner"] },
-  { type: "talk", timeSlot: "14:30 - 15:00", speakers: ["filip-hric"] },
+  { type: "talk", timeSlot: "14:30 - 15:00", speakers: ["artem-zakharchenko"] },
   {
     type: "placeholder",
     content: "Coffee Break",
