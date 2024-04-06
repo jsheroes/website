@@ -63,6 +63,8 @@
     background-color: theme("colors.neutral-light");
     line-height: 1.6;
     overscroll-behavior-y: none;
+
+    scroll-behavior: smooth;
   }
 
   @media only screen and (-webkit-min-device-pixel-ratio: 1.3),
@@ -71,6 +73,12 @@
     html {
       -moz-osx-font-smoothing: grayscale;
       -webkit-font-smoothing: antialiased;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
     }
   }
 
