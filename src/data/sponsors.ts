@@ -21,4 +21,9 @@ export const sponsors: Organization[] = [
     url: "https://www.globallogic.com/ro/",
     imgName: "sponsors/logo_globalLogic.png",
   },
+  {
+    name: "Evozon",
+    url: "https://www.evozon.com/en/",
+    imgName: "sponsors/logo_evozon.png",
+  },
 ];
