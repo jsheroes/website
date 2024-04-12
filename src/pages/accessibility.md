@@ -3,7 +3,7 @@ layout: "../layouts/MarkdownLayout.astro"
 title: "Accessibility and Inclusion"
 ---
 
-We are committed to offer the best experience for everyone that joins our events. This means a growing effort towards accessibility and inclusion. Here are a list of the things we are considering for the 2023 edition. We are open about improving this year by year, so please [send us your suggestions](mailto:welcome@jsheroes.io) for making it better.
+We are committed to offer the best experience for everyone that joins our events. This means a growing effort towards accessibility and inclusion. Here are a list of the things we are considering for the 2024 edition. We are open about improving this year by year, so please [send us your suggestions](mailto:welcome@jsheroes.io) for making it better.
 
 ## Event room facilities
 

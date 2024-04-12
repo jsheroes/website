@@ -1,6 +1,6 @@
 <h2 id="agenda">The journey to a mature ecosystem</h2>
 
-After we reflected in 2023 on the past 10 years of frontend developement, in 2024 we want to spotlight some of the established patterns and architectures that reached maturity and are becoming industry standards.
+After we reflected in 2023 on the past 10 years of frontend development, in 2024 we want to spotlight some of the established patterns and architectures that reached maturity and are becoming industry standards.
 
 Leaving behind us the tumultuous growth of the JS ecosystem we will focus on the positive outcomes of all the years of challenging "best practices". We want to bring on stage talks about design patterns and system architecture, but also web standards and language advancements. Along with these, we want to tackle software complexity and dealing with legacy code and legacy systems.
 

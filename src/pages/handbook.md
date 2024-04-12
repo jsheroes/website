@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/MarkdownLayout.astro
-title: Conference Handbook 2023
+title: Conference Handbook 2024
 ---
 
 On this page you can find information about the event that will help you prepare for your trip and maximize your experience at JSHeroes. We've included details on the conference venue, agenda, and social events, as well as information on some of the initiatives we are taking to make the event accessible and comfortable for everyone.
@@ -23,27 +23,31 @@ Whether you're attending JSHeroes for the first time or you're a returning atten
 
 ## 📆 🌎 Date and Venue
 
-JSHeroes 2023 will take place on <b>May 18-19th</b> (Thursday & Friday) at <b>[Grand Hotel Italia](https://www.google.com/maps/place/Grand+Hotel+Italia)</b> in Cluj-Napoca. It is a one-track conference and we have reserved the space from the hotel's ground floor, a spacious conference room, and a large lobby, where you can enjoy the talks, the technical booths, and the networking area.
+JSHeroes 2024 will take place on <b>May 23-24th</b> (Thursday & Friday) at <b>[Grand Hotel Italia](https://www.google.com/maps/place/Grand+Hotel+Italia)</b> in Cluj-Napoca. It is a one-track conference and we have reserved the space from the hotel's ground floor, a spacious conference room, and a large lobby, where you can enjoy the talks, the technical booths, and the networking area.
 
 Also, during the coffee and lunch breaks, we will have multiple small stages, in some parts of the hallway, where everyone will be able to join, as a speaker or participant. We want to encourage open discussions, open-source projects presentations, lightning talks, and anything which is remotely related to what we do and our mission and values.
 
 ## 📒✨ Agenda and Theme
 
-This year we want to shift our attention to the decade of progress in the world of web development. Back in 2013, we went through a period of rethinking practices as front-end development took off and became one of the most crucial disciplines in tech. Frameworks like: React, Angular, or Vue, and their ecosystems now enter into their second decade of existence, while web capabilities and standards are increasingly more potent and versatile.
+After we reflected in 2023 on the past 10 years of frontend development, in 2024 we want to spotlight some of the established patterns and architectures that reached maturity and are becoming industry standards.
 
-<b>So in 2023, let’s celebrate the past 10 years, reflecting on the evolution of our tools and patterns, with the good and the bad that comes with this rapid evolution.</b>
+Leaving behind us the tumultuous growth of the JS ecosystem we will focus on the positive outcomes of all the years of challenging “best practices”. We want to bring on stage talks about design patterns and system architecture, but also web standards and language advancements. Along with these, we want to tackle software complexity and dealing with legacy code and legacy systems.
+
+At JSHeroes, we always ventured outside the pure language ecosystem, so expect to see a variety of talks covering the entire landscape of web development and JavaScript as a universal programming language.
+
+But of course, we will not neglect the human side of things, in our effort to paint a full picture for the development community in 2024.
 
 Check out the agenda [here](https://jsheroes.io/#agenda). We’ll post all the talks, soon after the conference, on our [YouTube](https://www.youtube.com/channel/UCeJEpnvZhG-VwGpzrzYLidQ) channel. During the conference, we’re not going to live stream though.
 
 ## 🎤 Pre-event meetup
 
-The evening before the event, on the 17th of May, we organize the traditional pre-event meetup. This year, we're partnering up with Women in Tech Cluj and we're going to have a panel discussion with three of our conference guests from 2023. Registration is available via [meetup.com](https://www.meetup.com/jsheroes/events/293342798/).
+On the evening before the event, the 22nd of May, we will be organizing the traditional pre-event meetup. This year, we're excited to partner with Women in Tech Cluj. We are planning a panel discussion featuring some of our conference guests. The details about the guests and the subject of the discussion will be announced soon. The registration link will also be provided in due course. Stay tuned for more updates.
 
 ## 📍 City tour
 
 Are you coming to Cluj for the first time? Or maybe you've been here before (or you even live here) but you don't know much about its history? We're organizing a two-hour free walking tour with a professional local guide.
 
-If you are interested, please register via [this quick form](https://forms.gle/3N8sZTBcrkiBv2CB7) so we are better prepared for the size of the group.
+If you are interested, please note that we are currently preparing a registration form. It will be available soon to better accommodate the size of the group. Stay tuned for more updates.
 
 ## 🎫 Tickets
 
@@ -57,7 +61,7 @@ If your plans change and you can't attend the conference, you can always re-assi
 
 We post all the major updates on our [Facebook](https://www.facebook.com/jsheroes/) and [Twitter](https://twitter.com/jsheroes) pages. So you can follow and join us on both.
 
-We encourage you to use the hashtag **#JSHeroes2023** to tweet and post about the conference, connect with other attendees, and share your photos when the big days arrive.
+We encourage you to use the hashtag **#JSHeroes2024** to tweet and post about the conference, connect with other attendees, and share your photos when the big days arrive.
 
 ## 🚌 Transportation
 
@@ -81,13 +85,23 @@ We understand the importance of reducing our carbon footprint and promoting [eco
 
 ## 🎤 Alternative stage
 
-We’re bringing back the concept of the alternative stage, a laid-back area in a corner of the event hall where speakers and attendees gather in the coffee breaks and during the lunch break for informal discussions or on the spot presentations. The stage is hosted by Andrei Antal and the details about the discussions will be announced before the breaks by our MC.
+In keeping with our tradition from previous years, the alternative stage will once again be a central part of our event. This informal area, nestled in a corner of the event hall, serves as a meeting point for speakers and attendees to participate in casual discussions or spontaneous presentations during coffee and lunch breaks. Andrei Antal will return as the host of the stage, with our MC sharing the details of the discussions before each break.
 
 ## 🧘 Pilates session
 
-As a novelty for 2023, we're introducing a pilates session in the morning of the second day of the event. The session will be held in a separate room and will be driven by one of our close friends, Carmen Popoviciu, who is also a certified pilates trainer. She will showcase different types of exercises for improving our posture or dealing with pains specific to intense office work.
+Continuing from 2023, we will be hosting a pilates session on the morning of the second day of the event. This session will take place in a designated room and will be led by our dear friend, Carmen Popoviciu, a certified pilates trainer. She will demonstrate various exercises aimed at improving posture and addressing pains associated with intensive office work.
 
-If you wish to attend, please [register via this form](https://forms.gle/5Cm7HZhLVAyyxRzm7) so we know how to better prepare for the session.
+If you wish to attend, please note that we are currently preparing a registration form. It will be available soon to help us better prepare for the session. Stay tuned for more updates.
+
+## 🏃‍♀️ Running Session
+
+In addition to our traditional pilates session, we are excited to introduce a running session for the 2024 event. This session will take place early in the morning of the first day, providing a refreshing start to the conference.
+
+The running session will be led by our enthusiastic community member, Ioana Chiorean, an experienced runner. Ioana will guide participants through a scenic route around the conference venue, ensuring a pace that is comfortable for all fitness levels.
+
+This is a great opportunity to energize yourself before the day's activities, meet fellow attendees in a relaxed setting, and enjoy the local surroundings.
+
+If you wish to attend, please note that we are currently preparing a registration form. It will be available soon to help us better prepare for the session. Stay tuned for more updates.
 
 ## 🍎 Catering
 
@@ -107,7 +121,7 @@ All attendees, speakers, sponsors, and volunteers at the JSHeroes event are requ
 
 ## 🧭 Explore the City
 
-Cluj-Napoca has a lot of interesting places to see and explore. If you're looking for things to do during your free time while attending JSHeroes conference, be sure to [check out the map](https://www.google.com/maps/d/u/0/edit?mid=1dXVR24gWN2ioa3OVlJzw6nWpiwDE6uM&ll=46.764992355941025%2C23.583294000000006&z=15) we've built of the city's top attractions we recommend.
+Cluj-Napoca has a lot of interesting places to see and explore. If you're looking for things to do during your free time while attending JSHeroes conference, be sure to <a href="https://www.google.com/maps/d/u/2/viewer?mid=1IHKy1ZIlaIq-T7eGGRRztW-3ozL54Ko&ll=46.77072098938819%2C23.59104036631832&z=16" target="_blank">check out the map</a> we've built of the city's top attractions we recommend.
 
 Some must-see places include the Alexandru Borza Botanical Garden, St. Michael's Church and the National Museum of Art. There are also plenty of cafes, restaurants, and bars where you can relax and soak up the local atmosphere.
 
