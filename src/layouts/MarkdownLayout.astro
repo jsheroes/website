@@ -19,14 +19,16 @@ const author = await getEntryBySlug("organizers", frontmatter.author);
     aria-hidden
   />
   <main id="main">
-    <Section variant="light" content="text" class="prose max-w-none">
+    <Section variant="light" content="text" class="max-w-none">
       {
         author && (
           <AuthorCard author={author} publishDate={frontmatter.published} />
         )
       }
-      <h1>{frontmatter.title}</h1>
-      <slot />
+      <div class="prose">
+        <h1>{frontmatter.title}</h1>
+        <slot />
+      </div>
     </Section>
   </main>
 </BaseLayout>

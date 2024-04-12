@@ -33,17 +33,17 @@ Our collaborators are filming and taking photos throughout the event, both durin
 
 If you have trouble seeing or hearing from the back of the room, we can reserve seats for you in the front rows. Please let us know before the event if that is the case so we know how many seats to reserve. Ask at the registration desk for guidance towards the reserved seats.
 
-In case you don't make it to one of the front rows, there will be two extra screens in the middle of the seating area.
-
-All attendees are required to respect our [code of conduct](https://jsheroes.io/coc). There will be a dedicated space during the entire event where you can report any abuse or violation of the CoC.
+All attendees are required to respect our [code of conduct](https://jsheroes.io/coc). There will be a dedicated space during the entire event where you can report any abuse or violation of our CoC.
 
 ## For speakers
 
-Your slide decks will shown up on two large LED displays on each side of the main stage. You will also have a screen in front of you with your slides/notes and another screen with the timer.
+Your slide decks will shown up on two large LED displays on each side of the main stage. You will also have a screen in front of you with your slides and another screen with the timer.
 
 Please test the visibility of your slides from the back of the room before you go up on stage. If your deck contains strong animations, loud sounds or flashing effects, please announce this to the audience at the beginning of the talk.
 
 Additionally, since the lights in the room are dimmed during your talk, we recommend a darker background for the slides. Keep, in mind that the displays will amplify powerful colors, so avoid using them as background colors.
+
+If you share code snippets, make sure the syntax highlighting is adjusted for maximum contrast and that the font size is large enough to be readable from the back.
 
 We kindly ask you to verbalize all the content from the slides to help visually-impaired or dyslexic people understand better.
 

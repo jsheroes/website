@@ -120,6 +120,10 @@
     padding-inline-start: 2rem;
   }
 
+  .prose li {
+    margin: 0 !important;
+  }
+
   dialog {
     position: fixed;
     margin: auto;
