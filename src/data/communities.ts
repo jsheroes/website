@@ -55,5 +55,10 @@ export const communities: Organization[] = [
     name: "React Vienna",
     url: "https://www.meetup.com/reactvienna/",
     imgName: "communities/logo_reactvienna.png",
+  },
+  {
+    name: "British-Romanian Chamber of Commerce",
+    url: "https://brcconline.eu/",
+    imgName: "communities/logo_brcc.jpg",
   }
 ];
