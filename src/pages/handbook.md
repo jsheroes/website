@@ -121,7 +121,7 @@ All attendees, speakers, sponsors, and volunteers at the JSHeroes event are requ
 
 ## 🧭 Explore the City
 
-Cluj-Napoca has a lot of interesting places to see and explore. If you're looking for things to do during your free time while attending JSHeroes conference, be sure to <a href="https://www.google.com/maps/d/viewer?mid=1_ejPhe0MeAp2evy8bWR3orqQ1Zdve74&ll=46.77072098938819%2C23.59104036631832&z=16" target="_blank">check out the map</a> we've built of the city's top attractions we recommend.
+Cluj-Napoca has a lot of interesting places to see and explore. If you're looking for things to do during your free time while attending JSHeroes conference, be sure to <a href="https://www.google.com/maps/d/u/2/viewer?mid=1IHKy1ZIlaIq-T7eGGRRztW-3ozL54Ko&ll=46.77072098938819%2C23.59104036631832&z=16" target="_blank">check out the map</a> we've built of the city's top attractions we recommend.
 
 Some must-see places include the Alexandru Borza Botanical Garden, St. Michael's Church and the National Museum of Art. There are also plenty of cafes, restaurants, and bars where you can relax and soak up the local atmosphere.
 
