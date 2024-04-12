@@ -1,9 +1,9 @@
 ---
 layout: "../layouts/MarkdownLayout.astro"
-title: "An environmentally sustainable event"
+title: "A sustainable event"
 ---
 
-We are thrilled to announce that this year's conference in Cluj Napoca has been organized with sustainability in mind. We understand the importance of reducing our carbon footprint and promoting eco-friendly initiatives in the industry, which is why we have started to implement a few green initiatives to make this conference as sustainable as possible.
+As a person who is interested in ecology, we would like to inform you that this year’s conference in Cluj Napoca has been organized with sustainability in mind. We understand the importance of reducing our carbon footprint and promoting eco-friendly initiatives, which is why we have continued our efforts for 2024.
 
 ### The venue
 
@@ -15,17 +15,17 @@ When it comes to **catering**, we wanted to offer a variety of options that go w
 
 ### Waste management
 
-This year, we are committed to effective waste management throughout the conference. You will find **labeled bins** for recycling available throughout the venue, along with clear and easily understandable signage to help you properly dispose your waste.
+Same as previous editions, we are committed to effective waste management during the conference, thus you will find **labeled bins** for recycling available throughout the venue.
 
-This will be the first year when we will prepare a special bin for **recycling plastic caps**. The money collected from the cups will be donated to charity through _[Capace pentru suflete](https://www.capacecusuflet.ro/)_, a local organisation.
+We will continue having a special bin for recycling **plastic caps**. The money collected from the caps will be donated to charity through _[Capace pentru suflete](https://www.capacecusuflet.ro/)_, a local organisation.
 
-We are also very excited about initiative that encourages participants to return their **badges and lanyards** in separate bins at the end of the event. As an added incentive, we will be holding a random raffle to select one winner for a ticket to next year's conference.
+We are also very excited about our initiative that encourages participants to return their **badges and lanyards** in separate bins at the end of the event.
 
 ### Coffee and water
 
-We know coffee is important for our participants, so we took great care in improving this aspect as well. This will be the first year when we will use **100% biodegradable cups**, but, most importantly we would like to encourage you to join us in making this conference as sustainable as possible, by bringing your _own reusable coffee cups_.
+We know coffee is important for our participants, so we continue to take great care in improving this aspect when it comes to waste management. We will continue using **100% biodegradable** cups, but, most importantly we would like to encourage you to join us in making this conference as sustainable as possible, by *bringing your own reusable coffee cup*.
 
-We're taking our **water** game to the next level this year. No more plastic bottles for participants. We have two water coolers ready and waiting for you. And, most importantly, we encourage you to bring your own water bottle. Common actions can help reduce waste.
+When it comes to water, we are thrilled to announce that we’ve totally reduced our plastic use. We will have two **water coolers** and glass bottles ready and waiting for you. And, most importantly, we encourage you to *bring your own water recipient*. 
 
 ### Merchandise point
 
@@ -33,10 +33,10 @@ When it comes to our **merchandise point**, we will offer eco-friendly swag opti
 
 ### Reducing paper use
 
-In-person events have traditionally relied on paper and disposable forms of communication, such as print banners, signs, and brochures. However, every year we try to **minimize printing on paper** as much as possible. We send all useful information to participants about the conference through our newsletter, and this year we have prepared a Conference Handbook for you, where you can find any information you need. Plus, there is no need to bring a printed ticket; simply show it to us on your phone.
+Every year we try to **minimize printing on paper** as much as possible. We send all useful information to participants about the conference through our newsletter, and this year we have prepared a Conference Handbook for you, where you can find any information you need. Plus, there is no need to bring a printed ticket; simply show it to us on your phone.
 
-### Supporting Zarnesti Bear Sanctuary
+### Supporting Agent Green
 
-In addition to these initiatives, and because our mascot, [Ecma](https://website-git-eco-friendly-page-jsheroes.vercel.app/meet-ecma), is a bear, we will once again encourage our participants to make a donation to the Zarnesti Bear Sanctuary. This sanctuary, one of the largest in Eastern Europe, is dedicated to the welfare of bears.
+In addition to these initiatives, and because our mascot, [Ecma](https://jsheroes.io/meet-ecma), is a bear, we will encourage our participants to make a donation to the [Agent Green](https://www.agentgreen.ro/) organisation. They are heavily involved in concrete actions when it comes to saving Romanian forests and protecting the brown bear. They continue to fight and win processes regarding illegal deforestation. 
 
-We believe that it is important to come together as a community to address the pressing issues facing our environment. By taking action and implementing sustainable practices, we can create a positive impact. We hope to inspire and motivate individuals and organizations to join us in this effort, as we work towards a better and more sustainable future for all. We look forward to seeing you at the conference where we can collaborate and share more ideas on how we can improve.
+All this being said, we believe that it is important to come together as a community to address part of the problems facing our environment. By taking action and focusing on sustainable practices, we can create a positive impact. We look forward to seeing you at the conference where we can collaborate and share more ideas on how we can improve.
