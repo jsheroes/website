@@ -89,6 +89,6 @@ export const day2: AgendaItem[] = [
     timeSlot: "15:00 - 15:30",
     imgName: "event/coffee.jpg",
   },
-  { type: "talk", timeSlot: "15:30 - 16:00", speakers: ["rachel-nabors"] },
+  { type: "talk", timeSlot: "15:30 - 16:00", speakers: ["charlie-gerard"] },
   { type: "talk", timeSlot: "16:00 - 16:30", speakers: ["tero-parviainen"] },
 ];
