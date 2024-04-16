@@ -65,5 +65,15 @@ export const communities: Organization[] = [
     name: "React India",
     url: "https://www.reactindia.io/",
     imgName: "communities/logo_reactindia.png",
+  },
+  {
+    name: "React Paris",
+    url: "https://react.paris/",
+    imgName: "communities/logo_reactparis.png",
+  },
+  {
+    name: "React Brussels",
+    url: "https://www.react.brussels/",
+    imgName: "communities/logo_reactbrussels.png",
   }
 ];
