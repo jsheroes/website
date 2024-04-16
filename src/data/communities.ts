@@ -60,5 +60,10 @@ export const communities: Organization[] = [
     name: "British-Romanian Chamber of Commerce",
     url: "https://brcconline.eu/",
     imgName: "communities/logo_brcc.jpg",
+  },
+  {
+    name: "React India",
+    url: "https://www.reactindia.io/",
+    imgName: "communities/logo_reactindia.png",
   }
 ];
