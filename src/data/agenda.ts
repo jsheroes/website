@@ -73,7 +73,7 @@ export const day2: AgendaItem[] = [
   {
     type: "talk",
     timeSlot: "12:00 - 12:30",
-    speakers: ["ramon-huidobro"],
+    speakers: ["carmen-huidobro"],
   },
   {
     type: "placeholder",
