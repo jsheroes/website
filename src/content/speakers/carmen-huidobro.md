@@ -5,7 +5,7 @@ company: DevCraft Academy
 imgName: speakers/carmen-huidobro.jpg
 links:
   {
-    twitter: "twitter.com/hola_soy_milk",
+    twitter: "https://twitter.com/hola_soy_milk",
     website: "https://hola-soy-milk.online",
   }
 ---
