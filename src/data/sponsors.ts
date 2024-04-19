@@ -26,4 +26,9 @@ export const sponsors: Organization[] = [
     url: "https://www.evozon.com/en/",
     imgName: "sponsors/logo_evozon.png",
   },
+  {
+    name: " QIAGEN Digital Insights",
+    url: "https://digitalinsights.qiagen.com/",
+    imgName: "sponsors/logo_qiagen.svg",
+  },
 ];
