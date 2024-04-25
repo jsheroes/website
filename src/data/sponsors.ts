@@ -27,8 +27,18 @@ export const sponsors: Organization[] = [
     imgName: "sponsors/logo_evozon.png",
   },
   {
-    name: " QIAGEN Digital Insights",
+    name: "QIAGEN Digital Insights",
     url: "https://digitalinsights.qiagen.com/",
     imgName: "sponsors/logo_qiagen.svg",
+  },
+  {
+    name: "Betfair",
+    url: "https://www.betfairromania.ro/",
+    imgName: "sponsors/logo_betfair.svg",
+  },
+  {
+    name: "Cloud Wizard",
+    url: "https://cloudwizard.tech/",
+    imgName: "sponsors/logo_cloud-wizard.svg",
   },
 ];
