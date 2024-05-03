@@ -17,7 +17,7 @@ export const sponsors: Organization[] = [
     imgName: "sponsors/logo_flowx.ai.png",
   },
   {
-    name: "GlobalLogic",
+    name: "GlobalLoic",
     url: "https://www.globallogic.com/ro/",
     imgName: "sponsors/logo_globalLogic.png",
   },
