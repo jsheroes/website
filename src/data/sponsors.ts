@@ -41,4 +41,9 @@ export const sponsors: Organization[] = [
     url: "https://cloudwizard.tech/",
     imgName: "sponsors/logo_cloud-wizard.svg",
   },
+  {
+    name: "Siemens",
+    url: "https://www.siemens.com/ro/ro.html",
+    imgName: "sponsors/logo_siemens.png",
+  },
 ];
