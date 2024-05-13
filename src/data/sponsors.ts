@@ -4,7 +4,7 @@ export const sponsors: Organization[] = [
   {
     name: "Accesa",
     url: "https://careers.accesa.eu/",
-    imgName: "sponsors/logo_accesa.jpg",
+    imgName: "sponsors/logo_accesa.png",
   },
   {
     name: "Cloudflight",
