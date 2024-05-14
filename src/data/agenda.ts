@@ -72,7 +72,7 @@ export const day2: AgendaItem[] = [
     timeSlot: "10:30 - 11:00",
     imgName: "event/coffee.jpg",
   },
-  { type: "talk", timeSlot: "11:00 - 11:30", speakers: ["aleksandra-sikora"] },
+  { type: "talk", timeSlot: "11:00 - 11:30", speakers: ["sid-kshetrapal"] },
   { type: "talk", timeSlot: "11:30 - 12:00", speakers: ["nicolo-ribaudo"] },
   {
     type: "talk",
