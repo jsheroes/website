@@ -1,5 +1,5 @@
 ---
-title: A guide to accessible, composable and reusable React components
+title: Building Accessible Reusable Components
 ---
 
 Twitter influencers would have you believe that if you just use the semantic html tag for elements instead of a div, your components will be accessible. but there’s a lot more that goes into it!
