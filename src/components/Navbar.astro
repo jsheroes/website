@@ -1,11 +1,11 @@
 ---
-import { Icon } from "astro-icon"
+import { Icon } from "astro-icon";
 export interface Props {
-  theme?: "dark"
+  theme?: "dark";
 }
 
-const { theme = "" } = Astro.props as Props
-const navlinkClass = `navlink ${theme}`
+const { theme = "" } = Astro.props as Props;
+const navlinkClass = `navlink ${theme}`;
 ---
 
 <header class="relative m-auto max-w-[1280px]">
@@ -16,9 +16,8 @@ const navlinkClass = `navlink ${theme}`
         href="#main">Skip navigation</a
       >
       <a class={navlinkClass} href="/">Home</a>
-      <a class={navlinkClass} href="/#speakers">Speakers</a>
       <a class={navlinkClass} href="/#agenda">Agenda</a>
-      <a class={navlinkClass} href="/#sponsors">Sponsors</a>
+      <a class={navlinkClass} href="/handbook">Handbook</a>
     </div>
 
     <button
@@ -94,54 +93,54 @@ const navlinkClass = `navlink ${theme}`
   document.addEventListener("astro:page-load", () => {
     const hamburgerBtn = document.querySelector(
       ".hamburger"
-    ) as HTMLButtonElement
-    const closeBtn = document.querySelector(".close") as HTMLButtonElement
-    const backdrop = document.querySelector(".backdrop") as HTMLDivElement
-    const sideDrawer = document.querySelector(".side-drawer") as HTMLElement
-    const mainNav = document.querySelector(".main-nav") as HTMLElement
+    ) as HTMLButtonElement;
+    const closeBtn = document.querySelector(".close") as HTMLButtonElement;
+    const backdrop = document.querySelector(".backdrop") as HTMLDivElement;
+    const sideDrawer = document.querySelector(".side-drawer") as HTMLElement;
+    const mainNav = document.querySelector(".main-nav") as HTMLElement;
 
     const sideDrawerLinks = document.querySelectorAll(
       ".side-drawer a"
-    ) as NodeListOf<HTMLAnchorElement>
+    ) as NodeListOf<HTMLAnchorElement>;
 
     function onOpen() {
-      backdrop.classList.add("!block")
-      sideDrawer.classList.add("!translate-x-0")
-      closeBtn.setAttribute("tabIndex", "0")
-      sideDrawerLinks.forEach((link) => link.setAttribute("tabIndex", "0"))
-      mainNav.classList.add("hidden")
-      closeBtn.focus()
+      backdrop.classList.add("!block");
+      sideDrawer.classList.add("!translate-x-0");
+      closeBtn.setAttribute("tabIndex", "0");
+      sideDrawerLinks.forEach((link) => link.setAttribute("tabIndex", "0"));
+      mainNav.classList.add("hidden");
+      closeBtn.focus();
 
       sideDrawerLinks[sideDrawerLinks.length - 1].addEventListener(
         "keydown",
         (e) => {
           if (e.key === "Tab" && !e.shiftKey) {
-            e.preventDefault()
-            closeBtn.focus()
+            e.preventDefault();
+            closeBtn.focus();
           }
         }
-      )
+      );
     }
 
     function onClose() {
-      backdrop.classList.remove("!block")
-      sideDrawer.classList.remove("!translate-x-0")
-      mainNav.classList.remove("hidden")
+      backdrop.classList.remove("!block");
+      sideDrawer.classList.remove("!translate-x-0");
+      mainNav.classList.remove("hidden");
 
-      closeBtn.setAttribute("tabIndex", "-1")
+      closeBtn.setAttribute("tabIndex", "-1");
       sideDrawerLinks.forEach((link) => {
-        link.setAttribute("tabIndex", "-1")
-      })
+        link.setAttribute("tabIndex", "-1");
+      });
     }
 
-    hamburgerBtn.addEventListener("click", onOpen)
-    backdrop.addEventListener("click", onClose)
-    closeBtn.addEventListener("click", onClose)
+    hamburgerBtn.addEventListener("click", onOpen);
+    backdrop.addEventListener("click", onClose);
+    closeBtn.addEventListener("click", onClose);
 
     sideDrawerLinks.forEach((link) => {
-      link.addEventListener("click", onClose)
-    })
+      link.addEventListener("click", onClose);
+    });
 
-    onClose()
-  })
+    onClose();
+  });
 </script>

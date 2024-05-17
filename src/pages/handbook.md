@@ -41,13 +41,13 @@ Check out the agenda [here](https://jsheroes.io/#agenda). We’ll post all the t
 
 ## 🎤 Pre-event meetup
 
-On the evening before the event, the 22nd of May, we will be organizing the traditional pre-event meetup. This year, we're excited to partner with Women in Tech Cluj. We are planning a panel discussion featuring some of our conference guests. The details about the guests and the subject of the discussion will be announced soon. The registration link will also be provided in due course. Stay tuned for more updates.
+On the evening before the event, May 22nd, you can [join the pre-event meetup](https://www.meetup.com/women-in-tech-cluj/events/301019507/) organized by Women in Tech Cluj.
 
 ## 📍 City tour
 
 Are you coming to Cluj for the first time? Or maybe you've been here before (or you even live here) but you don't know much about its history? We're organizing a two-hour free walking tour with a professional local guide.
 
-If you are interested, please note that we are currently preparing a registration form. It will be available soon to better accommodate the size of the group. Stay tuned for more updates.
+If you are interested, please [register using this quick form](https://forms.gle/qYL6nZmc9gfZDbbe7), so we know how to best prepare for the number of people that are joining.
 
 ## 🎫 Tickets
 
@@ -87,19 +87,17 @@ We understand the importance of reducing our carbon footprint and promoting [eco
 
 In keeping with our tradition from previous years, the alternative stage will once again be a central part of our event. This informal area, nestled in a corner of the event hall, serves as a meeting point for speakers and attendees to participate in casual discussions or spontaneous presentations during coffee and lunch breaks. Andrei Antal will return as the host of the stage, with our MC sharing the details of the discussions before each break.
 
-## 🧘 Pilates session
-
-Continuing from 2023, we will be hosting a pilates session on the morning of the second day of the event. This session will take place in a designated room and will be led by our dear friend, Carmen Popoviciu, a certified pilates trainer. She will demonstrate various exercises aimed at improving posture and addressing pains associated with intensive office work.
-
-If you wish to attend, please note that we are currently preparing a registration form. It will be available soon to help us better prepare for the session. Stay tuned for more updates.
-
-## 🏃‍♀️ Running Session
+## 🏃‍♀️ Running session
 
 In addition to our traditional pilates session, we are excited to introduce a running session for the 2024 event. This session will take place early in the morning of the first day, providing a refreshing start to the conference.
 
-The running session will be led by our enthusiastic community member, Ioana Chiorean, an experienced runner. Ioana will guide participants through a scenic route around the conference venue, ensuring a pace that is comfortable for all fitness levels.
+The running session will be led by our enthusiastic community member, **Ioana Chiorean**, an experienced runner. Ioana will guide participants through a scenic route around the conference venue, ensuring a pace that is comfortable for all fitness levels.
 
-This is a great opportunity to energize yourself before the day's activities, meet fellow attendees in a relaxed setting, and enjoy the local surroundings.
+This is a great opportunity to energize yourself before the day's activities, meet fellow attendees in a relaxed setting, and enjoy the local surroundings. More details about the logistics coming soon.
+
+## 🧘 Pilates session
+
+Continuing from 2023, we will be hosting a pilates session on the morning of the second day of the event. This session will take place in a designated room and will be led by our dear friend, **Carmen Popoviciu**, a certified pilates trainer. She will demonstrate various exercises aimed at improving posture and addressing pains associated with intensive office work.
 
 If you wish to attend, please note that we are currently preparing a registration form. It will be available soon to help us better prepare for the session. Stay tuned for more updates.
 
