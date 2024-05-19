@@ -39,6 +39,10 @@ But of course, we will not neglect the human side of things, in our effort to pa
 
 Check out the agenda [here](https://jsheroes.io/#agenda). We’ll post all the talks, soon after the conference, on our [YouTube](https://www.youtube.com/channel/UCeJEpnvZhG-VwGpzrzYLidQ) channel. During the conference, we’re not going to live stream though.
 
+## 📅 Shared calendar with activities
+
+If you want to have a good overview of all the extra activites around the event, you can [add this calendar](https://calendar.google.com/calendar/embed?src=14d750f7c1ecda4e1c2a5ae1410007af2e2e731be59164177e5af3a4dbcdd3c7%40group.calendar.google.com&ctz=Europe%2FBucharest) to your account, as it contains all the details related to the city tour, pre-event meetups and others.
+
 ## 🎤 Pre-event meetup
 
 On the evening before the event, May 22nd, you can [join the pre-event meetup](https://www.meetup.com/women-in-tech-cluj/events/301019507/) organized by Women in Tech Cluj.
