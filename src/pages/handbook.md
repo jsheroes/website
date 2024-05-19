@@ -103,7 +103,7 @@ This is a great opportunity to energize yourself before the day's activities, me
 
 Continuing from 2023, we will be hosting a pilates session on the morning of the second day of the event. This session will take place in a designated room and will be led by our dear friend, **Carmen Popoviciu**, a certified pilates trainer. She will demonstrate various exercises aimed at improving posture and addressing pains associated with intensive office work.
 
-If you wish to attend, please note that we are currently preparing a registration form. It will be available soon to help us better prepare for the session. Stay tuned for more updates.
+If you wish to attend, please [register using this form](https://forms.gle/D5o4ZXf5GDs4L7Ag6).
 
 ## 🍎 Catering
 
