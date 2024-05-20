@@ -91,13 +91,11 @@ We understand the importance of reducing our carbon footprint and promoting [eco
 
 In keeping with our tradition from previous years, the alternative stage will once again be a central part of our event. This informal area, nestled in a corner of the event hall, serves as a meeting point for speakers and attendees to participate in casual discussions or spontaneous presentations during coffee and lunch breaks. Andrei Antal will return as the host of the stage, with our MC sharing the details of the discussions before each break.
 
-## 🏃‍♀️ Running session
+## 🏃‍♀️ Running sessions
 
-In addition to our traditional pilates session, we are excited to introduce a running session for the 2024 event. This session will take place early in the morning of the first day, providing a refreshing start to the conference.
+In addition to the pilates session, we are excited to introduce running sessions before each day of the event. The sessions will be led by our enthusiastic community member, **Ioana Chiorean**, an experienced runner. Ioana will guide participants through a scenic routes around the conference venue and towards the city center, ensuring a pace that is comfortable for all fitness levels.
 
-The running session will be led by our enthusiastic community member, **Ioana Chiorean**, an experienced runner. Ioana will guide participants through a scenic route around the conference venue, ensuring a pace that is comfortable for all fitness levels.
-
-This is a great opportunity to energize yourself before the day's activities, meet fellow attendees in a relaxed setting, and enjoy the local surroundings. More details about the logistics coming soon.
+This is a great opportunity to energize yourself before the day's activities, meet fellow attendees in a relaxed setting, and enjoy the local surroundings. Use [this link to register](https://forms.gle/cJSKpeoAM9K32Yy6A).
 
 ## 🧘 Pilates session
 
