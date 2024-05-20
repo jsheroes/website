@@ -91,17 +91,17 @@ We understand the importance of reducing our carbon footprint and promoting [eco
 
 In keeping with our tradition from previous years, the alternative stage will once again be a central part of our event. This informal area, nestled in a corner of the event hall, serves as a meeting point for speakers and attendees to participate in casual discussions or spontaneous presentations during coffee and lunch breaks. Andrei Antal will return as the host of the stage, with our MC sharing the details of the discussions before each break.
 
-## 🏃‍♀️ Running sessions
-
-In addition to the pilates session, we are excited to introduce running sessions before each day of the event. The sessions will be led by our enthusiastic community member, **Ioana Chiorean**, an experienced runner. Ioana will guide participants through a scenic routes around the conference venue and towards the city center, ensuring a pace that is comfortable for all fitness levels.
-
-This is a great opportunity to energize yourself before the day's activities, meet fellow attendees in a relaxed setting, and enjoy the local surroundings. Use [this link to register](https://forms.gle/cJSKpeoAM9K32Yy6A).
-
 ## 🧘 Pilates session
 
 Continuing from 2023, we will be hosting a pilates session on the morning of the second day of the event. This session will take place in a designated room and will be led by our dear friend, **Carmen Popoviciu**, a certified pilates trainer. She will demonstrate various exercises aimed at improving posture and addressing pains associated with intensive office work.
 
 If you wish to attend, please [register using this form](https://forms.gle/D5o4ZXf5GDs4L7Ag6).
+
+## 🏃‍♀️ Running sessions
+
+In addition to the pilates session, we are excited to introduce running sessions before each day of the event. The sessions will be led by our enthusiastic community member, **Ioana Chiorean**, an experienced runner. Ioana will guide participants through a scenic routes around the conference venue and towards the city center, ensuring a pace that is comfortable for all fitness levels.
+
+This is a great opportunity to energize yourself before the day's activities, meet fellow attendees in a relaxed setting, and enjoy the local surroundings. Use [this link to register](https://forms.gle/cJSKpeoAM9K32Yy6A).
 
 ## 🍎 Catering
 
