@@ -25,7 +25,11 @@ Whether you're attending JSHeroes for the first time or you're a returning atten
 
 JSHeroes 2024 will take place on <b>May 23-24th</b> (Thursday & Friday) at <b>[Grand Hotel Italia](https://www.google.com/maps/place/Grand+Hotel+Italia)</b> in Cluj-Napoca. It is a one-track conference and we have reserved the space from the hotel's ground floor, a spacious conference room, and a large lobby, where you can enjoy the talks, the technical booths, and the networking area.
 
-Also, during the coffee and lunch breaks, we will have multiple small stages, in some parts of the hallway, where everyone will be able to join, as a speaker or participant. We want to encourage open discussions, open-source projects presentations, lightning talks, and anything which is remotely related to what we do and our mission and values.
+Also, during the coffee and lunch breaks, we will have an alternative stage, with interesting conversations and follow-ups from the talks on the main stage.Everyone will be able to join, as a speaker or participant. We also want to encourage open discussions, projects presentations, lightning talks, and anything which is remotely related to what we do and our mission and values.
+
+Bellow you can find a map of the entire venue, with all the points of interest marked accordingly.
+
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="700" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FF5OpOtQBVoqRCJkPDr4E4O%2FJSHeroes-Venue-Map%3Fnode-id%3D0%253A1%26t%3DM3VYo0JXQ7y6LDTW-1" allowfullscreen></iframe>
 
 ## 📒✨ Agenda and Theme
 
