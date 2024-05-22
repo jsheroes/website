@@ -117,7 +117,7 @@ Throughout the conference, we'll take photos and video shots. Your participation
 
 ## 🎉 After party
 
-TBA
+After wrapping up the conference on Friday, grab some dinner, then join us for the JSHeroes **After Party**! Meet the organizers and the speakers and enjoy your Friday evening with some 90's dirty disco vibes! It's happening at [Flying Circus club](https://maps.app.goo.gl/y1vaf8qhEttVCso36), starting 11:00pm. Everyone's welcome! Keep in mind there's a small entrance fee that you can pay by cash or card. Let's keep the energy going after an awesome conference! See you there :)
 
 ## 🤝 Code of Conduct
 
