@@ -15,6 +15,7 @@ Whether you're attending JSHeroes for the first time or you're a returning atten
 - [Accessibility](#-accessibility)
 - [Eco-friendly](#-eco-friendly)
 - [Alternative stage](#-alternative-stage)
+- [Pilates & running sessions](#-pilates-session)
 - [Catering](#-catering)
 - [Photos](#-photos)
 - [Code of conduct](#-code-of-conduct)
