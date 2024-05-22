@@ -24,7 +24,7 @@ Whether you're attending JSHeroes for the first time or you're a returning atten
 
 ## 📆 🌎 Date and Venue
 
-JSHeroes 2024 will take place on <b>May 23-24th</b> (Thursday & Friday) at <b>[Grand Hotel Italia](https://www.google.com/maps/place/Grand+Hotel+Italia){:target="\_blank"}</b> in Cluj-Napoca. It is a one-track conference and we have reserved the space from the hotel's ground floor, a spacious conference room, and a large lobby, where you can enjoy the talks, the technical booths, and the networking area.
+JSHeroes 2024 will take place on <b>May 23-24th</b> (Thursday & Friday) at <b>[Grand Hotel Italia](https://www.google.com/maps/place/Grand+Hotel+Italia)</b> in Cluj-Napoca. It is a one-track conference and we have reserved the space from the hotel's ground floor, a spacious conference room, and a large lobby, where you can enjoy the talks, the technical booths, and the networking area.
 
 Also, during the coffee and lunch breaks, we will have an alternative stage, with interesting conversations and follow-ups from the talks on the main stage.Everyone will be able to join, as a speaker or participant. We also want to encourage open discussions, projects presentations, lightning talks, and anything which is remotely related to what we do and our mission and values.
 
@@ -42,33 +42,33 @@ At JSHeroes, we always ventured outside the pure language ecosystem, so expect t
 
 But of course, we will not neglect the human side of things, in our effort to paint a full picture for the development community in 2024.
 
-Check out the agenda [here](https://jsheroes.io/#agenda){:target="\_blank"}. We’ll post all the talks, soon after the conference, on our [YouTube](https://www.youtube.com/channel/UCeJEpnvZhG-VwGpzrzYLidQ){:target="\_blank"} channel. During the conference, we’re not going to live stream though.
+Check out the agenda [here](https://jsheroes.io/#agenda). We’ll post all the talks, soon after the conference, on our [YouTube](https://www.youtube.com/channel/UCeJEpnvZhG-VwGpzrzYLidQ) channel. During the conference, we’re not going to live stream though.
 
 ## 📅 Shared calendar with activities
 
-If you want to have a good overview of all the extra activites around the event, you can [add this calendar](https://calendar.google.com/calendar/embed?src=14d750f7c1ecda4e1c2a5ae1410007af2e2e731be59164177e5af3a4dbcdd3c7%40group.calendar.google.com&ctz=Europe%2FBucharest){:target="\_blank"} to your account, as it contains all the details related to the city tour, pre-event meetups and others.
+If you want to have a good overview of all the extra activites around the event, you can [add this calendar](https://calendar.google.com/calendar/embed?src=14d750f7c1ecda4e1c2a5ae1410007af2e2e731be59164177e5af3a4dbcdd3c7%40group.calendar.google.com&ctz=Europe%2FBucharest) to your account, as it contains all the details related to the city tour, pre-event meetups and others.
 
 ## 🎤 Pre-event meetup
 
-On the evening before the event, May 22nd, you can [join the pre-event meetup](https://www.meetup.com/women-in-tech-cluj/events/301019507/){:target="\_blank"} organized by Women in Tech Cluj.
+On the evening before the event, May 22nd, you can [join the pre-event meetup](https://www.meetup.com/women-in-tech-cluj/events/301019507/) organized by Women in Tech Cluj.
 
 ## 📍 City tour
 
 Are you coming to Cluj for the first time? Or maybe you've been here before (or you even live here) but you don't know much about its history? We're organizing a two-hour free walking tour with a professional local guide.
 
-If you are interested, please [register using this quick form](https://forms.gle/qYL6nZmc9gfZDbbe7){:target="\_blank"}, so we know how to best prepare for the number of people that are joining.
+If you are interested, please [register using this quick form](https://forms.gle/qYL6nZmc9gfZDbbe7), so we know how to best prepare for the number of people that are joining.
 
 ## 🎫 Tickets
 
 Please make sure you have your name registered and that your ticket info is correct. You can also easily change your ticket details by accessing them directly from your email. **No need to print anything**, we'll have your badge ready at the registration desk.
 
-If your plans change and you can't attend the conference, you can always re-assign your ticket to someone else, or you can ask for a refund. Drop us a line at [welcome@jsheroes.io](mailto:welcome@jsheroes.io){:target="\_blank"} if you need any assistance with this.
+If your plans change and you can't attend the conference, you can always re-assign your ticket to someone else, or you can ask for a refund. Drop us a line at [welcome@jsheroes.io](mailto:welcome@jsheroes.io) if you need any assistance with this.
 
 ## 📢 Communication
 
-[Join our slack group](https://join.slack.com/t/js-heroes/shared_invite/zt-7dyi0itf-V~8Z7BUJpFm9ymgHjUwf7A){:target="\_blank"} for quickly communicating with the organizers and speakers during the event. We will also communicate news/updates about the event on Slack before and also after the event.
+[Join our slack group](https://join.slack.com/t/js-heroes/shared_invite/zt-7dyi0itf-V~8Z7BUJpFm9ymgHjUwf7A) for quickly communicating with the organizers and speakers during the event. We will also communicate news/updates about the event on Slack before and also after the event.
 
-We post all the major updates on our [Facebook](https://www.facebook.com/jsheroes/){:target="\_blank"} and [Twitter](https://twitter.com/jsheroes){:target="\_blank"} pages. So you can follow and join us on both.
+We post all the major updates on our [Facebook](https://www.facebook.com/jsheroes/) and [Twitter](https://twitter.com/jsheroes) pages. So you can follow and join us on both.
 
 We encourage you to use the hashtag **#JSHeroes2024** to tweet and post about the conference, connect with other attendees, and share your photos when the big days arrive.
 
@@ -100,13 +100,13 @@ In keeping with our tradition from previous years, the alternative stage will on
 
 Continuing from 2023, we will be hosting a pilates session on the morning of the second day of the event. This session will take place in a designated room and will be led by our dear friend, **Carmen Popoviciu**, a certified pilates trainer. She will demonstrate various exercises aimed at improving posture and addressing pains associated with intensive office work.
 
-If you wish to attend, please [register using this form](https://forms.gle/D5o4ZXf5GDs4L7Ag6){:target="\_blank"}.
+If you wish to attend, please [register using this form](https://forms.gle/D5o4ZXf5GDs4L7Ag6).
 
 ## 🏃‍♀️ Running sessions
 
 In addition to the pilates session, we are excited to introduce running sessions before each day of the event. The sessions will be led by our enthusiastic community member, **Ioana Chiorean**, an experienced runner. Ioana will guide participants through a scenic routes around the conference venue and towards the city center, ensuring a pace that is comfortable for all fitness levels.
 
-This is a great opportunity to energize yourself before the day's activities, meet fellow attendees in a relaxed setting, and enjoy the local surroundings. Use [this link to register](https://forms.gle/cJSKpeoAM9K32Yy6A){:target="\_blank"}.
+This is a great opportunity to energize yourself before the day's activities, meet fellow attendees in a relaxed setting, and enjoy the local surroundings. Use [this link to register](https://forms.gle/cJSKpeoAM9K32Yy6A).
 
 ## 🍎 Catering
 
@@ -118,7 +118,7 @@ Throughout the conference, we'll take photos and video shots. Your participation
 
 ## 🎉 After party
 
-After wrapping up the conference on Friday, grab some dinner, then join us for the JSHeroes **After Party**! Meet the organizers and the speakers and enjoy your Friday evening with some 90's dirty disco vibes! It's happening at [Flying Circus club](https://maps.app.goo.gl/y1vaf8qhEttVCso36){:target="\_blank"}, starting 11:00pm. Everyone's welcome! Keep in mind there's a small entrance fee that you can pay by cash or card. Let's keep the energy going after an awesome conference! See you there :)
+After wrapping up the conference on Friday, grab some dinner, then join us for the JSHeroes **After Party**! Meet the organizers and the speakers and enjoy your Friday evening with some 90's dirty disco vibes! It's happening at [Flying Circus club](https://maps.app.goo.gl/y1vaf8qhEttVCso36), starting 11:00pm. Everyone's welcome! Keep in mind there's a small entrance fee that you can pay by cash or card. Let's keep the energy going after an awesome conference! See you there :)
 
 ## 🤝 Code of Conduct
 
