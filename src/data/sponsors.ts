@@ -43,7 +43,7 @@ export const sponsors: Organization[] = [
   },
   {
     name: "Siemens",
-    url: "https://www.siemens.com/ro/ro.html",
+    url: "https://www.siemens.com/ro/ro/companie/siemens-romania-rd.html",
     imgName: "sponsors/logo_siemens.png",
   },
 ];
