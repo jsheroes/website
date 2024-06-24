@@ -20,7 +20,7 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
 
 <BaseLayout title={blogTitle}>
   <img
-    class="block w-full h-[500px] object-cover"
+    class="block h-[500px] w-full object-cover"
     src={"/img/banners/default-with-bear.svg"}
     aria-hidden
   />
@@ -28,13 +28,13 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
   <main id="main">
     <Section variant="light" content="list">
       <article>
-        <div class="flex flex-col md:flex-row gap-8 justify-center">
+        <div class="flex flex-col justify-center gap-16 md:flex-row">
           <div class="prose">
             <h1>{blog.data.title}</h1>
             <slot />
           </div>
 
-          <aside class="flex flex-col gap-4 shrink-0">
+          <aside class="flex shrink-0 flex-col gap-4">
             {author && <AuthorCard author={author} />}
 
             <div class="divider"></div>
@@ -63,7 +63,7 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
 
             {
               (next || prev) && (
-                <div class="flex flex-row justify-between gap-2 md:flex-col md:gap-4 md:justify-center">
+                <div class="flex flex-row justify-between gap-2 md:flex-col md:justify-center md:gap-4">
                   {prev && (
                     <div class="grow">
                       <div class="text-sm">Previous</div>
@@ -71,7 +71,7 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
                     </div>
                   )}
                   {next && (
-                    <div class="grow self-end text-right md:text-left md:self-start">
+                    <div class="grow self-end text-right md:self-start md:text-left">
                       <div class="text-sm">Next</div>
                       <a href={`/blog/${next.slug}`}>{next.data.title}</a>
                     </div>
