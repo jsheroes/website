@@ -1,0 +1,53 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Section from "@/components/Section.astro";
+import { talks } from "@/data/hall-of-fame";
+import { Image } from "astro:assets";
+import { getImage } from "../utils/getImage";
+---
+
+<BaseLayout title="JSHeroes - Hall of Fame">
+  <img
+    class="block h-[500px] w-full object-cover"
+    src={"/img/banners/default-with-bear.svg"}
+    aria-hidden
+  />
+
+  <main id="main">
+    <Section variant="light" content="list">
+      <div class="flex flex-col">
+        <h1>JSHeroes Hall of Fame</h1>
+
+        <p>
+          Here are some of the amazing humans that took the stage at JSHeroes
+          across the years and their awesome talks.
+        </p>
+
+        <div class="grid grid-cols-1 gap-1 pt-8 md:grid-cols-2 lg:grid-cols-3">
+          {
+            talks.map((talk) => (
+              <a
+                href={talk.link}
+                target="_blank"
+                rel="noreferrer noopener"
+                class="relative overflow-hidden"
+              >
+                <Image
+                  src={getImage(talk.cover)}
+                  alt={talk.speaker}
+                  width="400"
+                  height="250"
+                  class="filter- w-full transition-transform duration-fade ease-out hover:scale-[1.07]"
+                />
+                <div class="to-transparent flex-end pointer-events-none absolute bottom-0 flex w-full flex-col bg-gradient-to-t from-primary p-4 pt-8 font-display text-neutral-light">
+                  <span class="text-lg font-bold">{talk.speaker}</span>
+                  <span class="text-balance">{talk.title}</span>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </Section>
+  </main>
+</BaseLayout>
