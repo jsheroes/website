@@ -4,6 +4,8 @@ import Section from "@/components/Section.astro";
 import { talks } from "@/data/hall-of-fame";
 import { Image } from "astro:assets";
 import { getImage } from "../utils/getImage";
+
+const orderedTalks = talks.sort((t1, t2) => (t1.speaker > t2.speaker ? 1 : -1));
 ---
 
 <BaseLayout title="JSHeroes - Hall of Fame">
@@ -25,7 +27,7 @@ import { getImage } from "../utils/getImage";
 
         <div class="grid grid-cols-1 gap-1 pt-8 md:grid-cols-2 lg:grid-cols-3">
           {
-            talks.map((talk) => (
+            orderedTalks.map((talk) => (
               <a
                 href={talk.link}
                 target="_blank"
@@ -37,7 +39,7 @@ import { getImage } from "../utils/getImage";
                   alt={talk.speaker}
                   width="400"
                   height="250"
-                  class="filter- w-full transition-transform duration-fade ease-out hover:scale-[1.07]"
+                  class="w-full transition-transform duration-fade ease-out hover:scale-[1.1]"
                 />
                 <div class="to-transparent flex-end pointer-events-none absolute bottom-0 flex w-full flex-col bg-gradient-to-t from-primary p-4 pt-8 font-display text-neutral-light">
                   <span class="text-lg font-bold">{talk.speaker}</span>
