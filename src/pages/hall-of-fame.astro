@@ -32,7 +32,7 @@ const orderedTalks = talks.sort((t1, t2) => (t1.speaker > t2.speaker ? 1 : -1));
                 href={talk.link}
                 target="_blank"
                 rel="noreferrer noopener"
-                class="relative overflow-hidden"
+                class="relative overflow-hidden focus-visible:outline-dashed focus-visible:outline-[4px] focus-visible:outline-offset-0"
               >
                 <Image
                   src={getImage(talk.cover)}
