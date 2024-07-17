@@ -1,17 +1,17 @@
 ---
-import { YouTube } from "@astro-community/astro-embed-youtube";
+import { YouTube } from "@astro-community/astro-embed-youtube"
 
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Section from "../components/Section.astro";
+import BaseLayout from "../layouts/BaseLayout.astro"
+import Section from "../components/Section.astro"
 ---
 
 <BaseLayout title="Media Kit" theme="dark">
   <img
-    class="block w-full h-[500px] object-cover"
+    class="block h-[500px] w-full object-cover"
     src={"/img/banners/bears-hills.svg"}
     aria-hidden
   />
-  <main id="main" class="prose prose-h2:mt-0 max-w-none">
+  <main id="main" class="prose max-w-none prose-h2:mt-0">
     <Section variant="light" content="list">
       <h1>JSHeroes Media Kit</h1>
 
@@ -42,11 +42,12 @@ import Section from "../components/Section.astro";
           <strong>JSHeroes</strong> is a yearly event organised by the local JavaScript
           community in Cluj, Romania. Our journey started in 2017 with a plan: for
           JSHeroes to be the biggest tech conference in Romania, dedicated solely
-          to <strong>JavaScript</strong>. This year, 2024 (our 6th edition) we
-          will get our engine going with <strong>19</strong> international JS experts
+          to <strong>JavaScript</strong>. This year, 2025 (our 7th edition) we
+          will get our engine going with <strong>18</strong> international JS experts
           and we have chosen a venue that can accommodate up to <strong
             >600 attendees</strong
-          >. Join us on May the <strong>23rd and 24th, 2024</strong>, in Cluj-Napoca, Romania.
+          >. Join us on May the <strong>29th and 30th, 2025</strong>, in
+          Cluj-Napoca, Romania.
         </p>
         <p>
           <strong>JSHeroes</strong> is a non-profit community-organised conference.
@@ -101,11 +102,11 @@ import Section from "../components/Section.astro";
         </div>
 
         <div
-          class="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12 pb-8"
+          class="flex flex-col items-center gap-8 pb-8 md:flex-row md:items-start md:gap-12"
         >
           <div class="max-w-40">
             <img
-              class="bg-neutral-light p-4 border bottom-1 drop-shadow"
+              class="bottom-1 border bg-neutral-light p-4 drop-shadow"
               alt="JSHeroes"
               src="img/logo-light.svg"
             />
@@ -129,9 +130,9 @@ import Section from "../components/Section.astro";
 
         <div class="flex justify-center md:justify-normal">
           <div>
-            <div class="w-28 h-28 md:w-40 md:h-40 rounded-full bg-dodger-blue">
+            <div class="h-28 w-28 rounded-full bg-dodger-blue md:h-40 md:w-40">
             </div>
-            <div class="flex flex-col justify-center items-center text-xs">
+            <div class="flex flex-col items-center justify-center text-xs">
               <span><strong>Dodger Blue</strong></span>
               <span>#0098FF</span>
               <span>R0 G152 B255</span>
@@ -139,9 +140,9 @@ import Section from "../components/Section.astro";
             </div>
           </div>
           <div class="relative left-[-1rem]">
-            <div class="w-28 h-28 md:w-40 md:h-40 rounded-full bg-black-pearl">
+            <div class="h-28 w-28 rounded-full bg-black-pearl md:h-40 md:w-40">
             </div>
-            <div class="flex flex-col justify-center items-center text-xs">
+            <div class="flex flex-col items-center justify-center text-xs">
               <span><strong>Black Pearl</strong></span>
               <span>#001C2B</span>
               <span>R0 G28 B43</span>
@@ -169,7 +170,7 @@ import Section from "../components/Section.astro";
         <p>Mr. and Ms. Ecma the bears are the brand mascots of JSHeroes.</p>
 
         <div
-          class="flex flex-col gap-4 pb-4 md:flex-row items-center md:gap-12"
+          class="flex flex-col items-center gap-4 pb-4 md:flex-row md:gap-12"
         >
           <img
             alt="Ecma, JSHeroes mascot wearing a space suit and waving"
@@ -207,16 +208,16 @@ import Section from "../components/Section.astro";
           in brand representation.
         </p>
 
-        <div class="flex flex-col-reverse md:flex-row items-center py-4">
+        <div class="flex flex-col-reverse items-center py-4 md:flex-row">
           <div
-            class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-0"
+            class="flex flex-col items-center justify-center gap-4 md:flex-row md:gap-0"
           >
             <div>
               <div
-                class="w-36 h-36 md:w-40 md:h-40 rounded-full bg-dodger-blue"
+                class="h-36 w-36 rounded-full bg-dodger-blue md:h-40 md:w-40"
               >
               </div>
-              <div class="flex flex-col justify-center items-center text-xs">
+              <div class="flex flex-col items-center justify-center text-xs">
                 <span><strong>Dodger Blue</strong></span>
                 <span>#0098FF</span>
                 <span>R0 G152 B255</span>
@@ -226,10 +227,10 @@ import Section from "../components/Section.astro";
 
             <div class="relative left-0 md:left-[-1rem]">
               <div
-                class="w-36 h-36 md:w-40 md:h-40 rounded-full bg-black-pearl"
+                class="h-36 w-36 rounded-full bg-black-pearl md:h-40 md:w-40"
               >
               </div>
-              <div class="flex flex-col justify-center items-center text-xs">
+              <div class="flex flex-col items-center justify-center text-xs">
                 <span><strong>Black Pearl</strong></span>
                 <span>#001C2B</span>
                 <span>R0 G28 B43</span>
@@ -239,10 +240,10 @@ import Section from "../components/Section.astro";
 
             <div class="relative left-0 md:left-[-2rem]">
               <div
-                class="w-36 h-36 md:w-40 md:h-40 rounded-full bg-neutral-light border border-1"
+                class="border-1 h-36 w-36 rounded-full border bg-neutral-light md:h-40 md:w-40"
               >
               </div>
-              <div class="flex flex-col justify-center items-center text-xs">
+              <div class="flex flex-col items-center justify-center text-xs">
                 <span><strong>Pure White</strong></span>
                 <span>#FFFFFF</span>
                 <span>R255 G255 B255</span>
@@ -254,16 +255,16 @@ import Section from "../components/Section.astro";
           <h3>Primary Colors</h3>
         </div>
 
-        <div class="flex flex-col-reverse md:flex-row items-center py-4">
+        <div class="flex flex-col-reverse items-center py-4 md:flex-row">
           <div
-            class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-0"
+            class="flex flex-col items-center justify-center gap-4 md:flex-row md:gap-0"
           >
             <div>
               <div
-                class="w-36 h-36 md:w-40 md:h-40 rounded-full bg-accent-orange"
+                class="h-36 w-36 rounded-full bg-accent-orange md:h-40 md:w-40"
               >
               </div>
-              <div class="flex flex-col justify-center items-center text-xs">
+              <div class="flex flex-col items-center justify-center text-xs">
                 <span><strong>Grandis</strong></span>
                 <span>#FFCC67</span>
                 <span>R255 G204 B103</span>
@@ -273,10 +274,10 @@ import Section from "../components/Section.astro";
 
             <div class="relative left-0 md:left-[-1rem]">
               <div
-                class="w-36 h-36 md:w-40 md:h-40 rounded-full bg-accent-green"
+                class="h-36 w-36 rounded-full bg-accent-green md:h-40 md:w-40"
               >
               </div>
-              <div class="flex flex-col justify-center items-center text-xs">
+              <div class="flex flex-col items-center justify-center text-xs">
                 <span><strong>Downy</strong></span>
                 <span>#65D3BB</span>
                 <span>R101 G211 B187</span>
@@ -286,10 +287,10 @@ import Section from "../components/Section.astro";
 
             <div class="relative left-0 md:left-[-2rem]">
               <div
-                class="w-36 h-36 md:w-40 md:h-40 rounded-full bg-accent-pink"
+                class="h-36 w-36 rounded-full bg-accent-pink md:h-40 md:w-40"
               >
               </div>
-              <div class="flex flex-col justify-center items-center text-xs">
+              <div class="flex flex-col items-center justify-center text-xs">
                 <span><strong>Wild Watermelon</strong></span>
                 <span>#FF6078</span>
                 <span>R255 G96 B120</span>
@@ -318,7 +319,7 @@ import Section from "../components/Section.astro";
       <div>
         <h2>Image Gallery</h2>
 
-        <p>The Gallery contains images from our latest 3 editions.</p>
+        <p>The Gallery contains images from our latest 5 editions.</p>
         <p>
           Images are available for editorial purposes only, credits must be
           includes. Download is not allowed for commercial use.
@@ -328,12 +329,25 @@ import Section from "../components/Section.astro";
           <div>
             <a
               target="_blank"
+              href="https://drive.google.com/drive/u/0/folders/1-7M0b6rgvFBb4vAasUfa3RfVV_296AR4"
+            >
+              <img
+                src="img/gallery/jsh-2024.png"
+                alt="JSHeroes 2024"
+                class="h-[246px] w-[384px]"
+              />
+            </a>
+            <strong>JSHeroes 2024</strong>
+          </div>
+          <div>
+            <a
+              target="_blank"
               href="https://drive.google.com/drive/u/0/folders/1FyZhZreQWiCossqJOCOx1w0LJ2SZmWL-"
             >
               <img
                 src="img/gallery/jsh-2023.jpg"
                 alt="JSHeroes 2023"
-                class="w-[384px] h-[246px]"
+                class="h-[246px] w-[384px]"
               />
             </a>
             <strong>JSHeroes 2023</strong>
@@ -347,7 +361,7 @@ import Section from "../components/Section.astro";
               <img
                 src="img/gallery/jsh-2022.png"
                 alt="JSHeroes 2022"
-                class="w-[384px] h-[246px]"
+                class="h-[246px] w-[384px]"
               />
             </a>
             <strong>JSHeroes 2022</strong>
@@ -361,7 +375,7 @@ import Section from "../components/Section.astro";
               <img
                 src="img/gallery/jsh-2019.png"
                 alt="JSHeroes 2019"
-                class="w-[384px] h-[246px]"
+                class="h-[246px] w-[384px]"
               />
             </a>
             <strong>JSHeroes 2019</strong>
@@ -375,7 +389,7 @@ import Section from "../components/Section.astro";
               <img
                 src="img/gallery/jsh-2018.png"
                 alt="JSHeroes 2018"
-                class="w-[384px] h-[246px]"
+                class="h-[246px] w-[384px]"
               />
             </a>
             <strong>JSHeroes 2018</strong>
