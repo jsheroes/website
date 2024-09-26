@@ -4,7 +4,7 @@ This is the new [JSHeroes](https://jsheroes.io) website built with [astro](https
 
 ## Structure
 
-Pages are mostly `.md` files with some astro components here and there for a better dx. Styling is done with scoped css in the `.astro` components.
+Pages are mostly `.md` files with some astro components here and there for a better dx. Styling is done with scoped css in the `.astro` components
 
 [Homepage](/src/pages/index.astro) sections are defined as markdown or astro components in the `sections` folder.
 
