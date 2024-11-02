@@ -3,7 +3,7 @@ layout: "../layouts/MarkdownLayout.astro"
 title: "Speak at JSHeroes"
 ---
 
-<!-- The <strong>call for papers</strong> for the 2024 event is <strong>closed</strong>.
+<!-- The <strong>call for papers</strong> for the 2025 event is <strong>closed</strong>.
 
 We have received <strong>340 proposals</strong> until the end of December 2023. Speakers will be announced sometime in early February. -->
 
@@ -14,7 +14,7 @@ We encourage people of all ages, races, genders and religions, to submit proposa
 
 ## ✍ What we are looking for
 
-JSHeroes is a **single track** 2-day conference dedicated to the JS and Web ecosystems. We expect that each talk fits between **25 and 30 minutes**. If you require more time, please mention this in the application. We are looking for a multitude of topics and perspectives, but most of all we value:
+JSHeroes is a **single track** 2-day conference dedicated to the JS and Web ecosystems. We expect each talk to be around **25 minutes**. If you require more time, please mention this in the application. We are looking for a multitude of topics and perspectives, but most of all we value:
 
 - Original topics, presented for the first time.
 - Practical ideas that attendees can apply at work the next day.
@@ -22,7 +22,7 @@ JSHeroes is a **single track** 2-day conference dedicated to the JS and Web ecos
 - Fresh perspectives on the development ecosystem.
 - The human side of software engineering.
 
-Our theme for 2024 is "The journey to a mature ecosystem". We want to spotlight some of the established patterns and architectures that reached maturity and are becoming industry standards. Along with these, we want to tackle software complexity and dealing with legacy code and legacy systems. Each year our theme is broad and not all talk will be connected with it, so consider it more like a line connecting different ideas and topics, rather then a restriction.
+In 2025 we want to **bridge the gap** between the industry problems and the solutions put forward by the tech community. We are looking for talks about common architecture problems, talks that highlight the struggles of managing complexity, maintainability and scalability and talks that explore new technologies, frameworks and standards. Each year our theme is broad and not all talks will be connected with it, so consider it more like a line connecting different ideas and topics, rather than a restriction.
 
 ## 📈 How the selection will happen
 
@@ -39,7 +39,6 @@ Each year we receive hundreds of proposals from which we can unfortunately only 
 If your proposal gets selected, we will make sure you have the best possible experience for your entire stay in Cluj. Here are some of the benefits we offer to all our speakers:
 
 - Full payment for your **travel** to and from the event
-- A speaker fee of **500 EUR**, as a token of appreciation for your effort
 - **4 nights** at a 5 star hotel, right on top of the venue
 - Free entrance at the conference for both days
 - **Extra ticket** + double room option, in case somebody is joining you
