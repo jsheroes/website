@@ -8,6 +8,7 @@ const personSchema = {
     imgName: z.string(),
     links: z
       .object({
+        bluesky: z.string().optional(),
         twitter: z.string().optional(),
         github: z.string().optional(),
         website: z.string().optional(),
