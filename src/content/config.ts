@@ -26,7 +26,7 @@ const blog = defineCollection({
     summary: z.string().optional(),
     author: z.string(),
     author_category: z
-      .enum(["organizers", "guest-writers"])
+      .enum(["organizers", "guest-writers", "ambassadors"])
       .optional()
       .default("organizers"),
     tags: z.array(reference("tags")).default(["general"]),
