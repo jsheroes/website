@@ -27,6 +27,7 @@ if (speakerTalk) {
 
 let links = [];
 const linkMap: Record<string, string> = {
+  bluesky: "Bluesky",
   twitter: "Twitter",
   github: "GitHub",
   website: "Website",
@@ -34,6 +35,7 @@ const linkMap: Record<string, string> = {
 };
 
 const sortOrder = [
+  linkMap.bluesky,
   linkMap.twitter,
   linkMap.github,
   linkMap.linkedin,
