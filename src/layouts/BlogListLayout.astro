@@ -14,8 +14,8 @@ const posts = await getCollection("blog");
 const tags = await getCollection("tags").then((tags) => {
   const tagsWithBlogs = tags.filter((tag) =>
     posts.some((post) =>
-      post.data.tags.some((postTag) => postTag.slug === tag.slug),
-    ),
+      post.data.tags.some((postTag) => postTag.slug === tag.slug)
+    )
   );
   return tagsWithBlogs;
 });
@@ -90,7 +90,7 @@ const hasDefaultSlot = Astro.slots.has("default");
                   </div>
                 </article>
               </li>
-            ),
+            )
           )
         }
       </ul>
