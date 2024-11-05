@@ -1,9 +1,9 @@
-<h2 id="agenda">The journey to a mature ecosystem</h2>
+<h2 id="agenda">Bridging the gap</h2>
 
-After we reflected in 2023 on the past 10 years of frontend development, in 2024 we want to spotlight some of the established patterns and architectures that reached maturity and are becoming industry standards.
+Our ecosystem has an abundance of technologies, tools, frameworks and services to deliver applications faster than ever before. With new standards and ways of building across multiple platforms, developers have wide toolkit at their disposal. But there's a growing gap between our projects, with accumulated technical debt and complexity, and the tools and frameworks developed by the community. In 2025, we're bridging that gap.
 
-Leaving behind us the tumultuous growth of the JS ecosystem we will focus on the positive outcomes of all the years of challenging "best practices". We want to bring on stage talks about design patterns and system architecture, but also web standards and language advancements. Along with these, we want to tackle software complexity and dealing with legacy code and legacy systems.
+Our speakers will present solutions for common industry problems, highlight the strugles with managing complexity, maintainability and scalability and will explore new technologies, frameworks and standards that tackle all these concerns.
 
 At JSHeroes, we always ventured outside the pure language ecosystem, so expect to see a variety of talks covering the entire landscape of web development and JavaScript as a universal programming language.
 
-But of course, we will not neglect the human side of things, in our effort to paint a full picture for the development community in 2024.
+But of course, we will not neglect the human side of things, in our effort to paint a full picture for the development community in 2025.

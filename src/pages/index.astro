@@ -6,13 +6,13 @@ import BearLink from "../components/BearLink.astro";
 import Banner from "../sections/banner.astro";
 import News from "../sections/news.astro";
 import Speakers from "../sections/speakers.astro";
-import Agenda from "../sections/agenda.astro";
+// import Agenda from "../sections/agenda.astro";
 import Friends from "../sections/friends.astro";
 import { Content as Description } from "../sections/description.md";
 import { Content as Theme } from "../sections/theme.md";
 import { Content as Event } from "../sections/event.md";
 import Organizers from "../sections/organizers.astro";
-import { day1, day2 } from "../data/agenda";
+// import { day1, day2 } from "../data/agenda";
 ---
 
 <BaseLayout>
@@ -34,10 +34,13 @@ import { day1, day2 } from "../data/agenda";
           aria-hidden="true"
         />
       </span>
-      <h2>Agenda</h2>
-      <p>This agenda is work in progress. We will announce when the final version is ready.</p>
-      <Agenda title="Day 1: Thursday May 23" agendaItems={day1} /> 
-      <Agenda title="Day 2: Friday May 24" agendaItems={day2} />
+      <!-- <h2>Agenda</h2>
+      <p>
+        This agenda is work in progress. We will announce when the final version
+        is ready.
+      </p>
+      <Agenda title="Day 1: Thursday May 29" agendaItems={day1} />
+      <Agenda title="Day 2: Friday May 30" agendaItems={day2} /> -->
     </Section>
     <Section variant="dark" content="text">
       <Description />

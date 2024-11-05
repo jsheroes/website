@@ -1,14 +1,14 @@
 ---
-import { Image } from "astro:assets"
-import { communities } from "../data/communities"
-import { sponsors } from "../data/sponsors"
-import { getImage } from "../utils/getImage"
+import { Image } from "astro:assets";
+import { communities } from "../data/communities";
+import { sponsors } from "../data/sponsors";
+import { getImage } from "../utils/getImage";
 
 const listStyles =
-  "flex flex-wrap items-center justify-center gap-4 p-0 m-0 pb-12"
+  "flex flex-wrap items-center justify-center gap-4 p-0 m-0 pb-12";
 
 const linkStyles =
-  "flex item-center p-4 transition-[outline-offset] duration-fade ease-out hover:outline-offset-[-10px] hover:outline hover:outline-accent-pink"
+  "flex item-center p-4 transition-[outline-offset] duration-fade ease-out hover:outline-offset-[-10px] hover:outline hover:outline-accent-pink";
 ---
 
 {
@@ -44,6 +44,7 @@ const linkStyles =
                 loading="lazy"
                 width="200"
                 height="100"
+                densities={[1.5, 2]}
                 style={{
                   maxHeight: "200px",
                 }}
@@ -78,6 +79,7 @@ const linkStyles =
             alt=""
             width="200"
             height="100"
+            densities={[1.5, 2]}
             style={{
               width: "100%",
               height: "auto",

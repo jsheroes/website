@@ -57,11 +57,6 @@ export const communities: Organization[] = [
     imgName: "communities/logo_reactvienna.png",
   },
   {
-    name: "British-Romanian Chamber of Commerce",
-    url: "https://brcconline.eu/",
-    imgName: "communities/logo_brcc.jpg",
-  },
-  {
     name: "React India",
     url: "https://www.reactindia.io/",
     imgName: "communities/logo_reactindia.png",
@@ -75,10 +70,5 @@ export const communities: Organization[] = [
     name: "React Brussels",
     url: "https://www.react.brussels/",
     imgName: "communities/logo_reactbrussels.png",
-  },
-  {
-    name: "React Universe Conf",
-    url: "https://hubs.li/Q02CpHq00",
-    imgName: "communities/logo_react_universe_conf.svg",
   },
 ];
