@@ -10,7 +10,7 @@ In 2025 we’ll be running JSHeroes for the 7th time. In all our past editions w
 
 ## Recognition, exposure and benefits
 
-Our conference has grown steadily and has a very good reputation among tech events. As we have a single track with generous breaks, you will be part of a rather small group of speakers that take the stage every year. Your talk will be seen live by 500+ attendees and then it will be available on our youtube channel to be shared with the entire world.
+Our conference has grown steadily and has a very good reputation among tech events. We have a single track with generous breaks. You will be part of a rather small group of speakers that take the stage every year. Your talk will be seen live by 500+ attendees and then it will be available on our YouTube channel for the entire world.
 
 But we know recognition and exposure don't pay the bills, so you will find that we offer one of the most complete speaker packages out there.
 
