@@ -24,7 +24,9 @@ If there’s one thing we “obsess” over, it is the speaker experience. We un
 
 The speaker experience goes beyond the benefits. It encompasses things like having a great MC to prepare the audience for your talk, or making sure your talk is scheduled at the right time of the day so you can bring your best self up on stage. We offer help and support throughout the months before the event, in case you need to rehearse your talk or just brainstorm new ideas.
 
-Also, we don’t want you to feel awkwardly put on a pedestal as the superstar of the event. We know most of you dislike that kind of treatment. Maybe you are used to hanging around during the talks in a separate room, the so-called "speakers room" - aka the VIP restricted area. Some events even offer food and drinks there so you never leave that room. We don’t do that. As one of our past speakers nicely framed it: “You finish your talk and then you’re out there in the audience with everyone else”.
+Most of us behind the content of the event did or currently do public speaking, and we know getting  superstar vibes within a conference can feel awkward.
+
+Maybe you are used to hanging around during the talks in a separate room, the so-called "speakers room"&mdash;aka the VIP restricted area. Some events even offer food and drinks there so you never leave that room. We don’t do that. As one of our past speakers nicely framed it: “You finish your talk and then you’re out there in the audience with everyone else”. (I would link the YouTube video with the timestamp here)
 
 Of course, the hotel is a big advantage here. You always have your room if you need some rest from socializing. We found this arrangement significantly improves the experience for speakers, as well as for the audience. It facilitates networking and meaningful conversations during the breaks with the opportunity to take a break if you need to.
 
