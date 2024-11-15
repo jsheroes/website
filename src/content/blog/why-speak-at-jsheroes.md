@@ -6,7 +6,7 @@ tags: ["cfp"]
 summary: A few reasons to convince you to apply as a speaker
 ---
 
-In 2025 we’ll be running JSHeroes for the 7th time. In all our past editions we had amazing speakers on our stage. Maybe some of you reading this are already convinced and you want to be a speaker at our event, but for everyone else, let me try to articulate the "why".
+In 2025 we’ll be running JSHeroes for the 7th time. In all our past editions we had amazing speakers on stage. Some of you reading this might be already convinced to be a speaker at our event, but for everyone else, let me try to articulate the "why".
 
 ## Recognition, exposure and benefits
 
