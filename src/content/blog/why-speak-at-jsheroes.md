@@ -40,4 +40,4 @@ We did hikes, picnics and barbeques in the past, and you can feel the vibes arou
 
 ## Call for papers
 
-If the arguments here convinced you JSHeroes is the right conference for you and your talk, we’d love to see you [submit a proposal](/speak) until the end of December. And if you want to learn more about how to write a good proposal, my colleague Jeremias, from the content team, wrote [this great article](blog/how-to-write-a-good-talk-proposal) on that topic.
+If the arguments here convinced you JSHeroes is the right conference for you and your talk, we’d love to see you [submit a proposal](/speak) until the end of December. And if you want to learn more about how to write a good proposal, my colleague Jeremias, from the content team, wrote [this great article](/blog/how-to-write-a-good-talk-proposal) on that topic.
