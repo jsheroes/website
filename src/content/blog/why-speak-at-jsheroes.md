@@ -12,7 +12,7 @@ In 2025 we’ll be running JSHeroes for the 7th time. In all our past editions w
 
 Our conference has grown steadily and has a very good reputation among tech events. We have a single track with generous breaks. You will be part of a rather small group of speakers that take the stage every year. Your talk will be seen live by 500+ attendees and then it will be available on our YouTube channel for the entire world.
 
-But we know recognition and exposure don't pay the bills, so you will find that we offer one of the most complete speaker packages out there.
+But we know recognition and exposure don't pay the bills, therefore we offer one of the most complete speaker packages out there.
 
 First of all, we pay for your flights and book for you up to 4 nights at the 5 star hotel where the event takes place. We also redistribute the small profit at the end of the event (usually around 10K EUR - link to transparency) in the form of speaker fees. We’re very proud to have been able to pay 500 EUR to our speakers for the past two editions.
 
