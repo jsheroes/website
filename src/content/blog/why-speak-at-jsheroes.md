@@ -30,7 +30,11 @@ Maybe you are used to hanging around during the talks in a separate room, the so
 
 Of course, the hotel is a big advantage here. You always have your room if you need some rest from socializing. We found this arrangement significantly improves the experience for speakers, as well as for the audience. It facilitates networking and meaningful conversations during the breaks with the opportunity to take a break if you need to.
 
-Finally, most of you will be coming to Romania for the first time. So we want part of the experience to be an introduction into our culture and places. The day before the event, we organize a tour of the old town with a local professional guide. We choose dinner venues where you can sample local food. And if the weather permits it, we hang out together for a full day trip on the Saturday after the conference. We did hikes, picnics and barbeques in the past, and you can see the vibes around that in the images below. This is personally my favorite day of the whole event.
+Finally, most of you will be coming to Romania for the first time. So we want part of the experience to be an introduction into our culture and places. The day before the event, we organize a tour of the old town with a local professional guide.
+
+We choose dinner venues where you can taste local food, and if the weather permits it, we hang out together for a full day trip on the Saturday after the conference.
+
+We did hikes, picnics and barbeques in the past, and you can feel the vibes around those in the images below. This is personally my favorite day of the whole event.
 
 WIP Pics
 
