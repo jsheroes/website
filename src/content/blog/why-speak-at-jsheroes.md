@@ -20,13 +20,15 @@ On top of that, we arrange for airport transfers to and from the hotel, offer SI
 
 ## The speaker experience
 
-If there’s one thing we “obsess” over, it is the speaker experience. We understood from the early days that speakers coming in from all over the world are the best advocates for our event in the future.
+We understood from the early days that speakers coming in from all over the world are the best advocates for our event in the future, so the speaker experience is something we are obsessed with improving every year.
 
-The speaker experience goes beyond the benefits. It encompasses things like having a great MC to prepare the audience for your talk, or making sure your talk is scheduled at the right time of the day so you can bring your best self up on stage. We offer help and support throughout the months before the event, in case you need to rehearse your talk or just brainstorm new ideas.
+It goes beyond the benefits. It encompasses things like having a great MC to prepare the audience for your talk, or making sure your talk is scheduled at the right time of the day so you can bring your best self up on stage.
 
-Most of us behind the content of the event did or currently do public speaking, and we know getting  superstar vibes within a conference can feel awkward.
+We offer help and support throughout the months before the event, in case you need to rehearse your talk or just brainstorm new ideas.
 
-Maybe you are used to hanging around during the talks in a separate room, the so-called "speakers room"&mdash;aka the VIP restricted area. Some events even offer food and drinks there so you never leave that room. We don’t do that. As one of our past speakers nicely framed it: “You finish your talk and then you’re out there in the audience with everyone else”. (I would link the YouTube video with the timestamp here)
+Most of us behind the content of the event did or currently do public speaking, and we know getting superstar vibes within a conference can feel awkward.
+
+Maybe you are used to hanging around during the talks in a separate room, the so-called "speakers room"&mdash;aka the VIP restricted area. Some events even offer food and drinks there so you never leave that room. We don’t do that. As one of our past speakers [nicely framed it](https://youtu.be/N6qr6L37sl8?si=rJerFhHyqcKHZzJo&t=93): “You finish your talk and then you’re out there in the audience with everyone else”.
 
 Of course, the hotel is a big advantage here. You always have your room if you need some rest from socializing. We found this arrangement significantly improves the experience for speakers, as well as for the audience. It facilitates networking and meaningful conversations during the breaks with the opportunity to take a break if you need to.
 
@@ -36,10 +38,6 @@ We choose dinner venues where you can taste local food, and if the weather permi
 
 We did hikes, picnics and barbeques in the past, and you can feel the vibes around those in the images below. This is personally my favorite day of the whole event.
 
-WIP Pics
-
 ## Call for papers
 
-WIP section
-
-If the arguments here convinced you JSHeroes is the right conference for your talk, we’d love to see you [submit a proposal](TODO: cfp link) until the end of December.
+If the arguments here convinced you JSHeroes is the right conference for you and your talk, we’d love to see you [submit a proposal](/speak) until the end of December. And if you want to learn more about how to write a good proposal, my colleague Jeremias, from the content team, wrote [this great article](blog/how-to-write-a-good-talk-proposal) on that topic.
