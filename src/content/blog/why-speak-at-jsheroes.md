@@ -16,7 +16,7 @@ But we know recognition and exposure don't pay the bills, therefore we offer one
 
 First of all, we pay for your flights and book for you up to 4 nights at the 5 star hotel where the event takes place. We also redistribute the small profit at the end of the event (usually around 10K EUR - link to transparency) in the form of speaker fees. We’re very proud to have been able to pay 500 EUR to our speakers for the past two editions.
 
-On top of that, we arrange for airport transfers to and from the hotel, we offer SIM cards upon arrival and we invite you to a variety of activities with the community and with the organizing team throughout the week.
+On top of that, we arrange for airport transfers to and from the hotel, offer SIM cards upon arrival and invite you to a variety of activities with the community and events with the organizing team throughout the week.
 
 ## The speaker experience
 
