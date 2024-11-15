@@ -38,4 +38,4 @@ WIP Pics
 
 WIP section
 
-If the arguments here convinced you that JSHeroes is the right conference for your talk, we’d love to see you submit a proposal until the end of December.
+If the arguments here convinced you JSHeroes is the right conference for your talk, we’d love to see you [submit a proposal](TODO: cfp link) until the end of December.
