@@ -5,6 +5,7 @@ const personSchema = {
     name: z.string(),
     company: z.string().optional(),
     title: z.string(),
+    tag: z.string().optional(),
     imgName: z.string(),
     links: z
       .object({
