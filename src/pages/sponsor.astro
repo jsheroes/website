@@ -2,6 +2,13 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import Banner from "@/sections/banner.astro";
+
+import {
+  BRONZE_PACKAGE,
+  SILVER_PACKAGE,
+  GOLD_PACKAGE,
+  BENEFITS_INFO,
+} from "@/data/packages";
 ---
 
 <BaseLayout>
@@ -105,78 +112,44 @@ import Banner from "@/sections/banner.astro";
     </Section>
 
     <Section variant="light" content="list">
-      <h2>What you get</h2>
+      <h2>Sponsor Packages</h2>
 
       <p>
-        We have created a single sponsoring package of <strong>3000€</strong> that
-        gives you the following benefits.
+        We have three sponsoring packages so you can choose whatever works best
+        for your company.
       </p>
 
-      <div class="mt-2">
-        <div class="flex items-center gap-2">
-          <span class="hidden md:inline-flex">
-            <img src="/img/props/rocket.svg" alt="" class="h-4 w-4" />
-          </span>
-          <p>
-            <strong>Two mentions</strong> on each of our social media pages:
-          </p>
-        </div>
+      {
+        [BRONZE_PACKAGE, SILVER_PACKAGE, GOLD_PACKAGE].map((p) => (
+          <div
+            class={`flex min-h-[260px] rounded-lg border-[4px] ${p.color} px-6 py-4`}
+          >
+            <div class="flex flex-1 flex-col">
+              <h3>{p.name} Package</h3>
+              <span class="font-display text-lg font-bold">{p.price} €</span>
+              <span class="max-w-[30ch]">{p.description}</span>
+            </div>
+            <div class="flex flex-1 flex-col py-1">
+              {p.benefits.map((benefit) => (
+                <div class="flex items-center gap-2">
+                  <img src="/img/props/rocket.svg" alt="" class="h-4 w-4" />
+                  <span
+                    class={
+                      p.highlightedBenefits.includes(benefit)
+                        ? "opacity-full"
+                        : "opacity-50"
+                    }
+                  >
+                    {BENEFITS_INFO[benefit].display}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
 
-        <ul>
-          <li>
-            one individual spotlight with a customized message announcing the
-            partnership
-          </li>
-          <li>one post with all sponsors, right before the event</li>
-        </ul>
-      </div>
-
-      <div class="mt-2">
-        <div class="flex items-center gap-2">
-          <span class="hidden md:inline-flex">
-            <img src="/img/props/rocket.svg" alt="" class="h-4 w-4" />
-          </span>
-          <p><strong>Your logo</strong> will be added:</p>
-        </div>
-
-        <ul>
-          <li>on the website</li>
-          <li>on the final newsletter email we send to all attendees</li>
-          <li>on each conference badge</li>
-          <li>
-            on the main event room screen, during all coffee and lunch breaks
-          </li>
-          <li>on all video recordings published after the event</li>
-        </ul>
-      </div>
-
-      <div class="mt-2 flex items-center gap-2">
-        <span class="hidden md:inline-flex">
-          <img src="/img/props/rocket.svg" alt="" class="h-4 w-4" />
-        </span>
-        <p>
-          You get a <strong>10% discount</strong> on all ticket types for the event.
-        </p>
-      </div>
-
-      <div class="mt-1 flex items-center gap-2">
-        <span class="hidden md:inline-flex">
-          <img src="/img/props/rocket.svg" alt="" class="h-4 w-4" />
-        </span>
-        <p>Your company roll-up will be in the main room during the event.</p>
-      </div>
-
-      <div class="mt-1 flex items-center gap-2">
-        <span class="hidden md:inline-flex">
-          <img src="/img/props/rocket.svg" alt="" class="h-4 w-4" />
-        </span>
-        <p>
-          You can send us branded giveaways that will be placed in the sponsors
-          area.
-        </p>
-      </div>
-
-      <div class="mt-8">
+      <div class="mt-8 text-right">
         <h3 class="font-bold">Contact</h3>
         <p>Alexandra Retegan</p>
         <a href="mailto:welcome@jsheroes.io" class="block"
