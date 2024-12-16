@@ -2,6 +2,7 @@
 name: Chelsea Troy
 title: ML Ops Engineer
 company: Mozilla
+tag: Architecture
 imgName: speakers/chelsea-troy.jpg
 links: { website: "https://chelseatroy.com" }
 ---

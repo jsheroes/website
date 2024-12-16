@@ -1,6 +1,7 @@
 ---
 name: Sophie Koonin
 title: Web Engineering Lead
+tag: Technical Migrations
 company: Monzo Bank
 imgName: speakers/sophie-koonin.jpeg
 links: { website: "https://localghost.dev" }

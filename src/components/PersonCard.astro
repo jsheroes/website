@@ -24,22 +24,31 @@ const sizeClasses = variant === "small" ? "w-44" : "w-60";
   class={`flex flex-col item-center gap-4 font-display ${sizeClasses}`}
   data-size={variant}
 >
-  <button
-    aria-haspopup="dialog"
-    aria-controls={person.id}
-    class="block p-0 overflow-hidden rounded-full border-0 border-solid border-[var(--person-accent-color)] grayscale transition-all ease-out duration-fade hover:border-[1rem] hover:grayscale-0 focus-visible:grayscale-0 focus-visible:outline-offset-8 focus-visible:outline-dashed focus-visible:outline-[5px] focus-visible:outline-[var(--person-accent-color)]"
-    onclick={`window['${person.id}'].showModal()`}
-    title={`See the profile of ${person.data.name}`}
-  >
-    <Image
-      src={getImage(person.data.imgName)}
-      alt={person.data.name}
-      width="286"
-      height="286"
-      densities={[1.5, 2]}
-      loading="eager"
-    />
-  </button>
+  <div class="relative">
+    <button
+      aria-haspopup="dialog"
+      aria-controls={person.id}
+      class="block overflow-hidden rounded-2xl border-[4px] border-solid border-[var(--person-accent-color)] p-0 transition-all duration-fade ease-out hover:border-[16px] focus-visible:outline-dashed focus-visible:outline-[5px] focus-visible:outline-offset-8 focus-visible:outline-[var(--person-accent-color)] focus-visible:grayscale-0"
+      onclick={`window['${person.id}'].showModal()`}
+      title={`See the profile of ${person.data.name}`}
+    >
+      <Image
+        src={getImage(person.data.imgName)}
+        alt={person.data.name}
+        width="286"
+        height="286"
+        densities={[1.5, 2]}
+        loading="eager"
+      />
+      {
+        person.data.tag && (
+          <span class="absolute bottom-0 left-0 rounded-lg rounded-br-none rounded-tl-none bg-[var(--person-accent-color)] px-2 py-[2px] text-neutral-dark">
+            {person.data.tag}
+          </span>
+        )
+      }
+    </button>
+  </div>
 
   <div class="flex flex-col items-center text-center">
     <span class="font-semibold">

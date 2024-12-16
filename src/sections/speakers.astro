@@ -74,15 +74,27 @@ const listItemStyles = "color-item list-none pb-4";
 </ul>
 
 <style>
-  .color-item:nth-child(3n) {
+  .color-item:nth-child(6n + 1) {
     --person-accent-color: theme("colors.accent-pink");
   }
 
-  .color-item:nth-child(3n + 1) {
+  .color-item:nth-child(6n + 2) {
     --person-accent-color: theme("colors.accent-orange");
   }
 
-  .color-item:nth-child(3n + 2) {
+  .color-item:nth-child(6n + 3) {
     --person-accent-color: theme("colors.accent-green");
+  }
+
+  .color-item:nth-child(6n + 4) {
+    --person-accent-color: #6b7ba4;
+  }
+
+  .color-item:nth-child(6n + 5) {
+    --person-accent-color: #ffb0a8;
+  }
+
+  .color-item:nth-child(6n) {
+    --person-accent-color: #bbab50;
   }
 </style>

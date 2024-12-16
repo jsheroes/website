@@ -1,6 +1,7 @@
 ---
 name: Hidde de Vries
 title: Front-end and a11y specialist
+tag: Accessibility
 imgName: speakers/hidde-de-vries.jpg
 links: { website: "https://front-end.social/@hdv" }
 ---
