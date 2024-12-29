@@ -20,7 +20,7 @@ export const BENEFITS_INFO: Record<
   Benefit,
   { display: string; explanation?: string }
 > = {
-  logo: { display: "Logo on printed and digital materials" },
+  logo: { display: "Logo on printed and digital materials", explanation: "Includes: website, post-event videos and attendee badges" },
   spotlight: { display: "Social media spotlights" },
   rollup: { display: "Roll-up in the main room" },
   giveaways: { display: "Branded giveaways for attendees", explanation: "We have a dedicated table in the main hallway where we showcase your branded giveaways." },
