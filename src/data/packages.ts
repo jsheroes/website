@@ -23,10 +23,10 @@ export const BENEFITS_INFO: Record<
   logo: { display: "Logo on printed and digital materials" },
   spotlight: { display: "Social media spotlights" },
   rollup: { display: "Roll-up in the main room" },
-  giveaways: { display: "Branded giveaways for attendees" },
+  giveaways: { display: "Branded giveaways for attendees", explanation: "We have a dedicated table in the main hallway where we showcase your branded giveaways." },
   video: { display: "Company video running during the breaks" },
-  tickets: { display: "Discount on tickets" },
-  pitch: { display: "Company pitch in the networking area" },
+  tickets: { display: "15% discount on all tickets" },
+  pitch: { display: "Company pitch in the networking area", explanation: "A company representative will talk about your company and interact with the audience in a dedicated area in the hallway during a break." },
 };
 
 export const BRONZE_PACKAGE: Package = {

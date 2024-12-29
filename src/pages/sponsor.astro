@@ -131,17 +131,24 @@ import {
             </div>
             <div class="flex flex-1 flex-col py-1">
               {p.benefits.map((benefit) => (
-                <div class="flex items-center gap-2">
-                  <img src="/img/props/rocket.svg" alt="" class="h-4 w-4" />
-                  <span
-                    class={
-                      p.highlightedBenefits.includes(benefit)
+                <div class={`flex items-center gap-2 ${p.highlightedBenefits.includes(benefit)
                         ? "opacity-full"
                         : "opacity-50"
-                    }
+                    }`}>
+                  <img src="/img/props/rocket.svg" alt="" class="h-4 w-4" />
+                  <span
+                    
                   >
                     {BENEFITS_INFO[benefit].display}
                   </span>
+                  {BENEFITS_INFO[benefit].explanation && (
+                    <img
+                      alt="info tooltip"
+                      title={BENEFITS_INFO[benefit].explanation}
+                      class="w-5 h-5"
+                      src="/img/icons/info.svg"
+                    />
+                  )}
                 </div>
               ))}
             </div>
@@ -149,13 +156,13 @@ import {
         ))
       }
 
-      <div class="mt-8 text-right">
+      <div class="mt-8 flex flex-col items-end">
         <h3 class="font-bold">Contact</h3>
         <p>Alexandra Retegan</p>
-        <a href="mailto:welcome@jsheroes.io" class="block"
+        <a href="mailto:welcome@jsheroes.io" class="block" title="This is an email"
           >welcome@jsheroes.io</a
         >
-        <a href="tel:0040756403372" class="block">+4 0756 403 372</a>
+        <a href="tel:0040756403372" class="block" title="This is a phone number">+4 0756 403 372</a>
       </div>
     </Section>
     <Section variant="dark" content="list">
