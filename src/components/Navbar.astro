@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 export interface Props {
   theme?: "dark";
 }
@@ -29,7 +29,7 @@ const navlinkClass = `navlink ${theme}`;
       aria-haspopup="true"
       aria-controls="sidebar-nav"
     >
-      <Icon name="mdi:menu" class={navlinkClass} />
+      <Icon name="mdi:menu" class={`${navlinkClass} w-5 h-5`} />
     </button>
   </nav>
 </header>
