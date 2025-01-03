@@ -3,16 +3,16 @@ layout: "../layouts/MarkdownLayout.astro"
 title: "Speak at JSHeroes"
 ---
 
-<!-- The <strong>call for papers</strong> for the 2025 event is <strong>closed</strong>.
+The <strong>call for papers</strong> for the 2025 event is <strong>closed</strong>.
 
-We have received <strong>340 proposals</strong> until the end of December 2023. Speakers will be announced sometime in early February. -->
+We have received <strong>269 proposals</strong> until the end of December 2024. Speakers will be announced sometime in early February.
 
-We encourage people of all ages, races, genders and religions, to send their proposals until the end of December 2024. We would like to ensure everyone that our process of selecting the talks will be <strong>fair</strong> and <strong>transparent</strong>, as the entire concept behind JSHeroes.
+<!-- We encourage people of all ages, races, genders and religions, to send their proposals until the end of December 2024. We would like to ensure everyone that our process of selecting the talks will be <strong>fair</strong> and <strong>transparent</strong>, as the entire concept behind JSHeroes.
 
 Before sending a proposal, it might be worth reading [this article](/blog/how-to-write-a-good-talk-proposal) about what makes a CFP proposal good.
 
 <br/>
-<a href="https://sessionize.com/jsheroes-2025" target="_blank" rel="noreferrer noopener" class="cta-button">Send Proposal</a>
+<a href="https://sessionize.com/jsheroes-2025" target="_blank" rel="noreferrer noopener" class="cta-button">Send Proposal</a> -->
 
 ## ✍ What we are looking for
 
@@ -55,5 +55,5 @@ We are committed to fulfilling our mission as an open source event. We are all c
 
 Good luck!
 
-<br/>
-<a href="https://sessionize.com/jsheroes-2025" target="_blank" rel="noreferrer noopener" class="cta-button">Send Proposal</a>
+<!-- <br/>
+<a href="https://sessionize.com/jsheroes-2025" target="_blank" rel="noreferrer noopener" class="cta-button">Send Proposal</a> -->
