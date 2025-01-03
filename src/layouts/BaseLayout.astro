@@ -4,6 +4,7 @@ import Footer from "../components/Footer.astro"
 import Preload from "../components/Preload.astro"
 import ScrollToTop from "../components/ScrollToTop.astro"
 import { ViewTransitions } from "astro:transitions"
+import { Tooltips } from "astro-tooltips";
 
 import { EVENT_DATES, CURRENT_YEAR, SEO_TAGLINE } from "../data/constants"
 
@@ -64,6 +65,7 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
 
     <script async src="https://cdn.splitbee.io/sb.js"></script>
     <ViewTransitions />
+    <Tooltips interactive={false} delay={[75, 75]} placement="bottom" />
   </head>
 
   <body>

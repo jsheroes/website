@@ -3,6 +3,11 @@ import defaultTheme from "tailwindcss/defaultTheme";
 
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  safelist: [
+    "border-accent-pink",
+    "border-accent-orange",
+    "border-accent-green",
+  ],
   theme: {
     colors: {
       "neutral-dark": "#202022",
