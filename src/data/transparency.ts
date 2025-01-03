@@ -3,7 +3,7 @@ import { Chart } from "chart.js";
 
 Chart.defaults.font.size = 16;
 
-type Year = "2017" | "2018" | "2019" | "2022" | "2023";
+type Year = "2017" | "2018" | "2019" | "2022" | "2023" | "2024";
 
 const colorPalette = [
   "#0098ff",
@@ -22,6 +22,7 @@ const yearlyBudget: Record<Year, number> = {
   2019: 92600,
   2022: 35500,
   2023: 106300,
+  2024: 111600,
 };
 
 const yearlyIncome: Record<Year, number> = {
@@ -30,6 +31,7 @@ const yearlyIncome: Record<Year, number> = {
   2019: 98000,
   2022: 52000,
   2023: 115200,
+  2024: 103300,
 };
 
 const yearlyExpenses: Record<Year, number> = {
@@ -38,6 +40,7 @@ const yearlyExpenses: Record<Year, number> = {
   2019: 92650,
   2022: 32853,
   2023: 97400,
+  2024: 99800,
 };
 
 export const yearlyGrowth: ChartData = {
@@ -76,6 +79,14 @@ type IncomeBreakdown = {
 };
 
 const expenses: Record<Year, ExpensesBreakdown> = {
+  2024: {
+    venue: 36400,
+    speakers: 34300,
+    merchandise: 3500,
+    photoVideo: 6900,
+    collaborators: 15000,
+    tools: 3600,
+  },
   2023: {
     venue: 53700,
     speakers: 21800,
@@ -119,6 +130,10 @@ const expenses: Record<Year, ExpensesBreakdown> = {
 };
 
 const income: Record<Year, IncomeBreakdown> = {
+  2024: {
+    tickets: 76300,
+    sponsors: 27000,
+  },
   2023: {
     tickets: 85200,
     sponsors: 30000,
@@ -157,7 +172,7 @@ const INCOME_LABELS: Record<keyof IncomeBreakdown, string> = {
 
 export const getExpensesChartData = (year: Year = "2023"): ChartData => ({
   labels: Object.keys(expenses[year]).map(
-    (k) => EXPENSES_LABELS[k as keyof ExpensesBreakdown]
+    (k) => EXPENSES_LABELS[k as keyof ExpensesBreakdown],
   ),
   datasets: [
     {
@@ -169,7 +184,7 @@ export const getExpensesChartData = (year: Year = "2023"): ChartData => ({
 
 export const getIncomeChartData = (year: Year = "2023"): ChartData => ({
   labels: Object.keys(income[year]).map(
-    (k) => INCOME_LABELS[k as keyof IncomeBreakdown]
+    (k) => INCOME_LABELS[k as keyof IncomeBreakdown],
   ),
   datasets: [
     {
@@ -190,7 +205,7 @@ export const updateIncome = (chart: ChartObject, year: Year) => {
 };
 
 export const yearsForBreakdownSelect: string[] = Object.keys(expenses).sort(
-  (a, b) => (Number(a) > Number(b) ? -1 : 1)
+  (a, b) => (Number(a) > Number(b) ? -1 : 1),
 );
 
 export const createBarChart = (node: HTMLCanvasElement) => {
@@ -231,7 +246,7 @@ export const createBarChart = (node: HTMLCanvasElement) => {
 
 export const createDoughnutChart = (
   node: HTMLCanvasElement,
-  data: ChartData
+  data: ChartData,
 ) => {
   return new Chart(node, {
     type: "doughnut",
