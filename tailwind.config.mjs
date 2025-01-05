@@ -31,7 +31,7 @@ export default {
         base: "clamp(1rem, 0.34vw + 0.91rem, 1.19rem)",
         lg: "clamp(1.2rem, 0.7vw + 1.3rem, 1.8rem)",
         xl: "clamp(2.4rem, 2.38vw + 1.85rem, 3.6rem)",
-        huge: "clamp(8rem, 2.38vw + 6.85rem, 10rem)",
+        huge: "clamp(7rem, 2.38vw + 5.85rem, 9rem)",
         "2xl": "1.563rem",
         "3xl": "1.953rem",
         "4xl": "2.441rem",
