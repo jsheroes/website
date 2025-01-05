@@ -2,6 +2,7 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import Banner from "@/sections/banner.astro";
+import { Icon } from "astro-icon/components";
 
 import {
   BRONZE_PACKAGE,
@@ -25,15 +26,15 @@ import {
         class="grid grid-cols-1 items-center gap-0 font-display sm:gap-4 md:grid-cols-2 lg:grid-cols-3 xl:gap-8"
       >
         <div class="flex flex-col items-center">
-          <span class="text-huge font-[500] text-accent-pink">600</span>
+          <span class="text-huge font-[500] text-accent-pink">500+</span>
           <span class="mt-[-3rem] text-lg font-[500]">attendees</span>
           <span>25% international audience</span>
         </div>
 
         <div class="flex flex-col items-center">
-          <span class="text-huge font-[500] text-dodger-blue">19</span>
+          <span class="text-huge font-[500] text-dodger-blue">18</span>
           <span class="mt-[-3rem] text-lg font-[500]">speakers</span>
-          <span>16 countries / 5 continents</span>
+          <span>from all over the world</span>
         </div>
 
         <div class="flex flex-col items-center">
@@ -43,19 +44,19 @@ import {
         </div>
 
         <div class="flex flex-col items-center">
-          <span class="text-huge font-[500] text-accent-orange">2.8K</span>
+          <span class="text-huge font-[500] text-accent-orange">3K</span>
           <span class="mt-[-3rem] text-lg font-[500]">community members</span>
           <span>on our meetup.com group</span>
         </div>
 
         <div class="flex flex-col items-center">
-          <span class="text-huge font-[500] text-accent-green">6K</span>
+          <span class="text-huge font-[500] text-accent-green">7.2K</span>
           <span class="mt-[-3rem] text-lg font-[500]">followers</span>
-          <span>across LinkedIn, Facebook and Twitter</span>
+          <span>across LinkedIn, Facebook, Bluesky and more</span>
         </div>
 
         <div class="flex flex-col items-center">
-          <span class="text-huge font-[500] text-accent-pink">3.2K</span>
+          <span class="text-huge font-[500] text-accent-pink">3.6K</span>
           <span class="mt-[-3rem] text-lg font-[500]">subscribers</span>
           <span>on our YouTube channel</span>
         </div>
@@ -115,33 +116,40 @@ import {
       <h2>Sponsor Packages</h2>
 
       <p>
-        We have three sponsoring packages so you can choose whatever works best
+        We have three types of packages so you can choose whatever works best
         for your company.
       </p>
 
       {
         [BRONZE_PACKAGE, SILVER_PACKAGE, GOLD_PACKAGE].map((p) => (
           <div
-            class={`flex min-h-[260px] rounded-lg border-[4px] ${p.color} px-6 py-4`}
+            class={`flex flex-col lg:flex-row gap-3 min-h-[260px] rounded-lg border-[4px] border-${p.color} px-6 py-4 relative ${p.availability > 0 ? 'grayscale-0 opacity-100' : 'grayscale opacity-70'}`}
           >
-            <div class="flex flex-1 flex-col">
+            <div class="flex flex-1 flex-col items-start">
               <h3>{p.name} Package</h3>
               <span class="font-display text-lg font-bold">{p.price} €</span>
               <span class="max-w-[30ch]">{p.description}</span>
+              <span class={`bg-${p.color} px-3 py-1 font-bold absolute right-[-4px] top-[-4px] rounded-bl-lg rounded-tr-lg lg:right-auto lg:top-auto lg:left-[-4px] lg:bottom-[-4px]`}>{p.availability === 0 ? 'SOLD OUT' : `${p.availability} ${p.availability === 1 ? 'package' : 'packages'} left`}</span>
             </div>
             <div class="flex flex-1 flex-col py-1">
               {p.benefits.map((benefit) => (
-                <div class="flex items-center gap-2">
+                <div class={`flex items-center gap-2`}>
                   <img src="/img/props/rocket.svg" alt="" class="h-4 w-4" />
                   <span
-                    class={
-                      p.highlightedBenefits.includes(benefit)
-                        ? "opacity-full"
-                        : "opacity-50"
-                    }
+                    class={p.highlightedBenefits.includes(benefit) ? "font-bold" : "font-normal"}
                   >
                     {BENEFITS_INFO[benefit].display}
                   </span>
+                  {BENEFITS_INFO[benefit].explanation && (
+                  <span title={BENEFITS_INFO[benefit].explanation}>
+                    <Icon name="mdi:tooltip-text-outline" />
+                  </span>
+                  )}
+                  {BENEFITS_INFO[benefit].link && (
+                    <a class="hover:text-accent-pink transition-colors" href={BENEFITS_INFO[benefit].link} target="_blank" rel="noreferrer noopener">
+                     <Icon class="w-5 h-5" name="mdi:camera-outline" />
+                    </a>
+                  )}
                 </div>
               ))}
             </div>
@@ -149,13 +157,13 @@ import {
         ))
       }
 
-      <div class="mt-8 text-right">
+      <div class="mt-8 flex flex-col items-start">
         <h3 class="font-bold">Contact</h3>
         <p>Alexandra Retegan</p>
-        <a href="mailto:welcome@jsheroes.io" class="block"
+        <a href="mailto:welcome@jsheroes.io" class="block" title="This is an email"
           >welcome@jsheroes.io</a
         >
-        <a href="tel:0040756403372" class="block">+4 0756 403 372</a>
+        <a href="tel:0040756403372" class="block" title="This is a phone number">+4 0756 403 372</a>
       </div>
     </Section>
     <Section variant="dark" content="list">
@@ -173,7 +181,7 @@ import {
         </div>
         <blockquote class="flex max-w-[50ch] flex-col gap-2">
           <cite>
-            <p>
+            <p> 
               If there is one conference that you already should put on your
               shortlist for (the) next year(s), JSHeroes is the one.
             </p>
