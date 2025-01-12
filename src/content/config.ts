@@ -47,6 +47,7 @@ export const collections = {
   support: defineCollection(personSchema),
   ambassadors: defineCollection(personSchema),
   speakers: defineCollection(personSchema),
+  volunteers: defineCollection(personSchema),
   "guest-writers": defineCollection(personSchema),
   "speaker-talks": defineCollection({
     schema: z.object({

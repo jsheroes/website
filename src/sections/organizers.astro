@@ -3,13 +3,14 @@ import { getCollection } from "astro:content";
 import PersonCard from "../components/PersonCard.astro";
 
 const organizers = await getCollection("organizers");
+const volunteers = await getCollection("volunteers");
 
 const listStyles = "flex flex-wrap justify-center gap-8 py-8 px-0";
 const listItemStyles = "color-item list-none pb-2";
 ---
 
 <div class="text-center">
-  <h2>Meet the team</h2>
+  <h2>Meet the organizers</h2>
 </div>
 
 <ul role="list" class={listStyles}>
@@ -18,6 +19,22 @@ const listItemStyles = "color-item list-none pb-2";
       <>
         <li class={listItemStyles}>
           <PersonCard variant="small" person={o} />
+        </li>
+      </>
+    ))
+  }
+</ul>
+
+<div class="text-center">
+  <h2>And our event volunteers</h2>
+</div>
+
+<ul role="list" class={listStyles}>
+  {
+    volunteers.map((v) => (
+      <>
+        <li class={listItemStyles}>
+          <PersonCard variant="small" person={v} />
         </li>
       </>
     ))
