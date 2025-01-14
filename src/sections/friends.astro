@@ -1,92 +1,86 @@
 ---
 import { Image } from "astro:assets";
 import { communities } from "../data/communities";
-import { sponsors } from "../data/sponsors";
+import { goldSponsors, silverSponsors, bronzeSponsors } from "../data/sponsors";
 import { getImage } from "../utils/getImage";
 
 const listStyles =
-  "flex flex-wrap items-center justify-center gap-4 p-0 m-0 pb-12";
+  "flex flex-wrap items-center justify-center gap-4 p-0 m-0";
 
 const linkStyles =
   "flex item-center p-4 transition-[outline-offset] duration-fade ease-out hover:outline-offset-[-10px] hover:outline hover:outline-accent-pink";
 ---
 
-{
-  sponsors.length > 0 && (
-    <>
-      <div class="text-center">
-        <h2>Event sponsors</h2>
-        <p>
-          These are the companies that support our event financially through the{" "}
-          <strong>€3,000</strong> standard package. <br />
-          If you are interested in supporting us,{" "}
-          <strong>
-            <a href="/sponsor" rel="noreferrer noopener">
-              check out our sponsorship page
-            </a>
-          </strong>
-          .
-        </p>
-      </div>
-      <ul role="list" class={listStyles}>
-        {sponsors.map((sponsor) => (
-          <li class="flex w-[200px] list-none">
-            <a
-              class={linkStyles}
-              href={sponsor.url}
-              target="_blank"
-              rel="noreferrer noopener"
-              title={sponsor.name}
-            >
-              <Image
-                src={getImage(sponsor.imgName)}
-                alt=""
-                loading="lazy"
-                width="200"
-                height="100"
-                densities={[1.5, 2]}
-                style={{
-                  maxHeight: "200px",
-                }}
-              />
-            </a>
-          </li>
-        ))}
-      </ul>
-    </>
-  )
-}
+<div class="text-center space-y-12">
+  <div class="space-y-4">
+    <h2>Sponsors</h2>
+    
+    <ul role="list" class={listStyles}>
+      {goldSponsors.map((sponsor) => (
+        <li class="flex w-[400px] list-none">
+          <a
+            class={linkStyles}
+            href={sponsor.url}
+            target="_blank"
+            rel="noreferrer noopener"
+            title={sponsor.name}
+          >
+            <Image
+              src={getImage(sponsor.imgName)}
+              alt=""
+              loading="lazy"
+              width="400"
+              height="200"
+              densities={[1.5, 2]}
+              style={{
+                maxHeight: "200px",
+              }}
+            />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
 
-<div class="text-center">
+  <p>
+    If you are interested in supporting us,{" "}
+    <strong>
+      <a href="/sponsor" rel="noreferrer noopener">
+        check out our sponsorship page
+      </a>
+    </strong>
+    .
+  </p>
+
   <h2>Media partners</h2>
 
-  <p>The communities that support our event</p>
+  <ul role="list" class={listStyles}>
+    {
+      communities.map((com) => (
+        <li class="flex w-[150px] list-none">
+          <a
+            class={linkStyles}
+            href={com.url}
+            target="_blank"
+            rel="noreferrer noopener"
+            title={com.name}
+          >
+            <Image
+              src={getImage(com.imgName)}
+              alt=""
+              width="200"
+              height="100"
+              densities={[1.5, 2]}
+              style={{
+                width: "100%",
+                height: "auto",
+              }}
+            />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 </div>
 
-<ul role="list" class={listStyles}>
-  {
-    communities.map((com) => (
-      <li class="flex w-[150px] list-none">
-        <a
-          class={linkStyles}
-          href={com.url}
-          target="_blank"
-          rel="noreferrer noopener"
-          title={com.name}
-        >
-          <Image
-            src={getImage(com.imgName)}
-            alt=""
-            width="200"
-            height="100"
-            densities={[1.5, 2]}
-            style={{
-              width: "100%",
-              height: "auto",
-            }}
-          />
-        </a>
-      </li>
-    ))
-  }
-</ul>
+
