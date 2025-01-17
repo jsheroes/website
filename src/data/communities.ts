@@ -71,4 +71,9 @@ export const communities: Organization[] = [
     url: "https://www.react.brussels/",
     imgName: "communities/logo_reactbrussels.png",
   },
+  {
+    name: "React Milano",
+    url: "https://www.meetup.com/React-JS-Milano/",
+    imgName: "communities/logo_reactmilano.png",
+  },
 ];
