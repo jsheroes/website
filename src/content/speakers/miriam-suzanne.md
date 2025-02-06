@@ -1,6 +1,7 @@
 ---
 name: Miriam Suzanne
-title: Oddbird
+title: Front-end Architect
+company: Oddbird
 tag: CSS
 imgName: speakers/miriam-suzanne.jpeg
 links:
