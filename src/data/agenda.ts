@@ -16,10 +16,10 @@ export const day1: AgendaItem[] = [
     timeSlot: "09:00 - 09:30",
     imgName: "event/intro.jpg",
   },
-  { type: "talk", speakers: ["tejas-kumar"], timeSlot: "09:30 - 10:00" },
+  { type: "talk", speakers: ["andrei-pfeiffer"], timeSlot: "09:30 - 10:00" },
   {
     type: "talk",
-    speakers: ["eva-ferreira"],
+    speakers: ["chelsea-troy"],
     timeSlot: "10:00 - 10:30",
   },
   {
@@ -28,17 +28,17 @@ export const day1: AgendaItem[] = [
     timeSlot: "10:30 - 11:00",
     imgName: "event/coffee.jpg",
   },
-  { type: "talk", speakers: ["rodrigo-pombo"], timeSlot: "11:00 - 11:30" },
-  { type: "talk", speakers: ["rose-akoth"], timeSlot: "11:30 - 12:00" },
-  { type: "talk", speakers: ["bramus-van-damme"], timeSlot: "12:00 - 12:30" },
+  { type: "talk", speakers: ["emilia-muresan"], timeSlot: "11:00 - 11:30" },
+  { type: "talk", speakers: ["sophie-koonin"], timeSlot: "11:30 - 12:00" },
+  { type: "talk", speakers: ["nicolas-carlo"], timeSlot: "12:00 - 12:30" },
   {
     type: "placeholder",
     content: "Lunch Break",
     timeSlot: "12:30 - 14:00",
     imgName: "event/coffee.jpg",
   },
-  { type: "talk", speakers: ["josh-goldberg"], timeSlot: "14:00 - 14:30" },
-  { type: "talk", speakers: ["filip-hric"], timeSlot: "14:30 - 15:00" },
+  { type: "talk", speakers: ["atila-fassina"], timeSlot: "14:00 - 14:30" },
+  { type: "talk", speakers: ["ivan-akulov"], timeSlot: "14:30 - 15:00" },
   {
     type: "placeholder",
     content: "Coffee Break",
@@ -48,9 +48,9 @@ export const day1: AgendaItem[] = [
   {
     type: "talk",
     timeSlot: "15:45 - 16:15",
-    speakers: ["emmy-cao", "jenny-truong"],
+    speakers: ["emmy-cao", "sandrina-pereira"],
   },
-  { type: "talk", timeSlot: "16:15 - 16:45", speakers: ["theodore-vorillaz"] },
+  { type: "talk", timeSlot: "16:15 - 16:45", speakers: ["filip-sodic"] },
 ];
 
 export const day2: AgendaItem[] = [
@@ -60,11 +60,11 @@ export const day2: AgendaItem[] = [
     timeSlot: "09:00 - 09:30",
     imgName: "event/registration.jpg",
   },
-  { type: "talk", timeSlot: "09:30 - 10:00", speakers: ["atila-fassina"] },
+  { type: "talk", timeSlot: "09:30 - 10:00", speakers: ["dan-shappir"] },
   {
     type: "talk",
     timeSlot: "10:00 - 10:30",
-    speakers: ["benjamin-swerdlow"],
+    speakers: ["jean-burellier"],
   },
   {
     type: "placeholder",
@@ -72,12 +72,12 @@ export const day2: AgendaItem[] = [
     timeSlot: "10:30 - 11:00",
     imgName: "event/coffee.jpg",
   },
-  { type: "talk", timeSlot: "11:00 - 11:30", speakers: ["sid-kshetrapal"] },
-  { type: "talk", timeSlot: "11:30 - 12:00", speakers: ["nicolo-ribaudo"] },
+  { type: "talk", timeSlot: "11:00 - 11:30", speakers: ["hidde-de-vries"] },
+  { type: "talk", timeSlot: "11:30 - 12:00", speakers: ["miriam-suzanne"] },
   {
     type: "talk",
     timeSlot: "12:00 - 12:30",
-    speakers: ["carmen-huidobro"],
+    speakers: ["bramus-van-damme"],
   },
   {
     type: "placeholder",
@@ -85,14 +85,14 @@ export const day2: AgendaItem[] = [
     timeSlot: "12:30 - 14:00",
     imgName: "event/coffee.jpg",
   },
-  { type: "talk", timeSlot: "14:00 - 14:30", speakers: ["matan-kushner"] },
-  { type: "talk", timeSlot: "14:30 - 15:00", speakers: ["artem-zakharchenko"] },
+  { type: "talk", timeSlot: "14:00 - 14:30", speakers: ["josh-goldberg"] },
+  { type: "talk", timeSlot: "14:30 - 15:00", speakers: ["jessica-janiuk"] },
   {
     type: "placeholder",
     content: "Coffee Break",
     timeSlot: "15:00 - 15:30",
     imgName: "event/coffee.jpg",
   },
-  { type: "talk", timeSlot: "15:30 - 16:00", speakers: ["charlie-gerard"] },
-  { type: "talk", timeSlot: "16:00 - 16:30", speakers: ["tero-parviainen"] },
+  { type: "talk", timeSlot: "15:30 - 16:00", speakers: ["TBA"] },
+  { type: "talk", timeSlot: "16:00 - 16:30", speakers: ["TBA"] },
 ];
