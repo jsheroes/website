@@ -1,7 +1,7 @@
 ---
 name: "Filip Sodic"
 company: "Wasp"
-title: "Open-Source Maintainer"
+title: "Founding Engineer"
 tag: "TypeScript"
 imgName: "speakers/filip-sodic.png"
 links:
