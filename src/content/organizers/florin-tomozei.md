@@ -14,4 +14,4 @@ links:
 Florin participated at the conference from the beginning and was impressed by the incredible community around it.
 With his previous volunteering experience, in 2023 he decided to join the team and help.
 
-In the meantime, he works as a software engineer at Wolfpack Digital and occasionally finds some time for one of his passions, photography.
+In the meantime, he works as a Software Engineer and occasionally finds some time for one of his passions, photography.
