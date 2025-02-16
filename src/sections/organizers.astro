@@ -4,6 +4,7 @@ import PersonCard from "../components/PersonCard.astro";
 
 const organizers = await getCollection("organizers");
 const volunteers = await getCollection("volunteers");
+const ambassadors = await getCollection("ambassadors");
 
 const listStyles = "flex flex-wrap justify-center gap-8 py-8 px-0";
 const listItemStyles = "color-item list-none pb-2";
@@ -26,7 +27,7 @@ const listItemStyles = "color-item list-none pb-2";
 </ul>
 
 <div class="text-center">
-  <h2>And our event volunteers</h2>
+  <h2>The event volunteers</h2>
 </div>
 
 <ul role="list" class={listStyles}>
@@ -41,16 +42,46 @@ const listItemStyles = "color-item list-none pb-2";
   }
 </ul>
 
+<div class="text-center">
+  <h2>And the brand ambassadors</h2>
+</div>
+
+<ul role="list" class={listStyles}>
+  {
+    ambassadors.map((a) => (
+      <li class={listItemStyles}>
+        <PersonCard variant="small" person={a} />
+      </li>
+    ))
+  }
+</ul>
+
 <style>
-  .color-item:nth-child(3n) {
+  .color-item:nth-child(7n + 1) {
     --person-accent-color: theme("colors.accent-pink");
   }
 
-  .color-item:nth-child(3n + 1) {
+  .color-item:nth-child(7n + 2) {
     --person-accent-color: theme("colors.accent-orange");
   }
 
-  .color-item:nth-child(3n + 2) {
+  .color-item:nth-child(7n + 3) {
     --person-accent-color: theme("colors.accent-green");
+  }
+
+  .color-item:nth-child(7n + 4) {
+    --person-accent-color: #6b7ba4;
+  }
+
+  .color-item:nth-child(7n + 5) {
+    --person-accent-color: #ffb0a8;
+  }
+
+  .color-item:nth-child(7n + 6) {
+    --person-accent-color: #bbab50;
+  }
+
+  .color-item:nth-child(7n) {
+    --person-accent-color: #9b6b9e;
   }
 </style>

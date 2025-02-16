@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { communities } from "../data/communities";
+import { partners } from "../data/partners";
 import { goldSponsors, silverSponsors, bronzeSponsors } from "../data/sponsors";
 import { getImage } from "../utils/getImage";
 
@@ -51,6 +52,36 @@ const linkStyles =
     </strong>
     .
   </p>
+
+  <h2>Event partners</h2>
+
+  <ul role="list" class={listStyles}>
+    {
+      partners.map((com) => (
+        <li class="flex w-[200px] list-none">
+          <a
+            class={linkStyles}
+            href={com.url}
+            target="_blank"
+            rel="noreferrer noopener"
+            title={com.name}
+          >
+            <Image
+              src={getImage(com.imgName)}
+              alt=""
+              width="200"
+              height="100"
+              densities={[1.5, 2]}
+              style={{
+                width: "100%",
+                height: "auto",
+              }}
+            />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 
   <h2>Media partners</h2>
 

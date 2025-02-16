@@ -54,25 +54,6 @@ const listItemStyles = "color-item list-none pb-4";
   }
 </ul> -->
 
-<div class="text-center">
-  <h2>And our awesome ambassadors</h2>
-
-  <p>
-    An amazing group of people that ensure top-notch content at the event every
-    year
-  </p>
-</div>
-
-<ul role="list" class={listStyles}>
-  {
-    ambassadors.map((a) => (
-      <li class={listItemStyles}>
-        <PersonCard person={a} />
-      </li>
-    ))
-  }
-</ul>
-
 <style>
   .color-item:nth-child(7n + 1) {
     --person-accent-color: theme("colors.accent-pink");
