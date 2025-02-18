@@ -140,16 +140,18 @@ import {
                   >
                     {BENEFITS_INFO[benefit].display}
                   </span>
-                  {BENEFITS_INFO[benefit].explanation && (
-                  <span title={BENEFITS_INFO[benefit].explanation}>
-                    <Icon name="mdi:tooltip-text-outline" />
+                  <span class="ml-auto md:ml-0">
+                    {BENEFITS_INFO[benefit].explanation && (
+                      <span title={BENEFITS_INFO[benefit].explanation}>
+                        <Icon class="w-5 h-5" name="mdi:tooltip-text-outline" />
+                      </span>
+                      )}
+                      {BENEFITS_INFO[benefit].link && (
+                        <a class="hover:text-accent-pink transition-colors" href={BENEFITS_INFO[benefit].link} target="_blank" rel="noreferrer noopener">
+                        <Icon class="w-5 h-5" name="mdi:camera-outline" />
+                        </a>
+                      )}
                   </span>
-                  )}
-                  {BENEFITS_INFO[benefit].link && (
-                    <a class="hover:text-accent-pink transition-colors" href={BENEFITS_INFO[benefit].link} target="_blank" rel="noreferrer noopener">
-                     <Icon class="w-5 h-5" name="mdi:camera-outline" />
-                    </a>
-                  )}
                 </div>
               ))}
             </div>
