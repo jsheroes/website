@@ -13,13 +13,13 @@ export const day1: AgendaItem[] = [
   {
     type: "placeholder",
     content: "Welcome to JSHeroes!",
-    timeSlot: "09:00 - 09:30",
+    timeSlot: "09:10 - 09:30",
     imgName: "event/intro.jpg",
   },
   { type: "talk", speakers: ["andrei-pfeiffer"], timeSlot: "09:30 - 10:00" },
   {
     type: "talk",
-    speakers: ["chelsea-troy"],
+    speakers: ["sandrina-pereira"],
     timeSlot: "10:00 - 10:30",
   },
   {
@@ -48,9 +48,13 @@ export const day1: AgendaItem[] = [
   {
     type: "talk",
     timeSlot: "15:45 - 16:15",
-    speakers: ["emmy-cao", "sandrina-pereira"],
+    speakers: ["filip-sodic"],
   },
-  { type: "talk", timeSlot: "16:15 - 16:45", speakers: ["filip-sodic"] },
+  {
+    type: "talk",
+    timeSlot: "16:15 - 16:45",
+    speakers: ["chelsea-troy"],
+  },
 ];
 
 export const day2: AgendaItem[] = [
@@ -93,6 +97,5 @@ export const day2: AgendaItem[] = [
     timeSlot: "15:00 - 15:30",
     imgName: "event/coffee.jpg",
   },
-  { type: "talk", timeSlot: "15:30 - 16:00", speakers: ["shai-reznik"] },
-  { type: "talk", timeSlot: "16:00 - 16:30", speakers: ["TBA"] },
+  { type: "talk", timeSlot: "15:30 - 16:30", speakers: ["shai-reznik"] },
 ];
