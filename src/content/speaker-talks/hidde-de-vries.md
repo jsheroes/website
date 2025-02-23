@@ -1,3 +1,3 @@
 ---
-title: Web platform features with a11y built in?
+title: "Built-in accessibility: blessing or curse?"
 ---
