@@ -28,17 +28,25 @@ export const day1: AgendaItem[] = [
     timeSlot: "10:30 - 11:00",
     imgName: "event/coffee.jpg",
   },
-  { type: "talk", speakers: ["emilia-muresan"], timeSlot: "11:00 - 11:30" },
-  { type: "talk", speakers: ["sophie-koonin"], timeSlot: "11:30 - 12:00" },
-  { type: "talk", speakers: ["nicolas-carlo"], timeSlot: "12:00 - 12:30" },
+  { type: "talk", speakers: ["filip-sodic"], timeSlot: "11:00 - 11:30" },
+  { type: "talk", speakers: ["ivan-akulov"], timeSlot: "11:30 - 12:00" },
+  {
+    type: "talk",
+    speakers: ["atila-fassina"],
+    timeSlot: "12:00 - 12:30",
+  },
   {
     type: "placeholder",
     content: "Lunch Break",
     timeSlot: "12:30 - 14:00",
     imgName: "event/coffee.jpg",
   },
-  { type: "talk", speakers: ["atila-fassina"], timeSlot: "14:00 - 14:30" },
-  { type: "talk", speakers: ["ivan-akulov"], timeSlot: "14:30 - 15:00" },
+  {
+    type: "talk",
+    speakers: ["emilia-muresan"],
+    timeSlot: "14:00 - 14:30",
+  },
+  { type: "talk", speakers: ["sophie-koonin"], timeSlot: "14:30 - 15:00" },
   {
     type: "placeholder",
     content: "Coffee Break",
@@ -48,7 +56,7 @@ export const day1: AgendaItem[] = [
   {
     type: "talk",
     timeSlot: "15:45 - 16:15",
-    speakers: ["filip-sodic"],
+    speakers: ["nicolas-carlo"],
   },
   {
     type: "talk",
