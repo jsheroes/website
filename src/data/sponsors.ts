@@ -10,4 +10,10 @@ export const goldSponsors: Organization[] = [
 
 export const silverSponsors: Organization[] = [];
 
-export const bronzeSponsors: Organization[] = [];
+export const bronzeSponsors: Organization[] = [
+  {
+    name: "Remote.com",
+    url: "https://remote.com/",
+    imgName: "sponsors/logo_remote.png",
+  },
+];

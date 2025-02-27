@@ -13,8 +13,8 @@ const linkStyles =
 ---
 
 <div class="text-center space-y-12">
-  <div class="space-y-4">
-    <h2>Sponsors</h2>
+  <div class="space-y-6">
+    <h2>Gold Sponsors</h2>
     
     <ul role="list" class={listStyles}>
       {goldSponsors.map((sponsor) => (
@@ -35,6 +35,34 @@ const linkStyles =
               densities={[1.5, 2]}
               style={{
                 maxHeight: "200px",
+              }}
+            />
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <h2>Bronze Sponsors</h2>
+
+    <ul role="list" class={listStyles}>
+      {bronzeSponsors.map((sponsor) => (
+        <li class="flex w-[200px] list-none">
+          <a
+            class={linkStyles}
+            href={sponsor.url}
+            target="_blank"
+            rel="noreferrer noopener"
+            title={sponsor.name}
+          >
+            <Image
+              src={getImage(sponsor.imgName)}
+              alt=""
+              loading="lazy"
+              width="200"
+              height="100"
+              densities={[1.5, 2]}
+              style={{
+                maxHeight: "100px",
               }}
             />
           </a>
