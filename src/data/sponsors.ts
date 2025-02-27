@@ -16,4 +16,9 @@ export const bronzeSponsors: Organization[] = [
     url: "https://remote.com/",
     imgName: "sponsors/logo_remote.png",
   },
+  {
+    name: "Meteocontrol",
+    url: "https://www.meteocontrol.com/en/",
+    imgName: "sponsors/logo_meteocontrol.png",
+  },
 ];
