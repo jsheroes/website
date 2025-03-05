@@ -40,19 +40,27 @@ const listItemStyles = "color-item list-none pb-4";
   }
 </ul>
 
-<!-- <div class="text-center">
+<div class="text-center">
   <h2>Our support crew</h2>
 </div>
 
 <ul role="list" class={listStyles}>
   {
-    support.map((s) => (
+    support.filter(s => s.data.title === "MC").map((s) => (
+      <li class={listItemStyles}>
+        <PersonCard person={s} />
+      </li>
+    )) 
+  }
+  {
+    support.filter(s => s.data.title !== "MC").map((s) => (
       <li class={listItemStyles}>
         <PersonCard person={s} />
       </li>
     ))
+    
   }
-</ul> -->
+</ul>
 
 <style>
   .color-item:nth-child(7n + 1) {

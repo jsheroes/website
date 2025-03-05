@@ -58,7 +58,7 @@ links.sort((a, b) => sortOrder.indexOf(a.name) - sortOrder.indexOf(b.name));
 
 <dialog
   aria-labelledby={`${person.id}-title`}
-  id={person.id}
+  id={`${person.collection}-${person.id}`}
   onclick="
   if (event.currentTarget === event.target) event.currentTarget.close()
   "

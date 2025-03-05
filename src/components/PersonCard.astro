@@ -30,7 +30,7 @@ const sizeClasses = variant === "small" ? "w-44" : "w-60";
       aria-haspopup="dialog"
       aria-controls={person.id}
       class="block overflow-hidden rounded-2xl border-[4px] border-solid border-[var(--person-accent-color)] p-0 transition-all duration-fade ease-out hover:border-[16px] focus-visible:outline-dashed focus-visible:outline-[5px] focus-visible:outline-offset-8 focus-visible:outline-[var(--person-accent-color)] focus-visible:grayscale-0"
-      onclick={`window['${person.id}'].showModal()`}
+      onclick={`window['${person.collection}-${person.id}'].showModal()`}
       title={`See the profile of ${person.data.name}`}
     >
       <Image
