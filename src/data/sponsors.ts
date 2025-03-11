@@ -8,7 +8,13 @@ export const goldSponsors: Organization[] = [
   },
 ];
 
-export const silverSponsors: Organization[] = [];
+export const silverSponsors: Organization[] = [
+  {
+    name: "Siemens",
+    url: "https://www.siemens.ro/rd",
+    imgName: "sponsors/logo_siemens.png",
+  },
+];
 
 export const bronzeSponsors: Organization[] = [
   {
@@ -20,5 +26,10 @@ export const bronzeSponsors: Organization[] = [
     name: "Meteocontrol",
     url: "https://www.meteocontrol.com/en/",
     imgName: "sponsors/logo_meteocontrol.png",
+  },
+  {
+    name: "Flowx.ai",
+    url: "https://www.flowx.ai/",
+    imgName: "sponsors/logo_flowx.png",
   },
 ];

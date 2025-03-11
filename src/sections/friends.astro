@@ -42,6 +42,34 @@ const linkStyles =
       ))}
     </ul>
 
+    <h2>Silver Sponsors</h2>
+
+    <ul role="list" class={listStyles}>
+      {silverSponsors.map((sponsor) => (
+        <li class="flex w-[300px] list-none">
+          <a
+            class={linkStyles}
+            href={sponsor.url}
+            target="_blank"
+            rel="noreferrer noopener"
+            title={sponsor.name}
+          >
+            <Image
+              src={getImage(sponsor.imgName)}
+              alt=""
+              loading="lazy"
+              width="300"
+              height="150"
+              densities={[1.5, 2]}
+              style={{
+                maxHeight: "150px",
+              }}
+            />
+          </a>
+        </li>
+      ))}
+    </ul>
+
     <h2>Bronze Sponsors</h2>
 
     <ul role="list" class={listStyles}>
