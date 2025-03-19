@@ -14,6 +14,11 @@ export const silverSponsors: Organization[] = [
     url: "https://www.siemens.ro/rd",
     imgName: "sponsors/logo_siemens.png",
   },
+  {
+    name: "Yardi",
+    url: "https://careers.yardiromania.ro/careers-at-yardi/",
+    imgName: "sponsors/logo_yardi.png",
+  },
 ];
 
 export const bronzeSponsors: Organization[] = [
