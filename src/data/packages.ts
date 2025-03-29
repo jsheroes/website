@@ -67,7 +67,7 @@ export const SILVER_PACKAGE: Package = {
     "Ideal for companies that want to increase brand awareness at the event",
   benefits: ["logo", "spotlight", "rollup", "giveaways", "video"],
   highlightedBenefits: ["giveaways", "video"],
-  availability: 1,
+  availability: 0,
 };
 
 export const GOLD_PACKAGE: Package = {

@@ -19,6 +19,11 @@ export const silverSponsors: Organization[] = [
     url: "https://careers.yardiromania.ro/careers-at-yardi/",
     imgName: "sponsors/logo_yardi.png",
   },
+  {
+    name: "Victory Square Partners",
+    url: "https://victorysquarepartners.com/",
+    imgName: "sponsors/logo_vsp.svg",
+  },
 ];
 
 export const bronzeSponsors: Organization[] = [
