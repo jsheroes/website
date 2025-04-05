@@ -42,4 +42,9 @@ export const bronzeSponsors: Organization[] = [
     url: "https://www.flowx.ai/",
     imgName: "sponsors/logo_flowx.png",
   },
+  {
+    name: "Modus Create",
+    url: "https://moduscreate.com/",
+    imgName: "sponsors/logo_modus.png",
+  },
 ];
