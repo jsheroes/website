@@ -47,4 +47,9 @@ export const bronzeSponsors: Organization[] = [
     url: "https://moduscreate.com/",
     imgName: "sponsors/logo_modus.png",
   },
+  {
+    name: "Qiagen",
+    url: "https://www.qiagen.com/ro",
+    imgName: "sponsors/logo_qiagen.png",
+  },
 ];
