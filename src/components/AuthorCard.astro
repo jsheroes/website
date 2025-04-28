@@ -17,7 +17,7 @@ const { author, publishDate } = Astro.props;
     class="group flex items-center gap-2 rounded-[2rem] border-0 bg-neutral-light py-2 pl-2 pr-4 transition-colors duration-200 ease-out hover:bg-accent-pink"
     aria-haspopup="dialog"
     aria-controls={author.id}
-    onclick={`window['${author.id}'].showModal()`}
+    onclick={`window['${author.collection}-${author.id}'].showModal()`}
     title={`See the profile of ${author.data.name}`}
   >
     <Image
