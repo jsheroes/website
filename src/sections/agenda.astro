@@ -59,7 +59,7 @@ const { agendaItems, title } = Astro.props as Props;
                     aria-haspopup="dialog"
                     aria-controls={speaker.id}
                     class="group rounded-full focus-visible:outline-dashed focus-visible:outline-width-[6px] focus-visible:outline-accent-pink focus-visible:outline-offset-[8px] [&:not(:last-child)]:mr-[-24px]"
-                    onclick={`window['${speaker.id}'].showModal()`}
+                    onclick={`window['${speaker.collection}-${speaker.id}'].showModal()`}
                     title={`See the profile of ${speaker.data.name}`}
                   >
                     <Image
