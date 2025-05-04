@@ -6,6 +6,11 @@ export const goldSponsors: Organization[] = [
     url: "https://www.globallogic.com/ro/",
     imgName: "sponsors/logo_globalLogic.png",
   },
+  {
+    name: "NearForm",
+    url: "https://nearform.com/",
+    imgName: "sponsors/logo_nearform.jpg",
+  },
 ];
 
 export const silverSponsors: Organization[] = [
