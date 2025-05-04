@@ -86,5 +86,5 @@ export const GOLD_PACKAGE: Package = {
     "pitch",
   ],
   highlightedBenefits: ["tickets", "pitch"],
-  availability: 1,
+  availability: 0,
 };
