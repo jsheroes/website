@@ -57,4 +57,9 @@ export const bronzeSponsors: Organization[] = [
     url: "https://www.qiagen.com/ro",
     imgName: "sponsors/logo_qiagen.png",
   },
+  {
+    name: "8x8",
+    url: "https://www.8x8.com/",
+    imgName: "sponsors/logo_8x8.svg",
+  },
 ];

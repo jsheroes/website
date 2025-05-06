@@ -56,7 +56,7 @@ export const BRONZE_PACKAGE: Package = {
   description: "Ideal for startups and small companies",
   benefits: ["logo", "spotlight", "rollup"],
   highlightedBenefits: [],
-  availability: 4,
+  availability: 3,
 };
 
 export const SILVER_PACKAGE: Package = {
