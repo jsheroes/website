@@ -50,17 +50,17 @@ export const day1: AgendaItem[] = [
   {
     type: "placeholder",
     content: "Coffee Break",
-    timeSlot: "15:00 - 15:45",
+    timeSlot: "15:00 - 15:30",
     imgName: "event/coffee.jpg",
   },
   {
     type: "talk",
-    timeSlot: "15:45 - 16:15",
+    timeSlot: "15:30 - 16:00",
     speakers: ["nicolas-carlo"],
   },
   {
     type: "talk",
-    timeSlot: "16:15 - 16:45",
+    timeSlot: "16:00 - 16:30",
     speakers: ["chelsea-troy"],
   },
 ];
