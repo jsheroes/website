@@ -1,5 +1,5 @@
 ---
-title: Fullstack Forms validations with JSON Schemas
+title: Full-stack forms with JSON Schemas
 ---
 
 Forms can become a pain to maintain, with a lot of duplication between the server and the client: Duplicated data structures, validations, sync deploys, etc...

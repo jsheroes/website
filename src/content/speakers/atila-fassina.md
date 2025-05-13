@@ -1,7 +1,7 @@
 ---
 name: "Atila Fassina"
-company: "SolidJS Team Member"
-title: "Open-Source Developer"
+company: "Neon"
+title: "Senior Fullstack Engineer"
 tag: "Security"
 imgName: "speakers/atila-fassina.png"
 links:
