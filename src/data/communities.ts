@@ -76,4 +76,9 @@ export const communities: Organization[] = [
     url: "https://www.meetup.com/React-JS-Milano/",
     imgName: "communities/logo_reactmilano.png",
   },
+  {
+    name: "Today Software Magazine",
+    url: "https://www.todaysoftmag.ro/",
+    imgName: "communities/logo_tsm.png",
+  },
 ];
