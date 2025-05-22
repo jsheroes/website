@@ -12,20 +12,20 @@ Whether you're attending JSHeroes for the first time or you're a returning atten
 - [Pre-event meetup](#-pre-event-meetup)
 - [Tickets](#-tickets)
 - [Communication](#-communication)
+- [Transportation](#-transportation)
 - [Accessibility](#-accessibility)
 - [Eco-friendly](#-eco-friendly)
 - [Alternative stage](#-alternative-stage)
 - [Catering](#-catering)
 - [Photos](#-photos)
 - [Code of conduct](#-code-of-conduct)
-- [Transportation](#-transportation)
 - [Explore the City](#-explore-the-city)
 
 ## 📆 🌎 Date and Venue
 
 JSHeroes 2025 will take place on <b>May 29-30th</b> (Thursday & Friday) at <b>[Grand Hotel Italia](https://www.google.com/maps/place/Grand+Hotel+Italia)</b> in Cluj-Napoca. It is a one-track conference and we have reserved the space from the hotel's ground floor, a spacious conference room, and a large lobby, where you can enjoy the talks, the technical booths, and the networking area.
 
-Also, during the coffee and lunch breaks, we will have an alternative stage, with interesting conversations and follow-ups from the talks on the main stage.Everyone will be able to join, as a speaker or participant. We also want to encourage open discussions, projects presentations, lightning talks, and anything which is remotely related to what we do and our mission and values.
+Also, during the coffee and lunch breaks, we will have an alternative stage, with interesting conversations and follow-ups from the talks on the main stage. Everyone will be able to join, as a speaker or participant. We also want to encourage open discussions, projects presentations, lightning talks, and anything which is remotely related to what we do and our mission and values.
 
 Bellow you can find a map of the entire venue, with all the points of interest marked accordingly.
 
@@ -33,7 +33,7 @@ Bellow you can find a map of the entire venue, with all the points of interest m
 
 ## 📒✨ Agenda and Theme
 
-Our speakers will present solutions for common industry problems, highlight the strugles with managing complexity, maintainability and scalability and will explore new technologies, frameworks and standards that tackle all these concerns.
+Our speakers will present solutions for common industry problems, highlight the struggles with managing complexity, maintainability and scalability and will explore new technologies, frameworks and standards that tackle all these concerns.
 
 Check out the agenda [here](https://jsheroes.io/#agenda). We’ll post all the talks, soon after the conference, on our [YouTube](https://www.youtube.com/channel/UCeJEpnvZhG-VwGpzrzYLidQ) channel. During the conference, we’re not going to live stream though.
 
@@ -65,7 +65,7 @@ We encourage you to use the hashtag **#JSHeroes** to tweet and post about the co
 
 You can conveniently reach the event location by bus, as **line 21** stops a few hundred meters away from the venue.
 
-Please keep in mind that the dedicated parking area at the hotel is not free anymore. Additionally, _heavy traffic_ is to be expected in the area during morning rush hour, so plan accordingly and allow extra time for travel. We hope you have a safe and smooth journey to the conference.
+Please keep in mind that the hotel parking area is not free of charge. Additionally, _heavy traffic_ is to be expected in the area during morning rush hour, so plan accordingly and allow extra time for travel. We hope you have a safe and smooth journey to the conference.
 
 ## ♿ Accessibility
 
@@ -83,13 +83,7 @@ We understand the importance of reducing our carbon footprint and promoting [eco
 
 ## 🎤 Alternative stage
 
-In keeping with our tradition from previous years, the alternative stage will once again be a central part of our event. This informal area serves as a meeting point for speakers and attendees to participate in casual discussions or spontaneous presentations during coffee and lunch breaks. Andrei Antal will return as the host of the stage, with our MC sharing the details of the discussions before each break.
-
-## 🏃‍♀️ Running sessions
-
-In addition to the pilates session, we are excited to introduce running sessions before each day of the event. The sessions will be led by our enthusiastic community member, **Ioana Chiorean**, an experienced runner. Ioana will guide participants through a scenic routes around the conference venue and towards the city center, ensuring a pace that is comfortable for all fitness levels.
-
-This is a great opportunity to energize yourself before the day's activities, meet fellow attendees in a relaxed setting, and enjoy the local surroundings.
+In keeping with our tradition from previous years, the alternative stage will once again be a central part of our event. This informal area serves as a meeting point for speakers and attendees to participate in casual discussions or spontaneous presentations during coffee and lunch breaks. Andrei Antal will return as the host for the stage and our MCs will share the upcoming discussions at the alternative stage before each break.
 
 ## 🍎 Catering
 
