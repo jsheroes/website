@@ -11,4 +11,9 @@ export const partners: Organization[] = [
     url: "https://www.jetbrains.com/",
     imgName: "partners/jetbrains.png",
   },
+  {
+    name: "Camigo",
+    url: "https://camigo.ro/",
+    imgName: "partners/logo-camigo.jpg",
+  },
 ];
