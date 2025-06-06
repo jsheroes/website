@@ -1,7 +1,7 @@
 ---
 name: "Anamaria Oros"
 title: "Organizer"
-imgName: "organizers/anamaria-oros.jpg"
+imgName: "organizers/anamaria-oros.png"
 ---
 
 Ana is a dedicated volunteer who has been involved with the JSHeroes conference from the very beginning. Her initial role was to take care of the traveling arrangements of the conference speakers, earning her the affectionate nickname "trip advisor".

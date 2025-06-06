@@ -1,7 +1,7 @@
 ---
 name: "Alexandra Mînzat"
 title: "Organizer"
-imgName: "organizers/alexandra-minzat.jpg"
+imgName: "organizers/alexandra-minzat.png"
 ---
 
 Alexandra is a lovely “sunny” person, she’s our admin girl, on board with JSHeroes since 2017.

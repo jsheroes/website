@@ -1,7 +1,7 @@
 ---
 name: "Radu Blana"
 title: "Organizer"
-imgName: "organizers/radu-blana.jpg"
+imgName: "organizers/radu-blana.png"
 links: { linkedin: "https://www.linkedin.com/in/radu-blana-473555297/" }
 ---
 
