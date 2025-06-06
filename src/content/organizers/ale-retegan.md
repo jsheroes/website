@@ -1,7 +1,7 @@
 ---
 name: "Ale Retegan"
 title: "Organizer"
-imgName: "organizers/ale-retegan.jpg"
+imgName: "organizers/ale-retegan.png"
 links: { linkedin: "https://www.linkedin.com/in/alexandraretegan/" }
 ---
 

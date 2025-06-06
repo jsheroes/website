@@ -1,7 +1,7 @@
 ---
 name: "Alex Moldovan"
 title: "Organizer"
-imgName: "organizers/alex-moldovan.jpeg"
+imgName: "organizers/alex-moldovan.png"
 links: { linkedin: "https://www.linkedin.com/in/alex-moldovan-947b215b/" }
 ---
 

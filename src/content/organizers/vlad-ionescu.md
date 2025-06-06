@@ -1,7 +1,7 @@
 ---
 name: "Vlad Ionescu"
 title: "Organizer"
-imgName: "organizers/vlad-ionescu.jpg"
+imgName: "organizers/vlad-ionescu.png"
 links: { linkedin: "https://www.linkedin.com/in/vlad-mihai-ionescu-a44860131/" }
 ---
 

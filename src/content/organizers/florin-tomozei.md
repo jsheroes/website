@@ -1,7 +1,7 @@
 ---
 name: "Florin Tomozei"
 title: "Organizer"
-imgName: "organizers/florin-tomozei.jpg"
+imgName: "organizers/florin-tomozei.png"
 links:
   {
     twitter: "https://twitter.com/florinscout",
