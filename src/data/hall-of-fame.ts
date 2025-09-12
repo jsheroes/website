@@ -261,4 +261,40 @@ export const talks: Talk[] = [
     link: "https://youtu.be/R4Ri4ft7bXY?si=zMAnRSKiiJytROnH",
     cover: "hall-of-fame/zach-leatherman.jpg",
   },
+  {
+    title: "Full-stack forms with JSON Schemas",
+    speaker: "Sandrina Pereira",
+    link: "https://youtu.be/UWI1rEr2yyg?si=2WeqNMStB6k2cjSU",
+    cover: "hall-of-fame/sandrina-pereira.jpg",
+  },
+  {
+    title: "Built-in accessibility: blessing or curse?",
+    speaker: "Hidde de Vries",
+    link: "https://youtu.be/GvYz9Qfy8j4?si=FE5N28DEB52m6qpR",
+    cover: "hall-of-fame/hidde-de-vries.jpg",
+  },
+  {
+    title: "Invisible Hand of React Performance",
+    speaker: "Ivan Akulov",
+    link: "https://youtu.be/iC-asCLp3fM?si=94IqZE_WmOm_zIgT",
+    cover: "hall-of-fame/ivan-akulov.jpg",
+  },
+  {
+    title: "Tooling Like It's 2025",
+    speaker: "Josh Goldberg",
+    link: "https://youtu.be/p-J9b4oq-sY?si=ejC3YcapU6NiY0vw",
+    cover: "hall-of-fame/josh-goldberg.jpg",
+  },
+  {
+    title: "Cascading Layers of !mportance",
+    speaker: "Miriam Suzanne",
+    link: "https://youtu.be/4PkhzoFLJ0Q?si=z2VPOZ7Owyruoj_J",
+    cover: "hall-of-fame/miriam-suzanne.jpg",
+  },
+  {
+    title: "Scroll-Driven Animations with CSS",
+    speaker: "Bramus Van Damme",
+    link: "https://youtu.be/9Q9lsFycfis?si=Sl8dj4dOKKAPezcA",
+    cover: "hall-of-fame/bramus-van-damme.jpg",
+  },
 ];

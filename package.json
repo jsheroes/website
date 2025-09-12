@@ -27,6 +27,7 @@
     "astro-tooltips": "^0.6.2",
     "chart.js": "^4.4.1",
     "prettier-plugin-tailwindcss": "^0.5.11",
+    "sharp": "^0.34.3",
     "tailwindcss": "^3.4.1"
   }
 }
