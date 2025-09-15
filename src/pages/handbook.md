@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/MarkdownLayout.astro
-title: Conference Handbook 2025
+title: Conference Handbook
 ---
 
 On this page you can find information about the event that will help you prepare for your trip and maximize your experience at JSHeroes. We've included details on the conference venue, agenda, and social events, as well as information on some of the initiatives we are taking to make the event accessible and comfortable for everyone.
