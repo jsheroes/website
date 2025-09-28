@@ -27,11 +27,6 @@ export const communities: Organization[] = [
     imgName: "communities/logo_squiggleconf.svg",
   },
   {
-    name: "CityJS",
-    url: "https://cityjsconf.org/",
-    imgName: "communities/logo_cityjs.png",
-  },
-  {
     name: "Code for Romania",
     url: "https://code4.ro/",
     imgName: "communities/logo_code4ro.png",
@@ -40,30 +35,5 @@ export const communities: Organization[] = [
     name: "QueerJS",
     url: "https://queerjs.com/",
     imgName: "communities/logo_queerjs.svg",
-  },
-  {
-    name: "GrUSP",
-    url: "https://www.grusp.org/en/",
-    imgName: "communities/logo_grusp.png",
-  },
-  {
-    name: "React Paris",
-    url: "https://react.paris/",
-    imgName: "communities/logo_reactparis.png",
-  },
-  {
-    name: "React Brussels",
-    url: "https://www.react.brussels/",
-    imgName: "communities/logo_reactbrussels.png",
-  },
-  {
-    name: "React Milano",
-    url: "https://www.meetup.com/React-JS-Milano/",
-    imgName: "communities/logo_reactmilano.png",
-  },
-  {
-    name: "Today Software Magazine",
-    url: "https://www.todaysoftmag.ro/",
-    imgName: "communities/logo_tsm.png",
   },
 ];
