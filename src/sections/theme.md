@@ -1,9 +1,7 @@
-<h2 id="agenda">Bridging the gap</h2>
+<h2 id="agenda">Looking into the future</h2>
 
-Our ecosystem has an abundance of technologies, tools, frameworks and services to deliver applications faster than ever before. With new standards and ways of building across multiple platforms, developers have wide toolkit at their disposal. But there's a growing gap between our projects, with accumulated technical debt and complexity, and the tools and frameworks developed by the community. In 2025, we're bridging that gap.
+Today developers have an abundance of tools, frameworks and services, at their disposal, to build software faster than ever. After years of innovation and disruption, our ecosystem has reached a certain level of maturity and stability. But the industry requirements are changing rapidly. The growing depth of our tech stacks, the various disciplines involved in modern software development and the rapid rise of AI are drastically impacting our everyday work. So how can we navigate these changes and build a future-proof career?
 
-Our speakers will present solutions for common industry problems, highlight the strugles with managing complexity, maintainability and scalability and will explore new technologies, frameworks and standards that tackle all these concerns.
+In 2026, we will explore the latest trends in engineering and architecture and the tools and frameworks that will shape our work in the years to come. But we will also take a step back and have a high level look at career development and growth. Our speakers will share their insights on the technologies and practices that can help us navigate through constant changes and growing complexities. They will also emphasize the skills and competencies that are essential for our professional growth.
 
-At JSHeroes, we always ventured outside the pure language ecosystem, so expect to see a variety of talks covering the entire landscape of web development and JavaScript as a universal programming language.
-
-But of course, we will not neglect the human side of things, in our effort to paint a full picture for the development community in 2025.
+At JSHeroes, we always ventured outside the pure language ecosystem, so expect to see a variety of talks covering the entire landscape of web development and JavaScript as a universal programming language. But of course, we will not neglect the human side of things, in our effort to paint a full picture for the development community in 2026.
