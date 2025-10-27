@@ -11,7 +11,7 @@ const orderedTalks = talks.sort((t1, t2) => (t1.speaker > t2.speaker ? 1 : -1));
 <BaseLayout title="JSHeroes - Hall of Fame">
   <img
     class="block h-[500px] w-full object-cover"
-    src={"/img/banners/default-with-bear.svg"}
+    src={"/img/banners/default.svg"}
     aria-hidden
   />
 
@@ -41,7 +41,7 @@ const orderedTalks = talks.sort((t1, t2) => (t1.speaker > t2.speaker ? 1 : -1));
                   height="250"
                   class="w-full transition-transform duration-fade ease-out hover:scale-[1.1]"
                 />
-                <div class="to-transparent flex-end pointer-events-none absolute bottom-0 flex w-full flex-col bg-gradient-to-t from-primary p-4 pt-8 font-display text-neutral-light">
+                <div class="to-transparent flex-end pointer-events-none absolute bottom-0 flex w-full flex-col bg-gradient-to-t from-brand-darknavy p-4 pt-8 font-display text-neutral-light">
                   <span class="text-lg font-bold">{talk.speaker}</span>
                   <span class="text-balance">{talk.title}</span>
                 </div>

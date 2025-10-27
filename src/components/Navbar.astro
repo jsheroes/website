@@ -19,8 +19,8 @@ const navlinkClass = `navlink ${theme}`;
         href="#main">Skip navigation</a
       >
       <a class={navlinkClass} href="/">Home</a>
-      <a class={navlinkClass} href="/transparency">Transparency</a>
-      <a class={navlinkClass} href="/hall-of-fame">Hall of Fame</a>
+      <a class={navlinkClass} href="/speak">Call for speakers</a>
+      <a class={navlinkClass} href="/sponsor">Call for sponsors</a>
     </div>
 
     <button
@@ -35,7 +35,7 @@ const navlinkClass = `navlink ${theme}`;
 </header>
 
 <nav
-  class="side-drawer fixed right-0 top-0 z-30 flex h-full w-full max-w-[400px] translate-x-full flex-col overflow-y-scroll bg-primary font-display transition-all duration-slide ease-out"
+  class="side-drawer fixed right-0 top-0 z-30 flex h-full w-full max-w-[400px] translate-x-full flex-col overflow-y-scroll bg-gradient-to-br from-brand-darknavy to-brand-purple font-display transition-all duration-slide ease-out"
   aria-hidden="true"
   aria-label="Sidebar navigation"
   id="sidebar-nav"
@@ -53,9 +53,9 @@ const navlinkClass = `navlink ${theme}`;
   <div class="mt-12 flex w-full flex-col gap-8 pb-6">
     <div class="flex flex-col items-start gap-2 px-16">
       <a class="navlink" href="/">Home</a>
-      <!-- <a class="navlink" href="/#speakers">Speakers</a> -->
+      <a class="navlink" href="/speak">Call for speakers</a>
       <!-- <a class="navlink" href="/#agenda">Agenda</a> -->
-      <a class={navlinkClass} href="/sponsor">Call for Sponsors</a>
+      <a class={navlinkClass} href="/sponsor">Call for sponsors</a>
     </div>
 
     <div class="flex flex-col items-start gap-2 px-16">

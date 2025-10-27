@@ -56,7 +56,7 @@ export const BRONZE_PACKAGE: Package = {
   description: "Ideal for startups and small companies",
   benefits: ["logo", "spotlight", "rollup"],
   highlightedBenefits: [],
-  availability: 3,
+  availability: 5,
 };
 
 export const SILVER_PACKAGE: Package = {
@@ -67,7 +67,7 @@ export const SILVER_PACKAGE: Package = {
     "Ideal for companies that want to increase brand awareness at the event",
   benefits: ["logo", "spotlight", "rollup", "giveaways", "video"],
   highlightedBenefits: ["giveaways", "video"],
-  availability: 0,
+  availability: 3,
 };
 
 export const GOLD_PACKAGE: Package = {
@@ -86,5 +86,5 @@ export const GOLD_PACKAGE: Package = {
     "pitch",
   ],
   highlightedBenefits: ["tickets", "pitch"],
-  availability: 0,
+  availability: 2,
 };

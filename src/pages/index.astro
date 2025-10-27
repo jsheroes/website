@@ -13,20 +13,21 @@ import { Content as Theme } from "../sections/theme.md";
 import { Content as Event } from "../sections/event.md";
 import Organizers from "../sections/organizers.astro";
 import { day1, day2 } from "../data/agenda";
+import { CFP_OPEN } from "@/data/constants";
+import ImagesBanner from "@/components/ImagesBanner.astro";
 ---
 
 <BaseLayout>
   <Banner />
   <main id="main">
-    <Section variant="light" content="text">
-      <News />
-    </Section>
+
     <Section id="speakers" variant="dark" content="list">
       <Speakers />
     </Section>
-    <!-- 
+    
     <Section variant="light" content="text">
       <Theme />
+      {CFP_OPEN && (<p>Do you want to speak at next year's event? <a href="/speak">Submit a talk proposal</a> today!</p>)}
       <span class="absolute right-[16%] top-[-110px] z-10 hidden lg:block">
         <img
           class="w-[200px]"
@@ -35,25 +36,21 @@ import { day1, day2 } from "../data/agenda";
           aria-hidden="true"
         />
       </span>
-      <h2>Agenda</h2>
+      <!-- <h2 class="mt-8">Agenda</h2>
       <p>
         This is just a draft version of the agenda.
       </p>
       <Agenda title="Day 1: Thursday May 14" agendaItems={day1} />
-      <Agenda title="Day 2: Friday May 15" agendaItems={day2} />
-    </Section> -->
-    <Section variant="dark" content="text">
-      <Description />
-      <span class="absolute left-[-120px] top-[100px] z-10 hidden lg:block">
-        <BearLink rotate={90} animation="scaleAndSlide" />
-      </span>
+      <Agenda title="Day 2: Friday May 15" agendaItems={day2} /> -->
     </Section>
-    <Section id="sponsors" variant="light" content="list">
-      <Friends />
-    </Section>
+    <ImagesBanner images={["event/venue3.jpg", "event/venue5.jpg", "event/venue1.jpg"]} />
     <Section variant="dark" content="text">
       <Event />
-      <span class="absolute right-1/4 top-[-100px] z-10 hidden lg:block">
+      
+      <!-- <span class="absolute right-[-100px] top-[100px] z-10 hidden lg:block">
+        <BearLink rotate={330} animation="scaleAndSlide" />
+      </span> -->
+      <span class="absolute right-1/4 top-[-50px] z-10 hidden lg:block">
         <a
           class="duration-speed-move block transition-transform ease-out after:hidden hover:scale-110"
           target="_blank"
@@ -65,7 +62,15 @@ import { day1, day2 } from "../data/agenda";
         </a>
       </span>
     </Section>
-    <Section variant="light" content="list">
+    <ImagesBanner images={["event/community1.jpg", "event/community2.jpg", "event/merch1.jpg"]} />
+    <Section variant="dark" content="text">
+      <Description />
+    </Section>
+    <Section id="sponsors" variant="light" content="list">
+      <Friends />
+    </Section>
+    <ImagesBanner images={["event/venue4.jpg", "event/community3.jpg", "event/community5.jpg"]} />
+    <Section variant="dark" content="list">
       <Organizers />
     </Section>
   </main>

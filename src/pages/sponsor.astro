@@ -10,53 +10,61 @@ import {
   GOLD_PACKAGE,
   BENEFITS_INFO,
 } from "@/data/packages";
+import { Image } from "astro:assets";
+import { getImage } from "@/utils/getImage";
 ---
 
 <BaseLayout>
-  <Banner variant="sponsor" />
+  <Image
+    src={getImage("event/sponsor4.jpg")}
+    alt=""
+    densities={[1.5, 2]}
+    loading="eager"
+    class="block h-[500px] w-full object-cover"
+  />
 
   <main id="main">
     <Section variant="light" content="list">
-      <h2 class="text-center text-xl">Sponsors welcome!</h2>
-      <p class="text-balance text-center">
+      <h2 class="text-xl">Sponsors welcome!</h2>
+      <p class="text-balance">
         What started as a small idea from the local JavaScript community,
         evolved into one of the biggest community-organized events in Europe.
       </p>
       <div
         class="grid grid-cols-1 items-center gap-0 font-display sm:gap-4 md:grid-cols-2 lg:grid-cols-3 xl:gap-8"
       >
-        <div class="flex flex-col items-center">
-          <span class="text-huge font-[500] text-accent-pink">500+</span>
+        <div class="flex flex-col">
+          <span class="text-huge font-[500] text-accent-pink">300+</span>
           <span class="mt-[-3rem] text-lg font-[500]">attendees</span>
           <span>25% international audience</span>
         </div>
 
-        <div class="flex flex-col items-center">
-          <span class="text-huge font-[500] text-dodger-blue">18</span>
+        <div class="flex flex-col">
+          <span class="text-huge font-[500] text-dodger-blue">16</span>
           <span class="mt-[-3rem] text-lg font-[500]">speakers</span>
           <span>from all over the world</span>
         </div>
 
-        <div class="flex flex-col items-center">
+        <div class="flex flex-col">
           <span class="text-huge font-[500] text-accent-green">2</span>
           <span class="mt-[-3rem] text-lg font-[500]">days</span>
-          <span>16 hours of quality content</span>
+          <span>14 hours of quality content</span>
         </div>
 
-        <div class="flex flex-col items-center">
+        <div class="flex flex-col">
           <span class="text-huge font-[500] text-accent-orange">3K</span>
-          <span class="mt-[-3rem] text-lg font-[500]">community members</span>
+          <span class="mt-[-3rem] text-lg font-[500]">members</span>
           <span>on our meetup.com group</span>
         </div>
 
-        <div class="flex flex-col items-center">
-          <span class="text-huge font-[500] text-accent-green">7.2K</span>
+        <div class="flex flex-col">
+          <span class="text-huge font-[500] text-accent-green">10K</span>
           <span class="mt-[-3rem] text-lg font-[500]">followers</span>
-          <span>across LinkedIn, Facebook, Bluesky and more</span>
+          <span>across our social media channels</span>
         </div>
 
-        <div class="flex flex-col items-center">
-          <span class="text-huge font-[500] text-accent-pink">3.6K</span>
+        <div class="flex flex-col">
+          <span class="text-huge font-[500] text-accent-pink">3.8K</span>
           <span class="mt-[-3rem] text-lg font-[500]">subscribers</span>
           <span>on our YouTube channel</span>
         </div>
@@ -80,7 +88,7 @@ import {
         <div>
           <h3>Brand association</h3>
           <p class="mt-4">
-            Over the past 7 years, JSHeroes has grown into one of the most <strong
+            Over the past 9 years, JSHeroes has grown into one of the most <strong
               >recognizable</strong
             > brands in the JavaScript community in Romania and beyond. Your company
             will benefit from being showcased on our visuals and video recordings.
