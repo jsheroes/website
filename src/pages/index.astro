@@ -17,7 +17,7 @@ import { CFP_OPEN } from "@/data/constants";
 import ImagesBanner from "@/components/ImagesBanner.astro";
 ---
 
-<BaseLayout>
+<BaseLayout isHomePage>
   <Banner />
   <main id="main">
 
@@ -27,7 +27,7 @@ import ImagesBanner from "@/components/ImagesBanner.astro";
     
     <Section variant="light" content="text">
       <Theme />
-      {CFP_OPEN && (<p>Do you want to speak at next year's event? <a href="/speak">Submit a talk proposal</a> today!</p>)}
+      {CFP_OPEN && (<p>Do you want to speak at JSHeroes? <a href="/speak">Submit a proposal</a> today!</p>)}
       <span class="absolute right-[16%] top-[-110px] z-10 hidden lg:block">
         <img
           class="w-[200px]"

@@ -29,10 +29,11 @@ export default {
         slide: "200ms",
       },
       fontSize: {
-        sm: "0.8rem",
+        sm: "1rem",
+        baseMobile: "1.1rem",
         base: "1.3rem",
         lg: "1.8rem",
-        xl: "2.4rem",
+        xl: "2.2rem",
         huge: "7rem",
       },
       typography: {

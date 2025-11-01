@@ -15,35 +15,42 @@ const subTitle = variant === 'default' ? "An all things JavaScript conference" :
   class="relative flex h-screen items-center justify-center bg-brand-darknavy"
 >
   <video autoplay loop class="h-full w-full object-cover">
-    <source src="/movie-cut.mov" type="video/mp4" />
+    <source src="/movie-cut.mp4" type="video/mp4" />
   </video>
 
   <div class="absolute inset-0 bg-gradient-to-b from-[#0b1b4480] from-50% to-brand-darknavy to-90%">
-    <span class="bear-anchor absolute bottom-[-100px] right-[150px] z-10 animate-none lg:animate-bear-float">
+    <span class="hidden md:block bear-anchor absolute right-[120px] bottom-[-100px] z-10 animate-none lg:animate-bear-float">
       <BearLink animation="scale" />
     </span>
   </div>
 
   <div class="absolute w-full px-4 md:px-8">
     <div
-      class="flex flex-col items-start max-w-[1280px] m-auto gap-4 font-display text-neutral-light"
+      class="flex flex-col items-start max-w-[1280px] m-auto gap-8 font-display text-neutral-light"
     >
-      <img
-        src="/img/logo-dark.svg"
-        alt="JSHeroes"
-        class="w-[440px]"
-      />
-      <h1 class="text-base">{subTitle}</h1>
+      <div class="space-y-3">
+        <img
+          src="/img/logo-dark.svg"
+          alt="JSHeroes"
+          class="w-[440px]"
+        />
+        <h1 class="text-base">{subTitle}</h1>
+      </div>
 
-      <h2 class="text-base">Two days, 16 talks, 300+ attendees in the heart of Transylvania ❤️</h2>
-      <p class="text-lg font-medium">
-        May <span class="text-[1.2em]">14-15th</span> 2026
-      </p>
-      <p>in Cluj-Napoca, Romania</p>
-      <!-- {
+      <div>
+        <h2 class="text-xl flex flex-wrap"><span>2 days ◦ 16 talks ◦ </span><span>300+ attendees</span></h2>
+        <p class="text-base">in the heart of Transylvania ❤️</p>
+      </div>
+      <div>
+        <p class="text-lg font-medium">
+          May <span class="text-lg">14-15th</span> 2026
+        </p>
+        <p class="text-base">Cluj-Napoca, Romania</p>
+      </div>
+      {
         variant === 'default' && (
           <a
-            href="https://ti.to/jsheroes/2025/"
+            href="https://ti.to/jsheroes/2026/"
             target="_blank"
             rel="noreferrer noopener"
             class="cta-button"
@@ -51,7 +58,7 @@ const subTitle = variant === 'default' ? "An all things JavaScript conference" :
             Buy tickets
           </a>
         )
-      } -->
+      }
       
     </div>
   </div>

@@ -7,13 +7,19 @@ interface Props {
 }
 
 const { images } = Astro.props;
+const [image1, image2, image3] = images;
+
 ---
 
 <div class="flex w-full relative overflow-hidden">
-  {images.map((imageSrc) => (
-    <div class="w-1/3">
-    <Image src={getImage(imageSrc)} alt="" densities={[1.5, 2]} loading="eager" class="object-cover" />
-    </div>
-  ))}
+  <div class="w-full sm:w-1/2 lg:w-1/3">
+    <Image src={getImage(image1)} alt="" densities={[1.5, 2]} loading="eager" class="object-cover" />
+  </div>
+  <div class="w-1/2 lg:w-1/3 hidden sm:block">
+    <Image src={getImage(image2)} alt="" densities={[1.5, 2]} loading="eager" class="object-cover" />
+  </div>
+  <div class="w-1/3 hidden lg:block">
+    <Image src={getImage(image3)} alt="" densities={[1.5, 2]} loading="eager" class="object-cover" />
+  </div>
   <div class="absolute inset-0 bg-gradient-to-b from-[#00000000] from-20% to-brand-darknavy"/>
 </div>

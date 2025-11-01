@@ -5,11 +5,13 @@
 @layer components {
   .cta-button {
     text-decoration: none;
+    font-family: theme("fontFamily.display");
+    font-size: theme("fontSize.base");
     background: theme("colors.accent-orange");
     color: theme("colors.neutral-dark");
     padding: 0.5rem 2rem;
     border: none;
-    border-radius: 1rem;
+    border-radius: 0.8rem;
     outline-offset: -4px;
     transition: all theme("transitionDuration.fade") ease-out;
   }
@@ -63,8 +65,13 @@
     background-color: theme("colors.neutral-light");
     line-height: 1.6;
     overscroll-behavior-y: none;
-
     scroll-behavior: smooth;
+  }
+
+  @media (max-width: 768px) {
+    html {
+      font-size: theme("fontSize.baseMobile");
+    }
   }
 
   @media only screen and (-webkit-min-device-pixel-ratio: 1.3),
