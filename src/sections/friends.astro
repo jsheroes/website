@@ -31,6 +31,7 @@ const headingStyles = "text-center md:text-left";
             target={sponsor.url.startsWith("http") ? "_blank" : "_self"}
             rel="noreferrer noopener"
             title={sponsor.name}
+            aria-label={`Visit the website of ${sponsor.name}`}
           >
             <div class={imageWrapperStyles}>
               <Image
@@ -58,6 +59,7 @@ const headingStyles = "text-center md:text-left";
             target="_blank"
             rel="noreferrer noopener"
             title={sponsor.name}
+            aria-label={`Visit the website of ${sponsor.name}`}
           >
             <div class={imageWrapperStyles}>
               <Image
@@ -85,6 +87,7 @@ const headingStyles = "text-center md:text-left";
             target="_blank"
             rel="noreferrer noopener"
             title={sponsor.name}
+            aria-label={`Visit the website of ${sponsor.name}`}
           >
             <div class={imageWrapperStyles}>
               <Image
@@ -123,6 +126,7 @@ const headingStyles = "text-center md:text-left";
               target="_blank"
               rel="noreferrer noopener"
               title={com.name}
+              aria-label={`Visit the website of ${com.name}`}
             >
               <div class={imageWrapperStyles}>
                 <Image
@@ -152,6 +156,7 @@ const headingStyles = "text-center md:text-left";
               target="_blank"
               rel="noreferrer noopener"
               title={com.name}
+              aria-label={`Visit the website of ${com.name}`}
               style={com.overrideBgColor ? `background-color: ${com.overrideBgColor};` : ""}
             >
               <div class={imageWrapperStyles}>

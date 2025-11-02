@@ -14,7 +14,7 @@ const subTitle = variant === 'default' ? "An all things JavaScript conference" :
 <div
   class="relative flex h-screen items-center justify-center bg-brand-darknavy"
 >
-  <video autoplay loop muted class="h-full w-full object-cover">
+  <video preload="true" autoplay loop muted playsinline class="h-full w-full object-cover">
     <source src="/movie-cut.mp4" type="video/mp4" />
   </video>
 
@@ -55,7 +55,7 @@ const subTitle = variant === 'default' ? "An all things JavaScript conference" :
             rel="noreferrer noopener"
             class="cta-button"
           >
-            Buy tickets
+            Tickets
           </a>
         )
       }

@@ -23,9 +23,9 @@ We are also very excited about our initiative that encourages participants to re
 
 ### Coffee and water
 
-We know coffee is important for our participants, so we continue to take great care in improving this aspect when it comes to waste management. We will continue using **100% biodegradable** cups, but, most importantly we would like to encourage you to join us in making this conference as sustainable as possible, by *bringing your own reusable coffee cup*.
+We know coffee is important for our participants, so we continue to take great care in improving this aspect when it comes to waste management. We will continue using **100% biodegradable** cups, but, most importantly we would like to encourage you to join us in making this conference as sustainable as possible, by _bringing your own reusable coffee cup_.
 
-When it comes to water, we are thrilled to announce that we’ve totally reduced our plastic use. We will have two **water coolers** and glass bottles ready and waiting for you. And, most importantly, we encourage you to *bring your own water recipient*. 
+When it comes to water, we are thrilled to announce that we’ve totally reduced our plastic use. We will have two **water coolers** and glass bottles ready and waiting for you. And, most importantly, we encourage you to _bring your own water recipient_.
 
 ### Merchandise point
 
@@ -37,6 +37,6 @@ Every year we try to **minimize printing on paper** as much as possible. We se
 
 ### Supporting Agent Green
 
-In addition to these initiatives, and because our mascot, [Ecma](https://jsheroes.io/meet-ecma), is a bear, we will encourage our participants to make a donation to the [Agent Green](https://www.agentgreen.ro/) organisation. They are heavily involved in concrete actions when it comes to saving Romanian forests and protecting the brown bear. They continue to fight and win processes regarding illegal deforestation. 
+In addition to these initiatives, and because our mascot, [Ecma](https://jsheroes.io/meet-ecma), is a bear, we will encourage our participants to make a donation to the [Agent Green](https://www.agentgreen.ro/) organisation. They are heavily involved in concrete actions when it comes to saving Romanian forests and protecting the brown bear. They continue to fight and win processes regarding illegal deforestation.
 
 All this being said, we believe that it is important to come together as a community to address part of the problems facing our environment. By taking action and focusing on sustainable practices, we can create a positive impact. We look forward to seeing you at the conference where we can collaborate and share more ideas on how we can improve.
