@@ -16,6 +16,7 @@ const personSchema = {
         linkedin: z.string().optional(),
       })
       .optional(),
+    order: z.number().optional(),
   }),
 };
 

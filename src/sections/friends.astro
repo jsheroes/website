@@ -24,7 +24,7 @@ const headingStyles = "text-center md:text-left";
     <h2 class={headingStyles}>Gold sponsors</h2>
     <ul role="list" class={`${listStyles} grid-cols-1 md:grid-cols-2`}>
       {goldSponsors.map((sponsor) => (
-        <li class={`${listItemStyles} h-[200px] sm:h-[350px]`}>
+        <li class={`${listItemStyles} h-[250px] sm:h-[350px]`}>
           <a
             class={linkStyles}
             href={sponsor.url}
@@ -48,78 +48,82 @@ const headingStyles = "text-center md:text-left";
       ))}
     </ul>
   </div>
-  <div class="space-y-6">
-    <h2 class={headingStyles}>Silver sponsors</h2>
-    <ul role="list" class={`${listStyles} grid-cols-1 sm:grid-cols-2 md:grid-cols-3`}>
-      {silverSponsors.map((sponsor) => (
-        <li class={`${listItemStyles} h-[150px] sm:h-[220px]`}>
-          <a
-            class={linkStyles}
-            href={sponsor.url}
-            target="_blank"
-            rel="noreferrer noopener"
-            title={sponsor.name}
-            aria-label={`Visit the website of ${sponsor.name}`}
-          >
-            <div class={imageWrapperStyles}>
-              <Image
-                src={getImage(sponsor.imgName)}
-                alt=""
-                loading="lazy"
-                width="350"
-                height="175"
-                densities={[1.5, 2]}
-              />
-            </div>
+  {silverSponsors.length > 0 && (
+    <div class="space-y-6">
+      <h2 class={headingStyles}>Silver sponsors</h2>
+      <ul role="list" class={`${listStyles} grid-cols-1 sm:grid-cols-2 md:grid-cols-3`}>
+        {silverSponsors.map((sponsor) => (
+          <li class={`${listItemStyles} h-[180px] sm:h-[220px]`}>
+            <a
+              class={linkStyles}
+              href={sponsor.url}
+              target="_blank"
+              rel="noreferrer noopener"
+              title={sponsor.name}
+              aria-label={`Visit the website of ${sponsor.name}`}
+            >
+              <div class={imageWrapperStyles}>
+                <Image
+                  src={getImage(sponsor.imgName)}
+                  alt=""
+                  loading="lazy"
+                  width="350"
+                  height="175"
+                  densities={[1.5, 2]}
+                />
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+  {bronzeSponsors.length > 0 && (
+    <div class="space-y-6">
+      <h2 class={headingStyles}>Bronze sponsors</h2>
+      <ul role="list" class={`${listStyles} grid-cols-2 sm:grid-cols-3 md:grid-cols-4`}>
+        {bronzeSponsors.map((sponsor) => (
+          <li class={`${listItemStyles} h-[150px] sm:h-[175px]`}>
+            <a
+              class={linkStyles}
+              href={sponsor.url}
+              target="_blank"
+              rel="noreferrer noopener"
+              title={sponsor.name}
+              aria-label={`Visit the website of ${sponsor.name}`}
+            >
+              <div class={imageWrapperStyles}>
+                <Image
+                  src={getImage(sponsor.imgName)}
+                  alt=""
+                  loading="lazy"
+                  width="300"
+                  height="150"
+                  densities={[1.5, 2]}
+                />
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p>
+        If you are interested in supporting us,{" "}
+        <strong>
+          <a href="/sponsor" rel="noreferrer noopener">
+            check out our sponsorship page
           </a>
-        </li>
-      ))}
-    </ul>
-  </div>
-  <div class="space-y-6">
-    <h2 class={headingStyles}>Bronze sponsors</h2>
-    <ul role="list" class={`${listStyles} grid-cols-2 sm:grid-cols-3 md:grid-cols-4`}>
-      {bronzeSponsors.map((sponsor) => (
-        <li class={`${listItemStyles} h-[120px] sm:h-[175px]`}>
-          <a
-            class={linkStyles}
-            href={sponsor.url}
-            target="_blank"
-            rel="noreferrer noopener"
-            title={sponsor.name}
-            aria-label={`Visit the website of ${sponsor.name}`}
-          >
-            <div class={imageWrapperStyles}>
-              <Image
-                src={getImage(sponsor.imgName)}
-                alt=""
-                loading="lazy"
-                width="300"
-                height="150"
-                densities={[1.5, 2]}
-              />
-            </div>
-          </a>
-        </li>
-      ))}
-    </ul>
-    <p>
-      If you are interested in supporting us,{" "}
-      <strong>
-        <a href="/sponsor" rel="noreferrer noopener">
-          check out our sponsorship page
-        </a>
-      </strong>
-      .
-    </p>
-  </div>
+        </strong>
+        .
+      </p>
+    </div>
+  )}
 
   <div class="space-y-6">
     <h2 class={headingStyles}>Event partners</h2>
     <ul role="list" class={`${listStyles} grid-cols-2 sm:grid-cols-3 md:grid-cols-4`}>
       {
         partners.map((com) => (
-          <li class={`${listItemStyles} h-[120px] sm:h-[175px]`}>
+          <li class={`${listItemStyles} h-[150px] sm:h-[175px]`}>
             <a
               class={linkStyles}
               href={com.url}
@@ -149,7 +153,7 @@ const headingStyles = "text-center md:text-left";
     <ul role="list" class={`${listStyles} grid-cols-2 sm:grid-cols-3 md:grid-cols-4`}>
       {
         communities.map((com) => (
-          <li class={`${listItemStyles} h-[120px] sm:h-[175px]`}>
+          <li class={`${listItemStyles} h-[150px] sm:h-[175px]`}>
             <a
               class={linkStyles}
               href={com.url}

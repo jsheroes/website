@@ -10,6 +10,14 @@ const support = await getCollection("support");
 
 const listStyles = "flex flex-wrap justify-center md:justify-start gap-8 py-8 px-0";
 const listItemStyles = "color-item list-none pb-4";
+
+const speakersSorted = Object.values(speakers);
+speakersSorted.sort((a, b) => {
+  if (a.data.order && b.data.order) {
+    return a.data.order - b.data.order;
+  }
+  return 0;
+});
 ---
 
 <div>
@@ -18,7 +26,7 @@ const listItemStyles = "color-item list-none pb-4";
 
 <ul role="list" class={listStyles}>
   {
-    Object.values(speakers).map((s) => (
+    speakersSorted.map((s) => (
       <li class={listItemStyles}>
         <PersonCard person={s} />
       </li>
@@ -75,7 +83,7 @@ const listItemStyles = "color-item list-none pb-4";
   }
 
   .color-item:nth-child(7n + 4) {
-    --person-accent-color: #6b7ba4;
+    --person-accent-color: #8b9bc4;
   }
 
   .color-item:nth-child(7n + 5) {

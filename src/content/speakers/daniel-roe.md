@@ -9,6 +9,7 @@ links:
   bluesky: "https://bsky.app/profile/danielroe.dev"
   github: "https://github.com/danielroe"
   linkedin: "https://www.linkedin.com/in/daniel-roe/"
+order: 3
 ---
 
 Daniel leads the Nuxt core team. Previously, he was CTO of a SaaS startup and founder of a creative agency focusing on clarity of vision and message.

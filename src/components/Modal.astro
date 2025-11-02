@@ -63,7 +63,7 @@ links.sort((a, b) => sortOrder.indexOf(a.name) - sortOrder.indexOf(b.name));
   if (event.currentTarget === event.target) event.currentTarget.close()
   "
 >
-  <main class="w-100% flex max-w-[800px] flex-col gap-6 overflow-auto">
+  <main class="w-100% flex max-w-[800px] bg-neutral-light p-4 rounded-lg flex-col gap-6 overflow-auto">
     <div
       class="w-100% flex flex-col items-center gap-4 pb-2 md:flex-row md:items-start"
     >
@@ -74,7 +74,7 @@ links.sort((a, b) => sortOrder.indexOf(a.name) - sortOrder.indexOf(b.name));
           width="250"
           height="250"
           densities={[1.5, 2]}
-          class="max-w-[inherit]"
+          class="max-w-[inherit] rounded-md"
         />
         <div class="flex gap-4 px-2">
           {
@@ -106,7 +106,9 @@ links.sort((a, b) => sortOrder.indexOf(a.name) - sortOrder.indexOf(b.name));
           >
         </div>
 
-        <BioContent />
+        <div class="prose text-sm leading-snug">
+          <BioContent />
+        </div>
       </div>
     </div>
 
@@ -114,7 +116,9 @@ links.sort((a, b) => sortOrder.indexOf(a.name) - sortOrder.indexOf(b.name));
       speakerTalk && TalkContent ? (
         <div class="flex flex-col gap-2">
           <strong>Talk: {speakerTalk.data.title}</strong>
-          <TalkContent />
+          <div class="prose text-sm leading-snug">
+            <TalkContent />
+          </div>
         </div>
       ) : null
     }

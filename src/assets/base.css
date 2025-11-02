@@ -60,17 +60,23 @@
 @layer base {
   html {
     font-family: theme("fontFamily.base");
-    font-size: theme("fontSize.base");
+    font-size: 1rem;
     color: theme("colors.neutral-dark");
     background-color: theme("colors.neutral-light");
-    line-height: 1.6;
+    line-height: 1.5;
     overscroll-behavior-y: none;
     scroll-behavior: smooth;
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 768px) {
     html {
-      font-size: theme("fontSize.baseMobile");
+      font-size: 1.2rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    html {
+      font-size: 1.4rem;
     }
   }
 
@@ -117,7 +123,7 @@
 
   h3 {
     font-family: theme("fontFamily.display");
-    font-size: theme("fontSize.base");
+    font-size: theme("fontSize.md");
     font-weight: theme("fontWeight.semibold");
   }
 
@@ -138,8 +144,9 @@
     right: 0;
     top: 0;
     bottom: 0;
-    padding: 1rem;
+    border-radius: 1rem;
     overflow: visible;
+    background-color: var(--person-accent-color);
     border: 1rem solid var(--person-accent-color);
   }
 
