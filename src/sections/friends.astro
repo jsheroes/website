@@ -26,7 +26,7 @@ const headingStyles = "text-center md:text-left";
       {goldSponsors.map((sponsor) => (
         <li class={`${listItemStyles} h-[250px] sm:h-[350px]`}>
           <a
-            class={linkStyles}
+            class={`${linkStyles} ${sponsor.imgName.includes("logo_placeholder") ? "border-[4px] border-dashed" : ""}`}
             href={sponsor.url}
             target={sponsor.url.startsWith("http") ? "_blank" : "_self"}
             rel="noreferrer noopener"

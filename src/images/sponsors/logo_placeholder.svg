@@ -1,11 +1,20 @@
 <svg width="300" height="120" viewBox="0 0 300 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Dashed border on transparent background -->
-  <rect x="2" y="2" width="296" height="116" rx="8" stroke="#9CA3AF" stroke-width="2" stroke-dasharray="8 4" fill="none"/>
+  <!-- Icon - Geometric shapes (triangle, square, circle) -->
+  <g transform="translate(50, 60)">
+    <!-- Triangle (purple) - top -->
+    <polygon points="0,-20 10,-2 -10,-2" fill="#9333EA"/>
+    
+    <!-- Circle (blue) - bottom left -->
+    <circle cx="-12" cy="8" r="10" fill="#3B82F6"/>
+    
+    <!-- Square (yellow) - bottom right -->
+    <rect x="4" y="-2" width="20" height="20" fill="#EAB308"/>
+  </g>
   
-  <!-- Main text -->
-  <text x="150" y="50" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="#6B7280" text-anchor="middle">Your company logo here</text>
+  <!-- Main text (right side) -->
+  <text x="100" y="55" font-family="Ubuntu, system-ui, -apple-system, sans-serif" font-size="24" font-weight="600" fill="#111827" text-anchor="start" letter-spacing="-0.5">Your Logo Here</text>
   
-  <!-- Subtitle text -->
-  <text x="150" y="75" font-family="Arial, sans-serif" font-size="12" fill="#9CA3AF" text-anchor="middle">Contact us for sponsorship opportunities</text>
+  <!-- Subtitle text (right side) -->
+  <text x="100" y="78" font-family="Ubuntu, system-ui, -apple-system, sans-serif" font-size="15" fill="#4B5563" text-anchor="start" letter-spacing="-0.3">Become a sponsor</text>
 </svg>
 

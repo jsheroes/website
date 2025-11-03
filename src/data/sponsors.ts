@@ -7,7 +7,7 @@ export const goldSponsors: Organization[] = [
     imgName: "sponsors/logo_globalLogic.png",
   },
   {
-    name: "Your company",
+    name: "Become a sponsor",
     url: "/sponsor",
     imgName: "sponsors/logo_placeholder.svg",
   },
