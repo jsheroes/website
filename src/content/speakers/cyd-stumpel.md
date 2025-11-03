@@ -5,5 +5,4 @@ tag: "CSS"
 imgName: "speakers/cyd-stumpel.png"
 links:
   website: "https://cydstumpel.nl/"
-order: 5
 ---

@@ -11,7 +11,7 @@ const support = await getCollection("support");
 const listStyles = "flex flex-wrap justify-center md:justify-start gap-8 py-8 px-0";
 const listItemStyles = "color-item list-none pb-4";
 
-const speakersSorted = Object.values(speakers);
+const speakersSorted = Object.values(speakers).filter(s => s.data.order);
 speakersSorted.sort((a, b) => {
   if (a.data.order && b.data.order) {
     return a.data.order - b.data.order;
