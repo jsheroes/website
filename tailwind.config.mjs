@@ -12,8 +12,10 @@ export default {
     colors: {
       "neutral-dark": "#202022",
       "neutral-light": "#ffffff",
-      "neutral-separator": "#ebe7e7",
-      primary: "#0b1b44",
+      "neutral-separator": "#cccccc",
+      "brand-darknavy": "#0b1b44",
+      "brand-purple": "#442c75",
+
       "accent-pink": "#ff6078",
       "accent-orange": "#ffcc67",
       "accent-green": "#65d3bb",
@@ -27,15 +29,12 @@ export default {
         slide: "200ms",
       },
       fontSize: {
-        sm: "clamp(0.8rem, 0.2vw + 0.8rem, 0.9rem)",
-        base: "clamp(1rem, 0.34vw + 0.91rem, 1.19rem)",
-        lg: "clamp(1.2rem, 0.7vw + 1.3rem, 1.8rem)",
-        xl: "clamp(2.4rem, 2.38vw + 1.85rem, 3.6rem)",
-        huge: "clamp(7rem, 2.38vw + 5.85rem, 9rem)",
-        "2xl": "1.563rem",
-        "3xl": "1.953rem",
-        "4xl": "2.441rem",
-        "5xl": "3.052rem",
+        sm: "max(0.85rem, 15px)",
+        base: "max(1rem, 16px)",
+        md: "1.2rem",
+        lg: "1.7rem",
+        xl: "2.1rem",
+        huge: "7rem",
       },
       typography: {
         DEFAULT: {
@@ -61,8 +60,8 @@ export default {
       },
     },
     fontFamily: {
-      base: ["system-ui", ...defaultTheme.fontFamily.sans],
-      display: ["Ubuntu", ...defaultTheme.fontFamily.sans],
+      base: ["Sora", ...defaultTheme.fontFamily.sans],
+      display: ["Sora", ...defaultTheme.fontFamily.sans],
     },
   },
   plugins: [require("@tailwindcss/typography")],

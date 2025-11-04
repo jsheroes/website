@@ -12,40 +12,54 @@ const subTitle = variant === 'default' ? "An all things JavaScript conference" :
 ---
 
 <div
-  class="relative flex h-[400px] items-center justify-center bg-primary md:h-[550px]"
+  class="relative flex h-screen items-center justify-center bg-brand-darknavy"
 >
-  <img
-    class="h-full w-full object-cover"
-    src="/img/banners/default.svg"
-    alt="Space with stars and rockets"
-  />
-  <div
-    class="absolute flex flex-col items-center gap-4 font-display text-neutral-light"
-  >
-    <img
-      class="width-[clamp(10rem, 30vw, 18rem)] aspect-[300/53]"
-      src="/img/logo-dark.svg"
-      alt="JSHeroes"
-    />
-    <h1 class="text-base">{subTitle}</h1>
-    <p class="text-lg font-medium">
-      May <span class="text-[1.2em]">14-15th</span> 2026
-    </p>
-    <p>in Cluj-Napoca, Romania</p>
-    <!-- {
-      variant === 'default' && (
-        <a
-          href="https://ti.to/jsheroes/2025/"
-          target="_blank"
-          rel="noreferrer noopener"
-          class="cta-button"
-        >
-          Buy tickets
-        </a>
-      )
-    } -->
-    <span class="bear-anchor absolute bottom-[-140px] right-0 z-10 animate-none md:bottom-[-180px] md:right-[-120px] lg:bottom-[-240px] lg:right-[-200px] lg:animate-bear-float">
+  <video preload="true" autoplay loop muted playsinline class="h-full w-full object-cover">
+    <source src="/movie-cut.mp4" type="video/mp4" />
+  </video>
+
+  <div class="absolute inset-0 bg-gradient-to-b from-[#0b1b4480] from-50% to-brand-darknavy to-90%">
+    <span class="hidden md:block bear-anchor absolute right-[120px] bottom-[-100px] z-10 animate-none lg:animate-bear-float">
       <BearLink animation="scale" />
     </span>
+  </div>
+
+  <div class="absolute w-full px-4 md:px-8">
+    <div
+      class="flex flex-col items-start max-w-[1280px] m-auto gap-8 font-display text-neutral-light"
+    >
+      <div class="space-y-3">
+        <img
+          src="/img/logo-dark.svg"
+          alt="JSHeroes"
+          class="w-[21rem]"
+        />
+        <h1 class="text-md">{subTitle}</h1>
+      </div>
+
+      <div>
+        <h2 class="text-lg flex flex-wrap gap-0 sm:gap-1"><span>2 days ◦ 16 talks ◦</span><span>350+ attendees</span></h2>
+        <p class="text-md">in the heart of Transylvania ❤️</p>
+      </div>
+      <div>
+        <p class="text-xl font-medium">
+          May 14-15th 2026
+        </p>
+        <p class="text-md">Cluj-Napoca, Romania</p>
+      </div>
+      {
+        variant === 'default' && (
+          <a
+            href="https://ti.to/jsheroes/2026/"
+            target="_blank"
+            rel="noreferrer noopener"
+            class="cta-button"
+          >
+            Tickets
+          </a>
+        )
+      }
+      
+    </div>
   </div>
 </div>

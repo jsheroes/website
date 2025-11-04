@@ -1,61 +1,69 @@
 ---
 import { Icon } from "astro-icon/components";
 export interface Props {
-  theme?: "dark";
+  isHomePage?: boolean;
 }
 
-const { theme = "" } = Astro.props as Props;
-const navlinkClass = `navlink ${theme}`;
+const { isHomePage = false } = Astro.props as Props;
+
+const headerClass = isHomePage ? "bg-transparent" : "bg-brand-darknavy";
+const headerHomeLinkClass = isHomePage ? "home-link hidden" : "home-link flex";
 ---
 
-<header class="relative m-auto max-w-[1280px]">
-  <nav
-    aria-label="Main navigation"
-    class="main-nav absolute right-0 z-10 flex gap-4 p-4 font-display"
+<header class={`main-nav fixed z-40 w-full px-4 md:px-8 transition-all duration-slide ease-out ${headerClass}`}>
+  <div
+    class="m-auto max-w-[1280px] flex justify-between py-4 font-display"
   >
-    <div class="hidden gap-4 sm:flex">
-      <a
-        class={`${navlinkClass} h-0 w-0 overflow-hidden focus:h-auto focus:w-auto`}
-        href="#main">Skip navigation</a
-      >
-      <a class={navlinkClass} href="/">Home</a>
-      <a class={navlinkClass} href="/transparency">Transparency</a>
-      <a class={navlinkClass} href="/hall-of-fame">Hall of Fame</a>
+    <div class="inline">
+      <a href="/" class={headerHomeLinkClass}>
+        <img src="/img/logo-dark.svg" alt="JSHeroes" class="w-[120px]" />
+      </a>
     </div>
 
-    <button
-      class="hamburger w-[1.2rem] transition-transform duration-move ease-out hover:scale-[1.3] focus-visible:outline-accent-pink"
-      aria-label="Toggle menu"
-      aria-haspopup="true"
-      aria-controls="sidebar-nav"
-    >
-      <Icon name="mdi:menu" class={`${navlinkClass} w-5 h-5`} />
-    </button>
-  </nav>
+    <nav class="flex gap-4" aria-label="Main navigation">
+      <div class="hidden gap-4 sm:flex">
+        <a
+          class={`navlink h-0 w-0 overflow-hidden focus:h-auto focus:w-auto`}
+          href="#main">Skip navigation</a
+        >
+        <a class="navlink" href="/speak">Call for speakers</a>
+        <a class="navlink" href="/sponsor">Call for sponsors</a>
+      </div>
+
+      <button
+        class="hamburger w-[1.5rem] transition-transform duration-move ease-out hover:scale-[1.3] focus-visible:outline-accent-pink"
+        aria-label="Toggle menu"
+        aria-haspopup="true"
+        aria-controls="sidebar-nav"
+      >
+        <Icon name="mdi:menu" class="navlink w-6 h-6" />
+      </button>
+    </nav>
+  </div>
 </header>
 
 <nav
-  class="side-drawer fixed right-0 top-0 z-30 flex h-full w-full max-w-[400px] translate-x-full flex-col overflow-y-scroll bg-primary font-display transition-all duration-slide ease-out"
+  class="side-drawer fixed right-0 top-0 z-30 flex h-full w-full max-w-[500px] translate-x-full flex-col overflow-y-scroll bg-gradient-to-br from-brand-darknavy to-brand-purple font-display transition-all duration-slide ease-out"
   aria-hidden="true"
   aria-label="Sidebar navigation"
   id="sidebar-nav"
   tabindex="-1"
 >
   <button
-    class="close group self-end p-2 focus-visible:outline-accent-pink"
+    class="close group self-end p-2 mt-2 mr-2 focus-visible:outline-accent-pink"
     aria-label="Close menu"
   >
     <Icon
       name="mdi:close"
-      class="navlink w-[1.2rem] transition-transform duration-fade ease-out group-hover:scale-[1.3]"
+      class="navlink w-6 h-6 transition-transform duration-fade ease-out group-hover:scale-[1.3]"
     />
   </button>
-  <div class="mt-12 flex w-full flex-col gap-8 pb-6">
+  <div class="flex w-full flex-col gap-8 pb-6 text-[1.2rem] md:text-[1rem]">
     <div class="flex flex-col items-start gap-2 px-16">
       <a class="navlink" href="/">Home</a>
-      <!-- <a class="navlink" href="/#speakers">Speakers</a> -->
+      <a class="navlink" href="/speak">Call for speakers</a>
       <!-- <a class="navlink" href="/#agenda">Agenda</a> -->
-      <a class={navlinkClass} href="/sponsor">Call for Sponsors</a>
+      <a class="navlink" href="/sponsor">Call for sponsors</a>
     </div>
 
     <div class="flex flex-col items-start gap-2 px-16">
@@ -119,6 +127,7 @@ const navlinkClass = `navlink ${theme}`;
     const backdrop = document.querySelector(".backdrop") as HTMLDivElement;
     const sideDrawer = document.querySelector(".side-drawer") as HTMLElement;
     const mainNav = document.querySelector(".main-nav") as HTMLElement;
+    const homeLink = document.querySelector(".home-link") as HTMLElement;
 
     const sideDrawerLinks = document.querySelectorAll(
       ".side-drawer a"
@@ -154,6 +163,18 @@ const navlinkClass = `navlink ${theme}`;
       closeBtn.setAttribute("tabIndex", "-1");
       sideDrawerLinks.forEach((link) => {
         link.setAttribute("tabIndex", "-1");
+      });
+    }
+    
+    if (window.location.pathname === "/") {
+      document.addEventListener("scroll", (e) => {
+        if (window.scrollY > 600) {
+          mainNav.classList.add("bg-brand-darknavy/80", "backdrop-blur-sm");
+          homeLink.classList.remove("hidden");
+        } else {
+          mainNav.classList.remove("bg-brand-darknavy/80", "backdrop-blur-sm");
+          homeLink.classList.add("hidden");
+        }
       });
     }
 

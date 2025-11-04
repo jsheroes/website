@@ -5,7 +5,7 @@ type Benefit =
   | "giveaways"
   | "video"
   | "tickets"
-  | "pitch";
+  | "experience";
 
 type Package = {
   name: "Bronze" | "Silver" | "Gold";
@@ -32,20 +32,18 @@ export const BENEFITS_INFO: Record<
   },
   rollup: {
     display: "Your roll-up in the main room",
-    link: "https://www.facebook.com/photo.php?fbid=467414628992502&set=pb.100071719063211.-2207520000&type=3",
   },
   giveaways: {
     display: "Bring branded giveaways for attendees",
     explanation:
       "You can bring promotional materials at the event. All giveaways will be displayed in a dedicated area in the hallway.",
-    link: "https://www.facebook.com/jsheroes/photos/pb.100071719063211.-2207520000/3163827757188452/?type=3",
   },
   video: { display: "Your company video running during the breaks" },
   tickets: { display: "15% discount on all tickets" },
-  pitch: {
-    display: "Pitch your company in the networking area",
+  experience: {
+    display: "Company corner during one of the days",
     explanation:
-      "A company representative will talk about your company and interact with the audience in a dedicated area in the hallway during a break.",
+      "You will have a dedicated area in the hallway where you can interact with the attendees during the breaks.",
   },
 };
 
@@ -54,37 +52,35 @@ export const BRONZE_PACKAGE: Package = {
   price: 1500,
   color: "accent-pink",
   description: "Ideal for startups and small companies",
-  benefits: ["logo", "spotlight", "rollup"],
+  benefits: ["rollup", "spotlight", "logo"],
   highlightedBenefits: [],
-  availability: 3,
+  availability: 5,
 };
 
 export const SILVER_PACKAGE: Package = {
   name: "Silver",
   price: 3000,
   color: "accent-green",
-  description:
-    "Ideal for companies that want to increase brand awareness at the event",
-  benefits: ["logo", "spotlight", "rollup", "giveaways", "video"],
+  description: "Increase brand awareness at the event",
+  benefits: ["video", "giveaways", "rollup", "spotlight", "logo"],
   highlightedBenefits: ["giveaways", "video"],
-  availability: 0,
+  availability: 3,
 };
 
 export const GOLD_PACKAGE: Package = {
   name: "Gold",
   price: 5000,
   color: "accent-orange",
-  description:
-    "Ideal for large companies that want to maximize their exposure in our community",
+  description: "Get involved at the event",
   benefits: [
-    "logo",
-    "spotlight",
-    "rollup",
-    "giveaways",
-    "video",
+    "experience",
     "tickets",
-    "pitch",
+    "video",
+    "logo",
+    "giveaways",
+    "rollup",
+    "spotlight",
   ],
-  highlightedBenefits: ["tickets", "pitch"],
-  availability: 0,
+  highlightedBenefits: ["tickets", "experience"],
+  availability: 1,
 };

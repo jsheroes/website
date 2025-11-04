@@ -14,16 +14,16 @@ const { id, variant, content, class: className = "" } = Astro.props as Props;
   data-variant={variant}
   class:list={[
     className,
-    "group relative w-full px-4 md:px-8 pb-16 pt-12 md:pb-20 md:pt-16",
+    "group relative w-full px-4 md:px-8 pb-16 first:pt-8 pt-12 md:pb-40 md:pt-24",
     { "bg-neutral-light text-neutral-dark": variant === "light" },
-    { "bg-primary text-neutral-light": variant === "dark" },
+    { "bg-gradient-to-br from-brand-darknavy from-50% to-brand-purple to-90% text-neutral-light": variant === "dark" },
   ]}
 >
   <div
     class:list={[
       "mx-auto",
       {
-        "flex max-w-[60ch] flex-col gap-4 group-[.prose]:gap-0":
+        "flex max-w-[65ch] flex-col gap-4 group-[.prose]:gap-0":
           content === "text",
       },
       { "flex max-w-[1280px] flex-col gap-4": content === "list" },

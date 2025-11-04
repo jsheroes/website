@@ -25,15 +25,11 @@ export const communities: Organization[] = [
     name: "SquiggleConf",
     url: "https://squiggleconf.com/",
     imgName: "communities/logo_squiggleconf.svg",
+    overrideBgColor: "#063052",
   },
   {
     name: "Code for Romania",
     url: "https://code4.ro/",
     imgName: "communities/logo_code4ro.png",
-  },
-  {
-    name: "QueerJS",
-    url: "https://queerjs.com/",
-    imgName: "communities/logo_queerjs.svg",
   },
 ];

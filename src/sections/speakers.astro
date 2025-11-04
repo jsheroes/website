@@ -6,20 +6,27 @@ import PlaceholderCard from "../components/PlaceholderCard.astro";
 import { getCollection } from "astro:content";
 
 const speakers = await getCollection("speakers");
-const ambassadors = await getCollection("ambassadors");
 const support = await getCollection("support");
 
-const listStyles = "flex flex-wrap justify-center gap-8 py-8 px-0";
+const listStyles = "flex flex-wrap justify-center md:justify-start gap-8 py-8 px-0";
 const listItemStyles = "color-item list-none pb-4";
+
+const speakersSorted = Object.values(speakers).filter(s => s.data.order);
+speakersSorted.sort((a, b) => {
+  if (a.data.order && b.data.order) {
+    return a.data.order - b.data.order;
+  }
+  return 0;
+});
 ---
 
-<div class="text-center">
-  <h2>Our {CURRENT_YEAR - 1} speakers</h2>
+<div>
+  <h2 class="text-center md:text-left">Meet the heroes of 2026</h2>
 </div>
 
 <ul role="list" class={listStyles}>
   {
-    Object.values(speakers).map((s) => (
+    speakersSorted.map((s) => (
       <li class={listItemStyles}>
         <PersonCard person={s} />
       </li>
@@ -31,8 +38,8 @@ const listItemStyles = "color-item list-none pb-4";
       <li class={listItemStyles}>
         <PlaceholderCard
           imgName="/props/bear.svg"
-          title="You?"
-          subtitle="Submit your proposal"
+          title="Your name"
+          subtitle="Submit a proposal"
           link="/speak"
         />
       </li>
@@ -40,7 +47,7 @@ const listItemStyles = "color-item list-none pb-4";
   }
 </ul>
 
-<div class="text-center">
+<!-- <div class="text-center">
   <h2>Our support crew</h2>
 </div>
 
@@ -60,7 +67,7 @@ const listItemStyles = "color-item list-none pb-4";
     ))
     
   }
-</ul>
+</ul> -->
 
 <style>
   .color-item:nth-child(7n + 1) {
@@ -76,7 +83,7 @@ const listItemStyles = "color-item list-none pb-4";
   }
 
   .color-item:nth-child(7n + 4) {
-    --person-accent-color: #6b7ba4;
+    --person-accent-color: #8b9bc4;
   }
 
   .color-item:nth-child(7n + 5) {

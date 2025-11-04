@@ -18,7 +18,7 @@
     "baseUrl": "./",
     "paths": {
       // Enable absolute imports from the root of your project.
-      "@/*": ["./src/*"]
-    }
-  }
+      "@/*": ["./src/*"],
+    },
+  },
 }

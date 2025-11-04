@@ -2,6 +2,7 @@ export type Organization = {
   name: string;
   url: string;
   imgName: string;
+  overrideBgColor?: string;
 };
 
 export type AgendaItem =

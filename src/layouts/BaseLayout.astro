@@ -8,17 +8,17 @@ import { Tooltips } from "astro-tooltips";
 
 import { EVENT_DATES, CURRENT_YEAR, SEO_TAGLINE } from "../data/constants"
 
-import "@fontsource/ubuntu/400.css"
-import "@fontsource/ubuntu/500.css"
+import "@fontsource/sora/400.css"
+import "@fontsource/sora/500.css"
 
 import "@/assets/base.css"
 
 export interface Props {
   title?: string
-  theme?: "dark"
+  isHomePage?: boolean
 }
 
-const { title: propsTitle, theme } = Astro.props as Props
+const { title: propsTitle, isHomePage } = Astro.props as Props
 
 const title = propsTitle || `JSHeroes ${CURRENT_YEAR} | ${SEO_TAGLINE}`
 const description = `JSHeroes is an yearly event organized by the local JS community in Cluj, Romania. Check the latest updates and join us on the ${EVENT_DATES} ${CURRENT_YEAR}`
@@ -69,8 +69,16 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
   </head>
 
   <body>
-    <Navbar theme={theme} />
-    <slot />
+    <Navbar isHomePage={isHomePage} />
+    {
+      isHomePage ? (
+        <slot />
+      ) : (
+        <div class="pt-14">
+          <slot />
+        </div>
+      )
+    }
     <ScrollToTop />
     <Footer />
   </body>

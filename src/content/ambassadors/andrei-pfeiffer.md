@@ -1,7 +1,7 @@
 ---
 name: "Andrei Pfeiffer"
 title: "Ambassador"
-imgName: "speakers/andrei-pfeiffer.png"
+imgName: "ambassadors/andrei-pfeiffer.png"
 links:
   website: "https://andreipfeiffer.dev/"
 ---

@@ -10,59 +10,69 @@ import {
   GOLD_PACKAGE,
   BENEFITS_INFO,
 } from "@/data/packages";
+import { Image } from "astro:assets";
+import { getImage } from "@/utils/getImage";
+import ImagesBanner from "@/components/ImagesBanner.astro";
 ---
 
 <BaseLayout>
-  <Banner variant="sponsor" />
+  <Image
+    src={getImage("event/sponsor4.jpg")}
+    alt=""
+    densities={[1.5, 2]}
+    loading="eager"
+    class="block h-[400px] w-full object-cover"
+  />
 
   <main id="main">
     <Section variant="light" content="list">
-      <h2 class="text-center text-xl">Sponsors welcome!</h2>
-      <p class="text-balance text-center">
+      <h1>Sponsors welcome!</h2>
+      <p class="text-balance">
         What started as a small idea from the local JavaScript community,
-        evolved into one of the biggest community-organized events in Europe.
+        evolved into one of the best community-organized events in Europe.
       </p>
       <div
-        class="grid grid-cols-1 items-center gap-0 font-display sm:gap-4 md:grid-cols-2 lg:grid-cols-3 xl:gap-8"
+        class="grid grid-cols-1 items-center gap-0 font-display sm:gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8"
       >
-        <div class="flex flex-col items-center">
-          <span class="text-huge font-[500] text-accent-pink">500+</span>
-          <span class="mt-[-3rem] text-lg font-[500]">attendees</span>
-          <span>25% international audience</span>
+        <div class="flex flex-col">
+          <span class="text-huge font-[500] text-accent-pink">300+</span>
+          <span class="mt-[-2rem] text-lg font-[500]">attendees</span>
+          <span>30% international audience</span>
         </div>
 
-        <div class="flex flex-col items-center">
-          <span class="text-huge font-[500] text-dodger-blue">18</span>
-          <span class="mt-[-3rem] text-lg font-[500]">speakers</span>
+        <div class="flex flex-col">
+          <span class="text-huge font-[500] text-dodger-blue">16</span>
+          <span class="mt-[-2rem] text-lg font-[500]">speakers</span>
           <span>from all over the world</span>
         </div>
 
-        <div class="flex flex-col items-center">
+        <div class="flex flex-col">
           <span class="text-huge font-[500] text-accent-green">2</span>
-          <span class="mt-[-3rem] text-lg font-[500]">days</span>
-          <span>16 hours of quality content</span>
+          <span class="mt-[-2rem] text-lg font-[500]">days</span>
+          <span>14 hours of quality content</span>
         </div>
 
-        <div class="flex flex-col items-center">
+        <div class="flex flex-col">
           <span class="text-huge font-[500] text-accent-orange">3K</span>
-          <span class="mt-[-3rem] text-lg font-[500]">community members</span>
-          <span>on our meetup.com group</span>
+          <span class="mt-[-2rem] text-lg font-[500]">members</span>
+          <span>local community members</span>
         </div>
 
-        <div class="flex flex-col items-center">
-          <span class="text-huge font-[500] text-accent-green">7.2K</span>
-          <span class="mt-[-3rem] text-lg font-[500]">followers</span>
-          <span>across LinkedIn, Facebook, Bluesky and more</span>
+        <div class="flex flex-col">
+          <span class="text-huge font-[500] text-accent-green">10K</span>
+          <span class="mt-[-2rem] text-lg font-[500]">followers</span>
+          <span>across our social media channels</span>
         </div>
 
-        <div class="flex flex-col items-center">
-          <span class="text-huge font-[500] text-accent-pink">3.6K</span>
-          <span class="mt-[-3rem] text-lg font-[500]">subscribers</span>
+        <div class="flex flex-col">
+          <span class="text-huge font-[500] text-accent-pink">3.8K</span>
+          <span class="mt-[-2rem] text-lg font-[500]">subscribers</span>
           <span>on our YouTube channel</span>
         </div>
       </div>
     </Section>
 
+    <ImagesBanner images={["event/sponsor1.jpg", "event/sponsor2.jpg", "event/sponsor3.jpg"]} />
     <Section variant="dark" content="list">
       <h2>Why should you sponsor us?</h2>
 
@@ -80,9 +90,9 @@ import {
         <div>
           <h3>Brand association</h3>
           <p class="mt-4">
-            Over the past 7 years, JSHeroes has grown into one of the most <strong
+            Over the past 10 years, JSHeroes has grown into one of the most <strong
               >recognizable</strong
-            > brands in the JavaScript community in Romania and beyond. Your company
+            > brands in the JavaScript community worldwide. Your company
             will benefit from being showcased on our visuals and video recordings.
           </p>
         </div>
@@ -90,17 +100,17 @@ import {
 
       <div class="mt-0 grid grid-cols-1 gap-8 md:mt-8 md:grid-cols-2 md:gap-16">
         <div>
-          <h3>Join our mission</h3>
+          <h3>Contribute to the growth of the community</h3>
           <p class="mt-4">
             We strongly believe that JavaScript is the future. Therefore, our
-            mission is to <strong>grow</strong> together with the local community.
+            mission is to <strong>grow</strong> together with the community.
             Through JSHeroes, we aim to keep everyone in sync with the latest advancements
             and trends in the world of JavaScript and web development.
           </p>
         </div>
 
         <div>
-          <h3>Non-profit and transparent</h3>
+          <h3>Support a non-profit and transparent event</h3>
           <p class="mt-4">
             We embraced the <strong>open source</strong> model from the beginning.
             All the details about the event are public and our budget and expenses
@@ -114,21 +124,15 @@ import {
 
     <Section variant="light" content="list">
       <h2>Sponsor Packages</h2>
-
-      <p>
-        We have three types of packages so you can choose whatever works best
-        for your company.
-      </p>
-
       {
-        [BRONZE_PACKAGE, SILVER_PACKAGE, GOLD_PACKAGE].map((p) => (
+        [GOLD_PACKAGE, SILVER_PACKAGE, BRONZE_PACKAGE].map((p) => (
           <div
             class={`flex flex-col lg:flex-row gap-3 min-h-[260px] rounded-lg border-[4px] border-${p.color} px-6 py-4 relative ${p.availability > 0 ? 'grayscale-0 opacity-100' : 'grayscale opacity-70'}`}
           >
             <div class="flex flex-1 flex-col items-start">
               <h3>{p.name} Package</h3>
               <span class="font-display text-lg font-bold">{p.price} €</span>
-              <span class="max-w-[30ch]">{p.description}</span>
+              <span class="max-w-[35ch]">{p.description}</span>
               <span class={`bg-${p.color} px-3 py-1 font-bold absolute right-[-4px] top-[-4px] rounded-bl-lg rounded-tr-lg lg:right-auto lg:top-auto lg:left-[-4px] lg:bottom-[-4px]`}>{p.availability === 0 ? 'SOLD OUT' : `${p.availability} ${p.availability === 1 ? 'package' : 'packages'} left`}</span>
             </div>
             <div class="flex flex-1 flex-col py-1">
@@ -223,17 +227,6 @@ import {
             src="/img/sponsors-page/natalia-tepluhina.jpg"
           />
         </div>
-      </div>
-
-      <div
-        class="mt-8 flex flex-row flex-wrap items-center justify-center gap-2"
-      >
-        <img src="/img/sponsors-page/jsheroes-1.jpg" alt="JSHeroes 2023" />
-        <img src="/img/sponsors-page/jsheroes-2.jpg" alt="JSHeroes 2023" />
-        <img src="/img/sponsors-page/jsheroes-3.jpg" alt="JSHeroes 2023" />
-        <img src="/img/sponsors-page/jsheroes-4.jpg" alt="JSHeroes 2023" />
-        <img src="/img/sponsors-page/jsheroes-5.jpg" alt="JSHeroes 2023" />
-        <img src="/img/sponsors-page/jsheroes-6.jpg" alt="JSHeroes 2023" />
       </div>
     </Section>
   </main>

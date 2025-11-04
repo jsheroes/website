@@ -6,168 +6,178 @@ import { goldSponsors, silverSponsors, bronzeSponsors } from "../data/sponsors";
 import { getImage } from "../utils/getImage";
 
 const listStyles =
-  "flex flex-wrap items-center justify-center gap-4 p-0 m-0";
+  "grid w-full justify-center md:justify-start items-center gap-2 sm:gap-4 p-0 m-0";
+
+const listItemStyles = "flex items-center justify-center list-none";
 
 const linkStyles =
-  "flex item-center p-4 transition-[outline-offset] duration-fade ease-out hover:outline-offset-[-10px] hover:outline hover:outline-accent-pink";
+  "flex items-center justify-center w-full h-full border rounded-2xl border-solid border-neutral-separator transition-[border-width] duration-fade ease-out hover:border-[16px] hover:border-accent-pink";
+
+const imageWrapperStyles = "flex items-center justify-center w-full h-auto p-4";
+
+const headingStyles = "text-center md:text-left";
+
 ---
 
-<div class="text-center space-y-12">
+<div class="space-y-16">
   <div class="space-y-6">
-    <h2>Gold Sponsors</h2>
-    
-    <ul role="list" class={listStyles}>
+    <h2 class={headingStyles}>Gold sponsors</h2>
+    <ul role="list" class={`${listStyles} grid-cols-1 md:grid-cols-2`}>
       {goldSponsors.map((sponsor) => (
-        <li class="flex w-[400px] list-none">
+        <li class={`${listItemStyles} h-[250px] sm:h-[350px]`}>
           <a
-            class={linkStyles}
+            class={`${linkStyles} ${sponsor.imgName.includes("logo_placeholder") ? "border-[4px] border-dashed" : ""}`}
             href={sponsor.url}
-            target="_blank"
+            target={sponsor.url.startsWith("http") ? "_blank" : "_self"}
             rel="noreferrer noopener"
             title={sponsor.name}
+            aria-label={`Visit the website of ${sponsor.name}`}
           >
-            <Image
-              src={getImage(sponsor.imgName)}
-              alt=""
-              loading="lazy"
-              width="400"
-              height="200"
-              densities={[1.5, 2]}
-              style={{
-                maxHeight: "200px",
-              }}
-            />
-          </a>
-        </li>
-      ))}
-    </ul>
-
-    <h2>Silver Sponsors</h2>
-
-    <ul role="list" class={listStyles}>
-      {silverSponsors.map((sponsor) => (
-        <li class="flex w-[300px] list-none">
-          <a
-            class={linkStyles}
-            href={sponsor.url}
-            target="_blank"
-            rel="noreferrer noopener"
-            title={sponsor.name}
-          >
-            <Image
-              src={getImage(sponsor.imgName)}
-              alt=""
-              loading="lazy"
-              width="300"
-              height="150"
-              densities={[1.5, 2]}
-              style={{
-                maxHeight: "150px",
-              }}
-            />
-          </a>
-        </li>
-      ))}
-    </ul>
-
-    <h2>Bronze Sponsors</h2>
-
-    <ul role="list" class={listStyles}>
-      {bronzeSponsors.map((sponsor) => (
-        <li class="flex w-[200px] list-none">
-          <a
-            class={linkStyles}
-            href={sponsor.url}
-            target="_blank"
-            rel="noreferrer noopener"
-            title={sponsor.name}
-          >
-            <Image
-              src={getImage(sponsor.imgName)}
-              alt=""
-              loading="lazy"
-              width="200"
-              height="100"
-              densities={[1.5, 2]}
-              style={{
-                maxHeight: "100px",
-              }}
-            />
+            <div class={imageWrapperStyles}>
+              <Image
+                src={getImage(sponsor.imgName)}
+                alt=""
+                loading="lazy"
+                width="600"
+                height="300"
+                densities={[1.5, 2]}
+              />
+            </div>
           </a>
         </li>
       ))}
     </ul>
   </div>
-
-  <p>
-    If you are interested in supporting us,{" "}
-    <strong>
-      <a href="/sponsor" rel="noreferrer noopener">
-        check out our sponsorship page
-      </a>
-    </strong>
-    .
-  </p>
-
-  <h2>Event partners</h2>
-
-  <ul role="list" class={listStyles}>
-    {
-      partners.map((com) => (
-        <li class="flex w-[200px] list-none">
-          <a
-            class={linkStyles}
-            href={com.url}
-            target="_blank"
-            rel="noreferrer noopener"
-            title={com.name}
-          >
-            <Image
-              src={getImage(com.imgName)}
-              alt=""
-              width="200"
-              height="100"
-              densities={[1.5, 2]}
-              style={{
-                width: "100%",
-                height: "auto",
-              }}
-            />
+  {silverSponsors.length > 0 && (
+    <div class="space-y-6">
+      <h2 class={headingStyles}>Silver sponsors</h2>
+      <ul role="list" class={`${listStyles} grid-cols-1 sm:grid-cols-2 md:grid-cols-3`}>
+        {silverSponsors.map((sponsor) => (
+          <li class={`${listItemStyles} h-[180px] sm:h-[220px]`}>
+            <a
+              class={linkStyles}
+              href={sponsor.url}
+              target="_blank"
+              rel="noreferrer noopener"
+              title={sponsor.name}
+              aria-label={`Visit the website of ${sponsor.name}`}
+            >
+              <div class={imageWrapperStyles}>
+                <Image
+                  src={getImage(sponsor.imgName)}
+                  alt=""
+                  loading="lazy"
+                  width="350"
+                  height="175"
+                  densities={[1.5, 2]}
+                />
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+  {bronzeSponsors.length > 0 && (
+    <div class="space-y-6">
+      <h2 class={headingStyles}>Bronze sponsors</h2>
+      <ul role="list" class={`${listStyles} grid-cols-2 sm:grid-cols-3 md:grid-cols-4`}>
+        {bronzeSponsors.map((sponsor) => (
+          <li class={`${listItemStyles} h-[150px] sm:h-[175px]`}>
+            <a
+              class={linkStyles}
+              href={sponsor.url}
+              target="_blank"
+              rel="noreferrer noopener"
+              title={sponsor.name}
+              aria-label={`Visit the website of ${sponsor.name}`}
+            >
+              <div class={imageWrapperStyles}>
+                <Image
+                  src={getImage(sponsor.imgName)}
+                  alt=""
+                  loading="lazy"
+                  width="300"
+                  height="150"
+                  densities={[1.5, 2]}
+                />
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p>
+        If you are interested in supporting us,{" "}
+        <strong>
+          <a href="/sponsor" rel="noreferrer noopener">
+            check out our sponsorship page
           </a>
-        </li>
-      ))
-    }
-  </ul>
+        </strong>
+        .
+      </p>
+    </div>
+  )}
 
-  <h2>Media partners</h2>
+  <div class="space-y-6">
+    <h2 class={headingStyles}>Event partners</h2>
+    <ul role="list" class={`${listStyles} grid-cols-2 sm:grid-cols-3 md:grid-cols-4`}>
+      {
+        partners.map((com) => (
+          <li class={`${listItemStyles} h-[150px] sm:h-[175px]`}>
+            <a
+              class={linkStyles}
+              href={com.url}
+              target="_blank"
+              rel="noreferrer noopener"
+              title={com.name}
+              aria-label={`Visit the website of ${com.name}`}
+            >
+              <div class={imageWrapperStyles}>
+                <Image
+                  src={getImage(com.imgName)}
+                  alt=""
+                  width="300"
+                  height="150"
+                  densities={[1.5, 2]}
+                />
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 
-  <ul role="list" class={listStyles}>
-    {
-      communities.map((com) => (
-        <li class="flex w-[150px] list-none">
-          <a
-            class={linkStyles}
-            href={com.url}
-            target="_blank"
-            rel="noreferrer noopener"
-            title={com.name}
-          >
-            <Image
-              src={getImage(com.imgName)}
-              alt=""
-              width="200"
-              height="100"
-              densities={[1.5, 2]}
-              style={{
-                width: "100%",
-                height: "auto",
-              }}
-            />
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+  <div class="space-y-6">
+    <h2 class={headingStyles}>Media partners</h2>
+    <ul role="list" class={`${listStyles} grid-cols-2 sm:grid-cols-3 md:grid-cols-4`}>
+      {
+        communities.map((com) => (
+          <li class={`${listItemStyles} h-[150px] sm:h-[175px]`}>
+            <a
+              class={linkStyles}
+              href={com.url}
+              target="_blank"
+              rel="noreferrer noopener"
+              title={com.name}
+              aria-label={`Visit the website of ${com.name}`}
+              style={com.overrideBgColor ? `background-color: ${com.overrideBgColor};` : ""}
+            >
+              <div class={imageWrapperStyles}>
+                <Image
+                  src={getImage(com.imgName)}
+                  alt=""
+                  width="300"
+                  height="150"
+                  densities={[1.5, 2]}
+                />
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </div>
 
 
