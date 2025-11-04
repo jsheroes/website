@@ -7,14 +7,14 @@ export interface Props {
 const { isHomePage = false } = Astro.props as Props;
 
 const headerClass = isHomePage ? "bg-transparent" : "bg-brand-darknavy";
-const headerHomeLinkClass = isHomePage ? "home-link hidden" : "home-linkflex";
+const headerHomeLinkClass = isHomePage ? "home-link hidden" : "home-link flex";
 ---
 
 <header class={`main-nav fixed z-40 w-full px-4 md:px-8 transition-all duration-slide ease-out ${headerClass}`}>
   <div
     class="m-auto max-w-[1280px] flex justify-between py-4 font-display"
   >
-    <div class="flex items-center">
+    <div class="inline">
       <a href="/" class={headerHomeLinkClass}>
         <img src="/img/logo-dark.svg" alt="JSHeroes" class="w-[120px]" />
       </a>

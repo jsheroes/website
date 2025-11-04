@@ -1,7 +1,7 @@
 ---
 name: "Phil Hawksworth"
 company: "Deno"
-title: "Head of Developer Relations"
+title: "Head of DevRel"
 tag: "JavaScript"
 imgName: "speakers/phil-hawksworth.jpg"
 links:
