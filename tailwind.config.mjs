@@ -60,8 +60,8 @@ export default {
       },
     },
     fontFamily: {
-      base: ["Ubuntu", ...defaultTheme.fontFamily.sans],
-      display: ["Ubuntu", ...defaultTheme.fontFamily.sans],
+      base: ["Sora", ...defaultTheme.fontFamily.sans],
+      display: ["Sora", ...defaultTheme.fontFamily.sans],
     },
   },
   plugins: [require("@tailwindcss/typography")],

@@ -7,15 +7,19 @@ export interface Props {
 const { isHomePage = false } = Astro.props as Props;
 
 const headerClass = isHomePage ? "bg-transparent" : "bg-brand-darknavy";
+const headerHomeLinkClass = isHomePage ? "home-link hidden" : "home-linkflex";
 ---
 
 <header class={`main-nav fixed z-40 w-full px-4 md:px-8 transition-all duration-slide ease-out ${headerClass}`}>
   <div
     class="m-auto max-w-[1280px] flex justify-between py-4 font-display"
   >
-    <a href="/" class="flex items-center">
-      <img src="/img/logo-dark.svg" alt="JSHeroes" class="w-[120px]" />
-    </a>
+    <div class="flex items-center">
+      <a href="/" class={headerHomeLinkClass}>
+        <img src="/img/logo-dark.svg" alt="JSHeroes" class="w-[120px]" />
+      </a>
+    </div>
+
     <nav class="flex gap-4" aria-label="Main navigation">
       <div class="hidden gap-4 sm:flex">
         <a
@@ -123,6 +127,7 @@ const headerClass = isHomePage ? "bg-transparent" : "bg-brand-darknavy";
     const backdrop = document.querySelector(".backdrop") as HTMLDivElement;
     const sideDrawer = document.querySelector(".side-drawer") as HTMLElement;
     const mainNav = document.querySelector(".main-nav") as HTMLElement;
+    const homeLink = document.querySelector(".home-link") as HTMLElement;
 
     const sideDrawerLinks = document.querySelectorAll(
       ".side-drawer a"
@@ -163,10 +168,12 @@ const headerClass = isHomePage ? "bg-transparent" : "bg-brand-darknavy";
     
     if (window.location.pathname === "/") {
       document.addEventListener("scroll", (e) => {
-        if (window.scrollY > 120) {
+        if (window.scrollY > 600) {
           mainNav.classList.add("bg-brand-darknavy/80", "backdrop-blur-sm");
+          homeLink.classList.remove("hidden");
         } else {
           mainNav.classList.remove("bg-brand-darknavy/80", "backdrop-blur-sm");
+          homeLink.classList.add("hidden");
         }
       });
     }

@@ -12,9 +12,9 @@
   </g>
   
   <!-- Main text (right side) -->
-  <text x="100" y="55" font-family="Ubuntu, system-ui, -apple-system, sans-serif" font-size="24" font-weight="600" fill="#111827" text-anchor="start" letter-spacing="-0.5">Your Logo Here</text>
+  <text x="100" y="55" font-family="Sora, system-ui, -apple-system, sans-serif" font-size="24" font-weight="600" fill="#111827" text-anchor="start" letter-spacing="-0.5">Your Logo Here</text>
   
   <!-- Subtitle text (right side) -->
-  <text x="100" y="78" font-family="Ubuntu, system-ui, -apple-system, sans-serif" font-size="15" fill="#4B5563" text-anchor="start" letter-spacing="-0.3">Become a sponsor</text>
+  <text x="100" y="78" font-family="Sora, system-ui, -apple-system, sans-serif" font-size="15" fill="#4B5563" text-anchor="start" letter-spacing="-0.3">Become a sponsor</text>
 </svg>
 
