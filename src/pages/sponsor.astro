@@ -35,7 +35,7 @@ import ImagesBanner from "@/components/ImagesBanner.astro";
         class="grid grid-cols-1 items-center gap-0 font-display sm:gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8"
       >
         <div class="flex flex-col">
-          <span class="text-huge font-[500] text-accent-pink">300+</span>
+          <span class="text-huge font-[500] text-accent-pink">350</span>
           <span class="mt-[-2rem] text-lg font-[500]">attendees</span>
           <span>30% international audience</span>
         </div>
@@ -72,7 +72,7 @@ import ImagesBanner from "@/components/ImagesBanner.astro";
       </div>
     </Section>
 
-    <ImagesBanner images={["event/sponsor1.jpg", "event/sponsor2.jpg", "event/sponsor3.jpg"]} />
+    <ImagesBanner images={["event/sponsor5.jpg", "event/sponsor6.jpg", "event/sponsor7.jpg"]} />
     <Section variant="dark" content="list">
       <h2>Why should you sponsor us?</h2>
 
@@ -122,12 +122,13 @@ import ImagesBanner from "@/components/ImagesBanner.astro";
       </div>
     </Section>
 
+    
     <Section variant="light" content="list">
       <h2>Sponsor Packages</h2>
       {
         [GOLD_PACKAGE, SILVER_PACKAGE, BRONZE_PACKAGE].map((p) => (
           <div
-            class={`flex flex-col lg:flex-row gap-3 min-h-[260px] rounded-lg border-[4px] border-${p.color} px-6 py-4 relative ${p.availability > 0 ? 'grayscale-0 opacity-100' : 'grayscale opacity-70'}`}
+            class={`flex flex-col lg:flex-row gap-3 min-h-[320px] rounded-lg border-[4px] border-${p.color} px-6 py-4 relative ${p.availability > 0 ? 'grayscale-0 opacity-100' : 'grayscale opacity-70'}`}
           >
             <div class="flex flex-1 flex-col items-start">
               <h3>{p.name} Package</h3>
@@ -172,18 +173,12 @@ import ImagesBanner from "@/components/ImagesBanner.astro";
         <a href="tel:0040756403372" class="block" title="This is a phone number">+4 0756 403 372</a>
       </div>
     </Section>
+
+    <ImagesBanner images={["event/sponsor1.jpg", "event/sponsor2.jpg", "event/sponsor3.jpg"]} />
     <Section variant="dark" content="list">
-      <div class="flex flex-col gap-8">
-        <h2 class="text-center">Let's write the next chapter together!</h2>
-        <div>
-          <img src="/img/sponsors-page/jsheroes-2023.jpg" alt="JSHeroes 2023" />
-        </div>
-      </div>
-    </Section>
-    <Section variant="light" content="list">
       <div class="mt-8 flex items-center gap-4">
         <div class="mr-4 hidden w-[286px] md:block">
-          <img class="rounded-full" src="/img/sponsors-page/maarten.jpg" />
+          <img class="rounded-2xl" src="/img/sponsors-page/maarten.jpg" />
         </div>
         <blockquote class="flex max-w-[50ch] flex-col gap-2">
           <cite>
@@ -223,7 +218,7 @@ import ImagesBanner from "@/components/ImagesBanner.astro";
         </blockquote>
         <div class="hidden w-[286px] md:block">
           <img
-            class="rounded-full"
+            class="rounded-2xl"
             src="/img/sponsors-page/natalia-tepluhina.jpg"
           />
         </div>
