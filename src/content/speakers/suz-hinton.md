@@ -1,7 +1,7 @@
 ---
 name: "Suz Hinton"
 title: "Indie Developer"
-tag: "Security"
+tag: "Human Intelligence"
 imgName: "speakers/suz-hinton.jpg"
 links:
   website: "https://fragile.systems"

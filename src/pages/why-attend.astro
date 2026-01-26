@@ -1,0 +1,160 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+import ImagesBanner from "../components/ImagesBanner.astro";
+import { CURRENT_YEAR, EVENT_DATES } from "../data/constants";
+---
+
+<BaseLayout title={`JSHeroes ${CURRENT_YEAR} | What's in it for me?`}>
+  
+  <main id="main">
+    <Section variant="light" content="list">
+      <h1 class="mt-16">What's in it for me?</h1>
+      <p>
+        JSHeroes is widely regarded as one of the best and most affordable community-organized events in Europe. Past attendees have been returning year after year to reconnect with our local community.
+      </p>
+      <p>
+        After 10 years of running meetups and conferences, our team has all the know-how and resources to put on a great event for professionals and enthusiasts alike.
+      </p>
+      <p>
+        If you're not fully convinced yet, below you will find some of the reasons why you should attend JSHeroes {CURRENT_YEAR}.
+      </p>
+    </Section>
+
+    <Section variant="dark" content="list">
+      <h2 class="mb-8">Fast-forward your career</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="flex flex-col gap-3">
+          <h3>🌍 World-class speakers</h3>
+          <p>
+            Learn from industry leaders and innovators who are shaping the future of JavaScript 
+            and the web platform. 
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <h3>🧑‍💻 Hands-on experience</h3>
+          <p>
+            See the latest tools, frameworks, and technologies in action, while being guided by our amazing speakers.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <h3>💡 Practical knowledge</h3>
+          <p>
+            Walk away with actionable ideas and techniques you can apply at work the very next day. 
+            Every talk will add another brick to your knowledge and skill set.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <h3>🚀 Future trends</h3>
+          <p>
+            Stay ahead of the curve with talks about emerging technologies and methodologies. 
+            Discover what's next, while being anchored in the present.
+          </p>
+        </div>
+
+        
+      </div>
+    </Section>
+
+    <ImagesBanner images={["event/community5.jpg", "event/speak.jpg", "event/venue1.jpg"]} />
+
+    <Section variant="dark" content="list">
+      <h2 class="mb-8">Connect & grow</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="flex flex-col gap-3">
+          <h3>🤝 Network with peers</h3>
+          <p>
+            Meet hundreds of developers, engineers, and tech enthusiasts from across Europe 
+            and beyond. Build connections that last long after the conference.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <h3>❤️ Community first</h3>
+          <p>
+            Experience the warmth of a community-organized event. JSHeroes is built by 
+            developers, for developers, with genuine passion and care.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <h3>🎤 Speaker access</h3>
+          <p>
+            Our format encourages plenty of opportunities to chat with 
+            speakers during breaks, meals, and other social events.
+          </p>
+        </div>
+        
+        <div class="flex flex-col gap-3">
+          <h3>🧩 Engage with the local market</h3>
+          <p>
+            Learn about our sponsors during the breaks, find new collaborators, mentors, or potential teammates for your next project.
+          </p>
+        </div>
+      </div>
+    </Section>
+
+    <ImagesBanner images={["event/venue4.jpg", "event/city.jpeg", "event/venue3.jpg"]} />
+
+    <Section variant="dark" content="list">
+      <h2 class="mb-8">Experience Cluj</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="flex flex-col gap-3">
+          <h3>🏰 Amazing venue</h3>
+          <p>
+            Enjoy the conference at Grand Hotel Italia, a stunning 5-star venue in the 
+            heart of Cluj-Napoca, Romania's tech hub.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <h3>🎉 Social events</h3>
+          <p>
+            Join us for local meetups, community hangouts and other social activities. 
+            Make memories while making friends.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <h3>🐻 Meet the local community</h3>
+          <p>
+            More than half of our attendees are from Cluj and the surrounding area. Connect with members of our community for an authentic experience.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <h3>🇷🇴 Discover Romania</h3>
+          <p>
+            Take the opportunity to discover our beautiful city and the surrounding
+            region of Transylvania. History, nature, and great food await.
+          </p>
+        </div>
+        
+        
+      </div>
+    </Section>
+
+    <Section variant="light" content="list">
+      <div class="flex flex-col gap-6 items-start">
+        <h2>Ready to join us?</h2>
+        <p class="w-[55ch]">
+          JSHeroes {CURRENT_YEAR} takes place on {EVENT_DATES} in Cluj-Napoca, Romania. Secure your spot today and be part of something special.
+        </p>
+        <a href="https://ti.to/jsheroes/jsheroes-2026" target="_blank" rel="noreferrer noopener" class="cta-button">
+          Buy your ticket
+        </a>
+        <span class="absolute right-[10%] bottom-[20px] z-10 hidden lg:block">
+          <img
+            class="w-[180px]"
+            src="/img/props/hello-bear.svg"
+            alt=""
+            aria-hidden="true"
+          />
+        </span>
+      </div>
+    </Section>
+  </main>
+</BaseLayout>

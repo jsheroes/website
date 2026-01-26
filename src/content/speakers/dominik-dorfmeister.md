@@ -2,7 +2,7 @@
 name: "Dominik Dorfmeister"
 company: "Sentry"
 title: "Frontend Engineer"
-tag: "Codebase Maintenance"
+tag: "Maintainability"
 imgName: "speakers/dominik-dorfmeister.jpg"
 links:
   website: "https://tkdodo.eu/blog"
