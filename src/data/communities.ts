@@ -6,30 +6,41 @@ export const communities: Organization[] = [
     url: "https://www.womenintechcluj.com/",
     imgName: "communities/logo_women_in_tech.png",
   },
-  {
-    name: "revo.js",
-    url: "https://revojs.ro/",
-    imgName: "communities/logo_revojs.svg",
-  },
-  {
-    name: "Ng Bucharest",
-    url: "https://www.meetup.com/AngularJS-Bucharest/",
-    imgName: "communities/logo_ngbucharest.png",
-  },
+  // {
+  //   name: "Ng Bucharest",
+  //   url: "https://www.meetup.com/AngularJS-Bucharest/",
+  //   imgName: "communities/logo_ngbucharest.png",
+  // },
   {
     name: "JSNation",
     url: "https://jsnation.com/",
     imgName: "communities/logo_jsnation.png",
   },
   {
-    name: "SquiggleConf",
-    url: "https://squiggleconf.com/",
-    imgName: "communities/logo_squiggleconf.svg",
-    overrideBgColor: "#063052",
+    name: "React Paris",
+    url: "https://react.paris/",
+    imgName: "communities/logo_reactparis.png",
   },
   {
-    name: "Code for Romania",
-    url: "https://code4.ro/",
-    imgName: "communities/logo_code4ro.png",
+    name: "Zurich JS",
+    url: "https://conf.zurichjs.com?utm_source=jsheroes&utm_medium=partner&utm_campaign=zurichjs-conf-2026",
+    imgName: "communities/logo_zurichjs.png",
   },
+  {
+    name: "tim.js",
+    url: "https://timjs.ro/",
+    imgName: "communities/logo_timjs.svg",
+    overrideBgColor: "#000000",
+  },
+  // {
+  //   name: "SquiggleConf",
+  //   url: "https://squiggleconf.com/",
+  //   imgName: "communities/logo_squiggleconf.svg",
+  //   overrideBgColor: "#063052",
+  // },
+  // {
+  //   name: "Code for Romania",
+  //   url: "https://code4.ro/",
+  //   imgName: "communities/logo_code4ro.png",
+  // },
 ];
