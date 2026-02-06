@@ -20,11 +20,19 @@ export const communities: Organization[] = [
     name: "React Paris",
     url: "https://react.paris/",
     imgName: "communities/logo_reactparis.png",
+    discount: {
+      percentage: 10,
+      code: "rp26_jsheroes",
+    },
   },
   {
     name: "Zurich JS",
     url: "https://conf.zurichjs.com?utm_source=jsheroes&utm_medium=partner&utm_campaign=zurichjs-conf-2026",
     imgName: "communities/logo_zurichjs.png",
+    discount: {
+      percentage: 15,
+      code: "JSHEROES15",
+    },
   },
   {
     name: "tim.js",
@@ -32,12 +40,12 @@ export const communities: Organization[] = [
     imgName: "communities/logo_timjs.svg",
     overrideBgColor: "#000000",
   },
-  // {
-  //   name: "SquiggleConf",
-  //   url: "https://squiggleconf.com/",
-  //   imgName: "communities/logo_squiggleconf.svg",
-  //   overrideBgColor: "#063052",
-  // },
+  {
+    name: "SquiggleConf",
+    url: "https://squiggleconf.com/",
+    imgName: "communities/logo_squiggleconf.svg",
+    overrideBgColor: "#063052",
+  },
   // {
   //   name: "Code for Romania",
   //   url: "https://code4.ro/",

@@ -1,0 +1,104 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Section from "@/components/Section.astro";
+import ImagesBanner from "@/components/ImagesBanner.astro";
+import { Image } from "astro:assets";
+import { communities } from "@/data/communities";
+import { getImage } from "@/utils/getImage";
+import { CURRENT_YEAR } from "@/data/constants";
+
+const communitiesWithDiscounts = communities.filter((c) => c.discount);
+---
+
+<BaseLayout title={`JSHeroes ${CURRENT_YEAR} | Partner Communities`}>
+  <main id="main">
+    <ImagesBanner images={["event/community1.jpg", "event/merch1.jpg", "event/community7.jpg"]} />
+
+    {
+      communitiesWithDiscounts.length > 0 && (
+        <Section variant="dark" content="list">
+          <h2 class="mb-8">🎁 Exclusive Partner Discounts</h2>
+          <p class="max-w-[65ch] mb-8">
+            Use these discount codes when purchasing tickets for our partner
+            events. These offers are exclusively for JSHeroes community members.
+          </p>
+
+          <ul
+            role="list"
+            class="grid grid-cols-1 md:grid-cols-2 gap-6 list-none p-0 m-0"
+          >
+            {communitiesWithDiscounts.map((community) => (
+              <li class="group relative flex flex-col overflow-hidden rounded-2xl border-2 border-neutral-separator bg-neutral-light text-neutral-dark transition-all duration-300 hover:border-accent-orange hover:shadow-xl">
+                <a
+                  href={community.url}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  class="flex flex-col h-full no-underline"
+                >
+                  <div
+                    class="flex items-center justify-center h-[140px] p-6"
+                    style={
+                      community.overrideBgColor
+                        ? `background-color: ${community.overrideBgColor};`
+                        : "background-color: #ffffff;"
+                    }
+                  >
+                    <Image
+                      src={getImage(community.imgName)}
+                      alt={community.name}
+                      loading="lazy"
+                      width="280"
+                      height="120"
+                      class="max-h-[100px] w-auto object-contain"
+                      densities={[1.5, 2]}
+                    />
+                  </div>
+
+                  <div class="flex flex-col gap-3 p-5 flex-1">
+                    <div class="flex items-center justify-between">
+                      <h3 class="m-0 text-xl font-bold">{community.name}</h3>
+                      <span class="inline-flex items-center rounded-full bg-accent-orange px-3 py-1 text-sm font-bold text-neutral-dark">
+                        {community.discount!.percentage}% OFF
+                      </span>
+                    </div>
+
+                    <div class="mt-auto pt-3 border-t border-neutral-separator">
+                      <span class="text-sm text-neutral-dark/70 uppercase tracking-wider">
+                        Discount Code
+                      </span>
+                      <div class="flex items-center gap-2 mt-1">
+                        <code class="flex-1 rounded-lg bg-brand-darknavy px-4 py-2 font-mono text-lg font-bold text-accent-orange tracking-wider">
+                          {community.discount!.code}
+                        </code>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+
+                <div class="absolute top-3 right-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <span class="text-xs text-neutral-dark/60">
+                    Click to visit ↗
+                  </span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )
+    }
+
+    <Section variant="light" content="list">
+      <div class="flex flex-col gap-6 items-start">
+        <h2>💖 Spread the love for communities</h2>
+        <p class="max-w-[55ch]">
+          If your community would like to partner with JSHeroes, we'd love to
+          hear from you! Reach out to us and let's explore how we can support
+          each other.
+        </p>
+        <a href="mailto:welcome@jsheroes.io" class="cta-button">
+          Get in touch
+        </a>
+      </div>
+    </Section>
+  </main>
+</BaseLayout>
