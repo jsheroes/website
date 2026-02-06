@@ -7,9 +7,9 @@ export const goldSponsors: Organization[] = [
     imgName: "sponsors/logo_globalLogic.png",
   },
   {
-    name: "Become a sponsor",
-    url: "/sponsor",
-    imgName: "sponsors/logo_placeholder.svg",
+    name: "Yardi",
+    url: "https://www.yardi.com/",
+    imgName: "sponsors/logo_yardi.png",
   },
 ];
 
