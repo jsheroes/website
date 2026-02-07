@@ -1,0 +1,188 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Section from "@/components/Section.astro";
+import ImagesBanner from "@/components/ImagesBanner.astro";
+import { CURRENT_YEAR } from "@/data/constants";
+import { meetups } from "@/data/meetups";
+
+const today = new Date().toISOString().split("T")[0];
+const sortedMeetups = [...meetups].sort((a, b) => a.date.localeCompare(b.date));
+const nextMeetup = sortedMeetups.find((m) => m.date >= today);
+const pastMeetups = sortedMeetups.filter((m) => m.date < today).reverse();
+
+function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+---
+
+<BaseLayout title={`JSHeroes ${CURRENT_YEAR} | Meetups`}>
+  <main id="main">
+    <Section variant="light" content="text" class="md:pb-16">
+      <h1 class="sr-only">JSHeroes Meetups</h1>
+      <img
+        src="/img/logo-meetups.svg"
+        alt="JSHeroes Meetups"
+        class="w-[21rem]"
+      />
+      <p class="max-w-[65ch] text-balance mt-8">
+        Our local community was born in Cluj-Napoca back in 2016 as Cluj JavaScripters. It was founded by a
+        group of passionate developers that wanted to create a safe space for likeminded people to learn and grow together.
+      </p>
+      <p class="max-w-[65ch] text-balance">
+        What started with small gatherings at local companies and co-working
+        spaces has grown into one of the most active JavaScript communities in
+        Eastern Europe. Over the years, we've hosted hundreds of talks, workshops,
+        and networking events.
+      </p>
+      <p class="max-w-[65ch] text-balance">
+        Our meetups are free, open to everyone, and driven by the belief that
+        knowledge should be shared. Whether you're a seasoned
+        developer or just taking your first steps in the industry, you'll be welcomed with open arms.
+      </p>
+    </Section>
+
+    <ImagesBanner
+      images={["meetups/meetup-1.jpeg", "meetups/meetup-2.jpeg", "meetups/meetup-3.jpeg"]}
+    />
+
+    <Section variant="dark" content="list">
+      <h2 class="mb-8">What we do</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="flex flex-col gap-3">
+          <h3>🎤 Insightful presentations</h3>
+          <p>
+            From lightning talks to deep dives, the majority of our meetups are focused on sharing interesting topics with the wider community.
+          </p>
+        </div>
+        <div class="flex flex-col gap-3">
+          <h3>💬 Open talks and panels</h3>
+          <p>
+            Every now and then we find a topic we want to explore together.
+            Our open-talk style events provide a platform for engaging conversations between attendees.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <h3>👨‍💻 Hands-on workshops</h3>
+          <p>
+            Ocassionally, we host workshops where everyone joins in with their laptop and follows along with a teacher.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <h3>🍻 Informal hangouts</h3>
+          <p>
+            Meetings with the community outside of an office, where the only purpose is to meet new people and have a good time.
+          </p>
+        </div>
+      </div>
+    </Section>
+
+    <Section variant="light" content="list">
+      <h2 class="mb-8">🗓️ Next Meetup</h2>
+      {
+        nextMeetup ? (
+          <a
+            href={nextMeetup.link}
+            target="_blank"
+            rel="noreferrer noopener"
+            class="group block no-underline"
+          >
+            <div class="relative overflow-hidden rounded-3xl border-4 border-accent-orange bg-gradient-to-br from-brand-darknavy to-brand-purple p-8 md:p-12 transition-all duration-200 hover:scale-[1.02]">
+              <div class="absolute top-4 right-4 md:top-6 md:right-6">
+                <span class="inline-flex items-center rounded-full bg-accent-green px-4 py-2 text-sm font-bold text-neutral-dark">
+                  RSVP Now ↗
+                </span>
+              </div>
+
+              <div class="flex flex-col gap-4 text-neutral-light">
+                <span class="text-sm font-medium uppercase tracking-wider text-accent-orange">
+                  Coming up
+                </span>
+                <h3 class="m-0 text-2xl md:text-3xl font-bold leading-tight group-hover:text-accent-orange transition-colors">
+                  {nextMeetup.title}
+                </h3>
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-6 text-lg">
+                  <span class="flex items-center gap-2">
+                    📅 {formatDate(nextMeetup.date)}
+                  </span>
+                  <span class="flex items-center gap-2">
+                    📍 {nextMeetup.location}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
+        ) : (
+          <div class="rounded-3xl border-4 border-dashed border-neutral-separator bg-neutral-light/50 p-8 md:p-12">
+            <div class="flex flex-col gap-4 text-center items-center">
+              <span class="text-4xl">🎉</span>
+              <h3 class="m-0 text-2xl font-bold text-neutral-dark">
+                To be announced
+              </h3>
+              <p class="m-0 text-neutral-dark/70 max-w-md mx-auto">
+                We're planning our next meetup. Join us on meetup.com to get
+                notified when we announce it!
+              </p>
+              <a
+                href="https://www.meetup.com/jsheroes/"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="cta-button"
+              >
+                Follow us on Meetup
+              </a>
+            </div>
+          </div>
+        )
+      }
+    </Section>
+
+    {
+      pastMeetups.length > 0 && (
+        <Section variant="dark" content="list">
+          <h2 class="mb-8">📜 Past Meetups</h2>
+          <ul class="list-none p-0 m-0 space-y-3">
+            {pastMeetups.map((meetup) => (
+              <li>
+                <a
+                  href={meetup.link}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 rounded-xl border border-neutral-separator/50 transition-transform duration-move hover:translate-x-[20px] no-underline"
+                >
+                  <span class="text-sm whitespace-nowrap">
+                    📅 {formatDate(meetup.date)}
+                  </span>
+                  <span class="font-medium text-accent-orange flex-1">{meetup.title}</span>
+                  <span class="text-sm">📍 {meetup.location}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )
+    }
+
+    <Section variant="light" content="text">
+      <div class="flex flex-col gap-6 items-start">
+        <h2>Looking to host a meetup?</h2>
+        <p class="max-w-[55ch]">
+          We've been collaborating with local companies and communities to host events at their offices for the past 10 years.
+          If you're interested in hosting a meetup, let's talk about it!
+        </p>
+        <a
+          href="mailto:welcome@jsheroes.io"
+          class="cta-button"
+        >
+          Get in touch
+        </a>
+      </div>
+    </Section>
+  </main>
+</BaseLayout>
