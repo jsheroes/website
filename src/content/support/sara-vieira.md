@@ -1,5 +1,5 @@
 ---
 name: "Sara Vieira"
-title: "Ambassador"
+title: "MC"
 imgName: "ambassadors/sara-vieira.png"
 ---
