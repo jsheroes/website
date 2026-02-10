@@ -8,7 +8,7 @@ export const goldSponsors: Organization[] = [
   },
   {
     name: "Yardi",
-    url: "https://www.yardi.com/",
+    url: "https://careers.yardiromania.ro/",
     imgName: "sponsors/logo_yardi.png",
   },
 ];
