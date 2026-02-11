@@ -15,6 +15,10 @@ export const communities: Organization[] = [
     name: "JSNation",
     url: "https://jsnation.com/",
     imgName: "communities/logo_jsnation.png",
+    discount: {
+      percentage: 10,
+      code: "FRIENDS",
+    },
   },
   {
     name: "React Paris",
