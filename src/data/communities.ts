@@ -50,6 +50,15 @@ export const communities: Organization[] = [
     imgName: "communities/logo_squiggleconf.svg",
     overrideBgColor: "#063052",
   },
+  {
+    name: "meet.js Summit",
+    url: "https://summit.meetjs.pl/",
+    imgName: "communities/logo_meetjs.svg",
+    discount: {
+      percentage: 10,
+      code: "ILOVEMEETJS",
+    },
+  },
   // {
   //   name: "Code for Romania",
   //   url: "https://code4.ro/",
