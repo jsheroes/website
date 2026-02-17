@@ -23,6 +23,7 @@
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource/sora": "^5.2.8",
     "@iconify-json/mdi": "^1.2.2",
+    "@vercel/analytics": "^1.6.1",
     "astro-icon": "^1.1.5",
     "astro-tooltips": "^0.6.2",
     "chart.js": "^4.4.1",
