@@ -59,6 +59,11 @@ export const communities: Organization[] = [
       code: "ILOVEMEETJS",
     },
   },
+  {
+    name: "CMS Conf",
+    url: "https://cmsconf.com/",
+    imgName: "communities/logo_cmsconf.svg",
+  },
   // {
   //   name: "Code for Romania",
   //   url: "https://code4.ro/",
