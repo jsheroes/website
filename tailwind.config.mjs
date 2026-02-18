@@ -29,8 +29,8 @@ export default {
         slide: "200ms",
       },
       fontSize: {
-        sm: "max(0.85rem, 15px)",
-        base: "max(1rem, 16px)",
+        sm: "0.85rem",
+        base: "1rem",
         md: "1.2rem",
         lg: "1.7rem",
         xl: "2.1rem",
