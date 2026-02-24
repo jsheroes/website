@@ -57,7 +57,7 @@ export const day1: AgendaItem[] = [
   {
     type: "talk",
     timeSlot: "16:00 - 16:30",
-    speakers: [],
+    speakers: ["sara-soueidan"],
   },
 ];
 
@@ -97,5 +97,5 @@ export const day2: AgendaItem[] = [
     imgName: "event/coffee.jpg",
   },
   { type: "talk", timeSlot: "15:30 - 16:00", speakers: ["siddharth-dayalwal"] },
-  { type: "talk", timeSlot: "16:00 - 16:30", speakers: [] },
+  { type: "talk", timeSlot: "16:00 - 16:30", speakers: ["anjana-vakil"] },
 ];

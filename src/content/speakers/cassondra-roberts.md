@@ -6,7 +6,7 @@ imgName: "speakers/cassondra-roberts.jpg"
 links:
   website: "https://allons-y.llc"
   bluesky: "https://front-end.social/@castastrophe"
-order: 13
+order: 14
 ---
 
 Cassondra Roberts is a design systems architect and W3C CSS Working Group invited expert specializing in web component architecture. She founded PatternFly Elements at Red Hat—the open source design system now used across organizations like Google, IBM, and Fidelity—and spent four years advancing Adobe's Spectrum Design System, where she led CSS architecture and AI integration.
