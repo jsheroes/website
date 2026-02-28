@@ -15,4 +15,10 @@ export const goldSponsors: Organization[] = [
 
 export const silverSponsors: Organization[] = [];
 
-export const bronzeSponsors: Organization[] = [];
+export const bronzeSponsors: Organization[] = [
+  {
+    name: 'Wolfbpack Digital',
+    url: 'https://www.wolfpack-digital.com/',
+    imgName: 'sponsors/logo_wolfpack.svg'
+  }
+];
