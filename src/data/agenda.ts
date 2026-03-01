@@ -88,14 +88,18 @@ export const day2: AgendaItem[] = [
     timeSlot: "12:15 - 13:45",
     imgName: "event/coffee.jpg",
   },
-  { type: "talk", timeSlot: "13:45 - 14:15", speakers: ["suz-hinton"] },
-  { type: "talk", timeSlot: "14:15 - 14:45", speakers: ["zbyszek-tenerowicz"] },
+  { type: "talk", timeSlot: "13:45 - 14:15", speakers: ["anjana-vakil"] },
+  {
+    type: "talk",
+    timeSlot: "14:15 - 14:45",
+    speakers: ["siddharth-dayalwal"],
+  },
   {
     type: "placeholder",
     content: "Coffee Break",
     timeSlot: "14:45 - 15:30",
     imgName: "event/coffee.jpg",
   },
-  { type: "talk", timeSlot: "15:30 - 16:00", speakers: ["siddharth-dayalwal"] },
-  { type: "talk", timeSlot: "16:00 - 16:30", speakers: ["anjana-vakil"] },
+  { type: "talk", timeSlot: "15:30 - 16:00", speakers: ["zbyszek-tenerowicz"] },
+  { type: "talk", timeSlot: "16:00 - 16:30", speakers: ["suz-hinton"] },
 ];
