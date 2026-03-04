@@ -1,6 +1,7 @@
 ---
 name: "Ryan Townsend"
-title: "Independent Consultant"
+title: "Principal Product Manager"
+company: "Cloudflare"
 tag: "Performance"
 imgName: "speakers/ryan-townsend.jpg"
 links:
@@ -9,6 +10,6 @@ links:
 order: 8
 ---
 
-With over 20 years of experience working with the web, ecommerce & SaaS, including 10 years as a full-time CTO, Ryan Townsend is a passionate leader and distinguished software engineer who has delivered growth for his clients measured in the hundreds of millions.
+Ryan is a Principal Product Manager on Cloudflare's Speed team, working on RUM & Web Analytics. He's worked with the web for over 20 years, including 10 as a SaaS CTO in ecommerce, his mission being to make the web faster, more enjoyable and more accessible for everyone.
 
-He now runs his own consultancy, TWNSND, and publishes videos and articles at LessonsofaCTO.com
+He also publishes videos and articles at LessonsofaCTO.com

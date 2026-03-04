@@ -24,4 +24,10 @@ export const meetups: Meetup[] = [
     location: "Wolfpack Digital",
     link: "https://www.meetup.com/jsheroes/events/312933420/",
   },
+  {
+    title: "Let's talk AI",
+    date: "2026-02-26",
+    location: "GlobalLogic",
+    link: "https://www.meetup.com/jsheroes/events/313294719/",
+  },
 ];
