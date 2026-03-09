@@ -24,7 +24,7 @@ const { agendaItems, title } = Astro.props as Props;
       if (agendaItem.type === "placeholder") {
         return (
           <li class="color-item flex flex-col md:flex-row gap-6 py-4 items-start md:items-center">
-            <span class="whitespace-nowrap">{agendaItem.timeSlot}</span>
+            <span class="whitespace-nowrap tabular-nums">{agendaItem.timeSlot}</span>
             <div class="flex gap-4 items-center">
               <img class="grayscale h-20 w-20 rounded-full" src={`/img/${agendaItem.imgName}`} />
               <span>{agendaItem.content}</span>
@@ -38,7 +38,7 @@ const { agendaItems, title } = Astro.props as Props;
         if (matchingSpeakers.length === 0) {
           return (
             <li class="color-item flex flex-col md:flex-row gap-6 py-4 items-start md:items-center">
-              <span class="whitespace-nowrap">{agendaItem.timeSlot}</span>
+              <span class="whitespace-nowrap tabular-nums">{agendaItem.timeSlot}</span>
               <div class="flex gap-4 items-center">
                 <img class="grayscale h-20 w-20 rounded-full" src={`/img/props/bear.svg`} />
                 <span>TBA</span>
@@ -51,7 +51,7 @@ const { agendaItems, title } = Astro.props as Props;
 
         return (
           <li class="color-item flex flex-col md:flex-row gap-6 py-4 items-start md:items-center">
-            <span class="whitespace-nowrap">{agendaItem.timeSlot}</span>
+            <span class="whitespace-nowrap tabular-nums">{agendaItem.timeSlot}</span>
             <div class="flex gap-4 items-center">
               <div class="flex shrink-0">
                 {matchingSpeakers.map(speaker => (
