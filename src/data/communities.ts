@@ -64,6 +64,16 @@ export const communities: Organization[] = [
     url: "https://cmsconf.com/",
     imgName: "communities/logo_cmsconf.svg",
   },
+  {
+    name: "Sindicatul Studentilor din Cibernetica",
+    url: "https://sisc.ro/",
+    imgName: "partners/sisc.png",
+  },
+  {
+    name: "DigitalEvents",
+    url: "https://digital-expert.online/en/best-digital-events",
+    imgName: "partners/DE-logo.svg",
+  },
   // {
   //   name: "Code for Romania",
   //   url: "https://code4.ro/",
