@@ -5,7 +5,7 @@ tag: "CSS"
 imgName: "speakers/cyd-stumpel.png"
 links:
   website: "https://cydstumpel.nl/"
-order: 6
+order: 5
 ---
 
 Cyd creates accessible, creative, award winning websites for individuals and companies.

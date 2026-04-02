@@ -10,7 +10,7 @@ links:
   twitter: "https://x.com/farisaziz12"
   github: "https://github.com/farisaziz12"
   bluesky: "https://bsky.app/profile/farisaziz12.bsky.social"
-order: 13
+order: 11
 ---
 
 Faris Aziz is a Staff Frontend Engineer specializing in React, Next.js, monetization systems, and resilient web architecture. He's led teams in early-stage startups and scaling companies, built career ladders from scratch, and shipped systems used by millions.
