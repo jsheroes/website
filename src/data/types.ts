@@ -17,6 +17,7 @@ export type AgendaItem =
       imgName: string;
       timeSlot: string;
       content: string;
+      description?: string;
     }
   | {
       type: "talk";

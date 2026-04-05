@@ -1,13 +1,13 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
-import Banner from "@/sections/banner.astro";
 import { Icon } from "astro-icon/components";
 
 import {
   BRONZE_PACKAGE,
   SILVER_PACKAGE,
   GOLD_PACKAGE,
+  SUPPORTER_PACKAGE,
   BENEFITS_INFO,
 } from "@/data/packages";
 import { Image } from "astro:assets";
@@ -126,7 +126,7 @@ import ImagesBanner from "@/components/ImagesBanner.astro";
     <Section variant="light" content="list">
       <h2>Sponsor Packages</h2>
       {
-        [GOLD_PACKAGE, SILVER_PACKAGE, BRONZE_PACKAGE].map((p) => (
+        [GOLD_PACKAGE, SILVER_PACKAGE, BRONZE_PACKAGE, SUPPORTER_PACKAGE].map((p) => (
           <div
             class={`flex flex-col lg:flex-row gap-3 min-h-[320px] rounded-lg border-[4px] border-${p.color} px-6 py-4 relative ${p.availability > 0 ? 'grayscale-0 opacity-100' : 'grayscale opacity-70'}`}
           >

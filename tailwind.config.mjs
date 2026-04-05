@@ -7,6 +7,7 @@ export default {
     "border-accent-pink",
     "border-accent-orange",
     "border-accent-green",
+    "bg-neutral-separator",
   ],
   theme: {
     colors: {

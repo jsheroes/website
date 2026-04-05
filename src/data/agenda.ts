@@ -25,6 +25,13 @@ export const day1: AgendaItem[] = [
     timeSlot: "10:30 - 11:15",
     imgName: "event/coffee.jpg",
   },
+  {
+    type: "placeholder",
+    content: "Agentic workflows",
+    description: "Alternative stage panel",
+    timeSlot: "10:45 - 11:15",
+    imgName: "event/intro.jpg",
+  },
   { type: "talk", speakers: ["daniel-roe"], timeSlot: "11:15 - 11:45" },
   {
     type: "talk",
@@ -48,6 +55,13 @@ export const day1: AgendaItem[] = [
     content: "Coffee Break",
     timeSlot: "14:45 - 15:30",
     imgName: "event/coffee.jpg",
+  },
+  {
+    type: "placeholder",
+    content: "Building resilience",
+    description: "Alternative stage panel",
+    timeSlot: "15:00 - 15:30",
+    imgName: "event/intro.jpg",
   },
   {
     type: "talk",
@@ -80,6 +94,13 @@ export const day2: AgendaItem[] = [
     timeSlot: "10:30 - 11:15",
     imgName: "event/coffee.jpg",
   },
+  {
+    type: "placeholder",
+    content: "Transforming communities",
+    description: "Alternative stage panel",
+    timeSlot: "11:15 - 11:45",
+    imgName: "event/intro.jpg",
+  },
   { type: "talk", timeSlot: "11:15 - 11:45", speakers: ["richard-gross"] },
   { type: "talk", timeSlot: "11:45 - 12:15", speakers: ["bogdan-zaharia"] },
   {
@@ -99,6 +120,13 @@ export const day2: AgendaItem[] = [
     content: "Coffee Break",
     timeSlot: "14:45 - 15:30",
     imgName: "event/coffee.jpg",
+  },
+  {
+    type: "placeholder",
+    content: "Rethinking the job market",
+    description: "Alternative stage panel",
+    timeSlot: "15:00 - 15:30",
+    imgName: "event/intro.jpg",
   },
   { type: "talk", timeSlot: "15:30 - 16:00", speakers: ["zbyszek-tenerowicz"] },
   { type: "talk", timeSlot: "16:00 - 16:30", speakers: ["suz-hinton"] },
