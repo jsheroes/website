@@ -1,7 +1,7 @@
 ---
 name: "Richard Gross"
 title: "Head of Software Archaeology"
-company: "MailbornWolff"
+company: "MaibornWolff"
 tag: "Code Quality"
 imgName: "speakers/richard-gross.jpg"
 links:
