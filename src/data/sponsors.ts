@@ -17,8 +17,18 @@ export const silverSponsors: Organization[] = [];
 
 export const bronzeSponsors: Organization[] = [
   {
-    name: 'Wolfpack Digital',
-    url: 'https://www.wolfpack-digital.com/',
-    imgName: 'sponsors/logo_wolfpack.svg'
-  }
+    name: "Wolfpack Digital",
+    url: "https://www.wolfpack-digital.com/",
+    imgName: "sponsors/logo_wolfpack.svg",
+  },
+  {
+    name: "Cloud Wizard",
+    url: "https://cloudwizard.tech/",
+    imgName: "sponsors/logo_cloud-wizard.svg",
+  },
+  {
+    name: "Storyblok",
+    url: "https://www.storyblok.com/",
+    imgName: "sponsors/logo_storyblok.png",
+  },
 ];
