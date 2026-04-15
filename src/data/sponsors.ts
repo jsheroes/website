@@ -31,4 +31,19 @@ export const bronzeSponsors: Organization[] = [
     url: "https://www.storyblok.com/",
     imgName: "sponsors/logo_storyblok.png",
   },
+  {
+    name: "meteocontrol",
+    url: "https://www.meteocontrol.com/",
+    imgName: "sponsors/logo_meteocontrol.svg",
+  },
+  {
+    name: "Flowx.ai",
+    url: "https://flowx.ai/",
+    imgName: "sponsors/logo_flowx.ai.png",
+  },
+  {
+    name: "Siemens",
+    url: "https://www.siemens.com/en-us/",
+    imgName: "sponsors/logo_siemens.png",
+  },
 ];

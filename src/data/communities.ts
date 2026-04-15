@@ -74,6 +74,11 @@ export const communities: Organization[] = [
     url: "https://digital-expert.online/en/best-digital-events",
     imgName: "partners/DE-logo.svg",
   },
+  {
+    name: "React Barcelona",
+    url: "https://www.meetup.com/reactjs-barcelona/",
+    imgName: "communities/logo_reactbarcelona.svg",
+  },
   // {
   //   name: "Code for Romania",
   //   url: "https://code4.ro/",
