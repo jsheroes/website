@@ -11,4 +11,14 @@ export const partners: Organization[] = [
     url: "https://camigo.ro/",
     imgName: "partners/logo-camigo.jpg",
   },
+  {
+    name: "DigitalEvents",
+    url: "https://digital-expert.online/en/best-digital-events",
+    imgName: "partners/DE-logo.svg",
+  },
+  {
+    name: "JetBrains",
+    url: "https://www.jetbrains.com/",
+    imgName: "partners/jetbrains.png",
+  },
 ];

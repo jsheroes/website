@@ -70,11 +70,6 @@ export const communities: Organization[] = [
     imgName: "partners/sisc.png",
   },
   {
-    name: "DigitalEvents",
-    url: "https://digital-expert.online/en/best-digital-events",
-    imgName: "partners/DE-logo.svg",
-  },
-  {
     name: "React Barcelona",
     url: "https://www.meetup.com/reactjs-barcelona/",
     imgName: "communities/logo_reactbarcelona.svg",

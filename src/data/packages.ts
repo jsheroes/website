@@ -54,9 +54,9 @@ export const BRONZE_PACKAGE: Package = {
   price: 1500,
   color: "accent-pink",
   description: "Ideal for startups and small companies",
-  benefits: ["rollup", "spotlight", "logo"],
+  benefits: ["giveaways", "rollup", "spotlight", "logo"],
   highlightedBenefits: [],
-  availability: 5,
+  availability: 1,
 };
 
 export const SUPPORTER_PACKAGE: Package = {
@@ -77,7 +77,7 @@ export const SILVER_PACKAGE: Package = {
   description: "Increase brand awareness at the event",
   benefits: ["video", "giveaways", "rollup", "spotlight", "logo"],
   highlightedBenefits: ["giveaways", "video"],
-  availability: 3,
+  availability: 2,
 };
 
 export const GOLD_PACKAGE: Package = {
