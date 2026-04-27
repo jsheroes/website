@@ -46,10 +46,10 @@ export const day1: AgendaItem[] = [
   },
   {
     type: "talk",
-    speakers: ["craig-abbott"],
+    speakers: ["ryan-townsend"],
     timeSlot: "13:45 - 14:15",
   },
-  { type: "talk", speakers: ["cassondra-roberts"], timeSlot: "14:15 - 14:45" },
+  { type: "talk", speakers: ["craig-abbott"], timeSlot: "14:15 - 14:45" },
   {
     type: "placeholder",
     content: "Coffee Break",
@@ -86,7 +86,7 @@ export const day2: AgendaItem[] = [
   {
     type: "talk",
     timeSlot: "10:00 - 10:30",
-    speakers: ["ryan-townsend"],
+    speakers: ["dan-neciu"],
   },
   {
     type: "placeholder",
@@ -113,7 +113,7 @@ export const day2: AgendaItem[] = [
   {
     type: "talk",
     timeSlot: "14:15 - 14:45",
-    speakers: ["siddharth-dayalwal"],
+    speakers: ["zbyszek-tenerowicz"],
   },
   {
     type: "placeholder",
@@ -128,6 +128,17 @@ export const day2: AgendaItem[] = [
     timeSlot: "15:00 - 15:30",
     imgName: "event/intro.jpg",
   },
-  { type: "talk", timeSlot: "15:30 - 16:00", speakers: ["zbyszek-tenerowicz"] },
+  {
+    type: "talk",
+    timeSlot: "15:30 - 16:00",
+    speakers: ["siddharth-dayalwal"],
+  },
   { type: "talk", timeSlot: "16:00 - 16:30", speakers: ["suz-hinton"] },
+  {
+    type: "placeholder",
+    imgName: "event/intro.jpg",
+    timeSlot: "16:30 - 17:00",
+    content: "Closing remarks",
+    description: "JSQuiz, group photo and many more surprises",
+  },
 ];
