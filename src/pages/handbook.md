@@ -10,6 +10,7 @@ Whether you're attending JSHeroes for the first time or you're a returning atten
 - [Date and Venue](#--date-and-venue)
 - [Agenda and Theme](#-agenda-and-theme)
 - [Pre-event meetup](#-pre-event-meetup)
+- [City tour](#-city-tour)
 - [Tickets](#-tickets)
 - [Communication](#-communication)
 - [Transportation](#-transportation)
@@ -23,29 +24,29 @@ Whether you're attending JSHeroes for the first time or you're a returning atten
 
 ## 📆 🌎 Date and Venue
 
-JSHeroes 2025 will take place on <b>May 29-30th</b> (Thursday & Friday) at <b>[Grand Hotel Italia](https://www.google.com/maps/place/Grand+Hotel+Italia)</b> in Cluj-Napoca. It is a one-track conference and we have reserved the space from the hotel's ground floor, a spacious conference room, and a large lobby, where you can enjoy the talks, the technical booths, and the networking area.
+JSHeroes 2026 will take place on **May 14-15** (Thursday & Friday) at **[Grand Hotel Italia](https://www.google.com/maps/place/Grand+Hotel+Italia)** in Cluj-Napoca. It is a one-track conference and we have reserved the space from the hotel's ground floor, a spacious conference room, and a large lobby, where you can enjoy the talks, the technical booths, and the networking area.
 
 Also, during the coffee and lunch breaks, we will have an alternative stage, with interesting conversations and follow-ups from the talks on the main stage. Everyone will be able to join, as a speaker or participant. We also want to encourage open discussions, projects presentations, lightning talks, and anything which is remotely related to what we do and our mission and values.
 
-Bellow you can find a map of the entire venue, with all the points of interest marked accordingly.
+Below you can find a map of the entire venue, with all the points of interest marked accordingly.
 
 <iframe class="w-full h-[400px]" style="border: 1px solid rgba(0, 0, 0, 0.1);" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FF5OpOtQBVoqRCJkPDr4E4O%2FJSHeroes-Venue-Map%3Fnode-id%3D0%253A1%26t%3DM3VYo0JXQ7y6LDTW-1" allowfullscreen></iframe>
 
 ## 📒✨ Agenda and Theme
 
-Our speakers will present solutions for common industry problems, highlight the struggles with managing complexity, maintainability and scalability and will explore new technologies, frameworks and standards that tackle all these concerns.
+In 2026, we will explore the latest trends in engineering and architecture and the tools and frameworks that will shape our work in the years to come. As advances in AI continue to change how we build and collaborate, our speakers will share their insights on the technologies and practices that help us adapt to constant change and uncertainty.
 
-Check out the agenda [here](https://jsheroes.io/#agenda). We’ll post all the talks, soon after the conference, on our [YouTube](https://www.youtube.com/channel/UCeJEpnvZhG-VwGpzrzYLidQ) channel. During the conference, we’re not going to live stream though.
+Check out [the agenda here](https://jsheroes.io/#agenda). We’ll post all the talks, soon after the conference, on our [YouTube](https://www.youtube.com/channel/UCeJEpnvZhG-VwGpzrzYLidQ) channel. There's no live stream option unfortunately.
 
 ## 🎤 Pre-event meetup
 
-On the evening before the event, May 28th, you can [join the pre-event meetup](https://www.meetup.com/women-in-tech-cluj/events/307912304) organized by Women in Tech Cluj. Three of our speakers will be part of a very exciting panel discussion about technical debt and refactoring.
+The traditional pre-event meetup will take place on the day before the conference, on May 13th and will be organized by our partner community, Women in Tech Cluj. For this year, the team has prepared a panel discussion about "Finding Resilience in the AI Era". You can [register for the meetup here](https://www.meetup.com/women-in-tech-cluj/events/314525456/).
 
 ## 📍 City tour
 
 Are you coming to Cluj for the first time? Or maybe you've been here before (or you even live here) but you don't know much about its history? We're organizing a two-hour free walking tour with a professional local guide.
 
-If you are interested, please [register using this quick form](https://forms.gle/3ki1KFiqjmTtMNfA7), so we know how to best prepare for the number of people that are joining.
+[Register for the city tour here](https://forms.gle/AEXLyKu1WcdB4wo1A).
 
 ## 🎫 Tickets
 
@@ -63,7 +64,7 @@ We encourage you to use the hashtag **#JSHeroes** to tweet and post about the co
 
 ## 🚌 Transportation
 
-You can conveniently reach the event location by bus, as **line 21** stops a few hundred meters away from the venue.
+You can conveniently reach the event location by bus, there's a bus stop just a few hundred meters away from the venue.
 
 Please keep in mind that the hotel parking area is not free of charge. Additionally, _heavy traffic_ is to be expected in the area during morning rush hour, so plan accordingly and allow extra time for travel. We hope you have a safe and smooth journey to the conference.
 
@@ -83,7 +84,9 @@ We understand the importance of reducing our carbon footprint and promoting [eco
 
 ## 🎤 Alternative stage
 
-In keeping with our tradition from previous years, the alternative stage will once again be a central part of our event. This informal area serves as a meeting point for speakers and attendees to participate in casual discussions or spontaneous presentations during coffee and lunch breaks. Andrei Antal will return as the host for the stage and our MCs will share the upcoming discussions at the alternative stage before each break.
+In keeping with our tradition from previous years, the alternative stage will once again be a central part of our event. This informal area serves as a meeting point for speakers and attendees to participate in casual discussions or spontaneous presentations during coffee and lunch breaks.
+
+This year's agenda already includes alternative-stage panels on agentic workflows, building resilience, transforming communities, and rethinking the job market. Our MCs will share the upcoming discussions at the alternative stage before each break.
 
 ## 🍎 Catering
 
