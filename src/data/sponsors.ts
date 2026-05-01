@@ -13,7 +13,13 @@ export const goldSponsors: Organization[] = [
   },
 ];
 
-export const silverSponsors: Organization[] = [];
+export const silverSponsors: Organization[] = [
+  {
+    name: "BMW Group Techworks Romania",
+    url: "https://www.bmwtechworks.ro/en",
+    imgName: "sponsors/logo_bmw.svg",
+  },
+];
 
 export const bronzeSponsors: Organization[] = [
   {
