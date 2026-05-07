@@ -5,7 +5,7 @@ title: "Terms and Conditions"
 
 ### 1. Who is JsHeroes
 
-**1.1** JSHeroes or ASOCIATIA CLUJSERS is a legal entity registered with number 1113981 CUI 37346268 with the Romanian authorities
+**1.1** JSHeroes or ASOCIATIA JSHEROES is a legal entity registered with number 1425958 CUI 42975680 with the Romanian authorities
 
 ### 2. Registration
 
@@ -20,7 +20,7 @@ title: "Terms and Conditions"
 ### 4. Refunds
 
 **4.1** Tickets sold to the Attendees or Businesses are non-refundable.  
-**4.2** In case the Attendee is unable to attend the Conference that is applicable to the Ticket they may transfer their ownership until 15 days before the Conference by notifying the Organiser via an email using the following address support@jsheroes.com  
+**4.2** In case the Attendee is unable to attend the Conference that is applicable to the Ticket they may transfer their ownership until 15 days before the Conference by notifying the Organiser via an email using the following address welcome@jsheroes.io  
 **4.3** The Ticket purchased may not be re-sold or transferred for commercial gain under any circumstances.  
 **4.4** Refunds cannot be requested if further restrictions are required due to any medical emergency.
 
