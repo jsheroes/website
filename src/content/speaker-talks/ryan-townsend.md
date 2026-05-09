@@ -1,5 +1,5 @@
 ---
-title: "Faster Navigations Than React"
+title: "Breaking The Bloat: Achieving The Fastest Navigations on The Web"
 ---
 
 Page views smaller and faster than the famously-minimal HackerNews homepage?!
