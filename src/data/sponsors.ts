@@ -52,4 +52,14 @@ export const bronzeSponsors: Organization[] = [
     url: "https://www.siemens.com/en-us/",
     imgName: "sponsors/logo_siemens.png",
   },
+  {
+    name: "Vercel",
+    url: "https://vercel.com/",
+    imgName: "sponsors/logo_vercel.png",
+  },
+  {
+    name: "Sentry",
+    url: "https://sentry.io/",
+    imgName: "sponsors/logo_sentry.svg",
+  },
 ];
