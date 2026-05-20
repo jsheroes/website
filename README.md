@@ -16,7 +16,7 @@ There's a [BaseLayout](/src/layouts/BaseLayout.astro) component which renders fo
 
 [![Open in CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/github/jsheroes/website/main)
 
-If you prefer running it locally:
+For running locally:
 
 ```
 npm install
