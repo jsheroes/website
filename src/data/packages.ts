@@ -41,9 +41,9 @@ export const BENEFITS_INFO: Record<
   },
   video: { display: "Your company video running during the breaks" },
   ticket_discount: { display: "15% discount on all tickets" },
-  tickets: { display: "5 event tickets" },
+  tickets: { display: "10 event tickets" },
   experience: {
-    display: "Company corner during one of the days",
+    display: "Company booth during at the venue",
     explanation:
       "You will have a dedicated area in the hallway where you can interact with the attendees during the breaks.",
   },
@@ -56,7 +56,7 @@ export const BRONZE_PACKAGE: Package = {
   description: "Ideal for startups and small companies",
   benefits: ["giveaways", "rollup", "spotlight", "logo"],
   highlightedBenefits: [],
-  availability: 1,
+  availability: 6,
 };
 
 export const SUPPORTER_PACKAGE: Package = {
@@ -67,7 +67,7 @@ export const SUPPORTER_PACKAGE: Package = {
     "Alternative for the bronze package for companies interested in getting tickets for employees",
   benefits: ["tickets", "spotlight"],
   highlightedBenefits: [],
-  availability: 4,
+  availability: 6,
 };
 
 export const SILVER_PACKAGE: Package = {
@@ -77,12 +77,12 @@ export const SILVER_PACKAGE: Package = {
   description: "Increase brand awareness at the event",
   benefits: ["video", "giveaways", "rollup", "spotlight", "logo"],
   highlightedBenefits: ["giveaways", "video"],
-  availability: 2,
+  availability: 3,
 };
 
 export const GOLD_PACKAGE: Package = {
   name: "Gold",
-  price: 5000,
+  price: 7500,
   color: "accent-orange",
   description: "Get involved at the event",
   benefits: [
@@ -95,5 +95,5 @@ export const GOLD_PACKAGE: Package = {
     "spotlight",
   ],
   highlightedBenefits: ["ticket_discount", "experience"],
-  availability: 0,
+  availability: 3,
 };
