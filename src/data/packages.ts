@@ -97,6 +97,6 @@ export const GOLD_PACKAGE: Package = {
     "rollup",
     "spotlight",
   ],
-  highlightedBenefits: ["ticket_discount", "experience"],
+  highlightedBenefits: ["ticket_discount", "10tickets", "experience"],
   availability: 3,
 };
