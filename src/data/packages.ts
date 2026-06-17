@@ -5,7 +5,8 @@ type Benefit =
   | "giveaways"
   | "video"
   | "ticket_discount"
-  | "tickets"
+  | "10tickets"
+  | "5tickets"
   | "experience";
 
 type Package = {
@@ -41,7 +42,8 @@ export const BENEFITS_INFO: Record<
   },
   video: { display: "Your company video running during the breaks" },
   ticket_discount: { display: "15% discount on all tickets" },
-  tickets: { display: "10 event tickets" },
+  "10tickets": { display: "10 event tickets" },
+  "5tickets": { display: "5 event tickets" },
   experience: {
     display: "Company booth during at the venue",
     explanation:
@@ -65,7 +67,7 @@ export const SUPPORTER_PACKAGE: Package = {
   color: "neutral-separator",
   description:
     "Alternative for the bronze package for companies interested in getting tickets for employees",
-  benefits: ["tickets", "spotlight"],
+  benefits: ["5tickets", "spotlight"],
   highlightedBenefits: [],
   availability: 6,
 };
@@ -87,6 +89,7 @@ export const GOLD_PACKAGE: Package = {
   description: "Get involved at the event",
   benefits: [
     "experience",
+    "10tickets",
     "ticket_discount",
     "video",
     "logo",
