@@ -20,14 +20,18 @@ import ImagesBanner from "@/components/ImagesBanner.astro";
 <BaseLayout isHomePage>
   <Banner />
   <main id="main">
-
     <Section id="speakers" variant="dark" content="list">
       <Speakers />
     </Section>
-    
+
     <Section variant="light" content="text">
       <Theme />
-      {CFP_OPEN && (<p>Do you want to speak at JSHeroes? <a href="/speak">Submit a proposal</a> today!</p>)}
+      {CFP_OPEN && (
+        <p>
+          Do you want to speak at JSHeroes?{" "}
+          <a href="/speak">Submit a proposal</a> today!
+        </p>
+      )}
       <span class="absolute right-[16%] top-[-110px] z-10 hidden lg:block">
         <img
           class="w-[200px]"
@@ -46,10 +50,12 @@ import ImagesBanner from "@/components/ImagesBanner.astro";
         </div>
       </div>
     </Section>
-    <ImagesBanner images={["event/venue3.jpg", "event/venue5.jpg", "event/venue1.jpg"]} />
+    <ImagesBanner
+      images={["event/venue3.jpg", "event/venue5.jpg", "event/venue1.jpg"]}
+    />
     <Section variant="dark" content="text">
       <Event />
-      
+
       <!-- <span class="absolute right-[-100px] top-[100px] z-10 hidden lg:block">
         <BearLink rotate={330} animation="scaleAndSlide" />
       </span> -->
@@ -66,14 +72,26 @@ import ImagesBanner from "@/components/ImagesBanner.astro";
         </a>
       </span>
     </Section>
-    <ImagesBanner images={["event/community1.jpg", "event/community7.jpg", "event/merch1.jpg"]} />
+    <ImagesBanner
+      images={[
+        "event/community1.jpg",
+        "event/community7.jpg",
+        "event/merch1.jpg",
+      ]}
+    />
     <Section variant="dark" content="text">
       <Description />
     </Section>
     <Section id="sponsors" variant="light" content="list">
       <Friends />
     </Section>
-    <ImagesBanner images={["event/venue4.jpg", "event/community3.jpg", "event/community5.jpg"]} />
+    <ImagesBanner
+      images={[
+        "event/venue4.jpg",
+        "event/community3.jpg",
+        "event/community5.jpg",
+      ]}
+    />
     <Section variant="dark" content="list">
       <Organizers />
     </Section>

@@ -2,19 +2,26 @@
 import BearLink from "../components/BearLink.astro";
 
 export interface Props {
-  variant?: 'sponsor' | 'default';
+  variant?: "sponsor" | "default";
 }
 
-const { variant = 'default' } = Astro.props as Props;
+const { variant = "default" } = Astro.props as Props;
 
-const subTitle = variant === 'default' ? "An all things JavaScript conference" : "The biggest dev community event in Romania"
-
+const subTitle =
+  variant === "default"
+    ? "An all things JavaScript conference"
+    : "The biggest dev community event in Romania";
 ---
 
-<div
-  class="relative flex h-screen items-center justify-center bg-brand-darknavy"
->
-  <video preload="true" autoplay loop muted playsinline class="h-full w-full object-cover">
+<div class="relative flex h-screen items-center justify-center bg-brand-darknavy">
+  <video
+    preload="true"
+    autoplay
+    loop
+    muted
+    playsinline
+    class="h-full w-full object-cover"
+  >
     <source src="/movie-cut.mp4" type="video/mp4" />
   </video>
 
@@ -25,41 +32,32 @@ const subTitle = variant === 'default' ? "An all things JavaScript conference" :
   </div>
 
   <div class="absolute w-full px-4 md:px-8">
-    <div
-      class="flex flex-col items-start max-w-[1280px] m-auto gap-8 font-display text-neutral-light"
-    >
+    <div class="flex flex-col items-start max-w-[1280px] m-auto gap-8 font-display text-neutral-light">
       <div class="space-y-3">
-        <img
-          src="/img/logo-dark.svg"
-          alt="JSHeroes"
-          class="w-[21rem]"
-        />
+        <img src="/img/logo-dark.svg" alt="JSHeroes" class="w-[21rem]" />
         <h1 class="text-md">{subTitle}</h1>
       </div>
 
       <div>
-        <h2 class="text-lg flex flex-wrap gap-0 sm:gap-1"><span>We're coming back in 2027!</span></h2>
+        <h2 class="text-lg flex flex-wrap gap-0 sm:gap-1">
+          <span>We're coming back in 2027!</span>
+        </h2>
         <p class="text-md">in the heart of Transylvania ❤️</p>
       </div>
       <div>
-        <p class="text-xl font-medium">
-          May 27-28th 2027
-        </p>
+        <p class="text-xl font-medium">May 27-28th 2027</p>
         <p class="text-md">Cluj-Napoca, Romania</p>
       </div>
-      {
-        variant === 'default' && (
-          <a
-            href="https://ti.to/jsheroes/2027/"
-            target="_blank"
-            rel="noreferrer noopener"
-            class="cta-button"
-          >
-            Join the waitlist
-          </a>
-        )
-      }
-      
+      {variant === "default" && (
+        <a
+          href="https://ti.to/jsheroes/2027/"
+          target="_blank"
+          rel="noreferrer noopener"
+          class="cta-button"
+        >
+          Join the waitlist
+        </a>
+      )}
     </div>
   </div>
 </div>

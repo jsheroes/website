@@ -11,7 +11,7 @@ export async function getStaticPaths() {
           new Date(a.data.published).getTime()
         );
       });
-    }
+    },
   );
 
   return blogs.map((blog, index) => ({

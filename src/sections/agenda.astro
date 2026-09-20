@@ -19,74 +19,92 @@ const { agendaItems, title } = Astro.props as Props;
 <h3>{title}</h3>
 
 <ul class="flex flex-col p-0 m-0 font-display">
-  {
-    agendaItems.map((agendaItem) => {
-      if (agendaItem.type === "placeholder") {
-        return (
-          <li class="color-item flex flex-col md:flex-row gap-6 py-4 items-start md:items-center">
-            <span class="whitespace-nowrap tabular-nums">{agendaItem.timeSlot}</span>
-            <div class="flex gap-4 items-center">
-              <img class="grayscale h-20 w-20 rounded-full" src={`/img/${agendaItem.imgName}`} />
-              <div class="flex flex-col">
-                <strong>{agendaItem.content}</strong>
-                <span>{agendaItem.description}</span>
-              </div>
+  {agendaItems.map((agendaItem) => {
+    if (agendaItem.type === "placeholder") {
+      return (
+        <li class="color-item flex flex-col md:flex-row gap-6 py-4 items-start md:items-center">
+          <span class="whitespace-nowrap tabular-nums">
+            {agendaItem.timeSlot}
+          </span>
+          <div class="flex gap-4 items-center">
+            <img
+              class="grayscale h-20 w-20 rounded-full"
+              src={`/img/${agendaItem.imgName}`}
+            />
+            <div class="flex flex-col">
+              <strong>{agendaItem.content}</strong>
+              <span>{agendaItem.description}</span>
             </div>
-          </li>
-        );
-      } else {
-        const speakerSlugs = agendaItem.speakers;
-        const matchingSpeakers = speakers.filter((s) => speakerSlugs.includes(s.id));
+          </div>
+        </li>
+      );
+    } else {
+      const speakerSlugs = agendaItem.speakers;
+      const matchingSpeakers = speakers.filter((s) =>
+        speakerSlugs.includes(s.id),
+      );
 
-        if (matchingSpeakers.length === 0) {
-          return (
-            <li class="color-item flex flex-col md:flex-row gap-6 py-4 items-start md:items-center">
-              <span class="whitespace-nowrap tabular-nums">{agendaItem.timeSlot}</span>
-              <div class="flex gap-4 items-center">
-                <img class="grayscale h-20 w-20 rounded-full" src={`/img/props/bear.svg`} />
-                <span>TBA</span>
-              </div>
-            </li>
-          );
-        }
-
-        const speakerTalk = speakerTalks.find((s) => s.id === matchingSpeakers[0].id);
-
+      if (matchingSpeakers.length === 0) {
         return (
           <li class="color-item flex flex-col md:flex-row gap-6 py-4 items-start md:items-center">
-            <span class="whitespace-nowrap tabular-nums">{agendaItem.timeSlot}</span>
+            <span class="whitespace-nowrap tabular-nums">
+              {agendaItem.timeSlot}
+            </span>
             <div class="flex gap-4 items-center">
-              <div class="flex shrink-0">
-                {matchingSpeakers.map(speaker => (
-                  <button
-                    aria-haspopup="dialog"
-                    aria-controls={speaker.id}
-                    class="group rounded-full focus-visible:outline-dashed focus-visible:outline-width-[6px] focus-visible:outline-accent-pink focus-visible:outline-offset-[8px] [&:not(:last-child)]:mr-[-24px]"
-                    onclick={`window['${speaker.collection}-${speaker.id}'].showModal()`}
-                    title={`See the profile of ${speaker.data.name}`}
-                  >
-                    <Image
-                      src={getImage(speaker.data.imgName)}
-                      class="grayscale h-20 w-20 rounded-full transition-[border-width, filter] duration-fade ease-out group-focus-visible:grayscale-0 hover:grayscale-0 hover:border-[0.45rem] border-[var(--person-accent-color)]"
-                      alt={speaker.data.name}
-                      width="95"
-                      height="95"
-                      densities={[1.5, 2]}
-                      loading="eager"
-                    />
-                  </button>
-                ))}
-              </div>
-              <div class="flex flex-col">
-                <strong>{matchingSpeakers.map(speaker => speaker.data.name).join(" & ")}</strong>
-                <span>{speakerTalk ? speakerTalk.data.title : "TBA"}</span>
-              </div>
+              <img
+                class="grayscale h-20 w-20 rounded-full"
+                src={`/img/props/bear.svg`}
+              />
+              <span>TBA</span>
             </div>
           </li>
         );
       }
-    })
-  }
+
+      const speakerTalk = speakerTalks.find(
+        (s) => s.id === matchingSpeakers[0].id,
+      );
+
+      return (
+        <li class="color-item flex flex-col md:flex-row gap-6 py-4 items-start md:items-center">
+          <span class="whitespace-nowrap tabular-nums">
+            {agendaItem.timeSlot}
+          </span>
+          <div class="flex gap-4 items-center">
+            <div class="flex shrink-0">
+              {matchingSpeakers.map((speaker) => (
+                <button
+                  aria-haspopup="dialog"
+                  aria-controls={speaker.id}
+                  class="group rounded-full focus-visible:outline-dashed focus-visible:outline-width-[6px] focus-visible:outline-accent-pink focus-visible:outline-offset-[8px] [&:not(:last-child)]:mr-[-24px]"
+                  onclick={`window['${speaker.collection}-${speaker.id}'].showModal()`}
+                  title={`See the profile of ${speaker.data.name}`}
+                >
+                  <Image
+                    src={getImage(speaker.data.imgName)}
+                    class="grayscale h-20 w-20 rounded-full transition-[border-width, filter] duration-fade ease-out group-focus-visible:grayscale-0 hover:grayscale-0 hover:border-[0.45rem] border-[var(--person-accent-color)]"
+                    alt={speaker.data.name}
+                    width="95"
+                    height="95"
+                    densities={[1.5, 2]}
+                    loading="eager"
+                  />
+                </button>
+              ))}
+            </div>
+            <div class="flex flex-col">
+              <strong>
+                {matchingSpeakers
+                  .map((speaker) => speaker.data.name)
+                  .join(" & ")}
+              </strong>
+              <span>{speakerTalk ? speakerTalk.data.title : "TBA"}</span>
+            </div>
+          </div>
+        </li>
+      );
+    }
+  })}
 </ul>
 
 <style>

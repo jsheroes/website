@@ -1,5 +1,6 @@
 ---
-import { type Page, type CollectionEntry, getCollection } from "astro:content";
+import type { Page } from "astro";
+import { type CollectionEntry, getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../components/Section.astro";
 import FormattedDate from "../components/FormattedDate.astro";
@@ -7,15 +8,15 @@ import FormattedDate from "../components/FormattedDate.astro";
 interface Props {
   title: string;
   description?: string;
-  page: Page<CollectionEntry<"blog">[]>;
+  page: Page<CollectionEntry<"blog">>;
 }
 
 const posts = await getCollection("blog");
 const tags = await getCollection("tags").then((tags) => {
   const tagsWithBlogs = tags.filter((tag) =>
     posts.some((post) =>
-      post.data.tags.some((postTag) => postTag.id === tag.id)
-    )
+      post.data.tags.some((postTag) => postTag.id === tag.id),
+    ),
   );
   return tagsWithBlogs;
 });
@@ -52,47 +53,43 @@ const hasDefaultSlot = Astro.slots.has("default");
             All posts ({posts.length})
           </a>
         </li>
-        {
-          tags.map(({ id: slug, data: { name } }) => (
-            <li>
-              <a
-                class="rounded-2xl bg-accent-orange px-4 py-2 no-underline transition-all duration-fade ease-out hover:bg-accent-pink focus-visible:bg-accent-pink"
-                href={`/tags/${slug}`}
-              >
-                {name} ({tagCount(slug)})
-              </a>
-            </li>
-          ))
-        }
+        {tags.map(({ id: slug, data: { name } }) => (
+          <li>
+            <a
+              class="rounded-2xl bg-accent-orange px-4 py-2 no-underline transition-all duration-fade ease-out hover:bg-accent-pink focus-visible:bg-accent-pink"
+              href={`/tags/${slug}`}
+            >
+              {name} ({tagCount(slug)})
+            </a>
+          </li>
+        ))}
       </ul>
 
       <ul class="m-0 list-none p-0">
-        {
-          page.data.map(
-            ({
-              id: slug,
-              data: { published, title, summary },
-            }: CollectionEntry<"blog">) => (
-              <li class="border-t-[1px] border-neutral-separator py-5">
-                <article class="flex flex-col">
-                  <dl>
-                    <dt class="sr-only">Published on</dt>
-                    <dd>
-                      <FormattedDate date={published} />
-                    </dd>
-                  </dl>
-                  <div>
-                    <h3>
-                      <a href={`/blog/${slug}`}>{title}</a>
-                    </h3>
+        {page.data.map(
+          ({
+            id: slug,
+            data: { published, title, summary },
+          }: CollectionEntry<"blog">) => (
+            <li class="border-t-[1px] border-neutral-separator py-5">
+              <article class="flex flex-col">
+                <dl>
+                  <dt class="sr-only">Published on</dt>
+                  <dd>
+                    <FormattedDate date={published} />
+                  </dd>
+                </dl>
+                <div>
+                  <h3>
+                    <a href={`/blog/${slug}`}>{title}</a>
+                  </h3>
 
-                    <div class="mt-2">{summary}</div>
-                  </div>
-                </article>
-              </li>
-            )
-          )
-        }
+                  <div class="mt-2">{summary}</div>
+                </div>
+              </article>
+            </li>
+          ),
+        )}
       </ul>
     </Section>
   </main>

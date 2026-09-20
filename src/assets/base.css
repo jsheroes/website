@@ -1,7 +1,9 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-@source inline("border-accent-pink border-accent-orange border-accent-green bg-neutral-separator");
+@source inline(
+  "border-accent-pink border-accent-orange border-accent-green bg-neutral-separator"
+);
 
 @theme static {
   --color-*: initial;
@@ -20,8 +22,8 @@
   --color-transparent: transparent;
   --color-current: currentColor;
 
-  --font-base: "Sora", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-base: "Sora Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora Variable", ui-sans-serif, system-ui, sans-serif;
 
   --text-sm: 0.85rem;
   --text-base: 1rem;

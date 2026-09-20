@@ -26,28 +26,26 @@ const orderedTalks = talks.sort((t1, t2) => (t1.speaker > t2.speaker ? 1 : -1));
         </p>
 
         <div class="grid grid-cols-1 gap-1 pt-8 md:grid-cols-2 lg:grid-cols-3">
-          {
-            orderedTalks.map((talk) => (
-              <a
-                href={talk.link}
-                target="_blank"
-                rel="noreferrer noopener"
-                class="relative overflow-hidden focus-visible:outline-dashed focus-visible:outline-[4px] focus-visible:outline-offset-0"
-              >
-                <Image
-                  src={getImage(talk.cover)}
-                  alt={talk.speaker}
-                  width="400"
-                  height="250"
-                  class="w-full transition-transform duration-fade ease-out hover:scale-[1.1]"
-                />
-                <div class="to-transparent flex-end pointer-events-none absolute bottom-0 flex w-full flex-col bg-gradient-to-t from-brand-darknavy p-4 pt-8 font-display text-neutral-light">
-                  <span class="text-lg font-bold">{talk.speaker}</span>
-                  <span class="text-balance">{talk.title}</span>
-                </div>
-              </a>
-            ))
-          }
+          {orderedTalks.map((talk) => (
+            <a
+              href={talk.link}
+              target="_blank"
+              rel="noreferrer noopener"
+              class="relative overflow-hidden focus-visible:outline-dashed focus-visible:outline-[4px] focus-visible:outline-offset-0"
+            >
+              <Image
+                src={getImage(talk.cover)}
+                alt={talk.speaker}
+                width="400"
+                height="250"
+                class="w-full transition-transform duration-fade ease-out hover:scale-[1.1]"
+              />
+              <div class="to-transparent flex-end pointer-events-none absolute bottom-0 flex w-full flex-col bg-gradient-to-t from-brand-darknavy p-4 pt-8 font-display text-neutral-light">
+                <span class="text-lg font-bold">{talk.speaker}</span>
+                <span class="text-balance">{talk.title}</span>
+              </div>
+            </a>
+          ))}
         </div>
       </div>
     </Section>

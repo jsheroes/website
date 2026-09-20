@@ -1,6 +1,6 @@
 ---
 layout: "../layouts/MarkdownLayout.astro"
-title: "A sustainable event"  
+title: "A sustainable event"
 ---
 
 We care about ecology, and we would like you to know that this year’s conference in Cluj-Napoca has been organized with sustainability in mind. We understand the importance of reducing our carbon footprint and promoting eco-friendly initiatives, which is why we are continuously doing so.
@@ -46,6 +46,5 @@ In addition to these initiatives, and because our mascot, [Ecma](https://jsheroe
 3. Educating the public about why forests matter.
 
 Under the Viitor Plus umbrella, from 2007 to 2023 more than **32,600 volunteers** helped establish **205 hectares** of forest by planting **1,423,000 saplings** in some of Romania’s least forested counties. Every contribution counts! Just **25 RON** covers planting and long-term care for one sapling.
-
 
 All this being said, we believe that it is important to come together as a community to address some of the challenges facing our environment. By taking action and focusing on sustainable practices, we can create a positive impact. We look forward to seeing you at the conference where we can collaborate and share more ideas on how we can improve.

@@ -6,22 +6,21 @@ const organizers = await getCollection("organizers");
 const volunteers = await getCollection("volunteers");
 const ambassadors = await getCollection("ambassadors");
 
-const listStyles = "flex flex-wrap justify-center md:justify-start gap-8 py-8 px-0";
+const listStyles =
+  "flex flex-wrap justify-center md:justify-start gap-8 py-8 px-0";
 const listItemStyles = "color-item list-none pb-2";
 ---
 
 <h2 class="text-center md:text-left">The team behind 👊</h2>
 
 <ul role="list" class={listStyles}>
-  {
-    organizers.map((o) => (
-      <>
-        <li class={listItemStyles}>
-          <PersonCard variant="small" person={o} />
-        </li>
-      </>
-    ))
-  }
+  {organizers.map((o) => (
+    <>
+      <li class={listItemStyles}>
+        <PersonCard variant="small" person={o} />
+      </li>
+    </>
+  ))}
 </ul>
 
 <div class="text-center md:text-left">
@@ -29,15 +28,13 @@ const listItemStyles = "color-item list-none pb-2";
 </div>
 
 <ul role="list" class={listStyles}>
-  {
-    volunteers.map((v) => (
-      <>
-        <li class={listItemStyles}>
-          <PersonCard variant="small" person={v} />
-        </li>
-      </>
-    ))
-  }
+  {volunteers.map((v) => (
+    <>
+      <li class={listItemStyles}>
+        <PersonCard variant="small" person={v} />
+      </li>
+    </>
+  ))}
 </ul>
 
 <div class="text-center md:text-left">
@@ -45,13 +42,11 @@ const listItemStyles = "color-item list-none pb-2";
 </div>
 
 <ul role="list" class={listStyles}>
-  {
-    ambassadors.map((a) => (
-      <li class={listItemStyles}>
-        <PersonCard variant="small" person={a} />
-      </li>
-    ))
-  }
+  {ambassadors.map((a) => (
+    <li class={listItemStyles}>
+      <PersonCard variant="small" person={a} />
+    </li>
+  ))}
 </ul>
 
 <style>

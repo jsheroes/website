@@ -1,5 +1,5 @@
 {
-  "indent": 2,
   "plugins": ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
-  "tailwindStylesheet": "./src/assets/base.css"
+  "tailwindStylesheet": "./src/assets/base.css",
+  "overrides": [{ "files": "*.astro", "options": { "parser": "astro" } }]
 }

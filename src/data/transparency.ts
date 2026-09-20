@@ -3,7 +3,7 @@ import { Chart } from "chart.js";
 
 Chart.defaults.font.size = 16;
 
-type Year = "2017" | "2018" | "2019" | "2022" | "2023" | "2024" | "2025";
+export type Year = "2017" | "2018" | "2019" | "2022" | "2023" | "2024" | "2025";
 
 const colorPalette = [
   "#0098ff",
@@ -232,7 +232,7 @@ export const createBarChart = (node: HTMLCanvasElement) => {
       plugins: {
         tooltip: {
           callbacks: {
-            label: (context) => `€${context.parsed.y / 1000}k`,
+            label: (context) => `€${(context.parsed.y ?? 0) / 1000}k`,
           },
         },
       },

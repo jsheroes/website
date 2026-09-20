@@ -1,5 +1,4 @@
 ---
-import type { AstroComponentFactory } from "astro/dist/runtime/server";
 import { type CollectionEntry, getEntry, render } from "astro:content";
 import { Image } from "astro:assets";
 import { getImage } from "../utils/getImage";
@@ -23,7 +22,7 @@ const speakerTalk =
 
 const { Content: BioContent } = await render(person);
 
-let TalkContent: AstroComponentFactory | null = null;
+let TalkContent: Awaited<ReturnType<typeof render>>["Content"] | null = null;
 if (speakerTalk) {
   const { Content } = await render(speakerTalk);
   TalkContent = Content;
@@ -67,9 +66,7 @@ links.sort((a, b) => sortOrder.indexOf(a.name) - sortOrder.indexOf(b.name));
   "
 >
   <main class="w-100% flex max-w-[800px] bg-neutral-light p-4 rounded-lg flex-col gap-6 overflow-auto">
-    <div
-      class="w-100% flex flex-col items-center gap-4 pb-2 md:flex-row md:items-start"
-    >
+    <div class="w-100% flex flex-col items-center gap-4 pb-2 md:flex-row md:items-start">
       <div class="flex flex-col items-center gap-4 md:items-start">
         <Image
           src={getImage(person.data.imgName)}
@@ -80,33 +77,29 @@ links.sort((a, b) => sortOrder.indexOf(a.name) - sortOrder.indexOf(b.name));
           class="max-w-[inherit] rounded-md"
         />
         <div class="flex gap-4 px-2">
-          {
-            links.length > 0 &&
-              links.map((link) => (
-                <a
-                  class="flex h-5 w-5 transition-all duration-move ease-out hover:scale-125 hover:contrast-200"
-                  href={link.url as string}
-                  target="_blank"
-                  rel="noopener"
-                  title={link.name}
-                >
-                  <img src={link.icon} alt={link.name} loading="lazy" />
-                </a>
-              ))
-          }
+          {links.length > 0 &&
+            links.map((link) => (
+              <a
+                class="flex h-5 w-5 transition-all duration-move ease-out hover:scale-125 hover:contrast-200"
+                href={link.url as string}
+                target="_blank"
+                rel="noopener"
+                title={link.name}
+              >
+                <img src={link.icon} alt={link.name} loading="lazy" />
+              </a>
+            ))}
         </div>
       </div>
 
       <div class="min-w-auto flex flex-col gap-2 md:min-w-[250px]">
         <div id={`${person.id}-title`} class="flex flex-col" role="heading">
           <strong class="text-lg">{person.data.name}</strong>
-          <span
-            >{
-              person.data.company
-                ? `${person.data.title} @ ${person.data.company}`
-                : person.data.title
-            }</span
-          >
+          <span>
+            {person.data.company
+              ? `${person.data.title} @ ${person.data.company}`
+              : person.data.title}
+          </span>
         </div>
 
         <div class="prose text-sm leading-snug">
@@ -115,16 +108,14 @@ links.sort((a, b) => sortOrder.indexOf(a.name) - sortOrder.indexOf(b.name));
       </div>
     </div>
 
-    {
-      speakerTalk && TalkContent ? (
-        <div class="flex flex-col gap-2">
-          <strong>Talk: {speakerTalk.data.title}</strong>
-          <div class="prose text-sm leading-snug">
-            <TalkContent />
-          </div>
+    {speakerTalk && TalkContent ? (
+      <div class="flex flex-col gap-2">
+        <strong>Talk: {speakerTalk.data.title}</strong>
+        <div class="prose text-sm leading-snug">
+          <TalkContent />
         </div>
-      ) : null
-    }
+      </div>
+    ) : null}
   </main>
 
   <form method="dialog">

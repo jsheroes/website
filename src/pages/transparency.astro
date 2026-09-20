@@ -4,7 +4,7 @@ import Section from "../components/Section.astro";
 import { yearsForBreakdownSelect } from "../data/transparency";
 ---
 
-<BaseLayout title="JSHeroes Transparency Report" >
+<BaseLayout title="JSHeroes Transparency Report">
   <img
     class="block h-[400px] w-full object-cover"
     src={"/img/banners/default.svg"}
@@ -25,10 +25,10 @@ import { yearsForBreakdownSelect } from "../data/transparency";
         our knowledge and organize even better events.
       </p>
       <p>
-        Until 2024, we published blog posts before and after each event, with <a
-          href="/tags/plans">the budget planning</a
-        > and <a href="/tags/reports">the expenses report</a>. But we decided to
-        build this page to make it easier to visualize things over the years.
+        Until 2024, we published blog posts before and after each event, with{" "}
+        <a href="/tags/plans">the budget planning</a> and{" "}
+        <a href="/tags/reports">the expenses report</a>. But we decided to build
+        this page to make it easier to visualize things over the years.
       </p>
       <p>
         All figures below are in euros(€). Different contexts over the years
@@ -47,9 +47,10 @@ import { yearsForBreakdownSelect } from "../data/transparency";
         </p>
         <canvas id="yoy"></canvas>
         <p class="footnote">
-          * We are not counting the cancelled 2020 edition.<br />
-          ** The 2022 edition was a single day event, hence the smaller budget and
-          costs.
+          * We are not counting the cancelled 2020 edition.
+          <br />
+          ** The 2022 edition was a single day event, hence the smaller budget
+          and costs.
         </p>
       </div>
     </Section>
@@ -58,18 +59,16 @@ import { yearsForBreakdownSelect } from "../data/transparency";
         <h2>Income & Expenses Breakdown</h2>
         <p>
           In this section you can see a breakdown of our income and expenses for
-          each event. <br /> Use the selector below to navigate between our previous
-          events.
+          each event. <br /> Use the selector below to navigate between our
+          previous events.
         </p>
         <div class="styled-select">
           <select id="current-year">
-            {
-              yearsForBreakdownSelect.map((year, index) => (
-                <option value={year} selected={index === 0}>
-                  {year}
-                </option>
-              ))
-            }
+            {yearsForBreakdownSelect.map((year, index) => (
+              <option value={year} selected={index === 0}>
+                {year}
+              </option>
+            ))}
           </select>
         </div>
         <div class="chart-row">
@@ -104,23 +103,30 @@ import { yearsForBreakdownSelect } from "../data/transparency";
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://www.womenintechcluj.com/">Women in Tech Cluj</a
+            href="https://www.womenintechcluj.com/"
           >
+            Women in Tech Cluj
+          </a>
         </li>
         <li>JSHeroes Bootcamp / NodeSchool</li>
         <li>
           <a
             target="_blank"
             href="http://absotech.eu/"
-            rel="noopener noreferrer">ABSO-Tech Gherla Robotics Club</a
+            rel="noopener noreferrer"
           >
+            ABSO-Tech Gherla Robotics Club
+          </a>
         </li>
         <li>
-          Open source repositories through <a
+          Open source repositories through{" "}
+          <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://opencollective.com/jsheroes1">open-collective</a
+            href="https://opencollective.com/jsheroes1"
           >
+            open-collective
+          </a>
         </li>
       </ul>
       <p>
@@ -137,13 +143,12 @@ import { yearsForBreakdownSelect } from "../data/transparency";
         getIncomeChartData,
         updateExpenses,
         updateIncome,
-        yearlyGrowth,
-        yearsForBreakdownSelect,
         createDoughnutChart,
         createBarChart,
+        type Year,
       } from "../data/transparency";
 
-      let expensesChart, incomeChart, barChart;
+      let expensesChart: Chart, incomeChart: Chart;
 
       document.addEventListener("astro:page-load", () => {
         const currentYearSelector = document.getElementById("current-year");
@@ -152,20 +157,24 @@ import { yearsForBreakdownSelect } from "../data/transparency";
         const yearlyNode = document.getElementById("yoy");
 
         if (yearlyNode) {
-          barChart = createBarChart(yearlyNode);
+          createBarChart(yearlyNode as HTMLCanvasElement);
 
           expensesChart = createDoughnutChart(
-            expensesNode,
+            expensesNode as HTMLCanvasElement,
             getExpensesChartData(),
           );
 
-          incomeChart = createDoughnutChart(incomeNode, getIncomeChartData());
+          incomeChart = createDoughnutChart(
+            incomeNode as HTMLCanvasElement,
+            getIncomeChartData(),
+          );
         }
 
         if (currentYearSelector) {
           currentYearSelector.addEventListener("change", (ev) => {
-            updateExpenses(expensesChart, ev.target.value);
-            updateIncome(incomeChart, ev.target.value);
+            const year = (ev.target as HTMLSelectElement).value as Year;
+            updateExpenses(expensesChart, year);
+            updateIncome(incomeChart, year);
           });
         }
       });

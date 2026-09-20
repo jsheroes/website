@@ -12,7 +12,7 @@ export const getStaticPaths = (async ({ paginate }) => {
           new Date(a.data.published).getTime()
         );
       });
-    }
+    },
   );
 
   // @TODO: if we have more than 100 posts, we need to paginate

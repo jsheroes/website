@@ -18,7 +18,8 @@ export interface Props {
 
 const { person, variant = "large" } = Astro.props as Props;
 
-const sizeClasses = variant === "small" ? "w-[10rem]" : "w-[12rem] md:w-[13.25rem]";
+const sizeClasses =
+  variant === "small" ? "w-[10rem]" : "w-[12rem] md:w-[13.25rem]";
 ---
 
 <div
@@ -41,28 +42,28 @@ const sizeClasses = variant === "small" ? "w-[10rem]" : "w-[12rem] md:w-[13.25re
         densities={[1.5, 2]}
         loading="eager"
       />
-      {
-        person.data.tag && (
-          <span class="absolute bottom-0 left-0 rounded-lg rounded-br-none rounded-tl-none bg-[var(--person-accent-color)] px-2 py-[2px] text-neutral-dark text-sm">
-            {person.data.tag}
-          </span>
-        )
-      }
+      {person.data.tag && (
+        <span class="absolute bottom-0 left-0 rounded-lg rounded-br-none rounded-tl-none bg-[var(--person-accent-color)] px-2 py-[2px] text-neutral-dark text-sm">
+          {person.data.tag}
+        </span>
+      )}
     </button>
   </div>
 
   <div class="flex flex-col pl-2">
-    <span class={`font-semibold ${variant === "small" ? "text-sm" : "text-base"}`}>
+    <span
+      class={`font-semibold ${variant === "small" ? "text-sm" : "text-base"}`}
+    >
       {person.data.name}
     </span>
-    {
-      variant === "large" && (
-        <>
-          <span class="text-sm">{person.data.title}</span>
-          {person.data.company && <span class="text-sm">{person.data.company}</span>}
-        </>
-      )
-    }
+    {variant === "large" && (
+      <>
+        <span class="text-sm">{person.data.title}</span>
+        {person.data.company && (
+          <span class="text-sm">{person.data.company}</span>
+        )}
+      </>
+    )}
   </div>
 
   <Modal person={person} />

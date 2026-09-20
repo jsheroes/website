@@ -31,9 +31,7 @@ import ImagesBanner from "@/components/ImagesBanner.astro";
         What started as a small idea from the local JavaScript community,
         evolved into one of the best community-organized events in Europe.
       </p>
-      <div
-        class="grid grid-cols-1 items-center gap-0 font-display sm:gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8"
-      >
+      <div class="grid grid-cols-1 items-center gap-0 font-display sm:gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8">
         <div class="flex flex-col">
           <span class="text-huge font-[500] text-accent-pink">350</span>
           <span class="mt-[-2rem] text-lg font-[500]">attendees</span>
@@ -72,7 +70,13 @@ import ImagesBanner from "@/components/ImagesBanner.astro";
       </div>
     </Section>
 
-    <ImagesBanner images={["event/sponsor5.jpg", "event/sponsor6.jpg", "event/sponsor7.jpg"]} />
+    <ImagesBanner
+      images={[
+        "event/sponsor5.jpg",
+        "event/sponsor6.jpg",
+        "event/sponsor7.jpg",
+      ]}
+    />
     <Section variant="dark" content="list">
       <h2>Why should you sponsor us?</h2>
 
@@ -90,10 +94,10 @@ import ImagesBanner from "@/components/ImagesBanner.astro";
         <div>
           <h3>Brand association</h3>
           <p class="mt-4">
-            Over the past 10 years, JSHeroes has grown into one of the most <strong
-              >recognizable</strong
-            > brands in the JavaScript community worldwide. Your company
-            will benefit from being showcased on our visuals and video recordings.
+            Over the past 10 years, JSHeroes has grown into one of the most{" "}
+            <strong>recognizable</strong> brands in the JavaScript community
+            worldwide. Your company will benefit from being showcased on our
+            visuals and video recordings.
           </p>
         </div>
       </div>
@@ -104,44 +108,53 @@ import ImagesBanner from "@/components/ImagesBanner.astro";
           <p class="mt-4">
             We strongly believe that JavaScript is the future. Therefore, our
             mission is to <strong>grow</strong> together with the community.
-            Through JSHeroes, we aim to keep everyone in sync with the latest advancements
-            and trends in the world of JavaScript and web development.
+            Through JSHeroes, we aim to keep everyone in sync with the latest
+            advancements and trends in the world of JavaScript and web
+            development.
           </p>
         </div>
 
         <div>
           <h3>Support a non-profit and transparent event</h3>
           <p class="mt-4">
-            We embraced the <strong>open source</strong> model from the beginning.
-            All the details about the event are public and our budget and expenses
-            are published after each event on <a href="/transparency"
-              >our transparency page</a
-            >.
+            We embraced the <strong>open source</strong> model from the
+            beginning. All the details about the event are public and our budget
+            and expenses are published after each event on{" "}
+            <a href="/transparency">our transparency page</a>.
           </p>
         </div>
       </div>
     </Section>
 
-    
     <Section variant="light" content="list">
       <h2>Sponsor Packages</h2>
-      {
-        [GOLD_PACKAGE, SILVER_PACKAGE, BRONZE_PACKAGE, SUPPORTER_PACKAGE].map((p) => (
+      {[GOLD_PACKAGE, SILVER_PACKAGE, BRONZE_PACKAGE, SUPPORTER_PACKAGE].map(
+        (p) => (
           <div
-            class={`flex flex-col lg:flex-row gap-3 min-h-[320px] rounded-lg border-[4px] border-${p.color} px-6 py-4 relative ${p.availability > 0 ? 'grayscale-0 opacity-100' : 'grayscale opacity-70'}`}
+            class={`flex flex-col lg:flex-row gap-3 min-h-[320px] rounded-lg border-[4px] border-${p.color} px-6 py-4 relative ${p.availability > 0 ? "grayscale-0 opacity-100" : "grayscale opacity-70"}`}
           >
             <div class="flex flex-1 flex-col items-start">
               <h3>{p.name} Package</h3>
               <span class="font-display text-lg font-bold">{p.price} €</span>
               <span class="max-w-[35ch]">{p.description}</span>
-              <span class={`bg-${p.color} px-3 py-1 font-bold absolute right-[-4px] top-[-4px] rounded-bl-lg rounded-tr-lg lg:right-auto lg:top-auto lg:left-[-4px] lg:bottom-[-4px]`}>{p.availability === 0 ? 'SOLD OUT' : `${p.availability} ${p.availability === 1 ? 'package' : 'packages'} left`}</span>
+              <span
+                class={`bg-${p.color} px-3 py-1 font-bold absolute right-[-4px] top-[-4px] rounded-bl-lg rounded-tr-lg lg:right-auto lg:top-auto lg:left-[-4px] lg:bottom-[-4px]`}
+              >
+                {p.availability === 0
+                  ? "SOLD OUT"
+                  : `${p.availability} ${p.availability === 1 ? "package" : "packages"} left`}
+              </span>
             </div>
             <div class="flex flex-1 flex-col py-1">
               {p.benefits.map((benefit) => (
                 <div class={`flex items-center gap-2`}>
                   <img src="/img/props/rocket.svg" alt="" class="h-4 w-4" />
                   <span
-                    class={p.highlightedBenefits.includes(benefit) ? "font-bold" : "font-normal"}
+                    class={
+                      p.highlightedBenefits.includes(benefit)
+                        ? "font-bold"
+                        : "font-normal"
+                    }
                   >
                     {BENEFITS_INFO[benefit].display}
                   </span>
@@ -150,31 +163,52 @@ import ImagesBanner from "@/components/ImagesBanner.astro";
                       <span title={BENEFITS_INFO[benefit].explanation}>
                         <Icon class="w-5 h-5" name="mdi:tooltip-text-outline" />
                       </span>
-                      )}
-                      {BENEFITS_INFO[benefit].link && (
-                        <a class="hover:text-accent-pink transition-colors" href={BENEFITS_INFO[benefit].link} target="_blank" rel="noreferrer noopener">
+                    )}
+                    {BENEFITS_INFO[benefit].link && (
+                      <a
+                        class="hover:text-accent-pink transition-colors"
+                        href={BENEFITS_INFO[benefit].link}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                      >
                         <Icon class="w-5 h-5" name="mdi:camera-outline" />
-                        </a>
-                      )}
+                      </a>
+                    )}
                   </span>
                 </div>
               ))}
             </div>
           </div>
-        ))
-      }
+        ),
+      )}
 
       <div class="mt-8 flex flex-col items-start">
         <h3 class="font-bold">Contact</h3>
         <p>Alexandra Retegan</p>
-        <a href="mailto:welcome@jsheroes.io" class="block" title="This is an email"
-          >welcome@jsheroes.io</a
+        <a
+          href="mailto:welcome@jsheroes.io"
+          class="block"
+          title="This is an email"
         >
-        <a href="tel:0040756403372" class="block" title="This is a phone number">+4 0756 403 372</a>
+          welcome@jsheroes.io
+        </a>
+        <a
+          href="tel:0040756403372"
+          class="block"
+          title="This is a phone number"
+        >
+          +4 0756 403 372
+        </a>
       </div>
     </Section>
 
-    <ImagesBanner images={["event/sponsor1.jpg", "event/sponsor2.jpg", "event/sponsor3.jpg"]} />
+    <ImagesBanner
+      images={[
+        "event/sponsor1.jpg",
+        "event/sponsor2.jpg",
+        "event/sponsor3.jpg",
+      ]}
+    />
     <Section variant="dark" content="list">
       <div class="mt-8 flex items-center gap-4">
         <div class="mr-4 hidden w-[286px] md:block">
@@ -182,7 +216,7 @@ import ImagesBanner from "@/components/ImagesBanner.astro";
         </div>
         <blockquote class="flex max-w-[50ch] flex-col gap-2">
           <cite>
-            <p> 
+            <p>
               If there is one conference that you already should put on your
               shortlist for (the) next year(s), JSHeroes is the one.
             </p>
@@ -203,9 +237,7 @@ import ImagesBanner from "@/components/ImagesBanner.astro";
         </blockquote>
       </div>
       <div class="ml-0 flex items-center gap-4 md:ml-auto">
-        <blockquote
-          class="mr-4 flex max-w-[50ch] flex-col gap-2 text-left md:text-right"
-        >
+        <blockquote class="mr-4 flex max-w-[50ch] flex-col gap-2 text-left md:text-right">
           <cite>
             People just start talking about their pains in the code business.
             It's amazing! It feels like a group therapy, in a way. And this is

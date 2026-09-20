@@ -49,36 +49,32 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
             <div>
               <div class="text-sm">Tags</div>
               <div class="flex flex-wrap gap-2">
-                {
-                  blog.data.tags.map((tag) => (
-                    <a class="capitalize" href={`/tags/${tag.id}`}>
-                      {tag.id}
-                    </a>
-                  ))
-                }
+                {blog.data.tags.map((tag) => (
+                  <a class="capitalize" href={`/tags/${tag.id}`}>
+                    {tag.id}
+                  </a>
+                ))}
               </div>
             </div>
 
             <div class="divider"></div>
 
-            {
-              (next || prev) && (
-                <div class="flex flex-row justify-between gap-2 md:flex-col md:justify-center md:gap-4">
-                  {prev && (
-                    <div class="grow">
-                      <div class="text-sm">Previous</div>
-                      <a href={`/blog/${prev.id}`}>{prev.data.title}</a>
-                    </div>
-                  )}
-                  {next && (
-                    <div class="grow self-end text-right md:self-start md:text-left">
-                      <div class="text-sm">Next</div>
-                      <a href={`/blog/${next.id}`}>{next.data.title}</a>
-                    </div>
-                  )}
-                </div>
-              )
-            }
+            {(next || prev) && (
+              <div class="flex flex-row justify-between gap-2 md:flex-col md:justify-center md:gap-4">
+                {prev && (
+                  <div class="grow">
+                    <div class="text-sm">Previous</div>
+                    <a href={`/blog/${prev.id}`}>{prev.data.title}</a>
+                  </div>
+                )}
+                {next && (
+                  <div class="grow self-end text-right md:self-start md:text-left">
+                    <div class="text-sm">Next</div>
+                    <a href={`/blog/${next.id}`}>{next.data.title}</a>
+                  </div>
+                )}
+              </div>
+            )}
 
             <div class="mt-4">
               <a href="/blog"> &larr; Back to the blog</a>

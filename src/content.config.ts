@@ -36,7 +36,9 @@ const blog = defineCollection({
       .enum(["organizers", "guest-writers", "ambassadors"])
       .optional()
       .default("organizers"),
-    tags: z.array(reference("tags")).default(["general"]),
+    tags: z
+      .array(reference("tags"))
+      .default([{ collection: "tags" as const, id: "general" }]),
   }),
 });
 
@@ -54,7 +56,10 @@ export const collections = {
   ambassadors: defineCollection({ loader: md("ambassadors"), ...personSchema }),
   speakers: defineCollection({ loader: md("speakers"), ...personSchema }),
   volunteers: defineCollection({ loader: md("volunteers"), ...personSchema }),
-  "guest-writers": defineCollection({ loader: md("guest-writers"), ...personSchema }),
+  "guest-writers": defineCollection({
+    loader: md("guest-writers"),
+    ...personSchema,
+  }),
   "speaker-talks": defineCollection({
     loader: md("speaker-talks"),
     schema: z.object({

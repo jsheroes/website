@@ -22,11 +22,9 @@ const author = frontmatter.author
   />
   <main id="main">
     <Section variant="light" content="text" class="max-w-none">
-      {
-        author && (
-          <AuthorCard author={author} publishDate={frontmatter.published} />
-        )
-      }
+      {author && (
+        <AuthorCard author={author} publishDate={frontmatter.published} />
+      )}
       <div class="prose">
         <h1>{frontmatter.title}</h1>
         <slot />

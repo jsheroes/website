@@ -10,10 +10,10 @@ const headerClass = isHomePage ? "bg-transparent" : "bg-brand-darknavy";
 const headerHomeLinkClass = isHomePage ? "home-link hidden" : "home-link flex";
 ---
 
-<header class={`main-nav fixed z-40 w-full px-4 md:px-8 transition-all duration-slide ease-out ${headerClass}`}>
-  <div
-    class="m-auto max-w-[1280px] flex justify-between py-4 font-display"
-  >
+<header
+  class={`main-nav fixed z-40 w-full px-4 md:px-8 transition-all duration-slide ease-out ${headerClass}`}
+>
+  <div class="m-auto max-w-[1280px] flex justify-between py-4 font-display">
     <div class="inline">
       <a href="/" class={headerHomeLinkClass}>
         <img src="/img/logo-dark.svg" alt="JSHeroes" class="w-[160px]" />
@@ -24,11 +24,19 @@ const headerHomeLinkClass = isHomePage ? "home-link hidden" : "home-link flex";
       <div class="hidden gap-4 sm:flex">
         <a
           class={`navlink h-0 w-0 overflow-hidden focus:h-auto focus:w-auto`}
-          href="#main">Skip navigation</a
+          href="#main"
         >
-        <a class="navlink" href="/#agenda">Agenda</a>
-        <a class="navlink" href="/handbook">Handbook</a>
-        <a class="navlink" href="/#sponsors">Sponsors</a>
+          Skip navigation
+        </a>
+        <a class="navlink" href="/#agenda">
+          Agenda
+        </a>
+        <a class="navlink" href="/handbook">
+          Handbook
+        </a>
+        <a class="navlink" href="/#sponsors">
+          Sponsors
+        </a>
       </div>
 
       <button
@@ -61,32 +69,66 @@ const headerHomeLinkClass = isHomePage ? "home-link hidden" : "home-link flex";
   </button>
   <div class="flex w-full flex-col gap-8 pb-6 text-[1.2rem] md:text-[1rem]">
     <div class="flex flex-col items-start gap-2 px-16">
-      <a class="navlink" href="/">Home</a>
+      <a class="navlink" href="/">
+        Home
+      </a>
       <!-- <a class="navlink" href="/speak">Call for speakers</a> -->
-      <a class="navlink" href="/#speakers">Speakers</a>
-      <a class="navlink block sm:hidden" href="/#agenda">Agenda</a>
-      <a class="navlink block sm:hidden" href="/handbook">Handbook</a>
-      <a class="navlink block sm:hidden" href="/#sponsors">Sponsors</a>
-      <a class="navlink" href="/why-attend">Why attend</a>
-      <a class="navlink" href="/sponsor">Call for sponsors</a>
+      <a class="navlink" href="/#speakers">
+        Speakers
+      </a>
+      <a class="navlink block sm:hidden" href="/#agenda">
+        Agenda
+      </a>
+      <a class="navlink block sm:hidden" href="/handbook">
+        Handbook
+      </a>
+      <a class="navlink block sm:hidden" href="/#sponsors">
+        Sponsors
+      </a>
+      <a class="navlink" href="/why-attend">
+        Why attend
+      </a>
+      <a class="navlink" href="/sponsor">
+        Call for sponsors
+      </a>
     </div>
 
     <div class="flex flex-col items-start gap-2 px-16">
       <!-- <a class="navlink" href="/handbook">Handbook</a> -->
-      <a class="navlink" href="/eco-friendly">Sustainability</a>
-      <a class="navlink" href="/accessibility">Accesssibility</a>
-      <a class="navlink" href="/transparency">Transparency</a>
+      <a class="navlink" href="/eco-friendly">
+        Sustainability
+      </a>
+      <a class="navlink" href="/accessibility">
+        Accesssibility
+      </a>
+      <a class="navlink" href="/transparency">
+        Transparency
+      </a>
     </div>
 
     <div class="flex flex-col items-start gap-2 px-16">
-      <a class="navlink" href="/blog">Blog</a>
-      <a class="navlink" href="/hall-of-fame">Hall of fame</a>
-      <a class="navlink" href="/coc">Code of Conduct</a>
-      <a class="navlink" href="/privacy">Privacy Statement</a>
-      <a class="navlink" href="/terms-and-conditions">Terms and Conditions</a>
+      <a class="navlink" href="/blog">
+        Blog
+      </a>
+      <a class="navlink" href="/hall-of-fame">
+        Hall of fame
+      </a>
+      <a class="navlink" href="/coc">
+        Code of Conduct
+      </a>
+      <a class="navlink" href="/privacy">
+        Privacy Statement
+      </a>
+      <a class="navlink" href="/terms-and-conditions">
+        Terms and Conditions
+      </a>
 
-      <a class="navlink" href="/media">Media Kit</a>
-      <a class="navlink" href="/meet-ecma">Meet Ecma</a>
+      <a class="navlink" href="/media">
+        Media Kit
+      </a>
+      <a class="navlink" href="/meet-ecma">
+        Meet Ecma
+      </a>
     </div>
 
     <div class="flex flex-col items-start gap-2 px-16">
@@ -94,39 +136,44 @@ const headerHomeLinkClass = isHomePage ? "home-link hidden" : "home-link flex";
         class="navlink"
         target="_blank"
         rel="noreferrer noopener"
-        href="https://2025.jsheroes.io">2025</a
+        href="https://2025.jsheroes.io"
       >
+        2025
+      </a>
       <a
         class="navlink"
         target="_blank"
         rel="noreferrer noopener"
-        href="https://2024.jsheroes.io">2024</a
+        href="https://2024.jsheroes.io"
       >
+        2024
+      </a>
       <a
         class="navlink"
         target="_blank"
         rel="noreferrer noopener"
-        href="https://2023.jsheroes.io">2023</a
+        href="https://2023.jsheroes.io"
       >
+        2023
+      </a>
       <a
         class="navlink"
         target="_blank"
         rel="noreferrer noopener"
-        href="https://2022.jsheroes.io">2022</a
+        href="https://2022.jsheroes.io"
       >
+        2022
+      </a>
     </div>
   </div>
 </nav>
 
-<div
-  class="backdrop fixed right-0 top-0 z-20 hidden h-full w-full bg-[rgba(0,0,0,0.6)]"
->
-</div>
+<div class="backdrop fixed right-0 top-0 z-20 hidden h-full w-full bg-[rgba(0,0,0,0.6)]"></div>
 
 <script>
   document.addEventListener("astro:page-load", () => {
     const hamburgerBtn = document.querySelector(
-      ".hamburger"
+      ".hamburger",
     ) as HTMLButtonElement;
     const closeBtn = document.querySelector(".close") as HTMLButtonElement;
     const backdrop = document.querySelector(".backdrop") as HTMLDivElement;
@@ -135,7 +182,7 @@ const headerHomeLinkClass = isHomePage ? "home-link hidden" : "home-link flex";
     const homeLink = document.querySelector(".home-link") as HTMLElement;
 
     const sideDrawerLinks = document.querySelectorAll(
-      ".side-drawer a"
+      ".side-drawer a",
     ) as NodeListOf<HTMLAnchorElement>;
 
     function onOpen() {
@@ -154,7 +201,7 @@ const headerHomeLinkClass = isHomePage ? "home-link hidden" : "home-link flex";
             e.preventDefault();
             closeBtn.focus();
           }
-        }
+        },
       );
     }
 
@@ -170,7 +217,7 @@ const headerHomeLinkClass = isHomePage ? "home-link hidden" : "home-link flex";
         link.setAttribute("tabIndex", "-1");
       });
     }
-    
+
     if (window.location.pathname === "/") {
       document.addEventListener("scroll", (e) => {
         if (window.scrollY > 600) {
