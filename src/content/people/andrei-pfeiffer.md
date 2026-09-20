@@ -5,6 +5,7 @@ title: "Platform Engineer"
 company: "SmileCloud"
 tag: "Node.js"
 photo: "../../images/people/andrei-pfeiffer.png"
+portrait: "../../images/people/andrei-pfeiffer-cutout.png"
 links:
   website: "https://andreipfeiffer.dev/"
 order: 13

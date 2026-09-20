@@ -1,6 +1,6 @@
 ---
 name: "Daniel Mocan"
-role: "volunteer"
+role: "organizer"
 title: "Organizer"
 photo: "../../images/people/daniel-mocan.png"
 links: { linkedin: "https://www.linkedin.com/in/daniel-mocan/" }

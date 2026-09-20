@@ -5,6 +5,7 @@ company: "Smallpdf"
 title: "Staff Software Engineer"
 tag: "Performance"
 photo: "../../images/people/faris-aziz.jpg"
+portrait: "../../images/people/faris-aziz-cutout.png"
 links:
   website: "https://www.faziz-dev.com/"
   linkedin: "https://www.linkedin.com/in/farisaziz12/"

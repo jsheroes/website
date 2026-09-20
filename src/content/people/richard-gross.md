@@ -5,6 +5,7 @@ title: "Head of Software Archaeology"
 company: "MaibornWolff"
 tag: "Code Quality"
 photo: "../../images/people/richard-gross.jpg"
+portrait: "../../images/people/richard-gross-cutout.png"
 links:
   website: "https://richargh.de"
   linkedin: "https://www.linkedin.com/in/richargh/"

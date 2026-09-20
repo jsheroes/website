@@ -5,6 +5,7 @@ company: "Sentry"
 title: "Frontend Engineer"
 tag: "Maintainability"
 photo: "../../images/people/dominik-dorfmeister.jpg"
+portrait: "../../images/people/dominik-dorfmeister-cutout.png"
 links:
   website: "https://tkdodo.eu/blog"
   bluesky: "https://bsky.app/profile/tkdodo.eu"

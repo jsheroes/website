@@ -5,6 +5,7 @@ title: "Lead Engineer"
 company: "Rover.com"
 tag: "React"
 photo: "../../images/people/dan-neciu.png"
+portrait: "../../images/people/dan-neciu-cutout.png"
 links:
   website: "https://neciudan.dev"
   linkedin: "https://www.linkedin.com/in/neciudan"

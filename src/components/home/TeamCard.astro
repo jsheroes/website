@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+import PersonDialog from "../ui/PersonDialog.astro";
+import { personDialogId, type Person } from "../../utils/people";
+
+/** Tinted photo, name and role; opens the profile dialog. Tint comes from --tint on the parent. */
+interface Props {
+  person: Person;
+}
+
+const { person } = Astro.props;
+---
+
+<button
+  type="button"
+  data-person-dialog={personDialogId(person)}
+  aria-haspopup="dialog"
+  class="group block w-full cursor-pointer border-0 bg-transparent p-0 text-left text-inherit"
+>
+  <span class="block aspect-[4/3] overflow-hidden bg-[var(--tint)]">
+    <Image
+      src={person.data.photo}
+      alt=""
+      width={200}
+      height={150}
+      densities={[1, 2]}
+      class="h-full w-full object-cover object-top mix-blend-multiply grayscale transition duration-200 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+    />
+  </span>
+  <span class="mt-4 block text-xl leading-tight font-bold group-hover:underline group-hover:decoration-accent-pink group-hover:decoration-2 group-hover:underline-offset-4">
+    {person.data.name}
+  </span>
+  <span class="mt-0.5 block text-sm text-soft">{person.data.title}</span>
+</button>
+
+<PersonDialog person={person} />

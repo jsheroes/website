@@ -5,6 +5,7 @@ company: "Hootsuite"
 title: "TypeScript Developer"
 tag: "Architecture"
 photo: "../../images/people/bogdan-zaharia.jpg"
+portrait: "../../images/people/bogdan-zaharia-cutout.png"
 order: 10
 ---
 

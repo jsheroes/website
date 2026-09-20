@@ -4,6 +4,7 @@ role: "speaker"
 title: "meet.js"
 tag: "Creative Coding"
 photo: "../../images/people/zbyszek-tenerowicz.jpg"
+portrait: "../../images/people/zbyszek-tenerowicz-cutout.png"
 links:
   website: "https://naugtur.pl"
   twitter: "https://twitter.com/naugtur"
