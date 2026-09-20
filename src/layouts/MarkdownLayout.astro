@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../components/Section.astro";
-import { CURRENT_YEAR, SEO_TAGLINE } from "../data/constants";
 import AuthorCard from "../components/AuthorCard.astro";
 import { getEntry } from "astro:content";
 
@@ -12,13 +11,11 @@ const author = frontmatter.author
   : undefined;
 ---
 
-<BaseLayout
-  title={`JSHeroes ${CURRENT_YEAR} | ${frontmatter.title || SEO_TAGLINE}`}
->
+<BaseLayout title={frontmatter.title}>
   <img
     class="block h-[400px] w-full object-cover"
     src={frontmatter.banner || "/img/banners/default.svg"}
-    aria-hidden
+    alt=""
   />
   <main id="main">
     <Section variant="light" content="text" class="max-w-none">

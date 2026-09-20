@@ -1,5 +1,6 @@
 ---
 import BearLink from "../components/BearLink.astro";
+import { event } from "../data/event";
 
 export interface Props {
   variant?: "sponsor" | "default";
@@ -40,17 +41,19 @@ const subTitle =
 
       <div>
         <h2 class="text-lg flex flex-wrap gap-0 sm:gap-1">
-          <span>We're coming back in 2027!</span>
+          <span>We're coming back in {event.year}!</span>
         </h2>
         <p class="text-md">in the heart of Transylvania ❤️</p>
       </div>
       <div>
-        <p class="text-xl font-medium">May 27-28th 2027</p>
-        <p class="text-md">Cluj-Napoca, Romania</p>
+        <p class="text-xl font-medium">{event.dates}</p>
+        <p class="text-md">
+          {event.venue.city}, {event.venue.country}
+        </p>
       </div>
       {variant === "default" && (
         <a
-          href="https://ti.to/jsheroes/2027/"
+          href={event.ticketsUrl}
           target="_blank"
           rel="noreferrer noopener"
           class="cta-button"

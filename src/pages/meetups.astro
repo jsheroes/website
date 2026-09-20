@@ -2,7 +2,6 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
 import ImagesBanner from "@/components/ImagesBanner.astro";
-import { CURRENT_YEAR } from "@/data/constants";
 import { meetups } from "@/data/meetups";
 
 const today = new Date().toISOString().split("T")[0];
@@ -20,7 +19,7 @@ function formatDate(dateString: string): string {
 }
 ---
 
-<BaseLayout title={`JSHeroes ${CURRENT_YEAR} | Meetups`}>
+<BaseLayout title="Meetups">
   <main id="main">
     <Section variant="light" content="text" class="md:pb-16">
       <h1 class="sr-only">JSHeroes Meetups</h1>

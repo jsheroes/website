@@ -28,6 +28,7 @@ export const day1: AgendaItem[] = [
   {
     type: "placeholder",
     content: "Agentic workflows",
+    stage: "alternative",
     description: "Alternative stage panel",
     timeSlot: "10:45 - 11:15",
     imgName: "event/intro.jpg",
@@ -59,6 +60,7 @@ export const day1: AgendaItem[] = [
   {
     type: "placeholder",
     content: "Building resilience",
+    stage: "alternative",
     description: "Alternative stage panel",
     timeSlot: "15:00 - 15:30",
     imgName: "event/intro.jpg",
@@ -97,6 +99,7 @@ export const day2: AgendaItem[] = [
   {
     type: "placeholder",
     content: "Transforming communities",
+    stage: "alternative",
     description: "Alternative stage panel",
     timeSlot: "11:15 - 11:45",
     imgName: "event/intro.jpg",
@@ -124,6 +127,7 @@ export const day2: AgendaItem[] = [
   {
     type: "placeholder",
     content: "Rethinking the job market",
+    stage: "alternative",
     description: "Alternative stage panel",
     timeSlot: "15:00 - 15:30",
     imgName: "event/intro.jpg",

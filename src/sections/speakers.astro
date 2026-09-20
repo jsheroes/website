@@ -1,5 +1,6 @@
 ---
-import { CFP_OPEN, CURRENT_YEAR } from "../data/constants";
+import { CFP_OPEN } from "../data/flags";
+import { event } from "../data/event";
 
 import PersonCard from "../components/PersonCard.astro";
 import PlaceholderCard from "../components/PlaceholderCard.astro";
@@ -22,7 +23,7 @@ speakersSorted.sort((a, b) => {
 ---
 
 <div>
-  <h2 class="text-center md:text-left">Meet the heroes of 2026</h2>
+  <h2 class="text-center md:text-left">Meet the heroes of {event.year}</h2>
 </div>
 
 <ul role="list" class={listStyles}>

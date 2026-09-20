@@ -2,10 +2,10 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../components/Section.astro";
 import ImagesBanner from "../components/ImagesBanner.astro";
-import { CURRENT_YEAR, EVENT_DATES } from "../data/constants";
+import { event } from "../data/event";
 ---
 
-<BaseLayout title={`JSHeroes ${CURRENT_YEAR} | What's in it for me?`}>
+<BaseLayout title="What's in it for me?">
   <main id="main">
     <Section variant="light" content="list">
       <h1 class="mt-16">What's in it for me?</h1>
@@ -21,7 +21,7 @@ import { CURRENT_YEAR, EVENT_DATES } from "../data/constants";
       </p>
       <p>
         If you're not fully convinced yet, below you will find some of the
-        reasons why you should attend JSHeroes {CURRENT_YEAR}.
+        reasons why you should attend JSHeroes {event.year}.
       </p>
     </Section>
 
@@ -153,11 +153,12 @@ import { CURRENT_YEAR, EVENT_DATES } from "../data/constants";
       <div class="flex flex-col gap-5 items-start text-left sm:gap-6">
         <h2 class="leading-tight">Ready to join us?</h2>
         <p class="w-full max-w-[55ch]">
-          JSHeroes {CURRENT_YEAR} takes place on {EVENT_DATES} in Cluj-Napoca,
-          Romania. Secure your spot today and be part of something special.
+          JSHeroes {event.year} takes place on {event.dates} in{" "}
+          {event.venue.city}, Romania. Secure your spot today and be part of
+          something special.
         </p>
         <a
-          href="https://ti.to/jsheroes/2026"
+          href={event.ticketsUrl}
           target="_blank"
           rel="noreferrer noopener"
           class="cta-button"

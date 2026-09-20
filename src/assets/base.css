@@ -17,6 +17,19 @@
   --color-accent-green: #65d3bb;
   --color-black-pearl: #001c2b;
   --color-dodger-blue: #0098ff;
+
+  /* 2027 redesign tokens. black-pearl is the ink colour. */
+  --color-paper: #fbfaf7;
+  --color-band: #f1efe9;
+  --color-soft: #33495a;
+  --color-muted: #6b7c88;
+  --color-muted-strong: #4a5b68;
+  --color-rule: #cfd6db;
+  --color-dodger-blue-night: #1aa6ff;
+  --color-tint-blue: #cdeaff;
+  --color-tint-coral: #ffd9df;
+  --color-tint-yellow: #fff0cc;
+  --color-tint-mint: #d3f1ea;
   --color-white: #fff;
   --color-black: #000;
   --color-transparent: transparent;

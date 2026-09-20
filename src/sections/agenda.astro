@@ -30,6 +30,7 @@ const { agendaItems, title } = Astro.props as Props;
             <img
               class="grayscale h-20 w-20 rounded-full"
               src={`/img/${agendaItem.imgName}`}
+              alt=""
             />
             <div class="flex flex-col">
               <strong>{agendaItem.content}</strong>
@@ -54,6 +55,7 @@ const { agendaItems, title } = Astro.props as Props;
               <img
                 class="grayscale h-20 w-20 rounded-full"
                 src={`/img/props/bear.svg`}
+                alt=""
               />
               <span>TBA</span>
             </div>
@@ -87,7 +89,6 @@ const { agendaItems, title } = Astro.props as Props;
                     width="95"
                     height="95"
                     densities={[1.5, 2]}
-                    loading="eager"
                   />
                 </button>
               ))}

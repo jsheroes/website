@@ -6,7 +6,7 @@ import ScrollToTop from "../components/ScrollToTop.astro";
 import { ClientRouter } from "astro:transitions";
 import Analytics from "@vercel/analytics/astro";
 
-import { EVENT_DATES, CURRENT_YEAR, SEO_TAGLINE } from "../data/constants";
+import { event } from "../data/event";
 
 import "@fontsource-variable/sora";
 
@@ -14,13 +14,22 @@ import "@/assets/base.css";
 
 export interface Props {
   title?: string;
+  description?: string;
+  /** Path or absolute URL of the social sharing image. */
+  image?: string;
   isHomePage?: boolean;
 }
 
-const { title: propsTitle, isHomePage } = Astro.props as Props;
+const {
+  title: propsTitle,
+  description = `JSHeroes is a yearly event organized by the local JS community in Cluj, Romania. Check the latest updates and join us on ${event.dates}.`,
+  image = event.ogImage,
+  isHomePage,
+} = Astro.props as Props;
 
-const title = propsTitle || `JSHeroes ${CURRENT_YEAR} | ${SEO_TAGLINE}`;
-const description = `JSHeroes is an yearly event organized by the local JS community in Cluj, Romania. Check the latest updates and join us on the ${EVENT_DATES} ${CURRENT_YEAR}`;
+const title = `${event.name} ${event.year} | ${propsTitle ?? event.tagline}`;
+const canonical = new URL(Astro.url.pathname, event.siteUrl).href;
+const ogImage = new URL(image, event.siteUrl).href;
 ---
 
 <!doctype html>
@@ -33,6 +42,7 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
       content="-VWpgQNMZy97BonSpKFQXFiI7wRwtWmdQeKzLjJsH08"
     />
     <link rel="icon" type="image/x-icon" href="/img/social/bear-192.png" />
+    <link rel="canonical" href={canonical} />
     <title>{title}</title>
 
     <Preload />
@@ -43,22 +53,15 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
 
     <meta property="og:title" content={title} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://jsheroes.io/" />
-    <meta
-      property="og:image"
-      content="https://jsheroes.io/img/social/new-2026.png"
-    />
-    <meta property="og:image:type" content="image/png" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
     <meta property="og:description" content={description} />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:site_name" content={title} />
+    <meta property="og:site_name" content={event.name} />
     <meta name="twitter:site" content="@jsheroes" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta
-      name="twitter:image"
-      content="https://jsheroes.io/img/social/new-2026.png"
-    />
+    <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@jsheroes" />
 
@@ -67,6 +70,12 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
   </head>
 
   <body>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-accent-orange focus:px-4 focus:py-2 focus:text-neutral-dark"
+    >
+      Skip to content
+    </a>
     <Navbar isHomePage={isHomePage} />
     {isHomePage ? (
       <slot />

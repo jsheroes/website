@@ -8,11 +8,11 @@ import { getImage } from "../utils/getImage";
 const orderedTalks = talks.sort((t1, t2) => (t1.speaker > t2.speaker ? 1 : -1));
 ---
 
-<BaseLayout title="JSHeroes - Hall of Fame">
+<BaseLayout title="Hall of Fame">
   <img
     class="block h-[400px] w-full object-cover"
     src={"/img/banners/default.svg"}
-    aria-hidden
+    alt=""
   />
 
   <main id="main">

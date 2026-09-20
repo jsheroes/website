@@ -5,12 +5,11 @@ import ImagesBanner from "@/components/ImagesBanner.astro";
 import { Image } from "astro:assets";
 import { communities } from "@/data/communities";
 import { getImage } from "@/utils/getImage";
-import { CURRENT_YEAR } from "@/data/constants";
 
 const communitiesWithDiscounts = communities.filter((c) => c.discount);
 ---
 
-<BaseLayout title={`JSHeroes ${CURRENT_YEAR} | Partner Communities`}>
+<BaseLayout title="Partner Communities">
   <main id="main">
     <ImagesBanner
       images={[

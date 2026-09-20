@@ -1,6 +1,6 @@
 ## Top venue, good vibes 🥳
 
-We are hosting JSHeroes 2026 at [**Grand Hotel Italia**](https://www.google.com/maps?saddr&daddr=Grand%20Hotel%20Italia,%20Strada%20Trifoiului%202,%20Cluj-Napoca%20400478,%20Romania), a 5-star hotel in the beautiful city of Cluj-Napoca, Romania.
+We are hosting JSHeroes {{event.year}} at [**{{event.venue}}**]({{event.venueMapsUrl}}), a 5-star hotel in the beautiful city of {{event.city}}, Romania.
 
 All the spaces where the event takes place are wheelchair accessible, including the restrooms and the lunchroom. Additionally there is direct access from the parking lot to the event area. You can read more about the venue facilities on [our accesibility page](accessibility).
 

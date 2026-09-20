@@ -14,15 +14,13 @@ interface Props {
 const { blog, next, prev } = Astro.props as Props;
 
 const author = await getEntry(blog.data.author);
-
-const blogTitle = `JSHeroes | ${blog.data.title}`;
 ---
 
-<BaseLayout title={blogTitle}>
+<BaseLayout title={blog.data.title} description={blog.data.summary}>
   <img
     class="block h-[400px] w-full object-cover"
     src={"/img/banners/default.svg"}
-    aria-hidden
+    alt=""
   />
 
   <main id="main">

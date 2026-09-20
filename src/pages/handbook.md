@@ -24,7 +24,7 @@ Whether you're attending JSHeroes for the first time or you're a returning atten
 
 ## 📆 🌎 Date and Venue
 
-JSHeroes 2026 will take place on **May 14-15** (Thursday & Friday) at **[Grand Hotel Italia](https://www.google.com/maps/place/Grand+Hotel+Italia)** in Cluj-Napoca. It is a one-track conference and we have reserved the space from the hotel's ground floor, a spacious conference room, and a large lobby, where you can enjoy the talks, the technical booths, and the networking area.
+JSHeroes {{event.year}} will take place on **{{event.datesShort}}** (Thursday & Friday) at **[{{event.venue}}]({{event.venueMapsUrl}})** in {{event.city}}. It is a one-track conference and we have reserved the space from the hotel's ground floor, a spacious conference room, and a large lobby, where you can enjoy the talks, the technical booths, and the networking area.
 
 Also, during the coffee and lunch breaks, we will have an alternative stage, with interesting conversations and follow-ups from the talks on the main stage. Everyone will be able to join, as a speaker or participant. We also want to encourage open discussions, projects presentations, lightning talks, and anything which is remotely related to what we do and our mission and values.
 
@@ -34,7 +34,7 @@ Below you can find a map of the entire venue, with all the points of interest ma
 
 ## 📒✨ Agenda and Theme
 
-In 2026, we will explore the latest trends in engineering and architecture and the tools and frameworks that will shape our work in the years to come. As advances in AI continue to change how we build and collaborate, our speakers will share their insights on the technologies and practices that help us adapt to constant change and uncertainty.
+In {{event.year}}, we will explore the latest trends in engineering and architecture and the tools and frameworks that will shape our work in the years to come. As advances in AI continue to change how we build and collaborate, our speakers will share their insights on the technologies and practices that help us adapt to constant change and uncertainty.
 
 Check out [the agenda here](https://jsheroes.io/#agenda). We’ll post all the talks, soon after the conference, on our [YouTube](https://www.youtube.com/channel/UCeJEpnvZhG-VwGpzrzYLidQ) channel. There's no live stream option unfortunately.
 

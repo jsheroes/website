@@ -25,7 +25,7 @@ JSHeroes is a **single track** 2-day conference dedicated to the JS and Web ecos
 - Fresh perspectives on the development ecosystem.
 - The human side of software engineering.
 
-For 2026 our theme is titled "Looking into the future". We will explore the latest trends in engineering and architecture and the tools and frameworks that will shape our work in the years to come. We're looking for talks on the technologies and practices that can help us navigate through constant changes and growing complexities. We're also looking to start the conversation on the skills and competencies that are essential for our professional growth.
+For {{event.year}} our theme is titled "Looking into the future". We will explore the latest trends in engineering and architecture and the tools and frameworks that will shape our work in the years to come. We're looking for talks on the technologies and practices that can help us navigate through constant changes and growing complexities. We're also looking to start the conversation on the skills and competencies that are essential for our professional growth.
 
 Each year our theme is broad and not all talks will be connected with it, so consider it more like a line connecting different ideas and topics, rather than a restriction.
 

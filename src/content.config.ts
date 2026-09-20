@@ -24,6 +24,8 @@ const people = defineCollection({
       title: z.string(),
       tag: z.string().optional(),
       photo: image(),
+      /** Greyscale cutout for the speaker plates; the tinted initials tile is used when missing. */
+      portrait: image().optional(),
       links: z
         .object({
           bluesky: z.string().optional(),

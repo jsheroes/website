@@ -15,7 +15,7 @@ import { getImage } from "@/utils/getImage";
 import ImagesBanner from "@/components/ImagesBanner.astro";
 ---
 
-<BaseLayout>
+<BaseLayout title="Become a sponsor">
   <Image
     src={getImage("event/sponsor4.jpg")}
     alt=""
@@ -212,7 +212,11 @@ import ImagesBanner from "@/components/ImagesBanner.astro";
     <Section variant="dark" content="list">
       <div class="mt-8 flex items-center gap-4">
         <div class="mr-4 hidden w-[286px] md:block">
-          <img class="rounded-2xl" src="/img/sponsors-page/maarten.jpg" />
+          <img
+            class="rounded-2xl"
+            src="/img/sponsors-page/maarten.jpg"
+            alt=""
+          />
         </div>
         <blockquote class="flex max-w-[50ch] flex-col gap-2">
           <cite>
@@ -252,6 +256,7 @@ import ImagesBanner from "@/components/ImagesBanner.astro";
           <img
             class="rounded-2xl"
             src="/img/sponsors-page/natalia-tepluhina.jpg"
+            alt=""
           />
         </div>
       </div>

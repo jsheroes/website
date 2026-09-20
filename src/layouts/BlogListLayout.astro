@@ -31,11 +31,11 @@ const isBlogPage = Astro.url.pathname === "/blog";
 const hasDefaultSlot = Astro.slots.has("default");
 ---
 
-<BaseLayout title={`JSHeroes |  ${title}`}>
+<BaseLayout title={title}>
   <img
     class="block h-[400px] w-full object-cover"
     src={"/img/banners/default.svg"}
-    aria-hidden
+    alt=""
   />
 
   <main id="main">

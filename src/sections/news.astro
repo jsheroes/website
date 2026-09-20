@@ -1,8 +1,9 @@
 ---
 import { YouTube } from "@astro-community/astro-embed-youtube";
+import { event } from "../data/event";
 ---
 
-<h2>See you in 2026! 💕</h2>
+<h2>See you in {event.year}! 💕</h2>
 
 <YouTube id="iPeXgjX_mg0" />
 
@@ -15,6 +16,6 @@ import { YouTube } from "@astro-community/astro-embed-youtube";
 </p>
 
 <p>
-  Our 8th edition will take place on the <strong>14th</strong> and{" "}
-  <strong>15th</strong> of <strong>May 2026</strong>!
+  Our {event.editionOrdinal} edition will take place on{" "}
+  <strong>{event.dates}</strong>!
 </p>

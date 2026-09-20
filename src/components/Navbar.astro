@@ -1,9 +1,11 @@
 ---
 import { Icon } from "astro-icon/components";
+import { editions } from "../data/editions";
 export interface Props {
   isHomePage?: boolean;
 }
 
+const pastEditions = editions.filter((e) => e.archiveUrl).reverse();
 const { isHomePage = false } = Astro.props as Props;
 
 const headerClass = isHomePage ? "bg-transparent" : "bg-brand-darknavy";
@@ -22,12 +24,6 @@ const headerHomeLinkClass = isHomePage ? "home-link hidden" : "home-link flex";
 
     <nav class="flex gap-4" aria-label="Main navigation">
       <div class="hidden gap-4 sm:flex">
-        <a
-          class={`navlink h-0 w-0 overflow-hidden focus:h-auto focus:w-auto`}
-          href="#main"
-        >
-          Skip navigation
-        </a>
         <a class="navlink" href="/#agenda">
           Agenda
         </a>
@@ -53,10 +49,9 @@ const headerHomeLinkClass = isHomePage ? "home-link hidden" : "home-link flex";
 
 <nav
   class="side-drawer fixed right-0 top-0 z-30 flex h-full w-full max-w-[500px] translate-x-full flex-col overflow-y-scroll bg-gradient-to-br from-brand-darknavy to-brand-purple font-display transition-all duration-slide ease-out"
-  aria-hidden="true"
   aria-label="Sidebar navigation"
   id="sidebar-nav"
-  tabindex="-1"
+  inert
 >
   <button
     class="close group self-end p-2 mt-2 mr-2 focus-visible:outline-accent-pink"
@@ -132,38 +127,16 @@ const headerHomeLinkClass = isHomePage ? "home-link hidden" : "home-link flex";
     </div>
 
     <div class="flex flex-col items-start gap-2 px-16">
-      <a
-        class="navlink"
-        target="_blank"
-        rel="noreferrer noopener"
-        href="https://2025.jsheroes.io"
-      >
-        2025
-      </a>
-      <a
-        class="navlink"
-        target="_blank"
-        rel="noreferrer noopener"
-        href="https://2024.jsheroes.io"
-      >
-        2024
-      </a>
-      <a
-        class="navlink"
-        target="_blank"
-        rel="noreferrer noopener"
-        href="https://2023.jsheroes.io"
-      >
-        2023
-      </a>
-      <a
-        class="navlink"
-        target="_blank"
-        rel="noreferrer noopener"
-        href="https://2022.jsheroes.io"
-      >
-        2022
-      </a>
+      {pastEditions.map(({ year, archiveUrl }) => (
+        <a
+          class="navlink"
+          target="_blank"
+          rel="noreferrer noopener"
+          href={archiveUrl}
+        >
+          {year}
+        </a>
+      ))}
     </div>
   </div>
 </nav>
@@ -188,11 +161,9 @@ const headerHomeLinkClass = isHomePage ? "home-link hidden" : "home-link flex";
     function onOpen() {
       backdrop.classList.add("!block");
       sideDrawer.classList.add("!translate-x-0");
-      closeBtn.setAttribute("tabIndex", "0");
-      sideDrawerLinks.forEach((link) => link.setAttribute("tabIndex", "0"));
       mainNav.classList.add("hidden");
+      sideDrawer.inert = false;
       closeBtn.focus();
-      sideDrawer.setAttribute("aria-hidden", "false");
 
       sideDrawerLinks[sideDrawerLinks.length - 1].addEventListener(
         "keydown",
@@ -210,12 +181,7 @@ const headerHomeLinkClass = isHomePage ? "home-link hidden" : "home-link flex";
       sideDrawer.classList.remove("!translate-x-0");
       mainNav.classList.remove("hidden");
 
-      sideDrawer.setAttribute("aria-hidden", "true");
-
-      closeBtn.setAttribute("tabIndex", "-1");
-      sideDrawerLinks.forEach((link) => {
-        link.setAttribute("tabIndex", "-1");
-      });
+      sideDrawer.inert = true;
     }
 
     if (window.location.pathname === "/") {

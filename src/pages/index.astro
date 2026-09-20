@@ -13,7 +13,8 @@ import { Content as Theme } from "../sections/theme.md";
 import { Content as Event } from "../sections/event.md";
 import Organizers from "../sections/organizers.astro";
 import { day1, day2 } from "../data/agenda";
-import { CFP_OPEN } from "@/data/constants";
+import { CFP_OPEN } from "@/data/flags";
+import { event } from "@/data/event";
 import ImagesBanner from "@/components/ImagesBanner.astro";
 ---
 
@@ -43,10 +44,10 @@ import ImagesBanner from "@/components/ImagesBanner.astro";
       <h2 class="mt-8">Agenda</h2>
       <div class="space-y-12">
         <div class="space-y-4">
-          <Agenda title="Day 1: Thursday May 14" agendaItems={day1} />
+          <Agenda title={`Day 1: ${event.days[0].label}`} agendaItems={day1} />
         </div>
         <div class="space-y-4">
-          <Agenda title="Day 2: Friday May 15" agendaItems={day2} />
+          <Agenda title={`Day 2: ${event.days[1].label}`} agendaItems={day2} />
         </div>
       </div>
     </Section>
@@ -64,7 +65,7 @@ import ImagesBanner from "@/components/ImagesBanner.astro";
           class="duration-speed-move block transition-transform ease-out after:hidden hover:scale-110"
           target="_blank"
           rel="noreferrer noopener"
-          href="https://www.google.com/maps?saddr&daddr=Grand%20Hotel%20Italia,%20Strada%20Trifoiului%202,%20Cluj-Napoca%20400478,%20Romania"
+          href={event.venue.mapsUrl}
           aria-label="Get event location on Google Maps"
           title="Get event location on Google Maps"
         >

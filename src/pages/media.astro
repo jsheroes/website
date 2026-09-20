@@ -1,4 +1,5 @@
 ---
+import { event } from "../data/event";
 import { YouTube } from "@astro-community/astro-embed-youtube";
 
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -9,7 +10,7 @@ import Section from "../components/Section.astro";
   <img
     class="block h-[400px] w-full object-cover"
     src={"/img/banners/default.svg"}
-    aria-hidden
+    alt=""
   />
   <main id="main" class="prose max-w-none prose-h2:mt-0">
     <Section variant="light" content="list">
@@ -53,11 +54,9 @@ import Section from "../components/Section.astro";
           JavaScript community in Cluj, Romania. Our journey started in 2017
           with a plan: for JSHeroes to be the biggest tech conference in
           Romania, dedicated solely to <strong>JavaScript</strong>. This year,
-          2025 (our 7th edition) we will get our engine going with{" "}
-          <strong>18</strong> international JS experts and we have chosen a
+          {event.year} (our {event.editionOrdinal} edition) we have chosen a
           venue that can accommodate up to <strong>600 attendees</strong>. Join
-          us on May the <strong>29th and 30th, 2025</strong>, in Cluj-Napoca,
-          Romania.
+          us on <strong>{event.dates}</strong>, in {event.venue.city}, Romania.
         </p>
         <p>
           <strong>JSHeroes</strong> is a non-profit community-organised
