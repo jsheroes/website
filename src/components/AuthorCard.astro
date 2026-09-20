@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import Modal from "./Modal.astro";
+import PersonDialog from "./ui/PersonDialog.astro";
 import { personDialogId, type Person } from "../utils/people";
 
 export interface Props {
@@ -15,8 +15,7 @@ const { author, publishDate } = Astro.props;
   <button
     class="group flex items-center gap-2 rounded-[2rem] border-0 bg-neutral-light py-2 pl-2 pr-4 transition-colors duration-200 ease-out hover:bg-accent-pink"
     aria-haspopup="dialog"
-    aria-controls={personDialogId(author)}
-    onclick={`window['${personDialogId(author)}'].showModal()`}
+    data-person-dialog={personDialogId(author)}
     title={`See the profile of ${author.data.name}`}
   >
     <Image
@@ -33,7 +32,7 @@ const { author, publishDate } = Astro.props;
     </div>
   </button>
 
-  <Modal person={author} />
+  <PersonDialog person={author} />
 </div>
 
 <style>

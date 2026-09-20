@@ -17,14 +17,12 @@ export interface Props {
   description?: string;
   /** Path or absolute URL of the social sharing image. */
   image?: string;
-  isHomePage?: boolean;
 }
 
 const {
   title: propsTitle,
   description = `JSHeroes is a yearly event organized by the local JS community in Cluj, Romania. Check the latest updates and join us on ${event.dates}.`,
   image = event.ogImage,
-  isHomePage,
 } = Astro.props as Props;
 
 const title = `${event.name} ${event.year} | ${propsTitle ?? event.tagline}`;
@@ -49,7 +47,7 @@ const ogImage = new URL(image, event.siteUrl).href;
 
     <link rel="manifest" href="/manifest.json" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#0b1b44" />
+    <meta name="theme-color" content="#fbfaf7" />
 
     <meta property="og:title" content={title} />
     <meta property="og:type" content="website" />
@@ -72,18 +70,12 @@ const ogImage = new URL(image, event.siteUrl).href;
   <body>
     <a
       href="#main"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-accent-orange focus:px-4 focus:py-2 focus:text-neutral-dark"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-accent-orange focus:px-4 focus:py-2 focus:text-black-pearl"
     >
       Skip to content
     </a>
-    <Navbar isHomePage={isHomePage} />
-    {isHomePage ? (
-      <slot />
-    ) : (
-      <div class="pt-14">
-        <slot />
-      </div>
-    )}
+    <Navbar />
+    <slot />
     <ScrollToTop />
     <Footer />
   </body>

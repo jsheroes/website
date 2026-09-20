@@ -1,0 +1,148 @@
+---
+import { Image } from "astro:assets";
+import { getEntry, render } from "astro:content";
+import { personDialogId, type Person } from "../../utils/people";
+
+/**
+ * Profile dialog for a person. Opened by any element with
+ * `data-person-dialog="<id>"` (see personDialogId), through one delegated
+ * click handler below. The dialog inherits `--plate` from its list item for
+ * its accent colour.
+ */
+interface Props {
+  person: Person;
+}
+
+const { person } = Astro.props;
+const id = personDialogId(person);
+
+const talk =
+  person.data.role === "speaker"
+    ? await getEntry("speaker-talks", person.id)
+    : undefined;
+
+const { Content: Bio } = await render(person);
+const Talk = talk ? (await render(talk)).Content : undefined;
+
+const linkLabels: Record<string, string> = {
+  bluesky: "Bluesky",
+  twitter: "Twitter",
+  github: "GitHub",
+  linkedin: "LinkedIn",
+  website: "Website",
+};
+const links = Object.entries(person.data.links ?? {})
+  .map(([key, url]) => ({
+    key,
+    url: url as string,
+    label: linkLabels[key] ?? key,
+    icon: `/img/icons/${key === "website" ? "link" : key}.svg`,
+  }))
+  .sort(
+    (a, b) =>
+      Object.keys(linkLabels).indexOf(a.key) -
+      Object.keys(linkLabels).indexOf(b.key),
+  );
+
+const role = person.data.company
+  ? `${person.data.title} @ ${person.data.company}`
+  : person.data.title;
+---
+
+<dialog
+  id={id}
+  aria-labelledby={`${id}-name`}
+  class="person-dialog m-auto max-h-[calc(100dvh-2rem)] w-[min(52rem,calc(100vw-2rem))] max-w-none overflow-visible border-2 border-black-pearl bg-paper p-0 text-black-pearl shadow-[10px_10px_0_var(--plate,var(--color-accent-orange))] backdrop:bg-black-pearl/70"
+>
+  <div class="max-h-[calc(100dvh-2rem)] overflow-y-auto p-6 md:p-8">
+    <div class="flex flex-col gap-6 md:flex-row md:items-start">
+      <div class="flex shrink-0 flex-col items-start gap-4">
+        <Image
+          src={person.data.photo}
+          alt=""
+          width={250}
+          height={250}
+          densities={[1.5, 2]}
+          class="h-auto w-[10rem] bg-[var(--plate,var(--color-tint-yellow))] md:w-[15.5rem]"
+        />
+        {links.length > 0 && (
+          <ul class="m-0 flex list-none gap-4 p-0">
+            {links.map((link) => (
+              <li>
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  class="block h-6 w-6 transition-transform duration-150 hover:scale-125"
+                >
+                  <img
+                    src={link.icon}
+                    alt={link.label}
+                    loading="lazy"
+                    class="h-full w-full"
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <div class="flex min-w-0 flex-col gap-3">
+        <div>
+          <h2
+            id={`${id}-name`}
+            class="text-3xl leading-tight font-extrabold tracking-tight"
+          >
+            {person.data.name}
+          </h2>
+          <p class="mt-1 text-[0.9375rem] text-muted-strong">{role}</p>
+        </div>
+        <div class="prose prose-sm max-w-none text-soft">
+          <Bio />
+        </div>
+      </div>
+    </div>
+
+    {talk && Talk && (
+      <div class="mt-6 flex flex-col gap-2 border-t-2 border-rule pt-6">
+        <h3 class="text-lg leading-snug font-bold">{talk.data.title}</h3>
+        <div class="prose prose-sm max-w-none text-soft">
+          <Talk />
+        </div>
+      </div>
+    )}
+  </div>
+
+  <form method="dialog">
+    <button
+      class="absolute -top-4 -right-4 z-10 flex h-11 w-11 cursor-pointer items-center justify-center border-2 border-black-pearl bg-accent-orange p-0 transition-transform duration-150 hover:scale-110"
+      aria-label="Close"
+      autofocus
+    >
+      <img src="/img/icons/close.svg" alt="" class="h-5 w-5" />
+    </button>
+  </form>
+</dialog>
+
+<script>
+  // One handler for every profile trigger and backdrop on the page.
+  document.addEventListener("click", (event) => {
+    const target = event.target as Element | null;
+    const trigger = target?.closest<HTMLElement>("[data-person-dialog]");
+    if (trigger) {
+      const dialog = document.getElementById(
+        trigger.dataset.personDialog ?? "",
+      );
+      if (dialog instanceof HTMLDialogElement) dialog.showModal();
+      return;
+    }
+    // A click on the backdrop lands on the dialog element itself.
+    if (
+      target instanceof HTMLDialogElement &&
+      target.matches(".person-dialog")
+    ) {
+      target.close();
+    }
+  });
+</script>

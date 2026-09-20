@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 
-import Modal from "../components/Modal.astro";
+import PersonDialog from "./ui/PersonDialog.astro";
 import { personDialogId, type Person } from "../utils/people";
 
 export interface Props {
@@ -22,9 +22,8 @@ const sizeClasses =
   <div class="relative">
     <button
       aria-haspopup="dialog"
-      aria-controls={personDialogId(person)}
       class="block overflow-hidden rounded-2xl border-[4px] border-solid border-[var(--person-accent-color)] p-0 transition-all duration-fade ease-out hover:border-[16px] focus-visible:outline-dashed focus-visible:outline-[5px] focus-visible:outline-offset-8 focus-visible:outline-[var(--person-accent-color)] focus-visible:grayscale-0"
-      onclick={`window['${personDialogId(person)}'].showModal()`}
+      data-person-dialog={personDialogId(person)}
       title={`See the profile of ${person.data.name}`}
     >
       <Image
@@ -58,5 +57,5 @@ const sizeClasses =
     )}
   </div>
 
-  <Modal person={person} />
+  <PersonDialog person={person} />
 </div>

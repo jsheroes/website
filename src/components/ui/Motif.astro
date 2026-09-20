@@ -1,0 +1,50 @@
+---
+import type { ImageMetadata } from "astro";
+
+/**
+ * A pixel motif from src/assets/motifs, rendered at a whole number of CSS
+ * pixels per cell so the edges stay crisp. Names look like `m4_brand`,
+ * `pd_coral`, `st_night`: the suffix picks the palette (brand on light
+ * surfaces, night on ink).
+ */
+export interface Props {
+  name: string;
+  /** CSS pixels per motif cell. */
+  cell?: number;
+  class?: string;
+  /** Leave empty for decoration, which is nearly always the case. */
+  alt?: string;
+  flip?: boolean;
+}
+
+const motifs = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/motifs/*.svg",
+  { eager: true },
+);
+
+const {
+  name,
+  cell = 8,
+  class: className,
+  alt = "",
+  flip = false,
+} = Astro.props;
+
+const motif = motifs[`/src/assets/motifs/${name}.svg`]?.default;
+if (!motif) throw new Error(`Unknown motif "${name}"`);
+---
+
+<img
+  src={motif.src}
+  width={motif.width * cell}
+  height={motif.height * cell}
+  alt={alt}
+  aria-hidden={alt === "" ? "true" : undefined}
+  class:list={[
+    "block max-w-none [image-rendering:pixelated]",
+    { "-scale-x-100": flip },
+    className,
+  ]}
+  loading="lazy"
+  decoding="async"
+/>

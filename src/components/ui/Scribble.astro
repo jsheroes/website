@@ -1,0 +1,28 @@
+---
+/** Wraps one word of a heading in a hand-drawn coral underline. */
+export interface Props {
+  /** Stroke width in px; 5 for section headings, 6 for the hero. */
+  stroke?: 5 | 6;
+}
+
+const { stroke = 5 } = Astro.props;
+---
+
+<span class="relative whitespace-nowrap">
+  <slot />
+  <svg
+    viewBox="0 0 400 16"
+    preserveAspectRatio="none"
+    aria-hidden="true"
+    class="pointer-events-none absolute bottom-[-0.15em] left-0 h-[0.16em] min-h-3 w-full overflow-visible"
+  >
+    <path
+      d="M3 9 C 40 2, 80 13, 130 6 S 210 11, 250 5 S 330 9, 397 4"
+      fill="none"
+      stroke="var(--color-accent-pink)"
+      stroke-width={stroke}
+      stroke-linecap="round"
+      vector-effect="non-scaling-stroke"
+    ></path>
+  </svg>
+</span>

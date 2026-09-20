@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets";
+import male from "../../assets/bears/bear-male.png";
+import female from "../../assets/bears/bear-female.png";
+
+/** One of the two Ecma bears in folk costume, optionally with a speech bubble. */
+export interface Props {
+  who: "male" | "female";
+  /** Rendered width in CSS px. The rasters are small, so stay under ~1.5x their size. */
+  width?: number;
+  bubble?: string;
+  class?: string;
+}
+
+const bears = {
+  male: { src: male, alt: "" },
+  female: { src: female, alt: "" },
+};
+
+const {
+  who,
+  width = who === "male" ? 250 : 214,
+  bubble,
+  class: className,
+} = Astro.props;
+const bear = bears[who];
+---
+
+<div class:list={["relative inline-block", className]}>
+  {bubble && (
+    <p class="absolute -top-3 left-full z-10 ml-[-0.5rem] w-max -translate-y-full border-2 border-black-pearl bg-white px-3.5 py-2 text-sm font-bold text-black-pearl shadow-[4px_4px_0_var(--color-accent-orange)]">
+      {bubble}
+    </p>
+  )}
+  <Image
+    src={bear.src}
+    alt={bear.alt}
+    width={width}
+    densities={[1, 1.5]}
+    class="block h-auto max-w-none"
+  />
+</div>

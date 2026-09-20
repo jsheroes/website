@@ -1,209 +1,152 @@
 ---
 import { Icon } from "astro-icon/components";
+import Button from "./ui/Button.astro";
 import { editions } from "../data/editions";
-export interface Props {
-  isHomePage?: boolean;
-}
+import { cta, footerGroups, primaryNav } from "../data/navigation";
 
 const pastEditions = editions.filter((e) => e.archiveUrl).reverse();
-const { isHomePage = false } = Astro.props as Props;
-
-const headerClass = isHomePage ? "bg-transparent" : "bg-brand-darknavy";
-const headerHomeLinkClass = isHomePage ? "home-link hidden" : "home-link flex";
+const menuGroups = footerGroups.filter((g) => g.title !== "Follow");
+const path = Astro.url.pathname;
 ---
 
-<header
-  class={`main-nav fixed z-40 w-full px-4 md:px-8 transition-all duration-slide ease-out ${headerClass}`}
->
-  <div class="m-auto max-w-[1280px] flex justify-between py-4 font-display">
-    <div class="inline">
-      <a href="/" class={headerHomeLinkClass}>
-        <img src="/img/logo-dark.svg" alt="JSHeroes" class="w-[160px]" />
-      </a>
-    </div>
+<header class="relative z-30 h-24">
+  <div class="mx-auto flex h-full max-w-[1160px] items-center justify-between gap-6 px-5 md:px-8 xl:px-0">
+    <a
+      href="/"
+      class="text-[1.875rem] leading-none font-extrabold tracking-tight no-underline"
+      aria-label="JSHeroes, home"
+      aria-current={path === "/" ? "page" : undefined}
+    >
+      <span class="text-dodger-blue">JS</span>Heroes
+    </a>
 
-    <nav class="flex gap-4" aria-label="Main navigation">
-      <div class="hidden gap-4 sm:flex">
-        <a class="navlink" href="/#agenda">
-          Agenda
-        </a>
-        <a class="navlink" href="/handbook">
-          Handbook
-        </a>
-        <a class="navlink" href="/#sponsors">
-          Sponsors
-        </a>
-      </div>
-
+    <nav class="flex items-center gap-4 lg:gap-9" aria-label="Main">
+      <ul class="m-0 hidden list-none items-center gap-9 p-0 lg:flex">
+        {primaryNav.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="text-[0.9375rem] font-medium no-underline hover:underline hover:decoration-accent-pink hover:decoration-2 hover:underline-offset-8"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      {cta && (
+        <Button href={cta.href} size="sm" class="hidden sm:inline-flex">
+          {cta.label}
+        </Button>
+      )}
       <button
-        class="hamburger w-[1.5rem] transition-transform duration-move ease-out hover:scale-[1.3] focus-visible:outline-accent-pink"
-        aria-label="Toggle menu"
-        aria-haspopup="true"
-        aria-controls="sidebar-nav"
+        type="button"
+        popovertarget="site-menu"
+        class="flex h-11 w-11 cursor-pointer items-center justify-center border-2 border-black-pearl bg-transparent p-0 text-black-pearl"
+        aria-label="Menu"
       >
-        <Icon name="mdi:menu" class="navlink w-6 h-6" />
+        <Icon name="mdi:menu" class="h-6 w-6" aria-hidden="true" />
       </button>
     </nav>
   </div>
 </header>
 
+<!-- Popover: Esc and outside clicks close it, focus returns to the button. -->
 <nav
-  class="side-drawer fixed right-0 top-0 z-30 flex h-full w-full max-w-[500px] translate-x-full flex-col overflow-y-scroll bg-gradient-to-br from-brand-darknavy to-brand-purple font-display transition-all duration-slide ease-out"
-  aria-label="Sidebar navigation"
-  id="sidebar-nav"
-  inert
+  id="site-menu"
+  popover="auto"
+  data-tone="ink"
+  aria-label="Site"
+  class="site-menu m-0 ml-auto h-dvh w-full max-w-[28rem] overflow-y-auto border-0 bg-black-pearl p-0 text-white"
 >
-  <button
-    class="close group self-end p-2 mt-2 mr-2 focus-visible:outline-accent-pink"
-    aria-label="Close menu"
-  >
-    <Icon
-      name="mdi:close"
-      class="navlink w-6 h-6 transition-transform duration-fade ease-out group-hover:scale-[1.3]"
-    />
-  </button>
-  <div class="flex w-full flex-col gap-8 pb-6 text-[1.2rem] md:text-[1rem]">
-    <div class="flex flex-col items-start gap-2 px-16">
-      <a class="navlink" href="/">
-        Home
-      </a>
-      <!-- <a class="navlink" href="/speak">Call for speakers</a> -->
-      <a class="navlink" href="/#speakers">
-        Speakers
-      </a>
-      <a class="navlink block sm:hidden" href="/#agenda">
-        Agenda
-      </a>
-      <a class="navlink block sm:hidden" href="/handbook">
-        Handbook
-      </a>
-      <a class="navlink block sm:hidden" href="/#sponsors">
-        Sponsors
-      </a>
-      <a class="navlink" href="/why-attend">
-        Why attend
-      </a>
-      <a class="navlink" href="/sponsor">
-        Call for sponsors
-      </a>
-    </div>
+  <div class="flex items-center justify-between px-6 py-5">
+    <span class="eyebrow text-accent-orange">Menu</span>
+    <button
+      type="button"
+      popovertarget="site-menu"
+      popovertargetaction="hide"
+      class="flex h-11 w-11 cursor-pointer items-center justify-center border-2 border-white bg-transparent p-0 text-white"
+      aria-label="Close menu"
+    >
+      <Icon name="mdi:close" class="h-6 w-6" aria-hidden="true" />
+    </button>
+  </div>
 
-    <div class="flex flex-col items-start gap-2 px-16">
-      <!-- <a class="navlink" href="/handbook">Handbook</a> -->
-      <a class="navlink" href="/eco-friendly">
-        Sustainability
-      </a>
-      <a class="navlink" href="/accessibility">
-        Accesssibility
-      </a>
-      <a class="navlink" href="/transparency">
-        Transparency
-      </a>
-    </div>
+  <div class="flex flex-col gap-8 px-6 pt-2 pb-12">
+    {cta && (
+      <Button href={cta.href} variant="accent" class="self-start sm:hidden">
+        {cta.label}
+      </Button>
+    )}
 
-    <div class="flex flex-col items-start gap-2 px-16">
-      <a class="navlink" href="/blog">
-        Blog
-      </a>
-      <a class="navlink" href="/hall-of-fame">
-        Hall of fame
-      </a>
-      <a class="navlink" href="/coc">
-        Code of Conduct
-      </a>
-      <a class="navlink" href="/privacy">
-        Privacy Statement
-      </a>
-      <a class="navlink" href="/terms-and-conditions">
-        Terms and Conditions
-      </a>
-
-      <a class="navlink" href="/media">
-        Media Kit
-      </a>
-      <a class="navlink" href="/meet-ecma">
-        Meet Ecma
-      </a>
-    </div>
-
-    <div class="flex flex-col items-start gap-2 px-16">
-      {pastEditions.map(({ year, archiveUrl }) => (
-        <a
-          class="navlink"
-          target="_blank"
-          rel="noreferrer noopener"
-          href={archiveUrl}
-        >
-          {year}
-        </a>
+    <ul class="m-0 flex list-none flex-col gap-1 p-0 lg:hidden">
+      {primaryNav.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="block py-1.5 text-xl font-bold no-underline hover:text-accent-orange"
+          >
+            {link.label}
+          </a>
+        </li>
       ))}
-    </div>
+    </ul>
+
+    {menuGroups.map((group) => (
+      <section>
+        <h2 class="eyebrow mb-3 text-accent-orange">{group.title}</h2>
+        <ul class="m-0 flex list-none flex-col gap-1 p-0">
+          {group.links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="block py-1 no-underline hover:text-accent-orange"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+
+    <section>
+      <h2 class="eyebrow mb-3 text-accent-orange">Past editions</h2>
+      <ul class="m-0 flex list-none flex-wrap gap-x-5 gap-y-1 p-0">
+        {pastEditions.map((edition) => (
+          <li>
+            <a
+              href={edition.archiveUrl}
+              target="_blank"
+              rel="noreferrer noopener"
+              class="block py-1 no-underline hover:text-accent-orange"
+            >
+              {edition.year}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
   </div>
 </nav>
 
-<div class="backdrop fixed right-0 top-0 z-20 hidden h-full w-full bg-[rgba(0,0,0,0.6)]"></div>
-
-<script>
-  document.addEventListener("astro:page-load", () => {
-    const hamburgerBtn = document.querySelector(
-      ".hamburger",
-    ) as HTMLButtonElement;
-    const closeBtn = document.querySelector(".close") as HTMLButtonElement;
-    const backdrop = document.querySelector(".backdrop") as HTMLDivElement;
-    const sideDrawer = document.querySelector(".side-drawer") as HTMLElement;
-    const mainNav = document.querySelector(".main-nav") as HTMLElement;
-    const homeLink = document.querySelector(".home-link") as HTMLElement;
-
-    const sideDrawerLinks = document.querySelectorAll(
-      ".side-drawer a",
-    ) as NodeListOf<HTMLAnchorElement>;
-
-    function onOpen() {
-      backdrop.classList.add("!block");
-      sideDrawer.classList.add("!translate-x-0");
-      mainNav.classList.add("hidden");
-      sideDrawer.inert = false;
-      closeBtn.focus();
-
-      sideDrawerLinks[sideDrawerLinks.length - 1].addEventListener(
-        "keydown",
-        (e) => {
-          if (e.key === "Tab" && !e.shiftKey) {
-            e.preventDefault();
-            closeBtn.focus();
-          }
-        },
-      );
+<style>
+  .site-menu {
+    inset: 0 0 0 auto;
+  }
+  .site-menu::backdrop {
+    background: rgb(0 28 43 / 0.6);
+  }
+  .site-menu:popover-open {
+    animation: slide-in 200ms ease-out;
+  }
+  @keyframes slide-in {
+    from {
+      transform: translateX(100%);
     }
-
-    function onClose() {
-      backdrop.classList.remove("!block");
-      sideDrawer.classList.remove("!translate-x-0");
-      mainNav.classList.remove("hidden");
-
-      sideDrawer.inert = true;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .site-menu:popover-open {
+      animation: none;
     }
-
-    if (window.location.pathname === "/") {
-      document.addEventListener("scroll", (e) => {
-        if (window.scrollY > 600) {
-          mainNav.classList.add("bg-brand-darknavy/80", "backdrop-blur-sm");
-          homeLink.classList.remove("hidden");
-        } else {
-          mainNav.classList.remove("bg-brand-darknavy/80", "backdrop-blur-sm");
-          homeLink.classList.add("hidden");
-        }
-      });
-    }
-
-    hamburgerBtn.addEventListener("click", onOpen);
-    backdrop.addEventListener("click", onClose);
-    closeBtn.addEventListener("click", onClose);
-
-    sideDrawerLinks.forEach((link) => {
-      link.addEventListener("click", onClose);
-    });
-
-    onClose();
-  });
-</script>
+  }
+</style>

@@ -1,167 +1,54 @@
 @import "tailwindcss";
+@import "./legacy.css";
 @plugin "@tailwindcss/typography";
-
-@source inline(
-  "border-accent-pink border-accent-orange border-accent-green bg-neutral-separator"
-);
 
 @theme static {
   --color-*: initial;
-  --color-neutral-dark: #202022;
-  --color-neutral-light: #ffffff;
-  --color-neutral-separator: #cccccc;
-  --color-brand-darknavy: #0b1b44;
-  --color-brand-purple: #442c75;
-  --color-accent-pink: #ff6078;
-  --color-accent-orange: #ffcc67;
-  --color-accent-green: #65d3bb;
-  --color-black-pearl: #001c2b;
-  --color-dodger-blue: #0098ff;
-
-  /* 2027 redesign tokens. black-pearl is the ink colour. */
-  --color-paper: #fbfaf7;
-  --color-band: #f1efe9;
-  --color-soft: #33495a;
-  --color-muted: #6b7c88;
-  --color-muted-strong: #4a5b68;
-  --color-rule: #cfd6db;
-  --color-dodger-blue-night: #1aa6ff;
-  --color-tint-blue: #cdeaff;
-  --color-tint-coral: #ffd9df;
-  --color-tint-yellow: #fff0cc;
-  --color-tint-mint: #d3f1ea;
   --color-white: #fff;
   --color-black: #000;
   --color-transparent: transparent;
   --color-current: currentColor;
 
+  /* Brand. black-pearl is the ink colour. */
+  --color-black-pearl: #001c2b;
+  --color-dodger-blue: #0098ff;
+  --color-accent-pink: #ff6078;
+  --color-accent-orange: #ffcc67;
+  --color-accent-green: #65d3bb;
+
+  /* Surfaces, text and lines */
+  --color-paper: #fbfaf7;
+  --color-band: #f1efe9;
+  --color-soft: #33495a;
+  --color-muted: #6b7c88;
+  /* muted on paper at small sizes, keeps 4.5:1 */
+  --color-muted-strong: #4a5b68;
+  --color-rule: #cfd6db;
+  --color-dodger-blue-night: #1aa6ff;
+
+  /* Behind initials and portrait plates */
+  --color-tint-blue: #cdeaff;
+  --color-tint-coral: #ffd9df;
+  --color-tint-yellow: #fff0cc;
+  --color-tint-mint: #d3f1ea;
+
   --font-base: "Sora Variable", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Sora Variable", ui-sans-serif, system-ui, sans-serif;
 
-  --text-sm: 0.85rem;
-  --text-base: 1rem;
-  --text-md: 1.2rem;
-  --text-lg: 1.7rem;
-  --text-xl: 2.1rem;
-  --text-huge: 7rem;
-
-  --animate-bear-float: float 30s infinite alternate linear;
-  @keyframes float {
-    0% {
-      transform: translate(0, 0) scale(1) rotate(0);
-    }
-    100% {
-      transform: translate(120px, -30px) scale(0.8) rotate(45deg);
-    }
-  }
-}
-
-@utility duration-move {
-  transition-duration: 100ms;
-}
-@utility duration-fade {
-  transition-duration: 125ms;
-}
-@utility duration-slide {
-  transition-duration: 200ms;
-}
-
-/* v3 default border colour, until the redesign sets explicit ones */
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: #e5e7eb;
-  }
-}
-
-@layer components {
-  .cta-button {
-    text-decoration: none;
-    font-family: var(--font-display);
-    font-size: var(--text-base);
-    background: var(--color-accent-orange);
-    color: var(--color-neutral-dark);
-    padding: 0.5rem 2rem;
-    border: none;
-    border-radius: 0.8rem;
-    outline-offset: -4px;
-    transition: all 125ms ease-out;
-  }
-
-  .cta-button:hover {
-    color: var(--color-neutral-dark);
-    background: var(--color-accent-pink);
-  }
-
-  .navlink {
-    color: var(--color-neutral-light);
-    text-decoration: none;
-    position: relative;
-  }
-
-  .navlink.dark {
-    color: var(--color-neutral-dark);
-  }
-
-  .navlink::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 0.15rem;
-    background-color: var(--color-accent-pink);
-    transition: transform 125ms ease-out;
-    opacity: 1;
-    transform: scale(0);
-    transform-origin: center;
-  }
-
-  .navlink:hover::after {
-    transform: scale(1);
-  }
-
-  .divider {
-    border-color: var(--color-neutral-separator);
-    border-top-width: 1px;
-    width: 100%;
-    margin: 0 auto;
-  }
+  --breakpoint-3xl: 90rem;
 }
 
 @layer base {
   html {
     font-family: var(--font-base);
-    font-size: 1rem;
-    color: var(--color-neutral-dark);
-    background-color: var(--color-neutral-light);
+    color: var(--color-black-pearl);
+    background-color: var(--color-paper);
     line-height: 1.5;
     overscroll-behavior-y: none;
     scroll-behavior: smooth;
-  }
-
-  @media (min-width: 768px) {
-    html {
-      font-size: 1.1rem;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    html {
-      font-size: 1.3rem;
-    }
-  }
-
-  @media only screen and (-webkit-min-device-pixel-ratio: 1.3),
-    only screen and (-o-min-device-pixel-ratio: 13/10),
-    only screen and (min-resolution: 120dpi) {
-    html {
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing: antialiased;
-    }
+    scroll-padding-top: 5rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -178,109 +65,145 @@
     overflow: hidden;
   }
 
-  main {
-    /* header + footer */
-    min-height: calc(100vh - 500px - 400px);
-    position: relative;
+  /* Focus ring: blue on paper, yellow on ink surfaces. */
+  :focus-visible {
+    outline: 3px solid var(--color-dodger-blue);
+    outline-offset: 3px;
   }
 
-  h1 {
-    font-family: var(--font-display);
-    font-size: var(--text-xl);
-    font-weight: var(--font-weight-semibold);
+  [data-tone="ink"] :focus-visible,
+  [data-tone="ink"]:focus-visible {
+    outline-color: var(--color-accent-orange);
   }
 
-  h2 {
-    font-family: var(--font-display);
-    font-size: var(--text-lg);
-    font-weight: var(--font-weight-semibold);
+  ::selection {
+    background: var(--color-accent-orange);
+    color: var(--color-black-pearl);
+  }
+}
+
+@layer components {
+  /* Type scale (1440 design, fluid below). Hero H1 only on the homepage. */
+  .h1-hero {
+    font-size: clamp(2.75rem, 1.6rem + 4.8vw, 5.25rem);
+    line-height: 0.98;
+    font-weight: 800;
+    letter-spacing: -0.035em;
   }
 
-  h3 {
-    font-family: var(--font-display);
-    font-size: var(--text-md);
-    font-weight: var(--font-weight-semibold);
+  .h2-section {
+    font-size: clamp(2.125rem, 1.4rem + 2.6vw, 3.5rem);
+    line-height: 1.06;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
   }
 
-  ol,
-  ul {
-    list-style: initial;
-    padding-inline-start: 2rem;
+  .h3-card {
+    font-size: 1.25rem;
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -0.01em;
   }
 
-  .prose li {
-    margin: 0 !important;
+  .lede {
+    font-size: clamp(1.125rem, 1.05rem + 0.25vw, 1.1875rem);
+    line-height: 1.6;
+    color: var(--color-soft);
   }
 
-  dialog {
-    position: fixed;
-    margin: auto;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    border-radius: 1rem;
-    overflow: visible;
-    background-color: var(--person-accent-color);
-    border: 1rem solid var(--person-accent-color);
+  [data-tone="ink"] .lede {
+    color: color-mix(in srgb, white 80%, transparent);
   }
 
-  dialog[open] {
+  .eyebrow {
     display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.8125rem;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
   }
 
-  @media screen and (max-width: 550px) {
-    dialog {
-      height: 100%;
-      width: 100%;
+  /* Buttons: hard offset shadow, pressed on hover. */
+  .btn {
+    --btn-shadow: var(--color-dodger-blue);
+    --btn-offset: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.125rem 1.875rem;
+    font-size: 1rem;
+    line-height: 1.25;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    border: 0;
+    background: var(--color-black-pearl);
+    color: var(--color-white);
+    box-shadow: var(--btn-offset) var(--btn-offset) 0 var(--btn-shadow);
+    transition:
+      transform 120ms ease-out,
+      box-shadow 120ms ease-out;
+  }
+
+  .btn:hover {
+    transform: translate(3px, 3px);
+    box-shadow: calc(var(--btn-offset) - 3px) calc(var(--btn-offset) - 3px) 0
+      var(--btn-shadow);
+  }
+
+  .btn:active {
+    transform: translate(var(--btn-offset), var(--btn-offset));
+    box-shadow: 0 0 0 var(--btn-shadow);
+  }
+
+  .btn-sm {
+    --btn-shadow: var(--color-accent-pink);
+    --btn-offset: 4px;
+    padding: 0.8125rem 1.25rem;
+    font-size: 0.9375rem;
+  }
+
+  .btn-accent {
+    background: var(--color-accent-orange);
+    color: var(--color-black-pearl);
+  }
+
+  .btn-ghost {
+    padding: 1rem 1.75rem;
+    background: transparent;
+    color: var(--color-black-pearl);
+    border: 2px solid var(--color-black-pearl);
+    box-shadow: none;
+    transition: background-color 120ms ease-out;
+  }
+
+  .btn-ghost:hover {
+    transform: none;
+    box-shadow: none;
+    background: var(--color-black-pearl);
+    color: var(--color-white);
+  }
+
+  [data-tone="ink"] .btn-ghost {
+    color: var(--color-white);
+    border-color: var(--color-white);
+  }
+
+  [data-tone="ink"] .btn-ghost:hover {
+    background: var(--color-white);
+    color: var(--color-black-pearl);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn,
+    .btn:hover,
+    .btn:active {
+      transform: none;
     }
   }
-
-  dialog::backdrop {
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    background: rgba(0, 0, 0, 0.6);
-  }
-
-  a {
-    color: inherit;
-    text-decoration: underline;
-    text-decoration-thickness: 4px;
-    text-decoration-color: var(--color-accent-orange);
-    text-decoration-skip-ink: none;
-    transition: text-decoration-color 125ms ease-out;
-
-    outline-offset: -5px;
-  }
-
-  a:hover {
-    text-decoration-color: var(--color-accent-pink);
-  }
-
-  a:focus-visible {
-    outline: dashed var(--color-accent-pink) 2px;
-    outline-offset: 5px;
-    text-decoration: none;
-  }
-
-  button {
-    transition: outline-offset 125ms ease-out;
-  }
-
-  button:focus-visible {
-    outline: dashed 2px;
-    outline-offset: 5px;
-  }
-}
-
-.prose a {
-  color: inherit;
-  font-weight: inherit;
-}
-
-.prose img {
-  margin-block: 0;
 }

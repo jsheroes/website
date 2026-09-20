@@ -1,0 +1,17 @@
+---
+import Motif from "./Motif.astro";
+
+/** Small uppercase label with the coral pixel marker. */
+export interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<p class:list={["eyebrow", className]}>
+  <Motif name="pd_coral" cell={3} class="shrink-0" />
+  <span>
+    <slot />
+  </span>
+</p>
