@@ -51,8 +51,8 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
               <div class="flex flex-wrap gap-2">
                 {
                   blog.data.tags.map((tag) => (
-                    <a class="capitalize" href={`/tags/${tag.slug}`}>
-                      {tag.slug}
+                    <a class="capitalize" href={`/tags/${tag.id}`}>
+                      {tag.id}
                     </a>
                   ))
                 }
@@ -67,13 +67,13 @@ const blogTitle = `JSHeroes | ${blog.data.title}`;
                   {prev && (
                     <div class="grow">
                       <div class="text-sm">Previous</div>
-                      <a href={`/blog/${prev.slug}`}>{prev.data.title}</a>
+                      <a href={`/blog/${prev.id}`}>{prev.data.title}</a>
                     </div>
                   )}
                   {next && (
                     <div class="grow self-end text-right md:self-start md:text-left">
                       <div class="text-sm">Next</div>
-                      <a href={`/blog/${next.slug}`}>{next.data.title}</a>
+                      <a href={`/blog/${next.id}`}>{next.data.title}</a>
                     </div>
                   )}
                 </div>

@@ -1,4 +1,9 @@
-import { defineCollection, reference, z } from "astro:content";
+import { defineCollection, reference } from "astro:content";
+import { glob } from "astro/loaders";
+import { z } from "astro/zod";
+
+const md = (name: string) =>
+  glob({ pattern: "**/*.{md,mdx}", base: `./src/content/${name}` });
 
 const personSchema = {
   schema: z.object({
@@ -21,7 +26,7 @@ const personSchema = {
 };
 
 const blog = defineCollection({
-  type: "content",
+  loader: md("blog"),
   schema: z.object({
     title: z.string(),
     published: z.coerce.date(),
@@ -36,7 +41,7 @@ const blog = defineCollection({
 });
 
 const tags = defineCollection({
-  type: "content",
+  loader: md("tags"),
   schema: z.object({
     name: z.string(),
     description: z.string().optional(),
@@ -44,16 +49,18 @@ const tags = defineCollection({
 });
 
 export const collections = {
-  organizers: defineCollection(personSchema),
-  support: defineCollection(personSchema),
-  ambassadors: defineCollection(personSchema),
-  speakers: defineCollection(personSchema),
-  volunteers: defineCollection(personSchema),
-  "guest-writers": defineCollection(personSchema),
+  organizers: defineCollection({ loader: md("organizers"), ...personSchema }),
+  support: defineCollection({ loader: md("support"), ...personSchema }),
+  ambassadors: defineCollection({ loader: md("ambassadors"), ...personSchema }),
+  speakers: defineCollection({ loader: md("speakers"), ...personSchema }),
+  volunteers: defineCollection({ loader: md("volunteers"), ...personSchema }),
+  "guest-writers": defineCollection({ loader: md("guest-writers"), ...personSchema }),
   "speaker-talks": defineCollection({
+    loader: md("speaker-talks"),
     schema: z.object({
       title: z.string(),
     }),
   }),
   blog,
+  tags,
 };

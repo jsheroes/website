@@ -36,7 +36,7 @@ const { agendaItems, title } = Astro.props as Props;
         );
       } else {
         const speakerSlugs = agendaItem.speakers;
-        const matchingSpeakers = speakers.filter((s) => speakerSlugs.includes(s.slug));
+        const matchingSpeakers = speakers.filter((s) => speakerSlugs.includes(s.id));
 
         if (matchingSpeakers.length === 0) {
           return (
@@ -50,7 +50,7 @@ const { agendaItems, title } = Astro.props as Props;
           );
         }
 
-        const speakerTalk = speakerTalks.find((s) => s.slug === matchingSpeakers[0].slug);
+        const speakerTalk = speakerTalks.find((s) => s.id === matchingSpeakers[0].id);
 
         return (
           <li class="color-item flex flex-col md:flex-row gap-6 py-4 items-start md:items-center">

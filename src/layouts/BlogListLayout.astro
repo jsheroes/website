@@ -14,14 +14,14 @@ const posts = await getCollection("blog");
 const tags = await getCollection("tags").then((tags) => {
   const tagsWithBlogs = tags.filter((tag) =>
     posts.some((post) =>
-      post.data.tags.some((postTag) => postTag.slug === tag.slug)
+      post.data.tags.some((postTag) => postTag.id === tag.id)
     )
   );
   return tagsWithBlogs;
 });
 
 function tagCount(slug: string) {
-  return posts.filter((post) => post.data.tags.some((tag) => tag.slug === slug))
+  return posts.filter((post) => post.data.tags.some((tag) => tag.id === slug))
     .length;
 }
 
@@ -53,7 +53,7 @@ const hasDefaultSlot = Astro.slots.has("default");
           </a>
         </li>
         {
-          tags.map(({ slug, data: { name } }) => (
+          tags.map(({ id: slug, data: { name } }) => (
             <li>
               <a
                 class="rounded-2xl bg-accent-orange px-4 py-2 no-underline transition-all duration-fade ease-out hover:bg-accent-pink focus-visible:bg-accent-pink"
@@ -70,7 +70,7 @@ const hasDefaultSlot = Astro.slots.has("default");
         {
           page.data.map(
             ({
-              slug,
+              id: slug,
               data: { published, title, summary },
             }: CollectionEntry<"blog">) => (
               <li class="border-t-[1px] border-neutral-separator py-5">
