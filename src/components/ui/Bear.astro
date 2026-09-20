@@ -26,9 +26,13 @@ const {
 const bear = bears[who];
 ---
 
-<div class:list={["relative inline-block", className]}>
+<div class:list={["relative inline-block", className]} data-reveal="up">
   {bubble && (
-    <p class="absolute top-[4%] left-[80%] z-10 m-0 border-2 border-black-pearl bg-white px-4 py-[9px] text-[1.1875rem] leading-tight font-extrabold tracking-tight whitespace-nowrap text-black-pearl shadow-[4px_4px_0_var(--color-accent-pink)]">
+    <p
+      data-reveal="pop"
+      style="--d:500ms"
+      class="absolute top-[4%] left-[80%] z-10 m-0 border-2 border-black-pearl bg-white px-4 py-[9px] text-[1.1875rem] leading-tight font-extrabold tracking-tight whitespace-nowrap text-black-pearl shadow-[4px_4px_0_var(--color-accent-pink)]"
+    >
       {bubble}
       <span
         aria-hidden="true"
@@ -42,5 +46,7 @@ const bear = bears[who];
     width={width}
     densities={[1, 1.5]}
     class="block h-auto max-w-none"
+    data-motion="sway-soft"
+    style="--dur:5s"
   />
 </div>

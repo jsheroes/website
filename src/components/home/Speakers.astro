@@ -24,7 +24,10 @@ const talks = new Map(
   data-section="speakers"
   containerClass="pt-20 pb-20 md:pt-28 md:pb-28"
 >
-  <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+  <div
+    class="flex flex-col justify-between gap-6 md:flex-row md:items-end"
+    data-reveal="up"
+  >
     <div>
       <Eyebrow>{copy.eyebrow}</Eyebrow>
       <h2 class="h2-section mt-5">
@@ -46,8 +49,12 @@ const talks = new Map(
   </div>
 
   <ul class="speaker-grid m-0 mt-14 grid list-none grid-cols-1 gap-x-10 gap-y-16 p-0 min-[480px]:grid-cols-2 lg:grid-cols-4">
-    {speakers.map((person) => (
-      <li class="mx-auto w-full max-w-[16.25rem]">
+    {speakers.map((person, i) => (
+      <li
+        class="mx-auto w-full max-w-[16.25rem]"
+        data-reveal="up"
+        style={`--d:${(i % 4) * 90}ms`}
+      >
         <SpeakerCard person={person} talk={talks.get(person.id)} />
       </li>
     ))}

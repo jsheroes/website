@@ -27,7 +27,7 @@ const initials = (name: string) => {
   </div>
 
   <div class="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
-    <div class="max-w-[19rem]">
+    <div class="max-w-[19rem]" data-reveal="up">
       <Eyebrow>{copy.eyebrow}</Eyebrow>
       <h2 class="mt-3.5 text-[1.625rem] leading-[1.2] font-extrabold tracking-tight">
         {copy.title}
@@ -35,8 +35,8 @@ const initials = (name: string) => {
     </div>
 
     <ul class="host-list m-0 flex list-none flex-col gap-6 p-0 sm:flex-row sm:flex-wrap lg:gap-14">
-      {hosts.map((host) => (
-        <li>
+      {hosts.map((host, i) => (
+        <li data-reveal="up" style={`--d:${150 + i * 110}ms`}>
           <button
             type="button"
             data-person-dialog={personDialogId(host)}

@@ -1,0 +1,205 @@
+/*
+  Motion, in one place. Everything here is gated on prefers-reduced-motion and
+  only uses transform-like properties (rotate, translate, scale, opacity,
+  clip-path), so nothing reflows.
+
+  Ambient: [data-motion="spin|spin-rev|sway|bob|twinkle"] on a motif's image,
+  tuned with --dur and --delay. Paused while off-screen (data-inview is set by
+  src/scripts/motion.ts).
+
+  Reveals: [data-reveal="up|fade|pixel|stitch|pop"] hides an element until the
+  script marks it data-revealed. Content stays visible without scripting, and a
+  CSS failsafe shows it after 3s if the script never runs.
+*/
+
+:root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* ---- ambient ---- */
+  [data-motion] {
+    will-change: transform;
+    animation-duration: var(--dur, 8s);
+    animation-delay: var(--delay, 0s);
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  [data-motion]:not([data-inview]) {
+    animation-play-state: paused;
+  }
+  [data-motion="spin"],
+  [data-motion="spin-rev"] {
+    animation-name: motif-spin;
+    animation-timing-function: linear;
+    image-rendering: auto;
+  }
+  [data-motion="spin-rev"] {
+    animation-direction: reverse;
+  }
+  [data-motion="sway"] {
+    animation-name: motif-sway;
+    animation-direction: alternate;
+    image-rendering: auto;
+  }
+  [data-motion="sway-soft"] {
+    animation-name: motif-sway-soft;
+    animation-direction: alternate;
+    image-rendering: auto;
+    transform-origin: 50% 100%;
+  }
+  [data-motion="bob"] {
+    animation-name: motif-bob;
+    animation-direction: alternate;
+  }
+  [data-motion="twinkle"] {
+    animation-name: motif-twinkle;
+  }
+
+  @keyframes motif-spin {
+    to {
+      rotate: 360deg;
+    }
+  }
+  @keyframes motif-sway {
+    from {
+      rotate: -5deg;
+    }
+    to {
+      rotate: 5deg;
+    }
+  }
+  @keyframes motif-sway-soft {
+    from {
+      rotate: -1.2deg;
+    }
+    to {
+      rotate: 1.2deg;
+    }
+  }
+  @keyframes motif-bob {
+    from {
+      translate: 0 -5px;
+    }
+    to {
+      translate: 0 5px;
+    }
+  }
+  @keyframes motif-twinkle {
+    0%,
+    100% {
+      opacity: 1;
+      scale: 1;
+    }
+    50% {
+      opacity: 0.55;
+      scale: 0.82;
+    }
+  }
+
+  /* ---- reveals ---- */
+  @media (scripting: enabled) {
+    [data-reveal]:not([data-revealed]) {
+      opacity: 0;
+      animation: reveal-failsafe 0.01s 3s forwards;
+    }
+    [data-reveal][data-revealed] {
+      animation: reveal-up 0.8s var(--ease-out) var(--d, 0ms) backwards;
+    }
+    [data-reveal="fade"][data-revealed] {
+      animation-name: reveal-fade;
+    }
+    [data-reveal="pixel"][data-revealed] {
+      animation: reveal-pixel 0.55s steps(6, end) var(--d, 0ms) backwards;
+    }
+    [data-reveal="stitch"][data-revealed] {
+      animation: reveal-stitch 1.4s steps(48, end) var(--d, 0ms) backwards;
+    }
+    [data-reveal="pop"][data-revealed] {
+      animation: reveal-pop 0.7s cubic-bezier(0.3, 1.5, 0.5, 1) var(--d, 0ms)
+        backwards;
+      transform-origin: bottom left;
+    }
+  }
+
+  @keyframes reveal-up {
+    from {
+      opacity: 0;
+      translate: 0 1.25rem;
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+  @keyframes reveal-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes reveal-pixel {
+    from {
+      opacity: 1;
+      clip-path: inset(50% 50% 50% 50%);
+    }
+    to {
+      opacity: 1;
+      clip-path: inset(0 0 0 0);
+    }
+  }
+  @keyframes reveal-stitch {
+    from {
+      opacity: 1;
+      clip-path: inset(0 100% 0 0);
+    }
+    to {
+      opacity: 1;
+      clip-path: inset(0 0 0 0);
+    }
+  }
+  @keyframes reveal-pop {
+    from {
+      opacity: 0;
+      scale: 0.55;
+      translate: -0.5rem 0.75rem;
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+      translate: 0 0;
+    }
+  }
+  @keyframes reveal-failsafe {
+    to {
+      opacity: 1;
+      clip-path: none;
+    }
+  }
+
+  /* Scribbles are wiped in left to right once their heading is revealed
+     (or straight away inside [data-load]). */
+  @media (scripting: enabled) {
+    .scribble-line {
+      clip-path: inset(-50% 100% -50% 0);
+      animation: scribble-failsafe 0.01s 3.5s forwards;
+    }
+    [data-revealed] .scribble-line,
+    [data-load] .scribble-line {
+      animation: scribble-draw 0.9s var(--ease-out) var(--draw-delay, 0.5s)
+        forwards;
+    }
+  }
+  @keyframes scribble-draw {
+    to {
+      clip-path: inset(-50% 0 -50% 0);
+    }
+  }
+  @keyframes scribble-failsafe {
+    to {
+      clip-path: inset(-50% 0 -50% 0);
+    }
+  }
+}

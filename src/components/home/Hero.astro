@@ -3,37 +3,235 @@ import Button from "../ui/Button.astro";
 import Eyebrow from "../ui/Eyebrow.astro";
 import Frieze from "../ui/Frieze.astro";
 import Motif from "../ui/Motif.astro";
+import type { Props as MotifProps } from "../ui/Motif.astro";
 import Scribble from "../ui/Scribble.astro";
 import { hero } from "../../data/home";
 import { cta } from "../../data/navigation";
 
 /** Design coordinates at 1440 wide, measured from the top of the hero. */
-const art = [
-  { name: "m4_brand", cell: 20, left: 850, top: 170 },
-  { name: "m5_brand", cell: 8, left: 1236, top: 96 },
-  { name: "m3_brand", cell: 8, left: 760, top: 560 },
-  { name: "m2_brand", cell: 9, left: 1246, top: 590 },
-  { name: "dr_yel", cell: 8, left: 782, top: 150 },
-  { name: "dx_coral", cell: 9, left: 1030, top: 84 },
-  { name: "pr_navy", cell: 7, left: 1290, top: 420 },
-  { name: "pd_blue", cell: 6, left: 968, top: 660 },
-  { name: "dx_mint", cell: 6, left: 1150, top: 690 },
-  { name: "pd_coral", cell: 5, left: 1340, top: 330 },
-  { name: "pd_mint", cell: 5, left: 830, top: 470 },
+type ArtItem = {
+  name: string;
+  cell: number;
+  left: number;
+  top: number;
+  motion?: MotifProps["motion"];
+  dur?: string;
+  delay?: string;
+  rd?: string;
+};
+
+const art: ArtItem[] = [
+  {
+    name: "m4_brand",
+    cell: 20,
+    left: 850,
+    top: 170,
+    motion: "spin",
+    dur: "180s",
+    rd: "100ms",
+  },
+  {
+    name: "m5_brand",
+    cell: 8,
+    left: 1236,
+    top: 96,
+    motion: "sway",
+    dur: "9s",
+    rd: "350ms",
+  },
+  {
+    name: "m3_brand",
+    cell: 8,
+    left: 760,
+    top: 560,
+    motion: "sway",
+    dur: "11s",
+    delay: "-3s",
+    rd: "500ms",
+  },
+  {
+    name: "m2_brand",
+    cell: 9,
+    left: 1246,
+    top: 590,
+    motion: "sway",
+    dur: "10s",
+    delay: "-6s",
+    rd: "600ms",
+  },
+  {
+    name: "dr_yel",
+    cell: 8,
+    left: 782,
+    top: 150,
+    motion: "spin",
+    dur: "40s",
+    rd: "250ms",
+  },
+  {
+    name: "dx_coral",
+    cell: 9,
+    left: 1030,
+    top: 84,
+    motion: "twinkle",
+    dur: "4s",
+    rd: "300ms",
+  },
+  {
+    name: "pr_navy",
+    cell: 7,
+    left: 1290,
+    top: 420,
+    motion: "spin-rev",
+    dur: "30s",
+    rd: "450ms",
+  },
+  {
+    name: "pd_blue",
+    cell: 6,
+    left: 968,
+    top: 660,
+    motion: "twinkle",
+    dur: "3.2s",
+    delay: "-1s",
+    rd: "650ms",
+  },
+  {
+    name: "dx_mint",
+    cell: 6,
+    left: 1150,
+    top: 690,
+    motion: "bob",
+    dur: "6s",
+    rd: "700ms",
+  },
+  {
+    name: "pd_coral",
+    cell: 5,
+    left: 1340,
+    top: 330,
+    motion: "twinkle",
+    dur: "3.6s",
+    delay: "-2s",
+    rd: "400ms",
+  },
+  {
+    name: "pd_mint",
+    cell: 5,
+    left: 830,
+    top: 470,
+    motion: "twinkle",
+    dur: "4.4s",
+    delay: "-0.5s",
+    rd: "550ms",
+  },
 ];
 /** The same motifs, smaller, on a 560 x 610 box anchored to the right for widths from xl to 3xl. */
-const mid = [
-  { name: "m4_brand", cell: 14, left: 120, top: 130 },
-  { name: "m5_brand", cell: 6, left: 434, top: 50 },
-  { name: "m3_brand", cell: 6, left: 0, top: 430 },
-  { name: "m2_brand", cell: 6, left: 458, top: 470 },
-  { name: "dr_yel", cell: 5, left: 40, top: 100 },
-  { name: "dx_coral", cell: 7, left: 250, top: 40 },
-  { name: "pr_navy", cell: 6, left: 452, top: 300 },
-  { name: "pd_blue", cell: 5, left: 300, top: 490 },
-  { name: "dx_mint", cell: 5, left: 400, top: 560 },
-  { name: "pd_coral", cell: 4, left: 505, top: 250 },
-  { name: "pd_mint", cell: 5, left: 90, top: 300 },
+const mid: ArtItem[] = [
+  {
+    name: "m4_brand",
+    cell: 14,
+    left: 120,
+    top: 130,
+    motion: "spin",
+    dur: "180s",
+    rd: "100ms",
+  },
+  {
+    name: "m5_brand",
+    cell: 6,
+    left: 434,
+    top: 50,
+    motion: "sway",
+    dur: "9s",
+    rd: "350ms",
+  },
+  {
+    name: "m3_brand",
+    cell: 6,
+    left: 0,
+    top: 430,
+    motion: "sway",
+    dur: "11s",
+    delay: "-3s",
+    rd: "500ms",
+  },
+  {
+    name: "m2_brand",
+    cell: 6,
+    left: 458,
+    top: 470,
+    motion: "sway",
+    dur: "10s",
+    delay: "-6s",
+    rd: "600ms",
+  },
+  {
+    name: "dr_yel",
+    cell: 5,
+    left: 40,
+    top: 100,
+    motion: "spin",
+    dur: "40s",
+    rd: "250ms",
+  },
+  {
+    name: "dx_coral",
+    cell: 7,
+    left: 250,
+    top: 40,
+    motion: "twinkle",
+    dur: "4s",
+    rd: "300ms",
+  },
+  {
+    name: "pr_navy",
+    cell: 6,
+    left: 452,
+    top: 300,
+    motion: "spin-rev",
+    dur: "30s",
+    rd: "450ms",
+  },
+  {
+    name: "pd_blue",
+    cell: 5,
+    left: 300,
+    top: 490,
+    motion: "twinkle",
+    dur: "3.2s",
+    delay: "-1s",
+    rd: "650ms",
+  },
+  {
+    name: "dx_mint",
+    cell: 5,
+    left: 400,
+    top: 560,
+    motion: "bob",
+    dur: "6s",
+    rd: "700ms",
+  },
+  {
+    name: "pd_coral",
+    cell: 4,
+    left: 505,
+    top: 250,
+    motion: "twinkle",
+    dur: "3.6s",
+    delay: "-2s",
+    rd: "400ms",
+  },
+  {
+    name: "pd_mint",
+    cell: 5,
+    left: 90,
+    top: 300,
+    motion: "twinkle",
+    dur: "4.4s",
+    delay: "-0.5s",
+    rd: "550ms",
+  },
 ];
 ---
 
@@ -75,9 +273,18 @@ const mid = [
     class="pointer-events-none absolute inset-0 hidden 3xl:block"
   >
     <div class="absolute top-0 left-1/2 h-full w-[1440px] -translate-x-1/2">
-      {art.map(({ name, cell, left, top }) => (
+      {art.map(({ name, cell, left, top, motion, dur, delay, rd }) => (
         <div class="absolute" style={`left:${left}px;top:${top}px`}>
-          <Motif name={name} cell={cell} loading="eager" />
+          <Motif
+            name={name}
+            cell={cell}
+            loading="eager"
+            motion={motion}
+            dur={dur}
+            delay={delay}
+            reveal="pixel"
+            revealDelay={rd}
+          />
         </div>
       ))}
     </div>
@@ -88,27 +295,49 @@ const mid = [
     aria-hidden="true"
     class="pointer-events-none absolute top-40 right-8 hidden lg:block xl:hidden"
   >
-    <Motif name="m4_brand" cell={13} loading="eager" />
+    <Motif
+      name="m4_brand"
+      cell={13}
+      loading="eager"
+      motion="spin"
+      dur="180s"
+      reveal="pixel"
+    />
   </div>
   <div
     aria-hidden="true"
     class="pointer-events-none absolute top-28 right-6 hidden h-[38rem] w-[35rem] xl:block 3xl:hidden"
   >
-    {mid.map(({ name, cell, left, top }) => (
+    {mid.map(({ name, cell, left, top, motion, dur, delay, rd }) => (
       <div class="absolute" style={`left:${left}px;top:${top}px`}>
-        <Motif name={name} cell={cell} loading="eager" />
+        <Motif
+          name={name}
+          cell={cell}
+          loading="eager"
+          motion={motion}
+          dur={dur}
+          delay={delay}
+          reveal="pixel"
+          revealDelay={rd}
+        />
       </div>
     ))}
   </div>
 
   <div class="relative mx-auto w-full max-w-[1160px] flex-1 px-5 pt-32 pb-16 md:px-8 md:pt-[9.375rem] xl:px-0">
     <div class="max-w-[40rem]">
-      <Eyebrow>{hero.eyebrow}</Eyebrow>
-      <h1 class="h1-hero mt-7">
+      <Eyebrow data-reveal="up">{hero.eyebrow}</Eyebrow>
+      <h1 class="h1-hero mt-7" data-load>
         {hero.titleLead} <Scribble stroke={6}>{hero.titleHighlight}</Scribble>
       </h1>
-      <p class="lede mt-12 max-w-[34rem]">{hero.intro}</p>
-      <div class="mt-10 flex flex-wrap items-center gap-x-5 gap-y-6">
+      <p class="lede mt-12 max-w-[34rem]" data-reveal="up" style="--d:150ms">
+        {hero.intro}
+      </p>
+      <div
+        class="mt-10 flex flex-wrap items-center gap-x-5 gap-y-6"
+        data-reveal="up"
+        style="--d:300ms"
+      >
         {cta && <Button href={cta.href}>{cta.label}</Button>}
         <Button href="#speakers" variant="ghost">
           {hero.secondaryCta}
@@ -120,14 +349,41 @@ const mid = [
       aria-hidden="true"
       class="pointer-events-none mt-14 flex flex-wrap items-end gap-x-6 gap-y-4 lg:hidden"
     >
-      <Motif name="m4_brand" cell={8} loading="eager" />
-      <Motif name="m3_brand" cell={4} loading="eager" />
-      <Motif name="m5_brand" cell={4} loading="eager" />
+      <Motif
+        name="m4_brand"
+        cell={8}
+        loading="eager"
+        motion="spin"
+        dur="180s"
+        reveal="pixel"
+      />
+      <Motif
+        name="m3_brand"
+        cell={4}
+        loading="eager"
+        motion="sway"
+        dur="11s"
+        reveal="pixel"
+        revealDelay="200ms"
+      />
+      <Motif
+        name="m5_brand"
+        cell={4}
+        loading="eager"
+        motion="sway"
+        dur="9s"
+        reveal="pixel"
+        revealDelay="350ms"
+      />
     </div>
   </div>
 
   <div data-tone="ink" class="relative bg-black-pearl text-white">
-    <dl class="m-0 mx-auto grid max-w-[1160px] grid-cols-2 gap-x-6 gap-y-6 px-5 pt-6 pb-10 md:px-8 lg:flex lg:justify-between lg:pb-8 xl:px-0">
+    <dl
+      data-reveal="up"
+      style="--d:450ms"
+      class="m-0 mx-auto grid max-w-[1160px] grid-cols-2 gap-x-6 gap-y-6 px-5 pt-6 pb-10 md:px-8 lg:flex lg:justify-between lg:pb-8 xl:px-0"
+    >
       {hero.facts.map((fact) => (
         <div class="flex flex-col gap-1.5">
           <dt class="text-xs font-bold tracking-[0.16em] text-accent-orange uppercase">

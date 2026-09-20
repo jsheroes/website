@@ -13,26 +13,39 @@ import { cta, footerGroups, legalLinks } from "../data/navigation";
   class="relative overflow-hidden bg-black-pearl text-white"
 >
   <div class="pointer-events-none absolute top-6 right-[-6rem] hidden opacity-100 lg:block xl:right-[max(2rem,calc(50%-36rem))]">
-    <Motif name="m4_night" cell={18} />
+    <Motif name="m4_night" cell={18} motion="spin" dur="200s" reveal="pixel" />
   </div>
 
   <div class="relative mx-auto grid w-full max-w-[1160px] gap-12 px-5 pt-16 pb-24 md:px-8 xl:px-0">
     <div>
-      <h2 class="h2-section max-w-[12ch] text-[clamp(2.75rem,2rem+3.5vw,4.75rem)] leading-none">
+      <h2
+        data-reveal="up"
+        class="h2-section max-w-[12ch] text-[clamp(2.75rem,2rem+3.5vw,4.75rem)] leading-none"
+      >
         See you in Transylvania.
       </h2>
-      <p class="mt-6 text-lg font-semibold text-accent-orange">
+      <p
+        data-reveal="up"
+        style="--d:120ms"
+        class="mt-6 text-lg font-semibold text-accent-orange"
+      >
         {event.dates} · {event.venue.city}
       </p>
       {cta && (
-        <Button href={cta.href} variant="accent" class="mt-8">
-          {cta.label}
-        </Button>
+        <div data-reveal="up" style="--d:220ms" class="mt-8">
+          <Button href={cta.href} variant="accent">
+            {cta.label}
+          </Button>
+        </div>
       )}
 
       <div class="mt-14 grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4 lg:max-w-[46rem]">
-        {footerGroups.map((group) => (
-          <nav aria-label={group.title}>
+        {footerGroups.map((group, i) => (
+          <nav
+            aria-label={group.title}
+            data-reveal="up"
+            style={`--d:${i * 90}ms`}
+          >
             <h3 class="eyebrow mb-4 text-accent-orange">{group.title}</h3>
             <ul class="m-0 flex list-none flex-col gap-2 p-0 text-[0.9375rem]">
               {group.links.map((link) => (

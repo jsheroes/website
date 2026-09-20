@@ -45,15 +45,19 @@ const times = (slot: string) => {
 
   <div class="grid gap-x-20 gap-y-12 lg:grid-cols-[21.25rem_1fr]">
     <div class="flex flex-col">
-      <Eyebrow>{copy.eyebrow}</Eyebrow>
-      <h2 class="h2-section mt-5 max-w-[10ch] text-[clamp(2.5rem,1.4rem+3vw,3.375rem)]">
-        {copy.title}
-      </h2>
-      <p class="lede mt-7 text-[1.0625rem]">{copy.intro}</p>
+      <div data-reveal="up">
+        <Eyebrow>{copy.eyebrow}</Eyebrow>
+        <h2 class="h2-section mt-5 max-w-[10ch] text-[clamp(2.5rem,1.4rem+3vw,3.375rem)]">
+          {copy.title}
+        </h2>
+        <p class="lede mt-7 text-[1.0625rem]">{copy.intro}</p>
+      </div>
 
       <div
         role="tablist"
         aria-label="Day"
+        data-reveal="up"
+        style="--d:150ms"
         class="agenda-tabs mt-9 grid grid-cols-2 gap-3 lg:grid-cols-1"
       >
         {days.map((day, i) => (
@@ -95,6 +99,8 @@ const times = (slot: string) => {
           aria-labelledby={`agenda-tab-${i + 1}`}
           data-inactive={i !== 0 ? "" : undefined}
           class="agenda-panel"
+          data-reveal="up"
+          style="--d:100ms"
         >
           <h3 class="day-heading mt-0 mb-4 text-2xl font-extrabold tracking-tight">
             {day.name} · {day.label}

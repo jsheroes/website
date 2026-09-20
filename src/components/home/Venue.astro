@@ -23,7 +23,7 @@ const [street, ...rest] = event.venue.address.split(", ");
   </div>
 
   <div class="grid items-center gap-x-16 gap-y-16 lg:grid-cols-[minmax(0,32.5rem)_minmax(0,35rem)] lg:justify-between">
-    <div>
+    <div data-reveal="up">
       <Eyebrow>{copy.eyebrow}</Eyebrow>
       <h2 class="h2-section mt-5 max-w-[14ch]">{copy.title}</h2>
       <p class="lede mt-7 max-w-[30rem] text-lg">{copy.intro}</p>
@@ -52,6 +52,8 @@ const [street, ...rest] = event.venue.address.split(", ");
         src={exterior}
         alt="Attendees in front of the Grand Hotel Italia"
         widths={[400, 800]}
+        data-reveal="up"
+        style="--d:100ms"
         sizes="(min-width: 1024px) 400px, 72vw"
         class="absolute top-0 left-0 h-[70%] w-[71.5%] object-cover"
       />
@@ -59,6 +61,8 @@ const [street, ...rest] = event.venue.address.split(", ");
         src={hall}
         alt="The main hall set up for a JSHeroes edition, rows of chairs facing the stage"
         widths={[320, 640]}
+        data-reveal="up"
+        style="--d:300ms"
         sizes="(min-width: 1024px) 320px, 58vw"
         class="absolute top-[48.8%] left-[42.9%] h-[51.2%] w-[57.1%] border-8 border-white object-cover"
       />
@@ -67,26 +71,48 @@ const [street, ...rest] = event.venue.address.split(", ");
           name="m2_brand"
           cell={8}
           class="absolute top-[-3.5rem] left-[59%] hidden sm:block"
+          motion="sway"
+          dur="8s"
+          reveal="pixel"
+          revealDelay="500ms"
         />
         <Motif
           name="dx_coral"
           cell={7}
           class="absolute top-[-3rem] right-[-3.5rem] hidden xl:block"
+          motion="twinkle"
+          dur="4s"
+          reveal="pixel"
+          revealDelay="650ms"
         />
         <Motif
           name="pd_coral"
           cell={4}
           class="absolute top-[3%] left-[-2.5rem] hidden md:block"
+          motion="twinkle"
+          dur="3.4s"
+          delay="-1s"
+          reveal="pixel"
+          revealDelay="700ms"
         />
         <Motif
           name="dr_navy"
           cell={7}
           class="absolute bottom-[7%] left-[-3rem] hidden md:block"
+          motion="spin-rev"
+          dur="60s"
+          reveal="pixel"
+          revealDelay="600ms"
         />
         <Motif
           name="pd_mint"
           cell={5}
           class="absolute right-0 bottom-[-1.5rem] hidden md:block"
+          motion="twinkle"
+          dur="4.2s"
+          delay="-2s"
+          reveal="pixel"
+          revealDelay="750ms"
         />
       </div>
     </div>

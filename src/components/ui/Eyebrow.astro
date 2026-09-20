@@ -2,14 +2,14 @@
 import Motif from "./Motif.astro";
 
 /** Small uppercase label with the coral pixel marker. */
-export interface Props {
-  class?: string;
-}
+import type { HTMLAttributes } from "astro/types";
 
-const { class: className } = Astro.props;
+export interface Props extends HTMLAttributes<"p"> {}
+
+const { class: className, ...rest } = Astro.props;
 ---
 
-<p class:list={["eyebrow", className]}>
+<p class:list={["eyebrow", className]} {...rest}>
   <Motif name="pd_coral" cell={3} class="shrink-0" />
   <span>
     <slot />

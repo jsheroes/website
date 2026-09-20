@@ -21,7 +21,10 @@ const [organizers, ambassadors] = await Promise.all([
     <Frieze kind="strip" cell={6} />
   </div>
 
-  <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+  <div
+    class="flex flex-col justify-between gap-6 md:flex-row md:items-end"
+    data-reveal="up"
+  >
     <div>
       <Eyebrow>{copy.eyebrow}</Eyebrow>
       <h2 class="h2-section mt-4">{copy.title}</h2>
@@ -35,14 +38,14 @@ const [organizers, ambassadors] = await Promise.all([
     class="team-grid m-0 grid list-none grid-cols-2 gap-x-5 gap-y-10 p-0 lg:grid-cols-5"
     style="margin-top: 3rem"
   >
-    {organizers.map((person) => (
-      <li>
+    {organizers.map((person, i) => (
+      <li data-reveal="up" style={`--d:${(i % 5) * 70}ms`}>
         <TeamCard person={person} />
       </li>
     ))}
   </ul>
 
-  <div class="mt-14 border-t-[1.5px] border-rule pt-8">
+  <div class="mt-14 border-t-[1.5px] border-rule pt-8" data-reveal="up">
     <h3 class="m-0 text-[0.8125rem] font-bold tracking-[0.16em] uppercase">
       {copy.ambassadors}
     </h3>
@@ -50,8 +53,8 @@ const [organizers, ambassadors] = await Promise.all([
       class="team-grid m-0 grid list-none grid-cols-2 gap-x-5 gap-y-10 p-0 lg:grid-cols-5"
       style="margin-top: 2rem"
     >
-      {ambassadors.map((person) => (
-        <li>
+      {ambassadors.map((person, i) => (
+        <li data-reveal="up" style={`--d:${(i % 5) * 70}ms`}>
           <TeamCard person={person} />
         </li>
       ))}

@@ -13,6 +13,8 @@ export interface Props {
   /** CSS pixels per motif cell. */
   cell?: number;
   class?: string;
+  /** Stitch in from the left when scrolled into view. */
+  reveal?: boolean;
 }
 
 const units = import.meta.glob<{ default: ImageMetadata }>(
@@ -25,6 +27,7 @@ const {
   tone = "brand",
   cell = 4,
   class: className,
+  reveal = true,
 } = Astro.props;
 
 const file = kind === "strip" ? `strip_${tone}` : `frieze-${kind}_${tone}`;
@@ -34,6 +37,7 @@ if (!unit) throw new Error(`Unknown frieze "${file}"`);
 
 <div
   aria-hidden="true"
+  data-reveal={reveal ? "stitch" : undefined}
   class:list={["w-full [image-rendering:pixelated]", className]}
   style={`height:${unit.height * cell}px;background:url(${unit.src}) repeat-x left top / ${unit.width * cell}px ${unit.height * cell}px`}
 ></div>

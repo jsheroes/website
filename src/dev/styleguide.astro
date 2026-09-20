@@ -111,6 +111,46 @@ const tones = ["paper", "band", "ink"] as const;
       <Frieze kind="strip" class="mt-[-8px]" />
     </Section>
 
+    <Section tone="paper" data-section="motion">
+      <h2 class="h2-section">Motion</h2>
+      <p class="lede mt-4 max-w-[40rem]">
+        Ambient motion on motifs (data-motion) and scroll reveals (data-reveal),
+        all in assets/motion.css. Reduced motion shows everything static.
+      </p>
+      <ul class="m-0 mt-10 grid list-none grid-cols-2 gap-8 p-0 sm:grid-cols-3 lg:grid-cols-6">
+        {(["spin", "spin-rev", "sway", "bob", "twinkle"] as const).map(
+          (motion) => (
+            <li class="flex flex-col items-start gap-3 text-xs">
+              <div class="flex h-32 items-center">
+                <Motif
+                  name="m4_brand"
+                  cell={4}
+                  motion={motion}
+                  dur={motion.startsWith("spin") ? "12s" : "4s"}
+                />
+              </div>
+              <code>data-motion="{motion}"</code>
+            </li>
+          ),
+        )}
+        <li class="flex flex-col items-start gap-3 text-xs">
+          <div class="flex h-32 items-center">
+            <Motif name="m4_brand" cell={4} reveal="pixel" />
+          </div>
+          <code>data-reveal="pixel"</code>
+        </li>
+      </ul>
+      <div class="mt-10 flex flex-col gap-6">
+        <p data-reveal="up" class="m-0 text-xl font-bold">
+          data-reveal="up" fades and rises
+        </p>
+        <Frieze kind="diamond" />
+        <h3 class="h3-card m-0" data-reveal="up">
+          Scribbles draw in <Scribble>as headings reveal</Scribble>
+        </h3>
+      </div>
+    </Section>
+
     <Section tone="band" data-section="motifs">
       <h2 class="h2-section">Motif catalogue</h2>
       <ul class="m-0 mt-8 grid list-none grid-cols-2 gap-6 p-0 sm:grid-cols-4 lg:grid-cols-6">

@@ -17,6 +17,16 @@ export interface Props {
   flip?: boolean;
   /** Motifs above the fold should pass "eager". */
   loading?: "lazy" | "eager";
+  /** Ambient movement: see assets/motion.css. Spins and sways use smooth resampling. */
+  motion?: "spin" | "spin-rev" | "sway" | "bob" | "twinkle";
+  /** Animation duration, e.g. "90s". */
+  dur?: string;
+  /** Animation delay; negative values start mid-cycle so neighbours are out of step. */
+  delay?: string;
+  /** Reveal on scroll: "pixel" unfolds the motif from its centre in steps. */
+  reveal?: "pixel";
+  /** Delay before the reveal, e.g. "200ms". */
+  revealDelay?: string;
 }
 
 const motifs = import.meta.glob<{ default: ImageMetadata }>(
@@ -31,23 +41,53 @@ const {
   alt = "",
   flip = false,
   loading = "lazy",
+  motion,
+  dur,
+  delay,
+  reveal,
+  revealDelay,
 } = Astro.props;
 
 const motif = motifs[`/src/assets/motifs/${name}.svg`]?.default;
 if (!motif) throw new Error(`Unknown motif "${name}"`);
 ---
 
-<img
-  src={motif.src}
-  width={motif.width * cell}
-  height={motif.height * cell}
-  alt={alt}
-  aria-hidden={alt === "" ? "true" : undefined}
-  class:list={[
-    "block max-w-none [image-rendering:pixelated]",
-    { "-scale-x-100": flip },
-    className,
-  ]}
-  loading={loading}
-  decoding="async"
-/>
+{motion || reveal ? (
+  <span
+    class:list={["block", { "-scale-x-100": flip }, className]}
+    data-reveal={reveal}
+    style={revealDelay ? `--d:${revealDelay}` : undefined}
+  >
+    <img
+      src={motif.src}
+      width={motif.width * cell}
+      height={motif.height * cell}
+      alt={alt}
+      aria-hidden={alt === "" ? "true" : undefined}
+      class="block max-w-none [image-rendering:pixelated]"
+      loading={loading}
+      decoding="async"
+      data-motion={motion}
+      style={
+        [dur && `--dur:${dur}`, delay && `--delay:${delay}`]
+          .filter(Boolean)
+          .join(";") || undefined
+      }
+    />
+  </span>
+) : (
+  <img
+    src={motif.src}
+    width={motif.width * cell}
+    height={motif.height * cell}
+    alt={alt}
+    aria-hidden={alt === "" ? "true" : undefined}
+    class:list={[
+      "block max-w-none [image-rendering:pixelated]",
+      { "-scale-x-100": flip },
+      className,
+    ]}
+    loading={loading}
+    decoding="async"
+  />
+)}
