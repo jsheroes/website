@@ -12,24 +12,24 @@
     "prettier": "prettier --write ."
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.20",
     "astro": "^5.18.2",
     "prettier": "^3.2.4",
-    "prettier-plugin-astro": "^0.13.0"
+    "prettier-plugin-astro": "^0.13.0",
+    "prettier-plugin-tailwindcss": "^0.8.1"
   },
   "dependencies": {
     "@astro-community/astro-embed-youtube": "^0.5.10",
     "@astrojs/mdx": "^4.3.14",
-    "@astrojs/tailwind": "^6.0.2",
     "@fontsource/sora": "^5.2.8",
     "@iconify-json/mdi": "^1.2.2",
+    "@tailwindcss/vite": "^4.3.3",
     "@vercel/analytics": "^1.6.1",
     "astro-icon": "^1.2.0",
     "astro-tooltips": "^0.6.2",
     "chart.js": "^4.4.1",
-    "prettier-plugin-tailwindcss": "^0.5.11",
     "sharp": "^0.34.3",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^4.3.3"
   },
   "engines": {
     "node": ">=22.12.0"

@@ -91,18 +91,18 @@ const { agendaItems, title } = Astro.props as Props;
 
 <style>
   .color-item:nth-child(3n) {
-    --person-accent-color: theme("colors.accent-pink");
+    --person-accent-color: var(--color-accent-pink);
   }
 
   .color-item:nth-child(3n + 1) {
-    --person-accent-color: theme("colors.accent-orange");
+    --person-accent-color: var(--color-accent-orange);
   }
 
   .color-item:nth-child(3n + 2) {
-    --person-accent-color: theme("colors.accent-green");
+    --person-accent-color: var(--color-accent-green);
   }
 
   .color-item:not(:last-child) {
-    border-bottom: 1px solid theme("colors.accent-pink");
+    border-bottom: 1px solid var(--color-accent-pink);
   }
 </style>

@@ -1,17 +1,17 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
     mdx(),
-    tailwind({
-      nesting: true,
-    }),
     icon(),
   ],
+  vite: {
+    plugins: [tailwindcss()],
+  },
   redirects: {
     "/tags": "/blog",
   },

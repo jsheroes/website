@@ -204,16 +204,16 @@ import { yearsForBreakdownSelect } from "../data/transparency";
     border-radius: 1rem;
     font-size: inherit;
     font-family: inherit;
-    background: theme("colors.accent-orange");
-    transition: all theme("transitionDuration.fade") ease-out;
+    background: var(--color-accent-orange);
+    transition: all 125ms ease-out;
   }
 
   select:hover {
-    background: theme("colors.accent-pink");
+    background: var(--color-accent-pink);
   }
 
   select:focus-visible {
-    outline: dashed theme("colors.accent-pink") 2px;
+    outline: dashed var(--color-accent-pink) 2px;
     outline-offset: 5px;
   }
 
@@ -233,7 +233,7 @@ import { yearsForBreakdownSelect } from "../data/transparency";
   }
 
   .chart-column p.footnote {
-    font-size: theme("fontSize.sm");
+    font-size: var(--text-sm);
     text-align: left;
   }
 </style>
