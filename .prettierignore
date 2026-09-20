@@ -6,3 +6,4 @@ public
 src/content
 package-lock.json
 "Claude outputs"
+pnpm-lock.yaml

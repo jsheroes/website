@@ -19,6 +19,6 @@ There's a [BaseLayout](/src/layouts/BaseLayout.astro) component which renders fo
 If you prefer running it locally:
 
 ```
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
