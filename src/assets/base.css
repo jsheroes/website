@@ -12,6 +12,8 @@
   /* Brand. black-pearl is the ink colour. */
   --color-black-pearl: #001c2b;
   --color-dodger-blue: #0098ff;
+  /* dodger-blue darkened to 3.2:1 on paper, for large text like the wordmark */
+  --color-dodger-blue-text: #0090f0;
   --color-accent-pink: #ff6078;
   --color-accent-orange: #ffcc67;
   --color-accent-green: #65d3bb;
@@ -204,6 +206,7 @@
     .btn:hover,
     .btn:active {
       transform: none;
+      transition: none;
     }
   }
 }

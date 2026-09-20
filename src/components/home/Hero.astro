@@ -21,43 +21,58 @@ const art = [
   { name: "pd_coral", cell: 5, left: 1340, top: 330 },
   { name: "pd_mint", cell: 5, left: 830, top: 470 },
 ];
+/** The same motifs, smaller, on a 560 x 610 box anchored to the right for widths from xl to 3xl. */
+const mid = [
+  { name: "m4_brand", cell: 14, left: 120, top: 130 },
+  { name: "m5_brand", cell: 6, left: 434, top: 50 },
+  { name: "m3_brand", cell: 6, left: 0, top: 430 },
+  { name: "m2_brand", cell: 6, left: 458, top: 470 },
+  { name: "dr_yel", cell: 5, left: 40, top: 100 },
+  { name: "dx_coral", cell: 7, left: 250, top: 40 },
+  { name: "pr_navy", cell: 6, left: 452, top: 300 },
+  { name: "pd_blue", cell: 5, left: 300, top: 490 },
+  { name: "dx_mint", cell: 5, left: 400, top: 560 },
+  { name: "pd_coral", cell: 4, left: 505, top: 250 },
+  { name: "pd_mint", cell: 5, left: 90, top: 300 },
+];
 ---
 
 <section
   data-section="hero"
   class="relative -mt-24 flex flex-col overflow-hidden bg-paper xl:min-h-[900px]"
 >
+  <!-- Stair corners live in the page margin, so they only appear where the margin is wide enough to hold them. -->
   <Motif
     name="st_brand"
-    cell={8}
-    class="absolute top-0 left-0 md:hidden"
+    cell={6}
+    class="absolute top-0 left-0 hidden xl:block 3xl:hidden"
     loading="eager"
   />
   <Motif
     name="st_brand"
-    cell={8}
+    cell={6}
     flip
-    class="absolute top-0 right-0 md:hidden"
+    class="absolute top-0 right-0 hidden xl:block 3xl:hidden"
     loading="eager"
   />
   <Motif
     name="st_brand"
     cell={12}
-    class="absolute top-0 left-0 hidden md:block"
+    class="absolute top-0 left-0 hidden 3xl:block"
     loading="eager"
   />
   <Motif
     name="st_brand"
     cell={12}
     flip
-    class="absolute top-0 right-0 hidden md:block"
+    class="absolute top-0 right-0 hidden 3xl:block"
     loading="eager"
   />
 
   <!-- Full cluster from xl, positioned on the 1440 design grid. -->
   <div
     aria-hidden="true"
-    class="pointer-events-none absolute inset-0 hidden xl:block"
+    class="pointer-events-none absolute inset-0 hidden 3xl:block"
   >
     <div class="absolute top-0 left-1/2 h-full w-[1440px] -translate-x-1/2">
       {art.map(({ name, cell, left, top }) => (
@@ -68,12 +83,22 @@ const art = [
     </div>
   </div>
 
-  <!-- Just the star between lg and xl, where the cluster would collide with the text. -->
+  <!-- Between lg and 3xl there is no room for the full cluster: the star alone at lg, a smaller cluster from xl. -->
   <div
     aria-hidden="true"
     class="pointer-events-none absolute top-40 right-8 hidden lg:block xl:hidden"
   >
     <Motif name="m4_brand" cell={13} loading="eager" />
+  </div>
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute top-28 right-6 hidden h-[38rem] w-[35rem] xl:block 3xl:hidden"
+  >
+    {mid.map(({ name, cell, left, top }) => (
+      <div class="absolute" style={`left:${left}px;top:${top}px`}>
+        <Motif name={name} cell={cell} loading="eager" />
+      </div>
+    ))}
   </div>
 
   <div class="relative mx-auto w-full max-w-[1160px] flex-1 px-5 pt-32 pb-16 md:px-8 md:pt-[9.375rem] xl:px-0">

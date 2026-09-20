@@ -73,7 +73,7 @@ const role = person.data.company
                   href={link.url}
                   target="_blank"
                   rel="noreferrer noopener"
-                  class="block h-6 w-6 transition-transform duration-150 hover:scale-125"
+                  class="block h-6 w-6 transition-transform duration-150 hover:scale-125 motion-reduce:transition-none motion-reduce:hover:scale-100"
                 >
                   <img
                     src={link.icon}
@@ -116,7 +116,7 @@ const role = person.data.company
 
   <form method="dialog">
     <button
-      class="absolute -top-4 -right-4 z-10 flex h-11 w-11 cursor-pointer items-center justify-center border-2 border-black-pearl bg-accent-orange p-0 transition-transform duration-150 hover:scale-110"
+      class="absolute -top-4 -right-4 z-10 flex h-11 w-11 cursor-pointer items-center justify-center border-2 border-black-pearl bg-accent-orange p-0 transition-transform duration-150 hover:scale-110 motion-reduce:transition-none motion-reduce:hover:scale-100"
       aria-label="Close"
       autofocus
     >

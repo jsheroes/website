@@ -8,6 +8,7 @@ import { cta, footerGroups, legalLinks } from "../data/navigation";
 ---
 
 <footer
+  data-section="footer"
   data-tone="ink"
   class="relative overflow-hidden bg-black-pearl text-white"
 >
@@ -32,7 +33,7 @@ import { cta, footerGroups, legalLinks } from "../data/navigation";
       <div class="mt-14 grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4 lg:max-w-[46rem]">
         {footerGroups.map((group) => (
           <nav aria-label={group.title}>
-            <h2 class="eyebrow mb-4 text-accent-orange">{group.title}</h2>
+            <h3 class="eyebrow mb-4 text-accent-orange">{group.title}</h3>
             <ul class="m-0 flex list-none flex-col gap-2 p-0 text-[0.9375rem]">
               {group.links.map((link) => (
                 <li>

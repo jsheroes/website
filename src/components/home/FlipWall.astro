@@ -27,14 +27,19 @@ const tileClass: Record<TileColor, string> = {
 >
   <div class="flex flex-col items-start gap-8 md:flex-row md:items-center md:gap-14">
     <Motif name="ten_night" cell={5} class="shrink-0 md:hidden" />
-    <Motif name="ten_night" cell={10} class="hidden shrink-0 md:block" />
+    <Motif
+      name="ten_night"
+      cell={7}
+      class="hidden shrink-0 md:block lg:hidden"
+    />
+    <Motif name="ten_night" cell={10} class="hidden shrink-0 lg:block" />
     <div>
       <Eyebrow class="text-accent-orange">{copy.eyebrow}</Eyebrow>
       <h2 class="h2-section mt-4 text-white">
         {copy.titleLead} <Scribble>{copy.titleHighlight}</Scribble>{" "}
         {copy.titleTail}
       </h2>
-      <div class="mt-6 flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:gap-7">
+      <div class="mt-6 flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:gap-7">
         <p class="lede m-0 max-w-[35rem] text-[1.125rem]">{copy.intro}</p>
         <button
           type="button"
@@ -134,7 +139,7 @@ const tileClass: Record<TileColor, string> = {
       </span>
     </p>
     {cta && (
-      <Button href={cta.href} variant="accent">
+      <Button href={cta.href} variant="accent" class="shrink-0">
         {cta.label}
       </Button>
     )}
