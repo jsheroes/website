@@ -13,14 +13,14 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.20",
-    "astro": "^5.18.2",
+    "astro": "^6.4.8",
     "prettier": "^3.2.4",
     "prettier-plugin-astro": "^0.13.0",
     "prettier-plugin-tailwindcss": "^0.8.1"
   },
   "dependencies": {
     "@astro-community/astro-embed-youtube": "^0.5.10",
-    "@astrojs/mdx": "^4.3.14",
+    "@astrojs/mdx": "^5.0.6",
     "@fontsource/sora": "^5.2.8",
     "@iconify-json/mdi": "^1.2.2",
     "@tailwindcss/vite": "^4.3.3",
