@@ -24,3 +24,6 @@ pnpm-debug.log*
 
 # Claude handoff scratch
 Claude outputs/
+
+# screenshots
+.shots/

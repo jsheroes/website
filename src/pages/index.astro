@@ -1,11 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../components/Section.astro";
-import BearLink from "../components/BearLink.astro";
 
-import Banner from "../sections/banner.astro";
-import News from "../sections/news.astro";
-import Speakers from "../sections/speakers.astro";
+import Hero from "../components/home/Hero.astro";
+import Speakers from "../components/home/Speakers.astro";
+import Hosts from "../components/home/Hosts.astro";
+import FlipWall from "../components/home/FlipWall.astro";
 import Agenda from "../sections/agenda.astro";
 import Friends from "../sections/friends.astro";
 import { Content as Description } from "../sections/description.md";
@@ -19,82 +19,91 @@ import ImagesBanner from "@/components/ImagesBanner.astro";
 ---
 
 <BaseLayout>
-  <Banner />
-  <main id="main">
-    <Section id="speakers" variant="dark" content="list">
-      <Speakers />
-    </Section>
+  <main id="main" class="v2">
+    <Hero />
+    <Speakers />
+    <Hosts />
+    <FlipWall />
 
-    <Section variant="light" content="text">
-      <Theme />
-      {CFP_OPEN && (
-        <p>
-          Do you want to speak at JSHeroes?{" "}
-          <a href="/speak">Submit a proposal</a> today!
-        </p>
-      )}
-      <span class="absolute right-[16%] top-[-110px] z-10 hidden lg:block">
-        <img
-          class="w-[200px]"
-          src="/img/props/rocket.svg"
-          alt=""
-          aria-hidden="true"
-        />
-      </span>
-      <h2 class="mt-8">Agenda</h2>
-      <div class="space-y-12">
-        <div class="space-y-4">
-          <Agenda title={`Day 1: ${event.days[0].label}`} agendaItems={day1} />
+    <!-- Not redesigned yet: agenda, venue, community, sponsors, team. -->
+    <div class="legacy">
+      <Section variant="light" content="text">
+        <Theme />
+        {CFP_OPEN && (
+          <p>
+            Do you want to speak at JSHeroes?{" "}
+            <a href="/speak">Submit a proposal</a> today!
+          </p>
+        )}
+        <span class="absolute right-[16%] top-[-110px] z-10 hidden lg:block">
+          <img
+            class="w-[200px]"
+            src="/img/props/rocket.svg"
+            alt=""
+            aria-hidden="true"
+          />
+        </span>
+        <h2 class="mt-8">Agenda</h2>
+        <div class="space-y-12">
+          <div class="space-y-4">
+            <Agenda
+              title={`Day 1: ${event.days[0].label}`}
+              agendaItems={day1}
+            />
+          </div>
+          <div class="space-y-4">
+            <Agenda
+              title={`Day 2: ${event.days[1].label}`}
+              agendaItems={day2}
+            />
+          </div>
         </div>
-        <div class="space-y-4">
-          <Agenda title={`Day 2: ${event.days[1].label}`} agendaItems={day2} />
-        </div>
-      </div>
-    </Section>
-    <ImagesBanner
-      images={["event/venue3.jpg", "event/venue5.jpg", "event/venue1.jpg"]}
-    />
-    <Section variant="dark" content="text">
-      <Event />
+      </Section>
+      <ImagesBanner
+        images={["event/venue3.jpg", "event/venue5.jpg", "event/venue1.jpg"]}
+      />
+      <Section variant="dark" content="text">
+        <Event />
 
-      <!-- <span class="absolute right-[-100px] top-[100px] z-10 hidden lg:block">
+        <!-- <span class="absolute right-[-100px] top-[100px] z-10 hidden lg:block">
         <BearLink rotate={330} animation="scaleAndSlide" />
       </span> -->
-      <span class="absolute right-1/4 top-[-50px] z-10 hidden lg:block">
-        <a
-          class="duration-speed-move block transition-transform ease-out after:hidden hover:scale-110"
-          target="_blank"
-          rel="noreferrer noopener"
-          href={event.venue.mapsUrl}
-          aria-label="Get event location on Google Maps"
-          title="Get event location on Google Maps"
-        >
-          <img class="w-[200px]" src="/img/props/earth.svg" alt="" />
-        </a>
-      </span>
-    </Section>
-    <ImagesBanner
-      images={[
-        "event/community1.jpg",
-        "event/community7.jpg",
-        "event/merch1.jpg",
-      ]}
-    />
-    <Section variant="dark" content="text">
-      <Description />
-    </Section>
-    <Section id="sponsors" variant="light" content="list">
-      <Friends />
-    </Section>
-    <ImagesBanner
-      images={[
-        "event/venue4.jpg",
-        "event/community3.jpg",
-        "event/community5.jpg",
-      ]}
-    />
-    <Section variant="dark" content="list">
-      <Organizers />
-    </Section>
+        <span class="absolute right-1/4 top-[-50px] z-10 hidden lg:block">
+          <a
+            class="duration-speed-move block transition-transform ease-out after:hidden hover:scale-110"
+            target="_blank"
+            rel="noreferrer noopener"
+            href={event.venue.mapsUrl}
+            aria-label="Get event location on Google Maps"
+            title="Get event location on Google Maps"
+          >
+            <img class="w-[200px]" src="/img/props/earth.svg" alt="" />
+          </a>
+        </span>
+      </Section>
+      <ImagesBanner
+        images={[
+          "event/community1.jpg",
+          "event/community7.jpg",
+          "event/merch1.jpg",
+        ]}
+      />
+      <Section variant="dark" content="text">
+        <Description />
+      </Section>
+      <Section id="sponsors" variant="light" content="list">
+        <Friends />
+      </Section>
+      <ImagesBanner
+        images={[
+          "event/venue4.jpg",
+          "event/community3.jpg",
+          "event/community5.jpg",
+        ]}
+      />
+      <Section variant="dark" content="list">
+        <Organizers />
+      </Section>
+    </div>
   </main>
 </BaseLayout>

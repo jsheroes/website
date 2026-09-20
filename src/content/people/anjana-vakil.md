@@ -4,6 +4,7 @@ role: "speaker"
 title: "Independent Developer & Educator"
 tag: "Career Development"
 photo: "../../images/people/anjana-vakil.jpg"
+portrait: "../../images/people/anjana-vakil-cutout.png"
 links:
   website: "https://anjana.dev"
 order: 7

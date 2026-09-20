@@ -1,0 +1,119 @@
+---
+import Button from "../ui/Button.astro";
+import Eyebrow from "../ui/Eyebrow.astro";
+import Frieze from "../ui/Frieze.astro";
+import Motif from "../ui/Motif.astro";
+import Scribble from "../ui/Scribble.astro";
+import { hero } from "../../data/home";
+import { cta } from "../../data/navigation";
+
+/** Design coordinates at 1440 wide, measured from the top of the hero. */
+const art = [
+  { name: "m4_brand", cell: 20, left: 850, top: 170 },
+  { name: "m5_brand", cell: 8, left: 1236, top: 96 },
+  { name: "m3_brand", cell: 8, left: 760, top: 560 },
+  { name: "m2_brand", cell: 9, left: 1246, top: 590 },
+  { name: "dr_yel", cell: 8, left: 782, top: 150 },
+  { name: "dx_coral", cell: 9, left: 1030, top: 84 },
+  { name: "pr_navy", cell: 7, left: 1290, top: 420 },
+  { name: "pd_blue", cell: 6, left: 968, top: 660 },
+  { name: "dx_mint", cell: 6, left: 1150, top: 690 },
+  { name: "pd_coral", cell: 5, left: 1340, top: 330 },
+  { name: "pd_mint", cell: 5, left: 830, top: 470 },
+];
+---
+
+<section
+  data-section="hero"
+  class="relative -mt-24 flex flex-col overflow-hidden bg-paper xl:min-h-[900px]"
+>
+  <Motif
+    name="st_brand"
+    cell={8}
+    class="absolute top-0 left-0 md:hidden"
+    loading="eager"
+  />
+  <Motif
+    name="st_brand"
+    cell={8}
+    flip
+    class="absolute top-0 right-0 md:hidden"
+    loading="eager"
+  />
+  <Motif
+    name="st_brand"
+    cell={12}
+    class="absolute top-0 left-0 hidden md:block"
+    loading="eager"
+  />
+  <Motif
+    name="st_brand"
+    cell={12}
+    flip
+    class="absolute top-0 right-0 hidden md:block"
+    loading="eager"
+  />
+
+  <!-- Full cluster from xl, positioned on the 1440 design grid. -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 hidden xl:block"
+  >
+    <div class="absolute top-0 left-1/2 h-full w-[1440px] -translate-x-1/2">
+      {art.map(({ name, cell, left, top }) => (
+        <div class="absolute" style={`left:${left}px;top:${top}px`}>
+          <Motif name={name} cell={cell} loading="eager" />
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Just the star between lg and xl, where the cluster would collide with the text. -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute top-40 right-8 hidden lg:block xl:hidden"
+  >
+    <Motif name="m4_brand" cell={13} loading="eager" />
+  </div>
+
+  <div class="relative mx-auto w-full max-w-[1160px] flex-1 px-5 pt-32 pb-16 md:px-8 md:pt-[9.375rem] xl:px-0">
+    <div class="max-w-[40rem]">
+      <Eyebrow>{hero.eyebrow}</Eyebrow>
+      <h1 class="h1-hero mt-7">
+        {hero.titleLead} <Scribble stroke={6}>{hero.titleHighlight}</Scribble>
+      </h1>
+      <p class="lede mt-12 max-w-[34rem]">{hero.intro}</p>
+      <div class="mt-10 flex flex-wrap items-center gap-x-5 gap-y-6">
+        {cta && <Button href={cta.href}>{cta.label}</Button>}
+        <Button href="#speakers" variant="ghost">
+          {hero.secondaryCta}
+        </Button>
+      </div>
+    </div>
+
+    <div
+      aria-hidden="true"
+      class="pointer-events-none mt-14 flex flex-wrap items-end gap-x-6 gap-y-4 lg:hidden"
+    >
+      <Motif name="m4_brand" cell={8} loading="eager" />
+      <Motif name="m3_brand" cell={4} loading="eager" />
+      <Motif name="m5_brand" cell={4} loading="eager" />
+    </div>
+  </div>
+
+  <div data-tone="ink" class="relative bg-black-pearl text-white">
+    <dl class="m-0 mx-auto grid max-w-[1160px] grid-cols-2 gap-x-6 gap-y-6 px-5 pt-6 pb-10 md:px-8 lg:flex lg:justify-between lg:pb-8 xl:px-0">
+      {hero.facts.map((fact) => (
+        <div class="flex flex-col gap-1.5">
+          <dt class="text-xs font-bold tracking-[0.16em] text-accent-orange uppercase">
+            {fact.label}
+          </dt>
+          <dd class="m-0 text-base font-bold md:text-xl lg:whitespace-nowrap">
+            {fact.value}
+          </dd>
+        </div>
+      ))}
+    </dl>
+    <Frieze kind="diamond" tone="night" />
+  </div>
+</section>

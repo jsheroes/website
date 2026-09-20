@@ -4,6 +4,7 @@ role: "speaker"
 title: "Creative Developer"
 tag: "CSS"
 photo: "../../images/people/cyd-stumpel.png"
+portrait: "../../images/people/cyd-stumpel-cutout.png"
 links:
   website: "https://cydstumpel.nl/"
 order: 5

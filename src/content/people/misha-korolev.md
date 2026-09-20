@@ -4,6 +4,7 @@ role: "speaker"
 title: "Developer Experience Engineer"
 tag: "JavaScript"
 photo: "../../images/people/misha-korolev.jpg"
+portrait: "../../images/people/misha-korolev-cutout.png"
 links:
   website: "https://mkrl.xyz"
   bluesky: "https://bsky.app/profile/mkrl.xyz"

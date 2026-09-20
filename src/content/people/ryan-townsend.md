@@ -5,6 +5,7 @@ title: "Principal Product Manager"
 company: "Cloudflare"
 tag: "Performance"
 photo: "../../images/people/ryan-townsend.jpg"
+portrait: "../../images/people/ryan-townsend-cutout.png"
 links:
   website: "https://lessonsofacto.com"
   bluesky: "https://bsky.app/profile/twnsnd.com"

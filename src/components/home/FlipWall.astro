@@ -1,0 +1,260 @@
+---
+import Button from "../ui/Button.astro";
+import Eyebrow from "../ui/Eyebrow.astro";
+import Frieze from "../ui/Frieze.astro";
+import Motif from "../ui/Motif.astro";
+import Scribble from "../ui/Scribble.astro";
+import Section from "../ui/Section.astro";
+import { editions, type TileColor } from "../../data/editions";
+import { flipWall as copy } from "../../data/home";
+import { cta } from "../../data/navigation";
+
+const tileClass: Record<TileColor, string> = {
+  white: "bg-white",
+  blue: "bg-dodger-blue",
+  yellow: "bg-accent-orange",
+  mint: "bg-accent-green",
+  coral: "bg-accent-pink",
+};
+---
+
+<Section
+  tone="ink"
+  id="editions"
+  data-section="flip-wall"
+  data-flip-wall
+  containerClass="max-w-[1320px] pt-20 pb-24 md:pt-24"
+>
+  <div class="flex flex-col items-start gap-8 md:flex-row md:items-center md:gap-14">
+    <Motif name="ten_night" cell={5} class="shrink-0 md:hidden" />
+    <Motif name="ten_night" cell={10} class="hidden shrink-0 md:block" />
+    <div>
+      <Eyebrow class="text-accent-orange">{copy.eyebrow}</Eyebrow>
+      <h2 class="h2-section mt-4 text-white">
+        {copy.titleLead} <Scribble>{copy.titleHighlight}</Scribble>{" "}
+        {copy.titleTail}
+      </h2>
+      <div class="mt-6 flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:gap-7">
+        <p class="lede m-0 max-w-[35rem] text-[1.125rem]">{copy.intro}</p>
+        <button
+          type="button"
+          data-flip-all
+          class="flip-all cursor-pointer border-2 border-white bg-transparent px-5 py-3 text-[0.9375rem] font-bold whitespace-nowrap text-white hover:bg-white hover:text-black-pearl"
+        >
+          {copy.revealAll}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <ul class="m-0 mt-14 grid list-none grid-cols-1 gap-2 p-0 sm:grid-cols-2 lg:grid-cols-4">
+    {editions.map((edition) => {
+      const label = String(edition.n).padStart(2, "0");
+      return (
+        <li class="flip-tile" data-flip-tile data-flipped="false">
+          <div class="flip-inner">
+            <div
+              class:list={[
+                "flip-face flip-front flex items-center justify-center text-black-pearl",
+                tileClass[edition.tile],
+              ]}
+            >
+              <span class="absolute top-4 left-[1.125rem] text-xs font-bold tracking-[0.16em] uppercase">
+                Edition {label}
+              </span>
+              <Motif name={`${edition.motif}_brand`} cell={edition.motifCell} />
+              <svg
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="square"
+                class="absolute right-4 bottom-3.5"
+              >
+                <path d="M4 12a8 8 0 0 1 14-5M20 12a8 8 0 0 1-14 5M18 3v4h-4M6 21v-4h4" />
+              </svg>
+            </div>
+
+            <div class="flip-face flip-back flex flex-col bg-black-pearl text-white">
+              <div class="relative min-h-0 flex-1 bg-[#d5dce1]">
+                {edition.photo ? (
+                  <img
+                    src={`/img/gallery/${edition.photo}`}
+                    alt={`Group photo of everyone at JSHeroes ${edition.year}`}
+                    width="384"
+                    height="246"
+                    loading="lazy"
+                    class="absolute inset-0 h-full w-full object-cover"
+                  />
+                ) : (
+                  <p class="absolute inset-0 m-0 flex items-center justify-center px-6 text-center text-[0.8125rem] text-[#3b4e5b]">
+                    {copy.noPhoto}
+                  </p>
+                )}
+              </div>
+              <div class="flex h-16 shrink-0 items-center justify-between pr-3.5 pl-[1.125rem]">
+                <div class="flex flex-col gap-0.5">
+                  <span class="text-2xl leading-none font-extrabold tracking-tight">
+                    {edition.year}
+                  </span>
+                  <span class="text-[0.8125rem] text-[#c9d6df]">
+                    Edition {label} · {edition.venue}
+                  </span>
+                </div>
+                <span class="flex h-11 w-11 shrink-0 items-center justify-center bg-white">
+                  <Motif name={`${edition.motif}_brand`} cell={1} />
+                </span>
+              </div>
+            </div>
+          </div>
+          <button
+            type="button"
+            aria-pressed="false"
+            class="flip-button absolute inset-0 m-0 cursor-pointer border-0 bg-transparent p-0"
+          >
+            <span class="sr-only">{edition.year} group photo</span>
+          </button>
+        </li>
+      );
+    })}
+  </ul>
+
+  <div class="mt-14 flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-center">
+    <p class="m-0 text-[clamp(1.5rem,1.1rem+1.4vw,2.25rem)] leading-tight font-extrabold tracking-tight text-white">
+      {copy.footerLead}{" "}
+      <span class="relative inline-block">
+        {copy.footerHighlight}
+        <span
+          aria-hidden="true"
+          class="absolute inset-x-0 -bottom-1 h-1 bg-accent-pink"
+        ></span>
+      </span>
+    </p>
+    {cta && (
+      <Button href={cta.href} variant="accent">
+        {cta.label}
+      </Button>
+    )}
+  </div>
+
+  <div slot="decor" class="absolute inset-x-0 bottom-0">
+    <Frieze kind="zigzag" tone="night" />
+  </div>
+</Section>
+
+<style>
+  .flip-tile {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    perspective: 1400px;
+  }
+  .flip-inner {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.3, 0.7, 0.2, 1);
+  }
+  .flip-face {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    backface-visibility: hidden;
+  }
+  .flip-back {
+    transform: rotateY(180deg);
+  }
+  .flip-tile[data-flipped="true"] .flip-inner {
+    transform: rotateY(180deg);
+  }
+
+  /* Without scripting, tiles can't be flipped: show the year and photo directly. */
+  @media (scripting: none) {
+    .flip-front,
+    .flip-button,
+    .flip-all {
+      display: none;
+    }
+    .flip-back {
+      transform: none;
+    }
+  }
+
+  /* Reduced motion: cross-fade instead of turning. */
+  @media (prefers-reduced-motion: reduce) {
+    .flip-inner {
+      transform: none !important;
+      transform-style: flat;
+      transition: none;
+    }
+    .flip-face {
+      backface-visibility: visible;
+      transition: opacity 0.25s ease;
+    }
+    .flip-back {
+      transform: none;
+      opacity: 0;
+    }
+    .flip-tile[data-flipped="true"] .flip-front {
+      opacity: 0;
+    }
+    .flip-tile[data-flipped="true"] .flip-back {
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  const hosts = new WeakSet<HTMLElement>();
+
+  function init() {
+    document
+      .querySelectorAll<HTMLElement>("[data-flip-wall]")
+      .forEach((wall) => {
+        if (hosts.has(wall)) return;
+        hosts.add(wall);
+
+        const tiles = [
+          ...wall.querySelectorAll<HTMLElement>("[data-flip-tile]"),
+        ];
+        const all = wall.querySelector<HTMLButtonElement>("[data-flip-all]");
+        const labels = {
+          reveal: all?.textContent?.trim() ?? "Reveal all",
+          hide: "Hide all",
+        };
+
+        const set = (tile: HTMLElement, flipped: boolean) => {
+          tile.dataset.flipped = String(flipped);
+          tile
+            .querySelector(".flip-button")
+            ?.setAttribute("aria-pressed", String(flipped));
+          // Only the visible face is reachable by keyboard and screen readers.
+          tile.querySelector<HTMLElement>(".flip-front")!.inert = flipped;
+          tile.querySelector<HTMLElement>(".flip-back")!.inert = !flipped;
+        };
+        const syncAll = () => {
+          if (all)
+            all.textContent = tiles.every((t) => t.dataset.flipped === "true")
+              ? labels.hide
+              : labels.reveal;
+        };
+
+        tiles.forEach((tile) => {
+          set(tile, false);
+          tile.querySelector(".flip-button")?.addEventListener("click", () => {
+            set(tile, tile.dataset.flipped !== "true");
+            syncAll();
+          });
+        });
+        all?.addEventListener("click", () => {
+          const flipAll = !tiles.every((t) => t.dataset.flipped === "true");
+          tiles.forEach((tile) => set(tile, flipAll));
+          syncAll();
+        });
+      });
+  }
+
+  document.addEventListener("astro:page-load", init);
+</script>

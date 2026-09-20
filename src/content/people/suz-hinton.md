@@ -4,6 +4,7 @@ role: "speaker"
 title: "Indie Developer"
 tag: "Human Intelligence"
 photo: "../../images/people/suz-hinton.jpg"
+portrait: "../../images/people/suz-hinton-cutout.png"
 links:
   website: "https://fragile.systems"
 order: 2

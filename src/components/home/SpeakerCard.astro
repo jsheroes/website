@@ -1,0 +1,84 @@
+---
+import { Image } from "astro:assets";
+import PersonDialog from "../ui/PersonDialog.astro";
+import { personDialogId, type Person } from "../../utils/people";
+
+/**
+ * Speaker on a diamond plate: a greyscale cutout overlaps the top of the plate,
+ * or a tinted initials tile stands in until the cutout exists. The plate and
+ * tint colours come from --plate and --tint on the parent list item.
+ */
+interface Props {
+  person: Person;
+  talk?: string;
+}
+
+const { person, talk } = Astro.props;
+
+const [first, ...rest] = person.data.name.split(" ");
+const surname = rest.join(" ");
+const initials = (first[0] + (rest.at(-1)?.[0] ?? "")).toUpperCase();
+const affiliation = person.data.company ?? person.data.title;
+---
+
+<button
+  type="button"
+  data-person-dialog={personDialogId(person)}
+  aria-haspopup="dialog"
+  class="group flex w-full cursor-pointer flex-col items-center gap-5 border-0 bg-transparent p-0 text-center text-inherit"
+>
+  <span class="relative block w-full">
+    {person.data.portrait ? (
+      <Image
+        src={person.data.portrait}
+        alt=""
+        width={260}
+        densities={[1, 2]}
+        class="relative block h-auto w-full transition-transform duration-200 ease-out group-hover:-translate-y-1 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0"
+      />
+    ) : (
+      <span
+        aria-hidden="true"
+        class="flex aspect-[520/540] w-full items-center justify-center bg-[var(--tint)] text-[4rem] font-extrabold tracking-tighter"
+      >
+        {initials}
+      </span>
+    )}
+    <span class="plate absolute inset-x-0 bottom-0 flex aspect-[260/126] items-center justify-center bg-[var(--plate)] px-8 text-xl leading-[1.1] font-extrabold tracking-tight">
+      <span>
+        <span class="block">{first}</span>
+        {surname && <span class="block">{surname}</span>}
+      </span>
+    </span>
+  </span>
+
+  <span class="flex flex-col items-center gap-2">
+    <span class="text-xs font-extrabold tracking-[0.16em] uppercase">
+      {affiliation}
+    </span>
+    {talk && (
+      <span class="min-h-[4.125rem] text-[0.9375rem] leading-snug font-medium text-soft">
+        {talk}
+      </span>
+    )}
+  </span>
+</button>
+
+<PersonDialog person={person} />
+
+<style>
+  .plate {
+    clip-path: polygon(
+      0 42%,
+      25% 6%,
+      50% 34%,
+      75% 6%,
+      100% 42%,
+      100% 60%,
+      75% 100%,
+      50% 72%,
+      25% 100%,
+      0 60%
+    );
+  }
+</style>

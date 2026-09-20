@@ -28,6 +28,9 @@ const swatches = [
   ["tint-mint", "bg-tint-mint"],
 ];
 const [speaker] = await getPeople("speaker");
+const motifNames = Object.keys(
+  import.meta.glob("/src/assets/motifs/*.svg"),
+).map((path) => path.split("/").pop()!.replace(".svg", ""));
 const tones = ["paper", "band", "ink"] as const;
 ---
 
@@ -106,6 +109,20 @@ const tones = ["paper", "band", "ink"] as const;
         <Bear who="female" bubble="Bine ai venit!" />
       </div>
       <Frieze kind="strip" class="mt-[-8px]" />
+    </Section>
+
+    <Section tone="band" data-section="motifs">
+      <h2 class="h2-section">Motif catalogue</h2>
+      <ul class="m-0 mt-8 grid list-none grid-cols-2 gap-6 p-0 sm:grid-cols-4 lg:grid-cols-6">
+        {motifNames
+          .filter((name) => !/^(frieze-|bd|bz|strip)/.test(name))
+          .map((name) => (
+            <li class="flex flex-col items-start gap-2 bg-white p-3 text-xs">
+              <Motif name={name} cell={3} />
+              <code>{name}</code>
+            </li>
+          ))}
+      </ul>
     </Section>
 
     {speaker && (

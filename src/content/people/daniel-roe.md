@@ -5,6 +5,7 @@ company: "Vercel"
 title: "Team lead, Nuxt"
 tag: "Devtools"
 photo: "../../images/people/daniel-roe.jpg"
+portrait: "../../images/people/daniel-roe-cutout.png"
 links:
   website: "https://roe.dev"
   bluesky: "https://bsky.app/profile/danielroe.dev"

@@ -5,6 +5,7 @@ company: "TetraLogical"
 title: "Principal A11y Specialist"
 tag: "Accessibility"
 photo: "../../images/people/craig-abbott.jpeg"
+portrait: "../../images/people/craig-abbott-cutout.png"
 links:
   website: "https://www.craigabbott.co.uk"
 order: 8

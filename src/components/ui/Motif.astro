@@ -15,6 +15,8 @@ export interface Props {
   /** Leave empty for decoration, which is nearly always the case. */
   alt?: string;
   flip?: boolean;
+  /** Motifs above the fold should pass "eager". */
+  loading?: "lazy" | "eager";
 }
 
 const motifs = import.meta.glob<{ default: ImageMetadata }>(
@@ -28,6 +30,7 @@ const {
   class: className,
   alt = "",
   flip = false,
+  loading = "lazy",
 } = Astro.props;
 
 const motif = motifs[`/src/assets/motifs/${name}.svg`]?.default;
@@ -45,6 +48,6 @@ if (!motif) throw new Error(`Unknown motif "${name}"`);
     { "-scale-x-100": flip },
     className,
   ]}
-  loading="lazy"
+  loading={loading}
   decoding="async"
 />

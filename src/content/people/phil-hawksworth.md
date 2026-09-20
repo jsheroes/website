@@ -5,6 +5,7 @@ company: "Deno"
 title: "Head of DevRel"
 tag: "JavaScript"
 photo: "../../images/people/phil-hawksworth.jpg"
+portrait: "../../images/people/phil-hawksworth-cutout.png"
 links:
   bluesky: "https://bsky.app/profile/philhawksworth.dev"
   twitter: "https://twitter.com/philhawksworth"
