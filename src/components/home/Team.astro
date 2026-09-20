@@ -1,0 +1,102 @@
+---
+import { Image } from "astro:assets";
+import Eyebrow from "../ui/Eyebrow.astro";
+import Frieze from "../ui/Frieze.astro";
+import PersonDialog from "../ui/PersonDialog.astro";
+import Section from "../ui/Section.astro";
+import { team as copy } from "../../data/home";
+import { getPeople, personDialogId } from "../../utils/people";
+
+const [organizers, volunteers, ambassadors] = await Promise.all([
+  getPeople("organizer"),
+  getPeople("volunteer"),
+  getPeople("ambassador"),
+]);
+const names = (people: typeof volunteers) =>
+  people.map((p) => p.data.name).join(", ");
+---
+
+<Section
+  id="team"
+  data-section="team"
+  containerClass="pt-20 pb-28 md:pt-24 md:pb-36"
+>
+  <div slot="decor" class="absolute inset-x-0 bottom-0">
+    <Frieze kind="strip" cell={6} />
+  </div>
+
+  <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+    <div>
+      <Eyebrow>{copy.eyebrow}</Eyebrow>
+      <h2 class="h2-section mt-4">{copy.title}</h2>
+    </div>
+    <p class="m-0 max-w-[23rem] text-[0.9375rem] leading-relaxed text-soft">
+      {copy.intro}
+    </p>
+  </div>
+
+  <ul class="team-grid m-0 mt-12 grid list-none grid-cols-2 gap-x-5 gap-y-10 p-0 md:grid-cols-3 lg:grid-cols-5">
+    {organizers.map((person) => (
+      <li>
+        <button
+          type="button"
+          data-person-dialog={personDialogId(person)}
+          aria-haspopup="dialog"
+          class="group block w-full cursor-pointer border-0 bg-transparent p-0 text-left text-inherit"
+        >
+          <span class="block aspect-[4/3] overflow-hidden bg-[var(--tint)]">
+            <Image
+              src={person.data.photo}
+              alt=""
+              width={200}
+              height={150}
+              densities={[1, 2]}
+              class="h-full w-full object-cover object-top mix-blend-multiply grayscale transition duration-200 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+            />
+          </span>
+          <span class="mt-4 block text-xl leading-tight font-bold group-hover:underline group-hover:decoration-accent-pink group-hover:decoration-2 group-hover:underline-offset-4">
+            {person.data.name}
+          </span>
+          <span class="mt-0.5 block text-sm text-soft">
+            {person.data.title}
+          </span>
+        </button>
+        <PersonDialog person={person} />
+      </li>
+    ))}
+  </ul>
+
+  <div class="mt-14 grid gap-x-16 gap-y-8 border-t-[1.5px] border-rule pt-8 md:grid-cols-2">
+    <section>
+      <h3 class="m-0 text-[0.8125rem] font-bold tracking-[0.16em] uppercase">
+        {copy.volunteers(volunteers.length)}
+      </h3>
+      <p class="m-0 mt-4 leading-relaxed text-soft">{names(volunteers)}</p>
+    </section>
+    <section>
+      <h3 class="m-0 text-[0.8125rem] font-bold tracking-[0.16em] uppercase">
+        {copy.ambassadors(ambassadors.length)}
+      </h3>
+      <p class="m-0 mt-4 leading-relaxed text-soft">{names(ambassadors)}</p>
+    </section>
+  </div>
+</Section>
+
+<style>
+  .team-grid > li:nth-child(4n + 1) {
+    --tint: var(--color-tint-blue);
+    --plate: var(--color-dodger-blue);
+  }
+  .team-grid > li:nth-child(4n + 2) {
+    --tint: var(--color-tint-coral);
+    --plate: var(--color-accent-pink);
+  }
+  .team-grid > li:nth-child(4n + 3) {
+    --tint: var(--color-tint-yellow);
+    --plate: var(--color-accent-orange);
+  }
+  .team-grid > li:nth-child(4n) {
+    --tint: var(--color-tint-mint);
+    --plate: var(--color-accent-green);
+  }
+</style>

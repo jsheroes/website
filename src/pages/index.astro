@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Section from "../components/Section.astro";
 
 import Hero from "../components/home/Hero.astro";
 import Speakers from "../components/home/Speakers.astro";
@@ -9,8 +8,8 @@ import FlipWall from "../components/home/FlipWall.astro";
 import Agenda from "../components/home/Agenda.astro";
 import Venue from "../components/home/Venue.astro";
 import Community from "../components/home/Community.astro";
-import Friends from "../sections/friends.astro";
-import Organizers from "../sections/organizers.astro";
+import Sponsors from "../components/home/Sponsors.astro";
+import Team from "../components/home/Team.astro";
 ---
 
 <BaseLayout>
@@ -22,15 +21,7 @@ import Organizers from "../sections/organizers.astro";
     <Agenda />
     <Venue />
     <Community />
-
-    <!-- Not redesigned yet: sponsors and team. -->
-    <div class="legacy">
-      <Section id="sponsors" variant="light" content="list">
-        <Friends />
-      </Section>
-      <Section id="team" variant="dark" content="list">
-        <Organizers />
-      </Section>
-    </div>
+    <Sponsors />
+    <Team />
   </main>
 </BaseLayout>

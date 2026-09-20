@@ -113,3 +113,18 @@ export const community = {
   more: "and more",
   bubble: "Bine ai venit!",
 };
+
+export const sponsors = {
+  eyebrow: "Sponsors",
+  title: "Backed by teams who love JavaScript",
+  cta: "Become a sponsor",
+};
+
+export const team = {
+  eyebrow: "Team",
+  title: "The people behind it.",
+  intro: `A volunteer-run crew that has made the same room feel like home for ${numberWord(event.anniversary)} years.`,
+  volunteers: (n: number) => `${n} ${n === 1 ? "Volunteer" : "Volunteers"}`,
+  ambassadors: (n: number) =>
+    `${n} Brand ${n === 1 ? "ambassador" : "ambassadors"}`,
+};

@@ -1,65 +1,82 @@
-import type { Organization } from "./types";
+import type { ImageMetadata } from "astro";
+import logo_globalLogic from "../images/sponsors/logo_globalLogic.png";
+import logo_yardi from "../images/sponsors/logo_yardi.png";
+import logo_bmw from "../images/sponsors/logo_bmw.svg";
+import logo_wolfpack from "../images/sponsors/logo_wolfpack.svg";
+import logo_cloud_wizard from "../images/sponsors/logo_cloud-wizard.svg";
+import logo_storyblok from "../images/sponsors/logo_storyblok.png";
+import logo_meteocontrol from "../images/sponsors/logo_meteocontrol.svg";
+import logo_flowx_ai from "../images/sponsors/logo_flowx.ai.png";
+import logo_siemens from "../images/sponsors/logo_siemens.png";
+import logo_vercel from "../images/sponsors/logo_vercel.png";
+import logo_sentry from "../images/sponsors/logo_sentry.svg";
 
-export const goldSponsors: Organization[] = [
+export interface Sponsor {
+  name: string;
+  url: string;
+  logo: ImageMetadata;
+}
+
+export const goldSponsors: Sponsor[] = [
   {
     name: "GlobalLogic",
     url: "https://www.globallogic.com/ro/",
-    imgName: "sponsors/logo_globalLogic.png",
+    logo: logo_globalLogic,
   },
   {
     name: "Yardi",
     url: "https://careers.yardiromania.ro/",
-    imgName: "sponsors/logo_yardi.png",
+    logo: logo_yardi,
   },
 ];
 
-export const silverSponsors: Organization[] = [
+export const silverSponsors: Sponsor[] = [
   {
     name: "BMW Group Techworks Romania",
     url: "https://www.bmwtechworks.ro/en",
-    imgName: "sponsors/logo_bmw.svg",
+    logo: logo_bmw,
   },
 ];
 
-export const bronzeSponsors: Organization[] = [
+export const bronzeSponsors: Sponsor[] = [
   {
     name: "Wolfpack Digital",
     url: "https://www.wolfpack-digital.com/",
-    imgName: "sponsors/logo_wolfpack.svg",
+    logo: logo_wolfpack,
   },
   {
     name: "Cloud Wizard",
     url: "https://cloudwizard.tech/",
-    imgName: "sponsors/logo_cloud-wizard.svg",
+    logo: logo_cloud_wizard,
   },
   {
     name: "Storyblok",
     url: "https://www.storyblok.com/",
-    imgName: "sponsors/logo_storyblok.png",
+    logo: logo_storyblok,
   },
   {
     name: "meteocontrol",
     url: "https://www.meteocontrol.com/",
-    imgName: "sponsors/logo_meteocontrol.svg",
+    logo: logo_meteocontrol,
   },
   {
     name: "Flowx.ai",
     url: "https://flowx.ai/",
-    imgName: "sponsors/logo_flowx.ai.png",
+    logo: logo_flowx_ai,
   },
   {
     name: "Siemens",
     url: "https://www.siemens.com/en-us/",
-    imgName: "sponsors/logo_siemens.png",
+    logo: logo_siemens,
   },
   {
     name: "Vercel",
     url: "https://vercel.com/",
-    imgName: "sponsors/logo_vercel.png",
+    logo: logo_vercel,
   },
   {
     name: "Sentry",
     url: "https://sentry.io/",
-    imgName: "sponsors/logo_sentry.svg",
+    logo: logo_sentry,
   },
 ];
