@@ -3,11 +3,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../components/Section.astro";
 import { CURRENT_YEAR, SEO_TAGLINE } from "../data/constants";
 import AuthorCard from "../components/AuthorCard.astro";
-import { getEntryBySlug } from "astro:content";
+import { getEntry } from "astro:content";
 
 const { frontmatter } = Astro.props;
 
-const author = await getEntryBySlug("organizers", frontmatter.author);
+const author = frontmatter.author
+  ? await getEntry("organizers", frontmatter.author)
+  : undefined;
 ---
 
 <BaseLayout

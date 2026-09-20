@@ -1,6 +1,6 @@
 ---
 import type { AstroComponentFactory } from "astro/dist/runtime/server";
-import { type CollectionEntry, getEntryBySlug } from "astro:content";
+import { type CollectionEntry, getEntry } from "astro:content";
 import { Image } from "astro:assets";
 import { getImage } from "../utils/getImage";
 
@@ -16,7 +16,7 @@ interface Props {
 
 const { person } = Astro.props as Props;
 
-const speakerTalk = await getEntryBySlug("speaker-talks", person.slug);
+const speakerTalk = await getEntry("speaker-talks", person.slug);
 
 const { Content: BioContent } = await person.render();
 
