@@ -1,17 +1,14 @@
 ---
-import Button from "../ui/Button.astro";
 import Eyebrow from "../ui/Eyebrow.astro";
 import Scribble from "../ui/Scribble.astro";
 import Section from "../ui/Section.astro";
 import SpeakerCard from "./SpeakerCard.astro";
 import { getCollection } from "astro:content";
-import { LINEUP_ANNOUNCED } from "../../data/flags";
+import { CFP_OPEN } from "../../data/flags";
 import { speakers as copy } from "../../data/home";
 import { getPeople } from "../../utils/people";
 
-const SAMPLE_SIZE = 8;
-
-const all = (await getPeople("speaker")).sort(
+const speakers = (await getPeople("speaker")).sort(
   (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99),
 );
 const talks = new Map(
@@ -20,63 +17,41 @@ const talks = new Map(
     talk.data.title,
   ]),
 );
-
-// Until the lineup is announced, show the speakers that already have a cutout as a sample.
-const shown = LINEUP_ANNOUNCED
-  ? all
-  : all.filter((s) => s.data.portrait).slice(0, SAMPLE_SIZE);
-const sampleUrl = LINEUP_ANNOUNCED ? undefined : copy.sampleUrl;
 ---
 
 <Section
   id="speakers"
   data-section="speakers"
-  containerClass="pt-20 pb-16 md:pt-[6.5rem]"
+  containerClass="pt-20 pb-20 md:pt-28 md:pb-28"
 >
   <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
     <div>
       <Eyebrow>{copy.eyebrow}</Eyebrow>
       <h2 class="h2-section mt-5">
-        {copy.titleLead} <Scribble>{copy.titleHighlight}</Scribble>
+        {copy.titleLead}
+        <Scribble>{copy.titleHighlight}</Scribble>
       </h2>
     </div>
     <div class="max-w-[24rem] text-[0.9375rem] text-soft md:text-right">
-      <p class="m-0">
-        {LINEUP_ANNOUNCED ? copy.announcedIntro : copy.sampleIntro(all.length)}
-      </p>
-      {sampleUrl && (
+      <p class="m-0">{copy.intro}</p>
+      {CFP_OPEN && (
         <a
-          href={sampleUrl}
+          href="/speak"
           class="mt-1 inline-block font-bold text-black-pearl underline underline-offset-4"
-          target="_blank"
-          rel="noreferrer noopener"
         >
-          {copy.seeAll} →
+          {copy.cfp} →
         </a>
       )}
     </div>
   </div>
 
   <ul class="speaker-grid m-0 mt-14 grid list-none grid-cols-1 gap-x-10 gap-y-16 p-0 min-[480px]:grid-cols-2 lg:grid-cols-4">
-    {shown.map((person) => (
+    {speakers.map((person) => (
       <li class="mx-auto w-full max-w-[16.25rem]">
         <SpeakerCard person={person} talk={talks.get(person.id)} />
       </li>
     ))}
   </ul>
-
-  {!LINEUP_ANNOUNCED && (
-    <div class="mt-14 flex flex-col gap-5 border-t-[1.5px] border-rule pt-6 sm:flex-row sm:items-center sm:justify-between">
-      <p class="m-0 text-sm text-muted-strong">
-        {copy.sampleNote(shown.length, all.length)}
-      </p>
-      {sampleUrl && (
-        <Button href={sampleUrl} variant="ghost">
-          {copy.seeFullLineup}
-        </Button>
-      )}
-    </div>
-  )}
 </Section>
 
 <style>

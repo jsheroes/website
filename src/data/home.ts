@@ -34,7 +34,6 @@ const capitalise = (text: string) =>
   text.charAt(0).toUpperCase() + text.slice(1);
 
 const previousYear = event.year - 1;
-const previousEdition = editions.find((e) => e.year === previousYear);
 
 export const hero = {
   eyebrow: `${capitalise(numberWord(event.anniversary))} years · edition ${numberWord(event.edition)}`,
@@ -62,18 +61,8 @@ export const speakers = {
   eyebrow: "Speakers",
   titleLead: "Meet the",
   titleHighlight: "heroes",
-  /** Shown while the lineup is not announced: last year's speakers stand in as a sample. */
-  sampleIntro: (count: number) =>
-    `${capitalise(numberWord(count))} speakers took the stage in ${previousYear}. ${event.year} lands in waves.`,
-  announcedIntro: `The lineup for ${event.year}, on one stage over two days.`,
-  sampleNote: (shown: number, total: number) =>
-    `Showing ${shown} of ${total} speakers from the ${previousYear} lineup, as sample data.`,
-  seeAll: "See all speakers",
-  seeFullLineup: "See the full lineup",
-  /** Where the sample lineup lives until this year's is announced. */
-  sampleUrl: previousEdition?.archiveUrl
-    ? `${previousEdition.archiveUrl}/#speakers`
-    : undefined,
+  intro: `The lineup for ${event.year}, on one stage over two days.`,
+  cfp: "Submit a proposal",
 };
 
 export const hosts = {
@@ -93,4 +82,34 @@ export const flipWall = {
   noPhoto: "Group photo coming soon",
   footerLead: `Edition ${numberWord(event.edition)} is next.`,
   footerHighlight: `Be in the ${event.year} photo.`,
+};
+
+export const agenda = {
+  eyebrow: "Agenda",
+  title: "Two days, one stage.",
+  intro:
+    "Talks run on the main stage. Between them, short sessions on the alternative stage keep the conversation going.",
+  sampleNote: `Sample: the ${previousYear} schedule, shown on ${event.year} dates.`,
+  alternativeStage: "Alternative stage",
+  bubble: "Pick a talk!",
+};
+
+export const venue = {
+  eyebrow: "Venue",
+  title: `Back at the ${event.venue.name}.`,
+  intro:
+    "Cluj-Napoca is the heart of Transylvania, and the room where every edition of JSHeroes has come together.",
+  mapsCta: "Open in Google Maps",
+};
+
+export const community = {
+  eyebrow: "Community",
+  titleLead: "By the community,",
+  titleHighlight: "for the community.",
+  intro:
+    "Learning, teaching and knowledge sharing. That is the whole mission, and it is why the stage is only half of what we do.",
+  communitiesTitle: "Partner communities",
+  partnersTitle: "Event partners",
+  more: "and more",
+  bubble: "Bine ai venit!",
 };

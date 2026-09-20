@@ -18,7 +18,13 @@ const page = await browser.newPage({
   viewport: { width: Number(width), height: 900 },
 });
 await page.goto(base + path, { waitUntil: "networkidle" });
-// Lazy images and reveal animations: scroll through once, then back to the top.
+// Lazy images and reveal animations: load everything, scroll through once, then back to the top.
+await page.evaluate(() =>
+  document
+    .querySelectorAll("img[loading=lazy]")
+    .forEach((img) => (img.loading = "eager")),
+);
+await page.waitForLoadState("networkidle");
 await page.evaluate(async () => {
   for (let y = 0; y < document.body.scrollHeight; y += 600) {
     window.scrollTo(0, y);

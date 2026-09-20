@@ -1,0 +1,94 @@
+---
+import { Image } from "astro:assets";
+import Button from "../ui/Button.astro";
+import Eyebrow from "../ui/Eyebrow.astro";
+import Frieze from "../ui/Frieze.astro";
+import Motif from "../ui/Motif.astro";
+import Section from "../ui/Section.astro";
+import { event } from "../../data/event";
+import { venue as copy } from "../../data/home";
+import exterior from "../../images/event/venue3.jpg";
+import hall from "../../images/event/venue5.jpg";
+
+const [street, ...rest] = event.venue.address.split(", ");
+---
+
+<Section
+  id="venue"
+  data-section="venue"
+  containerClass="pt-20 pb-28 md:pt-28 md:pb-32"
+>
+  <div slot="decor" class="absolute inset-x-0 bottom-0">
+    <Frieze kind="diamond" tone="brand" />
+  </div>
+
+  <div class="grid items-center gap-x-16 gap-y-16 lg:grid-cols-[minmax(0,32.5rem)_minmax(0,35rem)] lg:justify-between">
+    <div>
+      <Eyebrow>{copy.eyebrow}</Eyebrow>
+      <h2 class="h2-section mt-5 max-w-[14ch]">{copy.title}</h2>
+      <p class="lede mt-7 max-w-[30rem] text-lg">{copy.intro}</p>
+
+      <address class="mt-8 border-l-[6px] border-accent-pink pl-5 not-italic">
+        <p class="m-0 text-xl font-bold">{event.venue.name}</p>
+        <p class="m-0 mt-1 text-[1.0625rem] leading-normal text-soft">
+          {street}
+          <br />
+          {rest.join(", ")}
+        </p>
+      </address>
+
+      <div class="mt-9">
+        <Button
+          href={event.venue.mapsUrl}
+          class="[--btn-shadow:var(--color-accent-orange)]"
+        >
+          {copy.mapsCta}
+        </Button>
+      </div>
+    </div>
+
+    <div class="relative aspect-[560/430] w-full max-w-[35rem]">
+      <Image
+        src={exterior}
+        alt="Attendees in front of the Grand Hotel Italia"
+        widths={[400, 800]}
+        sizes="(min-width: 1024px) 400px, 72vw"
+        class="absolute top-0 left-0 h-[70%] w-[71.5%] object-cover"
+      />
+      <Image
+        src={hall}
+        alt="The main hall set up for a JSHeroes edition, rows of chairs facing the stage"
+        widths={[320, 640]}
+        sizes="(min-width: 1024px) 320px, 58vw"
+        class="absolute top-[48.8%] left-[42.9%] h-[51.2%] w-[57.1%] border-8 border-white object-cover"
+      />
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+        <Motif
+          name="m2_brand"
+          cell={8}
+          class="absolute top-[-3.5rem] left-[59%] hidden sm:block"
+        />
+        <Motif
+          name="dx_coral"
+          cell={7}
+          class="absolute top-[-3rem] right-[-3.5rem] hidden md:block"
+        />
+        <Motif
+          name="pd_coral"
+          cell={4}
+          class="absolute top-[3%] left-[-2.5rem] hidden md:block"
+        />
+        <Motif
+          name="dr_navy"
+          cell={7}
+          class="absolute bottom-[7%] left-[-3rem] hidden md:block"
+        />
+        <Motif
+          name="pd_mint"
+          cell={5}
+          class="absolute right-0 bottom-[-1.5rem] hidden md:block"
+        />
+      </div>
+    </div>
+  </div>
+</Section>

@@ -28,8 +28,12 @@ const bear = bears[who];
 
 <div class:list={["relative inline-block", className]}>
   {bubble && (
-    <p class="absolute -top-3 left-full z-10 ml-[-0.5rem] w-max -translate-y-full border-2 border-black-pearl bg-white px-3.5 py-2 text-sm font-bold text-black-pearl shadow-[4px_4px_0_var(--color-accent-orange)]">
+    <p class="absolute top-[4%] left-[80%] z-10 m-0 border-2 border-black-pearl bg-white px-4 py-[9px] text-[1.1875rem] leading-tight font-extrabold tracking-tight whitespace-nowrap text-black-pearl shadow-[4px_4px_0_var(--color-accent-pink)]">
       {bubble}
+      <span
+        aria-hidden="true"
+        class="absolute -bottom-2.5 left-6 block h-4 w-4 rotate-45 border-r-2 border-b-2 border-black-pearl bg-white"
+      />
     </p>
   )}
   <Image

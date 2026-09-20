@@ -1,0 +1,90 @@
+---
+import Bear from "../ui/Bear.astro";
+import Eyebrow from "../ui/Eyebrow.astro";
+import Frieze from "../ui/Frieze.astro";
+import Scribble from "../ui/Scribble.astro";
+import Section from "../ui/Section.astro";
+import { communities } from "../../data/communities";
+import { community as copy } from "../../data/home";
+import { partners } from "../../data/partners";
+
+const chip =
+  "inline-block border-2 border-black-pearl px-5 py-[0.8125rem] text-[1.0625rem] leading-tight font-semibold no-underline";
+const linkChip =
+  "hover:-translate-y-0.5 hover:shadow-[3px_3px_0_var(--color-accent-pink)] transition motion-reduce:transition-none motion-reduce:hover:translate-y-0";
+---
+
+<Section
+  id="community"
+  data-section="community"
+  containerClass="pt-20 pb-0 md:pt-[6.25rem] md:pb-0"
+>
+  <div slot="decor" class="absolute inset-x-0 bottom-0">
+    <Frieze kind="strip" cell={6} />
+  </div>
+
+  <div class="grid gap-x-16 gap-y-14 lg:grid-cols-[minmax(0,36rem)_minmax(0,31.25rem)] lg:justify-between">
+    <div class="flex flex-col">
+      <Eyebrow>{copy.eyebrow}</Eyebrow>
+      <h2 class="h2-section mt-5">
+        {copy.titleLead}
+        <Scribble>{copy.titleHighlight}</Scribble>
+      </h2>
+      <p class="lede mt-11 max-w-[31rem] text-lg">{copy.intro}</p>
+
+      <div class="relative mt-10 hidden pb-12 lg:mt-auto lg:block lg:pl-[3.75rem] lg:pt-10">
+        <Bear who="female" width={210} bubble={copy.bubble} />
+      </div>
+    </div>
+
+    <div class="pt-2 lg:pt-3">
+      <h3 class="mb-4 text-[0.8125rem] font-bold tracking-[0.16em] uppercase">
+        {copy.communitiesTitle}
+      </h3>
+      <ul class="m-0 flex list-none flex-wrap gap-3 p-0">
+        {communities.map((org) => (
+          <li>
+            <a
+              href={org.url}
+              target="_blank"
+              rel="noreferrer noopener"
+              class:list={[chip, linkChip, "bg-white text-black-pearl"]}
+            >
+              {org.name}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a
+            href="/partners"
+            class:list={[chip, linkChip, "bg-white text-black-pearl"]}
+          >
+            {copy.more}
+          </a>
+        </li>
+      </ul>
+
+      <h3 class="mt-11 mb-4 text-[0.8125rem] font-bold tracking-[0.16em] uppercase">
+        {copy.partnersTitle}
+      </h3>
+      <ul class="m-0 flex list-none flex-wrap gap-3 p-0">
+        {partners.map((org) => (
+          <li>
+            <a
+              href={org.url}
+              target="_blank"
+              rel="noreferrer noopener"
+              class:list={[chip, linkChip, "bg-black-pearl text-white"]}
+            >
+              {org.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-12 pb-14 lg:hidden">
+    <Bear who="female" width={170} bubble={copy.bubble} />
+  </div>
+</Section>
