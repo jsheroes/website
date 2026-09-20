@@ -1,18 +1,11 @@
 ---
 import { Image } from "astro:assets";
-import type { CollectionEntry } from "astro:content";
 
 import Modal from "../components/Modal.astro";
-import { getImage } from "../utils/getImage";
+import { personDialogId, type Person } from "../utils/people";
 
 export interface Props {
-  person:
-    | CollectionEntry<"organizers">
-    | CollectionEntry<"ambassadors">
-    | CollectionEntry<"speakers">
-    | CollectionEntry<"support">
-    | CollectionEntry<"guest-writers">
-    | CollectionEntry<"volunteers">;
+  person: Person;
   variant?: "large" | "small";
 }
 
@@ -29,13 +22,13 @@ const sizeClasses =
   <div class="relative">
     <button
       aria-haspopup="dialog"
-      aria-controls={person.id}
+      aria-controls={personDialogId(person)}
       class="block overflow-hidden rounded-2xl border-[4px] border-solid border-[var(--person-accent-color)] p-0 transition-all duration-fade ease-out hover:border-[16px] focus-visible:outline-dashed focus-visible:outline-[5px] focus-visible:outline-offset-8 focus-visible:outline-[var(--person-accent-color)] focus-visible:grayscale-0"
-      onclick={`window['${person.collection}-${person.id}'].showModal()`}
+      onclick={`window['${personDialogId(person)}'].showModal()`}
       title={`See the profile of ${person.data.name}`}
     >
       <Image
-        src={getImage(person.data.imgName)}
+        src={person.data.photo}
         alt={person.data.name}
         width="286"
         height="286"

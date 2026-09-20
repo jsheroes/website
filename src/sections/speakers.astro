@@ -3,10 +3,10 @@ import { CFP_OPEN, CURRENT_YEAR } from "../data/constants";
 
 import PersonCard from "../components/PersonCard.astro";
 import PlaceholderCard from "../components/PlaceholderCard.astro";
-import { getCollection } from "astro:content";
+import { getPeople } from "../utils/people";
 
-const speakers = await getCollection("speakers");
-const support = await getCollection("support");
+const speakers = await getPeople("speaker");
+const support = await getPeople("host");
 
 const listStyles =
   "flex flex-wrap justify-center md:justify-start gap-8 py-8 px-0";

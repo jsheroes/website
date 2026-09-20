@@ -1,22 +1,16 @@
 ---
-import { type CollectionEntry, getEntry, render } from "astro:content";
+import { getEntry, render } from "astro:content";
 import { Image } from "astro:assets";
-import { getImage } from "../utils/getImage";
+import { personDialogId, type Person } from "../utils/people";
 
 interface Props {
-  person:
-    | CollectionEntry<"organizers">
-    | CollectionEntry<"ambassadors">
-    | CollectionEntry<"speakers">
-    | CollectionEntry<"support">
-    | CollectionEntry<"guest-writers">
-    | CollectionEntry<"volunteers">;
+  person: Person;
 }
 
 const { person } = Astro.props as Props;
 
 const speakerTalk =
-  person.collection === "speakers"
+  person.data.role === "speaker"
     ? await getEntry("speaker-talks", person.id)
     : undefined;
 
@@ -60,7 +54,7 @@ links.sort((a, b) => sortOrder.indexOf(a.name) - sortOrder.indexOf(b.name));
 
 <dialog
   aria-labelledby={`${person.id}-title`}
-  id={`${person.collection}-${person.id}`}
+  id={personDialogId(person)}
   onclick="
   if (event.currentTarget === event.target) event.currentTarget.close()
   "
@@ -69,7 +63,7 @@ links.sort((a, b) => sortOrder.indexOf(a.name) - sortOrder.indexOf(b.name));
     <div class="w-100% flex flex-col items-center gap-4 pb-2 md:flex-row md:items-start">
       <div class="flex flex-col items-center gap-4 md:items-start">
         <Image
-          src={getImage(person.data.imgName)}
+          src={person.data.photo}
           alt={person.data.name}
           width="250"
           height="250"

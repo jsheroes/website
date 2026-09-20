@@ -8,9 +8,9 @@ export interface Props {
   title: string;
 }
 
-import { getImage } from "../utils/getImage";
+import { getPeople, personDialogId } from "../utils/people";
 
-const speakers = await getCollection("speakers");
+const speakers = await getPeople("speaker");
 const speakerTalks = await getCollection("speaker-talks");
 
 const { agendaItems, title } = Astro.props as Props;
@@ -75,13 +75,13 @@ const { agendaItems, title } = Astro.props as Props;
               {matchingSpeakers.map((speaker) => (
                 <button
                   aria-haspopup="dialog"
-                  aria-controls={speaker.id}
+                  aria-controls={personDialogId(speaker)}
                   class="group rounded-full focus-visible:outline-dashed focus-visible:outline-width-[6px] focus-visible:outline-accent-pink focus-visible:outline-offset-[8px] [&:not(:last-child)]:mr-[-24px]"
-                  onclick={`window['${speaker.collection}-${speaker.id}'].showModal()`}
+                  onclick={`window['${personDialogId(speaker)}'].showModal()`}
                   title={`See the profile of ${speaker.data.name}`}
                 >
                   <Image
-                    src={getImage(speaker.data.imgName)}
+                    src={speaker.data.photo}
                     class="grayscale h-20 w-20 rounded-full transition-[border-width, filter] duration-fade ease-out group-focus-visible:grayscale-0 hover:grayscale-0 hover:border-[0.45rem] border-[var(--person-accent-color)]"
                     alt={speaker.data.name}
                     width="95"

@@ -8,7 +8,7 @@ import { getEntry } from "astro:content";
 const { frontmatter } = Astro.props;
 
 const author = frontmatter.author
-  ? await getEntry("organizers", frontmatter.author)
+  ? await getEntry("people", frontmatter.author)
   : undefined;
 ---
 

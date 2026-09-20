@@ -1,6 +1,5 @@
 ---
 author: dusan-todorovic
-author_category: guest-writers
 title: "Unlocking Opportunities: Why Conferences Matter"
 published: Jun 6, 2024
 tags: ["general"]

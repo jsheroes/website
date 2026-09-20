@@ -5,25 +5,37 @@ import { z } from "astro/zod";
 const md = (name: string) =>
   glob({ pattern: "**/*.{md,mdx}", base: `./src/content/${name}` });
 
-const personSchema = {
-  schema: z.object({
-    name: z.string(),
-    company: z.string().optional(),
-    title: z.string(),
-    tag: z.string().optional(),
-    imgName: z.string(),
-    links: z
-      .object({
-        bluesky: z.string().optional(),
-        twitter: z.string().optional(),
-        github: z.string().optional(),
-        website: z.string().optional(),
-        linkedin: z.string().optional(),
-      })
-      .optional(),
-    order: z.number().optional(),
-  }),
-};
+export const PERSON_ROLES = [
+  "speaker",
+  "host",
+  "organizer",
+  "volunteer",
+  "ambassador",
+  "guest-writer",
+] as const;
+
+const people = defineCollection({
+  loader: md("people"),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      role: z.enum(PERSON_ROLES),
+      company: z.string().optional(),
+      title: z.string(),
+      tag: z.string().optional(),
+      photo: image(),
+      links: z
+        .object({
+          bluesky: z.string().optional(),
+          twitter: z.string().optional(),
+          github: z.string().optional(),
+          website: z.string().optional(),
+          linkedin: z.string().optional(),
+        })
+        .optional(),
+      order: z.number().optional(),
+    }),
+});
 
 const blog = defineCollection({
   loader: md("blog"),
@@ -31,11 +43,7 @@ const blog = defineCollection({
     title: z.string(),
     published: z.coerce.date(),
     summary: z.string().optional(),
-    author: z.string(),
-    author_category: z
-      .enum(["organizers", "guest-writers", "ambassadors"])
-      .optional()
-      .default("organizers"),
+    author: reference("people"),
     tags: z
       .array(reference("tags"))
       .default([{ collection: "tags" as const, id: "general" }]),
@@ -51,15 +59,7 @@ const tags = defineCollection({
 });
 
 export const collections = {
-  organizers: defineCollection({ loader: md("organizers"), ...personSchema }),
-  support: defineCollection({ loader: md("support"), ...personSchema }),
-  ambassadors: defineCollection({ loader: md("ambassadors"), ...personSchema }),
-  speakers: defineCollection({ loader: md("speakers"), ...personSchema }),
-  volunteers: defineCollection({ loader: md("volunteers"), ...personSchema }),
-  "guest-writers": defineCollection({
-    loader: md("guest-writers"),
-    ...personSchema,
-  }),
+  people,
   "speaker-talks": defineCollection({
     loader: md("speaker-talks"),
     schema: z.object({

@@ -1,6 +1,5 @@
 ---
 author: alex-pavaloi
-author_category: guest-writers
 title: My Experience at JSHeroes 2023
 published: Dec 8, 2023
 tags: ["general"]

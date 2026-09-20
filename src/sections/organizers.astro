@@ -1,10 +1,10 @@
 ---
-import { getCollection } from "astro:content";
+import { getPeople } from "../utils/people";
 import PersonCard from "../components/PersonCard.astro";
 
-const organizers = await getCollection("organizers");
-const volunteers = await getCollection("volunteers");
-const ambassadors = await getCollection("ambassadors");
+const organizers = await getPeople("organizer");
+const volunteers = await getPeople("volunteer");
+const ambassadors = await getPeople("ambassador");
 
 const listStyles =
   "flex flex-wrap justify-center md:justify-start gap-8 py-8 px-0";
