@@ -9,9 +9,16 @@ smoothed sideways so single columns of texture do not stretch into streaks.
 Only tones that are already in the body are used. Image size is unchanged.
 
   python3 scripts/fill_below_body.py src/images/people/*-cutout.png   # in place
+  python3 scripts/fill_below_body.py --max-rows 30 <file>             # shallower fill
+
+--max-rows limits how far the body is extended; the rest stays transparent and
+the last rows fade out, for cutouts where a deep fill shows in the plate's
+valleys (Daniel, Ryan: see FILL_LIMITS in cutouts.py).
 
 Needs only pillow and numpy. cutouts.py runs it on every new cutout.
 """
+from __future__ import annotations
+
 import sys
 
 import numpy as np
@@ -25,9 +32,11 @@ SAFE_MARGIN = 2
 SAMPLE_ROWS = 24
 # sideways smoothing of the fill colour, in pixels (Gaussian sigma)
 SMOOTH_SIGMA = 14
+# with --max-rows, this many of the last filled rows fade to transparent
+FADE_ROWS = 12
 
 
-def fill_below_body(path: str) -> int:
+def fill_below_body(path: str, max_rows: int | None = None) -> int:
     """Fill in place; returns how many rows were filled (0 if already full)."""
     im = Image.open(path).convert("LA")
     px = np.asarray(im).copy()
@@ -59,12 +68,25 @@ def fill_below_body(path: str) -> int:
     )
     column_gray = np.where(body_columns, smooth, 0)
 
-    px[edge + 1 :, :, 0] = np.where(body_columns, column_gray, 0).astype(np.uint8)
-    px[edge + 1 :, :, 1] = np.where(body_columns, 255, 0).astype(np.uint8)
+    filled = height - 1 - edge
+    if max_rows is not None:
+        filled = min(filled, max_rows)
+    rows = slice(edge + 1, edge + 1 + filled)
+    # opacity 1 for most of the fill, then a linear fade over the last rows
+    fade = np.ones(filled, dtype=np.float32)
+    if max_rows is not None:
+        n = min(FADE_ROWS, filled)
+        fade[filled - n :] = np.linspace(1, 0, n, endpoint=False)
+    px[rows, :, 0] = np.where(body_columns, column_gray, 0).astype(np.uint8)
+    px[rows, :, 1] = (np.where(body_columns, 255, 0) * fade[:, None]).astype(np.uint8)
     Image.fromarray(px, "LA").save(path, optimize=True)
-    return height - 1 - bottom
+    return filled
 
 
 if __name__ == "__main__":
-    for file in sys.argv[1:]:
-        print(f"{file}: filled {fill_below_body(file)}px")
+    args = sys.argv[1:]
+    limit = None
+    if args[:1] == ["--max-rows"]:
+        limit, args = int(args[1]), args[2:]
+    for file in args:
+        print(f"{file}: filled {fill_below_body(file, limit)}px")

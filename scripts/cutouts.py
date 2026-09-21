@@ -31,6 +31,9 @@ spec.loader.exec_module(cutout)
 original_mask = cutout.mask
 current = {"name": ""}
 
+# Cutouts where a full-depth fill shows in the plate valleys: fill only this many rows.
+FILL_LIMITS = {"daniel-roe": 30, "ryan-townsend": 30}
+
 
 def polygon_mask(size, head_ellipse, body_polygon):
     """Soft mask (0..1) from a head ellipse (cx, cy, rx, ry) and a body polygon, in image fractions."""
@@ -74,5 +77,5 @@ if __name__ == "__main__":
         out = f"{os.environ['OUT_DIR']}/{name}-cutout.png"
         cutout.process(file, out)
         # no transparent band under the body (see fill_below_body.py)
-        filled = fill_below_body(out)
+        filled = fill_below_body(out, FILL_LIMITS.get(name))
         print("wrote", name, f"(filled {filled}px under the body)")
