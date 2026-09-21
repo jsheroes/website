@@ -8,6 +8,7 @@ import Analytics from "@vercel/analytics/astro";
 import { event } from "../data/event";
 
 import "@fontsource-variable/sora";
+import soraLatin from "@fontsource-variable/sora/files/sora-latin-wght-normal.woff2?url";
 
 import "@/assets/base.css";
 
@@ -39,6 +40,13 @@ const ogImage = new URL(image, event.siteUrl).href;
       content="-VWpgQNMZy97BonSpKFQXFiI7wRwtWmdQeKzLjJsH08"
     />
     <link rel="icon" type="image/x-icon" href="/img/social/bear-192.png" />
+    <link
+      rel="preload"
+      href={soraLatin}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <link rel="canonical" href={canonical} />
     <title>{title}</title>
 
