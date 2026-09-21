@@ -9,7 +9,8 @@
 
   Reveals: [data-reveal="up|fade|pixel|stitch|pop"] hides an element until the
   script marks it data-revealed. Content stays visible without scripting, and a
-  CSS failsafe shows it after 3s if the script never runs.
+  CSS failsafe shows it after 3s if the script never runs (motion.ts sets
+  data-motion-ready on <html> to disarm it).
 */
 
 :root {
@@ -101,6 +102,10 @@
   @media (scripting: enabled) {
     [data-reveal]:not([data-revealed]) {
       opacity: 0;
+    }
+    /* Failsafe only while the script hasn't started: once it has, an element
+       must stay hidden until scrolled into view, not pop in after 3s. */
+    :root:not([data-motion-ready]) [data-reveal]:not([data-revealed]) {
       animation: reveal-failsafe 0.01s 3s forwards;
     }
     [data-reveal][data-revealed] {
@@ -184,6 +189,8 @@
   @media (scripting: enabled) {
     .scribble-line {
       clip-path: inset(-50% 100% -50% 0);
+    }
+    :root:not([data-motion-ready]) .scribble-line {
       animation: scribble-failsafe 0.01s 3.5s forwards;
     }
     [data-revealed] .scribble-line,

@@ -45,6 +45,8 @@ window.addEventListener(
 );
 
 function init() {
+  // Disarms the CSS failsafe; ClientRouter resets <html> attributes on swap.
+  document.documentElement.setAttribute("data-motion-ready", "");
   document
     .querySelectorAll("[data-reveal]:not([data-revealed])")
     .forEach((el) => reveal.observe(el));
@@ -53,4 +55,5 @@ function init() {
     .forEach((el) => ambient.observe(el));
 }
 
+document.documentElement.setAttribute("data-motion-ready", "");
 document.addEventListener("astro:page-load", init);
