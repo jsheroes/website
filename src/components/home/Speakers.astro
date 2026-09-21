@@ -3,19 +3,12 @@ import Eyebrow from "../ui/Eyebrow.astro";
 import Scribble from "../ui/Scribble.astro";
 import Section from "../ui/Section.astro";
 import SpeakerCard from "./SpeakerCard.astro";
-import { getCollection } from "astro:content";
 import { CFP_OPEN } from "../../data/flags";
 import { speakers as copy } from "../../data/home";
 import { getPeople } from "../../utils/people";
 
 const speakers = (await getPeople("speaker")).sort(
   (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99),
-);
-const talks = new Map(
-  (await getCollection("speaker-talks")).map((talk) => [
-    talk.id,
-    talk.data.title,
-  ]),
 );
 ---
 
@@ -48,14 +41,14 @@ const talks = new Map(
     </div>
   </div>
 
-  <ul class="speaker-grid m-0 mt-14 grid list-none grid-cols-1 gap-x-10 gap-y-16 p-0 min-[480px]:grid-cols-2 lg:grid-cols-4">
+  <ul class="speaker-grid m-0 mt-14 grid list-none grid-cols-1 gap-x-14 gap-y-16 p-0 min-[480px]:grid-cols-2 lg:grid-cols-4">
     {speakers.map((person, i) => (
       <li
         class="mx-auto w-full max-w-[16.25rem]"
         data-reveal="up"
         style={`--d:${(i % 4) * 90}ms`}
       >
-        <SpeakerCard person={person} talk={talks.get(person.id)} />
+        <SpeakerCard person={person} />
       </li>
     ))}
   </ul>

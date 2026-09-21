@@ -4,19 +4,20 @@ import PersonDialog from "../ui/PersonDialog.astro";
 import { personDialogId, type Person } from "../../utils/people";
 
 /**
- * Speaker on a diamond plate: a greyscale cutout overlaps the top of the plate,
- * or a tinted initials tile stands in until the cutout exists. The plate and
- * tint colours come from --plate and --tint on the parent list item.
+ * Speaker on a plate built from diamonds (rotated squares, so every corner is
+ * 90deg): the headshot sits behind the plate, which is a little wider than the
+ * card, with four peaks along its top edge, or a tinted initials tile stands in
+ * until the cutout exists. Both use the pale --tint from the parent list item.
+ * The plate holds the name and company or role. The headshot's bottom edge must
+ * stay behind the plate, and below the top valleys even when lifted on hover.
  */
 interface Props {
   person: Person;
-  talk?: string;
 }
 
-const { person, talk } = Astro.props;
+const { person } = Astro.props;
 
 const [first, ...rest] = person.data.name.split(" ");
-const surname = rest.join(" ");
 const initials = (first[0] + (rest.at(-1)?.[0] ?? "")).toUpperCase();
 const affiliation = person.data.company ?? person.data.title;
 ---
@@ -27,40 +28,31 @@ const affiliation = person.data.company ?? person.data.title;
   aria-haspopup="dialog"
   class="group flex w-full cursor-pointer flex-col items-center gap-5 border-0 bg-transparent p-0 text-center text-inherit"
 >
-  <span class="relative block w-full">
+  <span class="relative block w-full pb-[29%]">
     {person.data.portrait ? (
       <Image
         src={person.data.portrait}
         alt=""
         width={260}
         densities={[1, 2]}
-        class="relative block h-auto w-full [clip-path:polygon(0_0,100%_0,100%_81.3%,75%_100%,50%_87%,25%_100%,0_81.3%)] transition-transform duration-200 ease-out group-hover:-translate-y-1 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0"
+        class="relative mx-auto block h-auto w-[82%] transition-transform duration-300 ease-out group-hover:-translate-y-4 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0"
       />
     ) : (
       <span
         aria-hidden="true"
-        class="flex aspect-[520/540] w-full items-center justify-center bg-[var(--tint)] text-[4rem] font-extrabold tracking-tighter"
+        class="relative mx-auto flex aspect-[520/540] w-[82%] items-center justify-center bg-[var(--tint)] text-[4rem] font-extrabold tracking-tighter transition-transform duration-300 ease-out group-hover:-translate-y-4 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0"
       >
         {initials}
       </span>
     )}
-    <span class="plate absolute inset-x-0 bottom-0 flex aspect-[260/126] items-center justify-center bg-[var(--plate)] px-8 text-xl leading-[1.1] font-extrabold tracking-tight">
-      <span>
-        <span class="block">{first}</span>
-        {surname && <span class="block">{surname}</span>}
+    <span class="plate absolute -inset-x-[4%] bottom-0 flex aspect-[2/1] items-center justify-center bg-[var(--tint)] text-xl leading-[1.1] font-extrabold tracking-tight">
+      <span class="flex flex-col items-center gap-1.5">
+        <span class="whitespace-nowrap">{person.data.name}</span>
+        <span class="text-xs tracking-[0.16em] whitespace-nowrap uppercase">
+          {affiliation}
+        </span>
       </span>
     </span>
-  </span>
-
-  <span class="flex flex-col items-center gap-2">
-    <span class="text-xs font-extrabold tracking-[0.16em] uppercase">
-      {affiliation}
-    </span>
-    {talk && (
-      <span class="min-h-[4.125rem] text-[0.9375rem] leading-snug font-medium text-soft">
-        {talk}
-      </span>
-    )}
   </span>
 </button>
 
@@ -69,16 +61,18 @@ const affiliation = person.data.company ?? person.data.title;
 <style>
   .plate {
     clip-path: polygon(
-      0 42%,
-      25% 6%,
-      50% 34%,
-      75% 6%,
-      100% 42%,
-      100% 60%,
-      75% 100%,
-      50% 72%,
-      25% 100%,
-      0 60%
+      0 25%,
+      12.5% 0,
+      25% 25%,
+      37.5% 0,
+      50% 25%,
+      62.5% 0,
+      75% 25%,
+      87.5% 0,
+      100% 25%,
+      62.5% 100%,
+      50% 75%,
+      37.5% 100%
     );
   }
 </style>
