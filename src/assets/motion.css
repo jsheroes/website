@@ -5,7 +5,8 @@
 
   Ambient: [data-motion="spin|spin-rev|sway|bob|twinkle"] on a motif's image,
   tuned with --dur and --delay. Paused while off-screen (data-inview is set by
-  src/scripts/motion.ts).
+  src/scripts/motion.ts). Ambient motion is for the simple motifs only; the
+  bears (ui/Bear.astro) are static.
 
   Reveals: [data-reveal="up|fade|pixel|stitch|pop"] hides an element until the
   script marks it data-revealed. Content stays visible without scripting, and a
@@ -43,12 +44,6 @@
     animation-direction: alternate;
     image-rendering: auto;
   }
-  [data-motion="sway-soft"] {
-    animation-name: motif-sway-soft;
-    animation-direction: alternate;
-    image-rendering: auto;
-    transform-origin: 50% 100%;
-  }
   [data-motion="bob"] {
     animation-name: motif-bob;
     animation-direction: alternate;
@@ -68,14 +63,6 @@
     }
     to {
       rotate: 5deg;
-    }
-  }
-  @keyframes motif-sway-soft {
-    from {
-      rotate: -1.2deg;
-    }
-    to {
-      rotate: 1.2deg;
     }
   }
   @keyframes motif-bob {

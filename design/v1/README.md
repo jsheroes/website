@@ -87,9 +87,9 @@ Flip wall years used in the design: 2017, 2018, 2019, 2022, 2023, 2024, 2025, 20
 
 - `motifs/`: pixel motifs as crisp SVGs (`shape-rendering="crispEdges"`, one unit = one pixel cell). Naming: `m0`–`m14` (`_brand` for light backgrounds, `_night` for dark), friezes `bd*` (diamond), `bz*` (zigzag), stair corner `st_*`, numeral `ten_*`. Simple families rebuilt from the motif sheet: `dr_*` (diamond ring), `dx_*` (solid cross), `pr_*` (pixel ring), `pd_*` (pixel plus), and `strip_brand` / `strip_night` (a row of them, used as ground and dividers).
 - Render motifs at an integer number of CSS pixels per cell so edges stay sharp (a 23-cell motif at 8px per cell is 184px). Friezes: the source files are 357 cells wide, sized for 1440. For production, make one tileable repeat unit and tile it with `background-repeat: repeat-x` so it fits any width.
-- Motion, second step: slight rotation or drift on the motifs, and hover states. CSS transforms only, wrapped in `prefers-reduced-motion`.
+- Motion, second step: slight rotation or drift on the motifs (not the bears, which stay static), and hover states. CSS transforms only, wrapped in `prefers-reduced-motion`.
 - `speakers/`: eight greyscale transparent-PNG cutouts (520px wide), made with a human-segmentation model (`cutout.py`, needs `u2net_human_seg.onnx` from the rembg releases). The script crops around the head and normalises contrast. It needs a manual pass for a few images (arms and hair edges) and must be run for the other eight 2026 speakers. Keep originals; ship optimised WebP or AVIF plus PNG fallback.
-- `bears/`: `bear-male.png` (baked ground shadow removed) and `bear-female.png`. Both are small rasters, fine up to about 1.5×. The repo already has a vector of the male bear (`public/img/props/traditional-bear.svg`); it contains a shadow group (`<g opacity="0.34">`) to remove. A vector of the female bear is needed from whoever drew them.
+- `bears/`: `bear-male.svg` and `bear-female.svg`, vectors from the illustrator (`urs-popular-hello`, `dna-urs-hello`). The male bear's ground-shadow circle is removed and its viewBox cropped to the artwork; the female bear is used as delivered. The bears stay static (no ambient animation); only the simple motifs animate. Both were sized against the old rasters, so `ui/Bear.astro` scales the given width slightly to keep their height.
 
 ## Behaviour to implement
 
@@ -140,4 +140,4 @@ Definition of done for the prototype: `npm run build` and `npm run check` pass, 
 - Launch in pre-lineup state (waitlist) and switch later? (Designed for it.)
 - Real dates for 2027 (the design assumes 27–28 May 2027) and the real list of past editions.
 - Sora, or a different face? Sora was kept for continuity.
-- Sourcing the missing photos and the female bear vector.
+- Sourcing the missing photos.
