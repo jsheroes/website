@@ -17,6 +17,8 @@ import importlib.util
 import os
 import sys
 
+from fill_below_body import fill_below_body
+
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 
@@ -69,5 +71,8 @@ if __name__ == "__main__":
     for file in sys.argv[1:]:
         name = os.path.splitext(file)[0]
         current["name"] = name
-        cutout.process(file, f"{os.environ['OUT_DIR']}/{name}-cutout.png")
-        print("wrote", name)
+        out = f"{os.environ['OUT_DIR']}/{name}-cutout.png"
+        cutout.process(file, out)
+        # no transparent band under the body (see fill_below_body.py)
+        filled = fill_below_body(out)
+        print("wrote", name, f"(filled {filled}px under the body)")
