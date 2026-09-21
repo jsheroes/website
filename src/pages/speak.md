@@ -13,7 +13,7 @@ We have received <strong>217 proposals</strong> until the end of December 2025. 
 Before sending a proposal, it might be worth reading [this article](/blog/how-to-write-a-good-talk-proposal) about what makes a CFP proposal good.
 
 <br/>
-<a href="https://sessionize.com/jsheroes-2026" target="_blank" rel="noreferrer noopener" class="cta-button">Send Proposal</a> -->
+<a href="https://sessionize.com/jsheroes-2026" target="_blank" rel="noreferrer noopener" class="btn">Send Proposal</a> -->
 
 ## ✍ What we are looking for
 
@@ -59,4 +59,4 @@ We are committed to fulfilling our mission as an open source event. We are all c
 Good luck!
 
 <!-- <br/>
-<a href="https://sessionize.com/jsheroes-2026" target="_blank" rel="noreferrer noopener" class="cta-button">Send Proposal</a> -->
+<a href="https://sessionize.com/jsheroes-2026" target="_blank" rel="noreferrer noopener" class="btn">Send Proposal</a> -->

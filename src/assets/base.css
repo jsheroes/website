@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "./motion.css";
-@import "./legacy.css";
 @plugin "@tailwindcss/typography";
 
 @theme static {

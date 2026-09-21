@@ -1,5 +1,4 @@
 ---
-import { Icon } from "astro-icon/components";
 import Button from "./ui/Button.astro";
 import { editions } from "../data/editions";
 import { cta, footerGroups, primaryNav } from "../data/navigation";
@@ -44,7 +43,14 @@ const path = Astro.url.pathname;
         class="flex h-11 w-11 cursor-pointer items-center justify-center border-2 border-black-pearl bg-transparent p-0 text-black-pearl"
         aria-label="Menu"
       >
-        <Icon name="mdi:menu" class="h-6 w-6" aria-hidden="true" />
+        <svg
+          viewBox="0 0 24 24"
+          class="h-6 w-6"
+          aria-hidden="true"
+          fill="currentColor"
+        >
+          <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z" />
+        </svg>
       </button>
     </nav>
   </div>
@@ -67,7 +73,14 @@ const path = Astro.url.pathname;
       class="flex h-11 w-11 cursor-pointer items-center justify-center border-2 border-white bg-transparent p-0 text-white"
       aria-label="Close menu"
     >
-      <Icon name="mdi:close" class="h-6 w-6" aria-hidden="true" />
+      <svg
+        viewBox="0 0 24 24"
+        class="h-6 w-6"
+        aria-hidden="true"
+        fill="currentColor"
+      >
+        <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+      </svg>
     </button>
   </div>
 

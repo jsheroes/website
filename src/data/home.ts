@@ -33,14 +33,12 @@ export const numberWord = (n: number) => words[n] ?? String(n);
 const capitalise = (text: string) =>
   text.charAt(0).toUpperCase() + text.slice(1);
 
-const previousYear = event.year - 1;
-
 export const hero = {
-  eyebrow: `${capitalise(numberWord(event.anniversary))} years · edition ${numberWord(event.edition)}`,
+  eyebrow: `Anniversary edition`,
   titleLead: "Ten years of all things",
   titleHighlight: "JavaScript.",
   intro:
-    "JSHeroes turns ten. Join us in the heart of Transylvania for two days of talks on one stage, and the community that has been learning, teaching and sharing together all along.",
+    "JSHeroes turns ten. Join us in the heart of Transylvania for two days of talks, quality networking and good vibes.",
   secondaryCta: "Meet the speakers",
   facts: [
     { label: "When", value: event.dates },

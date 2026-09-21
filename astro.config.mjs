@@ -1,7 +1,6 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import tailwindcss from "@tailwindcss/vite";
-import icon from "astro-icon";
 import sitemap from "@astrojs/sitemap";
 import remarkEvent from "./src/plugins/remark-event.ts";
 
@@ -26,7 +25,7 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkEvent],
   },
-  integrations: [mdx(), icon(), sitemap(), devRoutes],
+  integrations: [mdx(), sitemap(), devRoutes],
   vite: {
     plugins: [tailwindcss()],
   },

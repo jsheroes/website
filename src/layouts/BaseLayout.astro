@@ -1,7 +1,6 @@
 ---
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
-import Preload from "../components/Preload.astro";
 import ScrollToTop from "../components/ScrollToTop.astro";
 import { ClientRouter } from "astro:transitions";
 import Analytics from "@vercel/analytics/astro";
@@ -42,8 +41,6 @@ const ogImage = new URL(image, event.siteUrl).href;
     <link rel="icon" type="image/x-icon" href="/img/social/bear-192.png" />
     <link rel="canonical" href={canonical} />
     <title>{title}</title>
-
-    <Preload />
 
     <link rel="manifest" href="/manifest.json" />
     <meta name="description" content={description} />

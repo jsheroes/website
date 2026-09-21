@@ -6,7 +6,6 @@ import Section from "../ui/Section.astro";
 import { getCollection } from "astro:content";
 import { day1, day2 } from "../../data/agenda";
 import { event } from "../../data/event";
-import { AGENDA_ANNOUNCED } from "../../data/flags";
 import { agenda as copy, numberWord } from "../../data/home";
 import { getPeople, personDialogId } from "../../utils/people";
 import type { AgendaItem } from "../../data/types";
@@ -102,12 +101,6 @@ const times = (slot: string) => {
           <ol class="m-0 list-none border-b-[1.5px] border-rule p-0">
             {day.items.map((item: AgendaItem) => {
               const { start, end } = times(item.timeSlot);
-              const time = (
-                <time class="w-16 shrink-0 text-[0.9375rem] tabular-nums">
-                  {start}
-                  <span class="sr-only"> to {end}</span>
-                </time>
-              );
 
               if (item.type === "placeholder" && item.stage === "alternative") {
                 return (
