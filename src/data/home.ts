@@ -113,6 +113,9 @@ export const sponsors = {
   eyebrow: "Sponsors",
   title: "The companies that support our mission.",
   cta: "Become a sponsor",
+  transparency:
+    "JSHeroes is non-profit and open by default: the budget, income and expenses of every edition are public.",
+  transparencyCta: "Read the transparency report",
 };
 
 export const team = {
