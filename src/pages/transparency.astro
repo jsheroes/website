@@ -1,23 +1,35 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Section from "../components/Section.astro";
-import { yearsForBreakdownSelect } from "../data/transparency";
+import BarChart from "../components/charts/BarChart.astro";
+import Donut from "../components/charts/Donut.astro";
+import Eyebrow from "../components/ui/Eyebrow.astro";
+import Section from "../components/ui/Section.astro";
+import PageLayout from "../layouts/PageLayout.astro";
+import {
+  EXPENSES_LABELS,
+  INCOME_LABELS,
+  expensesBreakdown,
+  incomeBreakdown,
+  palette,
+  yearly,
+  yearsForBreakdownSelect,
+} from "../data/transparency";
+
+const labelsOf = <T extends object>(names: Record<string, string>, values: T) =>
+  Object.entries(values).map(([key, value], i) => ({
+    label: names[key],
+    value: value as number,
+    color: palette[i % palette.length],
+  }));
 ---
 
-<BaseLayout title="Transparency Report">
-  <img
-    class="block h-[400px] w-full object-cover"
-    src={"/img/banners/default.svg"}
-    alt=""
-  />
-  <main id="main">
-    <Section variant="light" content="text">
-      <h1>Transparency Report</h1>
-      <p>
-        Since we started doing JSHeroes in 2017, our goal was to open source our
-        way of doing events, from the processes behind speaker selection, to the
-        budges and costs associated with each event.
-      </p>
+<PageLayout
+  title="Transparency Report"
+  eyebrow="Open books"
+  highlight="Report"
+  intro="Since we started doing JSHeroes in 2017, our goal was to open source our way of doing events, from the processes behind speaker selection, to the budges and costs associated with each event."
+>
+  <Section containerClass="pt-6 pb-16 md:pt-10 md:pb-24">
+    <div class="prose max-w-[65ch]">
       <p>
         We strongly believe that open model is the best environment for
         learning, so we’re publishing all the data about this conference, in
@@ -37,55 +49,100 @@ import { yearsForBreakdownSelect } from "../data/transparency";
         to 700. Also as an anomaly, the 2022 edition was a single day event, so
         costs are roughly half of what they'd normally been for a 2 days event.
       </p>
-    </Section>
-    <Section variant="dark" content="text">
-      <div class="chart-column">
-        <h2>Budget & Expenses over time</h2>
-        <p>
-          First, have a look at how our budget and expenses evolved over the
-          years.
-        </p>
-        <canvas id="yoy"></canvas>
-        <p class="footnote">
-          * We are not counting the cancelled 2020 edition.
-          <br />
-          ** The 2022 edition was a single day event, hence the smaller budget
-          and costs.
-        </p>
-      </div>
-    </Section>
-    <Section variant="light" content="list">
-      <div class="chart-column">
-        <h2>Income & Expenses Breakdown</h2>
-        <p>
-          In this section you can see a breakdown of our income and expenses for
-          each event. <br /> Use the selector below to navigate between our
-          previous events.
-        </p>
-        <div class="styled-select">
-          <select id="current-year">
-            {yearsForBreakdownSelect.map((year, index) => (
-              <option value={year} selected={index === 0}>
-                {year}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div class="chart-row">
-          <div class="chart-column">
-            <h3>Income</h3>
-            <canvas id="income-breakdown"></canvas>
-          </div>
-          <div class="chart-column">
-            <h3>Expenses</h3>
-            <canvas id="expenses-breakdown"></canvas>
-          </div>
-        </div>
-      </div>
-    </Section>
+    </div>
+  </Section>
 
-    <Section variant="light" content="text">
-      <h2>Giving back</h2>
+  <Section tone="ink" containerClass="py-16 md:py-24">
+    <Eyebrow data-reveal="up" class="text-accent-orange">
+      Over time
+    </Eyebrow>
+    <h2 class="h2-section mt-5 text-white" data-reveal="up" style="--d:80ms">
+      Budget & expenses
+    </h2>
+    <p class="lede mt-6 mb-10 max-w-[38rem]">
+      First, have a look at how our budget and expenses evolved over the years.
+    </p>
+    <BarChart
+      caption="Budget, income and expenses for each edition, in euros"
+      labels={yearly.map((y) => y.year)}
+      series={[
+        { label: "Budget", color: "var(--color-accent-orange)" },
+        { label: "Income", color: "var(--color-accent-green)" },
+        { label: "Expenses", color: "var(--color-accent-pink)" },
+      ]}
+      values={[
+        yearly.map((y) => y.budget),
+        yearly.map((y) => y.income),
+        yearly.map((y) => y.expenses),
+      ]}
+    />
+    <p class="mt-8 mb-0 text-sm leading-relaxed text-white/70">
+      * We are not counting the cancelled 2020 edition.
+      <br />
+      ** The 2022 edition was a single day event, hence the smaller budget and
+      costs.
+    </p>
+  </Section>
+
+  <Section data-breakdown containerClass="py-16 md:py-24">
+    <Eyebrow data-reveal="up">Per edition</Eyebrow>
+    <h2 class="h2-section mt-5" data-reveal="up" style="--d:80ms">
+      Income & expenses breakdown
+    </h2>
+    <p class="lede mt-6 max-w-[38rem]">
+      In this section you can see a breakdown of our income and expenses for
+      each event. Use the selector below to navigate between our previous
+      events.
+    </p>
+
+    <div class="year-picker mt-8 flex items-center gap-4">
+      <label
+        for="breakdown-year"
+        class="text-[0.8125rem] font-bold tracking-[0.16em] uppercase"
+      >
+        Edition
+      </label>
+      <select
+        id="breakdown-year"
+        class="cursor-pointer border-2 border-black-pearl bg-white px-4 py-3 text-lg font-bold"
+      >
+        {yearsForBreakdownSelect.map((year, i) => (
+          <option value={year} selected={i === 0}>
+            {year}
+          </option>
+        ))}
+      </select>
+    </div>
+
+    {yearsForBreakdownSelect.map((year, i) => (
+      <div
+        class="year-panel mt-12"
+        data-year={year}
+        data-inactive={i !== 0 ? "" : undefined}
+      >
+        <h3 class="year-heading m-0 mb-6 text-3xl font-extrabold tracking-tight">
+          JSHeroes {year}
+        </h3>
+        <div class="grid gap-12 lg:grid-cols-2">
+          <Donut
+            title="Income"
+            slices={labelsOf(INCOME_LABELS, incomeBreakdown[year])}
+          />
+          <Donut
+            title="Expenses"
+            slices={labelsOf(EXPENSES_LABELS, expensesBreakdown[year])}
+          />
+        </div>
+      </div>
+    ))}
+  </Section>
+
+  <Section tone="band" containerClass="py-16 md:py-24">
+    <Eyebrow data-reveal="up">Reserve</Eyebrow>
+    <h2 class="h2-section mt-5 mb-8" data-reveal="up" style="--d:80ms">
+      Giving back
+    </h2>
+    <div class="prose max-w-[65ch]">
       <p>
         Each event so far had good budget planning, and we managed our expenses
         so that we are left with a money supply that helps us kick-start the
@@ -134,115 +191,45 @@ import { yearsForBreakdownSelect } from "../data/transparency";
         please reach out <a href="mailto:welcome@jsheroes.io">over email</a>,
         we'd be happy to help.
       </p>
-    </Section>
-
-    <script>
-      import { Chart } from "chart.js/auto";
-      import {
-        getExpensesChartData,
-        getIncomeChartData,
-        updateExpenses,
-        updateIncome,
-        createDoughnutChart,
-        createBarChart,
-        type Year,
-      } from "../data/transparency";
-
-      let expensesChart: Chart, incomeChart: Chart;
-
-      document.addEventListener("astro:page-load", () => {
-        const currentYearSelector = document.getElementById("current-year");
-        const expensesNode = document.getElementById("expenses-breakdown");
-        const incomeNode = document.getElementById("income-breakdown");
-        const yearlyNode = document.getElementById("yoy");
-
-        if (yearlyNode) {
-          createBarChart(yearlyNode as HTMLCanvasElement);
-
-          expensesChart = createDoughnutChart(
-            expensesNode as HTMLCanvasElement,
-            getExpensesChartData(),
-          );
-
-          incomeChart = createDoughnutChart(
-            incomeNode as HTMLCanvasElement,
-            getIncomeChartData(),
-          );
-        }
-
-        if (currentYearSelector) {
-          currentYearSelector.addEventListener("change", (ev) => {
-            const year = (ev.target as HTMLSelectElement).value as Year;
-            updateExpenses(expensesChart, year);
-            updateIncome(incomeChart, year);
-          });
-        }
-      });
-    </script>
-  </main>
-</BaseLayout>
+    </div>
+  </Section>
+</PageLayout>
 
 <style>
-  .chart-row {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-
-    @media (width < 1330px) {
-      flex-direction: column;
+  /* Without scripting there is no selector: every edition is listed under its own heading. */
+  .year-panel[data-inactive] {
+    display: none;
+  }
+  .year-heading {
+    display: none;
+  }
+  @media (scripting: none) {
+    .year-picker {
+      display: none;
+    }
+    .year-panel[data-inactive] {
+      display: block;
+    }
+    .year-heading {
+      display: block;
     }
   }
-
-  .chart-column {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    flex: 1;
-    align-items: center;
-  }
-
-  .chart-column p {
-    text-align: center;
-  }
-
-  select {
-    appearance: none;
-    -webkit-appearance: none;
-    padding: 0.5rem 2rem 0.5rem 1rem;
-    border: none;
-    border-radius: 1rem;
-    font-size: inherit;
-    font-family: inherit;
-    background: var(--color-accent-orange);
-    transition: all 125ms ease-out;
-  }
-
-  select:hover {
-    background: var(--color-accent-pink);
-  }
-
-  select:focus-visible {
-    outline: dashed var(--color-accent-pink) 2px;
-    outline-offset: 5px;
-  }
-
-  .styled-select {
-    position: relative;
-  }
-
-  .styled-select::after {
-    position: absolute;
-    content: " ";
-    right: 0.75rem;
-    pointer-events: none;
-    border-left: 0.3rem solid transparent;
-    border-right: 0.3rem solid transparent;
-    border-top: 0.3rem solid black;
-    top: 45%;
-  }
-
-  .chart-column p.footnote {
-    font-size: var(--text-sm);
-    text-align: left;
-  }
 </style>
+
+<script>
+  function init() {
+    const root = document.querySelector<HTMLElement>("[data-breakdown]");
+    const select = root?.querySelector<HTMLSelectElement>("#breakdown-year");
+    if (!root || !select || select.dataset.ready) return;
+    select.dataset.ready = "true";
+    select.addEventListener("change", () => {
+      root.querySelectorAll<HTMLElement>(".year-panel").forEach((panel) => {
+        panel.toggleAttribute(
+          "data-inactive",
+          panel.dataset.year !== select.value,
+        );
+      });
+    });
+  }
+  document.addEventListener("astro:page-load", init);
+</script>

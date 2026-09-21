@@ -31,7 +31,7 @@ Also, during the coffee and lunch breaks, we will have an alternative stage, wit
 
 Below you can find a map of the entire venue, with all the points of interest marked accordingly.
 
-<iframe class="w-full h-[400px]" style="border: 1px solid rgba(0, 0, 0, 0.1);" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FF5OpOtQBVoqRCJkPDr4E4O%2FJSHeroes-Venue-Map%3Fnode-id%3D0%253A1%26t%3DM3VYo0JXQ7y6LDTW-1" allowfullscreen></iframe>
+<iframe title="Interactive map of the conference venue" class="w-full h-[400px]" style="border: 1px solid rgba(0, 0, 0, 0.1);" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FF5OpOtQBVoqRCJkPDr4E4O%2FJSHeroes-Venue-Map%3Fnode-id%3D0%253A1%26t%3DM3VYo0JXQ7y6LDTW-1" allowfullscreen></iframe>
 
 ## 📒✨ Agenda and Theme
 
