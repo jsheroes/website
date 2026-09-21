@@ -11,9 +11,10 @@ interface Props {
   image?: string;
   highlight?: string | false;
   plain?: boolean;
+  bears?: boolean;
 }
 
-const { title, eyebrow, intro, description, image, highlight, plain } =
+const { title, eyebrow, intro, description, image, highlight, plain, bears } =
   Astro.props;
 ---
 
@@ -25,6 +26,7 @@ const { title, eyebrow, intro, description, image, highlight, plain } =
       intro={intro}
       highlight={highlight}
       plain={plain}
+      bears={bears}
     >
       <slot name="header" />
     </PageHeader>

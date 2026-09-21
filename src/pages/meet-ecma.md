@@ -2,6 +2,7 @@
 layout: "../layouts/MarkdownLayout.astro"
 title: "Meet Ecma"
 eyebrow: "Ecma"
+heroBears: true
 ---
 
 We needed a mascot to show the world how cute and fuzzy we are. Just kidding, we are serious professional people, working hard to organise an awesome JavaScript conference each year. Ecma the bear is our way to offer a bit of help to “The Millions of Friends” Association and their [LiBearty project](https://millionsoffriends.org/en/libearty/).

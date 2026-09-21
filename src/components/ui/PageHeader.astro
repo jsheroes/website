@@ -1,5 +1,6 @@
 ---
 import type { HTMLAttributes } from "astro/types";
+import Bear from "./Bear.astro";
 import Eyebrow from "./Eyebrow.astro";
 import Frieze from "./Frieze.astro";
 import Motif from "./Motif.astro";
@@ -18,6 +19,8 @@ interface Props extends HTMLAttributes<"header"> {
   highlight?: string | false;
   /** Hide the motif, for pages that place their own art. */
   plain?: boolean;
+  /** Show both bears in the header, between the title and the motif. */
+  bears?: boolean;
 }
 
 const {
@@ -26,6 +29,7 @@ const {
   intro,
   highlight,
   plain = false,
+  bears = false,
   class: className,
   ...rest
 } = Astro.props;
@@ -61,7 +65,14 @@ const tail = at >= 0 && target ? title.slice(at + target.length) : "";
   class:list={["relative overflow-hidden bg-paper", className]}
   {...rest}
 >
-  <div class="relative mx-auto grid w-full max-w-[1160px] items-center gap-10 px-5 pt-8 pb-24 md:px-8 md:pt-12 md:pb-28 lg:grid-cols-[minmax(0,1fr)_auto] xl:px-0">
+  <div
+    class:list={[
+      "relative mx-auto grid w-full max-w-[1160px] items-center gap-10 px-5 pt-8 pb-24 md:px-8 md:pt-12 md:pb-28 xl:px-0",
+      bears
+        ? "lg:grid-cols-[minmax(0,1fr)_auto_auto]"
+        : "lg:grid-cols-[minmax(0,1fr)_auto]",
+    ]}
+  >
     <div>
       {eyebrow && <Eyebrow data-reveal="up">{eyebrow}</Eyebrow>}
       <h1 class="h2-section mt-5 max-w-[22ch]" data-load>
@@ -75,7 +86,19 @@ const tail = at >= 0 && target ? title.slice(at + target.length) : "";
         </p>
       )}
       <slot />
+      {bears && (
+        <div class="mt-10 flex items-end lg:hidden">
+          <Bear who="male" width={120} />
+          <Bear who="female" width={100} class="-ml-4" />
+        </div>
+      )}
     </div>
+    {bears && (
+      <div class="hidden items-end self-end lg:-mb-16 lg:flex">
+        <Bear who="male" width={190} />
+        <Bear who="female" width={162} class="-ml-6" />
+      </div>
+    )}
     {!plain && (
       <div class="pointer-events-none hidden lg:block" aria-hidden="true">
         <Motif
