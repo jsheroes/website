@@ -9,28 +9,30 @@ import { event } from "../../data/event";
 import { venue as copy } from "../../data/home";
 import exterior from "../../images/event/venue3.jpg";
 import hall from "../../images/event/venue5.jpg";
+import audience from "../../images/event/venue1.jpg";
 
 const [street, ...rest] = event.venue.address.split(", ");
 ---
 
 <Section
+  tone="ink"
   id="venue"
   data-section="venue"
   containerClass="pt-20 pb-28 md:pt-28 md:pb-32"
 >
   <div slot="decor" class="absolute inset-x-0 bottom-0">
-    <Frieze kind="diamond" tone="brand" />
+    <Frieze kind="diamond" tone="night" />
   </div>
 
   <div class="grid items-center gap-x-16 gap-y-16 lg:grid-cols-[minmax(0,32.5rem)_minmax(0,35rem)] lg:justify-between">
     <div data-reveal="up">
-      <Eyebrow>{copy.eyebrow}</Eyebrow>
+      <Eyebrow class="text-accent-orange">{copy.eyebrow}</Eyebrow>
       <h2 class="h2-section mt-5 max-w-[14ch]">{copy.title}</h2>
       <p class="lede mt-7 max-w-[30rem] text-lg">{copy.intro}</p>
 
       <address class="mt-8 border-l-[6px] border-accent-pink pl-5 not-italic">
         <p class="m-0 text-xl font-bold">{event.venue.name}</p>
-        <p class="m-0 mt-1 text-[1.0625rem] leading-normal text-soft">
+        <p class="m-0 mt-1 text-[1.0625rem] leading-normal text-white/80">
           {street}
           <br />
           {rest.join(", ")}
@@ -38,10 +40,7 @@ const [street, ...rest] = event.venue.address.split(", ");
       </address>
 
       <div class="mt-9">
-        <Button
-          href={event.venue.mapsUrl}
-          class="[--btn-shadow:var(--color-accent-orange)]"
-        >
+        <Button href={event.venue.mapsUrl} variant="accent">
           {copy.mapsCta}
         </Button>
       </div>
@@ -51,11 +50,11 @@ const [street, ...rest] = event.venue.address.split(", ");
       <Image
         src={exterior}
         alt="Attendees in front of the Grand Hotel Italia"
-        widths={[400, 800]}
+        widths={[320, 640]}
         data-reveal="up"
         style="--d:100ms"
-        sizes="(min-width: 1024px) 400px, 72vw"
-        class="absolute top-0 left-0 h-[70%] w-[71.5%] object-cover"
+        sizes="(min-width: 1024px) 310px, 60vw"
+        class="absolute top-0 left-0 h-[46%] w-[55%] object-cover"
       />
       <Image
         src={hall}
@@ -63,8 +62,17 @@ const [street, ...rest] = event.venue.address.split(", ");
         widths={[320, 640]}
         data-reveal="up"
         style="--d:300ms"
-        sizes="(min-width: 1024px) 320px, 58vw"
-        class="absolute top-[48.8%] left-[42.9%] h-[51.2%] w-[57.1%] border-8 border-white object-cover"
+        sizes="(min-width: 1024px) 310px, 60vw"
+        class="absolute top-[27%] left-[45%] h-[46%] w-[55%] border-8 border-black-pearl object-cover"
+      />
+      <Image
+        src={audience}
+        alt="The audience applauding in the blue-lit hall"
+        widths={[320, 640]}
+        data-reveal="up"
+        style="--d:500ms"
+        sizes="(min-width: 1024px) 280px, 55vw"
+        class="absolute top-[54%] left-[12%] h-[46%] w-[50%] border-8 border-black-pearl object-cover"
       />
       <div aria-hidden="true" class="pointer-events-none absolute inset-0">
         <Motif
@@ -96,9 +104,9 @@ const [street, ...rest] = event.venue.address.split(", ");
           revealDelay="700ms"
         />
         <Motif
-          name="dr_navy"
+          name="dr_night"
           cell={7}
-          class="absolute bottom-[7%] left-[-3rem] hidden md:block"
+          class="absolute right-[7%] bottom-[2%] hidden md:block"
           motion="spin-rev"
           dur="60s"
           reveal="pixel"
