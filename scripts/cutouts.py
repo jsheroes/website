@@ -18,6 +18,7 @@ import os
 import sys
 
 from fill_below_body import fill_below_body
+from zoom_to_body import zoom_to_body
 
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
@@ -31,8 +32,8 @@ spec.loader.exec_module(cutout)
 original_mask = cutout.mask
 current = {"name": ""}
 
-# Cutouts where a full-depth fill shows in the plate valleys: fill only this many rows.
-FILL_LIMITS = {"daniel-roe": 30, "ryan-townsend": 30}
+# Cutouts where filling under the body shows in the plate valleys: zoom in instead.
+ZOOMED = {"daniel-roe", "ryan-townsend"}
 
 
 def polygon_mask(size, head_ellipse, body_polygon):
@@ -76,6 +77,9 @@ if __name__ == "__main__":
         current["name"] = name
         out = f"{os.environ['OUT_DIR']}/{name}-cutout.png"
         cutout.process(file, out)
-        # no transparent band under the body (see fill_below_body.py)
-        filled = fill_below_body(out, FILL_LIMITS.get(name))
-        print("wrote", name, f"(filled {filled}px under the body)")
+        # no transparent band under the body: zoom in where a fill would show
+        if name in ZOOMED:
+            note = f"zoomed x{zoom_to_body(out):.2f}"
+        else:
+            note = f"filled {fill_below_body(out)}px under the body"
+        print("wrote", name, f"({note})")
