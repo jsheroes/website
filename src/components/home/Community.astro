@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import Bear from "../ui/Bear.astro";
 import Eyebrow from "../ui/Eyebrow.astro";
 import Frieze from "../ui/Frieze.astro";
@@ -8,10 +10,18 @@ import { communities } from "../../data/communities";
 import { community as copy } from "../../data/home";
 import { partners } from "../../data/partners";
 
-const chip =
-  "inline-block border-2 border-black-pearl px-5 py-[0.8125rem] text-[1.0625rem] leading-tight font-semibold no-underline";
-const linkChip =
-  "hover:-translate-y-0.5 hover:shadow-[3px_3px_0_var(--color-accent-pink)] transition motion-reduce:transition-none motion-reduce:hover:translate-y-0";
+const logos = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/images/{communities,partners}/*.{png,jpg,svg}",
+  { eager: true },
+);
+const logoFor = (org: { name: string; imgName: string }) => {
+  const logo = logos[`/src/images/${org.imgName}`];
+  if (!logo) throw new Error(`Missing logo for ${org.name}: ${org.imgName}`);
+  return logo.default;
+};
+
+const box =
+  "flex h-16 items-center justify-center border border-rule bg-white p-2.5 text-black-pearl no-underline transition duration-150 hover:-translate-y-0.5 hover:shadow-[3px_3px_0_var(--color-accent-pink)] motion-reduce:transition-none motion-reduce:hover:translate-y-0";
 ---
 
 <Section
@@ -43,42 +53,56 @@ const linkChip =
       <h3 class="mb-4 text-[0.8125rem] font-bold tracking-[0.16em] uppercase">
         {copy.communitiesTitle}
       </h3>
-      <ul class="m-0 flex list-none flex-wrap gap-3 p-0">
+      <ul class="m-0 grid list-none grid-cols-2 gap-3 p-0 sm:grid-cols-3">
         {communities.map((org, i) => (
           <li data-reveal="up" style={`--d:${Math.min(i, 10) * 45}ms`}>
             <a
               href={org.url}
               target="_blank"
               rel="noreferrer noopener"
-              class:list={[chip, linkChip, "bg-white text-black-pearl"]}
+              class={box}
+              style={
+                org.overrideBgColor
+                  ? `background-color:${org.overrideBgColor}`
+                  : undefined
+              }
             >
-              {org.name}
+              <Image
+                src={logoFor(org)}
+                alt={org.name}
+                width={200}
+                densities={[1, 2]}
+                class="h-full w-full object-contain"
+              />
             </a>
           </li>
         ))}
-        <li>
-          <a
-            href="/partners"
-            class:list={[chip, linkChip, "bg-white text-black-pearl"]}
-          >
-            {copy.more}
-          </a>
-        </li>
       </ul>
 
       <h3 class="mt-11 mb-4 text-[0.8125rem] font-bold tracking-[0.16em] uppercase">
         {copy.partnersTitle}
       </h3>
-      <ul class="m-0 flex list-none flex-wrap gap-3 p-0">
+      <ul class="m-0 grid list-none grid-cols-2 gap-3 p-0 sm:grid-cols-3">
         {partners.map((org, i) => (
           <li data-reveal="up" style={`--d:${i * 60}ms`}>
             <a
               href={org.url}
               target="_blank"
               rel="noreferrer noopener"
-              class:list={[chip, linkChip, "bg-black-pearl text-white"]}
+              class={box}
+              style={
+                org.overrideBgColor
+                  ? `background-color:${org.overrideBgColor}`
+                  : undefined
+              }
             >
-              {org.name}
+              <Image
+                src={logoFor(org)}
+                alt={org.name}
+                width={200}
+                densities={[1, 2]}
+                class="h-full w-full object-contain"
+              />
             </a>
           </li>
         ))}

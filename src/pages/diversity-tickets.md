@@ -1,6 +1,7 @@
 ---
 layout: "../layouts/MarkdownLayout.astro"
 title: "Diversity Tickets @JSHeroes 2023"
+eyebrow: "Tickets"
 ---
 
 **JSHeroes** conference is dedicated to providing a harassment-free conference experience for everyone. Even if we attract more and more diverse audiences every year, more actions should be done to speed up the process.

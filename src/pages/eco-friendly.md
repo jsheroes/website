@@ -1,6 +1,7 @@
 ---
 layout: "../layouts/MarkdownLayout.astro"
 title: "A sustainable event"
+eyebrow: "Good to know"
 ---
 
 We care about ecology, and we would like you to know that this year’s conference in Cluj-Napoca has been organized with sustainability in mind. We understand the importance of reducing our carbon footprint and promoting eco-friendly initiatives, which is why we are continuously doing so.

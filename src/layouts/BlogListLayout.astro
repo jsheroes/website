@@ -1,96 +1,86 @@
 ---
 import type { Page } from "astro";
-import { type CollectionEntry, getCollection } from "astro:content";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Section from "../components/Section.astro";
-import FormattedDate from "../components/FormattedDate.astro";
+import { type CollectionEntry, getCollection, getEntries } from "astro:content";
+import Chip from "@/components/ui/Chip.astro";
+import Section from "@/components/ui/Section.astro";
+import FormattedDate from "@/components/FormattedDate.astro";
+import PageLayout from "./PageLayout.astro";
 
 interface Props {
   title: string;
-  description?: string;
+  intro?: string;
+  /** Tag id when showing one tag, so its chip is marked as current. */
+  activeTag?: string;
   page: Page<CollectionEntry<"blog">>;
 }
 
+const { page, title, intro, activeTag } = Astro.props;
+
 const posts = await getCollection("blog");
-const tags = await getCollection("tags").then((tags) => {
-  const tagsWithBlogs = tags.filter((tag) =>
-    posts.some((post) =>
-      post.data.tags.some((postTag) => postTag.id === tag.id),
-    ),
-  );
-  return tagsWithBlogs;
-});
+const allTags = await getCollection("tags");
+const tags = allTags.filter((tag) =>
+  posts.some((post) => post.data.tags.some((t) => t.id === tag.id)),
+);
+const count = (id: string) =>
+  posts.filter((post) => post.data.tags.some((t) => t.id === id)).length;
 
-function tagCount(slug: string) {
-  return posts.filter((post) => post.data.tags.some((tag) => tag.id === slug))
-    .length;
-}
-
-const { page, title } = Astro.props;
-const isBlogPage = Astro.url.pathname === "/blog";
-const hasDefaultSlot = Astro.slots.has("default");
+const tagNames = new Map(allTags.map((tag) => [tag.id, tag.data.name]));
 ---
 
-<BaseLayout title={title}>
-  <img
-    class="block h-[400px] w-full object-cover"
-    src={"/img/banners/default.svg"}
-    alt=""
-  />
-
-  <main id="main">
-    <Section variant="light" content="text">
-      <div>
-        <h1 class="text-lg">{title}</h1>
-      </div>
-
-      <ul class="flex list-none flex-wrap gap-2 p-0 pb-4 *:mb-2">
+<PageLayout title={title} eyebrow="Blog" intro={intro} highlight={false}>
+  <Section containerClass="pt-6 pb-20 md:pt-10 md:pb-28">
+    <nav aria-label="Filter by tag">
+      <ul class="m-0 flex list-none flex-wrap gap-3 p-0">
         <li>
-          <a
-            class="rounded-2xl bg-accent-orange px-4 py-2 no-underline transition-all duration-fade ease-out hover:bg-accent-pink focus-visible:bg-accent-pink"
-            href={`/blog`}
-          >
+          <Chip href="/blog" active={!activeTag}>
             All posts ({posts.length})
-          </a>
+          </Chip>
         </li>
-        {tags.map(({ id: slug, data: { name } }) => (
+        {tags.map((tag) => (
           <li>
-            <a
-              class="rounded-2xl bg-accent-orange px-4 py-2 no-underline transition-all duration-fade ease-out hover:bg-accent-pink focus-visible:bg-accent-pink"
-              href={`/tags/${slug}`}
-            >
-              {name} ({tagCount(slug)})
-            </a>
+            <Chip href={`/tags/${tag.id}`} active={activeTag === tag.id}>
+              {tag.data.name} ({count(tag.id)})
+            </Chip>
           </li>
         ))}
       </ul>
+    </nav>
 
-      <ul class="m-0 list-none p-0">
-        {page.data.map(
-          ({
-            id: slug,
-            data: { published, title, summary },
-          }: CollectionEntry<"blog">) => (
-            <li class="border-t-[1px] border-neutral-separator py-5">
-              <article class="flex flex-col">
-                <dl>
-                  <dt class="sr-only">Published on</dt>
-                  <dd>
-                    <FormattedDate date={published} />
-                  </dd>
-                </dl>
-                <div>
-                  <h3>
-                    <a href={`/blog/${slug}`}>{title}</a>
-                  </h3>
-
-                  <div class="mt-2">{summary}</div>
-                </div>
-              </article>
-            </li>
-          ),
-        )}
-      </ul>
-    </Section>
-  </main>
-</BaseLayout>
+    <ol class="m-0 mt-10 list-none border-b-[1.5px] border-rule p-0">
+      {page.data.map((post, i) => (
+        <li
+          class="grid gap-x-10 gap-y-2 border-t-[1.5px] border-rule py-8 md:grid-cols-[9rem_minmax(0,1fr)]"
+          data-reveal="up"
+          style={`--d:${Math.min(i, 5) * 60}ms`}
+        >
+          <FormattedDate
+            date={post.data.published}
+            class="pt-1.5 text-[0.8125rem] font-bold tracking-[0.12em] text-muted-strong uppercase"
+          />
+          <article>
+            <h2 class="m-0 text-2xl leading-tight font-extrabold tracking-tight md:text-[1.75rem]">
+              <a
+                href={`/blog/${post.id}`}
+                class="no-underline hover:underline hover:decoration-accent-pink hover:decoration-[3px] hover:underline-offset-4"
+              >
+                {post.data.title}
+              </a>
+            </h2>
+            {post.data.summary && (
+              <p class="m-0 mt-3 max-w-[60ch] text-soft">{post.data.summary}</p>
+            )}
+            <ul class="m-0 mt-4 flex list-none flex-wrap gap-2 p-0">
+              {post.data.tags.map((tag) => (
+                <li>
+                  <Chip href={`/tags/${tag.id}`} size="sm">
+                    {tagNames.get(tag.id) ?? tag.id}
+                  </Chip>
+                </li>
+              ))}
+            </ul>
+          </article>
+        </li>
+      ))}
+    </ol>
+  </Section>
+</PageLayout>

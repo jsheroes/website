@@ -61,13 +61,12 @@ export const speakers = {
   eyebrow: "Speakers",
   titleLead: "Meet the",
   titleHighlight: "heroes",
-  intro: `The lineup for ${event.year}, on one stage over two days.`,
   cfp: "Submit a proposal",
 };
 
 export const hosts = {
-  eyebrow: "On stage with them",
-  title: "Hosts, and the one who draws the day.",
+  eyebrow: "The support crew",
+  title: "Our wonderful hosts and sketch artist.",
 };
 
 export const flipWall = {
@@ -91,7 +90,7 @@ export const agenda = {
     "Talks run on the main stage. Between them, short sessions on the alternative stage keep the conversation going.",
   sampleNote: `Sample: the ${previousYear} schedule, shown on ${event.year} dates.`,
   alternativeStage: "Alternative stage",
-  bubble: "Pick a talk!",
+  bubble: "Can't wait!",
 };
 
 export const venue = {
@@ -99,7 +98,7 @@ export const venue = {
   title: `Back at the ${event.venue.name}.`,
   intro:
     "Cluj-Napoca is the heart of Transylvania, and the room where every edition of JSHeroes has come together.",
-  mapsCta: "Open in Google Maps",
+  mapsCta: "View on Google Maps",
 };
 
 export const community = {
@@ -110,19 +109,17 @@ export const community = {
     "Learning, teaching and knowledge sharing. That is the whole mission, and it is why the stage is only half of what we do.",
   communitiesTitle: "Partner communities",
   partnersTitle: "Event partners",
-  more: "and more",
   bubble: "Bine ai venit!",
 };
 
 export const sponsors = {
   eyebrow: "Sponsors",
-  title: "Backed by teams who love JavaScript",
+  title: "The companies that support our mission.",
   cta: "Become a sponsor",
 };
 
 export const team = {
   eyebrow: "Team",
   title: "The people behind it.",
-  intro: `A volunteer-run crew that has made the same room feel like home for ${numberWord(event.anniversary)} years.`,
-  ambassadors: "Brand ambassadors",
+  ambassadors: "Ambassadors",
 };

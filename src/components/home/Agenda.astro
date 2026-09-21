@@ -80,12 +80,6 @@ const times = (slot: string) => {
         ))}
       </div>
 
-      {!AGENDA_ANNOUNCED && (
-        <p class="mt-7 mb-0 text-[0.8125rem] leading-normal text-muted-strong">
-          {copy.sampleNote}
-        </p>
-      )}
-
       <div class="mt-10 hidden lg:mt-auto lg:block lg:pt-10">
         <Bear who="male" width={260} bubble={copy.bubble} />
       </div>
@@ -117,8 +111,8 @@ const times = (slot: string) => {
 
               if (item.type === "placeholder" && item.stage === "alternative") {
                 return (
-                  <li class="flex flex-wrap items-center gap-x-7 gap-y-2 border-l-[6px] border-accent-orange bg-tint-yellow py-3 pr-4 pl-4 md:min-h-[3.625rem]">
-                    <span class="w-14 shrink-0 text-[0.9375rem] font-bold tabular-nums">
+                  <li class="flex flex-wrap items-center gap-x-7 gap-y-2 border-t-[1.5px] border-rule py-3 md:min-h-[3.625rem]">
+                    <span class="w-16 shrink-0 text-[0.9375rem] font-bold tabular-nums">
                       {start}
                       <span class="sr-only"> to {end}</span>
                     </span>

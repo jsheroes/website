@@ -28,17 +28,14 @@ const speakers = (await getPeople("speaker")).sort(
         <Scribble>{copy.titleHighlight}</Scribble>
       </h2>
     </div>
-    <div class="max-w-[24rem] text-[0.9375rem] text-soft md:text-right">
-      <p class="m-0">{copy.intro}</p>
-      {CFP_OPEN && (
-        <a
-          href="/speak"
-          class="mt-1 inline-block font-bold text-black-pearl underline underline-offset-4"
-        >
-          {copy.cfp} →
-        </a>
-      )}
-    </div>
+    {CFP_OPEN && (
+      <a
+        href="/speak"
+        class="text-[0.9375rem] font-bold text-black-pearl underline underline-offset-4"
+      >
+        {copy.cfp} →
+      </a>
+    )}
   </div>
 
   <ul class="speaker-grid m-0 mt-14 grid list-none grid-cols-1 gap-x-14 gap-y-16 p-0 min-[480px]:grid-cols-2 lg:grid-cols-4">

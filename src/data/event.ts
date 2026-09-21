@@ -29,8 +29,7 @@ const venue = {
   address: "Strada Trifoiului 2, Cluj-Napoca 400478, Romania",
   city: "Cluj-Napoca",
   country: "Romania",
-  mapsUrl:
-    "https://www.google.com/maps?saddr&daddr=Grand%20Hotel%20Italia,%20Strada%20Trifoiului%202,%20Cluj-Napoca%20400478,%20Romania",
+  mapsUrl: "https://maps.app.goo.gl/9ZoxaEJuiKwEmnTVA",
 };
 
 export const event = {

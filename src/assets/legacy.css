@@ -78,19 +78,6 @@
   :is(main:not(.v2), .legacy) a:hover {
     text-decoration-color: var(--color-accent-pink);
   }
-
-  .prose li {
-    margin: 0 !important;
-  }
-
-  .prose a {
-    color: inherit;
-    font-weight: inherit;
-  }
-
-  .prose img {
-    margin-block: 0;
-  }
 }
 
 /*

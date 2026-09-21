@@ -1,7 +1,7 @@
 ---
 layout: "../layouts/MarkdownLayout.astro"
-banner: "/img/banners/speak2.jpg"
 title: "Speak at JSHeroes"
+eyebrow: "Speakers"
 ---
 
 The <strong>call for papers</strong> for the 2026 event is <strong>closed</strong>.

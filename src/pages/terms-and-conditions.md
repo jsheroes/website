@@ -1,6 +1,7 @@
 ---
 layout: "../layouts/MarkdownLayout.astro"
 title: "Terms and Conditions"
+eyebrow: "Legal"
 ---
 
 ### 1. Who is JsHeroes

@@ -27,10 +27,10 @@ await page.evaluate(() =>
 await page.waitForLoadState("networkidle");
 await page.evaluate(async () => {
   for (let y = 0; y < document.body.scrollHeight; y += 600) {
-    window.scrollTo(0, y);
+    window.scrollTo({ top: y, behavior: "instant" });
     await new Promise((r) => setTimeout(r, 60));
   }
-  window.scrollTo(0, 0);
+  window.scrollTo({ top: 0, behavior: "instant" });
 });
 await page.waitForTimeout(400);
 

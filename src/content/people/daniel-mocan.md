@@ -2,7 +2,7 @@
 name: "Daniel Mocan"
 role: "organizer"
 title: "Organizer"
-photo: "../../images/people/daniel-mocan.png"
+photo: "../../images/people/daniel-mocan.jpg"
 links: { linkedin: "https://www.linkedin.com/in/daniel-mocan/" }
 ---
 

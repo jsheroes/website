@@ -130,6 +130,18 @@
     text-transform: uppercase;
   }
 
+  /* Text beside a pixel marker: trim the line box to the cap height so the
+     letters centre on the marker instead of sitting a pixel high. */
+  .marker-label {
+    text-box: trim-both cap alphabetic;
+  }
+  @supports not (text-box: trim-both cap alphabetic) {
+    .marker-label {
+      position: relative;
+      top: 0.08em;
+    }
+  }
+
   /* Buttons: hard offset shadow, pressed on hover. */
   .btn {
     --btn-shadow: var(--color-dodger-blue);
@@ -200,6 +212,82 @@
   [data-tone="ink"] .btn-ghost:hover {
     background: var(--color-white);
     color: var(--color-black-pearl);
+  }
+
+  /* Article typography on top of @tailwindcss/typography. */
+  .prose {
+    --tw-prose-body: var(--color-soft);
+    --tw-prose-headings: var(--color-black-pearl);
+    --tw-prose-lead: var(--color-soft);
+    --tw-prose-links: var(--color-black-pearl);
+    --tw-prose-bold: var(--color-black-pearl);
+    --tw-prose-counters: var(--color-accent-pink);
+    --tw-prose-bullets: var(--color-accent-pink);
+    --tw-prose-hr: var(--color-rule);
+    --tw-prose-quotes: var(--color-black-pearl);
+    --tw-prose-quote-borders: var(--color-accent-pink);
+    --tw-prose-captions: var(--color-muted-strong);
+    --tw-prose-code: var(--color-black-pearl);
+    --tw-prose-th-borders: var(--color-black-pearl);
+    --tw-prose-td-borders: var(--color-rule);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+  .prose :where(h1, h2, h3, h4) {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+  .prose :where(h2) {
+    font-size: 1.875rem;
+    line-height: 1.15;
+    margin-top: 2.75em;
+  }
+  .prose :where(h3) {
+    font-size: 1.375rem;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+  .prose :where(a):not(:where(.not-prose *)) {
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent-pink);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+  .prose :where(a):not(:where(.not-prose *)):hover {
+    text-decoration-color: var(--color-black-pearl);
+  }
+  .prose :where(li)::marker {
+    color: var(--color-accent-pink);
+  }
+  .prose :where(blockquote) {
+    border-inline-start-width: 6px;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .prose :where(blockquote p:first-of-type)::before,
+  .prose :where(blockquote p:last-of-type)::after {
+    content: none;
+  }
+  .prose :where(img) {
+    margin-block: 0;
+  }
+  .prose :where(hr) {
+    border-top-width: 1.5px;
+  }
+  .prose :where(code):not(:where(pre *)) {
+    background: var(--color-band);
+    padding: 0.15em 0.35em;
+    font-weight: 600;
+  }
+  .prose :where(code):not(:where(pre *))::before,
+  .prose :where(code):not(:where(pre *))::after {
+    content: none;
+  }
+  .prose :where(pre) {
+    border-radius: 0;
   }
 
   @media (prefers-reduced-motion: reduce) {

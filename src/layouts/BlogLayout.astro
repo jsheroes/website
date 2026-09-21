@@ -1,85 +1,99 @@
 ---
 import { type CollectionEntry, getEntry } from "astro:content";
-import BaseLayout from "@/layouts/BaseLayout.astro";
 import AuthorCard from "@/components/AuthorCard.astro";
-import Section from "@/components/Section.astro";
+import Chip from "@/components/ui/Chip.astro";
+import Section from "@/components/ui/Section.astro";
 import FormattedDate from "@/components/FormattedDate.astro";
+import PageLayout from "./PageLayout.astro";
 
 interface Props {
   blog: CollectionEntry<"blog">;
+  /** The next older post. */
   next?: CollectionEntry<"blog">;
+  /** The next newer post. */
   prev?: CollectionEntry<"blog">;
 }
 
 const { blog, next, prev } = Astro.props as Props;
 
 const author = await getEntry(blog.data.author);
+const tags = await Promise.all(blog.data.tags.map((tag) => getEntry(tag)));
+const label = "text-xs font-bold tracking-[0.16em] uppercase text-muted-strong";
 ---
 
-<BaseLayout title={blog.data.title} description={blog.data.summary}>
-  <img
-    class="block h-[400px] w-full object-cover"
-    src={"/img/banners/default.svg"}
-    alt=""
-  />
+<PageLayout
+  title={blog.data.title}
+  eyebrow={tags[0]?.data.name ?? "Blog"}
+  intro={blog.data.summary}
+  description={blog.data.summary}
+>
+  <Section containerClass="pt-6 pb-20 md:pt-10 md:pb-28">
+    <div class="grid gap-12 lg:grid-cols-[minmax(0,65ch)_minmax(0,1fr)] lg:gap-20">
+      <article class="prose max-w-none">
+        <slot />
+      </article>
 
-  <main id="main">
-    <Section variant="light" content="list">
-      <article>
-        <div class="flex flex-col justify-center gap-16 md:flex-row">
-          <div class="prose">
-            <h1>{blog.data.title}</h1>
-            <slot />
-          </div>
+      <aside class="flex flex-col gap-7 self-start border-t-[1.5px] border-rule pt-8 lg:sticky lg:top-8 lg:border-t-0 lg:border-l-[1.5px] lg:pt-0 lg:pl-10">
+        {author && <AuthorCard author={author} />}
 
-          <aside class="flex shrink-0 flex-col gap-4">
-            {author && <AuthorCard author={author} />}
+        <div>
+          <p class:list={["m-0 mb-1", label]}>Published</p>
+          <FormattedDate date={blog.data.published} class="font-semibold" />
+        </div>
 
-            <div class="divider"></div>
+        <div>
+          <p class:list={["m-0 mb-2", label]}>Tags</p>
+          <ul class="m-0 flex list-none flex-wrap gap-2 p-0">
+            {tags.map(
+              (tag) =>
+                tag && (
+                  <li>
+                    <Chip href={`/tags/${tag.id}`} size="sm">
+                      {tag.data.name}
+                    </Chip>
+                  </li>
+                ),
+            )}
+          </ul>
+        </div>
 
-            <div>
-              <div class="text-sm">Published</div>
-              <FormattedDate date={blog.data.published} />
-            </div>
-
-            <div class="divider"></div>
-
-            <div>
-              <div class="text-sm">Tags</div>
-              <div class="flex flex-wrap gap-2">
-                {blog.data.tags.map((tag) => (
-                  <a class="capitalize" href={`/tags/${tag.id}`}>
-                    {tag.id}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            <div class="divider"></div>
-
-            {(next || prev) && (
-              <div class="flex flex-row justify-between gap-2 md:flex-col md:justify-center md:gap-4">
-                {prev && (
-                  <div class="grow">
-                    <div class="text-sm">Previous</div>
-                    <a href={`/blog/${prev.id}`}>{prev.data.title}</a>
-                  </div>
-                )}
-                {next && (
-                  <div class="grow self-end text-right md:self-start md:text-left">
-                    <div class="text-sm">Next</div>
-                    <a href={`/blog/${next.id}`}>{next.data.title}</a>
-                  </div>
-                )}
+        {(prev || next) && (
+          <nav
+            aria-label="More posts"
+            class="flex flex-col gap-5 border-t-[1.5px] border-rule pt-7"
+          >
+            {prev && (
+              <div>
+                <p class:list={["m-0 mb-1", label]}>Newer</p>
+                <a
+                  href={`/blog/${prev.id}`}
+                  class="font-bold no-underline hover:underline hover:decoration-accent-pink hover:decoration-2 hover:underline-offset-4"
+                >
+                  {prev.data.title}
+                </a>
               </div>
             )}
+            {next && (
+              <div>
+                <p class:list={["m-0 mb-1", label]}>Older</p>
+                <a
+                  href={`/blog/${next.id}`}
+                  class="font-bold no-underline hover:underline hover:decoration-accent-pink hover:decoration-2 hover:underline-offset-4"
+                >
+                  {next.data.title}
+                </a>
+              </div>
+            )}
+          </nav>
+        )}
 
-            <div class="mt-4">
-              <a href="/blog"> &larr; Back to the blog</a>
-            </div>
-          </aside>
-        </div>
-      </article>
-    </Section>
-  </main>
-</BaseLayout>
+        <a
+          href="/blog"
+          class="text-sm font-bold no-underline hover:underline hover:decoration-accent-pink hover:decoration-2 hover:underline-offset-4"
+        >
+          ← All posts
+        </a>
+      </aside>
+    </div>
+  </Section>
+</PageLayout>
