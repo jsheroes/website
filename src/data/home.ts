@@ -35,15 +35,16 @@ const capitalise = (text: string) =>
 
 export const hero = {
   eyebrow: `Anniversary edition`,
-  titleLead: "Ten years of all things",
+  /** Wide screens break the title after each entry. */
+  titleLines: ["Ten years of", "all things"],
   titleHighlight: "JavaScript.",
   intro:
     "JSHeroes turns ten. Join us in the heart of Transylvania for two days of talks, quality networking and good vibes.",
   secondaryCta: "Meet the speakers",
   facts: [
     { label: "When", value: event.dates },
-    { label: "Where", value: `${event.venue.city}, Transylvania` },
-    { label: "Format", value: "Single track, two days" },
+    { label: "Where", value: `${event.venue.city}, Romania` },
+    { label: "Format", value: "Two days, one stage" },
     {
       label: "Tickets",
       value: TICKETS_ON_SALE
@@ -69,15 +70,15 @@ export const hosts = {
 
 export const flipWall = {
   eyebrow: `${capitalise(numberWord(event.anniversary))} years, ${numberWord(editions.length)} editions so far`,
-  titleLead: "One motif for",
-  titleHighlight: "every",
-  titleTail: "edition.",
+  titleLead: "JSHeroes",
+  titleHighlight: "across",
+  titleTail: "the years.",
   intro:
-    "Every year the whole room lines up in front of the stage for the same photo. Flip a tile to see who was there.",
+    "Every year our community got together to experience the magic of JSHeroes. Flip a tile to go back in time.",
   revealAll: "Reveal all",
   hideAll: "Hide all",
   watchHighlights: "Watch the highlights",
-  footerLead: `Edition ${numberWord(event.edition)} is next.`,
+  footerLead: `Edition #${event.edition} is next.`,
   footerHighlight: `Be in the ${event.year} photo.`,
 };
 
@@ -93,8 +94,7 @@ export const agenda = {
 export const venue = {
   eyebrow: "Venue",
   title: `Back at the ${event.venue.name}.`,
-  intro:
-    "Cluj-Napoca is the heart of Transylvania, and the room where every edition of JSHeroes has come together.",
+  intro: `We're hosting JSHeroes ${event.year} at ${event.venue.name}, our home since the first edition.`,
   mapsCta: "View on Google Maps",
 };
 
@@ -103,7 +103,7 @@ export const community = {
   titleLead: "By the community,",
   titleHighlight: "for the community.",
   intro:
-    "Learning, teaching and knowledge sharing. That is the whole mission, and it is why the stage is only half of what we do.",
+    "This event is organized by a group of volunteers from the local community in Cluj-Napoca, Romania.",
   communitiesTitle: "Partner communities",
   partnersTitle: "Event partners",
   bubble: "Bine ai venit!",
@@ -114,12 +114,12 @@ export const sponsors = {
   title: "The companies that support our mission.",
   cta: "Become a sponsor",
   transparency:
-    "JSHeroes is non-profit and open by default: the budget, income and expenses of every edition are public.",
+    "JSHeroes is non-profit fully transparent organization: the budget, income and expenses of every edition are public and available in our transparency report.",
   transparencyCta: "Read the transparency report",
 };
 
 export const team = {
   eyebrow: "Team",
-  title: "The people behind it.",
+  title: "The people behind JSHeroes.",
   ambassadors: "Ambassadors",
 };

@@ -17,9 +17,6 @@ export interface Edition {
   archiveUrl?: string;
 }
 
-/** Swap each edition's playlistUrl for its own playlist once the links are collected. */
-const YOUTUBE_CHANNEL = "https://www.youtube.com/jsheroes";
-
 export const editions: Edition[] = [
   {
     n: 1,
@@ -28,7 +25,8 @@ export const editions: Edition[] = [
     motif: "m4",
     motifCell: 6,
     tile: "white",
-    playlistUrl: YOUTUBE_CHANNEL,
+    playlistUrl:
+      "https://www.youtube.com/watch?v=-HL1xS1y1UI&list=PLB9NqTp0uKrQMLMSeh8RIobwjo5eABnmp&index=1",
   },
   {
     n: 2,
@@ -37,7 +35,8 @@ export const editions: Edition[] = [
     motif: "m14",
     motifCell: 7,
     tile: "blue",
-    playlistUrl: YOUTUBE_CHANNEL,
+    playlistUrl:
+      "https://www.youtube.com/watch?v=Zx2moTy-yAg&list=PLB9NqTp0uKrRn_C80xQK8QEeO-vaBmN_9&index=1",
   },
   {
     n: 3,
@@ -46,7 +45,8 @@ export const editions: Edition[] = [
     motif: "m0",
     motifCell: 6,
     tile: "yellow",
-    playlistUrl: YOUTUBE_CHANNEL,
+    playlistUrl:
+      "https://www.youtube.com/watch?v=jdr9eQGq97g&list=PLB9NqTp0uKrR8WFXitMvLMGd-kGGZ4RkX&index=1",
   },
   {
     n: 4,
@@ -55,7 +55,8 @@ export const editions: Edition[] = [
     motif: "m5",
     motifCell: 7,
     tile: "white",
-    playlistUrl: YOUTUBE_CHANNEL,
+    playlistUrl:
+      "https://www.youtube.com/watch?v=munltx48_xI&list=PLB9NqTp0uKrRQtEbxJbRmSaobC1_mnwee&index=1",
     archiveUrl: "https://2022.jsheroes.io",
   },
   {
@@ -65,7 +66,8 @@ export const editions: Edition[] = [
     motif: "m9",
     motifCell: 6,
     tile: "mint",
-    playlistUrl: YOUTUBE_CHANNEL,
+    playlistUrl:
+      "https://www.youtube.com/watch?v=N6qr6L37sl8&list=PLB9NqTp0uKrR8g9ImDK2HPcpuC7oW8wYe&index=1",
     archiveUrl: "https://2023.jsheroes.io",
   },
   {
@@ -75,7 +77,8 @@ export const editions: Edition[] = [
     motif: "m10",
     motifCell: 6,
     tile: "white",
-    playlistUrl: YOUTUBE_CHANNEL,
+    playlistUrl:
+      "https://www.youtube.com/watch?v=nzeQPCdXjv4&list=PLB9NqTp0uKrTlXRJq38MxzWp1T5hmp8Hw&index=1",
     archiveUrl: "https://2024.jsheroes.io",
   },
   {
@@ -85,7 +88,8 @@ export const editions: Edition[] = [
     motif: "m13",
     motifCell: 8,
     tile: "coral",
-    playlistUrl: YOUTUBE_CHANNEL,
+    playlistUrl:
+      "https://www.youtube.com/watch?v=iPeXgjX_mg0&list=PLB9NqTp0uKrSiuRQQBdaSo2wfDkAI7Eg8&index=1",
     archiveUrl: "https://2025.jsheroes.io",
   },
   {
@@ -95,7 +99,8 @@ export const editions: Edition[] = [
     motif: "m7",
     motifCell: 7,
     tile: "mint",
-    playlistUrl: YOUTUBE_CHANNEL,
+    playlistUrl:
+      "https://www.youtube.com/watch?v=EmNVwmB7k90&list=PLB9NqTp0uKrR4o4yUvMJPSAf2Qfo8ZgmH&index=1",
     archiveUrl: "https://2026.jsheroes.io",
   },
 ];

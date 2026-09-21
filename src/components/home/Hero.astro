@@ -328,7 +328,15 @@ const mid: ArtItem[] = [
     <div class="max-w-[40rem]">
       <Eyebrow data-reveal="up">{hero.eyebrow}</Eyebrow>
       <h1 class="h1-hero mt-7" data-load>
-        {hero.titleLead} <Scribble stroke={6}>{hero.titleHighlight}</Scribble>
+        {hero.titleLines.map((line) => (
+          <>
+            {line}
+            <br class="hidden lg:inline" />{" "}
+          </>
+        ))}
+        <Scribble stroke={6} spaced={false}>
+          {hero.titleHighlight}
+        </Scribble>
       </h1>
       <p class="lede mt-12 max-w-[34rem]" data-reveal="up" style="--d:150ms">
         {hero.intro}
