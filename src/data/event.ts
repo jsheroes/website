@@ -1,13 +1,9 @@
+import { describeDates } from "../utils/event-dates";
+
 /** Single source of truth for the current edition. Nothing else hardcodes a year, date or venue. */
 
 const start = "2027-05-27";
 const end = "2027-05-28";
-
-const utc = (iso: string) => new Date(`${iso}T00:00:00Z`);
-const fmt = (iso: string, options: Intl.DateTimeFormatOptions) =>
-  new Intl.DateTimeFormat("en-GB", { timeZone: "UTC", ...options }).format(
-    utc(iso),
-  );
 
 const ordinal = (n: number) => {
   const rule = new Intl.PluralRules("en", { type: "ordinal" }).select(n);
@@ -20,9 +16,7 @@ const ordinal = (n: number) => {
   return `${n}${suffix}`;
 };
 
-const year = utc(start).getUTCFullYear();
-const month = fmt(start, { month: "long" });
-const dayOf = (iso: string) => utc(iso).getUTCDate();
+const { year, dates, datesShort, days } = describeDates(start, end);
 
 const venue = {
   name: "Grand Hotel Italia",
@@ -42,15 +36,11 @@ export const event = {
   start,
   end,
   /** "27–28 May 2027" */
-  dates: `${dayOf(start)}–${dayOf(end)} ${month} ${year}`,
+  dates,
   /** "27–28 May" */
-  datesShort: `${dayOf(start)}–${dayOf(end)} ${month}`,
-  days: [start, end].map((date, i) => ({
-    n: i + 1,
-    date,
-    /** "Thursday, May 27" */
-    label: fmt(date, { weekday: "long" }) + `, ${month} ${dayOf(date)}`,
-  })),
+  datesShort,
+  /** One entry per day, e.g. label "Thursday, May 27". */
+  days,
   venue,
   tagline: "Community Organized JS Conference",
   ticketsUrl: `https://ti.to/jsheroes/${year}`,
