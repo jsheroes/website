@@ -52,7 +52,6 @@ export const footerGroups: { title: string; links: NavLink[] }[] = [
       { label: "Code of conduct", href: "/coc" },
       { label: "Accessibility", href: "/accessibility" },
       { label: "Sustainability", href: "/eco-friendly" },
-      { label: "Diversity tickets", href: "/diversity-tickets" },
       { label: "Transparency", href: "/transparency" },
       { label: "Meet Ecma", href: "/meet-ecma" },
     ],
