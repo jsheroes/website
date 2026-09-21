@@ -1,0 +1,48 @@
+---
+import Bear from "./Bear.astro";
+import Button from "./Button.astro";
+import Frieze from "./Frieze.astro";
+import Section from "./Section.astro";
+
+/** Closing call to action on a neutral band, so it never blends into the ink footer. Optionally with a bear. */
+interface Props {
+  title: string;
+  cta: { label: string; href: string };
+  bear?: "male" | "female";
+  bubble?: string;
+}
+
+const { title, cta, bear, bubble } = Astro.props;
+---
+
+<Section tone="band" containerClass="pt-16 pb-24 md:pt-24 md:pb-32">
+  <div slot="decor" class="absolute inset-x-0 bottom-0">
+    <Frieze kind="diamond" tone="brand" />
+  </div>
+  <div class="grid items-end gap-10 lg:grid-cols-[minmax(0,1fr)_auto]">
+    <div class="flex flex-col items-start gap-6">
+      <h2 class="h2-section max-w-[18ch]" data-reveal="up">
+        {title}
+      </h2>
+      <div class="lede max-w-[38rem]" data-reveal="up" style="--d:100ms">
+        <slot />
+      </div>
+      <div data-reveal="up" style="--d:200ms">
+        <Button
+          href={cta.href}
+          class="[--btn-shadow:var(--color-accent-orange)]"
+        >
+          {cta.label}
+        </Button>
+      </div>
+    </div>
+    {bear && (
+      <Bear
+        who={bear}
+        width={bear === "male" ? 220 : 190}
+        bubble={bubble}
+        class="hidden lg:block"
+      />
+    )}
+  </div>
+</Section>

@@ -1,194 +1,186 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import Section from "@/components/Section.astro";
-import ImagesBanner from "@/components/ImagesBanner.astro";
-import { meetups } from "@/data/meetups";
+import Chip from "../components/ui/Chip.astro";
+import CtaBand from "../components/ui/CtaBand.astro";
+import Eyebrow from "../components/ui/Eyebrow.astro";
+import Feature from "../components/ui/Feature.astro";
+import Motif from "../components/ui/Motif.astro";
+import PhotoStrip from "../components/ui/PhotoStrip.astro";
+import Section from "../components/ui/Section.astro";
+import PageLayout from "../layouts/PageLayout.astro";
+import { meetups } from "../data/meetups";
 
 const today = new Date().toISOString().split("T")[0];
 const sortedMeetups = [...meetups].sort((a, b) => a.date.localeCompare(b.date));
 const nextMeetup = sortedMeetups.find((m) => m.date >= today);
 const pastMeetups = sortedMeetups.filter((m) => m.date < today).reverse();
 
-function formatDate(dateString: string): string {
-  const date = new Date(dateString);
-  return date.toLocaleDateString("en-US", {
+const formatDate = (dateString: string) =>
+  new Date(dateString).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
-}
+
+const things = [
+  [
+    "Insightful presentations",
+    "From lightning talks to deep dives, the majority of our meetups are focused on sharing interesting topics with the wider community.",
+  ],
+  [
+    "Open talks and panels",
+    "Every now and then we find a topic we want to explore together. Our open-talk style events provide a platform for engaging conversations between attendees.",
+  ],
+  [
+    "Hands-on workshops",
+    "Ocassionally, we host workshops where everyone joins in with their laptop and follows along with a teacher.",
+  ],
+  [
+    "Informal hangouts",
+    "Meetings with the community outside of an office, where the only purpose is to meet new people and have a good time.",
+  ],
+];
+const tones = ["coral", "blue", "yellow", "mint"] as const;
 ---
 
-<BaseLayout title="Meetups">
-  <main id="main">
-    <Section variant="light" content="text" class="md:pb-16">
-      <h1 class="sr-only">JSHeroes Meetups</h1>
-      <img
-        src="/img/logo-meetups.svg"
-        alt="JSHeroes Meetups"
-        class="w-[21rem]"
-      />
-      <p class="max-w-[65ch] text-balance mt-8">
-        Our local community was born in Cluj-Napoca back in 2016 as Cluj
-        JavaScripters. It was founded by a group of passionate developers that
-        wanted to create a safe space for likeminded people to learn and grow
-        together.
-      </p>
-      <p class="max-w-[65ch] text-balance">
+<PageLayout
+  title="JSHeroes Meetups"
+  eyebrow="Meetups"
+  intro="Our local community was born in Cluj-Napoca back in 2016 as Cluj JavaScripters. It was founded by a group of passionate developers that wanted to create a safe space for likeminded people to learn and grow together."
+>
+  <Section containerClass="pt-6 pb-16 md:pt-10 md:pb-20">
+    <div class="prose max-w-[65ch]">
+      <p>
         What started with small gatherings at local companies and co-working
         spaces has grown into one of the most active JavaScript communities in
         Eastern Europe. Over the years, we've hosted hundreds of talks,
         workshops, and networking events.
       </p>
-      <p class="max-w-[65ch] text-balance">
+      <p>
         Our meetups are free, open to everyone, and driven by the belief that
         knowledge should be shared. Whether you're a seasoned developer or just
         taking your first steps in the industry, you'll be welcomed with open
         arms.
       </p>
-    </Section>
+    </div>
+  </Section>
 
-    <ImagesBanner
-      images={[
-        "meetups/meetup-1.jpeg",
-        "meetups/meetup-2.jpeg",
-        "meetups/meetup-3.jpeg",
-      ]}
-    />
+  <PhotoStrip
+    names={[
+      "meetups/meetup-1.jpeg",
+      "meetups/meetup-2.jpeg",
+      "meetups/meetup-3.jpeg",
+    ]}
+  />
 
-    <Section variant="dark" content="list">
-      <h2 class="mb-8">What we do</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="flex flex-col gap-3">
-          <h3>🎤 Insightful presentations</h3>
-          <p>
-            From lightning talks to deep dives, the majority of our meetups are
-            focused on sharing interesting topics with the wider community.
-          </p>
-        </div>
-        <div class="flex flex-col gap-3">
-          <h3>💬 Open talks and panels</h3>
-          <p>
-            Every now and then we find a topic we want to explore together. Our
-            open-talk style events provide a platform for engaging conversations
-            between attendees.
-          </p>
-        </div>
+  <Section tone="band" containerClass="py-16 md:py-24">
+    <Eyebrow data-reveal="up">Format</Eyebrow>
+    <h2 class="h2-section mt-5 mb-12" data-reveal="up" style="--d:80ms">
+      What we do
+    </h2>
+    <div class="grid gap-x-16 gap-y-12 md:grid-cols-2">
+      {things.map(([title, text], i) => (
+        <Feature title={title} tone={tones[i % 4]}>
+          <p class="m-0">{text}</p>
+        </Feature>
+      ))}
+    </div>
+  </Section>
 
-        <div class="flex flex-col gap-3">
-          <h3>👨‍💻 Hands-on workshops</h3>
-          <p>
-            Ocassionally, we host workshops where everyone joins in with their
-            laptop and follows along with a teacher.
-          </p>
-        </div>
-
-        <div class="flex flex-col gap-3">
-          <h3>🍻 Informal hangouts</h3>
-          <p>
-            Meetings with the community outside of an office, where the only
-            purpose is to meet new people and have a good time.
-          </p>
-        </div>
-      </div>
-    </Section>
-
-    <Section variant="light" content="list">
-      <h2 class="mb-8">🗓️ Next Meetup</h2>
-      {nextMeetup ? (
-        <a
-          href={nextMeetup.link}
+  <Section containerClass="py-16 md:py-24">
+    <Eyebrow data-reveal="up">Next up</Eyebrow>
+    <h2 class="h2-section mt-5 mb-10" data-reveal="up" style="--d:80ms">
+      Next meetup
+    </h2>
+    {nextMeetup ? (
+      <a
+        href={nextMeetup.link}
+        target="_blank"
+        rel="noreferrer noopener"
+        class="group block bg-black-pearl p-8 text-white no-underline shadow-[8px_8px_0_var(--color-accent-orange)] transition hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[5px_5px_0_var(--color-accent-orange)] motion-reduce:transition-none md:p-12"
+        data-tone="ink"
+        data-reveal="up"
+      >
+        <span class="inline-block bg-accent-green px-3 py-1.5 text-xs font-bold tracking-[0.12em] text-black-pearl uppercase">
+          RSVP now ↗
+        </span>
+        <span class="mt-5 block text-2xl leading-tight font-extrabold tracking-tight group-hover:underline group-hover:decoration-accent-orange group-hover:decoration-2 group-hover:underline-offset-4 md:text-3xl">
+          {nextMeetup.title}
+        </span>
+        <span class="mt-6 flex flex-col gap-2 text-lg sm:flex-row sm:gap-10">
+          <span class="flex items-center gap-3">
+            <Motif name="pd_yel" cell={4} />
+            {formatDate(nextMeetup.date)}
+          </span>
+          <span class="flex items-center gap-3">
+            <Motif name="pd_coral" cell={4} />
+            {nextMeetup.location}
+          </span>
+        </span>
+      </a>
+    ) : (
+      <div
+        class="border-2 border-dashed border-black-pearl p-8 md:p-12"
+        data-reveal="up"
+      >
+        <p class="m-0 text-2xl font-extrabold tracking-tight">
+          To be announced
+        </p>
+        <p class="mt-3 mb-6 max-w-[34rem] text-soft">
+          We're planning our next meetup. Join us on meetup.com to get notified
+          when we announce it!
+        </p>
+        <Chip
+          href="https://www.meetup.com/jsheroes/"
           target="_blank"
           rel="noreferrer noopener"
-          class="group block no-underline"
         >
-          <div class="relative overflow-hidden rounded-3xl border-4 border-accent-orange bg-gradient-to-br from-brand-darknavy to-brand-purple p-8 md:p-12 transition-all duration-200 hover:scale-[1.02]">
-            <div class="absolute top-4 right-4 md:top-6 md:right-6">
-              <span class="inline-flex items-center rounded-full bg-accent-green px-4 py-2 text-sm font-bold text-neutral-dark">
-                RSVP Now ↗
-              </span>
-            </div>
+          Follow us on Meetup ↗
+        </Chip>
+      </div>
+    )}
+  </Section>
 
-            <div class="flex flex-col gap-4 text-neutral-light">
-              <span class="text-sm font-medium uppercase tracking-wider text-accent-orange">
-                Coming up
-              </span>
-              <h3 class="m-0 text-2xl md:text-3xl font-bold leading-tight group-hover:text-accent-orange transition-colors">
-                {nextMeetup.title}
-              </h3>
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-6 text-lg">
-                <span class="flex items-center gap-2">
-                  📅 {formatDate(nextMeetup.date)}
-                </span>
-                <span class="flex items-center gap-2">
-                  📍 {nextMeetup.location}
-                </span>
-              </div>
-            </div>
-          </div>
-        </a>
-      ) : (
-        <div class="rounded-3xl border-4 border-dashed border-neutral-separator bg-neutral-light/50 p-8 md:p-12">
-          <div class="flex flex-col gap-4 text-center items-center">
-            <span class="text-4xl">🎉</span>
-            <h3 class="m-0 text-2xl font-bold text-neutral-dark">
-              To be announced
-            </h3>
-            <p class="m-0 text-neutral-dark/70 max-w-md mx-auto">
-              We're planning our next meetup. Join us on meetup.com to get
-              notified when we announce it!
-            </p>
+  {pastMeetups.length > 0 && (
+    <Section tone="band" containerClass="py-16 md:py-24">
+      <Eyebrow data-reveal="up">Archive</Eyebrow>
+      <h2 class="h2-section mt-5 mb-10" data-reveal="up" style="--d:80ms">
+        Past meetups
+      </h2>
+      <ul class="m-0 list-none border-b-[1.5px] border-rule p-0">
+        {pastMeetups.map((meetup) => (
+          <li class="border-t-[1.5px] border-rule">
             <a
-              href="https://www.meetup.com/jsheroes/"
+              href={meetup.link}
               target="_blank"
               rel="noreferrer noopener"
-              class="cta-button"
+              class="group grid gap-x-8 gap-y-1 py-5 no-underline md:grid-cols-[11rem_minmax(0,1fr)_12rem] md:items-center"
             >
-              Follow us on Meetup
+              <span class="text-sm font-bold tracking-[0.1em] text-muted-strong uppercase">
+                {formatDate(meetup.date)}
+              </span>
+              <span class="text-lg font-bold group-hover:underline group-hover:decoration-accent-pink group-hover:decoration-2 group-hover:underline-offset-4">
+                {meetup.title}
+              </span>
+              <span class="text-sm text-soft md:text-right">
+                {meetup.location}
+              </span>
             </a>
-          </div>
-        </div>
-      )}
+          </li>
+        ))}
+      </ul>
     </Section>
+  )}
 
-    {pastMeetups.length > 0 && (
-      <Section variant="dark" content="list">
-        <h2 class="mb-8">📜 Past Meetups</h2>
-        <ul class="list-none p-0 m-0 space-y-3">
-          {pastMeetups.map((meetup) => (
-            <li>
-              <a
-                href={meetup.link}
-                target="_blank"
-                rel="noreferrer noopener"
-                class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 rounded-xl border border-neutral-separator/50 transition-transform duration-move hover:translate-x-[20px] no-underline"
-              >
-                <span class="text-sm whitespace-nowrap">
-                  📅 {formatDate(meetup.date)}
-                </span>
-                <span class="font-medium text-accent-orange flex-1">
-                  {meetup.title}
-                </span>
-                <span class="text-sm">📍 {meetup.location}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </Section>
-    )}
-
-    <Section variant="light" content="text">
-      <div class="flex flex-col gap-6 items-start">
-        <h2>Looking to host a meetup?</h2>
-        <p class="max-w-[55ch]">
-          We've been collaborating with local companies and communities to host
-          events at their offices for the past 10 years. If you're interested in
-          hosting a meetup, let's talk about it!
-        </p>
-        <a href="mailto:welcome@jsheroes.io" class="cta-button">
-          Get in touch
-        </a>
-      </div>
-    </Section>
-  </main>
-</BaseLayout>
+  <CtaBand
+    title="Looking to host a meetup?"
+    cta={{ label: "Get in touch", href: "mailto:welcome@jsheroes.io" }}
+    bear="male"
+    bubble="Let's talk!"
+  >
+    <p class="m-0">
+      We've been collaborating with local companies and communities to host
+      events at their offices for the past 10 years. If you're interested in
+      hosting a meetup, let's talk about it!
+    </p>
+  </CtaBand>
+</PageLayout>

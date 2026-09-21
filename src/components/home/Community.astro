@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import type { ImageMetadata } from "astro";
 import Bear from "../ui/Bear.astro";
 import Eyebrow from "../ui/Eyebrow.astro";
 import Frieze from "../ui/Frieze.astro";
@@ -9,16 +8,6 @@ import Section from "../ui/Section.astro";
 import { communities } from "../../data/communities";
 import { community as copy } from "../../data/home";
 import { partners } from "../../data/partners";
-
-const logos = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/images/{communities,partners}/*.{png,jpg,svg}",
-  { eager: true },
-);
-const logoFor = (org: { name: string; imgName: string }) => {
-  const logo = logos[`/src/images/${org.imgName}`];
-  if (!logo) throw new Error(`Missing logo for ${org.name}: ${org.imgName}`);
-  return logo.default;
-};
 
 const box =
   "flex h-16 items-center justify-center border border-rule bg-white p-2.5 text-black-pearl no-underline transition duration-150 hover:-translate-y-0.5 hover:shadow-[3px_3px_0_var(--color-accent-pink)] motion-reduce:transition-none motion-reduce:hover:translate-y-0";
@@ -68,7 +57,7 @@ const box =
               }
             >
               <Image
-                src={logoFor(org)}
+                src={org.logo}
                 alt={org.name}
                 width={200}
                 densities={[1, 2]}
@@ -97,7 +86,7 @@ const box =
               }
             >
               <Image
-                src={logoFor(org)}
+                src={org.logo}
                 alt={org.name}
                 width={200}
                 densities={[1, 2]}

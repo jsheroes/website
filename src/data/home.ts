@@ -87,8 +87,7 @@ export const agenda = {
   eyebrow: "Agenda",
   title: "Two days, one stage.",
   intro:
-    "Talks run on the main stage. Between them, short sessions on the alternative stage keep the conversation going.",
-  sampleNote: `Sample: the ${previousYear} schedule, shown on ${event.year} dates.`,
+    "All the talks run on the main stage. Longer breaks between them allow for ample networking and discussions",
   alternativeStage: "Alternative stage",
   bubble: "Can't wait!",
 };
