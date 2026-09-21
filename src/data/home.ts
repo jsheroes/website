@@ -76,7 +76,7 @@ export const flipWall = {
     "Every year the whole room lines up in front of the stage for the same photo. Flip a tile to see who was there.",
   revealAll: "Reveal all",
   hideAll: "Hide all",
-  noPhoto: "Group photo coming soon",
+  watchHighlights: "Watch the highlights",
   footerLead: `Edition ${numberWord(event.edition)} is next.`,
   footerHighlight: `Be in the ${event.year} photo.`,
 };

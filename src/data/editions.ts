@@ -11,11 +11,14 @@ export interface Edition {
   /** CSS pixels per motif cell on the front of the tile. */
   motifCell: number;
   tile: TileColor;
-  /** Group photo in public/img/gallery, when we have one. */
-  photo?: string;
+  /** Where "Watch the highlights" goes: that year's playlist on the YouTube channel. */
+  playlistUrl: string;
   /** Archived site of that edition. */
   archiveUrl?: string;
 }
+
+/** Swap each edition's playlistUrl for its own playlist once the links are collected. */
+const YOUTUBE_CHANNEL = "https://www.youtube.com/jsheroes";
 
 export const editions: Edition[] = [
   {
@@ -25,6 +28,7 @@ export const editions: Edition[] = [
     motif: "m4",
     motifCell: 6,
     tile: "white",
+    playlistUrl: YOUTUBE_CHANNEL,
   },
   {
     n: 2,
@@ -33,7 +37,7 @@ export const editions: Edition[] = [
     motif: "m14",
     motifCell: 7,
     tile: "blue",
-    photo: "jsh-2018.png",
+    playlistUrl: YOUTUBE_CHANNEL,
   },
   {
     n: 3,
@@ -42,7 +46,7 @@ export const editions: Edition[] = [
     motif: "m0",
     motifCell: 6,
     tile: "yellow",
-    photo: "jsh-2019.png",
+    playlistUrl: YOUTUBE_CHANNEL,
   },
   {
     n: 4,
@@ -51,7 +55,7 @@ export const editions: Edition[] = [
     motif: "m5",
     motifCell: 7,
     tile: "white",
-    photo: "jsh-2022.png",
+    playlistUrl: YOUTUBE_CHANNEL,
     archiveUrl: "https://2022.jsheroes.io",
   },
   {
@@ -61,7 +65,7 @@ export const editions: Edition[] = [
     motif: "m9",
     motifCell: 6,
     tile: "mint",
-    photo: "jsh-2023.jpg",
+    playlistUrl: YOUTUBE_CHANNEL,
     archiveUrl: "https://2023.jsheroes.io",
   },
   {
@@ -71,7 +75,7 @@ export const editions: Edition[] = [
     motif: "m10",
     motifCell: 6,
     tile: "white",
-    photo: "jsh-2024.png",
+    playlistUrl: YOUTUBE_CHANNEL,
     archiveUrl: "https://2024.jsheroes.io",
   },
   {
@@ -81,6 +85,7 @@ export const editions: Edition[] = [
     motif: "m13",
     motifCell: 8,
     tile: "coral",
+    playlistUrl: YOUTUBE_CHANNEL,
     archiveUrl: "https://2025.jsheroes.io",
   },
   {
@@ -90,6 +95,7 @@ export const editions: Edition[] = [
     motif: "m7",
     motifCell: 7,
     tile: "mint",
+    playlistUrl: YOUTUBE_CHANNEL,
     archiveUrl: "https://2026.jsheroes.io",
   },
 ];

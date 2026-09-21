@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 import Button from "../ui/Button.astro";
 import Eyebrow from "../ui/Eyebrow.astro";
 import Frieze from "../ui/Frieze.astro";
@@ -8,6 +10,20 @@ import Section from "../ui/Section.astro";
 import { editions, type TileColor } from "../../data/editions";
 import { flipWall as copy } from "../../data/home";
 import { cta } from "../../data/navigation";
+
+// One group photo per edition, src/assets/flip-wall/<year>.jpg|png
+const photos = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/flip-wall/*.{jpg,jpeg,png}",
+  { eager: true },
+);
+const photoFor = (year: number) => {
+  const match = Object.entries(photos).find(([path]) =>
+    path.split("/").pop()!.startsWith(`${year}.`),
+  );
+  if (!match)
+    throw new Error(`FlipWall: no photo src/assets/flip-wall/${year}.*`);
+  return match[1].default;
+};
 
 const tileClass: Record<TileColor, string> = {
   white: "bg-white",
@@ -65,7 +81,6 @@ const tileClass: Record<TileColor, string> = {
 
   <ul class="m-0 mt-14 grid list-none grid-cols-1 gap-2 p-0 sm:grid-cols-2 lg:grid-cols-4">
     {editions.map((edition, i) => {
-      const label = String(edition.n).padStart(2, "0");
       return (
         <li
           class="flip-tile"
@@ -81,9 +96,6 @@ const tileClass: Record<TileColor, string> = {
                 tileClass[edition.tile],
               ]}
             >
-              <span class="absolute top-4 left-[1.125rem] text-xs font-bold tracking-[0.16em] uppercase">
-                JSHeroes {edition.year}
-              </span>
               <Motif name={`${edition.motif}_brand`} cell={edition.motifCell} />
               <svg
                 viewBox="0 0 24 24"
@@ -102,29 +114,27 @@ const tileClass: Record<TileColor, string> = {
 
             <div class="flip-face flip-back flex flex-col bg-black-pearl text-white">
               <div class="relative min-h-0 flex-1 bg-[#d5dce1]">
-                {edition.photo ? (
-                  <img
-                    src={`/img/gallery/${edition.photo}`}
-                    alt={`Group photo of everyone at JSHeroes ${edition.year}`}
-                    width="384"
-                    height="246"
-                    loading="lazy"
-                    class="absolute inset-0 h-full w-full object-cover"
-                  />
-                ) : (
-                  <p class="absolute inset-0 m-0 flex items-center justify-center px-6 text-center text-[0.8125rem] text-[#3b4e5b]">
-                    {copy.noPhoto}
-                  </p>
-                )}
+                <Image
+                  src={photoFor(edition.year)}
+                  alt={`Group photo of everyone at JSHeroes ${edition.year}`}
+                  widths={[480, 800]}
+                  sizes="(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw"
+                  class="absolute inset-0 h-full w-full object-cover"
+                />
               </div>
-              <div class="flex h-16 shrink-0 items-center justify-between pr-3.5 pl-[1.125rem]">
-                <div class="flex flex-col gap-0.5">
-                  <span class="text-2xl leading-none font-extrabold tracking-tight">
-                    {edition.year}
+              <div class="flip-caption flex h-16 shrink-0 items-center justify-between pr-3.5 pl-[1.125rem]">
+                <div class="flex flex-col gap-1.5">
+                  <span class="text-xl leading-none font-extrabold tracking-tight">
+                    JSHeroes {edition.year}
                   </span>
-                  <span class="text-[0.8125rem] text-[#c9d6df]">
-                    Edition {label} · {edition.venue}
-                  </span>
+                  <a
+                    href={edition.playlistUrl}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    class="text-[0.8125rem] leading-none font-semibold text-accent-orange underline decoration-accent-orange/60 decoration-1 underline-offset-4 hover:decoration-accent-orange"
+                  >
+                    {copy.watchHighlights} ↗
+                  </a>
                 </div>
                 <span class="flex h-11 w-11 shrink-0 items-center justify-center bg-white">
                   <Motif name={`${edition.motif}_brand`} cell={1} />
@@ -137,7 +147,9 @@ const tileClass: Record<TileColor, string> = {
             aria-pressed="false"
             class="flip-button absolute inset-0 m-0 cursor-pointer border-0 bg-transparent p-0"
           >
-            <span class="sr-only">{edition.year} group photo</span>
+            <span class="sr-only">
+              JSHeroes {edition.year}: show the group photo
+            </span>
           </button>
         </li>
       );
@@ -193,6 +205,10 @@ const tileClass: Record<TileColor, string> = {
   }
   .flip-tile[data-flipped="true"] .flip-inner {
     transform: rotateY(180deg);
+  }
+  /* Once flipped, the flip button stops above the caption so its link stays clickable. */
+  .flip-tile[data-flipped="true"] .flip-button {
+    bottom: 4rem;
   }
 
   /* A quarter turn on hover; the motifs are symmetric, so it lands on itself. */
