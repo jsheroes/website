@@ -91,31 +91,34 @@ const labelsOf = <T extends object>(names: Record<string, string>, values: T) =>
     </h2>
     <p class="lede mt-6 max-w-[38rem]">
       In this section you can see a breakdown of our income and expenses for
-      each event. Use the selector below to navigate between our previous
-      events.
+      each event. Pick an edition below to navigate between our previous events.
     </p>
 
-    <div class="year-picker mt-8 flex items-center gap-4">
-      <label
-        for="breakdown-year"
-        class="text-[0.8125rem] font-bold tracking-[0.16em] uppercase"
-      >
-        Edition
-      </label>
-      <select
-        id="breakdown-year"
-        class="cursor-pointer border-2 border-black-pearl bg-white px-4 py-3 text-lg font-bold"
-      >
-        {yearsForBreakdownSelect.map((year, i) => (
-          <option value={year} selected={i === 0}>
-            {year}
-          </option>
-        ))}
-      </select>
+    <div
+      role="tablist"
+      aria-label="Edition"
+      class="year-picker mt-8 flex flex-wrap gap-3"
+    >
+      {yearsForBreakdownSelect.map((year, i) => (
+        <button
+          type="button"
+          role="tab"
+          id={`year-tab-${year}`}
+          aria-controls={`year-panel-${year}`}
+          aria-selected={i === 0 ? "true" : "false"}
+          tabindex={i === 0 ? 0 : -1}
+          class="cursor-pointer border-2 border-black-pearl bg-white px-4 py-2 text-[0.9375rem] leading-tight font-semibold text-black-pearl transition aria-selected:bg-black-pearl aria-selected:text-white hover:not-aria-selected:-translate-y-0.5 hover:not-aria-selected:shadow-[3px_3px_0_var(--color-accent-pink)] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+        >
+          {year}
+        </button>
+      ))}
     </div>
 
     {yearsForBreakdownSelect.map((year, i) => (
       <div
+        role="tabpanel"
+        id={`year-panel-${year}`}
+        aria-labelledby={`year-tab-${year}`}
         class="year-panel mt-12"
         data-year={year}
         data-inactive={i !== 0 ? "" : undefined}
@@ -219,15 +222,38 @@ const labelsOf = <T extends object>(names: Record<string, string>, values: T) =>
 <script>
   function init() {
     const root = document.querySelector<HTMLElement>("[data-breakdown]");
-    const select = root?.querySelector<HTMLSelectElement>("#breakdown-year");
-    if (!root || !select || select.dataset.ready) return;
-    select.dataset.ready = "true";
-    select.addEventListener("change", () => {
-      root.querySelectorAll<HTMLElement>(".year-panel").forEach((panel) => {
-        panel.toggleAttribute(
-          "data-inactive",
-          panel.dataset.year !== select.value,
-        );
+    if (!root || root.dataset.ready) return;
+    root.dataset.ready = "true";
+
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const select = (tab: HTMLButtonElement, focus = false) => {
+      tabs.forEach((t) => {
+        const on = t === tab;
+        t.setAttribute("aria-selected", String(on));
+        t.tabIndex = on ? 0 : -1;
+        document
+          .getElementById(t.getAttribute("aria-controls") ?? "")
+          ?.toggleAttribute("data-inactive", !on);
+      });
+      if (focus) tab.focus();
+    };
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener("click", () => select(tab));
+      tab.addEventListener("keydown", (event) => {
+        const step = {
+          ArrowRight: 1,
+          ArrowDown: 1,
+          ArrowLeft: -1,
+          ArrowUp: -1,
+        }[event.key];
+        if (step) {
+          event.preventDefault();
+          select(tabs[(i + step + tabs.length) % tabs.length], true);
+        } else if (event.key === "Home" || event.key === "End") {
+          event.preventDefault();
+          select(tabs[event.key === "Home" ? 0 : tabs.length - 1], true);
+        }
       });
     });
   }
