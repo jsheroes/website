@@ -292,5 +292,7 @@ const tileClass: Record<TileColor, string> = {
       });
   }
 
+  // Also run now: astro:page-load only fires when the ClientRouter script loaded.
+  init();
   document.addEventListener("astro:page-load", init);
 </script>

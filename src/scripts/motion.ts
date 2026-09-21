@@ -45,7 +45,8 @@ window.addEventListener(
 );
 
 function init() {
-  // Disarms the CSS failsafe; ClientRouter resets <html> attributes on swap.
+  // Disarms the CSS failsafe, and only once we are actually about to reveal
+  // things. ClientRouter resets <html> attributes on every swap.
   document.documentElement.setAttribute("data-motion-ready", "");
   document
     .querySelectorAll("[data-reveal]:not([data-revealed])")
@@ -55,5 +56,7 @@ function init() {
     .forEach((el) => ambient.observe(el));
 }
 
-document.documentElement.setAttribute("data-motion-ready", "");
+// Run now, so a failed ClientRouter script (which dispatches astro:page-load)
+// cannot leave content hidden, and again after every client-side navigation.
+init();
 document.addEventListener("astro:page-load", init);

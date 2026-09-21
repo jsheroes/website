@@ -197,3 +197,18 @@
     }
   }
 }
+
+/* Print and save-as-PDF never scroll, so nothing would be revealed: show it all. */
+@media print {
+  [data-reveal],
+  .scribble-line {
+    opacity: 1 !important;
+    animation: none !important;
+    clip-path: none !important;
+    translate: none !important;
+    scale: none !important;
+  }
+  [data-motion] {
+    animation: none !important;
+  }
+}
