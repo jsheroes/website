@@ -17,7 +17,6 @@ import importlib.util
 import os
 import sys
 
-from fill_below_body import fill_below_body
 from zoom_to_body import zoom_to_body
 
 import numpy as np
@@ -31,9 +30,6 @@ spec.loader.exec_module(cutout)
 
 original_mask = cutout.mask
 current = {"name": ""}
-
-# Cutouts where filling under the body shows in the plate valleys: zoom in instead.
-ZOOMED = {"daniel-roe", "ryan-townsend"}
 
 
 def polygon_mask(size, head_ellipse, body_polygon):
@@ -77,9 +73,6 @@ if __name__ == "__main__":
         current["name"] = name
         out = f"{os.environ['OUT_DIR']}/{name}-cutout.png"
         cutout.process(file, out)
-        # no transparent band under the body: zoom in where a fill would show
-        if name in ZOOMED:
-            note = f"zoomed x{zoom_to_body(out):.2f}"
-        else:
-            note = f"filled {fill_below_body(out)}px under the body"
+        # no transparent band under the body: zoom in until it reaches the bottom
+        note = f"zoomed x{zoom_to_body(out):.2f}"
         print("wrote", name, f"({note})")

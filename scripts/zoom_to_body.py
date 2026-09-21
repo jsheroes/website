@@ -1,15 +1,16 @@
 """
 Zooms a speaker cutout in until the body reaches the bottom edge.
 
-For cutouts where filling the band under the body looks wrong (the body ends
-where the plate valleys are, so the fill shows), scale the whole cutout up
-instead: the body's last solid row lands on the bottom row, the head grows by
-the same factor, and the sides are cropped evenly. Image size is unchanged.
+The source photos often end at the torso or neck, so the cutout crop extends
+past the body and leaves transparent rows at the bottom, which would show as
+paper in the plate's valleys. Scale the whole cutout up instead: the body's last
+solid row lands on the bottom row, the head grows by the same factor, and the
+sides are cropped around the body's horizontal centre. Image size is unchanged.
 
-  python3 scripts/zoom_to_body.py src/images/people/ryan-townsend-cutout.png   # in place
+  python3 scripts/zoom_to_body.py src/images/people/*-cutout.png   # in place
 
-Run it on a fresh cutout, not on one that was already filled or zoomed. Needs
-only pillow and numpy. cutouts.py runs it for the people listed in ZOOMED.
+Run it on fresh cutouts, not on ones that were already zoomed. Needs only pillow
+and numpy. cutouts.py runs it on every new cutout.
 """
 import sys
 
@@ -33,7 +34,10 @@ def zoom_to_body(path: str) -> float:
     edge = max(int(solid_rows.max()) - SAFE_MARGIN, 0)
     scale = height / (edge + 1)
     zoomed = im.resize((round(width * scale), round(height * scale)), Image.LANCZOS)
-    left = (zoomed.width - width) // 2
+    # keep the body's horizontal centre in the middle of the crop, within the image
+    weights = np.asarray(zoomed)[:, :, 1].sum(axis=0).astype(np.float64)
+    centre = (np.arange(zoomed.width) * weights).sum() / max(weights.sum(), 1)
+    left = int(round(np.clip(centre - width / 2, 0, zoomed.width - width)))
     zoomed.crop((left, 0, left + width, height)).save(path, optimize=True)
     return scale
 
