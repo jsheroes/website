@@ -1,7 +1,7 @@
 ---
 name: "Misha Korolev"
 role: "speaker"
-title: "Developer Experience Engineer"
+title: "DX Engineer"
 tag: "JavaScript"
 photo: "../../images/people/misha-korolev.jpg"
 portrait: "../../images/people/misha-korolev-cutout.png"

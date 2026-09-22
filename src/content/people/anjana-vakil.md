@@ -1,7 +1,7 @@
 ---
 name: "Anjana Vakil"
 role: "speaker"
-title: "Independent Developer & Educator"
+title: "Educator"
 tag: "Career Development"
 photo: "../../images/people/anjana-vakil.jpg"
 portrait: "../../images/people/anjana-vakil-cutout.png"
