@@ -244,12 +244,15 @@ const mid: ArtItem[] = [
     (min-h-[100dvh], flex-1 on the text block absorbs the slack), so they
     land above the fold on load; the diamond frieze is a sibling appended
     after, always starting right at the fold and extending past it. At
-    1500px and up the calibration is dropped: a big monitor's viewport can
-    be far taller than the design, and stretching the hero to fill it would
-    leave the text column stranded in empty space, so the section just
-    reverts to its natural height there.
+    1500px and up, a big monitor's viewport can be far taller than the
+    design, so instead of stretching to fill it (leaving the text column
+    stranded in empty space) the section is pinned to a fixed 900px, the
+    same height as the well-tested 1440x900 reference, giving the same
+    margins on any wide screen regardless of its actual height.
   -->
-  <div class="flex max-[1499px]:min-h-[100dvh] flex-col">
+  <!-- max-[1500px] compiles to "not (width >= 1500px)", i.e. strictly under
+       1500px, so it pairs with min-[1500px] below with no gap at the seam. -->
+  <div class="flex max-[1500px]:min-h-[100dvh] min-[1500px]:min-h-[900px] flex-col">
     <!-- Stair corners live in the page margin, so they only appear where the margin is wide enough to hold them. -->
     <Motif
       name="st_brand"
