@@ -71,9 +71,9 @@
     overflow: hidden;
   }
 
-  /* Focus ring: blue on paper, yellow on ink surfaces. */
+  /* Focus ring: pink on paper, yellow on ink surfaces. */
   :focus-visible {
-    outline: 3px solid var(--color-accent-blue);
+    outline: 3px solid var(--color-accent-pink);
     outline-offset: 3px;
   }
 
