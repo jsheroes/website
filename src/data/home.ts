@@ -106,7 +106,7 @@ export const community = {
     "This event is organized by a group of volunteers from the local community in Cluj-Napoca, Romania.",
   communitiesTitle: "Partner communities",
   partnersTitle: "Event partners",
-  bubble: "Bine ai venit!",
+  bubble: "Welcome!",
 };
 
 export const sponsors = {

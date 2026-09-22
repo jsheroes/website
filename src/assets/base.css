@@ -11,9 +11,10 @@
 
   /* Brand. black-pearl is the ink colour. accent-blue, -pink, -orange and
      -green are one family: each near the edge of the sRGB gamut it can reach
-     at its own lightness and hue (see scripts/accent-chroma.py). */
+     at its own lightness and hue (see scripts/accent-chroma.py). accent-blue
+     is nudged lighter from that derivation (#3399f1) by design preference. */
   --color-black-pearl: #001c2b;
-  --color-accent-blue: #3399f1;
+  --color-accent-blue: #33a9f1;
   --color-accent-pink: #f46c7d;
   --color-accent-orange: #ffcc67;
   --color-accent-green: #65d3bb;
