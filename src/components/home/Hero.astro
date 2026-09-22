@@ -290,10 +290,11 @@ const mid: ArtItem[] = [
     </div>
   </div>
 
-  <!-- Between lg and 3xl there is no room for the full cluster: the star alone at lg, a smaller cluster from xl. -->
+  <!-- Between lg and 3xl there is no room for the full cluster: the star alone at
+       lg, a smaller cluster from `laptop` once there's clear space beside the text. -->
   <div
     aria-hidden="true"
-    class="pointer-events-none absolute top-40 right-8 hidden lg:block xl:hidden"
+    class="pointer-events-none absolute top-40 right-8 hidden lg:block laptop:hidden"
   >
     <Motif
       name="m4_brand"
@@ -306,7 +307,7 @@ const mid: ArtItem[] = [
   </div>
   <div
     aria-hidden="true"
-    class="pointer-events-none absolute top-28 right-6 hidden h-[38rem] w-[35rem] xl:block 3xl:hidden"
+    class="pointer-events-none absolute top-28 right-6 hidden h-[38rem] w-[35rem] laptop:block 3xl:hidden"
   >
     {mid.map(({ name, cell, left, top, motion, dur, delay, rd }) => (
       <div class="absolute" style={`left:${left}px;top:${top}px`}>

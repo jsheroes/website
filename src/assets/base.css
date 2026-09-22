@@ -42,6 +42,9 @@
   --font-display: "Sora Variable", ui-sans-serif, system-ui, sans-serif;
 
   --breakpoint-3xl: 90rem;
+  /* Where the hero's motif cluster has enough clear space beside the text to
+     appear at reduced size, instead of just the lone star (Hero.astro). */
+  --breakpoint-laptop: 75rem;
 }
 
 @layer base {
