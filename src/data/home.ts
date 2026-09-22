@@ -94,7 +94,7 @@ export const agenda = {
 export const venue = {
   eyebrow: "Venue",
   title: `Back at the ${event.venue.name}.`,
-  intro: `We're hosting JSHeroes ${event.year} at ${event.venue.name}, our home since the first edition.`,
+  intro: `We're hosting JSHeroes ${event.year} at ${event.venue.name}, our home since the very first edition.`,
   mapsCta: "View on Google Maps",
 };
 
