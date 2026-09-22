@@ -164,7 +164,7 @@ export const yearsForBreakdownSelect: Year[] = [...years].reverse();
 
 /** Slice colours, in order. */
 export const palette = [
-  "var(--color-dodger-blue)",
+  "var(--color-accent-blue)",
   "var(--color-accent-pink)",
   "var(--color-accent-orange)",
   "var(--color-accent-green)",
