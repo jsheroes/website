@@ -237,43 +237,89 @@ const mid: ArtItem[] = [
 
 <section
   data-section="hero"
-  class="relative -mt-24 flex flex-col overflow-hidden bg-paper xl:min-h-[900px]"
+  class="relative -mt-24 flex flex-col overflow-hidden bg-paper"
 >
-  <!-- Stair corners live in the page margin, so they only appear where the margin is wide enough to hold them. -->
-  <Motif
-    name="st_brand"
-    cell={6}
-    class="absolute top-0 left-0 hidden xl:block 3xl:hidden"
-    loading="eager"
-  />
-  <Motif
-    name="st_brand"
-    cell={6}
-    flip
-    class="absolute top-0 right-0 hidden xl:block 3xl:hidden"
-    loading="eager"
-  />
-  <Motif
-    name="st_brand"
-    cell={12}
-    class="absolute top-0 left-0 hidden 3xl:block"
-    loading="eager"
-  />
-  <Motif
-    name="st_brand"
-    cell={12}
-    flip
-    class="absolute top-0 right-0 hidden 3xl:block"
-    loading="eager"
-  />
+  <!--
+    The text and facts bar fill at least one viewport (min-h-[100dvh], flex-1
+    on the text block absorbs the slack), so they land above the fold on
+    load; the diamond frieze is a sibling appended after, always starting
+    right at the fold and extending past it.
+  -->
+  <div class="flex min-h-[100dvh] flex-col">
+    <!-- Stair corners live in the page margin, so they only appear where the margin is wide enough to hold them. -->
+    <Motif
+      name="st_brand"
+      cell={6}
+      class="absolute top-0 left-0 hidden xl:block 3xl:hidden"
+      loading="eager"
+    />
+    <Motif
+      name="st_brand"
+      cell={6}
+      flip
+      class="absolute top-0 right-0 hidden xl:block 3xl:hidden"
+      loading="eager"
+    />
+    <Motif
+      name="st_brand"
+      cell={12}
+      class="absolute top-0 left-0 hidden 3xl:block"
+      loading="eager"
+    />
+    <Motif
+      name="st_brand"
+      cell={12}
+      flip
+      class="absolute top-0 right-0 hidden 3xl:block"
+      loading="eager"
+    />
 
-  <!-- Full cluster from xl, positioned on the 1440 design grid. -->
-  <div
-    aria-hidden="true"
-    class="pointer-events-none absolute inset-0 hidden 3xl:block"
-  >
-    <div class="absolute top-0 left-1/2 h-full w-[1440px] -translate-x-1/2">
-      {art.map(({ name, cell, left, top, motion, dur, delay, rd }) => (
+    <!-- Full cluster from xl, positioned on the 1440 design grid. Scaled 10%
+         smaller around the cluster's own centre (not the box's, which spans
+         the whole section) so it clears the nav above and the facts bar
+         below with margin on tall or short viewports alike. -->
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0 hidden 3xl:block"
+    >
+      <div class="absolute top-0 left-1/2 h-full w-[1440px] origin-[1082px_414px] -translate-x-1/2 scale-90">
+        {art.map(({ name, cell, left, top, motion, dur, delay, rd }) => (
+          <div class="absolute" style={`left:${left}px;top:${top}px`}>
+            <Motif
+              name={name}
+              cell={cell}
+              loading="eager"
+              motion={motion}
+              dur={dur}
+              delay={delay}
+              reveal="pixel"
+              revealDelay={rd}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Between lg and 3xl there is no room for the full cluster: the star alone at
+       lg, a smaller cluster from `laptop` once there's clear space beside the text. -->
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute top-40 right-8 hidden lg:block laptop:hidden"
+    >
+      <Motif
+        name="m4_brand"
+        cell={13}
+        loading="eager"
+        motion="spin"
+        dur="180s"
+        reveal="pixel"
+      />
+    </div>
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute top-28 right-6 hidden h-[38rem] w-[35rem] origin-[280px_315px] scale-90 laptop:block 3xl:hidden"
+    >
+      {mid.map(({ name, cell, left, top, motion, dur, delay, rd }) => (
         <div class="absolute" style={`left:${left}px;top:${top}px`}>
           <Motif
             name={name}
@@ -288,122 +334,92 @@ const mid: ArtItem[] = [
         </div>
       ))}
     </div>
-  </div>
 
-  <!-- Between lg and 3xl there is no room for the full cluster: the star alone at
-       lg, a smaller cluster from `laptop` once there's clear space beside the text. -->
-  <div
-    aria-hidden="true"
-    class="pointer-events-none absolute top-40 right-8 hidden lg:block laptop:hidden"
-  >
-    <Motif
-      name="m4_brand"
-      cell={13}
-      loading="eager"
-      motion="spin"
-      dur="180s"
-      reveal="pixel"
-    />
-  </div>
-  <div
-    aria-hidden="true"
-    class="pointer-events-none absolute top-28 right-6 hidden h-[38rem] w-[35rem] laptop:block 3xl:hidden"
-  >
-    {mid.map(({ name, cell, left, top, motion, dur, delay, rd }) => (
-      <div class="absolute" style={`left:${left}px;top:${top}px`}>
+    <div class="relative mx-auto w-full max-w-[1160px] flex-1 px-5 pt-32 pb-16 md:px-8 md:pt-[9.375rem] xl:px-0">
+      <div class="max-w-[40rem]">
+        <Eyebrow data-reveal="up">{hero.eyebrow}</Eyebrow>
+        <h1 class="h1-hero mt-7" data-load>
+          {hero.titleLines.map((line) => (
+            <>
+              {line}
+              <br class="hidden lg:inline" />{" "}
+            </>
+          ))}
+          <Scribble stroke={6} spaced={false}>
+            {hero.titleHighlight}
+          </Scribble>
+        </h1>
+        <p class="lede mt-12 max-w-[34rem]" data-reveal="up" style="--d:150ms">
+          {hero.intro}
+        </p>
+        <div
+          class="mt-10 flex flex-wrap items-center gap-x-5 gap-y-6"
+          data-reveal="up"
+          style="--d:300ms"
+        >
+          {cta && <Button href={cta.href}>{cta.label}</Button>}
+          <Button href="#speakers" variant="ghost">
+            {hero.secondaryCta}
+          </Button>
+        </div>
+      </div>
+
+      <div
+        aria-hidden="true"
+        class="pointer-events-none mt-14 flex flex-wrap items-end gap-x-6 gap-y-4 lg:hidden"
+      >
         <Motif
-          name={name}
-          cell={cell}
+          name="m4_brand"
+          cell={8}
           loading="eager"
-          motion={motion}
-          dur={dur}
-          delay={delay}
+          motion="spin"
+          dur="180s"
           reveal="pixel"
-          revealDelay={rd}
+        />
+        <Motif
+          name="m3_brand"
+          cell={4}
+          loading="eager"
+          motion="sway"
+          dur="11s"
+          reveal="pixel"
+          revealDelay="200ms"
+        />
+        <Motif
+          name="m5_brand"
+          cell={4}
+          loading="eager"
+          motion="sway"
+          dur="9s"
+          reveal="pixel"
+          revealDelay="350ms"
         />
       </div>
-    ))}
-  </div>
+    </div>
 
-  <div class="relative mx-auto w-full max-w-[1160px] flex-1 px-5 pt-32 pb-16 md:px-8 md:pt-[9.375rem] xl:px-0">
-    <div class="max-w-[40rem]">
-      <Eyebrow data-reveal="up">{hero.eyebrow}</Eyebrow>
-      <h1 class="h1-hero mt-7" data-load>
-        {hero.titleLines.map((line) => (
-          <>
-            {line}
-            <br class="hidden lg:inline" />{" "}
-          </>
-        ))}
-        <Scribble stroke={6} spaced={false}>
-          {hero.titleHighlight}
-        </Scribble>
-      </h1>
-      <p class="lede mt-12 max-w-[34rem]" data-reveal="up" style="--d:150ms">
-        {hero.intro}
-      </p>
-      <div
-        class="mt-10 flex flex-wrap items-center gap-x-5 gap-y-6"
+    <div data-tone="ink" class="relative bg-black-pearl text-white">
+      <dl
         data-reveal="up"
-        style="--d:300ms"
+        style="--d:450ms"
+        class="m-0 mx-auto grid max-w-[1160px] grid-cols-2 gap-x-6 gap-y-6 px-5 pt-6 pb-10 md:px-8 lg:flex lg:justify-between lg:pb-8 xl:px-0"
       >
-        {cta && <Button href={cta.href}>{cta.label}</Button>}
-        <Button href="#speakers" variant="ghost">
-          {hero.secondaryCta}
-        </Button>
-      </div>
-    </div>
-
-    <div
-      aria-hidden="true"
-      class="pointer-events-none mt-14 flex flex-wrap items-end gap-x-6 gap-y-4 lg:hidden"
-    >
-      <Motif
-        name="m4_brand"
-        cell={8}
-        loading="eager"
-        motion="spin"
-        dur="180s"
-        reveal="pixel"
-      />
-      <Motif
-        name="m3_brand"
-        cell={4}
-        loading="eager"
-        motion="sway"
-        dur="11s"
-        reveal="pixel"
-        revealDelay="200ms"
-      />
-      <Motif
-        name="m5_brand"
-        cell={4}
-        loading="eager"
-        motion="sway"
-        dur="9s"
-        reveal="pixel"
-        revealDelay="350ms"
-      />
+        {hero.facts.map((fact) => (
+          <div class="flex flex-col gap-1.5">
+            <dt class="text-xs font-bold tracking-[0.16em] text-accent-orange uppercase">
+              {fact.label}
+            </dt>
+            <dd class="m-0 text-base font-bold md:text-xl lg:whitespace-nowrap">
+              {fact.value}
+            </dd>
+          </div>
+        ))}
+      </dl>
     </div>
   </div>
 
-  <div data-tone="ink" class="relative bg-black-pearl text-white">
-    <dl
-      data-reveal="up"
-      style="--d:450ms"
-      class="m-0 mx-auto grid max-w-[1160px] grid-cols-2 gap-x-6 gap-y-6 px-5 pt-6 pb-10 md:px-8 lg:flex lg:justify-between lg:pb-8 xl:px-0"
-    >
-      {hero.facts.map((fact) => (
-        <div class="flex flex-col gap-1.5">
-          <dt class="text-xs font-bold tracking-[0.16em] text-accent-orange uppercase">
-            {fact.label}
-          </dt>
-          <dd class="m-0 text-base font-bold md:text-xl lg:whitespace-nowrap">
-            {fact.value}
-          </dd>
-        </div>
-      ))}
-    </dl>
+  <!-- Outside the min-h-[100dvh] block above, so it always starts right at
+       the fold instead of being pulled up into view with the facts bar. -->
+  <div data-tone="ink" class="relative bg-black-pearl">
     <Frieze kind="diamond" tone="night" />
   </div>
 </section>
