@@ -240,12 +240,16 @@ const mid: ArtItem[] = [
   class="relative -mt-24 flex flex-col overflow-hidden bg-paper"
 >
   <!--
-    The text and facts bar fill at least one viewport (min-h-[100dvh], flex-1
-    on the text block absorbs the slack), so they land above the fold on
-    load; the diamond frieze is a sibling appended after, always starting
-    right at the fold and extending past it.
+    Below 1500px, the text and facts bar fill at least one viewport
+    (min-h-[100dvh], flex-1 on the text block absorbs the slack), so they
+    land above the fold on load; the diamond frieze is a sibling appended
+    after, always starting right at the fold and extending past it. At
+    1500px and up the calibration is dropped: a big monitor's viewport can
+    be far taller than the design, and stretching the hero to fill it would
+    leave the text column stranded in empty space, so the section just
+    reverts to its natural height there.
   -->
-  <div class="flex min-h-[100dvh] flex-col">
+  <div class="flex max-[1499px]:min-h-[100dvh] flex-col">
     <!-- Stair corners live in the page margin, so they only appear where the margin is wide enough to hold them. -->
     <Motif
       name="st_brand"
@@ -274,15 +278,17 @@ const mid: ArtItem[] = [
       loading="eager"
     />
 
-    <!-- Full cluster from xl, positioned on the 1440 design grid. Scaled 10%
-         smaller around the cluster's own centre (not the box's, which spans
-         the whole section) so it clears the nav above and the facts bar
-         below with margin on tall or short viewports alike. -->
+    <!-- Full cluster from xl, positioned on the 1440 design grid. Scaled 20%
+         smaller, anchored so the top barely moves (already cleared the nav)
+         and nearly all the shrink comes out of the bottom, away from the
+         facts bar: real browsers render the fluid heading a little
+         differently than our own testing, so this keeps a wide margin
+         rather than the thinnest one that measured clean. -->
     <div
       aria-hidden="true"
       class="pointer-events-none absolute inset-0 hidden 3xl:block"
     >
-      <div class="absolute top-0 left-1/2 h-full w-[1440px] origin-[1082px_414px] -translate-x-1/2 scale-90">
+      <div class="absolute top-0 left-1/2 h-full w-[1440px] origin-[1082px_259px] -translate-x-1/2 scale-[0.8]">
         {art.map(({ name, cell, left, top, motion, dur, delay, rd }) => (
           <div class="absolute" style={`left:${left}px;top:${top}px`}>
             <Motif
@@ -315,9 +321,11 @@ const mid: ArtItem[] = [
         reveal="pixel"
       />
     </div>
+    <!-- Anchored at its own top edge (nothing crowds the nav here already),
+         so the full 20% shrink comes out of the bottom, away from the bar. -->
     <div
       aria-hidden="true"
-      class="pointer-events-none absolute top-28 right-6 hidden h-[38rem] w-[35rem] origin-[280px_315px] scale-90 laptop:block 3xl:hidden"
+      class="pointer-events-none absolute top-28 right-6 hidden h-[38rem] w-[35rem] origin-[280px_40px] scale-[0.8] laptop:block 3xl:hidden"
     >
       {mid.map(({ name, cell, left, top, motion, dur, delay, rd }) => (
         <div class="absolute" style={`left:${left}px;top:${top}px`}>
