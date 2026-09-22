@@ -2,6 +2,7 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
+import { unified } from "@astrojs/markdown-remark";
 import remarkEvent from "./src/plugins/remark-event.ts";
 
 /** Dev-only routes, so they never reach the production build or the sitemap. */
@@ -23,7 +24,11 @@ const devRoutes = {
 export default defineConfig({
   site: "https://jsheroes.io",
   markdown: {
-    remarkPlugins: [remarkEvent],
+    // Sätteri (Astro's default Rust markdown processor) doesn't run remark
+    // plugins, so opt back into the unified/remark pipeline just for ours.
+    processor: unified({
+      remarkPlugins: [remarkEvent],
+    }),
   },
   integrations: [mdx(), sitemap(), devRoutes],
   vite: {
