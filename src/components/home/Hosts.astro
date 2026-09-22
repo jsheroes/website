@@ -7,7 +7,9 @@ import Section from "../ui/Section.astro";
 import { hosts as copy } from "../../data/home";
 import { getPeople, personDialogId } from "../../utils/people";
 
-const hosts = await getPeople("host");
+const hosts = (await getPeople("host")).sort(
+  (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99),
+);
 
 const initials = (name: string) => {
   const parts = name.split(" ");

@@ -2,6 +2,7 @@
 name: "Tejas Kumar"
 role: "host"
 title: "MC"
+order: 2
 photo: "../../images/people/tejas-kumar.jpg"
 ---
 

@@ -2,6 +2,7 @@
 name: "Oana Zăuleț"
 role: "host"
 title: "Sketch Artist"
+order: 3
 photo: "../../images/people/oana-zaulet.jpg"
 ---
 
