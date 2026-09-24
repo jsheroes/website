@@ -62,6 +62,10 @@ const tail = at >= 0 && target ? title.slice(at + target.length) : "";
 
 <header
   data-section="page-header"
+  data-og-eyebrow={eyebrow}
+  data-og-title={title}
+  data-og-highlight={marked || undefined}
+  data-og-motif={motif}
   class:list={["relative overflow-hidden bg-paper", className]}
   {...rest}
 >

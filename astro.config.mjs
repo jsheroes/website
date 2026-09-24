@@ -15,6 +15,7 @@ const devRoutes = {
           pattern: "/styleguide",
           entrypoint: "./src/dev/styleguide.astro",
         });
+        injectRoute({ pattern: "/og", entrypoint: "./src/dev/og.astro" });
       }
     },
   },

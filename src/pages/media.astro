@@ -17,7 +17,7 @@ const nav = [
 
 const primary = [
   {
-    name: "Accent Blue",
+    name: "Picton Blue",
     hex: "#33A9F1",
     rgb: "R51 G169 B241",
     cmyk: "C0.79 M0.30 Y0 K0.05",
@@ -59,7 +59,7 @@ const secondary = [
     ink: false,
   },
   {
-    name: "Accent Pink",
+    name: "Froly",
     hex: "#F46C7D",
     rgb: "R244 G108 B125",
     cmyk: "C0 M0.56 Y0.49 K0.04",
@@ -108,20 +108,8 @@ const weights = [
   title="JSHeroes Media Kit"
   eyebrow="Press"
   highlight="Kit"
-  intro="Everything you need to write about JSHeroes: who we are, our logos, colours and mascots, and photos and videos from past editions."
+  intro="Everything you need to write about JSHeroes: who we are, our logos, colors and mascots, and photos and videos from past editions."
 >
-  <Section containerClass="pt-2 pb-6 md:pt-4">
-    <nav aria-label="On this page">
-      <ul class="m-0 flex list-none flex-wrap gap-3 p-0">
-        {nav.map(([label, href]) => (
-          <li>
-            <Chip href={href}>{label}</Chip>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  </Section>
-
   <Section id="about" containerClass="py-14 md:py-20">
     <Eyebrow data-reveal="up">Who we are</Eyebrow>
     <h2 class="h2-section mt-5 mb-8" data-reveal="up" style="--d:80ms">
@@ -129,22 +117,19 @@ const weights = [
     </h2>
     <div class="prose max-w-[65ch]">
       <p>
-        <strong>JSHeroes</strong> is a yearly event organised by the local
-        JavaScript community in Cluj, Romania. Our journey started in 2017 with
-        a plan: for JSHeroes to be the biggest tech conference in Romania,
-        dedicated solely to <strong>JavaScript</strong>. This year, {event.year}{" "}
-        (our {event.editionOrdinal} edition) we have chosen a venue that can
-        accommodate up to <strong>600 attendees</strong>. Join us on{" "}
-        <strong>{event.dates}</strong>, in {event.venue.city}, Romania.
+        <strong>JSHeroes</strong> is a yearly event organized by the local
+        JavaScript community in Cluj, Romania. Our journey started in 2017 and
+        we had 8 successful editions across the years. The JSHeroes brand has
+        grown to be one of the most recognizable conference brands in the JS/web
+        development community.
       </p>
       <p>
-        <strong>JSHeroes</strong> is a non-profit community-organised
+        <strong>JSHeroes</strong> is a non-profit community-organized
         conference. Our goal is to bring together <strong>JS</strong> and{" "}
-        <strong>Web/Frontend</strong>
-        development enthusiasts from all over the world for a{" "}
-        <strong>two-day</strong> event with: great talks, amazing networking and
-        tons of fun. You bring your ideas and desire to learn, we provide the
-        relaxed atmosphere and the good vibes.
+        <strong>Web/Frontend</strong> development enthusiasts from all over the
+        world for a <strong>two-day</strong> event with: great talks, amazing
+        networking and tons of fun. You bring your ideas and openness to learn
+        and share, we provide the relaxed atmosphere and the good vibes.
       </p>
       <p>
         We believe that the <strong>community</strong> and the{" "}
@@ -155,8 +140,8 @@ const weights = [
       <p>
         We are publishing all data about this conference, in{" "}
         <a href="/transparency">full transparency</a>. We are also available at
-        any time for inquires and we are really looking forward to sharing our
-        knowledge about organising international events. This way, whenever a
+        any time for inquiries and we are really looking forward to sharing our
+        knowledge about organizing international events. This way, whenever a
         community wants to start something similar, they can build on our
         knowledge.
       </p>
@@ -177,7 +162,7 @@ const weights = [
         <li>Please don't edit or recolor the logo.</li>
         <li>
           The JSHeroes logo likes a little elbow room, so don't place copy or
-          graphic element in close proximity.
+          graphic elements in close proximity.
         </li>
         <li>
           Please don't use our name or logo in ways that may be misleading or
@@ -213,7 +198,7 @@ const weights = [
           />
         </div>
         <figcaption class="mt-3 text-sm text-soft">
-          On coloured or photo backgrounds, use the blue-white JSHeroes logo.
+          On colored or photo backgrounds, use the blue-white JSHeroes logo.
         </figcaption>
       </figure>
     </div>
@@ -333,63 +318,6 @@ const weights = [
           <p class="m-0 mt-2 text-sm text-soft">
             {name} · {weight}
           </p>
-        </li>
-      ))}
-    </ul>
-  </Section>
-
-  <Section id="image-gallery" tone="band" containerClass="py-14 md:py-20">
-    <Eyebrow data-reveal="up">Photos</Eyebrow>
-    <h2 class="h2-section mt-5 mb-6" data-reveal="up" style="--d:80ms">
-      Image Gallery
-    </h2>
-    <div class="prose max-w-[65ch]">
-      <p>The Gallery contains images from our latest 5 editions.</p>
-      <p>
-        Images are available for editorial purposes only, credits must be
-        includes. Download is not allowed for commercial use.
-      </p>
-    </div>
-    <ul class="m-0 mt-10 grid list-none grid-cols-1 gap-8 p-0 sm:grid-cols-2 lg:grid-cols-3">
-      {gallery.map((item, i) => (
-        <li data-reveal="up" style={`--d:${(i % 3) * 80}ms`}>
-          <a
-            href={item.url}
-            target="_blank"
-            rel="noreferrer noopener"
-            class="group block no-underline"
-          >
-            <img
-              src={`/img/gallery/${item.photo}`}
-              alt=""
-              width="384"
-              height="246"
-              loading="lazy"
-              class="aspect-[384/246] w-full border-2 border-black-pearl object-cover"
-            />
-            <span class="mt-3 block text-lg font-bold group-hover:underline group-hover:decoration-accent-pink group-hover:decoration-2 group-hover:underline-offset-4">
-              JSHeroes {item.year}
-            </span>
-            <span class="text-sm text-soft">Open the photo folder ↗</span>
-          </a>
-        </li>
-      ))}
-    </ul>
-  </Section>
-
-  <Section id="video-gallery" containerClass="py-14 md:py-20">
-    <Eyebrow data-reveal="up">Video</Eyebrow>
-    <h2 class="h2-section mt-5 mb-6" data-reveal="up" style="--d:80ms">
-      Video Gallery
-    </h2>
-    <p class="m-0 max-w-[65ch] text-soft">
-      When using the videos, please mention the source JSHeroes. Download is not
-      allowed for commercial use.
-    </p>
-    <ul class="m-0 mt-10 grid list-none grid-cols-1 gap-8 p-0 md:grid-cols-2">
-      {videos.map((id) => (
-        <li>
-          <YouTube id={id} class="w-full" />
         </li>
       ))}
     </ul>

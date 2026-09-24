@@ -6,10 +6,12 @@ import Speakers from "../components/home/Speakers.astro";
 import Hosts from "../components/home/Hosts.astro";
 import FlipWall from "../components/home/FlipWall.astro";
 import Agenda from "../components/home/Agenda.astro";
+import AgendaTeaser from "../components/home/AgendaTeaser.astro";
 import Venue from "../components/home/Venue.astro";
 import Community from "../components/home/Community.astro";
 import Sponsors from "../components/home/Sponsors.astro";
 import Team from "../components/home/Team.astro";
+import { AGENDA_ANNOUNCED } from "../data/flags";
 ---
 
 <BaseLayout>
@@ -18,7 +20,7 @@ import Team from "../components/home/Team.astro";
     <Speakers />
     <Hosts />
     <FlipWall />
-    <Agenda />
+    {AGENDA_ANNOUNCED ? <Agenda /> : <AgendaTeaser />}
     <Venue />
     <Community />
     <Sponsors />

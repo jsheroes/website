@@ -1,7 +1,6 @@
 ---
 import Bear from "./ui/Bear.astro";
 import Button from "./ui/Button.astro";
-import Frieze from "./ui/Frieze.astro";
 import Motif from "./ui/Motif.astro";
 import { event } from "../data/event";
 import { cta, footerGroups, legalLinks } from "../data/navigation";
@@ -12,14 +11,64 @@ import { cta, footerGroups, legalLinks } from "../data/navigation";
   data-tone="ink"
   class="relative overflow-hidden bg-black-pearl text-white"
 >
-  <div class="pointer-events-none absolute top-16 right-[-6rem] hidden opacity-100 lg:block xl:right-[max(2rem,calc(50%-36rem))]">
-    <Motif
-      name="m4_night"
-      cell={14.4}
-      motion="spin"
-      dur="200s"
-      reveal="pixel"
-    />
+  <!-- Small, quiet accents above and below the bears, in the spirit of the venue section. -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute top-0 left-1/2 hidden h-full w-full max-w-[1160px] -translate-x-1/2 lg:block"
+  >
+    <div class="absolute top-24 right-16 opacity-80">
+      <Motif
+        name="dx_nblue"
+        cell={6}
+        motion="twinkle"
+        dur="5s"
+        reveal="pixel"
+      />
+    </div>
+    <div class="absolute top-36 right-[22rem] opacity-60">
+      <Motif
+        name="pd_nblue"
+        cell={4}
+        motion="twinkle"
+        dur="4.4s"
+        delay="-2s"
+        reveal="pixel"
+        revealDelay="200ms"
+      />
+    </div>
+
+    <div class="absolute right-[20rem] bottom-24 opacity-50">
+      <Motif
+        name="dr_night"
+        cell={4}
+        motion="spin-rev"
+        dur="60s"
+        reveal="pixel"
+        revealDelay="300ms"
+      />
+    </div>
+    <div class="absolute right-[13rem] bottom-10 opacity-70">
+      <Motif
+        name="pd_mint"
+        cell={4}
+        motion="twinkle"
+        dur="4.2s"
+        delay="-1s"
+        reveal="pixel"
+        revealDelay="400ms"
+      />
+    </div>
+    <div class="absolute right-24 bottom-24 opacity-60">
+      <Motif
+        name="pd_coral"
+        cell={3}
+        motion="twinkle"
+        dur="3.6s"
+        delay="-2.5s"
+        reveal="pixel"
+        revealDelay="500ms"
+      />
+    </div>
   </div>
 
   <div class="relative mx-auto grid w-full max-w-[1160px] gap-12 px-5 pt-16 pb-24 md:px-8 xl:px-0">
@@ -90,10 +139,8 @@ import { cta, footerGroups, legalLinks } from "../data/navigation";
     </div>
   </div>
 
-  <div class="pointer-events-none absolute right-[max(1rem,calc(50%-36rem))] bottom-[calc(36px+1rem)] z-10 hidden items-end lg:flex">
+  <div class="pointer-events-none absolute right-[max(1rem,calc(50%-36rem))] top-1/2 z-10 hidden origin-right -translate-y-1/2 scale-[0.7] items-end lg:flex xl:scale-100">
     <Bear who="male" width={250} />
     <Bear who="female" width={214} class="-ml-8" />
   </div>
-
-  <Frieze kind="diamond" tone="night" />
 </footer>

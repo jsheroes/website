@@ -5,6 +5,7 @@ import ScrollToTop from "../components/ScrollToTop.astro";
 import { ClientRouter } from "astro:transitions";
 import Analytics from "@vercel/analytics/astro";
 
+import { existsSync } from "node:fs";
 import { event } from "../data/event";
 
 import "@fontsource-variable/sora";
@@ -15,19 +16,42 @@ import "@/assets/base.css";
 export interface Props {
   title?: string;
   description?: string;
-  /** Path or absolute URL of the social sharing image. */
+  /** Path or absolute URL of the social sharing image; defaults to the page's own card. */
   image?: string;
+  /** "article" for blog posts. */
+  type?: "website" | "article";
 }
 
 const {
   title: propsTitle,
-  description = `JSHeroes is a yearly event organized by the local JS community in Cluj, Romania. Check the latest updates and join us on ${event.dates}.`,
-  image = event.ogImage,
+  description = `JSHeroes turns ten: a community-organized JavaScript conference in ${event.venue.city}, Romania. Two days of talks, quality networking and good vibes, ${event.dates}.`,
+  image,
+  type = "website",
 } = Astro.props as Props;
 
-const title = `${event.name} ${event.year} | ${propsTitle ?? event.tagline}`;
+// "Page · JSHeroes", unless the page title already names the event.
+const title = propsTitle
+  ? propsTitle.includes(event.name)
+    ? propsTitle
+    : `${propsTitle} · ${event.name}`
+  : `${event.name} ${event.year} · ${event.tagline}`;
 const canonical = new URL(Astro.url.pathname, event.siteUrl).href;
-const ogImage = new URL(image, event.siteUrl).href;
+
+// Social cards are rendered by scripts/og.mjs into public/img/social/og, one
+// per page and named after its path ("/" is "home", "/blog/foo" is
+// "blog-foo"); pages without one fall back to the homepage card.
+const slug =
+  Astro.url.pathname.replace(/^\/|\/$/g, "").replace(/\//g, "-") || "home";
+const card = `/img/social/og/${slug}.png`;
+const ownCard = existsSync(`public${card}`);
+const ogImage = new URL(
+  image ?? (ownCard ? card : "/img/social/og/home.png"),
+  event.siteUrl,
+).href;
+const ogImageAlt =
+  ownCard && propsTitle
+    ? `${propsTitle} · ${event.name}`
+    : `${event.name} ${event.year}, ${event.dates}, ${event.venue.city}`;
 ---
 
 <!doctype html>
@@ -55,9 +79,12 @@ const ogImage = new URL(image, event.siteUrl).href;
     <meta name="theme-color" content="#fbfaf7" />
 
     <meta property="og:title" content={title} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={type} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
     <meta property="og:description" content={description} />
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content={event.name} />
@@ -65,6 +92,7 @@ const ogImage = new URL(image, event.siteUrl).href;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@jsheroes" />
 

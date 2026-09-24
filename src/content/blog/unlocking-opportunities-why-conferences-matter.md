@@ -3,7 +3,7 @@ author: dusan-todorovic
 title: "Unlocking Opportunities: Why Conferences Matter"
 published: Jun 6, 2024
 tags: ["general"]
-summary: A guest write blog post about the importance of attending conferences
+summary: A guest post about the importance of attending conferences
 ---
 
 A week ago, my team and I embarked on a journey to the heart of Transylvania – **Cluj, Romania**, to participate in the **JSHeroes 2024** conference. As expected, it's a web conference tailored specifically for front-end developers.

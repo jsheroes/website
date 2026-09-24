@@ -2,9 +2,10 @@
 layout: "../layouts/MarkdownLayout.astro"
 title: "Terms and Conditions"
 eyebrow: "Legal"
+description: "The terms for JSHeroes tickets: registration, payment, refunds, changes to the event and more."
 ---
 
-### 1. Who is JsHeroes
+### 1. Who is JSHeroes
 
 **1.1** JSHeroes or ASOCIATIA JSHEROES is a legal entity registered with number 1425958 CUI 42975680 with the Romanian authorities
 
@@ -37,12 +38,12 @@ eyebrow: "Legal"
 
 ### 7. Privacy
 
-**7.1** The Attendees personal information will be protected and will not be shared with any other business besides the Organiser.
+**7.1** The Attendees' personal information will be protected and will not be shared with any other business besides the Organiser.
 
 ### 8. Liability
 
 **8.1** The Organiser is not liable for any loss or damage incurred as the result of attending the event, if the damage incurs as a result of the venue or any other third party vendor.  
-**8.2** The Organiser reserves the right to refuse admission to the Event for any behavior, which the Organis deems unacceptable, in breach of the Code of Conduct.
+**8.2** The Organiser reserves the right to refuse admission to the Event for any behavior, which the Organiser deems unacceptable, in breach of the Code of Conduct.
 
 ### 9. Photo and Video
 

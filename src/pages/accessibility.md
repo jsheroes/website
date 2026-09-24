@@ -2,9 +2,10 @@
 layout: "../layouts/MarkdownLayout.astro"
 title: "Accessibility and Inclusion"
 eyebrow: "Good to know"
+description: "How we make JSHeroes accessible and inclusive, from the venue and catering to guidance for our speakers."
 ---
 
-We are committed to offer the best experience for everyone that joins our events. This means a growing effort towards accessibility and inclusion. Here are a list of the things we are considering for the 2024 edition. We are open about improving this year by year, so please [send us your suggestions](mailto:welcome@jsheroes.io) for making it better.
+We are committed to offering the best experience for everyone that joins our events. This means a growing effort towards accessibility and inclusion. Here is a list of the things we are considering for this edition. We are open to improving this year by year, so please [send us your suggestions](mailto:welcome@jsheroes.io) for making it better.
 
 ## Event room facilities
 
@@ -22,14 +23,14 @@ All attendees are required to respect our [code of conduct](https://jsheroes.io/
 
 ## For speakers
 
-Your slide decks will shown up on two large LED displays on each side of the main stage. You will also have a screen in front of you with your slides and another screen with the timer.
+Your slide decks will be shown on two large LED displays on each side of the main stage. You will also have a screen in front of you with your slides and another screen with the timer.
 
 Please test the visibility of your slides from the back of the room before you go up on stage. If your deck contains strong animations, loud sounds or flashing effects, please announce this to the audience at the beginning of the talk.
 
-Additionally, since the lights in the room are dimmed during your talk, we recommend a darker background for the slides. Keep, in mind that the displays will amplify powerful colors, so avoid using them as background colors.
+Additionally, since the lights in the room are dimmed during your talk, we recommend a darker background for the slides. Keep in mind that the displays will amplify powerful colors, so avoid using them as background colors.
 
 If you share code snippets, make sure the syntax highlighting is adjusted for maximum contrast and that the font size is large enough to be readable from the back.
 
 We kindly ask you to verbalize all the content from the slides to help visually-impaired or dyslexic people understand better.
 
-Finally, we encourage the use of [inclusive language](https://www.apa.org/about/apa/equity-diversity-inclusion/language-guidelines) throughout the talk. Please refrain from making inappropriate jokes. We also have strict policy against gender, racial, ethnic, sexual or religious discrimination.
+Finally, we encourage the use of [inclusive language](https://www.apa.org/about/apa/equity-diversity-inclusion/language-guidelines) throughout the talk. Please refrain from making inappropriate jokes. We also have a strict policy against gender, racial, ethnic, sexual or religious discrimination.

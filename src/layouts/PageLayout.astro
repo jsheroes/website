@@ -9,16 +9,31 @@ interface Props {
   intro?: string;
   description?: string;
   image?: string;
+  type?: "website" | "article";
   highlight?: string | false;
   plain?: boolean;
   bears?: boolean;
 }
 
-const { title, eyebrow, intro, description, image, highlight, plain, bears } =
-  Astro.props;
+const {
+  title,
+  eyebrow,
+  intro,
+  description,
+  image,
+  type,
+  highlight,
+  plain,
+  bears,
+} = Astro.props;
 ---
 
-<BaseLayout title={title} description={description ?? intro} image={image}>
+<BaseLayout
+  title={title}
+  description={description ?? intro}
+  image={image}
+  type={type}
+>
   <main id="main">
     <PageHeader
       title={title}

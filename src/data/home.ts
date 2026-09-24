@@ -84,11 +84,35 @@ export const flipWall = {
 
 export const agenda = {
   eyebrow: "Agenda",
-  title: "Two days, one stage.",
+  title: "The industry is shifting.",
   intro:
-    "All the talks run on the main stage. Longer breaks between them allow for ample networking and discussions",
+    "AI is changing how we plan, write, review and ship software. Our speakers will guide us through the uncertainties our community is facing right now. We're excited to see you join the conversation as we figure out together what the future of our industry looks like.",
   alternativeStage: "Alternative stage",
   bubble: "Can't wait!",
+  /** Shown until AGENDA_ANNOUNCED, under the same title and intro: no slots, no times, just what the talks will be about. */
+  teaser: {
+    note: "The full schedule will be published here as the lineup comes together.",
+    themesTitle: "What to expect",
+    themes: [
+      {
+        title: "Building with AI, beyond the hype",
+        text: "Tools, workflows and frameworks teams and individuals can leverage today to ship better software.",
+      },
+      {
+        title: "Navigating the changes",
+        text: "How our roles, productivity and collaboration are impacted by automation and AI.",
+      },
+      {
+        title: "The state of the web platform",
+        text: "What's new in the browsers, web standards and in JavaScript across the stack, from frontend to backend.",
+      },
+      {
+        title: "Deep expertise that matters",
+        text: "Performance, security, accessibility and UX become even more important as code gets cheaper.",
+      },
+    ],
+    format: "Two days · one main stage · long breaks for the hallway track",
+  },
 };
 
 export const venue = {
@@ -114,7 +138,7 @@ export const sponsors = {
   title: "The companies that support our mission.",
   cta: "Become a sponsor",
   transparency:
-    "JSHeroes is non-profit fully transparent organization: the budget, income and expenses of every edition are public and available in our transparency report.",
+    "JSHeroes is a non-profit, fully transparent organization: the budget, income and expenses of every edition are public and available in our transparency report.",
   transparencyCta: "Read the transparency report",
 };
 

@@ -42,9 +42,8 @@ export const event = {
   /** One entry per day, e.g. label "Thursday, May 27". */
   days,
   venue,
-  tagline: "Community Organized JS Conference",
+  tagline: "Community-organized JavaScript conference",
   ticketsUrl: `https://ti.to/jsheroes/${year}`,
-  ogImage: "/img/social/new-2026.png",
   cfpEndDate: "December 31st",
   editionOrdinal: ordinal(9),
 } as const;

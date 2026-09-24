@@ -2,6 +2,7 @@
 layout: ../layouts/MarkdownLayout.astro
 title: Conference Handbook
 eyebrow: "Attendees"
+description: "Everything you need for JSHeroes: the venue, agenda, side events, travel, accessibility, catering and more."
 ---
 
 On this page you can find information about the event that will help you prepare for your trip and maximize your experience at JSHeroes. We've included details on the conference venue, agenda, and social events, as well as information on some of the initiatives we are taking to make the event accessible and comfortable for everyone.
@@ -27,7 +28,7 @@ Whether you're attending JSHeroes for the first time or you're a returning atten
 
 JSHeroes {{event.year}} will take place on **{{event.datesShort}}** (Thursday & Friday) at **[{{event.venue}}]({{event.venueMapsUrl}})** in {{event.city}}. It is a one-track conference and we have reserved the space from the hotel's ground floor, a spacious conference room, and a large lobby, where you can enjoy the talks, the technical booths, and the networking area.
 
-Also, during the coffee and lunch breaks, we will have an alternative stage, with interesting conversations and follow-ups from the talks on the main stage. Everyone will be able to join, as a speaker or participant. We also want to encourage open discussions, projects presentations, lightning talks, and anything which is remotely related to what we do and our mission and values.
+Also, during the coffee and lunch breaks, we will have an alternative stage, with interesting conversations and follow-ups from the talks on the main stage. Everyone will be able to join, as a speaker or participant. We also want to encourage open discussions, project presentations, lightning talks, and anything which is remotely related to what we do and our mission and values.
 
 Below you can find a map of the entire venue, with all the points of interest marked accordingly.
 
@@ -57,11 +58,11 @@ If your plans change and you can't attend the conference, you can always re-assi
 
 ## 📢 Communication
 
-[Join our slack group](https://join.slack.com/t/js-heroes/shared_invite/zt-7dyi0itf-V~8Z7BUJpFm9ymgHjUwf7A) for quickly communicating with the organizers and speakers during the event. We will also communicate news/updates about the event on Slack before and also after the event.
+[Join our Slack group](https://join.slack.com/t/js-heroes/shared_invite/zt-7dyi0itf-V~8Z7BUJpFm9ymgHjUwf7A) for quickly communicating with the organizers and speakers during the event. We will also communicate news/updates about the event on Slack before and also after the event.
 
-We post all the major updates on our [LinkedIn](https://www.linkedin.com/company/jsheroes-community), [Bluesky](https://bsky.app/profile/jsheroes.io) and [Twitter](https://twitter.com/jsheroes) pages.
+We post all the major updates on our [LinkedIn](https://www.linkedin.com/company/jsheroes-community), [Bluesky](https://bsky.app/profile/jsheroes.io) and [Instagram](https://www.instagram.com/jsheroes) pages.
 
-We encourage you to use the hashtag **#JSHeroes** to tweet and post about the conference, connect with other attendees, and share your photos when the big days arrive.
+We encourage you to use the hashtag **#JSHeroes** to post about the conference, connect with other attendees, and share your photos when the big days arrive.
 
 ## 🚌 Transportation
 
@@ -79,7 +80,7 @@ We have two dedicated rooms at the first floor of the hotel: a kids room and a f
 
 ## 🌱 Eco-friendly
 
-We are thrilled to announce that this year's event has been organized with sustainability in mind and with the desire to limit its environment impact.
+We are thrilled to announce that this year's event has been organized with sustainability in mind and with the desire to limit its environmental impact.
 
 We understand the importance of reducing our carbon footprint and promoting [eco-friendly initiatives](/eco-friendly) in the industry, which is why we have started to implement a few green initiatives to make this conference as sustainable as possible.
 

@@ -45,7 +45,7 @@ export const BENEFITS_INFO: Record<
   "10tickets": { display: "10 event tickets" },
   "5tickets": { display: "5 event tickets" },
   experience: {
-    display: "Company booth during at the venue",
+    display: "Company booth at the venue",
     explanation:
       "You will have a dedicated area in the hallway where you can interact with the attendees during the breaks.",
   },

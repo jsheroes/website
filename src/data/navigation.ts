@@ -12,7 +12,6 @@ export const primaryNav: NavLink[] = [
   { label: "Speakers", href: "/#speakers" },
   { label: "Agenda", href: "/#agenda" },
   { label: "Venue", href: "/#venue" },
-  { label: "Community", href: "/#community" },
   { label: "Sponsors", href: "/#sponsors" },
 ];
 
@@ -30,18 +29,15 @@ export const footerGroups: { title: string; links: NavLink[] }[] = [
       { label: "Speakers", href: "/#speakers" },
       { label: "Agenda", href: "/#agenda" },
       { label: "Venue", href: "/#venue" },
-      { label: "Team", href: "/#team" },
-      { label: "Handbook", href: "/handbook" },
+      { label: "Sponsors", href: "/#sponsors" },
+      { label: "Become a sponsor", href: "/sponsor" },
       { label: "Why attend", href: "/why-attend" },
     ],
   },
   {
     title: "Community",
     links: [
-      { label: "Sponsors", href: "/#sponsors" },
-      { label: "Become a sponsor", href: "/sponsor" },
       { label: "Meetups", href: "/meetups" },
-      { label: "Partners", href: "/partners" },
       { label: "Blog", href: "/blog" },
       { label: "Hall of fame", href: "/hall-of-fame" },
     ],
@@ -50,9 +46,7 @@ export const footerGroups: { title: string; links: NavLink[] }[] = [
     title: "Good to know",
     links: [
       { label: "Code of conduct", href: "/coc" },
-      { label: "Accessibility", href: "/accessibility" },
-      { label: "Sustainability", href: "/eco-friendly" },
-      { label: "Transparency", href: "/transparency" },
+      { label: "Transparency report", href: "/transparency" },
       { label: "Meet Ecma", href: "/meet-ecma" },
     ],
   },
