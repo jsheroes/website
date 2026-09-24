@@ -220,6 +220,42 @@
     color: var(--color-black-pearl);
   }
 
+  /* Three pixel steps cut into every corner, each --step wide (team and host
+     avatars, and their offset shadows). */
+  .stepped {
+    --s: var(--step, 8px);
+    clip-path: polygon(
+      0 calc(var(--s) * 3),
+      var(--s) calc(var(--s) * 3),
+      var(--s) calc(var(--s) * 2),
+      calc(var(--s) * 2) calc(var(--s) * 2),
+      calc(var(--s) * 2) var(--s),
+      calc(var(--s) * 3) var(--s),
+      calc(var(--s) * 3) 0,
+      calc(100% - var(--s) * 3) 0,
+      calc(100% - var(--s) * 3) var(--s),
+      calc(100% - var(--s) * 2) var(--s),
+      calc(100% - var(--s) * 2) calc(var(--s) * 2),
+      calc(100% - var(--s)) calc(var(--s) * 2),
+      calc(100% - var(--s)) calc(var(--s) * 3),
+      100% calc(var(--s) * 3),
+      100% calc(100% - var(--s) * 3),
+      calc(100% - var(--s)) calc(100% - var(--s) * 3),
+      calc(100% - var(--s)) calc(100% - var(--s) * 2),
+      calc(100% - var(--s) * 2) calc(100% - var(--s) * 2),
+      calc(100% - var(--s) * 2) calc(100% - var(--s)),
+      calc(100% - var(--s) * 3) calc(100% - var(--s)),
+      calc(100% - var(--s) * 3) 100%,
+      calc(var(--s) * 3) 100%,
+      calc(var(--s) * 3) calc(100% - var(--s)),
+      calc(var(--s) * 2) calc(100% - var(--s)),
+      calc(var(--s) * 2) calc(100% - var(--s) * 2),
+      var(--s) calc(100% - var(--s) * 2),
+      var(--s) calc(100% - var(--s) * 3),
+      0 calc(100% - var(--s) * 3)
+    );
+  }
+
   /* Article typography on top of @tailwindcss/typography. */
   .prose {
     --tw-prose-body: var(--color-soft);
