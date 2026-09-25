@@ -44,9 +44,15 @@ const slug =
   Astro.url.pathname.replace(/^\/|\/$/g, "").replace(/\//g, "-") || "home";
 const card = `/img/social/og/${slug}.png`;
 const ownCard = existsSync(`public${card}`);
+// Vercel preview builds serve cards from their own branch URL, so the cards
+// can be tested there before they exist on production.
+const assetOrigin =
+  process.env.VERCEL_ENV === "preview" && process.env.VERCEL_BRANCH_URL
+    ? `https://${process.env.VERCEL_BRANCH_URL}`
+    : event.siteUrl;
 const ogImage = new URL(
   image ?? (ownCard ? card : "/img/social/og/home.png"),
-  event.siteUrl,
+  assetOrigin,
 ).href;
 const ogImageAlt =
   ownCard && propsTitle
