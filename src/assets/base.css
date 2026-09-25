@@ -55,7 +55,6 @@
     line-height: 1.5;
     overscroll-behavior-y: none;
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
