@@ -1,0 +1,72 @@
+---
+/** A donut with its legend. The legend is the accessible version of the chart. */
+interface Slice {
+  label: string;
+  value: number;
+  color: string;
+}
+interface Props {
+  title: string;
+  slices: Slice[];
+}
+
+const { title, slices } = Astro.props;
+
+const total = slices.reduce((sum, slice) => sum + slice.value, 0);
+const gap = 0.6;
+let offset = 0;
+const arcs = slices.map((slice) => {
+  const share = (slice.value / total) * 100;
+  const arc = {
+    ...slice,
+    share,
+    dash: Math.max(share - gap, 0),
+    offset: -offset,
+  };
+  offset += share;
+  return arc;
+});
+const euro = (n: number) => `€${n.toLocaleString("en-US")}`;
+---
+
+<figure class="m-0 flex flex-col gap-6 sm:flex-row sm:items-center">
+  <svg
+    viewBox="0 0 42 42"
+    class="h-48 w-48 shrink-0 -rotate-90"
+    role="img"
+    aria-label={`${title}: ${slices.map((s) => `${s.label} ${euro(s.value)}`).join(", ")}`}
+  >
+    {arcs.map((arc) => (
+      <circle
+        cx="21"
+        cy="21"
+        r="15.915"
+        fill="none"
+        stroke={arc.color}
+        stroke-width="8"
+        stroke-dasharray={`${arc.dash} ${100 - arc.dash}`}
+        stroke-dashoffset={arc.offset}
+      />
+    ))}
+  </svg>
+  <figcaption class="flex-1">
+    <p class="m-0 text-2xl font-extrabold tracking-tight">
+      {title} <span class="text-soft">{euro(total)}</span>
+    </p>
+    <ul class="m-0 mt-4 flex list-none flex-col gap-2 p-0 text-[0.9375rem]">
+      {arcs.map((arc) => (
+        <li class="flex items-center gap-3">
+          <span
+            class="h-3 w-3 shrink-0"
+            style={`background:${arc.color}`}
+          ></span>
+          <span class="flex-1">{arc.label}</span>
+          <span class="tabular-nums">{euro(arc.value)}</span>
+          <span class="w-10 text-right text-muted-strong tabular-nums">
+            {Math.round(arc.share)}%
+          </span>
+        </li>
+      ))}
+    </ul>
+  </figcaption>
+</figure>

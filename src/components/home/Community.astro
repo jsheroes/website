@@ -1,0 +1,101 @@
+---
+import { Image } from "astro:assets";
+import Bear from "../ui/Bear.astro";
+import Eyebrow from "../ui/Eyebrow.astro";
+import Scribble from "../ui/Scribble.astro";
+import Section from "../ui/Section.astro";
+import { communities } from "../../data/communities";
+import { community as copy } from "../../data/home";
+import { partners } from "../../data/partners";
+
+const box =
+  "flex h-16 items-center justify-center border border-rule bg-white p-2.5 text-black-pearl no-underline transition duration-150 hover:-translate-y-0.5 hover:shadow-[3px_3px_0_var(--color-accent-pink)] motion-reduce:transition-none motion-reduce:hover:translate-y-0";
+---
+
+<Section
+  id="community"
+  data-section="community"
+  containerClass="pt-20 pb-20 md:pt-[6.25rem] md:pb-0"
+>
+  <div class="grid gap-x-16 gap-y-14 lg:grid-cols-[minmax(0,36rem)_minmax(0,31.25rem)] lg:justify-between">
+    <div class="flex flex-col">
+      <div data-reveal="up">
+        <Eyebrow>{copy.eyebrow}</Eyebrow>
+        <h2 class="h2-section mt-5">
+          {copy.titleLead}
+          <Scribble>{copy.titleHighlight}</Scribble>
+        </h2>
+        <p class="lede mt-11 max-w-[31rem] text-lg">{copy.intro}</p>
+      </div>
+
+      <div class="relative mt-10 hidden pb-12 lg:mt-auto lg:block lg:pl-[3.75rem] lg:pt-10">
+        <Bear who="female" width={210} bubble={copy.bubble} />
+      </div>
+    </div>
+
+    <div class="pt-2 lg:pt-3">
+      <h3 class="mb-4 text-[0.8125rem] font-bold tracking-[0.16em] uppercase">
+        {copy.communitiesTitle}
+      </h3>
+      <ul class="m-0 grid list-none grid-cols-2 gap-3 p-0 sm:grid-cols-3">
+        {communities.map((org, i) => (
+          <li data-reveal="up" style={`--d:${Math.min(i, 10) * 45}ms`}>
+            <a
+              href={org.url}
+              target="_blank"
+              rel="noreferrer noopener"
+              class={box}
+              style={
+                org.overrideBgColor
+                  ? `background-color:${org.overrideBgColor}`
+                  : undefined
+              }
+            >
+              <Image
+                src={org.logo}
+                alt={org.name}
+                width={200}
+                densities={[1, 2]}
+                class="h-full w-full object-contain"
+              />
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <h3 class="mt-11 mb-4 text-[0.8125rem] font-bold tracking-[0.16em] uppercase">
+        {copy.partnersTitle}
+      </h3>
+      <ul class="m-0 grid list-none grid-cols-2 gap-3 p-0 sm:grid-cols-3">
+        {partners.map((org, i) => (
+          <li data-reveal="up" style={`--d:${i * 60}ms`}>
+            <a
+              href={org.url}
+              target="_blank"
+              rel="noreferrer noopener"
+              class={box}
+              style={
+                org.overrideBgColor
+                  ? `background-color:${org.overrideBgColor}`
+                  : undefined
+              }
+            >
+              <Image
+                src={org.logo}
+                alt={org.name}
+                width={200}
+                densities={[1, 2]}
+                class="h-full w-full object-contain"
+              />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Tablets only: on phones the bear would add a screen of scrolling. -->
+  <div class="mt-12 hidden pb-14 md:block lg:hidden">
+    <Bear who="female" width={170} bubble={copy.bubble} />
+  </div>
+</Section>

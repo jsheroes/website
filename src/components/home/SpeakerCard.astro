@@ -1,0 +1,80 @@
+---
+import { Image } from "astro:assets";
+import PersonDialog from "../ui/PersonDialog.astro";
+import { personDialogId, type Person } from "../../utils/people";
+
+/**
+ * Speaker on a plate built from diamonds (rotated squares, so every corner is
+ * 90deg): the headshot sits behind the plate, which is a little wider than the
+ * card, with four peaks along its top edge, or a tinted initials tile stands in
+ * until the cutout exists. Both use the pale --tint from the parent list item.
+ * The plate holds the name and company or role. The headshot's bottom edge must
+ * stay behind the plate, and below the top valleys even when lifted on hover.
+ */
+interface Props {
+  person: Person;
+}
+
+const { person } = Astro.props;
+
+const [first, ...rest] = person.data.name.split(" ");
+const initials = (first[0] + (rest.at(-1)?.[0] ?? "")).toUpperCase();
+const affiliation = person.data.company ?? person.data.title;
+---
+
+<button
+  type="button"
+  data-person-dialog={personDialogId(person)}
+  aria-haspopup="dialog"
+  class="group flex w-full cursor-pointer flex-col items-center gap-5 border-0 bg-transparent p-0 text-center text-inherit"
+>
+  <span class="relative block w-full pb-[29%]">
+    {person.data.portrait ? (
+      <Image
+        src={person.data.portrait}
+        alt=""
+        width={260}
+        densities={[1, 2]}
+        class="relative mx-auto block h-auto w-[82%] transition-transform duration-300 ease-out group-hover:-translate-y-4 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0"
+      />
+    ) : (
+      <span
+        aria-hidden="true"
+        class="relative mx-auto flex aspect-[520/540] w-[82%] items-center justify-center bg-[var(--tint)] text-[2.5rem] font-extrabold min-[480px]:text-[4rem] tracking-tighter transition-transform duration-300 ease-out group-hover:-translate-y-4 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0"
+      >
+        {initials}
+      </span>
+    )}
+    <span class="plate absolute -inset-x-[4%] bottom-0 flex aspect-[2/1] items-center justify-center bg-[var(--plate)] text-sm leading-[1.1] font-extrabold tracking-tight min-[480px]:text-xl">
+      <!-- Two to a row on phones: smaller type, and long names and roles wrap.
+           The role sits where the plate narrows, so it gets the tighter width. -->
+      <span class="flex max-w-[76%] flex-col items-center gap-1 min-[480px]:max-w-none min-[480px]:gap-1.5">
+        <span class="text-balance min-[480px]:whitespace-nowrap">{person.data.name}</span>
+        <span class="max-w-[6.5rem] text-[0.5625rem] tracking-[0.1em] text-balance uppercase min-[480px]:max-w-none min-[480px]:text-xs min-[480px]:tracking-[0.16em] min-[480px]:whitespace-nowrap">
+          {affiliation}
+        </span>
+      </span>
+    </span>
+  </span>
+</button>
+
+<PersonDialog person={person} />
+
+<style>
+  .plate {
+    clip-path: polygon(
+      0 25%,
+      12.5% 0,
+      25% 25%,
+      37.5% 0,
+      50% 25%,
+      62.5% 0,
+      75% 25%,
+      87.5% 0,
+      100% 25%,
+      62.5% 100%,
+      50% 75%,
+      37.5% 100%
+    );
+  }
+</style>

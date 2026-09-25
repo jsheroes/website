@@ -9,26 +9,41 @@
     "preview": "astro preview",
     "astro": "astro",
     "sync": "astro sync",
-    "prettier": "prettier --write ."
+    "check": "astro check",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.10",
-    "astro": "^4.2.6",
-    "prettier": "^3.2.4",
-    "prettier-plugin-astro": "^0.13.0"
+    "@astrojs/check": "^0.9.10",
+    "@axe-core/playwright": "^4.13.0",
+    "@tailwindcss/typography": "^0.5.20",
+    "@types/mdast": "^4.0.4",
+    "astro": "^7.3.3",
+    "playwright": "^1.63.0",
+    "prettier": "^3.9.8",
+    "prettier-plugin-astro": "^1.0.1",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "typescript": "^6.0.3"
   },
   "dependencies": {
-    "@astro-community/astro-embed-youtube": "^0.4.4",
-    "@astrojs/mdx": "^2.1.0",
-    "@astrojs/tailwind": "^5.1.0",
-    "@fontsource/sora": "^5.2.8",
-    "@iconify-json/mdi": "^1.2.2",
-    "@vercel/analytics": "^1.6.1",
-    "astro-icon": "^1.1.5",
-    "astro-tooltips": "^0.6.2",
-    "chart.js": "^4.4.1",
-    "prettier-plugin-tailwindcss": "^0.5.11",
-    "sharp": "^0.34.3",
-    "tailwindcss": "^3.4.1"
+    "@astro-community/astro-embed-youtube": "^0.5.10",
+    "@astrojs/markdown-remark": "^7.3.1",
+    "@astrojs/mdx": "^8.0.1",
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/sora": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@vercel/analytics": "^2.0.1",
+    "sharp": "^0.35.4",
+    "tailwindcss": "^4.3.3",
+    "unist-util-visit": "^5.1.0"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "packageManager": "pnpm@10.34.5+sha512.a4ee05f2f73658255bd6a89859c065a45c28a57daefae2c893a168ee2b73168c37b91e83e57ea67654ad03f03031746430e8bce38e362e042605fb8abc80192e",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }

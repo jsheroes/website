@@ -1,34 +1,41 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Section from "../components/Section.astro";
-import { CURRENT_YEAR, SEO_TAGLINE } from "../data/constants";
+import { getEntry } from "astro:content";
 import AuthorCard from "../components/AuthorCard.astro";
-import { getEntryBySlug } from "astro:content";
+import Bear from "../components/ui/Bear.astro";
+import Section from "../components/ui/Section.astro";
+import PageLayout from "./PageLayout.astro";
 
+/** Layout for markdown pages, picked with `layout:` in the frontmatter. */
 const { frontmatter } = Astro.props;
 
-const author = await getEntryBySlug("organizers", frontmatter.author);
+const author = frontmatter.author
+  ? await getEntry("people", frontmatter.author)
+  : undefined;
 ---
 
-<BaseLayout
-  title={`JSHeroes ${CURRENT_YEAR} | ${frontmatter.title || SEO_TAGLINE}`}
+<PageLayout
+  title={frontmatter.title}
+  eyebrow={frontmatter.eyebrow}
+  intro={frontmatter.intro}
+  description={frontmatter.description}
+  highlight={frontmatter.highlight}
+  bears={frontmatter.heroBears}
 >
-  <img
-    class="block h-[400px] w-full object-cover"
-    src={frontmatter.banner || "/img/banners/default.svg"}
-    aria-hidden
-  />
-  <main id="main">
-    <Section variant="light" content="text" class="max-w-none">
-      {
-        author && (
-          <AuthorCard author={author} publishDate={frontmatter.published} />
-        )
-      }
-      <div class="prose">
-        <h1>{frontmatter.title}</h1>
-        <slot />
+  <Section containerClass="pt-6 pb-20 md:pt-10 md:pb-28">
+    {author && (
+      <AuthorCard author={author} publishDate={frontmatter.published} />
+    )}
+    <div class="prose max-w-[65ch]">
+      <slot />
+    </div>
+    {frontmatter.bear && (
+      <div class="mt-16">
+        <Bear
+          who={frontmatter.bear}
+          width={frontmatter.bear === "male" ? 200 : 170}
+          bubble={frontmatter.bubble}
+        />
       </div>
-    </Section>
-  </main>
-</BaseLayout>
+    )}
+  </Section>
+</PageLayout>

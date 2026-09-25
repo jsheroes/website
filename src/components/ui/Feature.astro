@@ -1,0 +1,27 @@
+---
+import Motif from "./Motif.astro";
+
+/** A titled paragraph with a coloured pixel marker; replaces the old emoji headings. */
+interface Props {
+  title: string;
+  tone?: "coral" | "blue" | "yellow" | "mint";
+}
+
+const { title, tone = "coral" } = Astro.props;
+const marker = {
+  coral: "pd_coral",
+  blue: "pd_blue",
+  yellow: "pd_yel",
+  mint: "pd_mint",
+}[tone];
+---
+
+<div data-reveal="up">
+  <h3 class="m-0 flex items-start gap-3 text-xl leading-tight font-bold tracking-tight">
+    <Motif name={marker} cell={4} class="mt-[0.1rem] shrink-0" />
+    {title}
+  </h3>
+  <div class="mt-3 pl-8 leading-relaxed text-soft [[data-tone=ink]_&]:text-white/80">
+    <slot />
+  </div>
+</div>

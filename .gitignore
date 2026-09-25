@@ -21,3 +21,10 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# Claude handoff scratch
+Claude outputs/
+
+# screenshots
+.shots/
+.venv-cutouts/

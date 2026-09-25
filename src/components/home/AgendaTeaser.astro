@@ -1,0 +1,74 @@
+---
+import Bear from "../ui/Bear.astro";
+import Eyebrow from "../ui/Eyebrow.astro";
+import Frieze from "../ui/Frieze.astro";
+import Section from "../ui/Section.astro";
+import { agenda as copy } from "../../data/home";
+
+/**
+ * Stands in for the agenda until the schedule is announced: the themes the
+ * talks will cover, with no time slots, mocked sessions or past lineups.
+ */
+const { teaser } = copy;
+---
+
+<Section
+  id="agenda"
+  data-section="agenda"
+  containerClass="pt-20 pb-24 md:pt-28 md:pb-28"
+>
+  <div slot="decor" class="absolute inset-x-0 bottom-0">
+    <Frieze kind="strip" cell={6} />
+  </div>
+
+  <div class="grid gap-x-20 gap-y-12 lg:grid-cols-[minmax(0,26rem)_1fr]">
+    <div class="flex flex-col">
+      <div data-reveal="up">
+        <Eyebrow>{copy.eyebrow}</Eyebrow>
+        <h2 class="h2-section mt-5 text-[clamp(2.5rem,1.4rem+3vw,3.375rem)]">
+          {copy.title}
+        </h2>
+        <p class="lede mt-7 text-[1.0625rem]">{copy.intro}</p>
+      </div>
+
+      <div class="mt-10 hidden lg:mt-auto lg:block lg:pt-12">
+        <Bear who="male" width={220} bubble={copy.bubble} />
+      </div>
+    </div>
+
+    <div data-reveal="up" style="--d:100ms">
+      <h3 class="m-0 mb-5 text-[0.8125rem] font-bold tracking-[0.16em] uppercase">
+        {teaser.themesTitle}
+      </h3>
+      <ol class="m-0 list-none border-b-[1.5px] border-rule p-0">
+        {teaser.themes.map((theme, i) => (
+          <li class="flex gap-7 border-t-[1.5px] border-rule py-6">
+            <span
+              aria-hidden="true"
+              class="w-10 shrink-0 pt-0.5 text-[0.9375rem] font-bold text-accent-pink tabular-nums"
+            >
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <div>
+              <p class="m-0 text-[1.1875rem] leading-tight font-bold md:text-[1.375rem]">
+                {theme.title}
+              </p>
+              <p class="m-0 mt-2 max-w-[34rem] text-[0.9375rem] text-soft">
+                {theme.text}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <p class="m-0 mt-6 text-sm font-bold tracking-[0.02em]">
+        {teaser.format}
+      </p>
+      <p class="m-0 mt-1.5 text-sm text-soft">{teaser.note}</p>
+    </div>
+  </div>
+
+  <!-- Tablets only: on phones the bear would add a screen of scrolling. -->
+  <div class="mt-12 hidden md:block lg:hidden">
+    <Bear who="male" width={180} bubble={copy.bubble} />
+  </div>
+</Section>

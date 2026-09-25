@@ -1,0 +1,50 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import PageHeader from "../components/ui/PageHeader.astro";
+
+/** Shell for interior pages: base layout, page header, then the page body in <main>. */
+interface Props {
+  title: string;
+  eyebrow?: string;
+  intro?: string;
+  description?: string;
+  image?: string;
+  type?: "website" | "article";
+  highlight?: string | false;
+  plain?: boolean;
+  bears?: boolean;
+}
+
+const {
+  title,
+  eyebrow,
+  intro,
+  description,
+  image,
+  type,
+  highlight,
+  plain,
+  bears,
+} = Astro.props;
+---
+
+<BaseLayout
+  title={title}
+  description={description ?? intro}
+  image={image}
+  type={type}
+>
+  <main id="main">
+    <PageHeader
+      title={title}
+      eyebrow={eyebrow}
+      intro={intro}
+      highlight={highlight}
+      plain={plain}
+      bears={bears}
+    >
+      <slot name="header" />
+    </PageHeader>
+    <slot />
+  </main>
+</BaseLayout>

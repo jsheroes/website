@@ -1,0 +1,107 @@
+---
+import { Image } from "astro:assets";
+import Button from "../ui/Button.astro";
+import Eyebrow from "../ui/Eyebrow.astro";
+import Motif from "../ui/Motif.astro";
+import Section from "../ui/Section.astro";
+import { sponsors as copy } from "../../data/home";
+import {
+  bronzeSponsors,
+  goldSponsors,
+  silverSponsors,
+} from "../../data/sponsors";
+
+const tiers = [
+  {
+    name: "Gold",
+    marker: "pd_yel",
+    sponsors: goldSponsors,
+    box: "h-24 w-full sm:w-[18.75rem]",
+  },
+  {
+    name: "Silver",
+    marker: "pd_gray",
+    sponsors: silverSponsors,
+    box: "h-[4.75rem] w-full sm:w-[26.25rem]",
+  },
+  {
+    name: "Bronze",
+    marker: "pd_coral",
+    sponsors: bronzeSponsors,
+    box: "h-16 w-[calc(50%-0.625rem)] sm:w-[13.75rem]",
+  },
+].filter((tier) => tier.sponsors.length > 0);
+---
+
+<Section
+  id="sponsors"
+  tone="band"
+  data-section="sponsors"
+  containerClass="pt-20 pb-20 md:pt-24 md:pb-24"
+>
+  <div
+    class="flex flex-col justify-between gap-8 md:flex-row md:items-end"
+    data-reveal="up"
+  >
+    <div>
+      <Eyebrow>{copy.eyebrow}</Eyebrow>
+      <h2 class="h2-section mt-4 max-w-[22ch] text-[clamp(1.875rem,1.2rem+2.2vw,3rem)]">
+        {copy.title}
+      </h2>
+    </div>
+    <Button
+      href="/sponsor"
+      class="shrink-0 self-start [--btn-shadow:var(--color-accent-orange)] md:self-auto"
+    >
+      {copy.cta}
+    </Button>
+  </div>
+
+  <div class="mt-10 md:mt-12">
+    {tiers.map((tier, i) => (
+      <section
+        data-reveal="up"
+        style={`--d:${i * 100}ms`}
+        class="grid gap-x-8 gap-y-4 border-t-[1.5px] border-rule py-6 lg:grid-cols-[11.25rem_1fr] lg:items-center"
+      >
+        <h3 class="m-0 flex items-center gap-3 text-xl font-bold">
+          <Motif name={tier.marker} cell={3} />
+          <span class="marker-label">{tier.name}</span>
+        </h3>
+        <ul class="m-0 flex list-none flex-wrap gap-5 p-0">
+          {tier.sponsors.map((sponsor) => (
+            <li class:list={["flex", tier.box]}>
+              <a
+                href={sponsor.url}
+                target="_blank"
+                rel="noreferrer noopener"
+                class="flex h-full w-full items-center justify-center border border-rule bg-white p-3 transition duration-150 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_var(--color-accent-orange)] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+              >
+                <Image
+                  src={sponsor.logo}
+                  alt={sponsor.name}
+                  width={tier.name === "Bronze" ? 200 : 280}
+                  densities={[1, 2]}
+                  class="h-full w-full object-contain"
+                />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+
+  <div
+    class="flex flex-col gap-4 border-t-[1.5px] border-rule pt-6 sm:flex-row sm:items-center sm:justify-between"
+    data-reveal="up"
+  >
+    <p class="m-0 max-w-[40rem] text-soft">{copy.transparency}</p>
+    <a
+      href="/transparency"
+      class="shrink-0 font-bold text-black-pearl underline decoration-accent-pink decoration-2 underline-offset-4 hover:decoration-black-pearl"
+    >
+      {copy.transparencyCta} →
+    </a>
+  </div>
+</Section>

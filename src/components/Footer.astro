@@ -1,50 +1,146 @@
+---
+import Bear from "./ui/Bear.astro";
+import Button from "./ui/Button.astro";
+import Motif from "./ui/Motif.astro";
+import { event } from "../data/event";
+import { cta, footerGroups, legalLinks } from "../data/navigation";
+---
+
 <footer
-  class="flex flex-col gap-2 p-4 pt-16 text-neutral-light bg-neutral-dark to-50% font-display"
+  data-section="footer"
+  data-tone="ink"
+  class="relative overflow-hidden bg-black-pearl text-white"
 >
-  <div class="w-full m-auto max-w-[1280px] flex justify-around">
-    <div class="flex flex-col gap-2 items-start">
-      <strong>Useful links</strong>
-      <a class="navlink" href="mailto:welcome@jsheroes.io">Contact us</a>
-      <a class="navlink" href="/coc">Code of conduct</a>
-      <a class="navlink" href="/privacy">Privacy statement</a>
-      <a class="navlink" href="/terms-and-conditions">Terms and Conditions</a>
-      <a class="navlink" href="/media">Media Kit</a>
+  <!-- Small, quiet accents above and below the bears, in the spirit of the venue section. -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute top-0 left-1/2 hidden h-full w-full max-w-[1160px] -translate-x-1/2 lg:block"
+  >
+    <div class="absolute top-24 right-16 opacity-80">
+      <Motif
+        name="dx_nblue"
+        cell={6}
+        motion="twinkle"
+        dur="5s"
+        reveal="pixel"
+      />
     </div>
-    <div class="flex flex-col gap-2 items-start">
-      <strong>Follow us</strong>
-      <a
-        class="navlink"
-        href="https://www.linkedin.com/company/jsheroes-community/"
-        target="_blank"
-        rel="noreferrer noopener">LinkedIn</a
-      >
-      <a
-        class="navlink"
-        href="https://bsky.app/profile/jsheroes.io"
-        target="_blank"
-        rel="noreferrer noopener">Bluesky</a
-      >
-      <a
-        class="navlink"
-        href="https://www.instagram.com/jsheroes"
-        target="_blank"
-        rel="noreferrer noopener">Instagram</a
-      >
-      <a
-        class="navlink"
-        href="https://www.youtube.com/jsheroes"
-        target="_blank"
-        rel="noreferrer noopener">YouTube</a
-      >
-      <a
-        class="navlink"
-        href="https://www.meetup.com/jsheroes/"
-        target="_blank"
-        rel="noreferrer noopener">Meetup</a
-      >
+    <div class="absolute top-36 right-[22rem] opacity-60">
+      <Motif
+        name="pd_nblue"
+        cell={4}
+        motion="twinkle"
+        dur="4.4s"
+        delay="-2s"
+        reveal="pixel"
+        revealDelay="200ms"
+      />
+    </div>
+
+    <div class="absolute right-[20rem] bottom-24 opacity-50">
+      <Motif
+        name="dr_night"
+        cell={4}
+        motion="spin-rev"
+        dur="60s"
+        reveal="pixel"
+        revealDelay="300ms"
+      />
+    </div>
+    <div class="absolute right-[13rem] bottom-10 opacity-70">
+      <Motif
+        name="pd_mint"
+        cell={4}
+        motion="twinkle"
+        dur="4.2s"
+        delay="-1s"
+        reveal="pixel"
+        revealDelay="400ms"
+      />
+    </div>
+    <div class="absolute right-24 bottom-24 opacity-60">
+      <Motif
+        name="pd_coral"
+        cell={3}
+        motion="twinkle"
+        dur="3.6s"
+        delay="-2.5s"
+        reveal="pixel"
+        revealDelay="500ms"
+      />
     </div>
   </div>
-  <p class="text-center">
-    © {new Date().getFullYear()} · JSHeroes. All rights reserved.
-  </p>
+
+  <div class="relative mx-auto grid w-full max-w-[1160px] gap-12 px-5 pt-16 pb-24 md:px-8 xl:px-0">
+    <div>
+      <h2
+        data-reveal="up"
+        class="h2-section max-w-[12ch] text-[clamp(2.75rem,2rem+3.5vw,4.75rem)] leading-none"
+      >
+        See you in Transylvania.
+      </h2>
+      <p
+        data-reveal="up"
+        style="--d:120ms"
+        class="mt-6 text-lg font-semibold text-accent-orange"
+      >
+        {event.dates} · {event.venue.city}
+      </p>
+      {cta && (
+        <div data-reveal="up" style="--d:220ms" class="mt-8">
+          <Button href={cta.href} variant="accent">
+            {cta.label}
+          </Button>
+        </div>
+      )}
+
+      <div class="mt-14 grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4 lg:max-w-[46rem]">
+        {footerGroups.map((group, i) => (
+          <nav
+            aria-label={group.title}
+            data-reveal="up"
+            style={`--d:${i * 90}ms`}
+          >
+            <h3 class="eyebrow mb-4 text-accent-orange">{group.title}</h3>
+            <ul class="m-0 flex list-none flex-col gap-2 p-0 text-[0.9375rem]">
+              {group.links.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="no-underline hover:underline hover:decoration-accent-orange hover:decoration-2 hover:underline-offset-4"
+                    {...(link.external && {
+                      target: "_blank",
+                      rel: "noreferrer noopener",
+                    })}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="relative mx-auto w-full max-w-[1160px] px-5 pb-8 md:px-8 xl:px-0">
+    <div class="flex flex-col gap-3 lg:max-w-[46rem] border-t border-white/20 pt-6 text-sm text-white/80 sm:flex-row sm:items-center sm:justify-between">
+      <p class="m-0">© {new Date().getFullYear()} · JSHeroes</p>
+      <ul class="m-0 flex list-none flex-wrap gap-x-5 gap-y-1 p-0">
+        {legalLinks.map((link) => (
+          <li>
+            <a href={link.href} class="no-underline hover:underline">
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <div class="pointer-events-none absolute right-[max(1rem,calc(50%-36rem))] top-1/2 z-10 hidden origin-right -translate-y-1/2 scale-[0.7] items-end lg:flex xl:scale-100">
+    <Bear who="male" width={250} />
+    <Bear who="female" width={214} class="-ml-8" />
+  </div>
 </footer>

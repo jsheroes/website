@@ -1,20 +1,6 @@
-import type { ChartData, Chart as ChartObject } from "chart.js";
-import { Chart } from "chart.js";
+/** Budget, income and expenses per edition, in euros. There was no 2020 edition. */
 
-Chart.defaults.font.size = 16;
-
-type Year = "2017" | "2018" | "2019" | "2022" | "2023" | "2024" | "2025";
-
-const colorPalette = [
-  "#0098ff",
-  "#ff6078",
-  "#ffcc67",
-  "#65d3bb",
-  "#6b7ba4",
-  "#ffb0a8",
-  "#bbab50",
-  "#35038b",
-];
+export type Year = "2017" | "2018" | "2019" | "2022" | "2023" | "2024" | "2025";
 
 const yearlyBudget: Record<Year, number> = {
   2017: 52030,
@@ -46,26 +32,14 @@ const yearlyExpenses: Record<Year, number> = {
   2025: 76700,
 };
 
-export const yearlyGrowth: ChartData = {
-  labels: Object.keys(yearlyBudget),
-  datasets: [
-    {
-      label: "Budget",
-      data: Object.values(yearlyBudget),
-      backgroundColor: "#ffcc67",
-    },
-    {
-      label: "Income",
-      data: Object.values(yearlyIncome),
-      backgroundColor: "#65d3bb",
-    },
-    {
-      label: "Expenses",
-      data: Object.values(yearlyExpenses),
-      backgroundColor: "#ff6078",
-    },
-  ],
-};
+export const years = Object.keys(yearlyBudget) as Year[];
+
+export const yearly = years.map((year) => ({
+  year,
+  budget: yearlyBudget[year],
+  income: yearlyIncome[year],
+  expenses: yearlyExpenses[year],
+}));
 
 type ExpensesBreakdown = {
   venue: number;
@@ -81,7 +55,7 @@ type IncomeBreakdown = {
   sponsors: number;
 };
 
-const expenses: Record<Year, ExpensesBreakdown> = {
+export const expensesBreakdown: Record<Year, ExpensesBreakdown> = {
   2025: {
     venue: 27300,
     speakers: 23600,
@@ -140,7 +114,7 @@ const expenses: Record<Year, ExpensesBreakdown> = {
   },
 };
 
-const income: Record<Year, IncomeBreakdown> = {
+export const incomeBreakdown: Record<Year, IncomeBreakdown> = {
   2025: {
     tickets: 57200,
     sponsors: 28000,
@@ -171,7 +145,7 @@ const income: Record<Year, IncomeBreakdown> = {
   },
 };
 
-const EXPENSES_LABELS: Record<keyof ExpensesBreakdown, string> = {
+export const EXPENSES_LABELS: Record<keyof ExpensesBreakdown, string> = {
   venue: "Venue",
   speakers: "Speakers' experience",
   merchandise: "Merchandise",
@@ -180,107 +154,20 @@ const EXPENSES_LABELS: Record<keyof ExpensesBreakdown, string> = {
   tools: "Tools and digital services",
 };
 
-const INCOME_LABELS: Record<keyof IncomeBreakdown, string> = {
+export const INCOME_LABELS: Record<keyof IncomeBreakdown, string> = {
   tickets: "Tickets",
   sponsors: "Sponsors",
 };
 
-export const getExpensesChartData = (year: Year = "2023"): ChartData => ({
-  labels: Object.keys(expenses[year]).map(
-    (k) => EXPENSES_LABELS[k as keyof ExpensesBreakdown],
-  ),
-  datasets: [
-    {
-      data: Object.values(expenses[year]),
-      backgroundColor: colorPalette,
-    },
-  ],
-});
+/** Newest first, for the year selector. */
+export const yearsForBreakdownSelect: Year[] = [...years].reverse();
 
-export const getIncomeChartData = (year: Year = "2023"): ChartData => ({
-  labels: Object.keys(income[year]).map(
-    (k) => INCOME_LABELS[k as keyof IncomeBreakdown],
-  ),
-  datasets: [
-    {
-      data: Object.values(income[year]),
-      backgroundColor: colorPalette,
-    },
-  ],
-});
-
-export const updateExpenses = (chart: ChartObject, year: Year) => {
-  chart.data.datasets[0].data = Object.values(expenses[year]);
-  chart.update();
-};
-
-export const updateIncome = (chart: ChartObject, year: Year) => {
-  chart.data.datasets[0].data = Object.values(income[year]);
-  chart.update();
-};
-
-export const yearsForBreakdownSelect: string[] = Object.keys(expenses).sort(
-  (a, b) => (Number(a) > Number(b) ? -1 : 1),
-);
-
-export const createBarChart = (node: HTMLCanvasElement) => {
-  return new Chart(node, {
-    type: "bar",
-    data: yearlyGrowth,
-    options: {
-      color: "#fff",
-      plugins: {
-        tooltip: {
-          callbacks: {
-            label: (context) => `€${context.parsed.y / 1000}k`,
-          },
-        },
-      },
-      scales: {
-        x: {
-          grid: {
-            color: "#606062",
-          },
-          ticks: {
-            color: "#fff",
-          },
-        },
-        y: {
-          grid: {
-            color: "#606062",
-          },
-          ticks: {
-            color: "#fff",
-            callback: (val) => `€${Number(val) / 1000}k`,
-          },
-        },
-      },
-    },
-  });
-};
-
-export const createDoughnutChart = (
-  node: HTMLCanvasElement,
-  data: ChartData,
-) => {
-  return new Chart(node, {
-    type: "doughnut",
-    data,
-    options: {
-      color: "#202022",
-      plugins: {
-        tooltip: {
-          callbacks: {
-            label: (context) => `€${Number(context.parsed) / 1000}k`,
-          },
-        },
-        legend: {
-          position: "bottom",
-          labels: {
-            usePointStyle: true,
-          },
-        },
-      },
-    },
-  });
-};
+/** Slice colours, in order. */
+export const palette = [
+  "var(--color-accent-blue)",
+  "var(--color-accent-pink)",
+  "var(--color-accent-orange)",
+  "var(--color-accent-green)",
+  "#6b7ba4",
+  "#ffb0a8",
+];

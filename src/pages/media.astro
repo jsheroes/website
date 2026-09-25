@@ -1,422 +1,325 @@
 ---
-import { YouTube } from "@astro-community/astro-embed-youtube"
+import { YouTube } from "@astro-community/astro-embed-youtube";
+import Button from "../components/ui/Button.astro";
+import Chip from "../components/ui/Chip.astro";
+import Eyebrow from "../components/ui/Eyebrow.astro";
+import Section from "../components/ui/Section.astro";
+import PageLayout from "../layouts/PageLayout.astro";
+import { event } from "../data/event";
 
-import BaseLayout from "../layouts/BaseLayout.astro"
-import Section from "../components/Section.astro"
+const nav = [
+  ["About JSHeroes", "#about"],
+  ["Logos & Brand", "#brand"],
+  ["Typeface", "#typeface"],
+  ["Image Gallery", "#image-gallery"],
+  ["Video Gallery", "#video-gallery"],
+];
+
+const primary = [
+  {
+    name: "Picton Blue",
+    hex: "#33A9F1",
+    rgb: "R51 G169 B241",
+    cmyk: "C0.79 M0.30 Y0 K0.05",
+    token: "var(--color-accent-blue)",
+    ink: false,
+  },
+  {
+    name: "Black Pearl",
+    hex: "#001C2B",
+    rgb: "R0 G28 B43",
+    cmyk: "C1 M0.35 Y0 K0.83",
+    token: "var(--color-black-pearl)",
+    ink: true,
+  },
+  {
+    name: "Pure White",
+    hex: "#FFFFFF",
+    rgb: "R255 G255 B255",
+    cmyk: "C0 M0 Y0 K0",
+    token: "#fff",
+    ink: false,
+  },
+];
+const secondary = [
+  {
+    name: "Grandis",
+    hex: "#FFCC67",
+    rgb: "R255 G204 B103",
+    cmyk: "C0 M0.2 Y0.60 K0",
+    token: "var(--color-accent-orange)",
+    ink: false,
+  },
+  {
+    name: "Downy",
+    hex: "#65D3BB",
+    rgb: "R101 G211 B187",
+    cmyk: "C0.52 M0 Y0.11 K0.17",
+    token: "var(--color-accent-green)",
+    ink: false,
+  },
+  {
+    name: "Froly",
+    hex: "#F46C7D",
+    rgb: "R244 G108 B125",
+    cmyk: "C0 M0.56 Y0.49 K0.04",
+    token: "var(--color-accent-pink)",
+    ink: false,
+  },
+];
+
+const gallery = [
+  {
+    year: 2024,
+    photo: "jsh-2024.png",
+    url: "https://drive.google.com/drive/u/0/folders/1-7M0b6rgvFBb4vAasUfa3RfVV_296AR4",
+  },
+  {
+    year: 2023,
+    photo: "jsh-2023.jpg",
+    url: "https://drive.google.com/drive/u/0/folders/1FyZhZreQWiCossqJOCOx1w0LJ2SZmWL-",
+  },
+  {
+    year: 2022,
+    photo: "jsh-2022.png",
+    url: "https://drive.google.com/drive/folders/1TxUO0ArQMC65mBfWPFrklNsren1I8nHl",
+  },
+  {
+    year: 2019,
+    photo: "jsh-2019.png",
+    url: "https://drive.google.com/drive/folders/1dA_XDg9kUhyjIlV3HuekPEE4NG2M7tju",
+  },
+  {
+    year: 2018,
+    photo: "jsh-2018.png",
+    url: "https://drive.google.com/drive/folders/1Bhl8xiXQkvh2SZyREfC0SeGsUUYgk7qf",
+  },
+];
+const videos = ["N6qr6L37sl8", "munltx48_xI", "jdr9eQGq97g", "Zx2moTy-yAg"];
+const weights = [
+  ["Regular", 400],
+  ["Medium", 500],
+  ["Bold", 700],
+  ["ExtraBold", 800],
+] as const;
 ---
 
-<BaseLayout title="Media Kit">
-  <img
-    class="block h-[400px] w-full object-cover"
-    src={"/img/banners/default.svg"}
-    aria-hidden
-  />
-  <main id="main" class="prose max-w-none prose-h2:mt-0">
-    <Section variant="light" content="list">
-      <h1>JSHeroes Media Kit</h1>
+<PageLayout
+  title="JSHeroes Media Kit"
+  eyebrow="Press"
+  highlight="Kit"
+  intro="Everything you need to write about JSHeroes: who we are, our logos, colors and mascots, and photos and videos from past editions."
+>
+  <Section id="about" containerClass="py-14 md:py-20">
+    <Eyebrow data-reveal="up">Who we are</Eyebrow>
+    <h2 class="h2-section mt-5 mb-8" data-reveal="up" style="--d:80ms">
+      About JSHeroes
+    </h2>
+    <div class="prose max-w-[65ch]">
+      <p>
+        <strong>JSHeroes</strong> is a yearly event organized by the local
+        JavaScript community in Cluj, Romania. Our journey started in 2017 and
+        we had 8 successful editions across the years. The JSHeroes brand has
+        grown to be one of the most recognizable conference brands in the JS/web
+        development community.
+      </p>
+      <p>
+        <strong>JSHeroes</strong> is a non-profit community-organized
+        conference. Our goal is to bring together <strong>JS</strong> and{" "}
+        <strong>Web/Frontend</strong> development enthusiasts from all over the
+        world for a <strong>two-day</strong> event with: great talks, amazing
+        networking and tons of fun. You bring your ideas and openness to learn
+        and share, we provide the relaxed atmosphere and the good vibes.
+      </p>
+      <p>
+        We believe that the <strong>community</strong> and the{" "}
+        <strong>open-source</strong> models are well suited for our core values:
+        learning, teaching and knowledge sharing. Our mission is to inspire
+        other communities with the concept of open-source events.
+      </p>
+      <p>
+        We are publishing all data about this conference, in{" "}
+        <a href="/transparency">full transparency</a>. We are also available at
+        any time for inquiries and we are really looking forward to sharing our
+        knowledge about organizing international events. This way, whenever a
+        community wants to start something similar, they can build on our
+        knowledge.
+      </p>
+    </div>
+  </Section>
 
-      <div class="mb-8">
-        <p class="font-bold">On this page you will find:</p>
-        <ul class="not-prose">
-          <li>
-            <a href="#about" class="not-prose">About JSHeroes</a>
-          </li>
-          <li>
-            <a href="#brand" class="not-prose">Logos & Brand</a>
-          </li>
-          <li>
-            <a href="#typeface" class="not-prose">Typeface</a>
-          </li>
-          <li>
-            <a href="#image-gallery" class="not-prose">Image Gallery</a>
-          </li>
-          <li>
-            <a href="#video-gallery" class="not-prose">Video Gallery</a>
-          </li>
+  <Section id="brand" tone="band" containerClass="py-14 md:py-20">
+    <Eyebrow data-reveal="up">Identity</Eyebrow>
+    <h2 class="h2-section mt-5 mb-8" data-reveal="up" style="--d:80ms">
+      Logos & Brand
+    </h2>
+
+    <div class="prose max-w-[65ch]">
+      <p>
+        When using the <strong>JSHeroes brand</strong>:
+      </p>
+      <ul>
+        <li>Please don't edit or recolor the logo.</li>
+        <li>
+          The JSHeroes logo likes a little elbow room, so don't place copy or
+          graphic elements in close proximity.
+        </li>
+        <li>
+          Please don't use our name or logo in ways that may be misleading or
+          suggest endorsement by JSHeroes of your product or service.
+        </li>
+        <li>
+          JSHeroes reserves the right to terminate or modify any use of the
+          logo.
+        </li>
+      </ul>
+    </div>
+
+    <div class="mt-10 grid gap-6 sm:grid-cols-2">
+      <figure class="m-0" data-reveal="up">
+        <div class="flex h-40 items-center justify-center border-2 border-black-pearl bg-white p-8">
+          <img
+            src="/img/logo-light.svg"
+            alt="JSHeroes logo for white backgrounds"
+            class="max-h-full w-auto"
+          />
+        </div>
+        <figcaption class="mt-3 text-sm text-soft">
+          On white backgrounds, use the blue-black JSHeroes logo which is our
+          primary brand mark.
+        </figcaption>
+      </figure>
+      <figure class="m-0" data-reveal="up" style="--d:90ms">
+        <div class="flex h-40 items-center justify-center border-2 border-black-pearl bg-black-pearl p-8">
+          <img
+            src="/img/logo-dark.svg"
+            alt="JSHeroes logo for dark backgrounds"
+            class="max-h-full w-auto"
+          />
+        </div>
+        <figcaption class="mt-3 text-sm text-soft">
+          On colored or photo backgrounds, use the blue-white JSHeroes logo.
+        </figcaption>
+      </figure>
+    </div>
+    <div class="mt-8">
+      <Button
+        href="https://drive.google.com/drive/folders/1sofbnmpPLksST8QNsiWuXIbKJ3KO-w06"
+        class="[--btn-shadow:var(--color-accent-orange)]"
+      >
+        Download all logos
+      </Button>
+    </div>
+
+    <h3 class="mt-20 mb-4 text-3xl font-extrabold tracking-tight">Ecma</h3>
+    <p class="m-0 max-w-[65ch] text-soft">
+      Mr. and Ms. Ecma the bears are the brand mascots of JSHeroes.
+    </p>
+    <ul class="m-0 mt-8 flex list-none flex-wrap items-end gap-x-12 gap-y-8 p-0">
+      <li>
+        <img
+          src="/img/props/hello-bear.svg"
+          alt="Ecma, JSHeroes mascot wearing a space suit and waving"
+          class="h-56 w-auto"
+          loading="lazy"
+        />
+      </li>
+      <li>
+        <img
+          src="/img/props/traditional-bear.svg"
+          alt="Ecma, JSHeroes Mr. bear mascot"
+          class="h-56 w-auto"
+          loading="lazy"
+        />
+      </li>
+      <li>
+        <img
+          src="/img/props/ms-bear.svg"
+          alt="Ecma, JSHeroes Mrs. bear mascot"
+          class="h-56 w-auto"
+          loading="lazy"
+        />
+      </li>
+    </ul>
+    <div class="mt-8">
+      <Button
+        href="https://drive.google.com/drive/folders/10h4YfifW5DJRn7Cc5nnOsDa78E359C-m"
+        class="[--btn-shadow:var(--color-accent-orange)]"
+      >
+        Download Ecma visuals
+      </Button>
+    </div>
+
+    <h3 class="mt-20 mb-4 text-3xl font-extrabold tracking-tight">
+      Brand colors
+    </h3>
+    <div class="prose max-w-[65ch]">
+      <p>
+        Our Primary Brand Colors include all the following colors found in our
+        logo. Similarly, the Secondary Colors, although not included in our logo
+        support and go very nicely with the Primary Brand Colors.
+      </p>
+      <p>
+        We request you to use the exact colors so as to maintain consistency in
+        brand representation.
+      </p>
+      <p>
+        <strong>Colors:</strong> RGB for web, CMYK for print
+      </p>
+    </div>
+
+    {[
+      ["Primary colors", primary],
+      ["Secondary colors", secondary],
+    ].map(([title, colors]) => (
+      <>
+        <h4 class="mt-10 mb-4 text-[0.8125rem] font-bold tracking-[0.16em] uppercase">
+          {title}
+        </h4>
+        <ul class="m-0 grid list-none grid-cols-1 gap-6 p-0 sm:grid-cols-3">
+          {(colors as typeof primary).map((color) => (
+            <li data-reveal="up">
+              <div
+                class="h-32 border-2 border-black-pearl"
+                style={`background:${color.token}`}
+              ></div>
+              <dl class="m-0 mt-3 text-sm">
+                <dt class="font-bold">{color.name}</dt>
+                <dd class="m-0 text-soft">{color.hex}</dd>
+                <dd class="m-0 text-soft">{color.rgb}</dd>
+                <dd class="m-0 text-soft">{color.cmyk}</dd>
+              </dl>
+            </li>
+          ))}
         </ul>
-      </div>
+      </>
+    ))}
+  </Section>
 
-      <div id="about">
-        <h2>About JSHeroes</h2>
-        <p>
-          <strong>JSHeroes</strong> is a yearly event organised by the local JavaScript
-          community in Cluj, Romania. Our journey started in 2017 with a plan: for
-          JSHeroes to be the biggest tech conference in Romania, dedicated solely
-          to <strong>JavaScript</strong>. This year, 2025 (our 7th edition) we
-          will get our engine going with <strong>18</strong> international JS experts
-          and we have chosen a venue that can accommodate up to <strong
-            >600 attendees</strong
-          >. Join us on May the <strong>29th and 30th, 2025</strong>, in
-          Cluj-Napoca, Romania.
-        </p>
-        <p>
-          <strong>JSHeroes</strong> is a non-profit community-organised conference.
-          Our goal is to bring together <strong>JS</strong> and <strong
-            >Web/Frontend</strong
-          > development enthusiasts from all over the world for a <strong
-            >two-day</strong
-          > event with: great talks, amazing networking and tons of fun. You bring
-          your ideas and desire to learn, we provide the relaxed atmosphere and the
-          good vibes.
-        </p>
-        <p>
-          We believe that the <strong>community</strong> and the <strong
-            >open-source</strong
-          > models are well suited for our core values: learning, teaching and knowledge
-          sharing. Our mission is to inspire other communities with the concept of
-          open-source events.
-        </p>
-        <p>
-          We are publishing all data about this conference, in <a
-            class="not-prose"
-            href="/transparency">full transparency</a
-          >. We are also available at any time for inquires and we are really
-          looking forward to sharing our knowledge about organising
-          international events. This way, whenever a community wants to start
-          something similar, they can build on our knowledge.
-        </p>
-      </div>
-    </Section>
-    <div class="divider w-11/12"></div>
-    <Section variant="light" content="list" id="brand">
-      <div>
-        <h2>Logos & Brand</h2>
-
-        <div>
-          <p>When using the <strong>JSHeroes brand</strong>:</p>
-          <ul>
-            <li>Please don't edit or recolor the logo.</li>
-            <li>
-              The JSHeroes logo likes a little elbow room, so don't place copy
-              or graphic element in close proximity.
-            </li>
-            <li>
-              Please don't use our name or logo in ways that may be misleading
-              or suggest endorsement by JSHeroes of your product or service.
-            </li>
-            <li>
-              JSHeroes reserves the right to terminate or modify any use of the
-              logo.
-            </li>
-          </ul>
-        </div>
-
-        <div
-          class="flex flex-col items-center gap-8 pb-8 md:flex-row md:items-start md:gap-12"
-        >
-          <div class="max-w-40">
-            <img
-              class="bottom-1 border bg-neutral-light p-4 drop-shadow"
-              alt="JSHeroes"
-              src="img/logo-light.svg"
-            />
-            <p class="text-sm">
-              On white backgrounds, use the blue-black JSHeroes logo which is
-              our primary brand mark.
-            </p>
-          </div>
-          <div class="max-w-40">
-            <img
-              class="bg-neutral-dark p-4"
-              alt="JSHeroes"
-              src="img/logo-dark.svg"
-            />
-            <p class="text-sm">
-              On coloured or photo backgrounds, use the blue-white JSHeroes
-              logo.
-            </p>
-          </div>
-        </div>
-
-        <div class="flex justify-center md:justify-normal">
-          <div>
-            <div class="h-28 w-28 rounded-full bg-dodger-blue md:h-40 md:w-40">
-            </div>
-            <div class="flex flex-col items-center justify-center text-xs">
-              <span><strong>Dodger Blue</strong></span>
-              <span>#0098FF</span>
-              <span>R0 G152 B255</span>
-              <span>C1 M0.40 Y0 K0</span>
-            </div>
-          </div>
-          <div class="relative left-[-1rem]">
-            <div class="h-28 w-28 rounded-full bg-black-pearl md:h-40 md:w-40">
-            </div>
-            <div class="flex flex-col items-center justify-center text-xs">
-              <span><strong>Black Pearl</strong></span>
-              <span>#001C2B</span>
-              <span>R0 G28 B43</span>
-              <span>C1 M0.35 Y0 K0.83</span>
-            </div>
-          </div>
-        </div>
-
-        <p>
-          <strong>Colors:</strong> RGB for web, CMYK for print
-        </p>
-
-        <div class="flex py-4">
-          <a
-            class="cta-button"
-            target="_blank"
-            href="https://drive.google.com/drive/folders/1sofbnmpPLksST8QNsiWuXIbKJ3KO-w06"
-            >Download all logos</a
+  <Section id="typeface" containerClass="py-14 md:py-20">
+    <Eyebrow data-reveal="up">Type</Eyebrow>
+    <h2 class="h2-section mt-5 mb-8" data-reveal="up" style="--d:80ms">
+      Typeface
+    </h2>
+    <p class="m-0 max-w-[65ch] text-soft">
+      The font we use on the website and print materials is called{" "}
+      <strong class="text-black-pearl">Sora</strong>. Regular, Medium, Bold and
+      ExtraBold are used.
+    </p>
+    <ul class="m-0 mt-10 grid list-none grid-cols-1 gap-x-10 gap-y-6 p-0 sm:grid-cols-2">
+      {weights.map(([name, weight]) => (
+        <li class="border-t-[1.5px] border-rule pt-4">
+          <p
+            class="m-0 text-5xl leading-none tracking-tight"
+            style={`font-weight:${weight}`}
           >
-        </div>
-      </div>
-
-      <div>
-        <h3>Ecma</h3>
-        <p>Mr. and Ms. Ecma the bears are the brand mascots of JSHeroes.</p>
-
-        <div
-          class="flex flex-col items-center gap-4 pb-4 md:flex-row md:gap-12"
-        >
-          <img
-            alt="Ecma, JSHeroes mascot wearing a space suit and waving"
-            src="img/props/hello-bear.svg"
-          />
-          <img
-            alt="Ecma, JSHeroes Mr. bear mascot"
-            src="img/props/traditional-bear.svg"
-          />
-          <img
-            alt="Ecma, JSHeroes Mrs. bear mascot"
-            src="img/props/ms-bear.svg"
-          />
-        </div>
-
-        <div class="flex py-4">
-          <a
-            class="cta-button"
-            target="_blank"
-            href="https://drive.google.com/drive/folders/10h4YfifW5DJRn7Cc5nnOsDa78E359C-m"
-            >Download Ecma visuals</a
-          >
-        </div>
-      </div>
-
-      <div>
-        <h3>Brand colors</h3>
-        <p>
-          Our Primary Brand Colors include all the following colors found in our
-          logo. Similarly, the Secondary Colors, although not included in our
-          logo support and go very nicely with the Primary Brand Colors.
-        </p>
-        <p>
-          We request you to use the exact colors so as to maintain consistency
-          in brand representation.
-        </p>
-
-        <div class="flex flex-col-reverse items-center py-4 md:flex-row">
-          <div
-            class="flex flex-col items-center justify-center gap-4 md:flex-row md:gap-0"
-          >
-            <div>
-              <div
-                class="h-36 w-36 rounded-full bg-dodger-blue md:h-40 md:w-40"
-              >
-              </div>
-              <div class="flex flex-col items-center justify-center text-xs">
-                <span><strong>Dodger Blue</strong></span>
-                <span>#0098FF</span>
-                <span>R0 G152 B255</span>
-                <span>C1 M0.40 Y0 K0</span>
-              </div>
-            </div>
-
-            <div class="relative left-0 md:left-[-1rem]">
-              <div
-                class="h-36 w-36 rounded-full bg-black-pearl md:h-40 md:w-40"
-              >
-              </div>
-              <div class="flex flex-col items-center justify-center text-xs">
-                <span><strong>Black Pearl</strong></span>
-                <span>#001C2B</span>
-                <span>R0 G28 B43</span>
-                <span>C1 M0.35 Y0 K0.83</span>
-              </div>
-            </div>
-
-            <div class="relative left-0 md:left-[-2rem]">
-              <div
-                class="border-1 h-36 w-36 rounded-full border bg-neutral-light md:h-40 md:w-40"
-              >
-              </div>
-              <div class="flex flex-col items-center justify-center text-xs">
-                <span><strong>Pure White</strong></span>
-                <span>#FFFFFF</span>
-                <span>R255 G255 B255</span>
-                <span>C0 M0 Y0 K0</span>
-              </div>
-            </div>
-          </div>
-
-          <h3>Primary Colors</h3>
-        </div>
-
-        <div class="flex flex-col-reverse items-center py-4 md:flex-row">
-          <div
-            class="flex flex-col items-center justify-center gap-4 md:flex-row md:gap-0"
-          >
-            <div>
-              <div
-                class="h-36 w-36 rounded-full bg-accent-orange md:h-40 md:w-40"
-              >
-              </div>
-              <div class="flex flex-col items-center justify-center text-xs">
-                <span><strong>Grandis</strong></span>
-                <span>#FFCC67</span>
-                <span>R255 G204 B103</span>
-                <span>C0 M0.2 Y0.60 K0</span>
-              </div>
-            </div>
-
-            <div class="relative left-0 md:left-[-1rem]">
-              <div
-                class="h-36 w-36 rounded-full bg-accent-green md:h-40 md:w-40"
-              >
-              </div>
-              <div class="flex flex-col items-center justify-center text-xs">
-                <span><strong>Downy</strong></span>
-                <span>#65D3BB</span>
-                <span>R101 G211 B187</span>
-                <span>C0.52 M0 Y0.11 K0.17</span>
-              </div>
-            </div>
-
-            <div class="relative left-0 md:left-[-2rem]">
-              <div
-                class="h-36 w-36 rounded-full bg-accent-pink md:h-40 md:w-40"
-              >
-              </div>
-              <div class="flex flex-col items-center justify-center text-xs">
-                <span><strong>Wild Watermelon</strong></span>
-                <span>#FF6078</span>
-                <span>R255 G96 B120</span>
-                <span>C0 M0.62 Y0.53 K0</span>
-              </div>
-            </div>
-          </div>
-
-          <h3>Secondary Colors</h3>
-        </div>
-      </div>
-    </Section>
-    <div class="divider w-11/12"></div>
-
-    <Section id="typeface" variant="light" content="list">
-      <h2>Typeface</h2>
-      <p>
-        The font we use on the website and print materials is called <strong
-          >'Sora'</strong
-        >. Black, Bold, Medium and Regular are used.
-      </p>
-    </Section>
-    <div class="divider w-11/12"></div>
-
-    <Section id="image-gallery" variant="light" content="list">
-      <div>
-        <h2>Image Gallery</h2>
-
-        <p>The Gallery contains images from our latest 5 editions.</p>
-        <p>
-          Images are available for editorial purposes only, credits must be
-          includes. Download is not allowed for commercial use.
-        </p>
-
-        <div class="flex flex-wrap justify-center gap-6">
-          <div>
-            <a
-              target="_blank"
-              href="https://drive.google.com/drive/u/0/folders/1-7M0b6rgvFBb4vAasUfa3RfVV_296AR4"
-            >
-              <img
-                src="img/gallery/jsh-2024.png"
-                alt="JSHeroes 2024"
-                class="h-[246px] w-[384px]"
-              />
-            </a>
-            <strong>JSHeroes 2024</strong>
-          </div>
-          <div>
-            <a
-              target="_blank"
-              href="https://drive.google.com/drive/u/0/folders/1FyZhZreQWiCossqJOCOx1w0LJ2SZmWL-"
-            >
-              <img
-                src="img/gallery/jsh-2023.jpg"
-                alt="JSHeroes 2023"
-                class="h-[246px] w-[384px]"
-              />
-            </a>
-            <strong>JSHeroes 2023</strong>
-          </div>
-
-          <div>
-            <a
-              target="_blank"
-              href="https://drive.google.com/drive/folders/1TxUO0ArQMC65mBfWPFrklNsren1I8nHl"
-            >
-              <img
-                src="img/gallery/jsh-2022.png"
-                alt="JSHeroes 2022"
-                class="h-[246px] w-[384px]"
-              />
-            </a>
-            <strong>JSHeroes 2022</strong>
-          </div>
-
-          <div>
-            <a
-              target="_blank"
-              href="https://drive.google.com/drive/folders/1dA_XDg9kUhyjIlV3HuekPEE4NG2M7tju"
-            >
-              <img
-                src="img/gallery/jsh-2019.png"
-                alt="JSHeroes 2019"
-                class="h-[246px] w-[384px]"
-              />
-            </a>
-            <strong>JSHeroes 2019</strong>
-          </div>
-
-          <div>
-            <a
-              target="_blank"
-              href="https://drive.google.com/drive/folders/1Bhl8xiXQkvh2SZyREfC0SeGsUUYgk7qf"
-            >
-              <img
-                src="img/gallery/jsh-2018.png"
-                alt="JSHeroes 2018"
-                class="h-[246px] w-[384px]"
-              />
-            </a>
-            <strong>JSHeroes 2018</strong>
-          </div>
-        </div>
-      </div>
-    </Section>
-
-    <div class="divider w-11/12"></div>
-
-    <Section id="video-gallery" variant="light" content="list">
-      <h2>Video Gallery</h2>
-
-      <p>
-        When using the videos, please mention the source JSHeroes. Download is
-        not allowed for commercial use.
-      </p>
-
-      <div class="flex flex-wrap justify-center gap-6">
-        <YouTube id="N6qr6L37sl8" class="w-96" />
-
-        <YouTube id="munltx48_xI" class="w-96" />
-
-        <YouTube id="jdr9eQGq97g" class="w-96" />
-
-        <YouTube id="Zx2moTy-yAg" class="w-96" />
-      </div>
-    </Section>
-  </main>
-</BaseLayout>
+            Aa
+          </p>
+          <p class="m-0 mt-2 text-sm text-soft">
+            {name} · {weight}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </Section>
+</PageLayout>

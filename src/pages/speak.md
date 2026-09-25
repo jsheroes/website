@@ -1,7 +1,8 @@
 ---
 layout: "../layouts/MarkdownLayout.astro"
-banner: "/img/banners/speak2.jpg"
 title: "Speak at JSHeroes"
+eyebrow: "Speakers"
+description: "What we look for in a JSHeroes talk, how speakers are selected, and what we offer the people who take the stage."
 ---
 
 The <strong>call for papers</strong> for the 2026 event is <strong>closed</strong>.
@@ -13,11 +14,11 @@ We have received <strong>217 proposals</strong> until the end of December 2025. 
 Before sending a proposal, it might be worth reading [this article](/blog/how-to-write-a-good-talk-proposal) about what makes a CFP proposal good.
 
 <br/>
-<a href="https://sessionize.com/jsheroes-2026" target="_blank" rel="noreferrer noopener" class="cta-button">Send Proposal</a> -->
+<a href="https://sessionize.com/jsheroes-2026" target="_blank" rel="noreferrer noopener" class="btn">Send Proposal</a> -->
 
 ## ✍ What we are looking for
 
-JSHeroes is a **single track** 2-day conference dedicated to the JS and Web ecosystems. We expect each talk to be around **30 minutes**. If you require more time, please mention this in the application. We are looking for a multitude of topics and perspectives, but most of all we value:
+JSHeroes is a **single-track**, two-day conference dedicated to the JS and Web ecosystems. We expect each talk to be around **30 minutes**. If you require more time, please mention this in the application. We are looking for a multitude of topics and perspectives, but most of all we value:
 
 - Original topics, presented for the first time.
 - Practical ideas that attendees can apply at work the next day.
@@ -25,7 +26,7 @@ JSHeroes is a **single track** 2-day conference dedicated to the JS and Web ecos
 - Fresh perspectives on the development ecosystem.
 - The human side of software engineering.
 
-For 2026 our theme is titled "Looking into the future". We will explore the latest trends in engineering and architecture and the tools and frameworks that will shape our work in the years to come. We're looking for talks on the technologies and practices that can help us navigate through constant changes and growing complexities. We're also looking to start the conversation on the skills and competencies that are essential for our professional growth.
+For {{event.year}} our theme is titled "Looking into the future". We will explore the latest trends in engineering and architecture and the tools and frameworks that will shape our work in the years to come. We're looking for talks on the technologies and practices that can help us navigate through constant changes and growing complexities. We're also looking to start the conversation on the skills and competencies that are essential for our professional growth.
 
 Each year our theme is broad and not all talks will be connected with it, so consider it more like a line connecting different ideas and topics, rather than a restriction.
 
@@ -33,9 +34,9 @@ Each year our theme is broad and not all talks will be connected with it, so con
 
 You can read more about [our CFP process](/blog/call-for-papers-2023-insights) to have a better idea about how we select our speakers.
 
-Each year we receive hundreds of proposals from which we can unfortunately only pick a handful. With this in mind, we created a team of world wide subject matter experts that will go through the proposals and will decide what to include on the final agenda. This is a rough estimation of our schedule and process:
+Each year we receive hundreds of proposals from which we can unfortunately only pick a handful. With this in mind, we created a team of worldwide subject matter experts that will go through the proposals and will decide what to include on the final agenda. This is a rough estimation of our schedule and process:
 
-- Each member of the commitee will go through the **anonymized** proposals and rate them.
+- Each member of the committee will go through the **anonymized** proposals and rate them.
 - All proposals that are above a threshold qualify to the **second stage**.
 - In the second stage we de-anonymize the remaining proposals and start **head-to-head comparisons** on the similar topics.
 - One by one, we will fill in the slots in our agenda, based on the topics we feel can bring the **most value** to our audience.
@@ -46,7 +47,7 @@ Each year we receive hundreds of proposals from which we can unfortunately only 
 If your proposal gets selected, we will make sure you have the best possible experience for your entire stay in Cluj. Here are some of the benefits we offer to all our speakers:
 
 - Full payment for your **travel** to and from the event
-- **4 nights** at a 5 star hotel, right on top of the venue
+- **4 nights** at a 5-star hotel, right on top of the venue
 - Free entrance at the conference for both days
 - **Extra ticket** + double room option, in case somebody is joining you
 - **Speakers trip** on the day after the event
@@ -59,4 +60,4 @@ We are committed to fulfilling our mission as an open source event. We are all c
 Good luck!
 
 <!-- <br/>
-<a href="https://sessionize.com/jsheroes-2026" target="_blank" rel="noreferrer noopener" class="cta-button">Send Proposal</a> -->
+<a href="https://sessionize.com/jsheroes-2026" target="_blank" rel="noreferrer noopener" class="btn">Send Proposal</a> -->

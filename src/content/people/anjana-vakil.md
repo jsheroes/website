@@ -1,0 +1,13 @@
+---
+name: "Anjana Vakil"
+role: "speaker"
+title: "Educator"
+tag: "Career Development"
+photo: "../../images/people/anjana-vakil.jpg"
+portrait: "../../images/people/anjana-vakil-cutout.png"
+links:
+  website: "https://anjana.dev"
+order: 7
+---
+
+A chronically curious teacher-turned-developer, Anjana is an independent software engineer & educator, an alumna of the Recurse Center & Outreachy, and an avid karaoke enthusiast.

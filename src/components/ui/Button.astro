@@ -1,0 +1,52 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+/**
+ * Primary is ink with a blue hard shadow; `sm` is the nav size with a coral
+ * shadow; `accent` is the yellow variant for ink sections; `ghost` is the
+ * outlined secondary. Renders a link when given an href, a button otherwise.
+ */
+type Props = (HTMLAttributes<"a"> | HTMLAttributes<"button">) & {
+  variant?: "primary" | "accent" | "ghost";
+  size?: "md" | "sm";
+  href?: string;
+};
+
+const {
+  variant = "primary",
+  size = "md",
+  href,
+  class: className,
+  ...rest
+} = Astro.props as Props & { class?: string };
+
+const classes = [
+  "btn",
+  {
+    "btn-sm": size === "sm",
+    "btn-accent": variant === "accent",
+    "btn-ghost": variant === "ghost",
+  },
+  className,
+];
+const external = href?.startsWith("http");
+---
+
+{href ? (
+  <a
+    href={href}
+    class:list={classes}
+    {...(external && { target: "_blank", rel: "noreferrer noopener" })}
+    {...(rest as HTMLAttributes<"a">)}
+  >
+    <slot />
+  </a>
+) : (
+  <button
+    type="button"
+    class:list={classes}
+    {...(rest as HTMLAttributes<"button">)}
+  >
+    <slot />
+  </button>
+)}

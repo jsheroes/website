@@ -14,18 +14,18 @@ export const getStaticPaths = (async ({ paginate }) => {
           new Date(a.data.published).getTime()
         );
       });
-    }
+    },
   )) as CollectionEntry<"blog">[];
 
   return tags.flatMap((entry) => {
     const tagPosts = posts.filter((post) =>
-      post.data.tags.some(({ slug }) => slug === entry.slug)
+      post.data.tags.some(({ id }) => id === entry.id),
     );
 
     // @TODO: if we have more than 100 posts, we need to paginate
     return paginate(tagPosts, {
       pageSize: 100,
-      params: { slug: entry.slug },
+      params: { slug: entry.id },
       props: { entry },
     });
   });
@@ -34,4 +34,9 @@ export const getStaticPaths = (async ({ paginate }) => {
 const { page, entry } = Astro.props;
 ---
 
-<BlogListLayout title={entry.data.description} page={page} />
+<BlogListLayout
+  title={entry.data.name}
+  intro={entry.data.description}
+  activeTag={entry.id}
+  page={page}
+/>

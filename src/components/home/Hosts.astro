@@ -1,0 +1,99 @@
+---
+import { Image } from "astro:assets";
+import Eyebrow from "../ui/Eyebrow.astro";
+import Frieze from "../ui/Frieze.astro";
+import PersonDialog from "../ui/PersonDialog.astro";
+import Section from "../ui/Section.astro";
+import { hosts as copy } from "../../data/home";
+import { getPeople, personDialogId } from "../../utils/people";
+
+const hosts = (await getPeople("host")).sort(
+  (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99),
+);
+
+const initials = (name: string) => {
+  const parts = name.split(" ");
+  return (
+    parts[0][0] + (parts.length > 1 ? parts.at(-1)![0] : "")
+  ).toUpperCase();
+};
+---
+
+<Section
+  tone="band"
+  data-section="hosts"
+  containerClass="pt-24 pb-14 md:pt-[6.5rem] md:pb-20"
+>
+  <div slot="decor" class="absolute inset-x-0 top-6">
+    <Frieze kind="strip" cell={6} />
+  </div>
+
+  <div class="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+    <div class="max-w-[19rem]" data-reveal="up">
+      <Eyebrow>{copy.eyebrow}</Eyebrow>
+      <h2 class="mt-3.5 text-[1.625rem] leading-[1.2] font-extrabold tracking-tight">
+        {copy.title}
+      </h2>
+    </div>
+
+    <ul class="host-list m-0 flex list-none flex-col gap-6 p-0 sm:flex-row sm:flex-wrap lg:gap-14">
+      {hosts.map((host, i) => (
+        <li data-reveal="up" style={`--d:${150 + i * 110}ms`}>
+          <button
+            type="button"
+            data-person-dialog={personDialogId(host)}
+            aria-haspopup="dialog"
+            class="group flex cursor-pointer items-center gap-5 border-0 bg-transparent p-0 text-left text-inherit"
+          >
+            <span class="relative block h-[5.5rem] w-[5.5rem] shrink-0 [--step:6px]">
+              <span
+                aria-hidden="true"
+                class="stepped absolute inset-0 translate-1.5 bg-[var(--plate)] transition-transform duration-200 ease-out group-hover:translate-2.5 motion-reduce:transition-none"
+              ></span>
+              <span class="stepped absolute inset-0 flex items-center justify-center overflow-hidden bg-paper transition-transform duration-200 ease-out group-hover:-translate-1 motion-reduce:transition-none">
+                {host.data.photo ? (
+                  <Image
+                    src={host.data.photo}
+                    alt=""
+                    width={88}
+                    height={88}
+                    densities={[1, 2]}
+                    class="h-full w-full object-cover grayscale"
+                  />
+                ) : (
+                  <span
+                    aria-hidden="true"
+                    class="text-4xl font-extrabold tracking-tighter"
+                  >
+                    {initials(host.data.name)}
+                  </span>
+                )}
+              </span>
+            </span>
+            <span>
+              <span class="block text-xl font-bold group-hover:underline group-hover:decoration-accent-pink group-hover:decoration-2 group-hover:underline-offset-4">
+                {host.data.name}
+              </span>
+              <span class="mt-1 block text-sm text-soft">
+                {host.data.title}
+              </span>
+            </span>
+          </button>
+          <PersonDialog person={host} />
+        </li>
+      ))}
+    </ul>
+  </div>
+</Section>
+
+<style>
+  .host-list > li:nth-child(3n + 1) {
+    --plate: var(--color-accent-green);
+  }
+  .host-list > li:nth-child(3n + 2) {
+    --plate: var(--color-accent-blue);
+  }
+  .host-list > li:nth-child(3n) {
+    --plate: var(--color-accent-pink);
+  }
+</style>
