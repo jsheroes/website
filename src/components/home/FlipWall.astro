@@ -41,13 +41,8 @@ const tileClass: Record<TileColor, string> = {
   data-flip-wall
   containerClass="max-w-[1320px] pt-20 pb-24 md:pt-24"
 >
+  <!-- The pixel "10" is decoration: phones skip it and start with the heading. -->
   <div class="flex flex-col items-start gap-8 md:flex-row md:items-center md:gap-14">
-    <Motif
-      name="ten_night"
-      cell={5}
-      class="shrink-0 md:hidden"
-      reveal="pixel"
-    />
     <Motif
       name="ten_night"
       cell={7}
@@ -79,7 +74,7 @@ const tileClass: Record<TileColor, string> = {
     </div>
   </div>
 
-  <ul class="m-0 mt-14 grid list-none grid-cols-1 gap-2 p-0 sm:grid-cols-2 lg:grid-cols-4">
+  <ul class="m-0 mt-12 grid list-none grid-cols-2 gap-2 p-0 md:mt-14 lg:grid-cols-4">
     {editions.map((edition, i) => {
       return (
         <li
@@ -96,7 +91,16 @@ const tileClass: Record<TileColor, string> = {
                 tileClass[edition.tile],
               ]}
             >
-              <Motif name={`${edition.motif}_brand`} cell={edition.motifCell} />
+              <Motif
+                name={`${edition.motif}_brand`}
+                cell={4}
+                class="sm:hidden"
+              />
+              <Motif
+                name={`${edition.motif}_brand`}
+                cell={edition.motifCell}
+                class="hidden sm:block"
+              />
               <svg
                 viewBox="0 0 24 24"
                 width="22"
@@ -106,7 +110,7 @@ const tileClass: Record<TileColor, string> = {
                 stroke="currentColor"
                 stroke-width="2.2"
                 stroke-linecap="square"
-                class="absolute right-4 bottom-3.5"
+                class="absolute right-3 bottom-3 size-[18px] sm:right-4 sm:bottom-3.5 sm:size-[22px]"
               >
                 <path d="M4 12a8 8 0 0 1 14-5M20 12a8 8 0 0 1-14 5M18 3v4h-4M6 21v-4h4" />
               </svg>
@@ -118,25 +122,25 @@ const tileClass: Record<TileColor, string> = {
                   src={photoFor(edition.year)}
                   alt={`Group photo of everyone at JSHeroes ${edition.year}`}
                   widths={[480, 800]}
-                  sizes="(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw"
+                  sizes="(min-width: 1024px) 320px, 50vw"
                   class="absolute inset-0 h-full w-full object-cover"
                 />
               </div>
-              <div class="flip-caption flex h-16 shrink-0 items-center justify-between pr-3.5 pl-[1.125rem]">
+              <div class="flip-caption flex h-14 shrink-0 items-center justify-between px-3 sm:h-16 sm:pr-3.5 sm:pl-[1.125rem]">
                 <div class="flex flex-col gap-1.5">
-                  <span class="text-xl leading-none font-extrabold tracking-tight">
+                  <span class="text-base leading-none font-extrabold tracking-tight sm:text-xl">
                     JSHeroes {edition.year}
                   </span>
                   <a
                     href={edition.playlistUrl}
                     target="_blank"
                     rel="noreferrer noopener"
-                    class="text-[0.8125rem] leading-none font-semibold text-accent-orange underline decoration-accent-orange/60 decoration-1 underline-offset-4 hover:decoration-accent-orange"
+                    class="text-[0.6875rem] leading-none font-semibold whitespace-nowrap text-accent-orange underline sm:text-[0.8125rem] decoration-accent-orange/60 decoration-1 underline-offset-4 hover:decoration-accent-orange"
                   >
                     {copy.watchHighlights} ↗
                   </a>
                 </div>
-                <span class="flex h-11 w-11 shrink-0 items-center justify-center bg-white">
+                <span class="hidden h-11 w-11 shrink-0 items-center justify-center bg-white sm:flex">
                   <Motif name={`${edition.motif}_brand`} cell={1} />
                 </span>
               </div>
@@ -183,9 +187,10 @@ const tileClass: Record<TileColor, string> = {
 </Section>
 
 <style>
+  /* Portrait two to a row on phones, so the group photo keeps a usable size. */
   .flip-tile {
     position: relative;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 4;
     perspective: 1400px;
   }
   .flip-inner {
@@ -208,7 +213,15 @@ const tileClass: Record<TileColor, string> = {
   }
   /* Once flipped, the flip button stops above the caption so its link stays clickable. */
   .flip-tile[data-flipped="true"] .flip-button {
-    bottom: 4rem;
+    bottom: 3.5rem;
+  }
+  @media (width >= 40rem) {
+    .flip-tile {
+      aspect-ratio: 4 / 3;
+    }
+    .flip-tile[data-flipped="true"] .flip-button {
+      bottom: 4rem;
+    }
   }
 
   /* A quarter turn on hover; the motifs are symmetric, so it lands on itself. */

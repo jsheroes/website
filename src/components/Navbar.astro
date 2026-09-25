@@ -91,19 +91,6 @@ const path = Astro.url.pathname;
       </Button>
     )}
 
-    <ul class="m-0 flex list-none flex-col gap-1 p-0 lg:hidden">
-      {primaryNav.map((link) => (
-        <li>
-          <a
-            href={link.href}
-            class="block py-1.5 text-xl font-bold no-underline hover:text-accent-orange"
-          >
-            {link.label}
-          </a>
-        </li>
-      ))}
-    </ul>
-
     {menuGroups.map((group) => (
       <section>
         <h2 class="eyebrow mb-3 text-accent-orange">{group.title}</h2>

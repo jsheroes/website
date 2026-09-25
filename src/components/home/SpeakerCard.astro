@@ -40,15 +40,17 @@ const affiliation = person.data.company ?? person.data.title;
     ) : (
       <span
         aria-hidden="true"
-        class="relative mx-auto flex aspect-[520/540] w-[82%] items-center justify-center bg-[var(--tint)] text-[4rem] font-extrabold tracking-tighter transition-transform duration-300 ease-out group-hover:-translate-y-4 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0"
+        class="relative mx-auto flex aspect-[520/540] w-[82%] items-center justify-center bg-[var(--tint)] text-[2.5rem] font-extrabold min-[480px]:text-[4rem] tracking-tighter transition-transform duration-300 ease-out group-hover:-translate-y-4 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0"
       >
         {initials}
       </span>
     )}
-    <span class="plate absolute -inset-x-[4%] bottom-0 flex aspect-[2/1] items-center justify-center bg-[var(--plate)] text-xl leading-[1.1] font-extrabold tracking-tight">
-      <span class="flex flex-col items-center gap-1.5">
-        <span class="whitespace-nowrap">{person.data.name}</span>
-        <span class="text-xs tracking-[0.16em] whitespace-nowrap uppercase">
+    <span class="plate absolute -inset-x-[4%] bottom-0 flex aspect-[2/1] items-center justify-center bg-[var(--plate)] text-sm leading-[1.1] font-extrabold tracking-tight min-[480px]:text-xl">
+      <!-- Two to a row on phones: smaller type, and long names and roles wrap.
+           The role sits where the plate narrows, so it gets the tighter width. -->
+      <span class="flex max-w-[76%] flex-col items-center gap-1 min-[480px]:max-w-none min-[480px]:gap-1.5">
+        <span class="text-balance min-[480px]:whitespace-nowrap">{person.data.name}</span>
+        <span class="max-w-[6.5rem] text-[0.5625rem] tracking-[0.1em] text-balance uppercase min-[480px]:max-w-none min-[480px]:text-xs min-[480px]:tracking-[0.16em] min-[480px]:whitespace-nowrap">
           {affiliation}
         </span>
       </span>

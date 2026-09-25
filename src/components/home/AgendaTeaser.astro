@@ -67,7 +67,8 @@ const { teaser } = copy;
     </div>
   </div>
 
-  <div class="mt-12 lg:hidden">
+  <!-- Tablets only: on phones the bear would add a screen of scrolling. -->
+  <div class="mt-12 hidden md:block lg:hidden">
     <Bear who="male" width={180} bubble={copy.bubble} />
   </div>
 </Section>

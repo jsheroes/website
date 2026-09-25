@@ -3,9 +3,16 @@ import Button from "../ui/Button.astro";
 import Eyebrow from "../ui/Eyebrow.astro";
 import Motif from "../ui/Motif.astro";
 import Scribble from "../ui/Scribble.astro";
+import { event } from "../../data/event";
 import { hero } from "../../data/home";
 import { art, mid } from "../../data/hero-art";
 import { cta } from "../../data/navigation";
+
+/** The column beside the text below lg: smaller between sm and md. Cells are motif pixels. */
+const sideClusters = [
+  { class: "hidden sm:flex md:hidden", star: 4, small: 2 },
+  { class: "hidden md:flex lg:hidden", star: 6, small: 3 },
+];
 ---
 
 <section
@@ -112,8 +119,11 @@ import { cta } from "../../data/navigation";
       ))}
     </div>
 
-    <div class="relative mx-auto w-full max-w-[1160px] flex-1 px-5 pt-32 pb-16 md:px-8 md:pt-[9.375rem] xl:px-0">
-      <div class="max-w-[40rem]">
+    <!-- From sm to lg the motifs stand in a column to the right of the text
+         (from lg they're positioned over the page, above). Below sm there is
+         no room beside the text, so they're dropped rather than stacked under it. -->
+    <div class="relative mx-auto flex w-full max-w-[1160px] flex-1 items-start justify-between gap-8 px-5 pt-32 pb-16 md:px-8 md:pt-[9.375rem] xl:px-0">
+      <div class="max-w-[40rem] min-w-0">
         <Eyebrow data-reveal="up">{hero.eyebrow}</Eyebrow>
         <h1 class="h1-hero mt-7" data-load>
           {hero.titleLines.map((line) => (
@@ -141,51 +151,70 @@ import { cta } from "../../data/navigation";
         </div>
       </div>
 
-      <div
-        aria-hidden="true"
-        class="pointer-events-none mt-14 flex flex-wrap items-end gap-x-6 gap-y-4 lg:hidden"
-      >
-        <Motif
-          name="m4_brand"
-          cell={8}
-          loading="eager"
-          motion="spin"
-          dur="180s"
-          reveal="pixel"
-        />
-        <Motif
-          name="m3_brand"
-          cell={4}
-          loading="eager"
-          motion="sway"
-          dur="11s"
-          reveal="pixel"
-          revealDelay="200ms"
-        />
-        <Motif
-          name="m5_brand"
-          cell={4}
-          loading="eager"
-          motion="sway"
-          dur="9s"
-          reveal="pixel"
-          revealDelay="350ms"
-        />
-      </div>
+      {sideClusters.map(({ class: className, star, small }) => (
+        <div
+          aria-hidden="true"
+          class:list={[
+            "pointer-events-none mt-12 shrink-0 flex-col items-center gap-4",
+            className,
+          ]}
+        >
+          <Motif
+            name="m4_brand"
+            cell={star}
+            loading="eager"
+            motion="spin"
+            dur="180s"
+            reveal="pixel"
+          />
+          <div class="flex items-end gap-3">
+            <Motif
+              name="m3_brand"
+              cell={small}
+              loading="eager"
+              motion="sway"
+              dur="11s"
+              reveal="pixel"
+              revealDelay="200ms"
+            />
+            <Motif
+              name="m5_brand"
+              cell={small}
+              loading="eager"
+              motion="sway"
+              dur="9s"
+              reveal="pixel"
+              revealDelay="350ms"
+            />
+          </div>
+        </div>
+      ))}
     </div>
 
-    <div data-tone="ink" class="relative bg-black-pearl text-white">
+    <!-- Phones: just when and where, on one light line (as in the footer). -->
+    <p
+      data-reveal="up"
+      style="--d:450ms"
+      class="m-0 flex flex-wrap items-center gap-x-3 gap-y-1 bg-band px-5 py-4 text-base font-bold md:hidden"
+    >
+      <span class="marker-label">{event.dates}</span>
+      <Motif name="pd_coral" cell={2} class="shrink-0" />
+      <span class="marker-label">{event.venue.city}</span>
+    </p>
+
+    <!-- From md: all four facts on the dark bar, label over value. -->
+    <div data-tone="ink" class="relative hidden bg-black-pearl text-white md:block">
       <dl
         data-reveal="up"
         style="--d:450ms"
-        class="m-0 mx-auto grid max-w-[1160px] grid-cols-2 gap-x-6 gap-y-6 px-5 pt-6 pb-10 md:px-8 lg:flex lg:justify-between lg:pb-8 xl:px-0"
+        class="m-0 mx-auto grid max-w-[1160px] grid-cols-4 gap-x-6 px-8 pt-6 pb-10 lg:flex lg:justify-between lg:pb-8 xl:px-0"
       >
         {hero.facts.map((fact) => (
           <div class="flex flex-col gap-1.5">
             <dt class="text-xs font-bold tracking-[0.16em] text-accent-orange uppercase">
               {fact.label}
             </dt>
-            <dd class="m-0 text-base font-bold md:text-xl lg:whitespace-nowrap">
+            <dd class="m-0 text-lg font-bold lg:text-xl lg:whitespace-nowrap">
               {fact.value}
             </dd>
           </div>

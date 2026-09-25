@@ -15,7 +15,7 @@ const box =
 <Section
   id="community"
   data-section="community"
-  containerClass="pt-20 pb-0 md:pt-[6.25rem] md:pb-0"
+  containerClass="pt-20 pb-20 md:pt-[6.25rem] md:pb-0"
 >
   <div class="grid gap-x-16 gap-y-14 lg:grid-cols-[minmax(0,36rem)_minmax(0,31.25rem)] lg:justify-between">
     <div class="flex flex-col">
@@ -94,7 +94,8 @@ const box =
     </div>
   </div>
 
-  <div class="mt-12 pb-14 lg:hidden">
+  <!-- Tablets only: on phones the bear would add a screen of scrolling. -->
+  <div class="mt-12 hidden pb-14 md:block lg:hidden">
     <Bear who="female" width={170} bubble={copy.bubble} />
   </div>
 </Section>
