@@ -3,7 +3,6 @@ import Button from "../ui/Button.astro";
 import Eyebrow from "../ui/Eyebrow.astro";
 import Motif from "../ui/Motif.astro";
 import Scribble from "../ui/Scribble.astro";
-import { event } from "../../data/event";
 import { hero } from "../../data/home";
 import { art, mid } from "../../data/hero-art";
 import { cta } from "../../data/navigation";
@@ -20,10 +19,8 @@ const sideClusters = [
   class="relative -mt-24 flex flex-col overflow-hidden bg-paper"
 >
   <!--
-    From lg up, the text and facts bar fill at least one viewport
-    (min-h-[100dvh], flex-1 on the text block absorbs the slack), so the
-    facts bar sits flush against the fold on load. Below lg the hero keeps
-    its natural height and the facts bar simply follows the text.
+    From lg up, the hero fills at least one viewport (min-h-[100dvh], flex-1
+    on the text block absorbs the slack). Below lg it keeps its natural height.
   -->
   <div class="flex flex-col lg:min-h-[100dvh]">
     <!-- Stair corners live in the page margin, so they only appear where the margin is wide enough to hold them. -->
@@ -56,8 +53,7 @@ const sideClusters = [
 
     <!-- Full cluster from xl, positioned on the 1440 design grid. Scaled 20%
          smaller, anchored so the top barely moves (already cleared the nav)
-         and nearly all the shrink comes out of the bottom, away from the
-         facts bar: real browsers render the fluid heading a little
+         and nearly all the shrink comes out of the bottom: real browsers render the fluid heading a little
          differently than our own testing, so this keeps a wide margin
          rather than the thinnest one that measured clean. -->
     <div
@@ -98,7 +94,7 @@ const sideClusters = [
       />
     </div>
     <!-- Anchored at its own top edge (nothing crowds the nav here already),
-         so the full 20% shrink comes out of the bottom, away from the bar. -->
+         so the full 20% shrink comes out of the bottom. -->
     <div
       aria-hidden="true"
       class="pointer-events-none absolute top-28 right-6 hidden h-[38rem] w-[35rem] origin-[280px_40px] scale-[0.8] laptop:block 3xl:hidden"
@@ -136,7 +132,23 @@ const sideClusters = [
             {hero.titleHighlight}
           </Scribble>
         </h1>
-        <p class="lede mt-12 max-w-[34rem]" data-reveal="up" style="--d:150ms">
+        <p
+          class="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 text-xl font-bold md:text-2xl"
+          data-reveal="up"
+          style="--d:100ms"
+        >
+          {hero.facts.map((fact, i) => (
+            <>
+              {i > 0 && (
+                <span class="hidden shrink-0 sm:block">
+                  <Motif name="pd_coral" cell={3} />
+                </span>
+              )}
+              <span class="marker-label">{fact.value}</span>
+            </>
+          ))}
+        </p>
+        <p class="lede mt-8 max-w-[34rem]" data-reveal="up" style="--d:150ms">
           {hero.intro}
         </p>
         <div
@@ -191,35 +203,5 @@ const sideClusters = [
       ))}
     </div>
 
-    <!-- Phones: just when and where, on one light line (as in the footer). -->
-    <p
-      data-reveal="up"
-      style="--d:450ms"
-      class="m-0 flex flex-wrap items-center gap-x-3 gap-y-1 bg-band px-5 py-4 text-base font-bold md:hidden"
-    >
-      <span class="marker-label">{event.dates}</span>
-      <Motif name="pd_coral" cell={2} class="shrink-0" />
-      <span class="marker-label">{event.venue.city}</span>
-    </p>
-
-    <!-- From md: all four facts on the dark bar, label over value. -->
-    <div data-tone="ink" class="relative hidden bg-black-pearl text-white md:block">
-      <dl
-        data-reveal="up"
-        style="--d:450ms"
-        class="m-0 mx-auto grid max-w-[1160px] grid-cols-4 gap-x-6 px-8 pt-6 pb-10 lg:flex lg:justify-between lg:pb-8 xl:px-0"
-      >
-        {hero.facts.map((fact) => (
-          <div class="flex flex-col gap-1.5">
-            <dt class="text-xs font-bold tracking-[0.16em] text-accent-orange uppercase">
-              {fact.label}
-            </dt>
-            <dd class="m-0 text-lg font-bold lg:text-xl lg:whitespace-nowrap">
-              {fact.value}
-            </dd>
-          </div>
-        ))}
-      </dl>
-    </div>
   </div>
 </section>

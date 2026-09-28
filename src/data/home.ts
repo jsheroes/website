@@ -4,7 +4,6 @@
  */
 import { editions } from "./editions";
 import { event } from "./event";
-import { TICKETS_ON_SALE, WAITLIST_OPEN } from "./flags";
 
 const words = [
   "zero",
@@ -44,15 +43,6 @@ export const hero = {
   facts: [
     { label: "When", value: event.dates },
     { label: "Where", value: `${event.venue.city}, Romania` },
-    { label: "Format", value: "Two days, one stage" },
-    {
-      label: "Tickets",
-      value: TICKETS_ON_SALE
-        ? "On sale"
-        : WAITLIST_OPEN
-          ? "Waitlist open"
-          : "Announced soon",
-    },
   ],
 };
 
@@ -117,7 +107,7 @@ export const agenda = {
 
 export const venue = {
   eyebrow: "Venue",
-  title: `Back at the ${event.venue.name}.`,
+  title: `Same location: the ${event.venue.name}.`,
   intro: `We're hosting JSHeroes ${event.year} at ${event.venue.name}, our home since the very first edition.`,
   mapsCta: "View on Google Maps",
 };

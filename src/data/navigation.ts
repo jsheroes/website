@@ -11,7 +11,6 @@ export interface NavLink {
 export const primaryNav: NavLink[] = [
   { label: "Speakers", href: "/#speakers" },
   { label: "Agenda", href: "/#agenda" },
-  { label: "Venue", href: "/#venue" },
   { label: "Sponsors", href: "/#sponsors" },
 ];
 
