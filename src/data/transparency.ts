@@ -3,7 +3,8 @@ import { Chart } from "chart.js";
 
 Chart.defaults.font.size = 16;
 
-type Year = "2017" | "2018" | "2019" | "2022" | "2023" | "2024" | "2025";
+type Year =
+  "2017" | "2018" | "2019" | "2022" | "2023" | "2024" | "2025" | "2026";
 
 const colorPalette = [
   "#0098ff",
@@ -24,6 +25,7 @@ const yearlyBudget: Record<Year, number> = {
   2023: 106300,
   2024: 111600,
   2025: 83000,
+  2026: 72800,
 };
 
 const yearlyIncome: Record<Year, number> = {
@@ -34,6 +36,7 @@ const yearlyIncome: Record<Year, number> = {
   2023: 115200,
   2024: 103300,
   2025: 85200,
+  2026: 65100,
 };
 
 const yearlyExpenses: Record<Year, number> = {
@@ -44,6 +47,7 @@ const yearlyExpenses: Record<Year, number> = {
   2023: 97400,
   2024: 99800,
   2025: 76700,
+  2026: 72800,
 };
 
 export const yearlyGrowth: ChartData = {
@@ -82,6 +86,14 @@ type IncomeBreakdown = {
 };
 
 const expenses: Record<Year, ExpensesBreakdown> = {
+  2026: {
+    venue: 26050,
+    speakers: 18950,
+    merchandise: 1950,
+    photoVideo: 7750,
+    collaborators: 14400,
+    tools: 3700,
+  },
   2025: {
     venue: 27300,
     speakers: 23600,
@@ -141,6 +153,10 @@ const expenses: Record<Year, ExpensesBreakdown> = {
 };
 
 const income: Record<Year, IncomeBreakdown> = {
+  2026: {
+    tickets: 44600,
+    sponsors: 20500,
+  },
   2025: {
     tickets: 57200,
     sponsors: 28000,
