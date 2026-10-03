@@ -36,6 +36,11 @@ const people = defineCollection({
         })
         .optional(),
       order: z.number().optional(),
+      /**
+       * Drafts come from the speaker onboarding workflow. They're left out of
+       * production builds and only show on Vercel previews (see utils/people).
+       */
+      draft: z.boolean().default(false),
     }),
 });
 

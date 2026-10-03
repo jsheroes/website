@@ -41,11 +41,7 @@ const { title, cta, bear, bubble } = Astro.props;
          the bubble inside the container. -->
     {bear && (
       <div class="[--bubble-x:70%] lg:mr-24 lg:[--bubble-x:80%]">
-        <Bear
-          who={bear}
-          width={bear === "male" ? 220 : 190}
-          bubble={bubble}
-        />
+        <Bear who={bear} width={bear === "male" ? 220 : 190} bubble={bubble} />
       </div>
     )}
   </div>

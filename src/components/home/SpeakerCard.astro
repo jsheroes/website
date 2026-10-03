@@ -49,13 +49,20 @@ const affiliation = person.data.company ?? person.data.title;
       <!-- Two to a row on phones: smaller type, and long names and roles wrap.
            The role sits where the plate narrows, so it gets the tighter width. -->
       <span class="flex max-w-[76%] flex-col items-center gap-1 min-[480px]:max-w-none min-[480px]:gap-1.5">
-        <span class="text-balance min-[480px]:whitespace-nowrap">{person.data.name}</span>
+        <span class="text-balance min-[480px]:whitespace-nowrap">
+          {person.data.name}
+        </span>
         <span class="max-w-[6.5rem] text-[0.5625rem] tracking-[0.1em] text-balance uppercase min-[480px]:max-w-none min-[480px]:text-xs min-[480px]:tracking-[0.16em] min-[480px]:whitespace-nowrap">
           {affiliation}
         </span>
       </span>
     </span>
   </span>
+  {person.data.draft && (
+    <span class="rounded-full border-2 border-dashed border-current px-3 py-0.5 text-xs font-bold tracking-[0.12em] uppercase">
+      Draft · preview only
+    </span>
+  )}
 </button>
 
 <PersonDialog person={person} />
