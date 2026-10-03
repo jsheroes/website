@@ -1,0 +1,180 @@
+name: Speaker onboarding
+
+# Triggered by the speaker portal (repository_dispatch) or manually for testing.
+# Turns one portal submission into a draft PR adding a `draft: true` speaker.
+on:
+  repository_dispatch:
+    types: [speaker-submission]
+  workflow_dispatch:
+    inputs:
+      submission_id:
+        description: Speaker portal submission id
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: speaker-onboarding-${{ github.event.client_payload.submission_id || inputs.submission_id }}
+  cancel-in-progress: false
+
+jobs:
+  onboard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SUBMISSION_ID: ${{ github.event.client_payload.submission_id || inputs.submission_id }}
+      PORTAL_URL: ${{ vars.SPEAKER_PORTAL_URL }}
+      PORTAL_SECRET: ${{ secrets.SPEAKER_PORTAL_WORKFLOW_SECRET }}
+    steps:
+      - name: Validate submission id
+        run: |
+          if ! [[ "$SUBMISSION_ID" =~ ^[a-f0-9]{16,64}$ ]]; then
+            echo "::error::Invalid submission id"; exit 1
+          fi
+
+      # The PR is pushed with the GitHub App's token (not GITHUB_TOKEN) so that
+      # CI and Vercel previews run on it like on any other PR.
+      - name: Create GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          client-id: ${{ vars.SPEAKER_BOT_CLIENT_ID }}
+          private-key: ${{ secrets.SPEAKER_BOT_PRIVATE_KEY }}
+
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          token: ${{ steps.app-token.outputs.token }}
+
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - name: Fetch submission from the portal
+        run: |
+          curl -fsSL -H "Authorization: Bearer $PORTAL_SECRET" \
+            "$PORTAL_URL/api/submissions/$SUBMISSION_ID" -o "$RUNNER_TEMP/submission.json"
+          PHOTO_URL=$(jq -r '.photoUrl' "$RUNNER_TEMP/submission.json")
+          case "$PHOTO_URL" in
+            https://*.public.blob.vercel-storage.com/*) ;;
+            *) echo "::error::Unexpected photo URL host"; exit 1 ;;
+          esac
+          curl -fsSL --max-filesize 15000000 "$PHOTO_URL" -o "$RUNNER_TEMP/photo"
+
+      - name: Scaffold draft speaker files
+        id: scaffold
+        run: node .github/speaker-onboarding/scaffold.mjs "$RUNNER_TEMP/submission.json" "$RUNNER_TEMP/photo"
+
+      - name: Prepare agent prompt
+        env:
+          SLUG: ${{ steps.scaffold.outputs.slug }}
+        run: |
+          sed -e "s|{{SLUG}}|$SLUG|g" -e "s|{{SUMMARY_PATH}}|speaker-agent-summary.md|g" \
+            .github/speaker-onboarding/agent-prompt.md > "$RUNNER_TEMP/prompt.md"
+          {
+            echo 'AGENT_PROMPT<<__PROMPT_EOF__'
+            cat "$RUNNER_TEMP/prompt.md"
+            echo '__PROMPT_EOF__'
+          } >> "$GITHUB_ENV"
+
+      - name: Polish content with Claude
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: ${{ env.AGENT_PROMPT }}
+          claude_args: |
+            --model claude-sonnet-5-5
+            --max-turns 25
+            --allowedTools Read,Edit,Write,Glob,Grep,Bash(pnpm build)
+            --disallowedTools WebFetch,WebSearch
+
+      - name: Guard changed paths
+        env:
+          SLUG: ${{ steps.scaffold.outputs.slug }}
+        run: |
+          # The agent's notes for the PR body live outside the repo from here on.
+          if [ -f speaker-agent-summary.md ]; then mv speaker-agent-summary.md "$RUNNER_TEMP/agent-summary.md"; fi
+          allowed=$(printf '%s\n' \
+            "src/content/people/$SLUG.md" \
+            "src/content/speaker-talks/$SLUG.md" \
+            "src/images/people/$SLUG.jpg" | sort)
+          changed=$(git status --porcelain --untracked-files=all | sed -E 's/^.{3}//' | sort)
+          unexpected=$(comm -13 <(echo "$allowed") <(echo "$changed"))
+          if [ -n "$unexpected" ]; then
+            echo "::error::Unexpected changes:"; echo "$unexpected"; exit 1
+          fi
+          f="src/content/people/$SLUG.md"
+          grep -q '^draft: true$' "$f" || { echo "::error::draft flag missing"; exit 1; }
+          grep -q '^role: "speaker"$' "$f" || { echo "::error::role must be speaker"; exit 1; }
+          if grep -qE '^(order|portrait):' "$f"; then echo "::error::order/portrait must not be set"; exit 1; fi
+
+      - name: Check and build
+        run: |
+          pnpm check
+          pnpm build
+
+      - name: Push branch and open draft PR
+        id: pr
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          SLUG: ${{ steps.scaffold.outputs.slug }}
+          NAME: ${{ steps.scaffold.outputs.name }}
+          APP_SLUG: ${{ steps.app-token.outputs.app-slug }}
+        run: |
+          BRANCH="speaker/$SLUG"
+          git config user.name "$APP_SLUG[bot]"
+          git config user.email "$APP_SLUG[bot]@users.noreply.github.com"
+          git checkout -B "$BRANCH"
+          git add "src/content/people/$SLUG.md" "src/content/speaker-talks/$SLUG.md" "src/images/people/$SLUG.jpg"
+          git commit -m "Add draft speaker: $NAME" -m "Speaker portal submission: $SUBMISSION_ID"
+          git push --force origin "$BRANCH"
+
+          SUMMARY="$RUNNER_TEMP/agent-summary.md"
+          [ -s "$SUMMARY" ] || echo "_No notes from the agent._" > "$SUMMARY"
+
+          cat > "$RUNNER_TEMP/body.md" <<BODY
+          Draft speaker entry generated from the speaker portal (submission \`$SUBMISSION_ID\`).
+          It has \`draft: true\`, so it is **hidden in production** and only shows on Vercel previews.
+
+          ### Agent notes
+          $(cat "$SUMMARY")
+
+          ### Review
+          - [ ] Bio and talk text read well and are accurate
+          - [ ] Photo crop looks good
+          - [ ] Tag is right
+
+          ### Before publishing
+          - [ ] Optional: make a greyscale cutout with \`scripts/cutouts.py\` and set \`portrait\` (the initials tile shows until then)
+          - [ ] Set \`draft: false\` and an \`order\` in \`src/content/people/$SLUG.md\`
+          - [ ] Add \`$SLUG\` to \`src/data/agenda.ts\`
+          BODY
+
+          EXISTING=$(gh pr list --head "$BRANCH" --state open --json url --jq '.[0].url')
+          if [ -n "$EXISTING" ]; then
+            gh pr comment "$EXISTING" --body "Updated from a new speaker portal submission."$'\n\n'"$(cat "$RUNNER_TEMP/body.md")"
+            echo "url=$EXISTING" >> "$GITHUB_OUTPUT"
+          else
+            URL=$(gh pr create --draft --base main --head "$BRANCH" \
+              --title "Speaker: $NAME (draft)" --body-file "$RUNNER_TEMP/body.md" \
+              --label speaker-onboarding 2>/dev/null || \
+              gh pr create --draft --base main --head "$BRANCH" \
+              --title "Speaker: $NAME (draft)" --body-file "$RUNNER_TEMP/body.md")
+            echo "url=$URL" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Report status to the portal
+        if: always()
+        env:
+          PR_URL: ${{ steps.pr.outputs.url }}
+          STATUS: ${{ job.status }}
+        run: |
+          jq -n --arg status "$STATUS" --arg prUrl "$PR_URL" \
+            --arg runUrl "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" \
+            '{status: $status, prUrl: $prUrl, runUrl: $runUrl}' |
+          curl -fsS -X POST -H "Authorization: Bearer $PORTAL_SECRET" -H "Content-Type: application/json" \
+            --data @- "$PORTAL_URL/api/submissions/$SUBMISSION_ID/status" || true
