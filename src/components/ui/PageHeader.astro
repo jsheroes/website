@@ -1,0 +1,123 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import Bear from "./Bear.astro";
+import Eyebrow from "./Eyebrow.astro";
+import Frieze from "./Frieze.astro";
+import Motif from "./Motif.astro";
+import Scribble from "./Scribble.astro";
+
+/**
+ * Header for every interior page: eyebrow, title with a scribbled last word,
+ * an optional intro and a motif that is picked from the title, so each page
+ * keeps its own.
+ */
+interface Props extends HTMLAttributes<"header"> {
+  title: string;
+  eyebrow?: string;
+  intro?: string;
+  /** Word to scribble under; defaults to the last word. `false` turns it off. */
+  highlight?: string | false;
+  /** Hide the motif, for pages that place their own art. */
+  plain?: boolean;
+  /** Show both bears in the header, between the title and the motif. */
+  bears?: boolean;
+}
+
+const {
+  title,
+  eyebrow,
+  intro,
+  highlight,
+  plain = false,
+  bears = false,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const motifs = [
+  "m0",
+  "m1",
+  "m2",
+  "m3",
+  "m4",
+  "m5",
+  "m6",
+  "m7",
+  "m9",
+  "m10",
+  "m11",
+  "m13",
+  "m14",
+];
+const hash = [...title].reduce((sum, char) => sum + char.charCodeAt(0), 0);
+const motif = motifs[hash % motifs.length];
+
+const words = title.split(" ");
+const target = highlight === false ? undefined : (highlight ?? words.at(-1));
+const at = target ? title.lastIndexOf(target) : -1;
+const lead = at > 0 ? title.slice(0, at) : "";
+const marked = at >= 0 && target ? target : "";
+const tail = at >= 0 && target ? title.slice(at + target.length) : "";
+---
+
+<header
+  data-section="page-header"
+  data-og-eyebrow={eyebrow}
+  data-og-title={title}
+  data-og-highlight={marked || undefined}
+  data-og-motif={motif}
+  class:list={["relative overflow-hidden bg-paper", className]}
+  {...rest}
+>
+  <div
+    class:list={[
+      "relative mx-auto grid w-full max-w-[1160px] items-center gap-10 px-5 pt-8 pb-24 md:px-8 md:pt-12 md:pb-28 xl:px-0",
+      bears
+        ? "lg:grid-cols-[minmax(0,1fr)_auto_auto]"
+        : "lg:grid-cols-[minmax(0,1fr)_auto]",
+    ]}
+  >
+    <div>
+      {eyebrow && <Eyebrow data-reveal="up">{eyebrow}</Eyebrow>}
+      <h1 class="h2-section mt-5 max-w-[22ch]" data-load>
+        {lead}
+        {marked ? <Scribble spaced={false}>{marked}</Scribble> : title}
+        {tail}
+      </h1>
+      {intro && (
+        <p class="lede mt-6 max-w-[38rem]" data-reveal="up" style="--d:120ms">
+          {intro}
+        </p>
+      )}
+      <slot />
+      {bears && (
+        <div class="mt-10 flex items-end lg:hidden">
+          <Bear who="male" width={120} />
+          <Bear who="female" width={100} class="-ml-4" />
+        </div>
+      )}
+    </div>
+    {bears && (
+      <div class="hidden items-end self-end lg:-mb-16 lg:flex">
+        <Bear who="male" width={190} />
+        <Bear who="female" width={162} class="-ml-6" />
+      </div>
+    )}
+    {!plain && (
+      <div class="pointer-events-none hidden lg:block" aria-hidden="true">
+        <Motif
+          name={`${motif}_brand`}
+          cell={9}
+          motion="spin"
+          dur="240s"
+          reveal="pixel"
+          revealDelay="200ms"
+          loading="eager"
+        />
+      </div>
+    )}
+  </div>
+  <div class="absolute inset-x-0 bottom-0">
+    <Frieze kind="strip" cell={6} />
+  </div>
+</header>

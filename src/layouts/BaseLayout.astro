@@ -1,28 +1,63 @@
 ---
-import Navbar from "../components/Navbar.astro"
-import Footer from "../components/Footer.astro"
-import Preload from "../components/Preload.astro"
-import ScrollToTop from "../components/ScrollToTop.astro"
-import { ViewTransitions } from "astro:transitions"
-import { Tooltips } from "astro-tooltips";
-import Analytics from '@vercel/analytics/astro';
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import ScrollToTop from "../components/ScrollToTop.astro";
+import { ClientRouter } from "astro:transitions";
+import Analytics from "@vercel/analytics/astro";
 
-import { EVENT_DATES, CURRENT_YEAR, SEO_TAGLINE } from "../data/constants"
+import { existsSync } from "node:fs";
+import { event } from "../data/event";
 
-import "@fontsource/sora/400.css"
-import "@fontsource/sora/500.css"
+import "@fontsource-variable/sora";
+import soraLatin from "@fontsource-variable/sora/files/sora-latin-wght-normal.woff2?url";
 
-import "@/assets/base.css"
+import "@/assets/base.css";
 
 export interface Props {
-  title?: string
-  isHomePage?: boolean
+  title?: string;
+  description?: string;
+  /** Path or absolute URL of the social sharing image; defaults to the page's own card. */
+  image?: string;
+  /** "article" for blog posts. */
+  type?: "website" | "article";
 }
 
-const { title: propsTitle, isHomePage } = Astro.props as Props
+const {
+  title: propsTitle,
+  description = `JSHeroes turns ten: a community-organized JavaScript conference in ${event.venue.city}, Romania. Two days of talks, quality networking and good vibes, ${event.dates}.`,
+  image,
+  type = "website",
+} = Astro.props as Props;
 
-const title = propsTitle || `JSHeroes ${CURRENT_YEAR} | ${SEO_TAGLINE}`
-const description = `JSHeroes is an yearly event organized by the local JS community in Cluj, Romania. Check the latest updates and join us on the ${EVENT_DATES} ${CURRENT_YEAR}`
+// "Page · JSHeroes", unless the page title already names the event.
+const title = propsTitle
+  ? propsTitle.includes(event.name)
+    ? propsTitle
+    : `${propsTitle} · ${event.name}`
+  : `${event.name} ${event.year} · ${event.tagline}`;
+const canonical = new URL(Astro.url.pathname, event.siteUrl).href;
+
+// Social cards are rendered by scripts/og.mjs into public/img/social/og, one
+// per page and named after its path ("/" is "home", "/blog/foo" is
+// "blog-foo"); pages without one fall back to the homepage card.
+const slug =
+  Astro.url.pathname.replace(/^\/|\/$/g, "").replace(/\//g, "-") || "home";
+const card = `/img/social/og/${slug}.png`;
+const ownCard = existsSync(`public${card}`);
+// Vercel preview builds serve cards from their own branch URL, so the cards
+// can be tested there before they exist on production.
+const assetOrigin =
+  process.env.VERCEL_ENV === "preview" && process.env.VERCEL_BRANCH_URL
+    ? `https://${process.env.VERCEL_BRANCH_URL}`
+    : event.siteUrl;
+const ogImage = new URL(
+  image ?? (ownCard ? card : "/img/social/og/home.png"),
+  assetOrigin,
+).href;
+const ogImageAlt =
+  ownCard && propsTitle
+    ? `${propsTitle} · ${event.name}`
+    : `${event.name} ${event.year}, ${event.dates}, ${event.venue.city}`;
 ---
 
 <!doctype html>
@@ -35,52 +70,55 @@ const description = `JSHeroes is an yearly event organized by the local JS commu
       content="-VWpgQNMZy97BonSpKFQXFiI7wRwtWmdQeKzLjJsH08"
     />
     <link rel="icon" type="image/x-icon" href="/img/social/bear-192.png" />
+    <link
+      rel="preload"
+      href={soraLatin}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="canonical" href={canonical} />
     <title>{title}</title>
-
-    <Preload />
 
     <link rel="manifest" href="/manifest.json" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#0b1b44" />
+    <meta name="theme-color" content="#fbfaf7" />
 
     <meta property="og:title" content={title} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://jsheroes.io/" />
-    <meta
-      property="og:image"
-      content="https://jsheroes.io/img/social/new-2026.png"
-    />
-    <meta property="og:image:type" content="image/png" />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
     <meta property="og:description" content={description} />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:site_name" content={title} />
+    <meta property="og:site_name" content={event.name} />
     <meta name="twitter:site" content="@jsheroes" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta
-      name="twitter:image"
-      content="https://jsheroes.io/img/social/new-2026.png"
-    />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@jsheroes" />
 
-    <ViewTransitions />
-    <Tooltips interactive={false} delay={[75, 75]} placement="bottom" />
+    <ClientRouter />
     <Analytics />
   </head>
 
   <body>
-    <Navbar isHomePage={isHomePage} />
-    {
-      isHomePage ? (
-        <slot />
-      ) : (
-        <div class="pt-14">
-          <slot />
-        </div>
-      )
-    }
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-accent-orange focus:px-4 focus:py-2 focus:text-black-pearl"
+    >
+      Skip to content
+    </a>
+    <Navbar />
+    <slot />
     <ScrollToTop />
     <Footer />
+    <script>
+      import "../scripts/motion";
+    </script>
   </body>
 </html>

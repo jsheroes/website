@@ -1,0 +1,247 @@
+---
+import Bear from "../ui/Bear.astro";
+import Eyebrow from "../ui/Eyebrow.astro";
+import Frieze from "../ui/Frieze.astro";
+import Section from "../ui/Section.astro";
+import { getCollection } from "astro:content";
+import { day1, day2 } from "../../data/agenda";
+import { event } from "../../data/event";
+import { agenda as copy, numberWord } from "../../data/home";
+import { getPeople, personDialogId } from "../../utils/people";
+import type { AgendaItem } from "../../data/types";
+
+/**
+ * Two days as a tablist. Without scripting both days are shown stacked, each
+ * under its own heading. Speaker names open the profile dialogs rendered by
+ * the speakers section.
+ */
+const speakers = new Map((await getPeople("speaker")).map((p) => [p.id, p]));
+const talks = new Map(
+  (await getCollection("speaker-talks")).map((t) => [t.id, t.data.title]),
+);
+
+const days = [day1, day2].map((items, i) => ({
+  items,
+  label: event.days[i].label,
+  name: `Day ${numberWord(i + 1)}`,
+}));
+
+const times = (slot: string) => {
+  const [start, end] = slot.split(" - ");
+  return { start, end };
+};
+---
+
+<Section
+  id="agenda"
+  data-section="agenda"
+  data-agenda
+  containerClass="pt-20 pb-28 md:pt-28 md:pb-36"
+>
+  <div slot="decor" class="absolute inset-x-0 bottom-0">
+    <Frieze kind="strip" cell={6} />
+  </div>
+
+  <div class="grid gap-x-20 gap-y-12 lg:grid-cols-[21.25rem_1fr]">
+    <div class="flex flex-col">
+      <div data-reveal="up">
+        <Eyebrow>{copy.eyebrow}</Eyebrow>
+        <h2 class="h2-section mt-5 text-[clamp(2.5rem,1.4rem+3vw,3.375rem)]">
+          {copy.title}
+        </h2>
+        <p class="lede mt-7 text-[1.0625rem]">{copy.intro}</p>
+      </div>
+
+      <div
+        role="tablist"
+        aria-label="Day"
+        data-reveal="up"
+        style="--d:150ms"
+        class="agenda-tabs mt-9 grid grid-cols-2 gap-3 lg:grid-cols-1"
+      >
+        {days.map((day, i) => (
+          <button
+            type="button"
+            role="tab"
+            id={`agenda-tab-${i + 1}`}
+            aria-controls={`agenda-day-${i + 1}`}
+            aria-selected={i === 0 ? "true" : "false"}
+            tabindex={i === 0 ? 0 : -1}
+            class="cursor-pointer border-2 border-black-pearl bg-white px-5 py-4 text-left text-black-pearl aria-selected:bg-black-pearl aria-selected:text-white"
+          >
+            <span class="block text-xs font-bold tracking-[0.16em] uppercase opacity-80">
+              {day.name}
+            </span>
+            <span class="mt-1 block text-lg leading-tight font-extrabold lg:text-[1.375rem]">
+              {day.label}
+            </span>
+          </button>
+        ))}
+      </div>
+
+      <div class="mt-10 hidden lg:mt-auto lg:block lg:pt-10">
+        <Bear who="male" width={260} bubble={copy.bubble} />
+      </div>
+    </div>
+
+    <div>
+      {days.map((day, i) => (
+        <div
+          role="tabpanel"
+          id={`agenda-day-${i + 1}`}
+          aria-labelledby={`agenda-tab-${i + 1}`}
+          data-inactive={i !== 0 ? "" : undefined}
+          class="agenda-panel"
+          data-reveal="up"
+          style="--d:100ms"
+        >
+          <h3 class="day-heading mt-0 mb-4 text-2xl font-extrabold tracking-tight">
+            {day.name} · {day.label}
+          </h3>
+          <ol class="m-0 list-none border-b-[1.5px] border-rule p-0">
+            {day.items.map((item: AgendaItem) => {
+              const { start, end } = times(item.timeSlot);
+
+              if (item.type === "placeholder" && item.stage === "alternative") {
+                return (
+                  <li class="flex flex-wrap items-center gap-x-7 gap-y-2 border-t-[1.5px] border-rule py-3 md:min-h-[3.625rem]">
+                    <span class="w-16 shrink-0 text-[0.9375rem] font-bold tabular-nums">
+                      {start}
+                      <span class="sr-only"> to {end}</span>
+                    </span>
+                    <span class="flex flex-1 flex-wrap items-center justify-between gap-x-4 gap-y-2">
+                      <span class="text-lg font-bold">{item.content}</span>
+                      <span class="bg-black-pearl px-2.5 py-1.5 text-xs font-bold tracking-[0.12em] whitespace-nowrap text-white uppercase">
+                        {copy.alternativeStage}
+                      </span>
+                    </span>
+                  </li>
+                );
+              }
+
+              if (item.type === "placeholder") {
+                return (
+                  <li class="flex items-center gap-7 border-t-[1.5px] border-rule py-3 text-[0.9375rem] font-semibold text-muted-strong md:min-h-[2.875rem]">
+                    <time class="w-16 shrink-0 tabular-nums">
+                      {start}
+                      <span class="sr-only"> to {end}</span>
+                    </time>
+                    <span class="tracking-[0.02em]">{item.content}</span>
+                  </li>
+                );
+              }
+
+              const people = item.speakers
+                .map((id) => speakers.get(id))
+                .filter((p) => p !== undefined);
+              const title = talks.get(item.speakers[0]) ?? "To be announced";
+              return (
+                <li class="flex items-center gap-7 border-t-[1.5px] border-rule py-3.5 md:min-h-[4.375rem]">
+                  <time class="w-16 shrink-0 text-[0.9375rem] font-bold tabular-nums">
+                    {start}
+                    <span class="sr-only"> to {end}</span>
+                  </time>
+                  <div>
+                    <p class="m-0 text-[1.0625rem] leading-tight font-bold md:text-[1.1875rem]">
+                      {title}
+                    </p>
+                    <p class="m-0 mt-[3px] text-sm text-soft">
+                      {people.map((person, n) => (
+                        <>
+                          {n > 0 && " & "}
+                          <button
+                            type="button"
+                            data-person-dialog={personDialogId(person)}
+                            aria-haspopup="dialog"
+                            class="min-h-6 cursor-pointer border-0 bg-transparent p-0 text-inherit hover:underline hover:decoration-accent-pink hover:decoration-2 hover:underline-offset-4"
+                          >
+                            {person.data.name}
+                          </button>
+                        </>
+                      ))}
+                    </p>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="mt-12 lg:hidden">
+    <Bear who="male" width={200} bubble={copy.bubble} />
+  </div>
+</Section>
+
+<style>
+  /* Without scripting there are no tabs: show every day under its heading. */
+  .day-heading {
+    display: none;
+  }
+  .agenda-panel[data-inactive] {
+    display: none;
+  }
+  .agenda-panel + .agenda-panel {
+    margin-top: 3rem;
+  }
+  @media (scripting: none) {
+    .agenda-tabs {
+      display: none;
+    }
+    .agenda-panel[data-inactive] {
+      display: block;
+    }
+    .day-heading {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  function init() {
+    document.querySelectorAll<HTMLElement>("[data-agenda]").forEach((root) => {
+      if (root.dataset.ready) return;
+      root.dataset.ready = "true";
+
+      const tabs = [
+        ...root.querySelectorAll<HTMLButtonElement>('[role="tab"]'),
+      ];
+      const select = (tab: HTMLButtonElement, focus = false) => {
+        tabs.forEach((t) => {
+          const on = t === tab;
+          t.setAttribute("aria-selected", String(on));
+          t.tabIndex = on ? 0 : -1;
+          const panel = document.getElementById(
+            t.getAttribute("aria-controls") ?? "",
+          );
+          panel?.toggleAttribute("data-inactive", !on);
+        });
+        if (focus) tab.focus();
+      };
+
+      tabs.forEach((tab, i) => {
+        tab.addEventListener("click", () => select(tab));
+        tab.addEventListener("keydown", (event) => {
+          const next = {
+            ArrowDown: 1,
+            ArrowRight: 1,
+            ArrowUp: -1,
+            ArrowLeft: -1,
+          }[event.key];
+          if (next) {
+            event.preventDefault();
+            select(tabs[(i + next + tabs.length) % tabs.length], true);
+          } else if (event.key === "Home" || event.key === "End") {
+            event.preventDefault();
+            select(tabs[event.key === "Home" ? 0 : tabs.length - 1], true);
+          }
+        });
+      });
+    });
+  }
+  // Also run now: astro:page-load only fires when the ClientRouter script loaded.
+  init();
+  document.addEventListener("astro:page-load", init);
+</script>

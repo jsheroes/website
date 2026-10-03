@@ -1,0 +1,104 @@
+---
+/**
+ * Grouped bars, one group per edition, rendered on the server so it works
+ * without scripting. The data table below it is the accessible version.
+ */
+interface Series {
+  label: string;
+  color: string;
+}
+interface Props {
+  labels: string[];
+  series: Series[];
+  /** values[series][label], in euros */
+  values: number[][];
+  caption: string;
+}
+
+const { labels, series, values, caption } = Astro.props;
+
+const max = Math.max(...values.flat());
+const step = 25000;
+const top = Math.ceil(max / step) * step;
+const ticks = Array.from({ length: top / step + 1 }, (_, i) => i * step);
+const k = (n: number) => `${Math.round(n / 100) / 10}k`.replace(".0k", "k");
+---
+
+<figure class="m-0">
+  <ul class="m-0 mb-6 flex list-none flex-wrap gap-x-6 gap-y-2 p-0 text-sm">
+    {series.map((s) => (
+      <li class="flex items-center gap-2">
+        <span class="h-3 w-3" style={`background:${s.color}`}></span>
+        {s.label}
+      </li>
+    ))}
+  </ul>
+
+  <div
+    class="overflow-x-auto"
+    tabindex="0"
+    role="region"
+    aria-label="Bar chart, scrolls sideways on small screens"
+  >
+    <div class="relative min-w-[40rem] pl-12" aria-hidden="true">
+      <div class="relative h-80">
+        {ticks.map((tick) => (
+          <div
+            class="absolute inset-x-0 border-t border-white/20"
+            style={`bottom:${(tick / top) * 100}%`}
+          >
+            <span class="absolute -top-3 -left-12 w-10 text-right text-xs text-white/70">
+              {k(tick)}
+            </span>
+          </div>
+        ))}
+        <div class="absolute inset-0 flex items-end justify-around gap-2 px-2">
+          {labels.map((_, i) => (
+            <div class="flex h-full items-end gap-1">
+              {series.map((s, j) => (
+                <div class="flex h-full w-6 flex-col justify-end sm:w-9">
+                  <span class="mb-1 text-center text-[0.6875rem] leading-none text-white/80">
+                    {k(values[j][i])}
+                  </span>
+                  <div
+                    style={`height:${(values[j][i] / top) * 100}%;background:${s.color}`}
+                  ></div>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="mt-2 flex justify-around px-2 text-sm font-bold">
+        {labels.map((label) => (
+          <span class="w-[calc(3*2.25rem+0.5rem)] text-center">{label}</span>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <figcaption class="sr-only">{caption}</figcaption>
+  <details class="mt-6 text-sm">
+    <summary class="cursor-pointer font-bold">View the data as a table</summary>
+    <table class="mt-4 w-full border-collapse text-left">
+      <thead>
+        <tr class="border-b border-white/30">
+          <th class="py-2 pr-4">Year</th>
+          {series.map((s) => (
+            <th class="py-2 pr-4">{s.label}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {labels.map((label, i) => (
+          <tr class="border-b border-white/15">
+            <th class="py-2 pr-4">{label}</th>
+            {series.map((_, j) => (
+              <td class="py-2 pr-4">€{values[j][i].toLocaleString("en-US")}</td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </details>
+</figure>

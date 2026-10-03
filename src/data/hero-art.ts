@@ -1,0 +1,231 @@
+/**
+ * The hero's motif cluster, shared with the social cards (src/dev/og.astro)
+ * so both always show the same arrangement.
+ */
+import type { Props as MotifProps } from "../components/ui/Motif.astro";
+
+/** Design coordinates at 1440 wide, measured from the top of the hero. */
+export type ArtItem = {
+  name: string;
+  cell: number;
+  left: number;
+  top: number;
+  motion?: MotifProps["motion"];
+  dur?: string;
+  delay?: string;
+  rd?: string;
+};
+
+export const art: ArtItem[] = [
+  {
+    name: "m4_brand",
+    cell: 20,
+    left: 850,
+    top: 170,
+    motion: "spin",
+    dur: "180s",
+    rd: "100ms",
+  },
+  {
+    name: "m5_brand",
+    cell: 8,
+    left: 1236,
+    top: 96,
+    motion: "sway",
+    dur: "9s",
+    rd: "350ms",
+  },
+  {
+    name: "m3_brand",
+    cell: 8,
+    left: 760,
+    top: 560,
+    motion: "sway",
+    dur: "11s",
+    delay: "-3s",
+    rd: "500ms",
+  },
+  {
+    name: "m2_brand",
+    cell: 9,
+    left: 1246,
+    top: 590,
+    motion: "sway",
+    dur: "10s",
+    delay: "-6s",
+    rd: "600ms",
+  },
+  {
+    name: "dr_yel",
+    cell: 8,
+    left: 782,
+    top: 150,
+    motion: "spin",
+    dur: "40s",
+    rd: "250ms",
+  },
+  {
+    name: "dx_coral",
+    cell: 9,
+    left: 1030,
+    top: 84,
+    motion: "twinkle",
+    dur: "4s",
+    rd: "300ms",
+  },
+  {
+    name: "pr_navy",
+    cell: 7,
+    left: 1290,
+    top: 420,
+    motion: "spin-rev",
+    dur: "30s",
+    rd: "450ms",
+  },
+  {
+    name: "pd_blue",
+    cell: 6,
+    left: 968,
+    top: 660,
+    motion: "twinkle",
+    dur: "3.2s",
+    delay: "-1s",
+    rd: "650ms",
+  },
+  {
+    name: "dx_mint",
+    cell: 6,
+    left: 1150,
+    top: 690,
+    motion: "bob",
+    dur: "6s",
+    rd: "700ms",
+  },
+  {
+    name: "pd_coral",
+    cell: 5,
+    left: 1340,
+    top: 330,
+    motion: "twinkle",
+    dur: "3.6s",
+    delay: "-2s",
+    rd: "400ms",
+  },
+  {
+    name: "pd_mint",
+    cell: 5,
+    left: 830,
+    top: 470,
+    motion: "twinkle",
+    dur: "4.4s",
+    delay: "-0.5s",
+    rd: "550ms",
+  },
+];
+/** The same motifs, smaller, on a 560 x 610 box anchored to the right for widths from xl to 3xl. */
+export const mid: ArtItem[] = [
+  {
+    name: "m4_brand",
+    cell: 14,
+    left: 120,
+    top: 130,
+    motion: "spin",
+    dur: "180s",
+    rd: "100ms",
+  },
+  {
+    name: "m5_brand",
+    cell: 6,
+    left: 434,
+    top: 50,
+    motion: "sway",
+    dur: "9s",
+    rd: "350ms",
+  },
+  {
+    name: "m3_brand",
+    cell: 6,
+    left: 0,
+    top: 430,
+    motion: "sway",
+    dur: "11s",
+    delay: "-3s",
+    rd: "500ms",
+  },
+  {
+    name: "m2_brand",
+    cell: 6,
+    left: 458,
+    top: 470,
+    motion: "sway",
+    dur: "10s",
+    delay: "-6s",
+    rd: "600ms",
+  },
+  {
+    name: "dr_yel",
+    cell: 5,
+    left: 40,
+    top: 100,
+    motion: "spin",
+    dur: "40s",
+    rd: "250ms",
+  },
+  {
+    name: "dx_coral",
+    cell: 7,
+    left: 250,
+    top: 40,
+    motion: "twinkle",
+    dur: "4s",
+    rd: "300ms",
+  },
+  {
+    name: "pr_navy",
+    cell: 6,
+    left: 452,
+    top: 300,
+    motion: "spin-rev",
+    dur: "30s",
+    rd: "450ms",
+  },
+  {
+    name: "pd_blue",
+    cell: 5,
+    left: 300,
+    top: 490,
+    motion: "twinkle",
+    dur: "3.2s",
+    delay: "-1s",
+    rd: "650ms",
+  },
+  {
+    name: "dx_mint",
+    cell: 5,
+    left: 400,
+    top: 560,
+    motion: "bob",
+    dur: "6s",
+    rd: "700ms",
+  },
+  {
+    name: "pd_coral",
+    cell: 4,
+    left: 505,
+    top: 250,
+    motion: "twinkle",
+    dur: "3.6s",
+    delay: "-2s",
+    rd: "400ms",
+  },
+  {
+    name: "pd_mint",
+    cell: 5,
+    left: 90,
+    top: 300,
+    motion: "twinkle",
+    dur: "4.4s",
+    delay: "-0.5s",
+    rd: "550ms",
+  },
+];

@@ -1,44 +1,41 @@
 ---
-import type { CollectionEntry } from "astro:content";
 import { Image } from "astro:assets";
-import Modal from "./Modal.astro";
-import { getImage } from "../utils/getImage";
+import PersonDialog from "./ui/PersonDialog.astro";
+import { personDialogId, type Person } from "../utils/people";
 
+/** Author byline that opens the person's profile dialog. */
 export interface Props {
-  author: CollectionEntry<"organizers" | "guest-writers" | "ambassadors">;
+  author: Person;
   publishDate?: string;
 }
 
 const { author, publishDate } = Astro.props;
 ---
 
-<div class="author-anchor">
+<div style="--plate: var(--color-accent-pink); --tint: var(--color-tint-coral)">
   <button
-    class="group flex items-center gap-2 rounded-[2rem] border-0 bg-neutral-light py-2 pl-2 pr-4 transition-colors duration-200 ease-out hover:bg-accent-pink"
+    type="button"
+    class="group flex cursor-pointer items-center gap-4 border-0 bg-transparent p-0 text-left text-inherit"
     aria-haspopup="dialog"
-    aria-controls={author.id}
-    onclick={`window['${author.collection}-${author.id}'].showModal()`}
-    title={`See the profile of ${author.data.name}`}
+    data-person-dialog={personDialogId(author)}
   >
-    <Image
-      src={getImage(author.data.imgName)}
-      alt={author.data.name}
-      width="57"
-      height="57"
-      densities={[1, 2]}
-      class="duration-speed-move w-12 rounded-full transition-all ease-out group-hover:scale-110"
-    />
-    <div class="flex flex-col leading-5">
-      <strong class="author-name">{author.data.name}</strong>
-      <span>{publishDate}</span>
-    </div>
+    <span class="block h-14 w-14 shrink-0 overflow-hidden bg-[var(--tint)]">
+      <Image
+        src={author.data.photo}
+        alt=""
+        width={56}
+        height={56}
+        densities={[1, 2]}
+        class="h-full w-full object-cover object-top mix-blend-multiply grayscale"
+      />
+    </span>
+    <span class="flex flex-col">
+      <span class="text-lg leading-tight font-bold group-hover:underline group-hover:decoration-accent-pink group-hover:decoration-2 group-hover:underline-offset-4">
+        {author.data.name}
+      </span>
+      <span class="text-sm text-soft">{publishDate ?? author.data.title}</span>
+    </span>
   </button>
 
-  <Modal person={author} />
+  <PersonDialog person={author} />
 </div>
-
-<style>
-  .author-anchor {
-    --person-accent-color: theme("colors.accent-pink");
-  }
-</style>

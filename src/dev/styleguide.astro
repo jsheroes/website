@@ -1,0 +1,181 @@
+---
+/** Dev-only (see astro.config.mjs): every primitive in one place, on each surface. */
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Bear from "../components/ui/Bear.astro";
+import Button from "../components/ui/Button.astro";
+import Eyebrow from "../components/ui/Eyebrow.astro";
+import Frieze from "../components/ui/Frieze.astro";
+import Motif from "../components/ui/Motif.astro";
+import PersonDialog from "../components/ui/PersonDialog.astro";
+import Scribble from "../components/ui/Scribble.astro";
+import Section from "../components/ui/Section.astro";
+import { getPeople } from "../utils/people";
+
+const swatches = [
+  ["black-pearl", "bg-black-pearl text-white"],
+  ["accent-blue", "bg-accent-blue text-white"],
+  ["blue-logo", "bg-blue-logo text-white"],
+  ["accent-pink", "bg-accent-pink"],
+  ["accent-orange", "bg-accent-orange"],
+  ["accent-green", "bg-accent-green"],
+  ["paper", "bg-paper border border-rule"],
+  ["band", "bg-band"],
+  ["soft", "bg-soft text-white"],
+  ["muted-strong", "bg-muted-strong text-white"],
+  ["rule", "bg-rule"],
+  ["tint-blue", "bg-tint-blue"],
+  ["tint-coral", "bg-tint-coral"],
+  ["tint-yellow", "bg-tint-yellow"],
+  ["tint-mint", "bg-tint-mint"],
+];
+const [speaker] = await getPeople("speaker");
+const motifNames = Object.keys(
+  import.meta.glob("/src/assets/motifs/*.svg"),
+).map((path) => path.split("/").pop()!.replace(".svg", ""));
+const tones = ["paper", "band", "ink"] as const;
+---
+
+<BaseLayout title="Styleguide">
+  <main id="main">
+    <Section>
+      <Eyebrow>Ten years · edition nine</Eyebrow>
+      <h1 class="h1-hero mt-7 max-w-[10ch]">
+        Ten years of all things <Scribble stroke={6}>JavaScript.</Scribble>
+      </h1>
+      <p class="lede mt-12 max-w-[34rem]">
+        Body copy sits at 18–19px on a 1.6 line height in the soft text colour.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center gap-5">
+        <Button href="#x">Join the waitlist</Button>
+        <Button href="#x" variant="ghost">
+          Meet the speakers
+        </Button>
+        <Button href="#x" size="sm">
+          Nav size
+        </Button>
+        <Button>Button element</Button>
+      </div>
+      <h2 class="h2-section mt-16 max-w-[16ch]">
+        One motif for <Scribble>every</Scribble> edition.
+      </h2>
+      <h3 class="h3-card mt-6">Card title</h3>
+    </Section>
+
+    <Section tone="band">
+      <h2 class="h2-section">Colours</h2>
+      <ul class="m-0 mt-8 grid list-none grid-cols-2 gap-3 p-0 sm:grid-cols-4 lg:grid-cols-7">
+        {swatches.map(([name, cls]) => (
+          <li class={`flex h-24 items-end p-3 text-xs font-bold ${cls}`}>
+            {name}
+          </li>
+        ))}
+      </ul>
+    </Section>
+
+    {tones.map((tone) => (
+      <Section tone={tone}>
+        <Eyebrow>{tone} surface</Eyebrow>
+        <div class="mt-6 flex flex-wrap items-center gap-5">
+          <Button href="#x" variant={tone === "ink" ? "accent" : "primary"}>
+            Primary
+          </Button>
+          <Button href="#x" variant="ghost">
+            Ghost
+          </Button>
+          <a href="#x" class="underline">
+            Focus me with Tab
+          </a>
+        </div>
+        <div class="mt-8 flex flex-wrap items-end gap-6">
+          <Motif name={tone === "ink" ? "m4_night" : "m4_brand"} cell={8} />
+          <Motif name="pd_coral" cell={6} />
+          <Motif name="dx_yel" cell={6} />
+          <Motif name={tone === "ink" ? "st_night" : "st_brand"} cell={8} />
+          <Motif name={tone === "ink" ? "ten_night" : "ten_brand"} cell={6} />
+        </div>
+        <div slot="decor" class="absolute inset-x-0 bottom-0">
+          <Frieze kind="diamond" tone={tone === "ink" ? "night" : "brand"} />
+        </div>
+      </Section>
+    ))}
+
+    <Section tone="band" containerClass="pb-0 md:pb-0">
+      <h2 class="h2-section">Friezes and bears</h2>
+      <div class="mt-8 flex flex-col gap-4">
+        <Frieze kind="zigzag" />
+        <Frieze kind="strip" />
+      </div>
+      <div class="mt-16 flex flex-wrap items-end gap-x-32 gap-y-16">
+        <Bear who="male" bubble="Pick a talk!" />
+        <Bear who="female" bubble="Bine ai venit!" />
+      </div>
+      <Frieze kind="strip" class="mt-[-8px]" />
+    </Section>
+
+    <Section tone="paper" data-section="motion">
+      <h2 class="h2-section">Motion</h2>
+      <p class="lede mt-4 max-w-[40rem]">
+        Ambient motion on motifs (data-motion) and scroll reveals (data-reveal),
+        all in assets/motion.css. Reduced motion shows everything static.
+      </p>
+      <ul class="m-0 mt-10 grid list-none grid-cols-2 gap-8 p-0 sm:grid-cols-3 lg:grid-cols-6">
+        {(["spin", "spin-rev", "sway", "bob", "twinkle"] as const).map(
+          (motion) => (
+            <li class="flex flex-col items-start gap-3 text-xs">
+              <div class="flex h-32 items-center">
+                <Motif
+                  name="m4_brand"
+                  cell={4}
+                  motion={motion}
+                  dur={motion.startsWith("spin") ? "12s" : "4s"}
+                />
+              </div>
+              <code>data-motion="{motion}"</code>
+            </li>
+          ),
+        )}
+        <li class="flex flex-col items-start gap-3 text-xs">
+          <div class="flex h-32 items-center">
+            <Motif name="m4_brand" cell={4} reveal="pixel" />
+          </div>
+          <code>data-reveal="pixel"</code>
+        </li>
+      </ul>
+      <div class="mt-10 flex flex-col gap-6">
+        <p data-reveal="up" class="m-0 text-xl font-bold">
+          data-reveal="up" fades and rises
+        </p>
+        <Frieze kind="diamond" />
+        <h3 class="h3-card m-0" data-reveal="up">
+          Scribbles draw in <Scribble>as headings reveal</Scribble>
+        </h3>
+      </div>
+    </Section>
+
+    <Section tone="band" data-section="motifs">
+      <h2 class="h2-section">Motif catalogue</h2>
+      <ul class="m-0 mt-8 grid list-none grid-cols-2 gap-6 p-0 sm:grid-cols-4 lg:grid-cols-6">
+        {motifNames
+          .filter((name) => !/^(frieze-|bd|bz|strip)/.test(name))
+          .map((name) => (
+            <li class="flex flex-col items-start gap-2 bg-white p-3 text-xs">
+              <Motif name={name} cell={3} />
+              <code>{name}</code>
+            </li>
+          ))}
+      </ul>
+    </Section>
+
+    {speaker && (
+      <Section>
+        <h2 class="h2-section">Profile dialog</h2>
+        <div class="mt-8" style="--plate: var(--color-tint-mint)">
+          <Button data-person-dialog={`person-${speaker.id}`}>
+            Open {speaker.data.name}
+          </Button>
+          <PersonDialog person={speaker} />
+        </div>
+      </Section>
+    )}
+  </main>
+</BaseLayout>

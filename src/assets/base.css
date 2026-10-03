@@ -1,92 +1,62 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "./motion.css";
+@plugin "@tailwindcss/typography";
 
-@layer components {
-  .cta-button {
-    text-decoration: none;
-    font-family: theme("fontFamily.display");
-    font-size: theme("fontSize.base");
-    background: theme("colors.accent-orange");
-    color: theme("colors.neutral-dark");
-    padding: 0.5rem 2rem;
-    border: none;
-    border-radius: 0.8rem;
-    outline-offset: -4px;
-    transition: all theme("transitionDuration.fade") ease-out;
-  }
+@theme static {
+  --color-*: initial;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-transparent: transparent;
+  --color-current: currentColor;
 
-  .cta-button:hover {
-    color: theme("colors.neutral-dark");
-    background: theme("colors.accent-pink");
-  }
+  /* Brand. black-pearl is the ink colour. accent-blue, -pink, -orange and
+     -green are one family: each near the edge of the sRGB gamut it can reach
+     at its own lightness and hue (see scripts/accent-chroma.py). accent-blue
+     is nudged lighter from that derivation (#3399f1) by design preference. */
+  --color-black-pearl: #001c2b;
+  --color-accent-blue: #33a9f1;
+  --color-accent-pink: #f46c7d;
+  --color-accent-orange: #ffcc67;
+  --color-accent-green: #65d3bb;
+  /* Standalone: the wordmark's blue, darkened to 3.2:1 on paper. Not part of
+     the accent family and not derived from accent-blue. */
+  --color-blue-logo: #0090f0;
 
-  .navlink {
-    color: theme("colors.neutral-light");
-    text-decoration: none;
-    position: relative;
-  }
+  /* Surfaces, text and lines */
+  --color-paper: #fbfaf7;
+  --color-band: #f1efe9;
+  --color-soft: #33495a;
+  --color-muted: #6b7c88;
+  /* muted on paper at small sizes, keeps 4.5:1 */
+  --color-muted-strong: #4a5b68;
+  --color-rule: #cfd6db;
+  --color-dodger-blue-night: #1aa6ff;
 
-  .navlink.dark {
-    color: theme("colors.neutral-dark");
-  }
+  /* Behind initials and portrait plates */
+  --color-tint-blue: #cdeaff;
+  --color-tint-coral: #ffd9df;
+  --color-tint-yellow: #fff0cc;
+  --color-tint-mint: #d3f1ea;
 
-  .navlink::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 0.15rem;
-    background-color: theme("colors.accent-pink");
-    transition: transform theme("transitionDuration.fade") ease-out;
-    opacity: 1;
-    transform: scale(0);
-    transform-origin: center;
-  }
+  --font-base: "Sora Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora Variable", ui-sans-serif, system-ui, sans-serif;
 
-  .navlink:hover::after {
-    transform: scale(1);
-  }
-
-  .divider {
-    border-color: theme("colors.neutral-separator");
-    border-top-width: 1px;
-    width: 100%;
-    margin: 0 auto;
-  }
+  --breakpoint-3xl: 90rem;
+  /* Where the hero's motif cluster has enough clear space beside the text to
+     appear at reduced size, instead of just the lone star (Hero.astro). */
+  --breakpoint-laptop: 75rem;
 }
 
 @layer base {
   html {
-    font-family: theme("fontFamily.base");
-    font-size: 1rem;
-    color: theme("colors.neutral-dark");
-    background-color: theme("colors.neutral-light");
+    font-family: var(--font-base);
+    color: var(--color-black-pearl);
+    background-color: var(--color-paper);
     line-height: 1.5;
     overscroll-behavior-y: none;
     scroll-behavior: smooth;
-  }
-
-  @media (min-width: 768px) {
-    html {
-      font-size: 1.1rem;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    html {
-      font-size: 1.3rem;
-    }
-  }
-
-  @media only screen and (-webkit-min-device-pixel-ratio: 1.3),
-    only screen and (-o-min-device-pixel-ratio: 13/10),
-    only screen and (min-resolution: 120dpi) {
-    html {
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-font-smoothing: antialiased;
-    }
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -103,100 +73,270 @@
     overflow: hidden;
   }
 
-  main {
-    /* header + footer */
-    min-height: calc(100vh - 500px - 400px);
-    position: relative;
+  /* Focus ring: pink on paper, yellow on ink surfaces. */
+  :focus-visible {
+    outline: 3px solid var(--color-accent-pink);
+    outline-offset: 3px;
   }
 
-  h1 {
-    font-family: theme("fontFamily.display");
-    font-size: theme("fontSize.xl");
-    font-weight: theme("fontWeight.semibold");
+  [data-tone="ink"] :focus-visible,
+  [data-tone="ink"]:focus-visible {
+    outline-color: var(--color-accent-orange);
   }
 
-  h2 {
-    font-family: theme("fontFamily.display");
-    font-size: theme("fontSize.lg");
-    font-weight: theme("fontWeight.semibold");
+  ::selection {
+    background: var(--color-accent-orange);
+    color: var(--color-black-pearl);
+  }
+}
+
+@layer components {
+  /* Type scale (1440 design, fluid below). Hero H1 only on the homepage. */
+  .h1-hero {
+    font-size: clamp(2.75rem, 1.6rem + 4.8vw, 5.25rem);
+    line-height: 0.98;
+    font-weight: 800;
+    letter-spacing: -0.035em;
   }
 
-  h3 {
-    font-family: theme("fontFamily.display");
-    font-size: theme("fontSize.md");
-    font-weight: theme("fontWeight.semibold");
+  .h2-section {
+    font-size: clamp(2.125rem, 1.4rem + 2.6vw, 3.5rem);
+    line-height: 1.06;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
   }
 
-  ol,
-  ul {
-    list-style: initial;
-    padding-inline-start: 2rem;
+  .h3-card {
+    font-size: 1.25rem;
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -0.01em;
   }
 
-  .prose li {
-    margin: 0 !important;
+  .lede {
+    font-size: clamp(1.125rem, 1.05rem + 0.25vw, 1.1875rem);
+    line-height: 1.6;
+    color: var(--color-soft);
   }
 
-  dialog {
-    position: fixed;
-    margin: auto;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    border-radius: 1rem;
-    overflow: visible;
-    background-color: var(--person-accent-color);
-    border: 1rem solid var(--person-accent-color);
+  [data-tone="ink"] .lede {
+    color: color-mix(in srgb, white 80%, transparent);
   }
 
-  dialog[open] {
+  .eyebrow {
     display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.8125rem;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
   }
 
-  @media screen and (max-width: 550px) {
-    dialog {
-      height: 100%;
-      width: 100%;
+  /* Text beside a pixel marker: trim the line box to the cap height so the
+     letters centre on the marker instead of sitting a pixel high. */
+  .marker-label {
+    text-box: trim-both cap alphabetic;
+  }
+  @supports not (text-box: trim-both cap alphabetic) {
+    .marker-label {
+      position: relative;
+      top: 0.08em;
     }
   }
 
-  dialog::backdrop {
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    background: rgba(0, 0, 0, 0.6);
-  }
-
-  a {
-    color: inherit;
-    text-decoration: underline;
-    text-decoration-thickness: 4px;
-    text-decoration-color: theme("colors.accent-orange");
-    text-decoration-skip-ink: none;
-    transition: text-decoration-color theme("transitionDuration.fade") ease-out;
-
-    outline-offset: -5px;
-  }
-
-  a:hover {
-    text-decoration-color: theme("colors.accent-pink");
-  }
-
-  a:focus-visible {
-    outline: dashed theme("colors.accent-pink") 2px;
-    outline-offset: 5px;
+  /* Buttons: hard offset shadow, pressed on hover. */
+  .btn {
+    --btn-shadow: var(--color-accent-blue);
+    --btn-offset: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.125rem 1.875rem;
+    font-size: 1rem;
+    line-height: 1.25;
+    font-weight: 700;
     text-decoration: none;
+    cursor: pointer;
+    border: 0;
+    background: var(--color-black-pearl);
+    color: var(--color-white);
+    box-shadow: var(--btn-offset) var(--btn-offset) 0 var(--btn-shadow);
+    transition:
+      transform 120ms ease-out,
+      box-shadow 120ms ease-out;
   }
 
-  button {
-    transition: outline-offset theme("transitionDuration.fade") ease-out;
+  .btn:hover {
+    transform: translate(3px, 3px);
+    box-shadow: calc(var(--btn-offset) - 3px) calc(var(--btn-offset) - 3px) 0
+      var(--btn-shadow);
   }
 
-  button:focus-visible {
-    outline: dashed 2px;
-    outline-offset: 5px;
+  .btn:active {
+    transform: translate(var(--btn-offset), var(--btn-offset));
+    box-shadow: 0 0 0 var(--btn-shadow);
+  }
+
+  .btn-sm {
+    --btn-shadow: var(--color-accent-pink);
+    --btn-offset: 4px;
+    padding: 0.8125rem 1.25rem;
+    font-size: 0.9375rem;
+  }
+
+  .btn-accent {
+    background: var(--color-accent-orange);
+    color: var(--color-black-pearl);
+  }
+
+  .btn-ghost {
+    padding: 1rem 1.75rem;
+    background: transparent;
+    color: var(--color-black-pearl);
+    border: 2px solid var(--color-black-pearl);
+    box-shadow: none;
+    transition: background-color 120ms ease-out;
+  }
+
+  .btn-ghost:hover {
+    transform: none;
+    box-shadow: none;
+    background: var(--color-black-pearl);
+    color: var(--color-white);
+  }
+
+  [data-tone="ink"] .btn-ghost {
+    color: var(--color-white);
+    border-color: var(--color-white);
+  }
+
+  [data-tone="ink"] .btn-ghost:hover {
+    background: var(--color-white);
+    color: var(--color-black-pearl);
+  }
+
+  /* Three pixel steps cut into every corner, each --step wide (team and host
+     avatars, and their offset shadows). */
+  .stepped {
+    --s: var(--step, 8px);
+    clip-path: polygon(
+      0 calc(var(--s) * 3),
+      var(--s) calc(var(--s) * 3),
+      var(--s) calc(var(--s) * 2),
+      calc(var(--s) * 2) calc(var(--s) * 2),
+      calc(var(--s) * 2) var(--s),
+      calc(var(--s) * 3) var(--s),
+      calc(var(--s) * 3) 0,
+      calc(100% - var(--s) * 3) 0,
+      calc(100% - var(--s) * 3) var(--s),
+      calc(100% - var(--s) * 2) var(--s),
+      calc(100% - var(--s) * 2) calc(var(--s) * 2),
+      calc(100% - var(--s)) calc(var(--s) * 2),
+      calc(100% - var(--s)) calc(var(--s) * 3),
+      100% calc(var(--s) * 3),
+      100% calc(100% - var(--s) * 3),
+      calc(100% - var(--s)) calc(100% - var(--s) * 3),
+      calc(100% - var(--s)) calc(100% - var(--s) * 2),
+      calc(100% - var(--s) * 2) calc(100% - var(--s) * 2),
+      calc(100% - var(--s) * 2) calc(100% - var(--s)),
+      calc(100% - var(--s) * 3) calc(100% - var(--s)),
+      calc(100% - var(--s) * 3) 100%,
+      calc(var(--s) * 3) 100%,
+      calc(var(--s) * 3) calc(100% - var(--s)),
+      calc(var(--s) * 2) calc(100% - var(--s)),
+      calc(var(--s) * 2) calc(100% - var(--s) * 2),
+      var(--s) calc(100% - var(--s) * 2),
+      var(--s) calc(100% - var(--s) * 3),
+      0 calc(100% - var(--s) * 3)
+    );
+  }
+
+  /* Article typography on top of @tailwindcss/typography. */
+  .prose {
+    --tw-prose-body: var(--color-soft);
+    --tw-prose-headings: var(--color-black-pearl);
+    --tw-prose-lead: var(--color-soft);
+    --tw-prose-links: var(--color-black-pearl);
+    --tw-prose-bold: var(--color-black-pearl);
+    --tw-prose-counters: var(--color-accent-pink);
+    --tw-prose-bullets: var(--color-accent-pink);
+    --tw-prose-hr: var(--color-rule);
+    --tw-prose-quotes: var(--color-black-pearl);
+    --tw-prose-quote-borders: var(--color-accent-pink);
+    --tw-prose-captions: var(--color-muted-strong);
+    --tw-prose-code: var(--color-black-pearl);
+    --tw-prose-th-borders: var(--color-black-pearl);
+    --tw-prose-td-borders: var(--color-rule);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+  .prose :where(h1, h2, h3, h4) {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+  .prose :where(h2) {
+    font-size: 1.875rem;
+    line-height: 1.15;
+    margin-top: 2.75em;
+  }
+  .prose :where(h3) {
+    font-size: 1.375rem;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+  .prose :where(a):not(:where(.not-prose *)) {
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--color-accent-pink);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+  .prose :where(a):not(:where(.not-prose *)):hover {
+    text-decoration-color: var(--color-black-pearl);
+  }
+  .prose :where(li)::marker {
+    color: var(--color-accent-pink);
+  }
+  .prose :where(blockquote) {
+    border-inline-start-width: 6px;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .prose :where(blockquote p:first-of-type)::before,
+  .prose :where(blockquote p:last-of-type)::after {
+    content: none;
+  }
+  .prose :where(img) {
+    margin-block: 0;
+  }
+  .prose :where(hr) {
+    border-top-width: 1.5px;
+  }
+  .prose :where(code):not(:where(pre *)) {
+    background: var(--color-band);
+    padding: 0.15em 0.35em;
+    font-weight: 600;
+  }
+  .prose :where(code):not(:where(pre *))::before,
+  .prose :where(code):not(:where(pre *))::after {
+    content: none;
+  }
+  .prose :where(pre) {
+    border-radius: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn,
+    .btn:hover,
+    .btn:active {
+      transform: none;
+      transition: none;
+    }
   }
 }

@@ -3,12 +3,12 @@ author: alex-moldovan
 title: Call for papers 2023 insights
 published: Mar 13, 2023
 tags: ["cfp"]
-summary: Insights and learnings from our cfp selection process
+summary: Insights and learnings from our CFP selection process
 ---
 
 2023 is a big year for us, as we are planning our first **two day event** since the pandemic started. While last year was great, it was a single day conference, with most of the speakers re-invited after the cancellation of the 2020 event. But for 2023, to fill in the 20 slots, we brought back the call for papers.
 
-In this article, I want to share some insights and learnings from our cfp selection process.
+In this article, I want to share some insights and learnings from our CFP selection process.
 
 ## The plan
 

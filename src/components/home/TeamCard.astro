@@ -1,0 +1,47 @@
+---
+import { Image } from "astro:assets";
+import PersonDialog from "../ui/PersonDialog.astro";
+import { personDialogId, type Person } from "../../utils/people";
+
+/**
+ * Greyscale photo with pixel-stepped corners on a hard offset shadow of the
+ * same shape, then name and role; opens the profile dialog. The shadow takes
+ * --plate from the parent. On hover the photo lifts and the shadow grows.
+ */
+interface Props {
+  person: Person;
+}
+
+const { person } = Astro.props;
+---
+
+<button
+  type="button"
+  data-person-dialog={personDialogId(person)}
+  aria-haspopup="dialog"
+  class="group block w-full cursor-pointer border-0 bg-transparent p-0 text-left text-inherit"
+>
+  <span class="relative block aspect-[4/3]">
+    <span
+      aria-hidden="true"
+      class="stepped absolute inset-0 translate-2 bg-[var(--plate)] transition-transform duration-200 ease-out group-hover:translate-3 motion-reduce:transition-none"
+    ></span>
+    <span class="stepped absolute inset-0 overflow-hidden bg-band transition-transform duration-200 ease-out group-hover:-translate-1 motion-reduce:transition-none">
+      <Image
+        src={person.data.photo}
+        alt=""
+        width={200}
+        height={150}
+        densities={[1, 2]}
+        class="h-full w-full object-cover object-top grayscale"
+      />
+    </span>
+  </span>
+  <span class="mt-5 block text-xl leading-tight font-bold group-hover:underline group-hover:decoration-accent-pink group-hover:decoration-2 group-hover:underline-offset-4">
+    {person.data.name}
+  </span>
+  <span class="mt-0.5 block text-sm text-soft">{person.data.title}</span>
+</button>
+
+<PersonDialog person={person} />
+

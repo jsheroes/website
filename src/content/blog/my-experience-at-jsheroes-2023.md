@@ -1,10 +1,9 @@
 ---
 author: alex-pavaloi
-author_category: guest-writers
 title: My Experience at JSHeroes 2023
 published: Dec 8, 2023
 tags: ["general"]
-summary: Hi! I'm Alex and this blog post is about my experience at JS Heroes 2023.
+summary: Hi! I'm Alex and this blog post is about my experience at JSHeroes 2023.
 ---
 
 After a couple of years without in-person conferences, I was really glad to return to JSHeroes for a 2-day event. So I'm gonna use this blog post to share my experience with you.

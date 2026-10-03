@@ -1,5 +1,5 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection, render, type CollectionEntry } from "astro:content";
 import BlogLayout from "@/layouts/BlogLayout.astro";
 
 export async function getStaticPaths() {
@@ -11,19 +11,19 @@ export async function getStaticPaths() {
           new Date(a.data.published).getTime()
         );
       });
-    }
+    },
   );
 
   return blogs.map((blog, index) => ({
     params: {
-      slug: blog.slug,
+      slug: blog.id,
     },
     props: { blog, next: blogs[index + 1], prev: blogs[index - 1] },
   }));
 }
 
 const { blog, next, prev } = Astro.props;
-const { Content } = await blog.render();
+const { Content } = await render(blog);
 ---
 
 <BlogLayout blog={blog} next={next} prev={prev}>

@@ -1,0 +1,75 @@
+---
+import Eyebrow from "../ui/Eyebrow.astro";
+import Frieze from "../ui/Frieze.astro";
+import TeamCard from "./TeamCard.astro";
+import Section from "../ui/Section.astro";
+import { team as copy } from "../../data/home";
+import { getPeople } from "../../utils/people";
+
+const [organizers, ambassadors] = await Promise.all([
+  getPeople("organizer"),
+  getPeople("ambassador"),
+]);
+---
+
+<Section
+  id="team"
+  data-section="team"
+  containerClass="pt-20 pb-28 md:pt-24 md:pb-36"
+>
+  <div slot="decor" class="absolute inset-x-0 bottom-0">
+    <Frieze kind="strip" cell={6} />
+  </div>
+
+  <div
+    class="flex flex-col justify-between gap-6 md:flex-row md:items-end"
+    data-reveal="up"
+  >
+    <div>
+      <Eyebrow>{copy.eyebrow}</Eyebrow>
+      <h2 class="h2-section mt-4">{copy.title}</h2>
+    </div>
+  </div>
+
+  <ul
+    class="team-grid m-0 grid list-none grid-cols-2 gap-x-5 gap-y-10 p-0 lg:grid-cols-5"
+    style="margin-top: 3rem"
+  >
+    {organizers.map((person, i) => (
+      <li data-reveal="up" style={`--d:${(i % 5) * 70}ms`}>
+        <TeamCard person={person} />
+      </li>
+    ))}
+  </ul>
+
+  <div class="mt-14 border-t-[1.5px] border-rule pt-8" data-reveal="up">
+    <h3 class="m-0 text-[0.8125rem] font-bold tracking-[0.16em] uppercase">
+      {copy.ambassadors}
+    </h3>
+    <ul
+      class="team-grid m-0 grid list-none grid-cols-2 gap-x-5 gap-y-10 p-0 lg:grid-cols-5"
+      style="margin-top: 2rem"
+    >
+      {ambassadors.map((person, i) => (
+        <li data-reveal="up" style={`--d:${(i % 5) * 70}ms`}>
+          <TeamCard person={person} />
+        </li>
+      ))}
+    </ul>
+  </div>
+</Section>
+
+<style>
+  .team-grid > li:nth-child(4n + 1) {
+    --plate: var(--color-accent-blue);
+  }
+  .team-grid > li:nth-child(4n + 2) {
+    --plate: var(--color-accent-pink);
+  }
+  .team-grid > li:nth-child(4n + 3) {
+    --plate: var(--color-accent-orange);
+  }
+  .team-grid > li:nth-child(4n) {
+    --plate: var(--color-accent-green);
+  }
+</style>

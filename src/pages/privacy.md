@@ -1,6 +1,8 @@
 ---
 layout: "../layouts/MarkdownLayout.astro"
 title: "Privacy statement"
+eyebrow: "Legal"
+description: "What data the JSHeroes website collects, why we collect it, and how we use and protect it."
 ---
 
 When you are using the JSHeroes website you entrust us with your data. The purpose of this **Privacy statement** is to explain what data we collect, why we collect it, how we use it, and also to allow you to decide to what extent you disclose your data.
@@ -9,8 +11,8 @@ When you are using the JSHeroes website you entrust us with your data. The purpo
 
 Personal information may be collected from you in various ways, for example:
 
-- Email address i.e. when you buy a ticket for the JSHeroes conference
-- Information you provide when you fill in a form related to one of our campaigns (including name, email and other details asked for that you provide), i.e. Adopt a JavaScripter, Blood Lust
+- Email address, e.g. when you buy a ticket for the JSHeroes conference
+- Information you provide when you fill in a form related to one of our campaigns (including name, email and other details asked for that you provide), e.g. Adopt a JavaScripter, Blood Lust
 - IP address and general location data (through the website log file), device & browser data (collected through cookies or similar technology)
 - IP address, date, and time associated with each open and click for an email campaign sent through our email service provider [MailChimp](https://mailchimp.com/)
 
@@ -26,7 +28,7 @@ We use the data we collect for a number of purposes:
 - To provide you with the services you signed up for, or requested
 - For security purposes, to ensure that our site is safe and secure
 - To send email and marketing communications when we have your permission
-- For statistical purposes, i.e. website traffic analysis, performance of marketing communications
+- For statistical purposes, e.g. website traffic analysis, performance of marketing communications
 
 ## Cookies
 
@@ -40,8 +42,8 @@ We use email tracking pixels in MailChimp campaigns, these data are organized in
 
 Personal as well as non-personal data collected by us is considered confidential and will never be sold or leased to third parties, besides the exceptions mentioned below:
 
-- When companies perform services on our behalf, i.e. online payments, conference registration system, email marketing platform, website analytics.
-- If we are required by public authorities or other organisation in order to meet a legal or regulatory obligation, in accordance with Union or Member State law.
+- When companies perform services on our behalf, e.g. online payments, conference registration system, email marketing platform, website analytics.
+- If we are required by public authorities or other organizations in order to meet a legal or regulatory obligation, in accordance with Union or Member State law.
 
 We have checked that our 3rd party solution providers adhere to GDPR guidelines on data processing and storage:
 

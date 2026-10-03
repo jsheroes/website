@@ -1,20 +1,39 @@
-import type { Organization } from "./types";
+import type { ImageMetadata } from "astro";
+import img_logo_women_in_tech from "../images/communities/logo_women_in_tech.png";
+import img_logo_jsnation from "../images/communities/logo_jsnation.png";
+import img_logo_reactparis from "../images/communities/logo_reactparis.png";
+import img_logo_zurichjs from "../images/communities/logo_zurichjs.png";
+import img_logo_timjs from "../images/communities/logo_timjs.svg";
+import img_logo_squiggleconf from "../images/communities/logo_squiggleconf.svg";
+import img_logo_meetjs from "../images/communities/logo_meetjs.svg";
+import img_logo_cmsconf from "../images/communities/logo_cmsconf.svg";
+import img_sisc from "../images/partners/sisc.png";
+import img_logo_reactbarcelona from "../images/communities/logo_reactbarcelona.svg";
 
-export const communities: Organization[] = [
+export interface Community {
+  name: string;
+  url: string;
+  logo: ImageMetadata;
+  /** Logos that need a dark or coloured backdrop. */
+  overrideBgColor?: string;
+  discount?: { percentage: number; code: string };
+}
+
+export const communities: Community[] = [
   {
     name: "Women in Tech Cluj",
     url: "https://www.womenintechcluj.com/",
-    imgName: "communities/logo_women_in_tech.png",
+    logo: img_logo_women_in_tech,
   },
   // {
   //   name: "Ng Bucharest",
   //   url: "https://www.meetup.com/AngularJS-Bucharest/",
-  //   imgName: "communities/logo_ngbucharest.png",
+  //   logo: img_logo_ngbucharest,
   // },
   {
     name: "JSNation",
     url: "https://jsnation.com/",
-    imgName: "communities/logo_jsnation.png",
+    logo: img_logo_jsnation,
     discount: {
       percentage: 10,
       code: "FRIENDS",
@@ -23,7 +42,7 @@ export const communities: Organization[] = [
   {
     name: "React Paris",
     url: "https://react.paris/",
-    imgName: "communities/logo_reactparis.png",
+    logo: img_logo_reactparis,
     discount: {
       percentage: 10,
       code: "rp26_jsheroes",
@@ -32,7 +51,7 @@ export const communities: Organization[] = [
   {
     name: "Zurich JS",
     url: "https://conf.zurichjs.com?utm_source=jsheroes&utm_medium=partner&utm_campaign=zurichjs-conf-2026",
-    imgName: "communities/logo_zurichjs.png",
+    logo: img_logo_zurichjs,
     discount: {
       percentage: 15,
       code: "JSHEROES15",
@@ -41,19 +60,19 @@ export const communities: Organization[] = [
   {
     name: "tim.js",
     url: "https://timjs.ro/",
-    imgName: "communities/logo_timjs.svg",
+    logo: img_logo_timjs,
     overrideBgColor: "#000000",
   },
   {
     name: "SquiggleConf",
     url: "https://squiggleconf.com/",
-    imgName: "communities/logo_squiggleconf.svg",
+    logo: img_logo_squiggleconf,
     overrideBgColor: "#063052",
   },
   {
     name: "meet.js Summit",
     url: "https://summit.meetjs.pl/",
-    imgName: "communities/logo_meetjs.svg",
+    logo: img_logo_meetjs,
     discount: {
       percentage: 10,
       code: "ILOVEMEETJS",
@@ -62,21 +81,21 @@ export const communities: Organization[] = [
   {
     name: "CMS Conf",
     url: "https://cmsconf.com/",
-    imgName: "communities/logo_cmsconf.svg",
+    logo: img_logo_cmsconf,
   },
   {
     name: "Sindicatul Studentilor din Cibernetica",
     url: "https://sisc.ro/",
-    imgName: "partners/sisc.png",
+    logo: img_sisc,
   },
   {
     name: "React Barcelona",
     url: "https://www.meetup.com/reactjs-barcelona/",
-    imgName: "communities/logo_reactbarcelona.svg",
+    logo: img_logo_reactbarcelona,
   },
   // {
   //   name: "Code for Romania",
   //   url: "https://code4.ro/",
-  //   imgName: "communities/logo_code4ro.png",
+  //   logo: img_logo_code4ro,
   // },
 ];

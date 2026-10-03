@@ -1,0 +1,43 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+/**
+ * A page section. Tone sets the surface: paper (default), band (neutral
+ * stripe) or ink (flat navy). The container is 1160px wide; a `decor` slot
+ * takes absolutely positioned motifs that may bleed past it.
+ */
+interface Props extends HTMLAttributes<"section"> {
+  tone?: "paper" | "band" | "ink";
+  /** Class for the inner 1160px container. */
+  containerClass?: string;
+}
+
+const {
+  tone = "paper",
+  class: className,
+  containerClass,
+  ...rest
+} = Astro.props;
+---
+
+<section
+  data-tone={tone}
+  class:list={[
+    "relative overflow-hidden",
+    { "bg-paper text-black-pearl": tone === "paper" },
+    { "bg-band text-black-pearl": tone === "band" },
+    { "bg-black-pearl text-white": tone === "ink" },
+    className,
+  ]}
+  {...rest}
+>
+  <slot name="decor" />
+  <div
+    class:list={[
+      "relative mx-auto w-full max-w-[1160px] px-5 py-16 md:px-8 md:py-24 xl:px-0",
+      containerClass,
+    ]}
+  >
+    <slot />
+  </div>
+</section>

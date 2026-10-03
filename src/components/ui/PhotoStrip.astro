@@ -1,0 +1,40 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+/** Three photos side by side, as paths under src/images such as "event/venue1.jpg" (one on phones, two on tablets). */
+interface Props {
+  names: [string, string, string];
+  alts?: [string, string, string];
+}
+
+const photos = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/images/{event,meetups}/*.{jpg,jpeg,png}",
+  { eager: true },
+);
+
+const { names, alts = ["", "", ""] } = Astro.props;
+const images = names.map((name) => {
+  const image = photos[`/src/images/${name}`]?.default;
+  if (!image) throw new Error(`PhotoStrip: no image src/images/${name}`);
+  return image;
+});
+---
+
+<div
+  class="grid grid-cols-1 gap-2 bg-paper sm:grid-cols-2 lg:grid-cols-3"
+  data-reveal="fade"
+>
+  {images.map((image, i) => (
+    <Image
+      src={image}
+      alt={alts[i]}
+      widths={[480, 800]}
+      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+      class:list={[
+        "aspect-[4/3] w-full object-cover",
+        { "hidden sm:block": i === 1, "hidden lg:block": i === 2 },
+      ]}
+    />
+  ))}
+</div>

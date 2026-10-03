@@ -1,0 +1,119 @@
+---
+/**
+ * Dev-only (see astro.config.mjs): a 1200x630 social card, screenshotted
+ * into public/img/social/og by scripts/og.mjs. `?page=home` draws the hero;
+ * otherwise `title`, `eyebrow`, `highlight` and `motif` come from the page's
+ * own header, so a card always matches the page it shares.
+ */
+export const prerender = false;
+
+import "@fontsource-variable/sora";
+import "@/assets/base.css";
+import Eyebrow from "../components/ui/Eyebrow.astro";
+import Motif from "../components/ui/Motif.astro";
+import Scribble from "../components/ui/Scribble.astro";
+import { event } from "../data/event";
+import { art } from "../data/hero-art";
+import { hero } from "../data/home";
+
+const params = Astro.url.searchParams;
+const home = params.get("page") === "home";
+const title = params.get("title") ?? event.name;
+const eyebrow = home ? hero.eyebrow : (params.get("eyebrow") ?? undefined);
+const highlight = params.get("highlight") ?? "";
+const motif = params.get("motif");
+
+// The hero's cluster; interior pages swap the centrepiece for their own motif.
+const cluster = art.map((item, i) =>
+  i === 0 && motif ? { ...item, name: `${motif}_brand`, cell: 18 } : item,
+);
+
+const at = highlight ? title.lastIndexOf(highlight) : -1;
+const lead = at >= 0 ? title.slice(0, at) : title;
+const tail = at >= 0 ? title.slice(at + highlight.length) : "";
+
+// Long titles step down so they stay within three lines beside the motifs.
+const size =
+  title.length > 44 ? "3.25rem" : title.length > 28 ? "3.875rem" : "4.5rem";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex" />
+    <title>Social card · {title}</title>
+  </head>
+  <body class="m-0">
+    <div
+      data-og-card
+      class="relative flex h-[630px] w-[1200px] flex-col overflow-hidden bg-paper text-black-pearl"
+    >
+      <Motif
+        name="st_brand"
+        cell={6}
+        flip
+        class="absolute top-0 right-0"
+        loading="eager"
+      />
+
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+        <div class="absolute top-0 left-0 h-[900px] w-[1440px] origin-top-left [transform:translate(318px,-22px)_scale(0.6)]">
+          {cluster.map(({ name, cell, left, top }) => (
+            <div class="absolute" style={`left:${left}px;top:${top}px`}>
+              <Motif name={name} cell={cell} loading="eager" />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="relative flex flex-1 flex-col px-20 pt-14">
+        <p class="m-0 text-[2rem] leading-none font-extrabold tracking-tight">
+          <span class="text-blue-logo">JS</span>Heroes
+        </p>
+        <div class:list={["max-w-[40rem]", home ? "mt-16" : "my-auto pb-6"]}>
+          {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+          {home ? (
+            <h1 class="h1-hero mt-6 text-[5.25rem]">
+              {hero.titleLines.map((line) => (
+                <>
+                  {line}
+                  <br />
+                </>
+              ))}
+              <Scribble stroke={6} spaced={false}>
+                {hero.titleHighlight}
+              </Scribble>
+            </h1>
+          ) : (
+            <h1
+              class="h2-section mt-6 max-w-[16ch]"
+              style={`font-size:${size}`}
+            >
+              {lead}
+              {at >= 0 && <Scribble spaced={false}>{highlight}</Scribble>}
+              {tail}
+            </h1>
+          )}
+        </div>
+      </div>
+
+      <div
+        data-tone="ink"
+        class="relative flex h-24 items-center gap-14 bg-black-pearl px-20 text-white"
+      >
+        {hero.facts.slice(0, 2).map((fact) => (
+          <div class="flex flex-col gap-1.5">
+            <span class="text-xs font-bold tracking-[0.16em] text-accent-orange uppercase">
+              {fact.label}
+            </span>
+            <span class="text-xl font-bold">{fact.value}</span>
+          </div>
+        ))}
+        <span class="ml-auto text-xl font-bold text-accent-orange">
+          {new URL(event.siteUrl).host}
+        </span>
+      </div>
+    </div>
+  </body>
+</html>

@@ -2,7 +2,7 @@
 author: ale-retegan
 title: 2022 Transparency Plan
 published: May 16, 2022
-summary: Estimated expenses for the 4th Edition of JSHeroes
+summary: Estimated expenses for the 4th edition of JSHeroes
 tags: ["plans"]
 ---
 

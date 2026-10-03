@@ -1,0 +1,207 @@
+---
+import Button from "../ui/Button.astro";
+import Eyebrow from "../ui/Eyebrow.astro";
+import Motif from "../ui/Motif.astro";
+import Scribble from "../ui/Scribble.astro";
+import { hero } from "../../data/home";
+import { art, mid } from "../../data/hero-art";
+import { cta } from "../../data/navigation";
+
+/** The column beside the text below lg: smaller between sm and md. Cells are motif pixels. */
+const sideClusters = [
+  { class: "hidden sm:flex md:hidden", star: 4, small: 2 },
+  { class: "hidden md:flex lg:hidden", star: 6, small: 3 },
+];
+---
+
+<section
+  data-section="hero"
+  class="relative -mt-24 flex flex-col overflow-hidden bg-paper"
+>
+  <!--
+    From lg up, the hero fills at least one viewport (min-h-[100dvh], flex-1
+    on the text block absorbs the slack). Below lg it keeps its natural height.
+  -->
+  <div class="flex flex-col lg:min-h-[100dvh]">
+    <!-- Stair corners live in the page margin, so they only appear where the margin is wide enough to hold them. -->
+    <Motif
+      name="st_brand"
+      cell={6}
+      class="absolute top-0 left-0 hidden xl:block 3xl:hidden"
+      loading="eager"
+    />
+    <Motif
+      name="st_brand"
+      cell={6}
+      flip
+      class="absolute top-0 right-0 hidden xl:block 3xl:hidden"
+      loading="eager"
+    />
+    <Motif
+      name="st_brand"
+      cell={12}
+      class="absolute top-0 left-0 hidden 3xl:block"
+      loading="eager"
+    />
+    <Motif
+      name="st_brand"
+      cell={12}
+      flip
+      class="absolute top-0 right-0 hidden 3xl:block"
+      loading="eager"
+    />
+
+    <!-- Full cluster from xl, positioned on the 1440 design grid. Scaled 20%
+         smaller, anchored so the top barely moves (already cleared the nav)
+         and nearly all the shrink comes out of the bottom: real browsers render the fluid heading a little
+         differently than our own testing, so this keeps a wide margin
+         rather than the thinnest one that measured clean. -->
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0 hidden 3xl:block"
+    >
+      <div class="absolute top-0 left-1/2 h-full w-[1440px] origin-[1082px_259px] -translate-x-1/2 scale-[0.8]">
+        {art.map(({ name, cell, left, top, motion, dur, delay, rd }) => (
+          <div class="absolute" style={`left:${left}px;top:${top}px`}>
+            <Motif
+              name={name}
+              cell={cell}
+              loading="eager"
+              motion={motion}
+              dur={dur}
+              delay={delay}
+              reveal="pixel"
+              revealDelay={rd}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Between lg and 3xl there is no room for the full cluster: the star alone at
+       lg, a smaller cluster from `laptop` once there's clear space beside the text. -->
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute top-40 right-8 hidden lg:block laptop:hidden"
+    >
+      <Motif
+        name="m4_brand"
+        cell={13}
+        loading="eager"
+        motion="spin"
+        dur="180s"
+        reveal="pixel"
+      />
+    </div>
+    <!-- Anchored at its own top edge (nothing crowds the nav here already),
+         so the full 20% shrink comes out of the bottom. -->
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute top-28 right-6 hidden h-[38rem] w-[35rem] origin-[280px_40px] scale-[0.8] laptop:block 3xl:hidden"
+    >
+      {mid.map(({ name, cell, left, top, motion, dur, delay, rd }) => (
+        <div class="absolute" style={`left:${left}px;top:${top}px`}>
+          <Motif
+            name={name}
+            cell={cell}
+            loading="eager"
+            motion={motion}
+            dur={dur}
+            delay={delay}
+            reveal="pixel"
+            revealDelay={rd}
+          />
+        </div>
+      ))}
+    </div>
+
+    <!-- From sm to lg the motifs stand in a column to the right of the text
+         (from lg they're positioned over the page, above). Below sm there is
+         no room beside the text, so they're dropped rather than stacked under it. -->
+    <div class="relative mx-auto flex w-full max-w-[1160px] flex-1 items-start justify-between gap-8 px-5 pt-32 pb-16 md:px-8 md:pt-[9.375rem] xl:px-0">
+      <div class="max-w-[40rem] min-w-0">
+        <Eyebrow data-reveal="up">{hero.eyebrow}</Eyebrow>
+        <h1 class="h1-hero mt-7" data-load>
+          {hero.titleLines.map((line) => (
+            <>
+              {line}
+              <br class="hidden lg:inline" />{" "}
+            </>
+          ))}
+          <Scribble stroke={6} spaced={false}>
+            {hero.titleHighlight}
+          </Scribble>
+        </h1>
+        <p
+          class="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 text-xl font-bold md:text-2xl"
+          data-reveal="up"
+          style="--d:100ms"
+        >
+          {hero.facts.map((fact, i) => (
+            <>
+              {i > 0 && (
+                <span class="hidden shrink-0 sm:block">
+                  <Motif name="pd_coral" cell={3} />
+                </span>
+              )}
+              <span class="marker-label">{fact.value}</span>
+            </>
+          ))}
+        </p>
+        <p class="lede mt-8 max-w-[34rem]" data-reveal="up" style="--d:150ms">
+          {hero.intro}
+        </p>
+        <div
+          class="mt-10 flex flex-wrap items-center gap-x-5 gap-y-6"
+          data-reveal="up"
+          style="--d:300ms"
+        >
+          {cta && <Button href={cta.href}>{cta.label}</Button>}
+          <Button href="#speakers" variant="ghost">
+            {hero.secondaryCta}
+          </Button>
+        </div>
+      </div>
+
+      {sideClusters.map(({ class: className, star, small }) => (
+        <div
+          aria-hidden="true"
+          class:list={[
+            "pointer-events-none mt-12 shrink-0 flex-col items-center gap-4",
+            className,
+          ]}
+        >
+          <Motif
+            name="m4_brand"
+            cell={star}
+            loading="eager"
+            motion="spin"
+            dur="180s"
+            reveal="pixel"
+          />
+          <div class="flex items-end gap-3">
+            <Motif
+              name="m3_brand"
+              cell={small}
+              loading="eager"
+              motion="sway"
+              dur="11s"
+              reveal="pixel"
+              revealDelay="200ms"
+            />
+            <Motif
+              name="m5_brand"
+              cell={small}
+              loading="eager"
+              motion="sway"
+              dur="9s"
+              reveal="pixel"
+              revealDelay="350ms"
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

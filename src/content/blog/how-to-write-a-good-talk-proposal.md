@@ -1,9 +1,8 @@
 ---
 author: "jeremias-menichelli"
-author_category: "ambassadors"
 title: How to write a good talk proposal
 published: Nov 4, 2024
-summary: Advices on sending a proposal from the JSHeroes ambassadors
+summary: Advice on writing a proposal from the JSHeroes ambassadors
 tags: ["cfp"]
 ---
 

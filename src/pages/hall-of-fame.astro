@@ -1,55 +1,57 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import Section from "@/components/Section.astro";
-import { talks } from "@/data/hall-of-fame";
 import { Image } from "astro:assets";
-import { getImage } from "../utils/getImage";
+import type { ImageMetadata } from "astro";
+import Section from "../components/ui/Section.astro";
+import PageLayout from "../layouts/PageLayout.astro";
+import { talks } from "../data/hall-of-fame";
 
-const orderedTalks = talks.sort((t1, t2) => (t1.speaker > t2.speaker ? 1 : -1));
+const covers = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/images/hall-of-fame/*.{jpg,jpeg,png}",
+  { eager: true },
+);
+const ordered = [...talks]
+  .sort((a, b) => a.speaker.trim().localeCompare(b.speaker.trim()))
+  .map((talk) => {
+    const cover = covers[`/src/images/${talk.cover}`]?.default;
+    if (!cover) throw new Error(`Hall of fame: missing cover ${talk.cover}`);
+    return { ...talk, speaker: talk.speaker.trim(), cover };
+  });
 ---
 
-<BaseLayout title="JSHeroes - Hall of Fame">
-  <img
-    class="block h-[400px] w-full object-cover"
-    src={"/img/banners/default.svg"}
-    aria-hidden
-  />
-
-  <main id="main">
-    <Section variant="light" content="list">
-      <div class="flex flex-col">
-        <h1>JSHeroes Hall of Fame</h1>
-
-        <p>
-          Here are some of the amazing humans, that took the stage at JSHeroes
-          across the years, and their awesome talks.
-        </p>
-
-        <div class="grid grid-cols-1 gap-1 pt-8 md:grid-cols-2 lg:grid-cols-3">
-          {
-            orderedTalks.map((talk) => (
-              <a
-                href={talk.link}
-                target="_blank"
-                rel="noreferrer noopener"
-                class="relative overflow-hidden focus-visible:outline-dashed focus-visible:outline-[4px] focus-visible:outline-offset-0"
-              >
-                <Image
-                  src={getImage(talk.cover)}
-                  alt={talk.speaker}
-                  width="400"
-                  height="250"
-                  class="w-full transition-transform duration-fade ease-out hover:scale-[1.1]"
-                />
-                <div class="to-transparent flex-end pointer-events-none absolute bottom-0 flex w-full flex-col bg-gradient-to-t from-brand-darknavy p-4 pt-8 font-display text-neutral-light">
-                  <span class="text-lg font-bold">{talk.speaker}</span>
-                  <span class="text-balance">{talk.title}</span>
-                </div>
-              </a>
-            ))
-          }
-        </div>
-      </div>
-    </Section>
-  </main>
-</BaseLayout>
+<PageLayout
+  title="JSHeroes Hall of Fame"
+  eyebrow="Talks"
+  description="Some of the amazing people who took the JSHeroes stage over the years, and their talks to watch again."
+  highlight="Fame"
+  intro="Here are some of the amazing humans that took the stage at JSHeroes across the years, and their awesome talks."
+>
+  <Section containerClass="pt-6 pb-20 md:pt-10 md:pb-28">
+    <ul class="m-0 grid list-none grid-cols-1 gap-x-8 gap-y-12 p-0 sm:grid-cols-2 lg:grid-cols-3">
+      {ordered.map((talk, i) => (
+        <li data-reveal="up" style={`--d:${(i % 3) * 80}ms`}>
+          <a
+            href={talk.link}
+            target="_blank"
+            rel="noreferrer noopener"
+            class="group block no-underline"
+          >
+            <span class="block overflow-hidden bg-band">
+              <Image
+                src={talk.cover}
+                alt=""
+                widths={[400, 800]}
+                sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
+                class="aspect-[8/5] w-full object-cover grayscale transition duration-300 group-hover:scale-105 group-hover:grayscale-0 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+              />
+            </span>
+            <span class="mt-4 block text-xl leading-tight font-extrabold tracking-tight group-hover:underline group-hover:decoration-accent-pink group-hover:decoration-2 group-hover:underline-offset-4">
+              {talk.speaker}
+            </span>
+            <span class="mt-1 block text-soft">{talk.title}</span>
+            <span class="mt-2 block text-sm font-bold">Watch the talk ↗</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </Section>
+</PageLayout>
