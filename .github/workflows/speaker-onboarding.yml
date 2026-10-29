@@ -89,6 +89,9 @@ jobs:
           # action tries OIDC + the Claude GitHub App, which we don't use.
           # Pushing happens later with the speaker bot's App token.
           github_token: ${{ github.token }}
+          # The portal's GitHub App sends the repository_dispatch, so the run's
+          # actor is that bot. The action rejects non-human actors unless allowed.
+          allowed_bots: speaker-portal
           prompt: ${{ env.AGENT_PROMPT }}
           claude_args: |
             --model claude-sonnet-5-5
