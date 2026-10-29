@@ -135,6 +135,10 @@ jobs:
           BRANCH="speaker/$SLUG"
           git config user.name "$APP_SLUG[bot]"
           git config user.email "$APP_SLUG[bot]@users.noreply.github.com"
+          # claude-code-action rewires git auth to the read-only github.token,
+          # so point origin back at the speaker bot's App token before pushing.
+          git config --local --unset-all http.https://github.com/.extraheader || true
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git checkout -B "$BRANCH"
           git add "src/content/people/$SLUG.md" "src/content/speaker-talks/$SLUG.md" "src/images/people/$SLUG.jpg"
           git commit -m "Add draft speaker: $NAME" -m "Speaker portal submission: $SUBMISSION_ID"
