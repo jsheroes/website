@@ -85,6 +85,10 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Read-only token (this job only has contents: read). Without it the
+          # action tries OIDC + the Claude GitHub App, which we don't use.
+          # Pushing happens later with the speaker bot's App token.
+          github_token: ${{ github.token }}
           prompt: ${{ env.AGENT_PROMPT }}
           claude_args: |
             --model claude-sonnet-5-5
