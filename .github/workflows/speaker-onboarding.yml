@@ -119,6 +119,25 @@ jobs:
           grep -q '^role: "speaker"$' "$f" || { echo "::error::role must be speaker"; exit 1; }
           if grep -qE '^(order|portrait):' "$f"; then echo "::error::order/portrait must not be set"; exit 1; fi
 
+      # Runs after the agent and the guard, so neither touches the cutout. Works from
+      # the uploaded photo, not the square crop. A failure must not block the PR: the
+      # initials tile shows until a cutout exists, and the PR body says what happened.
+      - name: Generate cutout
+        id: cutout
+        continue-on-error: true
+        uses: ./.github/actions/speaker-cutout
+        with:
+          photo: ${{ runner.temp }}/photo
+          name: ${{ steps.scaffold.outputs.slug }}
+          out-dir: src/images/people
+
+      - name: Add cutout to the speaker entry
+        if: steps.cutout.outcome == 'success'
+        env:
+          SLUG: ${{ steps.scaffold.outputs.slug }}
+        run: |
+          sed -i "/^photo: /a portrait: \"../../images/people/$SLUG-cutout.png\"" "src/content/people/$SLUG.md"
+
       - name: Check and build
         run: |
           pnpm check
@@ -131,6 +150,7 @@ jobs:
           SLUG: ${{ steps.scaffold.outputs.slug }}
           NAME: ${{ steps.scaffold.outputs.name }}
           APP_SLUG: ${{ steps.app-token.outputs.app-slug }}
+          CUTOUT_CREATED: ${{ steps.cutout.outcome == 'success' }}
         run: |
           BRANCH="speaker/$SLUG"
           git config user.name "$APP_SLUG[bot]"
@@ -141,15 +161,33 @@ jobs:
           git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git checkout -B "$BRANCH"
           git add "src/content/people/$SLUG.md" "src/content/speaker-talks/$SLUG.md" "src/images/people/$SLUG.jpg"
+          if [ "$CUTOUT_CREATED" = "true" ]; then git add "src/images/people/$SLUG-cutout.png"; fi
           git commit -m "Add draft speaker: $NAME" -m "Speaker portal submission: $SUBMISSION_ID"
           git push --force origin "$BRANCH"
 
           SUMMARY="$RUNNER_TEMP/agent-summary.md"
           [ -s "$SUMMARY" ] || echo "_No notes from the agent._" > "$SUMMARY"
 
+          # Pinned to the commit so the images in older comments keep showing what they reviewed.
+          RAW="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$(git rev-parse HEAD)/src/images/people"
+          if [ "$CUTOUT_CREATED" = "true" ]; then
+            HEADSHOT="| Photo | Cutout |
+          | --- | --- |
+          | <img src=\"$RAW/$SLUG.jpg\" width=\"260\"> | <img src=\"$RAW/$SLUG-cutout.png\" width=\"260\"> |"
+            CUTOUT_TODO="- [ ] Cutout looks clean on the plate in the Vercel preview. If not, send the original photo (on the submission's page in the portal's \`/admin\`) to a designer and replace \`src/images/people/$SLUG-cutout.png\`"
+          else
+            HEADSHOT="<img src=\"$RAW/$SLUG.jpg\" width=\"260\">
+
+          **The automatic cutout failed** (see the workflow run), so the initials tile shows for now."
+            CUTOUT_TODO="- [ ] Make a cutout with \`scripts/cutouts.py\` or get one from a designer, then set \`portrait\`"
+          fi
+
           cat > "$RUNNER_TEMP/body.md" <<BODY
           Draft speaker entry generated from the speaker portal (submission \`$SUBMISSION_ID\`).
           It has \`draft: true\`, so it is **hidden in production** and only shows on Vercel previews.
+
+          ### Headshot
+          $HEADSHOT
 
           ### Agent notes
           $(cat "$SUMMARY")
@@ -157,10 +195,10 @@ jobs:
           ### Review
           - [ ] Bio and talk text read well and are accurate
           - [ ] Photo crop looks good
+          $CUTOUT_TODO
           - [ ] Tag is right
 
           ### Before publishing
-          - [ ] Optional: make a greyscale cutout with \`scripts/cutouts.py\` and set \`portrait\` (the initials tile shows until then)
           - [ ] Set \`draft: false\` and an \`order\` in \`src/content/people/$SLUG.md\`
           - [ ] Add \`$SLUG\` to \`src/data/agenda.ts\`
           BODY

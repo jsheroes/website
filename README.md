@@ -49,7 +49,7 @@ scripts/          audit tooling, see below
 
 ### Content
 
-- **People** are one collection with a `role` (`speaker`, `host`, `organizer`, `volunteer`, `ambassador`, `guest-writer`). Photos are typed image fields next to the markdown (`src/images/people`). Speakers can have a greyscale `portrait` cutout for the plate; `scripts/cutouts.py` makes them.
+- **People** are one collection with a `role` (`speaker`, `host`, `organizer`, `volunteer`, `ambassador`, `guest-writer`). Photos are typed image fields next to the markdown (`src/images/people`). Speakers can have a greyscale `portrait` cutout for the plate; `scripts/cutouts.py` makes them, and the speaker onboarding workflow runs it on every portal submission and shows the result in the PR. The `speaker-cutout-preview` workflow runs it on each new portal photo and sends the result to the speaker's RSVP page, without touching this repo.
 - **Blog posts** reference their author (`author: person-id`) and tags; add `.md` to `src/content/blog`.
 - **Pages** in `src/pages/*.md` set `layout: ../layouts/MarkdownLayout.astro` and can add `eyebrow`, `intro`, `highlight` (the word scribbled under the title) and `bear`.
 

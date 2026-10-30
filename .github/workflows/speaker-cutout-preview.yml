@@ -1,0 +1,83 @@
+name: Speaker cutout preview
+
+# Triggered by the speaker portal (repository_dispatch) or manually for testing.
+# Makes the cutout for a submission's photo and posts it back, so the portal can
+# show it on the speaker's RSVP page. Changes nothing in this repo.
+#
+# The repo is public, so its run logs are too: the photo URL stays in a temp file,
+# never in `env:` or step outputs, which show up in the logs.
+on:
+  repository_dispatch:
+    types: [speaker-cutout-preview]
+  workflow_dispatch:
+    inputs:
+      submission_id:
+        description: Speaker portal submission id
+        required: true
+
+permissions:
+  contents: read
+
+# A newer photo replaces the older one, and this run always fetches the latest.
+concurrency:
+  group: speaker-cutout-preview-${{ github.event.client_payload.submission_id || inputs.submission_id }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SUBMISSION_ID: ${{ github.event.client_payload.submission_id || inputs.submission_id }}
+      PORTAL_URL: ${{ vars.SPEAKER_PORTAL_URL }}
+      PORTAL_SECRET: ${{ secrets.SPEAKER_PORTAL_WORKFLOW_SECRET }}
+    steps:
+      - name: Validate submission id
+        run: |
+          if ! [[ "$SUBMISSION_ID" =~ ^[a-f0-9]{16,64}$ ]]; then
+            echo "::error::Invalid submission id"; exit 1
+          fi
+
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github/actions
+            design/v1/assets/speakers
+            scripts
+
+      - name: Fetch photo from the portal
+        run: |
+          curl -fsSL -H "Authorization: Bearer $PORTAL_SECRET" \
+            "$PORTAL_URL/api/submissions/$SUBMISSION_ID" -o "$RUNNER_TEMP/submission.json"
+          PHOTO_URL=$(jq -r '.photoUrl' "$RUNNER_TEMP/submission.json")
+          case "$PHOTO_URL" in
+            https://*.public.blob.vercel-storage.com/*) ;;
+            *) echo "::error::Unexpected photo URL host"; exit 1 ;;
+          esac
+          printf '%s' "$PHOTO_URL" > "$RUNNER_TEMP/photo-url"
+          rm "$RUNNER_TEMP/submission.json"
+          curl -fsSL --max-filesize 15000000 "$PHOTO_URL" -o "$RUNNER_TEMP/photo"
+
+      - name: Generate cutout
+        uses: ./.github/actions/speaker-cutout
+        with:
+          photo: ${{ runner.temp }}/photo
+          name: preview
+          out-dir: ${{ runner.temp }}/cutout
+
+      # The photo URL says which photo this is for, so the portal can ignore a
+      # result for one that has been replaced since.
+      - name: Send cutout to the portal
+        run: |
+          curl -fsS -X POST -H "Authorization: Bearer $PORTAL_SECRET" -H "Content-Type: image/png" \
+            -H "X-Photo-Url: $(cat "$RUNNER_TEMP/photo-url")" \
+            --data-binary @"$RUNNER_TEMP/cutout/preview-cutout.png" \
+            "$PORTAL_URL/api/submissions/$SUBMISSION_ID/cutout"
+
+      - name: Report failure to the portal
+        if: failure()
+        run: |
+          [ -f "$RUNNER_TEMP/photo-url" ] || exit 0
+          jq -n --rawfile photoUrl "$RUNNER_TEMP/photo-url" '{status: "failed", photoUrl: $photoUrl}' |
+            curl -fsS -X POST -H "Authorization: Bearer $PORTAL_SECRET" -H "Content-Type: application/json" \
+              --data @- "$PORTAL_URL/api/submissions/$SUBMISSION_ID/cutout"

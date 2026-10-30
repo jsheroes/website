@@ -1,0 +1,50 @@
+name: Speaker cutout
+description: Runs scripts/cutouts.py on one photo with a pinned model and packages. Needs the repo checked out.
+
+inputs:
+  photo:
+    description: Path to the photo
+    required: true
+  name:
+    description: Result name; writes <name>-cutout.png
+    required: true
+  out-dir:
+    description: Where the result goes
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Cache cutout model
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/u2net
+        key: u2net-human-seg-v0.0.0
+
+    - name: Generate cutout
+      shell: bash
+      env:
+        PHOTO: ${{ inputs.photo }}
+        CUTOUT_NAME: ${{ inputs.name }}
+        OUT_DIR: ${{ inputs.out-dir }}
+        CUTOUT_PACKAGES: onnxruntime==1.23.2 pillow==13.0.0 numpy==2.5.4
+        U2NET_SHA256: 01eb6a29a5c4d8edb30b56adad9bb3a2a0535338e480724a213e0acfd2d1c73c
+      run: |
+        MODEL="$HOME/.cache/u2net/u2net_human_seg.onnx"
+        if [ ! -f "$MODEL" ]; then
+          mkdir -p "$(dirname "$MODEL")"
+          curl -fsSL --retry 3 -o "$MODEL.tmp" \
+            https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net_human_seg.onnx
+          echo "$U2NET_SHA256  $MODEL.tmp" | sha256sum -c -
+          mv "$MODEL.tmp" "$MODEL"
+        fi
+        python3 -m venv "$RUNNER_TEMP/cutout-venv"
+        "$RUNNER_TEMP/cutout-venv/bin/pip" install --quiet $CUTOUT_PACKAGES
+        mkdir -p "$RUNNER_TEMP/cutout-in" "$OUT_DIR"
+        cp "$PHOTO" "$RUNNER_TEMP/cutout-in/$CUTOUT_NAME"
+        U2NET_MODEL="$MODEL" SPEAKERS_DIR="$RUNNER_TEMP/cutout-in/" \
+          "$RUNNER_TEMP/cutout-venv/bin/python" scripts/cutouts.py "$CUTOUT_NAME"
+        # A photo with no person in it gives a fully transparent image: that's a failure.
+        "$RUNNER_TEMP/cutout-venv/bin/python" -c \
+          "import sys; from PIL import Image; sys.exit(Image.open(sys.argv[1]).getchannel('A').getextrema()[1] < 128)" \
+          "$OUT_DIR/$CUTOUT_NAME-cutout.png"
