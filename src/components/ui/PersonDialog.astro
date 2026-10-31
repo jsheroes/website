@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { getEntry, render } from "astro:content";
+import { describeLinks } from "../../utils/links";
 import { personDialogId, type Person } from "../../utils/people";
 
 /**
@@ -24,25 +25,7 @@ const talk =
 const { Content: Bio } = await render(person);
 const Talk = talk ? (await render(talk)).Content : undefined;
 
-const linkLabels: Record<string, string> = {
-  bluesky: "Bluesky",
-  twitter: "Twitter",
-  github: "GitHub",
-  linkedin: "LinkedIn",
-  website: "Website",
-};
-const links = Object.entries(person.data.links ?? {})
-  .map(([key, url]) => ({
-    key,
-    url: url as string,
-    label: linkLabels[key] ?? key,
-    icon: `/img/icons/${key === "website" ? "link" : key}.svg`,
-  }))
-  .sort(
-    (a, b) =>
-      Object.keys(linkLabels).indexOf(a.key) -
-      Object.keys(linkLabels).indexOf(b.key),
-  );
+const links = describeLinks(person.data.links ?? []);
 
 const role = person.data.company
   ? `${person.data.title} @ ${person.data.company}`
@@ -66,7 +49,7 @@ const role = person.data.company
           class="h-auto w-[10rem] bg-[var(--plate,var(--color-tint-yellow))] md:w-[15.5rem]"
         />
         {links.length > 0 && (
-          <ul class="m-0 flex list-none gap-4 p-0">
+          <ul class="m-0 flex list-none flex-wrap gap-4 p-0">
             {links.map((link) => (
               <li>
                 <a

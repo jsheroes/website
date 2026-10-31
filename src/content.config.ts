@@ -26,14 +26,13 @@ const people = defineCollection({
       photo: image(),
       /** Greyscale cutout for the speaker plates; the tinted initials tile is used when missing. */
       portrait: image().optional(),
+      /**
+       * A list of URLs; utils/links works out the platform of each. Older
+       * entries key them by platform, and those keys are ignored.
+       */
       links: z
-        .object({
-          bluesky: z.string().optional(),
-          twitter: z.string().optional(),
-          github: z.string().optional(),
-          website: z.string().optional(),
-          linkedin: z.string().optional(),
-        })
+        .union([z.array(z.string()), z.record(z.string(), z.string())])
+        .transform((links) => Object.values(links))
         .optional(),
       order: z.number().optional(),
       /**

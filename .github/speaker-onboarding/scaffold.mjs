@@ -29,19 +29,18 @@ requireText("speaker.bio", speaker?.bio, 1500);
 requireText("talk.title", talk?.title, 150);
 requireText("talk.abstract", talk?.abstract, 2500);
 
-const LINK_KEYS = ["website", "linkedin", "github", "bluesky", "twitter"];
-const links = {};
-for (const key of LINK_KEYS) {
-  const value = speaker.links?.[key];
+// A list of URLs. Object.values also reads the older shape, keyed by platform.
+const links = [];
+for (const value of Object.values(speaker.links ?? {})) {
   if (!value) continue;
   let url;
   try {
     url = new URL(value);
   } catch {
-    fail(`invalid ${key} link`);
+    fail(`invalid link: ${value}`);
   }
-  if (url.protocol !== "https:") fail(`${key} link must be https`);
-  links[key] = url.toString();
+  if (url.protocol !== "https:") fail(`link must be https: ${value}`);
+  links.push(url.toString());
 }
 
 // ---- never overwrite someone who isn't a draft speaker ----
@@ -74,11 +73,8 @@ const front = [
   speaker.company?.trim() && `company: ${q(speaker.company)}`,
   speaker.tag?.trim() && `tag: ${q(speaker.tag)}`,
   `photo: ${q(`../../images/people/${slug}.jpg`)}`,
-  Object.keys(links).length &&
-    [
-      "links:",
-      ...Object.entries(links).map(([k, v]) => `  ${k}: ${q(v)}`),
-    ].join("\n"),
+  links.length &&
+    ["links:", ...links.map((link) => `  - ${q(link)}`)].join("\n"),
   "draft: true",
   "---",
 ]
