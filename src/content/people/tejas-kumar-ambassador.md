@@ -1,8 +1,7 @@
 ---
 name: "Tejas Kumar"
-role: "host"
-title: "MC"
-order: 2
+role: "ambassador"
+title: "Ambassador"
 photo: "../../images/people/tejas-kumar.jpg"
 ---
 

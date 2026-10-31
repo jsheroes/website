@@ -56,6 +56,8 @@ export const speakers = {
 export const hosts = {
   eyebrow: "The support crew",
   title: "Our wonderful hosts and sketch artist.",
+  tba: "TBA",
+  mcTitle: "MC",
 };
 
 export const flipWall = {

@@ -1,5 +1,5 @@
 ---
-author: alex-moldovan
+author: alex-moldovan-organizer
 title: Call for papers 2023 insights
 published: Mar 13, 2023
 tags: ["cfp"]

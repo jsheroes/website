@@ -1,5 +1,5 @@
 ---
-author: ale-retegan
+author: ale-retegan-organizer
 title: 2023 Transparency Plan
 published: Apr 9, 2023
 tags: ["plans"]

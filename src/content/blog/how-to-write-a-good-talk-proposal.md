@@ -1,5 +1,5 @@
 ---
-author: "jeremias-menichelli"
+author: "jeremias-menichelli-ambassador"
 title: How to write a good talk proposal
 published: Nov 4, 2024
 summary: Advice on writing a proposal from the JSHeroes ambassadors

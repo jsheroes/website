@@ -7,7 +7,6 @@ import img_logo_timjs from "../images/communities/logo_timjs.svg";
 import img_logo_squiggleconf from "../images/communities/logo_squiggleconf.svg";
 import img_logo_meetjs from "../images/communities/logo_meetjs.svg";
 import img_logo_cmsconf from "../images/communities/logo_cmsconf.svg";
-import img_sisc from "../images/partners/sisc.png";
 import img_logo_reactbarcelona from "../images/communities/logo_reactbarcelona.svg";
 
 export interface Community {
@@ -82,11 +81,6 @@ export const communities: Community[] = [
     name: "CMS Conf",
     url: "https://cmsconf.com/",
     logo: img_logo_cmsconf,
-  },
-  {
-    name: "Sindicatul Studentilor din Cibernetica",
-    url: "https://sisc.ro/",
-    logo: img_sisc,
   },
   {
     name: "React Barcelona",

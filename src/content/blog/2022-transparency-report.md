@@ -1,5 +1,5 @@
 ---
-author: ale-retegan
+author: ale-retegan-organizer
 title: 2022 Transparency Report
 published: Oct 20, 2022
 tags: ["reports"]

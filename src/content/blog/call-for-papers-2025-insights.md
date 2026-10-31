@@ -1,5 +1,5 @@
 ---
-author: alex-moldovan
+author: alex-moldovan-organizer
 title: Call for papers 2025 insights
 published: Feb 15, 2025
 tags: ["cfp"]

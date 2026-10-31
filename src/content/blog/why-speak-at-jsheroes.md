@@ -1,5 +1,5 @@
 ---
-author: alex-moldovan
+author: alex-moldovan-organizer
 title: Why speak at JSHeroes
 published: Nov 8, 2024
 tags: ["cfp"]

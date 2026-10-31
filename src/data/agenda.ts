@@ -11,10 +11,10 @@ export const day1: AgendaItem[] = [
     content: "Welcome to JSHeroes!",
     timeSlot: "09:15 - 09:30",
   },
-  { type: "talk", speakers: ["phil-hawksworth"], timeSlot: "09:30 - 10:00" },
+  { type: "talk", speakers: [], timeSlot: "09:30 - 10:00" },
   {
     type: "talk",
-    speakers: ["misha-korolev"],
+    speakers: [],
     timeSlot: "10:00 - 10:30",
   },
   {
@@ -29,10 +29,10 @@ export const day1: AgendaItem[] = [
     description: "Alternative stage panel",
     timeSlot: "10:45 - 11:15",
   },
-  { type: "talk", speakers: ["daniel-roe"], timeSlot: "11:15 - 11:45" },
+  { type: "talk", speakers: [], timeSlot: "11:15 - 11:45" },
   {
     type: "talk",
-    speakers: ["dominik-dorfmeister"],
+    speakers: [],
     timeSlot: "11:45 - 12:15",
   },
   {
@@ -42,10 +42,10 @@ export const day1: AgendaItem[] = [
   },
   {
     type: "talk",
-    speakers: ["ryan-townsend"],
+    speakers: [],
     timeSlot: "13:45 - 14:15",
   },
-  { type: "talk", speakers: ["craig-abbott"], timeSlot: "14:15 - 14:45" },
+  { type: "talk", speakers: [], timeSlot: "14:15 - 14:45" },
   {
     type: "placeholder",
     content: "Coffee Break",
@@ -61,12 +61,12 @@ export const day1: AgendaItem[] = [
   {
     type: "talk",
     timeSlot: "15:30 - 16:00",
-    speakers: ["cyd-stumpel"],
+    speakers: [],
   },
   {
     type: "talk",
     timeSlot: "16:00 - 16:30",
-    speakers: ["andrei-pfeiffer"],
+    speakers: [],
   },
 ];
 
@@ -76,11 +76,11 @@ export const day2: AgendaItem[] = [
     content: "Welcome back!",
     timeSlot: "09:00 - 09:30",
   },
-  { type: "talk", timeSlot: "09:30 - 10:00", speakers: ["faris-aziz"] },
+  { type: "talk", timeSlot: "09:30 - 10:00", speakers: [] },
   {
     type: "talk",
     timeSlot: "10:00 - 10:30",
-    speakers: ["dan-neciu"],
+    speakers: [],
   },
   {
     type: "placeholder",
@@ -94,18 +94,18 @@ export const day2: AgendaItem[] = [
     description: "Alternative stage panel",
     timeSlot: "11:15 - 11:45",
   },
-  { type: "talk", timeSlot: "11:15 - 11:45", speakers: ["richard-gross"] },
-  { type: "talk", timeSlot: "11:45 - 12:15", speakers: ["bogdan-zaharia"] },
+  { type: "talk", timeSlot: "11:15 - 11:45", speakers: [] },
+  { type: "talk", timeSlot: "11:45 - 12:15", speakers: [] },
   {
     type: "placeholder",
     content: "Lunch Break",
     timeSlot: "12:15 - 13:45",
   },
-  { type: "talk", timeSlot: "13:45 - 14:15", speakers: ["anjana-vakil"] },
+  { type: "talk", timeSlot: "13:45 - 14:15", speakers: [] },
   {
     type: "talk",
     timeSlot: "14:15 - 14:45",
-    speakers: ["zbyszek-tenerowicz"],
+    speakers: [],
   },
   {
     type: "placeholder",
@@ -122,9 +122,9 @@ export const day2: AgendaItem[] = [
   {
     type: "talk",
     timeSlot: "15:30 - 16:00",
-    speakers: ["siddharth-dayalwal"],
+    speakers: [],
   },
-  { type: "talk", timeSlot: "16:00 - 16:30", speakers: ["suz-hinton"] },
+  { type: "talk", timeSlot: "16:00 - 16:30", speakers: [] },
   {
     type: "placeholder",
     timeSlot: "16:30 - 17:00",

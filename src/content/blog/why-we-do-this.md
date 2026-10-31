@@ -1,5 +1,5 @@
 ---
-author: alex-moldovan
+author: alex-moldovan-organizer
 title: Why we do this
 published: Jun 22, 2024
 tags: ["general"]

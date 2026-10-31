@@ -18,11 +18,8 @@ const sideClusters = [
   data-section="hero"
   class="relative -mt-24 flex flex-col overflow-hidden bg-paper"
 >
-  <!--
-    From lg up, the hero fills at least one viewport (min-h-[100dvh], flex-1
-    on the text block absorbs the slack). Below lg it keeps its natural height.
-  -->
-  <div class="flex flex-col lg:min-h-[100dvh]">
+  <!-- Natural height at every size, so the speakers start right below it on tall screens. -->
+  <div class="flex flex-col">
     <!-- Stair corners live in the page margin, so they only appear where the margin is wide enough to hold them. -->
     <Motif
       name="st_brand"
@@ -118,7 +115,7 @@ const sideClusters = [
     <!-- From sm to lg the motifs stand in a column to the right of the text
          (from lg they're positioned over the page, above). Below sm there is
          no room beside the text, so they're dropped rather than stacked under it. -->
-    <div class="relative mx-auto flex w-full max-w-[1160px] flex-1 items-start justify-between gap-8 px-5 pt-32 pb-16 md:px-8 md:pt-[9.375rem] xl:px-0">
+    <div class="relative mx-auto flex w-full max-w-[1160px] items-start justify-between gap-8 px-5 pt-32 pb-16 md:px-8 md:pt-[9.375rem] xl:px-0">
       <div class="max-w-[40rem] min-w-0">
         <Eyebrow data-reveal="up">{hero.eyebrow}</Eyebrow>
         <h1 class="h1-hero mt-7" data-load>
