@@ -15,6 +15,14 @@ inputs:
 runs:
   using: composite
   steps:
+    # The packages below are pinned, so the Python they have wheels for is pinned too:
+    # the runner image's own Python changes when ubuntu-latest moves.
+    - name: Set up Python
+      id: python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
     - name: Cache cutout model
       uses: actions/cache@v4
       with:
@@ -38,7 +46,7 @@ runs:
           echo "$U2NET_SHA256  $MODEL.tmp" | sha256sum -c -
           mv "$MODEL.tmp" "$MODEL"
         fi
-        python3 -m venv "$RUNNER_TEMP/cutout-venv"
+        "${{ steps.python.outputs.python-path }}" -m venv "$RUNNER_TEMP/cutout-venv"
         "$RUNNER_TEMP/cutout-venv/bin/pip" install --quiet $CUTOUT_PACKAGES
         mkdir -p "$RUNNER_TEMP/cutout-in" "$OUT_DIR"
         cp "$PHOTO" "$RUNNER_TEMP/cutout-in/$CUTOUT_NAME"
