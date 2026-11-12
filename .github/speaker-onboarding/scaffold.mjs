@@ -26,8 +26,11 @@ requireText("speaker.title", speaker?.title, 120);
 optionalText("speaker.company", speaker?.company, 80);
 optionalText("speaker.tag", speaker?.tag, 40);
 requireText("speaker.bio", speaker?.bio, 1500);
-requireText("talk.title", talk?.title, 150);
-requireText("talk.abstract", talk?.abstract, 2500);
+// The portal leaves the talk out until the speaker marks it as ready to publish.
+if (talk != null) {
+  requireText("talk.title", talk.title, 150);
+  requireText("talk.abstract", talk.abstract, 2500);
+}
 
 // A list of URLs. Object.values also reads the older shape, keyed by platform.
 const links = [];
@@ -82,10 +85,12 @@ const front = [
   .join("\n");
 
 await writeFile(personFile, `${front}\n\n${normalizeBody(speaker.bio)}\n`);
-await writeFile(
-  talkFile,
-  `---\ntitle: ${q(talk.title)}\n---\n\n${normalizeBody(talk.abstract)}\n`,
-);
+if (talk) {
+  await writeFile(
+    talkFile,
+    `---\ntitle: ${q(talk.title)}\n---\n\n${normalizeBody(talk.abstract)}\n`,
+  );
+}
 
 await mkdir("src/images/people", { recursive: true });
 await sharp(photoPath)
@@ -97,10 +102,10 @@ await sharp(photoPath)
 if (process.env.GITHUB_OUTPUT) {
   await appendFile(
     process.env.GITHUB_OUTPUT,
-    `slug=${slug}\nname=${speaker.name.replace(/[\r\n]/g, " ")}\n`,
+    `slug=${slug}\nname=${speaker.name.replace(/[\r\n]/g, " ")}\nhas_talk=${!!talk}\n`,
   );
 }
-console.log(`Wrote ${personFile}, ${talkFile}, ${photoFile}`);
+console.log(`Wrote ${[personFile, talk && talkFile, photoFile].filter(Boolean).join(", ")}`);
 
 // ---- helpers ----
 function normalizeBody(text) {
