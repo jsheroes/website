@@ -212,7 +212,6 @@ jobs:
           $TALK_TODO
           - [ ] Photo crop looks good
           $CUTOUT_TODO
-          - [ ] Tag is right
 
           ### Before publishing
           - [ ] Set \`draft: false\` and an \`order\` in \`src/content/people/$SLUG.md\`
