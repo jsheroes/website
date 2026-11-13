@@ -5,7 +5,7 @@ export type Year =
 
 const yearlyBudget: Record<Year, number> = {
   2017: 52030,
-  2018: 87200,
+  2018: 79400,
   2019: 92600,
   2022: 35500,
   2023: 106300,
@@ -16,7 +16,7 @@ const yearlyBudget: Record<Year, number> = {
 
 const yearlyIncome: Record<Year, number> = {
   2017: 54621,
-  2018: 79400,
+  2018: 89700,
   2019: 98000,
   2022: 52000,
   2023: 115200,
