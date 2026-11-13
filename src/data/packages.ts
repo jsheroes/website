@@ -7,6 +7,8 @@ type Benefit =
   | "ticket_discount"
   | "10tickets"
   | "5tickets"
+  | "3tickets"
+  | "booth"
   | "experience";
 
 type Package = {
@@ -44,26 +46,31 @@ export const BENEFITS_INFO: Record<
   ticket_discount: { display: "15% discount on all tickets" },
   "10tickets": { display: "10 event tickets" },
   "5tickets": { display: "5 event tickets" },
-  experience: {
-    display: "Company booth at the venue",
+  "3tickets": { display: "3 event tickets" },
+  booth: {
+    display: "Booth corner in the foyer",
     explanation:
-      "You will have a dedicated area in the hallway where you can interact with the attendees during the breaks.",
+      "You will have a dedicated corner in the foyer where you can interact with the attendees during the breaks.",
+  },
+  experience: {
+    display: "Your brand attached to an event experience",
+    explanation: "Choose one: the coffee spot or the community drinks.",
   },
 };
 
 export const BRONZE_PACKAGE: Package = {
   name: "Bronze",
-  price: 1500,
+  price: 2000,
   color: "accent-pink",
   description: "Ideal for startups and small companies",
-  benefits: ["giveaways", "rollup", "spotlight", "logo"],
+  benefits: ["logo", "giveaways", "rollup", "spotlight"],
   highlightedBenefits: [],
   availability: 6,
 };
 
 export const SUPPORTER_PACKAGE: Package = {
   name: "Supporter",
-  price: 1500,
+  price: 2000,
   color: "rule",
   description:
     "Alternative for the bronze package for companies interested in getting tickets for employees",
@@ -74,12 +81,20 @@ export const SUPPORTER_PACKAGE: Package = {
 
 export const SILVER_PACKAGE: Package = {
   name: "Silver",
-  price: 3000,
+  price: 4000,
   color: "accent-green",
   description: "Increase brand awareness at the event",
-  benefits: ["video", "giveaways", "rollup", "spotlight", "logo"],
-  highlightedBenefits: ["giveaways", "video"],
-  availability: 3,
+  benefits: [
+    "experience",
+    "3tickets",
+    "video",
+    "logo",
+    "giveaways",
+    "rollup",
+    "spotlight",
+  ],
+  highlightedBenefits: ["experience", "3tickets"],
+  availability: 2,
 };
 
 export const GOLD_PACKAGE: Package = {
@@ -88,7 +103,7 @@ export const GOLD_PACKAGE: Package = {
   color: "accent-orange",
   description: "Get involved at the event",
   benefits: [
-    "experience",
+    "booth",
     "10tickets",
     "ticket_discount",
     "video",
@@ -97,6 +112,6 @@ export const GOLD_PACKAGE: Package = {
     "rollup",
     "spotlight",
   ],
-  highlightedBenefits: ["ticket_discount", "10tickets", "experience"],
-  availability: 3,
+  highlightedBenefits: ["ticket_discount", "10tickets", "booth"],
+  availability: 1,
 };
