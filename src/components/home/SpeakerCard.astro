@@ -46,13 +46,14 @@ const affiliation = person.data.company ?? person.data.title;
       </span>
     )}
     <span class="plate absolute -inset-x-[4%] bottom-0 flex aspect-[2/1] items-center justify-center bg-[var(--plate)] text-sm leading-[1.1] font-extrabold tracking-tight min-[480px]:text-xl">
-      <!-- Two to a row on phones: smaller type, and long names and roles wrap.
-           The role sits where the plate narrows, so it gets the tighter width. -->
+      <!-- Two to a row on phones: smaller type, and long names wrap. The
+           company or role sits where the plate narrows, so it gets a tighter
+           width and long ones wrap at every size. -->
       <span class="flex max-w-[76%] flex-col items-center gap-1 min-[480px]:max-w-none min-[480px]:gap-1.5">
         <span class="text-balance min-[480px]:whitespace-nowrap">
           {person.data.name}
         </span>
-        <span class="max-w-[6.5rem] text-[0.5625rem] tracking-[0.1em] text-balance uppercase min-[480px]:max-w-none min-[480px]:text-xs min-[480px]:tracking-[0.16em] min-[480px]:whitespace-nowrap">
+        <span class="max-w-[6.5rem] text-[0.5625rem] font-bold tracking-[0.1em] text-balance uppercase min-[480px]:max-w-[7.5rem] min-[480px]:text-xs min-[480px]:tracking-[0.16em]">
           {affiliation}
         </span>
       </span>
