@@ -4,11 +4,10 @@ export type Person = CollectionEntry<"people">;
 export type PersonRole = Person["data"]["role"];
 
 /**
- * Draft people are only rendered on Vercel preview deployments, or locally
- * with SHOW_DRAFTS=true. Production builds never include them.
+ * Draft people are rendered everywhere except Vercel production builds:
+ * locally, in CI and on Vercel previews. Production never includes them.
  */
-export const showDrafts =
-  process.env.VERCEL_ENV === "preview" || process.env.SHOW_DRAFTS === "true";
+export const showDrafts = process.env.VERCEL_ENV !== "production";
 
 export const getPeople = (role: PersonRole) =>
   getCollection(
