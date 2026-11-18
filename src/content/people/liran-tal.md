@@ -3,7 +3,7 @@ name: "Liran Tal"
 role: "speaker"
 title: "Senior Director of Developer Relations"
 company: "Snyk"
-order: 4
+order: 5
 photo: "../../images/people/liran-tal.jpg"
 portrait: "../../images/people/liran-tal-cutout.png"
 links:

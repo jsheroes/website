@@ -3,7 +3,7 @@ name: "Bramus"
 role: "speaker"
 title: "Chrome Developer Relations"
 company: "Google"
-order: 3
+order: 4
 photo: "../../images/people/bramus-van-damme.jpg"
 portrait: "../../images/people/bramus-van-damme-cutout.png"
 links:

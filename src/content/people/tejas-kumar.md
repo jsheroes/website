@@ -3,7 +3,7 @@ name: "Tejas Kumar"
 role: "speaker"
 title: "AI Engineer"
 company: "IBM"
-order: 2
+order: 3
 photo: "../../images/people/tejas-kumar.jpg"
 portrait: "../../images/people/tejas-kumar-cutout.png"
 links:
