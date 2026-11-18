@@ -12,22 +12,28 @@ export interface Props {
 const { author, publishDate } = Astro.props;
 ---
 
-<div style="--plate: var(--color-accent-pink); --tint: var(--color-tint-coral)">
+<div style="--plate: var(--color-accent-pink)">
   <button
     type="button"
-    class="group flex cursor-pointer items-center gap-4 border-0 bg-transparent p-0 text-left text-inherit"
+    class="group flex cursor-pointer items-center gap-5 border-0 bg-transparent p-0 text-left text-inherit"
     aria-haspopup="dialog"
     data-person-dialog={personDialogId(author)}
   >
-    <span class="block h-14 w-14 shrink-0 overflow-hidden bg-[var(--tint)]">
-      <Image
-        src={author.data.photo}
-        alt=""
-        width={56}
-        height={56}
-        densities={[1, 2]}
-        class="h-full w-full object-cover object-top mix-blend-multiply grayscale"
-      />
+    <span class="relative block h-14 w-14 shrink-0 [--step:4px]">
+      <span
+        aria-hidden="true"
+        class="stepped absolute inset-0 translate-1 bg-[var(--plate)] transition-transform duration-200 ease-out group-hover:translate-1.5 motion-reduce:transition-none"
+      ></span>
+      <span class="stepped absolute inset-0 overflow-hidden bg-band transition-transform duration-200 ease-out group-hover:-translate-0.5 motion-reduce:transition-none">
+        <Image
+          src={author.data.photo}
+          alt=""
+          width={56}
+          height={56}
+          densities={[1, 2]}
+          class="h-full w-full object-cover object-top grayscale"
+        />
+      </span>
     </span>
     <span class="flex flex-col">
       <span class="text-lg leading-tight font-bold group-hover:underline group-hover:decoration-accent-pink group-hover:decoration-2 group-hover:underline-offset-4">

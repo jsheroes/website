@@ -71,7 +71,7 @@ const testimonials = [
     name: "Maarten van Hoof",
     role: "Devops Engineer Frontend @ Essent",
     photo: "/img/sponsors-page/maarten.jpg",
-    tint: "var(--color-tint-blue)",
+    plate: "var(--color-accent-blue)",
     quote: [
       "If there is one conference that you already should put on your shortlist for (the) next year(s), JSHeroes is the one.",
       "From seasoned veterans to emerging talents, the line-up every year is a true reflection of the Web community's diversity and innovation. The above-and-beyond hospitality of the organization, the diverse range of international attendees, and the focus on inclusiveness, makes JSHeroes Conference one of the top conferences in Europe.",
@@ -81,7 +81,7 @@ const testimonials = [
     name: "Natalia Tepluhina",
     role: "Principal Engineer @ GitLab",
     photo: "/img/sponsors-page/natalia-tepluhina.jpg",
-    tint: "var(--color-tint-coral)",
+    plate: "var(--color-accent-pink)",
     quote: [
       "People just start talking about their pains in the code business. It's amazing! It feels like a group therapy, in a way. And this is something you cannot replace when doing online events.",
     ],
@@ -280,15 +280,25 @@ const testimonials = [
             ))}
           </blockquote>
           <figcaption class="flex items-center gap-4">
-            <img
-              src={t.photo}
-              alt=""
-              width="72"
-              height="72"
-              loading="lazy"
-              class="h-[4.5rem] w-[4.5rem] object-cover mix-blend-multiply grayscale"
-              style={`background:${t.tint}`}
-            />
+            <span
+              class="relative block h-[4.5rem] w-[4.5rem] shrink-0 [--step:4px]"
+              style={`--plate:${t.plate}`}
+            >
+              <span
+                aria-hidden="true"
+                class="stepped absolute inset-0 translate-1 bg-[var(--plate)]"
+              ></span>
+              <span class="stepped absolute inset-0 overflow-hidden bg-band">
+                <img
+                  src={t.photo}
+                  alt=""
+                  width="72"
+                  height="72"
+                  loading="lazy"
+                  class="h-full w-full object-cover grayscale"
+                />
+              </span>
+            </span>
             <span>
               <strong class="block text-lg">{t.name}</strong>
               <span class="text-soft">{t.role}</span>
