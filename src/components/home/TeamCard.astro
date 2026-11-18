@@ -10,9 +10,11 @@ import { personDialogId, type Person } from "../../utils/people";
  */
 interface Props {
   person: Person;
+  /** Line under the name; defaults to the person's title. */
+  subtitle?: string;
 }
 
-const { person } = Astro.props;
+const { person, subtitle = person.data.title } = Astro.props;
 ---
 
 <button
@@ -40,7 +42,7 @@ const { person } = Astro.props;
   <span class="mt-5 block text-xl leading-tight font-bold group-hover:underline group-hover:decoration-accent-pink group-hover:decoration-2 group-hover:underline-offset-4">
     {person.data.name}
   </span>
-  <span class="mt-0.5 block text-sm text-soft">{person.data.title}</span>
+  <span class="mt-0.5 block text-sm text-soft">{subtitle}</span>
 </button>
 
 <PersonDialog person={person} />

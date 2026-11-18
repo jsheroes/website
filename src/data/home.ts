@@ -58,6 +58,10 @@ export const hosts = {
   title: "Our wonderful hosts and sketch artist.",
   tba: "TBA",
   mcTitle: "MC",
+  mcsLabel: "Your MCs",
+  mcLine: "Keeps the stage running",
+  sketchLabel: "Live sketching",
+  sketchLine: "Draws every talk as it happens",
 };
 
 export const flipWall = {
