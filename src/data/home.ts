@@ -55,12 +55,10 @@ export const speakers = {
 
 export const hosts = {
   eyebrow: "The support crew",
-  title: "Our wonderful hosts and sketch artist.",
+  title: "Our hosts and sketch artist.",
   tba: "TBA",
   mcTitle: "MC",
-  mcsLabel: "Your MCs",
   mcLine: "Keeps the stage running",
-  sketchLabel: "Live sketching",
   sketchLine: "Draws every talk as it happens",
 };
 

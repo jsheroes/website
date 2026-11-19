@@ -19,7 +19,6 @@ const mcSlots = [
 ];
 const sketchArtists = hosts.filter((host) => host.data.title !== copy.mcTitle);
 
-const label = "m-0 text-[0.8125rem] font-bold tracking-[0.16em] uppercase";
 ---
 
 <Section
@@ -37,65 +36,48 @@ const label = "m-0 text-[0.8125rem] font-bold tracking-[0.16em] uppercase";
   </div>
 
   {/* Same grid as the speakers: MCs in columns 1–2, the sketch artist in column 3. */}
-  <div class="host-grid mt-12 grid grid-cols-2 gap-x-4 gap-y-6 min-[480px]:gap-x-10 md:mt-14 md:gap-x-14 lg:grid-cols-4">
-    <h3 class:list={[label, "col-span-2 lg:col-start-1 lg:row-start-1"]} data-reveal="up">
-      {copy.mcsLabel}
-    </h3>
-    <ul class="contents">
-      {mcSlots.map((host, i) => (
-        <li
-          class="mx-auto mb-4 w-full max-w-[16.25rem] lg:row-start-2"
-          style={`--plate: var(${i === 0 ? "--color-accent-green" : "--color-accent-blue"}); --d:${150 + i * 110}ms`}
-          data-reveal="up"
-        >
-          {host ? (
-            <TeamCard person={host} subtitle={copy.mcLine} />
-          ) : (
-            <div>
-              <span class="relative block aspect-[4/3]">
-                <span
-                  aria-hidden="true"
-                  class="stepped absolute inset-0 translate-2 bg-[var(--plate)]"
-                ></span>
-                <span
-                  aria-hidden="true"
-                  class="stepped absolute inset-0 flex items-center justify-center bg-paper text-[4rem] font-extrabold tracking-tighter"
-                >
-                  ?
-                </span>
+  <ul class="m-0 mt-12 grid list-none grid-cols-2 gap-x-4 gap-y-10 p-0 min-[480px]:gap-x-10 md:mt-14 md:gap-x-14 md:gap-y-16 lg:grid-cols-4">
+    {mcSlots.map((host, i) => (
+      <li
+        class="mx-auto w-full max-w-[16.25rem] lg:row-start-1"
+        style={`--plate: var(${i === 0 ? "--color-accent-green" : "--color-accent-blue"}); --d:${150 + i * 110}ms`}
+        data-reveal="up"
+      >
+        {host ? (
+          <TeamCard person={host} subtitle={copy.mcLine} />
+        ) : (
+          <div>
+            <span class="relative block aspect-[4/3]">
+              <span
+                aria-hidden="true"
+                class="stepped absolute inset-0 translate-2 bg-[var(--plate)]"
+              ></span>
+              <span
+                aria-hidden="true"
+                class="stepped absolute inset-0 flex items-center justify-center bg-paper text-[4rem] font-extrabold tracking-tighter"
+              >
+                ?
               </span>
-              <span class="mt-5 block text-xl leading-tight font-bold">{copy.tba}</span>
-              <span class="mt-0.5 block text-sm text-soft">{copy.mcLine}</span>
-            </div>
-          )}
-        </li>
-      ))}
-    </ul>
-
-    <h3
-      class:list={[label, "col-span-2 mt-6 lg:col-span-1 lg:col-start-3 lg:row-start-1 lg:mt-0"]}
-      data-reveal="up"
-    >
-      {copy.sketchLabel}
-    </h3>
-    <ul class="contents">
-      {sketchArtists.map((person) => (
-        <li
-          class="mx-auto mb-4 w-full max-w-[16.25rem] lg:col-start-3 lg:row-start-2"
-          style="--plate: var(--color-accent-pink); --d: 370ms"
-          data-reveal="up"
-        >
-          <TeamCard person={person} subtitle={copy.sketchLine} />
-        </li>
-      ))}
-    </ul>
-
-    {/* divider in the gutter between the MCs and the sketch artist */}
-    <span
-      aria-hidden="true"
-      class="pointer-events-none relative hidden lg:col-start-3 lg:row-span-2 lg:row-start-1 lg:block"
-    >
-      <span class="absolute inset-y-0 -left-7 border-l-[1.5px] border-rule"></span>
-    </span>
-  </div>
+            </span>
+            <span class="mt-5 block text-xl leading-tight font-bold">{copy.tba}</span>
+            <span class="mt-0.5 block text-sm text-soft">{copy.mcLine}</span>
+          </div>
+        )}
+      </li>
+    ))}
+    {sketchArtists.map((person) => (
+      <li
+        class="relative mx-auto w-full max-w-[16.25rem] lg:col-start-3 lg:row-start-1"
+        style="--plate: var(--color-accent-pink); --d: 370ms"
+        data-reveal="up"
+      >
+        {/* divider in the gutter between the MCs and the sketch artist */}
+        <span
+          aria-hidden="true"
+          class="absolute inset-y-0 -left-7 hidden border-l-[1.5px] border-rule lg:block"
+        ></span>
+        <TeamCard person={person} subtitle={copy.sketchLine} />
+      </li>
+    ))}
+  </ul>
 </Section>
