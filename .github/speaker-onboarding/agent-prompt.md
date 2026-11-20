@@ -1,8 +1,10 @@
-You are preparing a draft speaker entry for the JSHeroes conference website (Astro content collections).
+You are preparing a speaker entry for the JSHeroes conference website (Astro content collections).
 
-A script has already written these files from a speaker's form submission:
+A script has already written these files from a speaker's form submission. Either it is a new speaker
+(the entry has `draft: true`), or the speaker is already published and resubmitted their details, in which
+case the script updated their existing entry in place:
 
-- `src/content/people/{{SLUG}}.md` (frontmatter + bio; `role: "speaker"`, `draft: true`)
+- `src/content/people/{{SLUG}}.md` (frontmatter + bio; `role: "speaker"`)
 - `src/content/speaker-talks/{{SLUG}}.md` (talk title + abstract), only if the speaker marked their talk as ready.
   If it doesn't exist, leave it that way: never create it.
 - `src/images/people/{{SLUG}}.jpg` (photo, already processed; do not touch it)
@@ -30,7 +32,8 @@ Do not create, delete or edit any other file.
      (e.g. "node" → "Node.js", "a11y" → "Accessibility"). Otherwise keep it, in Title Case, max 3 words.
    - `title` and `company`: if the company was repeated inside `title` (e.g. "Engineer at Acme") and `company` is
      set, keep only the role in `title`. The speaker card shows `company`, falling back to `title`.
-   - Keep `role: "speaker"` and `draft: true`. Never add `order` or `portrait`. Do not change `name`, `photo` or `links`.
+   - Keep `role: "speaker"`. Never add, remove or change `draft`, `order` or `portrait`. Do not change `name`, `photo`
+     or `links`.
 5. Run `pnpm build`. If it fails because of these files, fix them and run it again.
 6. Write a short summary of what you changed and anything a human reviewer should double-check (ambiguous pronouns,
    possibly inappropriate content, a tag you were unsure about) to `{{SUMMARY_PATH}}` in the repository root, as

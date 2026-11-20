@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-// Writes a draft speaker entry from a speaker-portal submission.
+// Writes a draft speaker entry from a speaker-portal submission, or updates
+// the entry of a speaker who is already published.
 // Usage: node .github/speaker-onboarding/scaffold.mjs <submission.json> <photo-file>
 // Deterministic on purpose: the AI step afterwards only polishes the text.
 import {
@@ -46,43 +47,60 @@ for (const value of Object.values(speaker.links ?? {})) {
   links.push(url.toString());
 }
 
-// ---- never overwrite someone who isn't a draft speaker ----
+// ---- create a draft, or update a published speaker ----
 // The people collection is shared by speakers, hosts, organizers, volunteers…,
-// so a clash can also be an organizer or a returning speaker with the same slug.
+// so a clash can also be an organizer or a host with the same slug: never touch those.
+// A published speaker (role "speaker", no draft flag) gets an update instead: only the
+// fields the portal owns are rewritten, in place; order, portrait and the rest stay.
 const personFile = `src/content/people/${slug}.md`;
 const talkFile = `src/content/speaker-talks/${slug}.md`;
 const photoFile = `src/images/people/${slug}.jpg`;
+let mode = "create";
+let current = null;
 if (await exists(personFile)) {
-  const current = await readFile(personFile, "utf8");
-  const isDraftSpeaker =
-    /^draft:\s*true\s*$/m.test(current) &&
-    /^role:\s*"?speaker"?\s*$/m.test(current);
-  if (!isDraftSpeaker) {
+  current = await readFile(personFile, "utf8");
+  const isSpeaker = /^role:\s*"?speaker"?\s*$/m.test(current);
+  const isDraft = /^draft:\s*true\s*$/m.test(current);
+  if (!isSpeaker) {
     fail(
-      `${personFile} already exists and is not a draft speaker. ` +
+      `${personFile} already exists and is not a speaker. ` +
         `Re-issue the invite with a different slug, or update the existing entry by hand.`,
     );
   }
+  if (!isDraft) mode = "update";
 }
 
 // ---- write files ----
 const q = (s) => JSON.stringify(s.trim()); // JSON strings are valid YAML double-quoted scalars
 
-const front = [
-  "---",
-  `name: ${q(speaker.name)}`,
-  `role: "speaker"`,
-  `title: ${q(speaker.title)}`,
-  speaker.company?.trim() && `company: ${q(speaker.company)}`,
-  speaker.tag?.trim() && `tag: ${q(speaker.tag)}`,
-  `photo: ${q(`../../images/people/${slug}.jpg`)}`,
-  links.length &&
-    ["links:", ...links.map((link) => `  - ${q(link)}`)].join("\n"),
-  "draft: true",
-  "---",
-]
-  .filter(Boolean)
-  .join("\n");
+// Frontmatter blocks the portal owns, in the order a new entry gets them.
+const managed = [
+  ["name", `name: ${q(speaker.name)}`],
+  ["role", `role: "speaker"`],
+  ["title", `title: ${q(speaker.title)}`],
+  ["company", speaker.company?.trim() && `company: ${q(speaker.company)}`],
+  ["tag", speaker.tag?.trim() && `tag: ${q(speaker.tag)}`],
+  ["photo", `photo: ${q(`../../images/people/${slug}.jpg`)}`],
+  [
+    "links",
+    links.length &&
+      ["links:", ...links.map((link) => `  - ${q(link)}`)].join("\n"),
+  ],
+];
+
+let front;
+if (mode === "update") {
+  front = updateFrontmatter(current, managed);
+} else {
+  front = [
+    "---",
+    ...managed.map(([, block]) => block),
+    "draft: true",
+    "---",
+  ]
+    .filter(Boolean)
+    .join("\n");
+}
 
 await writeFile(personFile, `${front}\n\n${normalizeBody(speaker.bio)}\n`);
 if (talk) {
@@ -102,12 +120,45 @@ await sharp(photoPath)
 if (process.env.GITHUB_OUTPUT) {
   await appendFile(
     process.env.GITHUB_OUTPUT,
-    `slug=${slug}\nname=${speaker.name.replace(/[\r\n]/g, " ")}\nhas_talk=${!!talk}\n`,
+    `slug=${slug}\nname=${speaker.name.replace(/[\r\n]/g, " ")}\nhas_talk=${!!talk}\nmode=${mode}\n`,
   );
 }
-console.log(`Wrote ${[personFile, talk && talkFile, photoFile].filter(Boolean).join(", ")}`);
+console.log(`${mode === "update" ? "Updated" : "Wrote"} ${[personFile, talk && talkFile, photoFile].filter(Boolean).join(", ")}`);
 
 // ---- helpers ----
+// Rewrites the managed top-level keys of an existing entry where they are, adds
+// missing ones after `photo`, drops ones the submission left empty, and keeps
+// every other block (order, portrait, …) verbatim.
+function updateFrontmatter(text, managedBlocks) {
+  const match = /^---\r?\n([\s\S]*?)\r?\n---/.exec(text);
+  if (!match) fail(`${personFile} has no frontmatter`);
+  const blocks = [];
+  for (const line of match[1].split(/\r?\n/)) {
+    const key = /^([A-Za-z_][\w-]*):/.exec(line)?.[1];
+    if (key || !blocks.length) blocks.push({ key, lines: [line] });
+    else blocks.at(-1).lines.push(line); // list items, folded text, …
+  }
+  const replacements = new Map(managedBlocks);
+  const out = [];
+  const seen = new Set();
+  for (const block of blocks) {
+    if (block.key && replacements.has(block.key)) {
+      seen.add(block.key);
+      const next = replacements.get(block.key);
+      if (next) out.push(next);
+    } else {
+      out.push(block.lines.join("\n"));
+    }
+  }
+  const missing = managedBlocks
+    .filter(([key, value]) => value && !seen.has(key))
+    .map(([, value]) => value);
+  if (missing.length) {
+    const photoAt = out.findIndex((block) => block.startsWith("photo:"));
+    out.splice(photoAt === -1 ? out.length : photoAt + 1, 0, ...missing);
+  }
+  return ["---", ...out, "---"].join("\n");
+}
 function normalizeBody(text) {
   return text
     .replace(/\r\n?/g, "\n")

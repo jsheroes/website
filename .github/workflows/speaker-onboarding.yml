@@ -1,7 +1,8 @@
 name: Speaker onboarding
 
 # Triggered by the speaker portal (repository_dispatch) or manually for testing.
-# Turns one portal submission into a draft PR adding a `draft: true` speaker.
+# Turns one portal submission into a draft PR adding a `draft: true` speaker or,
+# for a speaker who is already published, a PR updating their existing entry.
 on:
   repository_dispatch:
     types: [speaker-submission]
@@ -103,6 +104,7 @@ jobs:
         env:
           SLUG: ${{ steps.scaffold.outputs.slug }}
           HAS_TALK: ${{ steps.scaffold.outputs.has_talk }}
+          MODE: ${{ steps.scaffold.outputs.mode }}
         run: |
           # The agent's notes for the PR body live outside the repo from here on.
           if [ -f speaker-agent-summary.md ]; then mv speaker-agent-summary.md "$RUNNER_TEMP/agent-summary.md"; fi
@@ -119,15 +121,40 @@ jobs:
             echo "::error::Unexpected changes:"; echo "$unexpected"; exit 1
           fi
           f="src/content/people/$SLUG.md"
-          grep -q '^draft: true$' "$f" || { echo "::error::draft flag missing"; exit 1; }
           grep -q '^role: "speaker"$' "$f" || { echo "::error::role must be speaker"; exit 1; }
-          if grep -qE '^(order|portrait):' "$f"; then echo "::error::order/portrait must not be set"; exit 1; fi
+          if [ "$MODE" = "update" ]; then
+            # A published entry: draft, order and portrait must be exactly as on main.
+            pinned() { grep -E '^(draft|order|portrait):' || true; }
+            if [ "$(git show "HEAD:$f" | pinned)" != "$(pinned < "$f")" ]; then
+              echo "::error::draft/order/portrait must not change"; exit 1
+            fi
+          else
+            grep -q '^draft: true$' "$f" || { echo "::error::draft flag missing"; exit 1; }
+            if grep -qE '^(order|portrait):' "$f"; then echo "::error::order/portrait must not be set"; exit 1; fi
+          fi
+
+      # An update re-processes the photo, so it only needs a new cutout if the photo changed.
+      # Drafts always get one, as before.
+      - name: Check whether the photo changed
+        id: photo
+        env:
+          SLUG: ${{ steps.scaffold.outputs.slug }}
+          MODE: ${{ steps.scaffold.outputs.mode }}
+        run: |
+          if [ "$MODE" = "update" ] &&
+             git ls-files --error-unmatch "src/images/people/$SLUG.jpg" >/dev/null 2>&1 &&
+             git diff --quiet -- "src/images/people/$SLUG.jpg"; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
 
       # Runs after the agent and the guard, so neither touches the cutout. Works from
       # the uploaded photo, not the square crop. A failure must not block the PR: the
       # initials tile shows until a cutout exists, and the PR body says what happened.
       - name: Generate cutout
         id: cutout
+        if: steps.photo.outputs.changed == 'true'
         continue-on-error: true
         uses: ./.github/actions/speaker-cutout
         with:
@@ -140,7 +167,13 @@ jobs:
         env:
           SLUG: ${{ steps.scaffold.outputs.slug }}
         run: |
-          sed -i "/^photo: /a portrait: \"../../images/people/$SLUG-cutout.png\"" "src/content/people/$SLUG.md"
+          f="src/content/people/$SLUG.md"
+          portrait="portrait: \"../../images/people/$SLUG-cutout.png\""
+          if grep -q '^portrait:' "$f"; then
+            sed -i "s|^portrait: .*|$portrait|" "$f"
+          else
+            sed -i "/^photo: /a $portrait" "$f"
+          fi
 
       - name: Check and build
         run: |
@@ -155,9 +188,13 @@ jobs:
           NAME: ${{ steps.scaffold.outputs.name }}
           APP_SLUG: ${{ steps.app-token.outputs.app-slug }}
           CUTOUT_CREATED: ${{ steps.cutout.outcome == 'success' }}
+          PHOTO_CHANGED: ${{ steps.photo.outputs.changed }}
           HAS_TALK: ${{ steps.scaffold.outputs.has_talk }}
+          MODE: ${{ steps.scaffold.outputs.mode }}
         run: |
-          BRANCH="speaker/$SLUG"
+          # Drafts reuse speaker/<slug>; that branch is merged (and maybe deleted) once a
+          # speaker is published, so updates get a branch of their own.
+          if [ "$MODE" = "update" ]; then BRANCH="speaker-update/$SLUG"; else BRANCH="speaker/$SLUG"; fi
           git config user.name "$APP_SLUG[bot]"
           git config user.email "$APP_SLUG[bot]@users.noreply.github.com"
           # claude-code-action rewires git auth to the read-only github.token,
@@ -168,7 +205,12 @@ jobs:
           git add "src/content/people/$SLUG.md" "src/images/people/$SLUG.jpg"
           if [ "$HAS_TALK" = "true" ]; then git add "src/content/speaker-talks/$SLUG.md"; fi
           if [ "$CUTOUT_CREATED" = "true" ]; then git add "src/images/people/$SLUG-cutout.png"; fi
-          git commit -m "Add draft speaker: $NAME" -m "Speaker portal submission: $SUBMISSION_ID"
+          if [ "$MODE" = "update" ] && git diff --cached --quiet; then
+            echo "::notice::The submission matches the published entry; nothing to update."
+            exit 0
+          fi
+          if [ "$MODE" = "update" ]; then SUBJECT="Update speaker: $NAME"; else SUBJECT="Add draft speaker: $NAME"; fi
+          git commit -m "$SUBJECT" -m "Speaker portal submission: $SUBMISSION_ID"
           git push --force origin "$BRANCH"
 
           SUMMARY="$RUNNER_TEMP/agent-summary.md"
@@ -176,7 +218,10 @@ jobs:
 
           # Pinned to the commit so the images in older comments keep showing what they reviewed.
           RAW="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$(git rev-parse HEAD)/src/images/people"
-          if [ "$CUTOUT_CREATED" = "true" ]; then
+          if [ "$PHOTO_CHANGED" != "true" ]; then
+            HEADSHOT="Photo unchanged."
+            CUTOUT_TODO=""
+          elif [ "$CUTOUT_CREATED" = "true" ]; then
             HEADSHOT="| Photo | Cutout |
           | --- | --- |
           | <img src=\"$RAW/$SLUG.jpg\" width=\"260\"> | <img src=\"$RAW/$SLUG-cutout.png\" width=\"260\"> |"
@@ -197,6 +242,40 @@ jobs:
             TALK_TODO="- [ ] Bio reads well and is accurate"
           fi
 
+          if [ "$MODE" = "update" ]; then
+            FIELDS="name, title, company, tag, photo, links and bio"
+            TALK_TODO="- [ ] Changes to the bio read well and are accurate"
+            if [ "$HAS_TALK" = "true" ]; then
+              FIELDS="name, title, company, tag, photo, links, bio and talk"
+              TALK_TODO="- [ ] Changes to the bio and talk text read well and are accurate"
+            fi
+            PHOTO_TODO=""
+            if [ "$PHOTO_CHANGED" = "true" ]; then
+              PHOTO_TODO="- [ ] New photo crop looks good"
+              if [ "$CUTOUT_CREATED" != "true" ]; then
+                HEADSHOT="<img src=\"$RAW/$SLUG.jpg\" width=\"260\">
+
+          **The automatic cutout failed** (see the workflow run), so the plate still shows the previous cutout."
+                CUTOUT_TODO="- [ ] Make a new cutout with \`scripts/cutouts.py\` or get one from a designer"
+              fi
+            fi
+            cat > "$RUNNER_TEMP/body.md" <<BODY
+          Update to a **published** speaker entry from the speaker portal (submission \`$SUBMISSION_ID\`).
+          Only the fields the portal owns ($FIELDS) were rewritten;
+          \`order\` and \`portrait\` are kept as they were. **Merging publishes the changes.**
+
+          ### Headshot
+          $HEADSHOT
+
+          ### Agent notes
+          $(cat "$SUMMARY")
+
+          ### Review
+          $TALK_TODO
+          $PHOTO_TODO
+          $CUTOUT_TODO
+          BODY
+          else
           cat > "$RUNNER_TEMP/body.md" <<BODY
           Draft speaker entry generated from the speaker portal (submission \`$SUBMISSION_ID\`).
           It has \`draft: true\`, so it is **hidden in production** and only shows on Vercel previews.
@@ -217,17 +296,23 @@ jobs:
           - [ ] Set \`draft: false\` and an \`order\` in \`src/content/people/$SLUG.md\`
           - [ ] Add \`$SLUG\` to \`src/data/agenda.ts\`
           BODY
+          fi
 
           EXISTING=$(gh pr list --head "$BRANCH" --state open --json url --jq '.[0].url')
           if [ -n "$EXISTING" ]; then
             gh pr comment "$EXISTING" --body "Updated from a new speaker portal submission."$'\n\n'"$(cat "$RUNNER_TEMP/body.md")"
             echo "url=$EXISTING" >> "$GITHUB_OUTPUT"
           else
-            URL=$(gh pr create --draft --base main --head "$BRANCH" \
-              --title "Speaker: $NAME (draft)" --body-file "$RUNNER_TEMP/body.md" \
+            if [ "$MODE" = "update" ]; then
+              TITLE="Speaker update: $NAME"; DRAFT_FLAG=""
+            else
+              TITLE="Speaker: $NAME (draft)"; DRAFT_FLAG="--draft"
+            fi
+            URL=$(gh pr create $DRAFT_FLAG --base main --head "$BRANCH" \
+              --title "$TITLE" --body-file "$RUNNER_TEMP/body.md" \
               --label speaker-onboarding 2>/dev/null || \
-              gh pr create --draft --base main --head "$BRANCH" \
-              --title "Speaker: $NAME (draft)" --body-file "$RUNNER_TEMP/body.md")
+              gh pr create $DRAFT_FLAG --base main --head "$BRANCH" \
+              --title "$TITLE" --body-file "$RUNNER_TEMP/body.md")
             echo "url=$URL" >> "$GITHUB_OUTPUT"
           fi
 
